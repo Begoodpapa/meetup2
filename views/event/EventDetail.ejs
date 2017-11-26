@@ -1,0 +1,224 @@
+  <div class="modal fade" id="register_event_member" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridSystemModalLabel">Register member to event</h4>
+        </div>
+        <div class="modal-body">
+          <p>Please select group members to event  
+          <p>
+          <div id="register_event_member_alert" class="alert alert-danger hidden" role="alert">
+            <dl>
+            </dl>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">User</span>
+            <input type="text" id="userselect" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+          </div>
+
+          <div class="user-select" style="display:none">
+            <ul class="user-for-select"></ul>
+          </div>
+
+          <br>
+
+          <div class="pillbox" data-initialize="pillbox" id="myPillbox">
+            <ul class="clearfix pill-group">
+              ....
+              <li class="pillbox-input-wrap btn-group">
+                <a class="pillbox-more">and <span class="pillbox-more-count"></span> more...</a>
+                <input type="text" class="form-control dropdown-toggle pillbox-add-item" placeholder="">
+                <button type="button" class="dropdown-toggle sr-only">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="suggest dropdown-menu" role="menu" data-toggle="dropdown" data-flip="auto"></ul>
+              </li>
+            </ul>
+          </div>
+
+          <input id="eid" type="hidden" value=<%= target.id %>></input>
+          <input id="gid" type="hidden" value=<%= target.group.id %>></input>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" id="register_member_btn" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<div class="modal fade" id="invite_friend_to_event" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Invite a friend to the event</h4>
+        </div>
+
+        <div class="modal-body">
+          <div id="input_check_alert" class="alert alert-danger hidden" role="alert">
+            <dl>
+            </dl>
+          </div>
+
+          <div class="input-group">
+            <input type="text" id="friend_email" class="form-control" placeholder="Your friend's email" aria-describedby="basic-addon2">
+            <span class="input-group-addon" id="basic-addon2">@nokia.com</span>
+          </div>
+
+          <input id="eventid" type="hidden" value=<%= target.id %>></input>
+          <input id="from" type="hidden" value="<%= user && user.fullname %>"></input>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="invite_friend_btn" class="btn btn-primary">Invite</button>
+        </div>
+
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div class="row">
+          <div class="C_Content col-md-9">
+            <div class="event-content">
+              <div class="event-title">
+                <br>
+                <h2 style="margin-top:1px; color:rgba(255, 116, 0, 0.88)"> <%= target.topic %></h2>
+              </div>
+              <div id="event-details">
+                <div id="event_when">
+                  <time itemprop="startDate" datetime="2015-03-14T09:30:00+08:00">
+                    <% var begindate = target.begindate %>
+                    <span>From:<%= begindate.toLocaleDateString() %></span><h4 style="color:rgb(87,53,8);">  <%= begindate.getHours()>9 ? begindate.getHours() : '0'+begindate.getHours() %>:<%= begindate.getMinutes()>9 ? begindate.getMinutes() : '0'+begindate.getMinutes()  %></h4>
+                    <% var enddate = target.enddate %>
+                    <span>To:<%= enddate.toLocaleDateString() %></span><h4 style = "color:rgb(87,53,8);"> <%= enddate.getHours()>9 ? enddate.getHours() : '0'+enddate.getHours()%>:<%= enddate.getMinutes()>9 ? enddate.getMinutes() : '0'+enddate.getMinutes()%></h4>
+                  </time>
+                </div>
+                <div id="event_where">
+                  <span>Address: </span><h4 style = "color:rgb(87,53,8);"><%= target.address %></h4>
+                </div>
+                <hr>
+                <div class="event-desc">
+                  <textarea id="eventDesc" name="eventDesc"  class="form-control" rows="20" cols="80" style="display:none">
+                    <%- target&&target.desc %>
+                  </textarea>
+                </div>
+
+                <a role="button" class="btn btn-default btn-lg" href="#/group/<%=group.id%>/event/<%= target.id %>/edit">Edit</a>
+                <%if(target.publish==true){%>
+                <a role="button" class="btn btn-default btn-lg" href="#" disabled="disabled">Published</a>
+                <% } else { %>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#eventPublishModal">Publish</button>
+
+                <div class="modal fade" id="eventPublishModal" role="dialog">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Notice</h4>
+                      </div>
+                      <div class="modal-body">
+                         <p>The event invitation will be sent to all the group members by email, are you sure ?</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" id="publish" class="btn btn-default" href="#">Yes, I'm sure!</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <% } %>
+              </div>
+              <% include EventComments.ejs %>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div id="event-attendees">
+              <div id="event-tags">
+                <br>
+                <% var attached_tags = JSON.parse(attached_tags_json) %>
+                <% if (attached_tags&&attached_tags.length>0) {%>
+                <h4 style="margin-top:1px;">Event Tag:</h4>
+                <% for(var i=0; i<attached_tags.length; i++) { %>
+                  <button class="btn btn-danger btn-tag" type="button">
+                  <%= attached_tags[i] %>
+                  </button>
+                <% } %>
+                <% } %>
+              </div>
+              <div id="response_box">
+                <h3>Welcome</h3>
+                
+                <%if (owner) { %>
+                  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#register_event_member">Register</button>
+                <% }else {%>
+                  <%
+                    var btnText = inevent ? 'Leave' : 'Join';
+                  %>
+                  <button type="button" id="userchoice" class="btn btn-default <%= inevent ? 'userleftevent' : 'userjoinevent' %>"><%= btnText %></button>
+                <% } %>
+              
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#invite_friend_to_event">Invite</button>
+
+              </div>
+              <div id="join_list">
+                <h3>
+                <span> <%= target.user.length %> </span>
+                <span> going </span>
+                </h3>
+                <div id="rsp-line" >
+                </div>
+                <ul id="event-user-list-ul" >
+                  <% for(var i=0; i<target.user.length; i++) {%>
+                  <li userid=<%=target.user[i].id%>>
+                    <img src="<%= target.user[i].userfd ? target.user[i].userfd : '/images/default_upp.jpg' %>" alt="..." class="img-circle portrait" ,id ="nav_user_fd">
+                    <a href="#/user/<%= target.user[i].id %>/profile"><%= target.user[i].fullname %></a>
+                  </li>
+                  <% } %>
+                </ul>
+                <h5>&nbsp</h5>
+              </div>
+            </div>
+          </div>
+  </div>
+
+  <script type="text/javascript">
+    /*Because require will save js file in cache, so the event listen can't be bind
+     *with DOM after page redirected to other page then redirected back,
+     *so use undef to force require to reload js file */
+    require.undef('common/register_member_to_event');
+    require.undef('common/add_or_remove_event_user');
+    require.undef('common/invite_friend_to_event');
+    require(['common/register_member_to_event']);
+    require(['common/add_or_remove_event_user']);
+    require(['common/invite_friend_to_event']);
+
+    'use strict';
+    require(['jquery','bootstrap','kindeditor'], function($){
+      $(document).ready(function(){
+
+        $('#eventDesc').show();
+          KindEditor.create('#eventDesc', {items:[], readonlyMode:true, themesPath: '/styles/kindeditor/', themeType : 'readonly'});
+
+        $('#publish').click(function(event){
+          $.ajax({
+            type: 'POST',
+            url: '/group/<%=group.id%>/event/<%= target.id %>/publish',
+            data: null,
+            processData: false,
+            contentType: false
+          })
+          .done(function() {
+            location.reload();
+          })
+        });
+      });
+    });
+
+  </script>
+

@@ -1,0 +1,60 @@
+<% if (typeof findGroups === 'undefined') {%>
+  <div class="container">
+    <div class="row hottest" id = "row-content">
+      <h2 class="section-title">Popular</h2>
+      <% for(var i=0; i<hottedGroups.length; i++) {%>
+        <div class="col-xs-6 col-md-4 group-item">
+          <a href="<%= '/group/show/'.concat(hottedGroups[i].id)+'?'+appendix +'#/group/'.concat(hottedGroups[i].id)+'/load' %>" >
+	    <img  src="<%= hottedGroups[i].groupfd %>">
+            <div class = "group-info">
+              <h2><%= hottedGroups[i].name %></h2>
+              <p><%= hottedGroups[i].user.length %> members</p>
+            </div>
+          </a>
+        </div>
+      <% } %>
+    </div>
+    <div class="row latest" >
+      <h2 class="section-title">Latest</h2>
+      <% for(var i=0; i<latestGroups.length; i++) {%>
+        <div class="col-xs-6 col-md-4 group-item">
+        <a href="<%= '/group/show/'.concat(latestGroups[i].id)+'?'+appendix +'#/group/'.concat(latestGroups[i].id)+'/load' %>" ><img src="<%= latestGroups[i].groupfd %>">
+          <div class = "group-info">
+            <h2><%= latestGroups[i].name %></h2>
+            <p><%= latestGroups[i].user.length %> members</p>
+          </div>
+        </a>
+        </div>
+      <% } %>
+    </div>
+    <div class="row all-groups" id = "row-content">
+      <h2 class="section-title">All</h2>
+      <% for(var i=0; i<allGroups.length; i++) {%>
+        <div class="col-xs-6 col-md-4 group-item">
+        <a href="<%= '/group/show/'.concat(allGroups[i].id)+'?'+appendix +'#/group/'.concat(allGroups[i].id)+'/load' %>" ><img src="<%= allGroups[i].groupfd %>">
+          <div class = "group-info">
+            <h2><%= allGroups[i].name %></h2>
+            <p><%= allGroups[i].user.length %> members</p>
+          </div>
+        </a>
+        </div>
+      <% } %>
+    </div>
+  </div>
+<% }else{ %>
+  <div class="container">
+    <div class="row" id = "row-content">
+        <h2 class="section-title">Results of Searching</h2>
+        <% for(var i=0; i<findGroups.length; i++) {%>
+          <div class="col-xs-6 col-md-4 group-item">
+             <a href="<%= '/group/show/'.concat(findGroups[i].id)+'?'+appendix +'#/group/'.concat(findGroups[i].id)+'/load' %>" ><img  src="<%= findGroups[i].groupfd %>">
+             <div class = "group-info">
+                <h2><%= findGroups[i].name %></h2>
+                <p><%= findGroups[i].user.length %> members</p>
+             </div>
+             </a>
+          </div>
+        <% } %>
+    </div>
+  </div>
+<% } %>

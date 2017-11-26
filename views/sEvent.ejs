@@ -1,0 +1,25 @@
+
+<h1>up load your caldender file here  </h1>
+
+<div id="createEvent">
+
+</div>
+
+<h2> or creat the event <a href="#" onClick="changeUrl()"> manually </a></h2>
+
+<script type="text/javascript" src="/js/react/Events.js"></script>
+
+<script type="text/javascript">
+
+function changeUrl(){
+
+  var url = window.location.href;
+  var start = url.indexOf('id=');
+  var groupid = url.slice(start);
+  var newurl = '/event/new?'+groupid;
+  window.location.href=newurl;
+
+}
+</script>
+
+

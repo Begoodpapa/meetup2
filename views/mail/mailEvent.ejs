@@ -1,0 +1,56 @@
+<html>
+<!--mailEvent template-->
+<head>
+
+<style> 
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+td.foot{
+  color: gray;
+}
+
+</style>
+
+</head>
+<body>
+  <img src="cid:head@meetup">
+  <div class="row">
+      <div class="C_Content col-md-9">
+        <div class="event-content">
+          <div class="event-title">
+            <br>
+            <span>Topic:</span><h4 style="margin-top:1px; color:rgba(255, 116, 0, 0.88)"> <%= target.topic %></h4>
+          </div>
+          <div id="event-details">
+            <div id="event_when">
+                <span>From:</span><h4 style="margin-top:1px; color:rgb(87,53,8);"><%= target.begindate%></h4>
+                <span>To:</span><h4 style="margin-top:1px; color:rgb(87,53,8);"><%= target.enddate %></h4>
+            </div>
+            <div id="event_where">
+              <span>Address: </span><h4 style = "margin-top:1px; color:rgb(87,53,8);"><%= target.address %></h4>
+            </div>
+            <div class="event-desc">
+              <hr>
+              <pre><%- target.desc %></pre>
+              <hr>
+            </div>
+            <br/>
+            <div id="event_link">
+              <span>Detail please visit this link:  http://beehive.eecloud.dynamic.nsn-net.net/group/show/<%= target.group%>#/group/<%= target.group%>/event/<%= target.id%>/show
+              </span>
+            <div>
+          </div>
+        </div>
+      </div>
+      <br/><br/><br/>This message was automatically created by Beehive. Please do not respond to this email.
+  </div>
+
+</body>
+
+</html>

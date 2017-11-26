@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
+      <div id="meetup-day-group">
+        <div class="meetup-date" id="myevent_time">
+            <script>     
+                document.getElementById('myevent_time').innerHTML=new Date().toLocaleString();   
+                setInterval("document.getElementById('myevent_time').innerHTML=new Date().toLocaleString();",1000);  
+            </script>  
+        </div>
+        <ul>
+        <% for(var i=0; i<events.length; i++) {%>
+          <li class="meetup-calender">
+            <div class="meetup-time col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <% var dd= events[i].begindate; %>
+              <h5><%= dd.toLocaleDateString() %></h5>
+              <h5><%= dd.getHours() %>:<%= dd.getMinutes() %></h5>
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+              <div class="meetup-localtion"><%= events[i].address %></div>
+              <div class="meetup-title">
+                <a href= <%= '/group/show/'.concat( events[i].group,'#/event/', events[i].id, '/show') %> ><%= events[i].topic %></a>
+              </div>
+              <div class="meetup-members"><%= events[i].user.length %> <span>hacks Going</span>
+              </div>
+            </div>
+          </li>
+        <% } %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+require(['jquery', 'bootstrap', 'waypoints'], function($){
+
+  $(document).ready(function() {
+    $('.meetup-date')
+      .waypoint({handler:function(dir){
+          if(dir==='down'){
+          $(this.element).addClass('fixtop');
+          }
+          else{
+            $(this.element).removeClass('fixtop');
+          }
+        }
+      });
+  });
+
+});
+
+</script>

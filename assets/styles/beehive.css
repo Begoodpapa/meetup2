@@ -1,0 +1,393 @@
+/* for the common style in beehive project */
+
+.c_Page {
+  background-color:#f4f4f4;
+}
+
+.chapterHeader{
+  margin-bottom:20px;
+}
+
+.group-h1{
+	text-align:center;
+	padding-top:40px;
+	padding-bottom:40px;
+	background-color:#4C2099;
+	margin-bottom:0px;
+}
+
+.group-name-span{
+	font-size: 42.0px;
+	color:azure;
+}
+
+.chapter-navigation{
+	width:100%;
+	background-color:#ffffff;
+}
+
+
+.my-links{
+	float:right;
+	margin-top:6px;
+	margin-right:6px;
+	margin-bottom:6px;
+	margin-left:4px;
+	font-size:0;
+	padding-left:0;
+	display:block;
+	list-style-type:none
+}
+
+
+.join-link{
+	position:relative;
+	line-height:32px;
+	padding:0;
+	font-size:16px;
+	list-style:none;
+	float:left;
+	margin-right:5px;
+}
+
+
+#new-event-button{
+	text-decoration:none;
+	color:#932A2A;
+	font-weight:bold;
+	padding-top: 10px;
+	padding-right: 18px;
+	padding-bottom: 10px;
+	padding-left: 18px;
+	background-color: #F2BB0C;
+	border-radius:4px
+}
+
+.group-user-change{
+	text-decoration:none;
+	color:#932A2A;
+	font-weight:bold;
+	padding-top:10px;
+	padding-right:18px;
+	padding-bottom:10px;
+	padding-left:18px;
+	background-color:#F2BB0C;
+	border-radius:4px
+}
+
+
+.C_context{
+	min-height:2015px;
+}
+
+.C_Content{
+  background-color: #ffffff;
+	/*padding-left:0px;*/
+}
+
+.event-content{
+  background-color: #ffffff;
+}
+
+.group-event-tab{
+	background-color:#ffffff;
+}
+
+.h4-date{
+	color:rbg(87,53,8);
+}
+
+.divide-line{
+	padding-bottom:20px;
+	padding-top:10px;
+	display:block;
+	width:100%;
+	line-height:38px;
+	height:0px;
+	border-top-width:thin;
+	border-top-color:#eee;
+	border-top-style: solid;
+}
+
+
+.event-time{
+	float:left;
+	width:50%;
+}
+
+.event-add-title-member{
+	width:100%;
+	float:none;
+}
+
+
+.group-desc-div{
+  height: auto;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.group-list-div{
+  background-color: #fff;
+}
+
+
+.group-event{
+	padding-top:20px;
+	padding-bottom:50px;
+}
+
+.group-event-ul{
+	list-style-type:none;
+	padding-left:5px;
+}
+
+.group-events-li{
+	margin-bottom:40px;
+	width:95%;
+}
+
+#event-time-div{
+	float:left;
+	width:50%;
+}
+
+
+
+#event-attendees{
+  background-color:#ffffff;
+  padding-left: 10px;
+  padding-top: 0px;
+  height: auto;
+}
+
+#recent-event{
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.nav-button{
+	width:15%;
+	border-color:#ffffff;
+	color:#888;
+}
+
+#rspYes-button{
+	background-color:#75EA26;
+	width:90%;
+}
+
+#rsp-line{
+	color: #EC1212;
+	padding-bottom:4px;
+	display:block;
+	width:90%;
+	line-height:38px;
+	height:0px;
+	border-top-width:thin;
+	border-top-color:rgb(55, 52, 52);
+	border-top-style: solid;
+}
+
+.event-desc{
+	padding:10px;
+}
+
+#event-user-list-ul{
+	list-style-type:none;
+	padding:0px;
+}
+
+#event-user-list-ul>li{
+  padding-bottom:5px;
+}
+
+#event-user-list-ul>li>a{
+  margin:5px;
+  line-height: 30px;
+}
+
+
+.div-form-container{
+	padding-top: 45px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 20px;
+	position: relative;
+  top: 25px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #959595;
+  letter-spacing: 1px;
+  margin: 0 -15px 15px;
+  background-color: #fff;
+  border-color: #ddd;
+  border-width: 1px;
+  border-radius: 4px 4px 0 0;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+}
+
+.div-form-container:after{
+	position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #959595;
+  letter-spacing: 1px;
+  content: "Create Tag";
+}
+
+.div-member-container{
+	padding-top: 45px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 20px;
+	position: relative;
+  top: 0px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #959595;
+  letter-spacing: 1px;
+  margin: 0 -15px 15px;
+  background-color: #fff;
+  border-color: #ddd;
+  border-width: 1px;
+  border-radius: 4px 4px 0 0;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+}
+
+.div-member-container:after{
+	position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #959595;
+  letter-spacing: 1px;
+  content: "Member List:";
+}
+
+
+.label-badge{
+  left:5px;
+  color:red;
+}
+
+h3.page-title{
+	margin-top: 0px;
+  line-height: 1.5;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+
+ul.tag-list li{
+	padding:5px 0;
+	border-bottom:1px solid #eee;
+	overflow:hidden;
+	display:block;
+	margin:0px;
+
+}
+
+ul.tag-list span{
+	background-color: #D9534F;
+	color: #fff;
+	padding: 9px;
+	font-size: 14px;
+	line-height: 1;
+	font-style: normal;
+	font-weight: normal;
+	display: inline-block;
+	border-radius: 4px;
+
+}
+
+.append-right-20{
+	margin-right: 20px;
+}
+
+.a-btn{
+	color: #333333;
+  background-color: white;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-color: #cccccc;
+  white-space: nowrap;
+  padding: 6px 14px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+}
+
+.a-btn-remove{
+	color: white;
+  background-color: #d9534f;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-color: #d43f3a;
+  white-space: nowrap;
+  padding: 6px 14px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+}
+
+.btn-tag{
+  margin-right:5px;
+  margin-bottom: 5px;
+}
+
+.group-desc-pre{
+  font-size: 17px;
+  border: none;
+  background-color: #fff;
+  white-space:pre-wrap;
+  word-break:normal;
+}
+
+.event-desc-pre{
+  font-size: 15px;
+  border: none;
+  background-color: #fff;
+  white-space:pre-wrap;
+  word-break:normal;
+}
+
+#welcome-msg{
+  font-family: Whitney,helvetica,arial,sans-serif;
+  font-weight: 800;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  letter-spacing: -0.2px
+}
+
+#waitingFlag{
+  position:absolute;
+  top:200px;
+  left:400px
+}
+
+img.portrait{
+  margin-top:5px;
+  height:35px;
+}
+
+.album-item {
+  position: relative;
+}

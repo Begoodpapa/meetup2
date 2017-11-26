@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body" style="width:100%;height:270px">
+        <!-- groupCarousel -->
+        <div id="groupCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img src="<%= group.groupfd||'/images/group_default.jpg' %>" alt="<%= group.groupfd %>">
+            </div>
+          </div>
+        </div>
+        <!-- end groupCarousel -->
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <p class="lead truncate-text" title="<%= group.name %>"><%= group.name %></p>
+          <ul class="list-group">
+            <a href="#/group/<%=group.id%>/members">
+              <li class="list-group-item">
+                <span class="badge"><%= group.user.length %></span>
+                Members
+              </li>
+            </a>
+            <a href="#/group/<%=group.id%>/pastevent">
+              <li id="pastEventLi" class="list-group-item">
+                <span class="badge"><%= typeof pastEvents === 'undefined' ? 0 : pastEvents.length %></span>
+                Past Event
+              </li>
+            </a>
+            <a href="#/group/<%=group.id%>/comingevent">
+              <li id="comingEventLi" class="list-group-item">
+                <span class="badge"><%= typeof comingEvents === 'undefined' ? 0 : comingEvents.length %></span>
+                Coming Event
+              </li>
+            </a>
+            <a href="#/group/<%=group.id%>/calendar">
+              <li id="groupCalendarLi" class="list-group-item">
+                <span class="badge"><%= typeof events === 'undefined' ? 0 : events.length %></span>
+                Calendar
+              </li>
+            </a>
+          </ul>
+        </li>
+        <li class="list-group-item">
+          <h4>Organizer: </h4>
+          <div class="thumbnail">
+
+            <% var imgurl = (!group.owner.userfd) ? '/images/default_upp.jpg' : group.owner.userfd %>
+
+            <img src= <%= imgurl %> alt="/images/default_upp.jpg" onError="this.onerror=null;this.src='/images/default_upp.jpg';">
+
+            <div class="caption">
+              <h5><%= group.owner.fullname %></h5>
+            </div>
+            <button type="button" class="btn btn-default btn-block" aria-label="Contact" >
+              <a href="mailto:<%= group.owner.email%>?Subject=Hello" target="_top">
+              <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a>
+            </button>
+          </div>
+
+          </h5>
+        </li>
+        <li class="list-group-item">
+          <h5 class="truncate-text">We're about: <%= group.tags ? group.tags : "..." %></h5>
+        </li>
+        <li class="list-group-item">
+        <div id="groupEditDiv">
+        <% if ((typeof user!=="undefined" ) && ( user!==null) &&(user.uid==group.owner.uid)){ %>
+            <a role="button" class="btn btn-default" href="/group/<%=group.id%>/edit">Edit Group</a>
+        <% } %>
+        </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

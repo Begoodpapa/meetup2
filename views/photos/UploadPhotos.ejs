@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h3>Upload photos for <%= album.topic %></h3>
+      </div>
+    </div>
+  </div>
+  <% var path = '/group/'.concat(req.param('gid'),'/album/',req.param('eid')) %>
+  <div class="row">
+    <div class="col-md-12">
+      <a href="#<%= path.concat('/thumbnail') %>" class="pull-right">
+        <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Show all
+      </a>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Upload Photos</h3>
+        </div>
+        <div id="dropzone">
+          <form id="uploadform" action="<%=path.concat('/upload')%>" class="dropzone dz-clickable" method="POST" enctype="multipart/form-data">
+            <div class="dz-message">
+              <span>Select or Drop photos here to upload</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Photos Description</h3>
+        </div>
+        <form  method="post" action="<%=path.concat('/editPicDesc')%>" id="photoDesc" enctype="multipart/form-data">
+          <div class="form-group">
+            <div id="group-desc">
+              <textarea id="editor" name="Desc"  class="form-control" rows="2" cols="80" style="height: 74px;"><%= typeof album.phoDescription === 'undefined' ? '' : album.phoDescription %></textarea>
+            </div>
+          </div>
+          <div class="form-group form-group-lg" style="text-align:center;">
+            <button id="submit_btn" type="submit" class="btn btn-primary btn-lg" autocomplete="off">Public</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+ require(['jquery','dropzone'], function($, Dropzone){
+   $(document).ready(function(){
+     $('#uploadform').dropzone({
+       paramName: "file", // The name that will be used to transfer the file
+       maxFilesize: <%= sails.config.upload.photo.maxSize %>, // MB
+       maxFiles: 50,
+       parallelUploads: 5,
+       acceptedFiles: 'image/*'
+     });
+   });
+ });
+</script>

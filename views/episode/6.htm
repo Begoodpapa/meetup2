@@ -1,0 +1,1173 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:DengXian;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:"\@DengXian";
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Arial",sans-serif;}
+a:link, span.MsoHyperlink
+	{font-family:"Times New Roman",serif;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+p.IPENZBodyText, li.IPENZBodyText, div.IPENZBodyText
+	{mso-style-name:"IPENZ Body Text";
+	mso-style-link:"IPENZ Body Text Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.0pt;
+	font-family:"Arial",sans-serif;}
+span.IPENZBodyTextChar
+	{mso-style-name:"IPENZ Body Text Char";
+	mso-style-link:"IPENZ Body Text";
+	font-family:"Arial",sans-serif;}
+span.apple-converted-space
+	{mso-style-name:apple-converted-space;}
+.MsoChpDefault
+	{font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-CN link=blue vlink="#954F72">
+
+<div class=WordSection1>
+
+<p class=IPENZBodyText><span lang=EN-NZ>&nbsp;</span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=661
+ style='width:495.85pt;margin-left:-15.9pt;border-collapse:collapse;border:
+ none'>
+ <tr>
+  <td width=595 valign=top style='width:446.1pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ>Work/Study Episode 1</span></u></b></p>
+  <p class=MsoNormal><span lang=EN-NZ>&nbsp;</span></p>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span
+  lang=EN-NZ>Software design and Implementation for an Enterprise Fund
+  Management System</span></p>
+  <p class=MsoNormal><span lang=EN-NZ>&nbsp;</span></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ>Overview of the project</span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-NZ>Chronology:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;07
+  Jul 2004 to 30 Jun 2006</span></p>
+  <p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-NZ>Geographical
+  Location:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Hangzhou</span><span lang=EN-US>, China</span></p>
+  <p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-NZ>Name of
+  Organization:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Hundsun Electronics Co., Ltd.</span></p>
+  <p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-NZ>Position
+  Occupied:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Software Engineer</span></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  6.0pt;margin-left:0cm'><b><span lang=EN-NZ>C.E1.1.1</span></b><span
+  lang=EN-NZ>&nbsp;&nbsp; Hundson Electronics (<a
+  href="http://www.hundsun.com/en/">http://www.hundsun.com/en/</a> Chinese
+  securities market code 600570) is a leader in China to provide
+  bank/securities/fund industries with financial IT solution. Hundson
+  Enterprise Fund Management System is a software product for enterprise groups
+  to perform fund/cash/check/credit related transactions,
+  day-end&nbsp;processing and subsidiaries management.</span><span lang=EN-NZ> </span><span
+  lang=EN-US>It mainly consists of 3 elements – enterprise client, enterprise
+  side server and bank access point. </span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  6.0pt;margin-left:0cm'><b><span lang=EN-US>C.E.1.1.2 </span></b><span
+  lang=EN-US>Enterprise side deployed software (including client and server)
+  are developed by Borland Delphi 7.0, and support either Microsoft SQL Server
+  or Sybase as database. Bank side software are written by C language and runs
+  on top of Unix/Linux operating system, and we named it as Bank Access Point.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  6.0pt;margin-left:0cm'><b><span lang=EN-US>C.E.1.1.3</span></b><span
+  lang=EN-US> The R&amp;D team size is 10. It has one team leader, 6 software
+  engineers and 3 testers. The team has direct interface with sales people and
+  customer support team. It was based on Waterfall development mode.</span></p>
+  <p class=MsoNormal><b><span lang=EN-US>C.E.1.1.4 </span></b><span lang=EN-US>10+
+  enterprise group customers and one Chinese commercial bank (i.e. Agriculture
+  Bank of China) were deployed during first commercial release. After that,
+  this team integrated the same product with other 3 Chinese biggest banks and
+  obtained more than 50 enterprise group customers. Names of some customers
+  are:</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><b><span lang=EN-US>CE1.1.4.1
+  Banks: </span></b><span lang=EN-US>Bank of China; Industrial and Commercial
+  Bank of China;</span><span lang=EN-US> </span><span lang=EN-US>Bank of
+  Communications</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><b><span lang=EN-US>CE1.1.4.2
+  Enterprises: </span></b><span lang=EN-US>Haier; LG electronics Tianjin;
+  Yuchai machine; </span></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ>Your role and responsibilities</span></u></b></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-NZ>C.E1.2.1</span></b><span
+  lang=EN-NZ> My role was a software engineer inside the team, and responsible
+  for enterprise client and server software features development. I finished
+  below functional areas’ design and coding:</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:20.0pt;margin-bottom:.0001pt'><b><span lang=EN-NZ>C.E.1.2.1.1</span></b><span
+  lang=EN-NZ> Account Management: account add/delete/frozen/unfrozen, password
+  modification, permission setting etc.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:20.0pt;margin-bottom:.0001pt'><b><span lang=EN-NZ>C.E.1.2.1.2
+  </span></b><span lang=EN-NZ>Settlement: external cash transfer, cash sweep
+  from subsidiaries, cash transfer approval, enterprise internal cash transfer,
+  transfer details enquiry etc.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:20.0pt;margin-bottom:.0001pt'><b><span lang=EN-NZ>C.E.1.2.1.3
+  </span></b><span lang=EN-NZ>Balance enquiry for bank account and enterprise
+  internal virtual account.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:20.0pt;margin-bottom:.0001pt'><b><span lang=EN-NZ>C.E.1.2.1.4</span></b><span
+  lang=EN-NZ> Enterprise day-end&nbsp;processing</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-NZ>C.E1.2.2 </span></b><span
+  lang=EN-NZ>I gradually extended my scope to </span><span lang=EN-US>Bank
+  Access Point development</span><span lang=EN-NZ>. Along with subsequent
+  massive maintenance work, I became a full-stack engineer who can develop features
+  and troubleshoot issues from frontier end to back end.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-NZ>C.E1.2.3</span></b><span
+  lang=EN-NZ> I Participated in real customer trial and</span><span lang=EN-US>
+  deployment, and did on-site support for key customers.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-NZ>C.E1.2.4 </span></b><span
+  lang=EN-NZ>I collected New customer requirements with sales people together,
+  and did analysis and then developed features for them.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-NZ>C.E1.2.5</span></b><span
+  lang=EN-NZ> I was one of main document authors for troubleshooting tips,
+  installation and deployment guide. I continuously maintained the document to
+  keep it up-to-date, and appended more useful tips.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-NZ>C.E1.2.6 </span></b><span
+  lang=EN-NZ>I did part-time job as a pre-sale technical engineer to help
+  boosting product revenue. I documented and presented the product sales
+  material from customer perceived values perspective.</span></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ>Complexities (using the complexity
+  definitions) and challenges of the project </span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-NZ>CE1.3.1 Short</span></b><b><span
+  lang=EN-US> Feedback Cycle of </span></b><b><span lang=EN-NZ>Transaction</span></b></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><b><span lang=EN-US>CE1.3.1.1 </span></b><span
+  lang=EN-US>It is one of customer perceived software behavior that how long one
+  online transaction can be completed/acknowledged. Software product need to be
+  designed to process data and business logic handling as quickly as possible.
+  Take cash transfer as example, in requirement specification, it was defined
+  that a single transaction need to be completed in 2 seconds, and 5 seconds is
+  maximum allowed benchmark for a batch transaction which consists of less than
+  20 single requests. </span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  6.0pt;margin-left:10.0pt'><b><span lang=EN-US>CE1.3.1.2 </span></b><span
+  lang=EN-US>Typically, the overall transaction processing time is the
+  cumulative result of all relevant elements processing time (marked as
+  T1/T2/T3/T4 in below diagram) plus network transmission latency (marked as
+  T1’/T2’/T3’ in below diagram). After lab testing it showed that requirement
+  can’t be 100% satisfied, and <b>T2</b> was the biggest bottleneck.</span></p>
+  <p class=MsoNormal style='margin-left:10.0pt'><span lang=EN-US
+  style='font-size:9.0pt'><img border=0 width=570 height=87 id="Picture 3"
+  src="6_files/image001.gif"></span></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal style='margin-left:10.0pt'><b><span lang=EN-US>CE1.3.1.3 </span></b><span
+  lang=EN-US>In order to narrow down the performance problem, the team decided
+  to find out possible ways to optimize T2 to an acceptable level. it appeared
+  that no one in the team had experience on how to do program profiling, and
+  didn’t have too many ideas on how to further improve based on current
+  software architecture. If this problem couldn’t get solved, it would dramatically
+  impact customer satisfaction and product quality. I took this challenging
+  work and was expected to give out significant output in 2 weeks.</span></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>CE1.3.2 Product Security Solution</span></b></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><b><span lang=EN-NZ>CE1.3.2.1 </span></b><span
+  lang=EN-NZ>Considering real deployment environment and industry </span><span
+  lang=EN-NZ>characteristics, the product should be carefully designed for
+  security, because to every customer, financial security is always their top
+  priority. Not every customer has established sound network infrastructure
+  beforehand, and some customers even communicate by internet between parent
+  company and subsidiaries. Moreover, security is always challenging and
+  complex because it covers a variety of areas including network security,
+  anti-virus and hack attacking, data encryption, access control,
+  authentication etc.</span><span lang=EN-US>, and requires engineers have
+  understanding from breadth and depth.</span><span lang=EN-NZ> I responsible
+  for research and design for data encryption and digital signature related
+  features. </span></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>C.E 1.3.3</span></b><span lang=EN-NZ> <b>Logging
+  optimization of Bank Access Point software</b></span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><b><span lang=EN-NZ>CE1.3.3.1 </span></b><span
+  lang=EN-NZ>Bank Access Point software is typically deployed on top of
+  standalone hardware, or co-exist with commercial bank servers. Because it is
+  anyway physically resident with commercial bank server clusters, so it is not
+  as easily accessed as enterprise side client/server software. On the other
+  hand, Bank Access Point software serves hundreds of enterprises
+  simultaneously, and should provide with 7*24*365 high availability service.
+  Thus, log file of Bank Access Point software is the most common
+  troubleshooting evidence to know any service is abnormal or some internal
+  faults happened in the history.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><b><span lang=EN-NZ>CE1.3.3.2 </span></b><span
+  lang=EN-NZ>In the beginning of roll-out phase, developers found that the
+  logging file is not friendly to read because of two issues. First, the log
+  file size is excessive huge. Second, developers are hard to find relevant
+  error/critical logs quickly because logging content are quite messed and
+  repeated. This dramatically decreased problem diagnostic efficiency. I took
+  the initiative to optimize logging of bank access point.</span></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ>How does this project demonstrate
+  application of your engineering knowledge?</span></u></b></p>
+  <p class=MsoNormal><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-US>CE1.4.1</span></b><span
+  lang=EN-US> Resolve performance issue of Enterprise Server software, which is
+  described in<b> CE1.3.1.3</b></span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  6.0pt;margin-left:0cm'><span lang=EN-US>My idea was that, firstly, one Delphi
+  compatible performance profiling tool need to be used to find out most
+  time-consumptive routines (named as term ‘Procedure’ in Delphi). After
+  comparing with several performance profiling tools, finally I chose GpProfile
+  because it is free software, easy to use, support individual line’s</span><span
+  lang=EN-US style='font-size:10.5pt'>&nbsp;profiling, and statistical report
+  is powerful.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+  margin-left:10.0pt'><b><span lang=EN-US>CE1.4.1.1 </span></b><span
+  lang=EN-US>Based on<b> </b>GpProfile report and 20/80 principle (most
+  valuable 20% items bring 80% of overall effects), I chose two procedures as
+  optimization candidates to gain best ROI (Return on Investment):</span></p>
+  <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+   style='margin-left:10.0pt;border-collapse:collapse;border:none'>
+   <tr>
+    <td width=176 valign=top style='width:131.9pt;border:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>Procedure Name</span></p>
+    </td>
+    <td width=133 valign=top style='width:99.5pt;border:solid windowtext 1.0pt;
+    border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>Average Execution Time per Call</span></p>
+    </td>
+    <td width=104 valign=top style='width:77.95pt;border:solid windowtext 1.0pt;
+    border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>Count of Calls</span></p>
+    </td>
+    <td width=104 valign=top style='width:77.95pt;border:solid windowtext 1.0pt;
+    border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>Chosen? (Y/N)</span></p>
+    </td>
+   </tr>
+   <tr>
+    <td width=176 valign=top style='width:131.9pt;border:solid windowtext 1.0pt;
+    border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>Database_Connection_Create</span></p>
+    </td>
+    <td width=133 valign=top style='width:99.5pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>High</span></p>
+    </td>
+    <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>Very high</span></p>
+    </td>
+    <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>Yes</span></p>
+    </td>
+   </tr>
+   <tr>
+    <td width=176 valign=top style='width:131.9pt;border:solid windowtext 1.0pt;
+    border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>Database_Write</span></p>
+    </td>
+    <td width=133 valign=top style='width:99.5pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>Very high</span></p>
+    </td>
+    <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>High</span></p>
+    </td>
+    <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>Yes</span></p>
+    </td>
+   </tr>
+   <tr>
+    <td width=176 valign=top style='width:131.9pt;border:solid windowtext 1.0pt;
+    border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>User_Login</span></p>
+    </td>
+    <td width=133 valign=top style='width:99.5pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>High</span></p>
+    </td>
+    <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>Low</span></p>
+    </td>
+    <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal><span lang=EN-US>No</span></p>
+    </td>
+   </tr>
+  </table>
+  <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  6.0pt;margin-left:10.0pt'><b><span lang=EN-US>CE1.4.1.2 </span></b><span
+  lang=EN-US>Procedure <b>Database_Connection_Create </b>was originally
+  designed to ALWAYS establish a NEW database connection from the beginning,
+  which is quite time-consuming. In additional to connection establishment,
+  connection closure was also designed to physically close the session to
+  database. Thus, combination of creation and closure are very non-economical. I
+  studied from several technical articles, and found that one mechanism in Java
+  called </span><span lang=EN-NZ>Database Connection Pooling could solve
+  similar issue. </span><span lang=EN-US>Connection Pooling mechanism
+  eliminates the chance that new connections must be opened/closed, because one
+  centralized pooler maintains ownership of all physical connections which keep
+  alive during all the time. Whenever a user attempt to establish a connection,
+  the pooler looks for an available connection in the pool and return it to the
+  caller instead of opening a total new connection. Once the caller finishes
+  the transaction, the connection is returned to the pool, and it can be reused
+  by next&nbsp;caller. After understanding the principle, I implemented the
+  similar mechanism in Delphi. Additionally, I carefully considered all
+  possible failure modes, and designed a new individual thread to monitor
+  healthy status of each connection object. If a connection object is in faulty
+  situation which might be caused by database exception, incorrect client usage
+  or network connection exception, it can recover the problematic connection
+  object automatically. This part of work costed me around 5 days for
+  completing coding, debug and unit testing. Profiling result based on
+  optimized code was very positive, which improved procedure performance by 9
+  times. To verify robustness of this mechanism, I wrote another test program
+  to simulate massive concurrent requests to the pooler, and they come with
+  some exceptional cases. To check whether it has risk of memory leak, I used
+  one tool Memproof&nbsp;to monitor memory reservation before and after
+  testing. Test result of these two cases proved that the program was stable,
+  and didn’t have possibility of memory leak.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  6.0pt;margin-left:10.0pt'><b><span lang=EN-NZ>CE1.4.1.3</span></b><span
+  lang=EN-NZ> Procedure </span><b><span lang=EN-US>Database_Write</span></b><span
+  lang=EN-US> was originally designed to complete database operation (query,
+  insert, modify and delete etc.) by executing single SQL sentence in
+  sequential order, and those SQL sentence are called by database connection
+  object in Delphi program. Due to complexity of business, typically, one
+  transaction need a large number of SQL sentences. So, besides difficulty of
+  SQL sentences maintenance (sentences are spreaded out in many single files),
+  it decreases database operation efficiency. After consulted with chief
+  engineer of our department, he suggested me consider to replace those single
+  steps with several well-structured database stored procedures. Before
+  starting real optimization work, I confirmed the feasibility by several
+  technical articles from internet. I found that stored procedure has those
+  advantages which looked beneficial to SQL </span><span lang=EN-NZ>performance:
+  1) remove SQL sentences compiling overhead 2) dramatically decrease network
+  traffic/latency 3) can perform judgement and do calculation instead of client
+  code. Although stored procedure has some disadvantages,</span><span
+  lang=EN-US> they would not bring too much impact to our product. Based on
+  those points, I decided to optimize database SQL operations as much as
+  possible with some stored procedures. In the first two days, </span><span
+  lang=EN-NZ>I scripted one database stored procedure and removed code for
+  executing single SQL sentences, and took another day to debug then asked
+  tester do a functional level testing. The function testing was successful and
+  performance was improved significantly, so I coached and cooperated with
+  other team members to perform similar optimization for all other relevant
+  code segments in next several days. </span><span lang=EN-US>Eventually, a mixed
+  performance testing scenario proved that these systematical activities
+  improved all database operation procedures’ (e.g. <b>Database_Write)</b>
+  performance by approximately 4 times.</span></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>CE1.4.2 </span></b><span lang=EN-NZ>I </span><span
+  lang=EN-US>designed important features of product security, which is described
+  in</span><b><span lang=EN-NZ> CE1.3.2</span></b></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><span lang=EN-NZ>Product security
+  has a few features and involved whole team’s effort to make it fully
+  considered and hardened. Among all topics, I owned data encryption, digital
+  signature and password security. </span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><b><span lang=EN-NZ>CE1.4.2.1</span></b><span
+  lang=EN-NZ> Due to the fact that private and sensitive business data are
+  transferred in the public network, data encryption is a critical topic,
+  although in most cases VPN has been established between parent company and
+  subsidiary companies. Data encryption should be applied into the path between
+  VPN server and remote subsidiary company client. Even in enterprise LAN
+  there’s possibility sensitive data is captured or rewritten by a hacker. I
+  compared with most popular security algorithms and chose RSA as encryption
+  algorithm because it is virtually unbreakable if use a long enough security
+  key. I ever compared symmetric encryption algorithms (DES</span><span
+  lang=EN-NZ>, </span><span lang=EN-NZ>3DES) and asymmetric encryption
+  algorithms (RSA, Elgamal) by understanding their principles. Symmetric
+  algorithms have only one non-public key, and have advantage on speed of
+  encryption and decryption. But the biggest security issue of symmetric
+  algorithms is that keys need to be transmitted/exchanged in the network.
+  However, asymmetric algorithms have two keys, i.e. public key and private
+  key, and the&nbsp;<a
+  href="http://searchsecurity.techtarget.com/definition/private-key"><span
+  style='color:windowtext;text-decoration:none'>private key</span></a>&nbsp;must
+  be kept securely and not shared to others. The algorithm has very high
+  complexity, which depends on length of keys, and from mathematics principle
+  it can be treated highly reliable. RSA algorithm is the most widely used
+  algorithm, and it is extremely safe if key length is 1024 bits or more,
+  although from mathematics theory it cannot be totally proved. At that time,
+  no one in the world had declared to break RSA algorithm for key length longer
+  than 768 bits. The principle of RSA requires part of my mathematics knowledge
+  in the bachelor degree, which helped me to understand proofs of its
+  correctness. RSA proves its security from the difficulty of factoring large
+  integers that are the product of two large&nbsp;prime numbers. Multiplying
+  these two numbers is easy, but determining the original prime numbers from
+  the total is infeasible. Application of RSA algorithm will be described at <b>CE1.4.2.3</b>.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><b><span lang=EN-NZ>C.E1.4.2.2</span></b><span
+  lang=EN-NZ> Another key thing is about digital signature if considering
+  characters of financial industry. A&nbsp;digital signature&nbsp;is a
+  mathematical scheme for demonstrating the authenticity of digital messages or
+  documents. With a valid digital signature, it gives commercial banks the
+  reason to believe that the financial transaction was created by a known
+  enterprise operator who cannot deny having sent the message, and that the
+  transaction order was not altered during transition. For example, a cash
+  transfer transaction need to have operator digital signature for fields
+  Operator Name, Date, Time, Amount of cash and Sender/Receiver Account Numbers
+  etc. During study of RSA algorithm, I found that the same algorithm could be
+  also applied as signing algorithm for transaction fields which need digital
+  signature.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><b><span lang=EN-NZ>C.E.1.4.2.3</span></b><span
+  lang=EN-NZ> RSA algorithm principle was open to public and I could find
+  someone had written slice of code as algorithm implementation. Seemed no need
+  to create another ‘wheel’, I referred to those basic code, re-structured them
+  and add one more feature to let operator set RSA key length (256, 512, 768,
+  1024 bits etc.) based on their preference by balancing performance and
+  security. Next was to consider where to store pair of public key &amp;
+  private key in Enterprise Client, Enterprise Server and Bank Access Point.
+  For the Enterprise Client side, with coordination of project leader and
+  purchasing depart of our company, I selected one domestic security solution
+  provider to buy their security token hardware and relevant software which was
+  for data writing. This hardware token, stored operator private key and public
+  key of Enterprise Server, should be kept by operators themselves. For the
+  Enterprise Server side, it contained a lot of public keys which paired to
+  client private keys, and Bank Access Point private key. It also contained a
+  lot of private keys which were in pair with Bank Access Point public key, and
+  Enterprise Client public keys. All of those keys at Enterprise Server side
+  must be stored/managed by a secure method, for example, strict account
+  management rules and password complexity. Similar keys were stored at Bank
+  Access Point side, except it was based on account management features and
+  file security means provided upon Linux OS. I also wrote one tool to generate
+  key files in pair. With USB token access tool, enterprise administrators
+  could issue new token and write RSA key file by themselves.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><b><span lang=EN-NZ>C.E1.4.2.4</span></b><span
+  lang=EN-NZ> RSA encryption &amp; decryption happen with each operator’s
+  activity as long as it requires data transmitting in the network. When an
+  operator initiated a new transaction, firstly, Enterprise Client software
+  encrypt transaction data by Enterprise Server public key. Secondly,
+  Enterprise Client software do digital signature based on key field<span
+  style='color:#333333;background:white'>s (refer to CE 1.4.2.2) value and
+  timestamp, but apply with its <b>private</b> key. Signature will be appended
+  into encrypted transaction data. Below picture demonstrates simulation of one
+  digital signature -</span></span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;text-indent:15.0pt'><span
+  lang=EN-NZ style='color:red'><img border=0 width=521 height=214 id="Picture 2"
+  src="6_files/image002.gif"></span></p>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:0cm;margin-left:10.0pt;margin-bottom:.0001pt;text-align:center'><b><span
+  lang=EN-NZ>Picture</span></b><span lang=EN-NZ> An example of Digital
+  Signature</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><span lang=EN-NZ>When encrypted
+  data arrives at Enterprise Server, it uses the <b>private</b> key (which in
+  pair with the public key it shared to sender) to decrypt the message, do
+  relevant business logic handling then transmit to Bank Access Point after
+  encrypting the data again by the <b>public</b> key of Bank Access Point.
+  Eventually, Bank Access Point could decrypt the original message by using the
+  <b>private</b> key which is in pair with the public key it shared to
+  Enterprise Server. The similar but reversed logic applies to the return path
+  of data. Thus, data is securely transmitted bidirectional between enterprises
+  and banks. Note: there might be many pairs of public + private keys in live
+  scenarios, it just depends on number of operators, and how many Enterprise
+  Servers connect to a bank. In Bank Access Point side, how to verify the
+  signature is not tampered during the whole procedure? Bank Access Point could
+  use public key of the original sender to decrypt the signature, then compare
+  with same filed value in the transaction data. If they are same, then the
+  signature is not altered. </span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><b><span lang=EN-NZ>C.E1.4.2.5</span></b><span
+  lang=EN-NZ> How to authenticate operator by password was one key design
+  topic. Password should be protected in high security level in order to
+  prevent enterprise internal crisis e.g. a database administrator should not
+  get the password of financial operators. At the beginning, I intended to use
+  some symmetric encryption algorithms such as 3DES because they are mature and
+  easy for implementation. But symmetric encryption algorithms are possible to
+  be decrypted because they are reversible based on encrypted password which is
+  stored in database. After studied with some research articles from &lt;An
+  Assessment of the Oracle Password Hashing Algorithm, Journal of University of
+  London, 2005&gt; and rfc2898 (Password-Based Cryptography Specification), I
+  used a ‘one-way irreversible hash’ method to solve the issue, and I also
+  avoided those design weaknesses pointed out in the journal such as lack of
+  alphabetic case preservation, weak salt selection etc. This means that in
+  database it only stores the hash of salt plus password, and authentication
+  software module concatenate the salt value and user-supplied password, hash,
+  then check for equality. This makes rainbow table attacks unfeasible (because
+  of random salt). Below picture illustrates the principle -</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><span lang=EN-NZ
+  style='font-size:11.5pt;color:#242729;background:white'><img border=0
+  width=566 height=136 id="Picture 1" src="6_files/image003.gif"></span></p>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:0cm;margin-left:10.0pt;margin-bottom:.0001pt;text-align:center'><b><span
+  lang=EN-NZ>Picture</span></b><span lang=EN-NZ> principle of ‘one way hash’
+  method for password safety</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:10.0pt;margin-bottom:.0001pt'><span lang=EN-NZ>Salt is also stored
+  in database and varies between different users. Since users are likely to
+  have different, random salt values, users with same password should have
+  completely different hash values. It is important to generate a safe (means
+  long and random) salt by using a&nbsp;Cryptographically Secure Pseudo-Random
+  Number Generator&nbsp;(CSPRNG), and in my program, I used Windows API <b><i>CryptGenRandom</i></b></span></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-NZ>CE1.4.3 </span></b><span
+  lang=EN-NZ>My<b> </b>initiatives on logging optimization for Bank Access
+  Point software</span><span lang=EN-US>, which is described in</span><b><span
+  lang=EN-NZ> CE1.3.3.</span></b><span lang=EN-NZ> This issue was not noticed
+  in lab environment but became more and more important after several months’
+  live deployment. Software engineers found it was difficult to locate their
+  desired logs from the log file, and hard to understand the context easily for
+  many error scenarios. The reason behind it was that log file was in a mess
+  because of too huge, lack of logging level definition and most importantly,
+  there were huge logs that were repeated in a burst time. I took the
+  initiative to improve the logging function to improve R&amp;D troubleshooting
+  efficiency. Besides defined logging levels into 4 categories (critical,
+  error, info and debug), I spent some time to design a logging compression
+  function, which could be used in a context that log content is exactly same.
+  The design principle is that in some logging burst case, every logging
+  attempt is checked beforehand if it’s allowed to be actually printed. The
+  default rule is that it only allows 10 messages within a 10-second period if
+  logging content is identical. Exceeding this will make the software discard
+  the message and print something like</span><span lang=EN-NZ style='font-size:
+  10.5pt'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><em><span lang=EN-NZ
+  style='font-family:"Arial",sans-serif;color:#333333;background:white'>“ratelimit
+  function_trans: error_timed_out </span></em><em><span lang=EN-NZ
+  style='font-family:"Arial",sans-serif;color:red;background:white'>100</span></em><em><span
+  lang=EN-NZ style='font-family:"Arial",sans-serif;color:#333333;background:
+  white'> callbacks suppressed”</span></em><span lang=EN-NZ style='color:#333333;
+  background:white'>.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><span lang=EN-NZ>This example tells
+  that 100 logs are skipped during that short period because they are totally
+  identical with each other. The error code is<i> ‘error_timed_out’</i> and
+  problem occurred inside <i>function_trans</i>. Regarding code implementation,
+  I referred </span><span lang=EN-NZ>to </span><span lang=EN-NZ>open source
+  code of Linux Kernel, which had a similar function called ‘__ratelimit’, and
+  rewrote based on need of our project. Testing result showed that it can
+  dramatically save size of the log file.</span></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>Other Evidences:</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>CE1.4.4 </span></b><span lang=EN-NZ>As
+  </span><span lang=EN-US>one important team member, I applied </span><span
+  lang=EN-NZ>software engineering activities including cost estimation model,
+  software unit &amp; model &amp; functional testing, integration testing,
+  Client/Server software architecture, requirement collection and analysis and
+  product lifecycle (since project approval to customer deployment)</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-NZ>CE1.4.5</span></b><span
+  lang=EN-NZ> I delivered significant outcome for features &amp; issues owned
+  by me, and as one team player I cooperated with testers, project leader,
+  sales and customers when participating in project review, design &amp; code
+  review, testing support and pilot &amp; deployment activates.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-NZ>CE1.4.6</span></b><span
+  lang=EN-NZ> I used programming language C, Delphi object pascal
+  (object-oriented) and SQL languages in this project. I gained experience of
+  MS SQL Server and Sybase administration.</span></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-NZ>CE1.4.7</span></b><span
+  lang=EN-NZ> I had studied Object-oriented (OO) programming thinking in
+  universities, and this project provided me a great opportunity to practice OO
+  engineering thinking. By peer reviewing others’ code as well as receiving
+  other reviewers’ comments to me, I deepened the understanding of OO. </span></p>
+  <p class=MsoNormal style='margin-top:6.0pt'><b><span lang=EN-NZ>CE1.4.8</span></b><span
+  lang=EN-NZ> Safety engineering is also a key mindset during hardware and
+  software deployment in customer side. I strictly followed installation guide,
+  and used electric isolation means when I need to access customers’ (banks or
+  enterprises) labs or machine rooms.</span></p>
+  <p class=MsoNormal><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></p>
+  <p class=MsoNormal><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></p>
+  <p class=MsoNormal><span lang=EN-NZ>&nbsp;</span></p>
+  </td>
+  <td width=66 valign=top style='width:49.75pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ>Element</span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>6</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><u><span
+  lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>3</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>5</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>3</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>6</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>5,6,7</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>6</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>4</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-NZ>4</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>2,5</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>2</span></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><u><span lang=EN-NZ><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>5,8</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>5</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>5</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>&nbsp;</span></b></p>
+  <p class=MsoNormal><b><span lang=EN-NZ>6,7</span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-NZ>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

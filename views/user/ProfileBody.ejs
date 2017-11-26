@@ -1,0 +1,46 @@
+<div class="page-header">
+  <div >
+    <h1><%= user.fullname %></h1>
+  </div>
+  <%if (isAdministrator) {%>
+  <div>
+    <a role="button" class="btn btn-default" href="/admin/showAdminDashboard">Enter AdminTool</a>
+  </div>
+  <%}%>
+</div>
+<div class="col-md-9 col-xs-12">
+  <div class="row">
+    <div class="col-md-6">
+      <h4>UID</h4>
+      <p>
+        <%= user.uid %>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <h4>Email</h4>
+      <p>
+        <%= user.email %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h4>DN</h4>
+      <p class="text-overflow">
+        <%= user.dn %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="col-md-3 col-xs-12">
+  <div class="row">
+    <div>
+      <img src="<%= user.userfd||'/images/default_upp.jpg' %>" alt="<%= user.userfd %>" class="img-thumbnail">
+      <% if(isLoginUser) { %>
+      <div class="caption">
+        <p><button class="btn btn-primary btn-block" data-toggle="modal" data-target="#photoModal">Change photo</button></p>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>

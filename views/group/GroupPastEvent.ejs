@@ -1,0 +1,38 @@
+<div class="group-event">
+  <ul class="group-event-ul">
+  <% if (pastEvents!= null) { %>
+    <% for(var i = 0; i < pastEvents.length; i++) {%>
+      <li class="group-events-li">
+        <div class="event-time">
+          <% var dd= pastEvents[i].begindate; %>
+          <h5><%= dd.toLocaleDateString() %></h5>
+          <% var hh='' %>
+          <% if (dd!='') {%>
+          <% hh= dd.getHours() %>
+          <% if (hh<10) {hh='0'+hh} %>
+          <% var mm= dd.getMinutes() %>
+          <% if (mm<10) {mm='0'+mm} %>
+          <% } %>
+          <h5><%= hh %>:<%= mm %></h5>
+        </div>
+        <div class="event-add-title-member">
+          <div class="event-localtion"><%= pastEvents[i].address %></div>
+          <div class="event-title">
+            <a href="#<%= '/group/'.concat(group.id, '/event/', pastEvents[i].id, '/show') %>" >
+                <%= pastEvents[i].topic %>
+            </a>
+          </div>
+          <div class="event-members"><%= pastEvents[i].user.length %> <span>hacks Going</span>
+          </div>
+        </div>
+      </li>
+    <%}%>
+  <% } %>
+  </ul>
+</div>
+
+<script type="text/javascript">
+
+  mediator.send('pastEventUploaded', <%=pastEvents.length%>);
+
+</script>

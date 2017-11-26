@@ -1,0 +1,28 @@
+<div class="row">
+
+<% _.each(events, function(event, index){ %>
+
+  <% if(index%3===0 && index>0) {%>
+    </div>
+    <div class="row">
+  <% } %>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img class="projectLogo" src=<%=event.projectImage%> alt="...">
+      <div class="caption">
+        <a href="/group/show/<%=event.projectGroupId%>#/group/<%=event.projectGroupId%>/load"><h3><%=event.projectDate%></h3></a>
+        <%_.each(event.projectName, function(name, proIndex){%>
+
+          <p><h5><%=name%>: <small><%=event.projectSlogon[proIndex]%></small></h5></p>
+
+
+        <%})%>
+      </div>
+    </div>
+  </div>
+
+<% }) %>
+
+</div>
+

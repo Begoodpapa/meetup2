@@ -1,0 +1,28 @@
+<!--<script src="/vender/react/react.js"> </script> -->
+<script type="text/javascript">
+
+    var user;
+
+    <% if ( typeof user !== "undefined" ){ %>
+      user = <%- JSON.stringify(user) %>;
+    <%}%>
+    var userlogin = false;
+    if((user !== undefined) && ( user !== null)){
+      userlogin = true;
+    }
+    var groupID = <%- group.id %>;
+    var urlPrefix = "/event/" + <%- target.id %> + "/comment/";
+
+    /* export React to use with requireJS */
+    require(['react'], function(React){
+       window.React = React;
+       /* requireJS will not reload the comment.js unless refresh the page, so temporialy use undef to force reload */
+       //TODO: need improvement
+       require.undef('comment');
+    });
+
+    /*Load Comment */
+    require(['comment']);
+</script>
+<div id="event-comments-section"  class="doc-content talk" style="background-color:#ffffff">
+</div><!-- end #event-comments-section .doc-content -->

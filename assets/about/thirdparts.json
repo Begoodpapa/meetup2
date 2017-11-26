@@ -1,0 +1,15 @@
+[
+
+{"name":"bootstrap","license":"MIT","link":"http://getbootstrap.com/"},
+{"name":"jquery","license":"MIT","link":"https://jquery.org/"},
+{"name":"jcrop","license":"MIT","link":"http://deepliquid.com/content/Jcrop.html"},
+{"name":"pickmeup","license":"MIT","link":"https://github.com/nazar-pc/PickMeUp"},
+{"name":"react","license":"BSD","link":"https://github.com/facebook/react"},
+{"name":"dropzone","license":"MIT","link":"http://www.dropzonejs.com/"},
+{"name":"xhEditor","license":"LGPL","link":"https://github.com/yaniswang/xhEditor"},
+{"name":"D3","license":"BSD","link":"http://d3js.org/"},
+{"name":"Bootstrap-Image-Gallery","license":"MIT","link":"https://github.com/blueimp/Bootstrap-Image-Gallery"},
+{"name":"holder","license":"MIT","link":"https://github.com/imsky/holder"},
+{"name":"waypoints","license":"MIT","link":"https://github.com/imsky/holder"}
+
+]

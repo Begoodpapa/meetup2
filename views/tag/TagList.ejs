@@ -1,0 +1,32 @@
+
+        <h3>Tags</h3>
+        <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-xs-offset-10 col-xs-2">
+            <a href="#/tag/create" class="btn btn-danger">New Tag</a>
+          </div>
+        </div>
+        </form>
+        <table class='table'>
+        <tr>
+                <th>TagID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                
+        </tr>
+
+        <% _.each(tags, function(tag) { %>
+        <tr data-id="<%= tag.id %>" data-model="skill">
+        <td><%= tag.id %></td>
+        <td><%= tag.name %></td>
+        <td><%= tag.category %></td>
+        <td><a href="#" class="btn btn-sm btn-primary">Show</a></td>
+        <td><a href="#/tag/edit/<%= tag.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+        <td><a href="#/tag/remove/<%= tag.id %>" class="btn btn-sm btn-danger">Delete</a></td>
+        </tr>
+        <% }) %>
+        </table>
+        

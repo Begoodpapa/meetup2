@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h3>All <span class="label label-primary"><%= photos.length %></span> photos from <%= album.topic %></h3>
+      </div>
+    </div>
+  </div>
+  <%
+    var gPath = '/group/'.concat(req.param('gid'), '/photos');
+    var ePath = gPath.concat('/album/',req.param('eid'));
+  %>
+  <div class="row">
+    <div class="col-md-12">
+      <a href="#<%= gPath %>" class="pull-right">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back to galary
+      </a>
+    </div>
+  </div>
+  <hr/>
+  <% if( photos.length === 0 ) { %>
+  <div class="alert alert-info" role="alert">
+    No photo yet! <a href="#<%= ePath.concat('/upload') %>" class="alert-link">Upload Photo</a> right now.
+  </div>
+  <% } else { var photoRoot = sails.config.upload.photo.root %>
+
+  <div id="photos" class="row">
+    <% _.each(photos, function(photo){ %>
+      <div class="album-item col-md-3 col-xs-6 col-sm-4">
+        <div class="thumbnail">
+          <a href="<%= photoRoot + photo.original %>" title="" data-gallery>
+            <img src="<%= photoRoot + photo.small %>" class="img-responsive" alt="<%= photo.small %>"/>
+          </a>
+          <div class="caption">
+            <p class="help-block">Uploaded by <%= photo.owner.fullname %> on <%= photo.createdAt %></p>
+          </div>
+        </div>
+      </div>
+    <% })  %>
+  </div>
+  <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+  <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-use-bootstrap-modal="false">
+      <!-- The container for the modal slides -->
+      <div class="slides"></div>
+      <!-- Controls for the borderless lightbox -->
+      <h3 class="title"></h3>
+      <a class="prev">‹</a>
+      <a class="next">›</a>
+      <a class="close">×</a>
+      <a class="play-pause"></a>
+      <ol class="indicator"></ol>
+      <!-- The modal dialog, which will be used to wrap the lightbox content -->
+      <div class="modal fade">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title"></h4>
+                  </div>
+                  <div class="modal-body next"></div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default pull-left prev">
+                          <i class="glyphicon glyphicon-chevron-left"></i>
+                          Previous
+                      </button>
+                      <button type="button" class="btn btn-primary next">
+                          Next
+                          <i class="glyphicon glyphicon-chevron-right"></i>
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <% } %>
+</div>
+<script type="text/javascript">
+  require(['jquery-blueimp-gallery','blueimp-bootstrap-image-gallery']);
+  require(['masonry'], function(Masonry){
+    $(document).ready(function(){
+      var elem = document.querySelector('#photos');
+      var mnsry = new Masonry(elem, {
+        itemSelector: '.album-item',
+        columnWidth: '.album-item'
+      });
+    });
+  });
+</script>

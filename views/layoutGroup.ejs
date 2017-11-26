@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title||'Beehive in Nokia' %></title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <!--
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+
+        To customize any part of the built- in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+    <link href="/vender/bootstrap/dist/fonts/glyphicons-halflings-regular.woff">
+    <link rel="stylesheet" href="/vender/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vender/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/vender/dropzone/dist/min/basic.min.css">
+    <link rel="stylesheet" href="/vender/dropzone/dist/min/dropzone.min.css">
+    <link rel="stylesheet" href="/vender/blueimp-gallery/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="/vender/blueimp-bootstrap-image-gallery/css/bootstrap-image-gallery.min.css">
+    <link rel="stylesheet" href="/vender/fuelux/dist/css/fuelux.min.css">
+    <link rel="stylesheet" href="/vender/datetimepicker/build/jquery.datetimepicker.min.css">
+    <link rel='stylesheet' href='/vender/fullcalendar/dist/fullcalendar.min.css' />
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/animate.css">
+    <link rel="stylesheet" href="/styles/beehive.css?aae848bf">
+    <link rel="stylesheet" href="/styles/comments.css">
+    <link rel="stylesheet" href="/styles/homePage.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/jcrop/jquery.Jcrop.css">
+    <link rel="stylesheet" href="/styles/jcrop/jquery.Jcrop.min.css">
+    <link rel="stylesheet" href="/styles/kindeditor/default/default.css">
+    <link rel="stylesheet" href="/styles/kindeditor/readonly/readonly.css">
+    <link rel="stylesheet" href="/styles/pickmeup/pickmeup.css">
+    <link rel="stylesheet" href="/styles/pickmeup/pickmeup.min.css">
+    <link rel="stylesheet" href="/styles/questionnaire.css">
+    <link rel="stylesheet" href="/styles/sidebar.css">
+    <link rel="stylesheet" href="/styles/test.css">
+    <link rel="stylesheet" href="/styles/testproduction.css">
+    <!--STYLES END-->
+    <script type="text/javascript" src="/js/requirejs/require.min.js"></script>
+    <script type="text/javascript" src="/js/config.js?1ae361e3"></script>
+
+  </head>
+
+  <body class="fuelux">
+    <% include component/navbar %>
+    <div id ="main">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <a href="#/group/<%= group.id%>/load" title="">
+              <h1 class="group-h1 group-name-span">
+                <%= group.name %>
+              </h1>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#group-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="group-navbar-collapse-1">
+                  <ul class="nav navbar-nav nav-pills">
+                    <li class="active"><a href="#/group/<%= group.id %>/load" data-target="#group/<%= group.id %>/load">Home<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#/group/<%= group.id %>/members" id="memebers">Members</a></li>
+                    <li><a href="#/group/<%= group.id %>/photos" id="photo">Photos</a></li>
+                    <li><a href="http://hzegsav40.china.nsn-net.net:4567/" id="discussions">Discussions</a></li>
+                    <!-- <li><a href="#/test" id="test">Test</a></li> -->
+                    <li class="dropdown">
+                      <a href="#/test" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Test <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#/group/<%= group.id %>/tonewtest">New Test</a></li>
+                        <li><a href="#/group/<%= group.id %>/tostarttest">Start Test</a></li>
+                        <li><a href="#/group/<%= group.id %>/gettestreport">Get Test Report</a></li>
+                        <li><a href="#/group/<%= group.id %>/testmanager">Test Manager</a></li>
+                        <li><a href="#/group/<%= group.id %>/papermanage">Paper Manage</a></li>
+                        <li><a href="#/group/<%= group.id %>/questionnaire_entry?type=paper">Create Paper</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#/survey" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Survey <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#/group/<%= group.id %>/survey/tostartsurvey">Start Survey</a></li>
+                        <li><a href="#/survey/<%= group.id %>/togetreport">Get Survey Report</a></li>
+                        <li><a href="#/group/<%= group.id %>/survey/surveymanage">Survey Manage</a></li>
+                        <li><a href="#/group/<%= group.id %>/questionnaire_entry?type=survery">Create Survey</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#/file" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">File <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#/group/<%= group.id %>/todownloadfile">File Download</a></li>
+                        <li><a href="#/group/<%= group.id %>/filemanage">File Manage</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#/group/<%= group.id %>/tags" id="tags">Tags</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav nav-pills navbar-right">
+                    <li><a href="#/group/<%= group.id %>/newEvent">New Event</a></li>
+                    <% var isOwner = (user && user.id === group.owner.id) ? true : false %>
+                    <% if(!isOwner) { %>
+                      <%
+                         var btnText = ingroup ? 'Leave us' : 'Join us!';
+                       %>
+                    <a id="joingroup" role="button" class="btn btn-primary navbar-btn pull-right"><%= btnText %></a>
+                    <% } %>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+              <div id="sidebar" class="col-md-3 col-xs-12">
+                <% include component/groupSidebar %>
+              </div>
+              <div class="col-md-9 col-xs-12" >
+                <input type="hidden" id="groupID" value=<%=group.id%>></input>
+                <input type="hidden" id="groupOwnerId" value=<%=group.owner.id%>></input>
+                <div id="alert_div" class="alert alert-danger hidden" role="alert">
+                </div>
+                <div id="workspace">
+                  <%- body %>
+                </div>
+                <div id="waitingFlag">
+                  <div class="loader" data-initialize="loader" id="myLoader">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--
+        Client-side Templates
+        ========================
+
+        HTML templates are important prerequisites of modern, rich client applications.
+        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+        that you load these templates client-side.
+
+        By default, your Gruntfile is configured to automatically load and precompile
+        client-side JST templates in your `assets/templates` folder, then
+        include them here automatically (between TEMPLATES and TEMPLATES END).
+
+        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Import templates from other directories
+            + Use a different template engine (handlebars, jade, dust, etc.)
+            + Internationalize your client-side templates using a server-side
+              stringfile before they're served.
+    -->
+
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+
+    <!--
+
+      Client-side Javascript
+      ========================
+
+      You can always bring in JS files manually with `script` tags, or asynchronously
+      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
+      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+      By default, files in your `assets/js` folder are included here
+      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+      and concatenated into a single file.
+
+      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+      For example, here are a few things you could do:
+
+          + Change the order of your scripts
+          + Import scripts from other directories
+          + Use a different preprocessor, like TypeScript
+
+    -->
+  </body>
+</html>
+<script type="text/javascript">
+  var mediator;
+
+  require(['jquery','bootstrap','hashchange', 'fuelux', 'fullcalendar'], function($){
+    $(document).ready(function(){
+
+
+      // Bind an event to window.onhashchange that, when the hash changes, gets the
+      // hash and adds the class "active" to any matching nav link.
+      $(window).hashchange( function(){
+        var hash = location.hash;
+        if (hash === null || hash === '') {
+          return;
+        }
+        var url = hash.replace( /^#/, '' );
+
+        // Iterate over all nav links,toggle the active class and change the title.
+        $('ul.nav li').each(function(){
+          var li = $(this);
+          var a = li.children('a')[0];
+          if(hash === $(a).attr('href'))
+          {
+
+            li.addClass('active');
+            document.title = 'Group - ' + li.children('a')[0].text;
+            $('ul.nav li').each(function(){
+              var other = $(this);
+              if(other.get(0) !== li.get(0))
+              {
+                $(this).removeClass('active');
+              }
+            });
+            //exit .each earlier, in case li in nav is found
+            return false;
+
+          }
+        });
+
+        $('#myLoader').show();
+        //Ajax loading for the workspace.
+        $.ajaxSetup({cache: false});
+        $.get(url)
+        .done(function(data, status, xhr){
+          $('#myLoader').hide();
+          //Redirect the location if the page was redirected to login page.
+          if ($(data).has('#login_form').length) {
+              location.href = '/login';
+          }else{
+            $('#alert_div').addClass('hidden');
+            $('#workspace').html(data);
+          }
+
+          if( url.match("calendar")){
+            $('#calendar').fullCalendar({
+              events:  '/group/' + $('#groupID').val() + '/calendarinjson',
+              eventColor: 'yellow',
+            });
+          }
+
+        })
+        .fail(function(xhr, status, errorThrown){
+          $('#myLoader').hide();
+          $('#alert_div').text('Oh snap! Something is wrong. '.concat(':' , errorThrown, '; Response text:', xhr.responseText)).removeClass('hidden');
+        })
+        .always(function(data){
+          //TODO what to do?
+        });
+
+      });
+
+      $('#joingroup').click(function(event){
+
+        var updateGroupNavbar=function(ingroup){
+
+          var updatedText = (ingroup==='yes') ? 'Leave us' : 'Join us!';
+          $('#joingroup').text(updatedText);
+
+        };
+
+        var url;
+        if ($(this).text()==='Join us!'){
+          url = '/group/'+ $('#groupID').val() +'/addgroupuser';
+        }else{
+          url = '/group/'+ $('#groupID').val() +'/removegroupuser';
+        }
+
+        $.post(url, {}, null, 'json')
+        .done(function(data){
+          if(data==='/login'){
+            $('#loginModal').modal('toggle');;
+          }else{
+            if(data.error)
+            {
+              alert(data.error);
+            }else{
+              updateGroupNavbar(data.ingroup);
+              mediator.send('updateGroupMember');
+            }
+          }
+        })
+        .fail(function(){
+          alert('something is wrong');
+        });
+
+      });
+
+      $(window).hashchange();
+
+      // to load the group pic 4 seconds later, let group content to be load first
+
+      setTimeout(function(){
+        $.get('/group/'+ $('#groupID').val() +'/grouppic')
+        .done(function(data, status, xhr){
+          var photoslink = data;
+          photoslink.forEach(function(link){
+            var imgLink = '<div class="item">';
+            imgLink += '<img src="/imgs/' + link + '"'+ ' alt="/imgs/'+link +'"';
+            imgLink += '</div>';
+            $('.carousel-inner').append(imgLink);
+          })
+        })
+      }, 4000);
+
+    });
+  });
+
+  require(['common/mediator'], function(m){
+
+    mediator = m;
+
+    // to add Join or Register button according to the role of user
+    mediator.register('login', function(user){
+
+      var updateEventAction = function(user){
+
+        var updatedHtml = [];
+        updatedHtml.push('<h3>Welcome</h3>');
+        if(user.id === $('#groupOwnerId').val()){
+          updatedHtml.push('<button type="button" class="btn btn-default" data-toggle="modal" data-target="#register_event_member">Register</button> ');
+        }else{
+          var eventUsersLi = $('#event-user-list-ul li');
+          var eventUsers = [];
+          for(var i=0, len =eventUsersLi.length; i< len; i++){
+            eventUsers.push($(eventUsersLi[i]).attr('userid'));
+          }
+          //check if current user is already in the existed user list
+          if($.inArray(user.id, eventUsers)>-1){
+            updatedHtml.push('<button type="button" id="userchoice" class="btn btn-default userleftevent">Leave</button> ');
+          }else{
+            updatedHtml.push('<button type="button" id="userchoice" class="btn btn-default userjoinevent">Join</button> ');
+          }
+        }
+        updatedHtml.push('<button type="button" class="btn btn-default" data-toggle="modal" data-target="#invite_friend_to_event">Invite</button>');
+        updatedHtml.join('\r\n');
+        $('#response_box').html(updatedHtml);
+
+      };
+
+      // when there is response_box div in the page, then update its content
+      if($('#response_box').length!=0){
+        updateEventAction(user);
+      }
+
+    });
+
+    // if user is the group owner, then to add the edit button for group
+    mediator.register('login', function(user){
+
+      if(user.id === $('#groupOwnerId').val()){
+        $('#groupEditDiv').html('<a role="button" class="btn btn-default" href="/group/'+$('#groupID').val()+'/edit">Edit Group</a>')
+      }
+
+    })
+
+    mediator.register('logout', function(){
+      alert('user has logout')
+    });
+
+    mediator.register('pastEventUploaded', function(numOfPastEvents){
+
+      var updatedHtml = [];
+      updatedHtml.push('<span class="badge">'+numOfPastEvents+'</span>');
+      updatedHtml.push('Past Event');
+      updatedHtml.join('\r\n');
+      $('#pastEventLi').html(updatedHtml);
+
+    });
+
+    mediator.register('comingEventUploaded', function(numOfComingEvents){
+
+      var updatedHtml = [];
+      updatedHtml.push('<span class="badge">'+numOfComingEvents+'</span>');
+      updatedHtml.push('Coming Event');
+      updatedHtml.join('\r\n');
+      $('#comingEventLi').html(updatedHtml);
+
+    });
+
+    mediator.register('groupCalendarUploaded', function(numOfEvents){
+
+      var updatedHtml = [];
+      updatedHtml.push('<span class="badge">'+numOfEvents+'</span>');
+      updatedHtml.push('Calendar');
+      updatedHtml.join('\r\n');
+      $('#groupCalendarLi').html(updatedHtml);
+
+    });
+
+
+  });
+</script>

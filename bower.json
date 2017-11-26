@@ -1,0 +1,37 @@
+{
+  "name": "meetup2",
+  "version": "0.0.1",
+  "homepage": "https://github.com/stormslowly/meetup2",
+  "authors": [
+    "stormslowly <stormslowly@gmail.com>"
+  ],
+  "description": "meetup clone",
+  "keywords": [
+    "meetup"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.1",
+    "waypoints": "~3.1.0",
+    "react": "0.13.0",
+    "xhEditor": "~1.0.0",
+    "dropzone": "~4.0.1",
+    "blueimp-gallery": "~2.15.2",
+    "blueimp-bootstrap-image-gallery": "~3.1.1",
+    "d3": "~3.5.10",
+    "fuelux": "~3.14.2",
+    "kindeditor": "*",
+    "datetimepicker": "~2.5.4",
+    "masonry": "^4.1.0",
+    "underscore": "^1.8.3",
+    "fullcalendar": "^3.2.0"
+  }
+}

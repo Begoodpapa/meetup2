@@ -1,0 +1,54 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div id="upload_file_alert" class="alert alert-danger hidden" role="alert">
+          <dl>
+          </dl>
+        </div>
+        <form id="upload_file_form" method="POST" role="form" enctype="multipart/form-data">
+          <legend>Upload File</legend>
+
+          <div class="form-group">
+            <label for="fileDesc">File Description</label>
+            <input type="text" class="form-control" id="fileDesc" name="filedesc" placeholder="File Description">
+          </div>
+
+          <div class="form-group">
+            <label for="inputFile">File Input</label>
+            <input id="inputFile" type="file" name="groupfile">
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="upload_file_btn">Submit</button>
+        </form>
+
+        <p>
+        </br>
+        <label class="pull-right">Existed Files</label>
+
+        <table class='table' id='file_table'>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Desc</th>
+                    <th>Owner</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id='file_list_body'>
+                <% _.each(files, function(file) { %>
+                <tr data-id="<%= file.id %>" data-model="file">
+                    <input type="hidden" value = <%= file.id %>> 
+                    <td><%= file.name %></td>
+                    <td><%= file.desc %></td>
+                    <td><%= file.owner.fullname %></td>
+                    <td><input type="button" class="btn btn-sm btn-default pull-right delete_file_btn" value="Delete" /></td>
+                </tr>
+                <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" >
+  require.undef('common/upload_and_delete_group_file');
+  require(['common/upload_and_delete_group_file']);
+</script>

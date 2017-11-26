@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <% include ProfileBody %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="changePhotoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="changePhotoLabel">Change Profile Photo</h4>
+        </div>
+        <div class="modal-body">
+          <div id="alert_div" class="alert alert-danger hidden" role="alert">
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input type="file" id="select_img" accept="image/*">
+              <p class="help-block">Choose a photo to crop it</p>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-8 col-xs-12">
+              <img src="" alt="" id="orig_img">
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <div class="thumbnail">
+                <canvas id="canvas" class="img-responsive"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary disabled" id="btn_crop">Crop</button>
+        </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  require(['jquery','common/simple_cropper'], function($, cropper){
+    'use strict'
+    $(document).ready(function(){
+      var previewer = cropper('select_img', 'orig_img', 'canvas', function(coords){
+        if(previewer.hasCroppedArea())
+        {
+          $('#btn_crop').removeClass('disabled');
+        }else{
+          $('#btn_crop').addClass('disabled');
+        }
+      });
+
+      var showAlertMsg = function(status, errorThrown){
+        $('#alert_div').text('Oh snap! Something is wrong. '.concat(status, ':' , errorThrown)).removeClass('hidden');
+        $('#btn_crop').button('reset');
+      };
+
+      $('#btn_crop').click(function(event){
+        $('#alert_div').addClass('hidden');
+        var data = previewer.getCroppedData();
+        if(data)
+        {
+          var btnCrop = $(this);
+          btnCrop.button('loading');
+          $.post('/updateProfilePicture', {
+              Pic: data
+          })
+          .done(function(data, status, xhr){
+            if(data.error)
+            {
+              showAlertMsg(status, data.error);
+            }else{
+              location.reload();
+            }
+          })
+          .fail(function(xhr, status, errorThrown){
+            showAlertMsg(status, errorThrown);
+          })
+          .always(function(data){
+          });
+        }
+      });
+    });
+  });
+</script>

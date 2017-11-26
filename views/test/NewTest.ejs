@@ -1,0 +1,70 @@
+
+<form id="newtestform" action="/test/<%=groupid%>/newtest" method="POST" role="form">
+  <legend>Create new test</legend>
+
+  <div class="form-group">
+    <label for="testdesc">Set the description for the test</label>
+    <input type="text" class="form-control" id="testname" name="testname" placeholder="New test for ...">
+  </div>
+  
+  <div class="form-group">
+    <label for="papername">Paper</label>
+    <select name="paper" id="papername" class="form-control" required="required">
+      <% _.each(papers, function(paper) { %>
+
+        <option value=<%=paper.id%>><%=paper.name%></option>
+      
+      <%})%>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="answervisible">Answer visible</label>
+    <select name="answervisible" id="answervisible" class="form-control" required="required">      
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="limitedtimes">Set the limit times for test</label>
+    <input type="text" class="form-control" id="limitedtimes" name="limitedtimes" placeholder="No times limit">
+  </div>
+
+  <div class="form-group">
+    <label for="numfo">Set the number of questions from paper</label>
+    <input type="text" class="form-control" id="numfortest" name="numfortest" placeholder="All questions as default">
+  </div>
+
+
+  <div class="form-group">
+    <label for="fromdate">Date from</label>
+    <input type="text" class="form-control" name="fromdate" id="fromdate" placeholder="All the time as default">
+  </div>
+
+  <div class="form-group">
+    <label for="todate">Date to</label>
+    <input type="text" class="form-control" name="todate" id="todate" placeholder="All the time as default">
+  </div>
+
+  <button type="submit" class="btn btn-primary" id="newTest">Submit</button>
+
+</form>
+
+<script type="text/javascript">
+
+require(['jquery','php-date-formatter','datetimepicker'], function($){
+  $(document).ready(function(){
+    $('#fromdate, #todate').datetimepicker();
+
+    $('#newtestform').submit(function(event){
+      if($('#testname').val()===''){
+        event.preventDefault();
+        alert('Please fill the test name');
+      }
+    });
+
+  });
+});
+
+</script>

@@ -1,0 +1,262 @@
+<div class="row">
+
+    <div id="sidebar" class="col-md-3 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/admin/showAdminDashboard"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard</a></li>
+            <li class="active dropdown" >
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Privilege Manage <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/admin/showAdminGlobalPrivilege"> Global Privilege</a></li>
+                <li><a href="/admin/showAdminGroupPrivilege"> Group Privilege</a></li>
+                <li><a href="/admin/showAdminEventPrivilege"> Event Privilege</a></li>
+              </ul>
+            </li>
+            <li><a href="/admin/showAdminRoleManage"><span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span> Role Manage</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="workspace" class="col-md-9 col-xs-12" >
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <!-- Update Group Modal -->
+          <div class="modal fade" id="updateEventPrivileges_modal" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h3 class="modal-title" eventid="" id="updateEventModalHead">Update Event Privileges</h3>
+                </div>
+
+                <form id="update_event_privileges_form" method="POST" role="form" enctype="multipart/form-data">
+                  <div class="modal-body">
+
+                    <div class="form-group">
+                      <label>Choose User:</label>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">User ID</span>
+                        <input type="text" id="eventPri_userid" class="form-control" placeholder="User ID" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="selPri">Select Privilege:</label>
+                      <select class="form-control" id="selPri">
+                        <% _.each(roles, function(roleitem) { %>
+                        <%if(roleitem!=null){%>
+                          <option><%=roleitem.name%></option>
+                        <%}%>
+                        <%})%>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <div id="update_event_privileges_alert" class="alert alert-danger hidden" role="alert">
+                       <dl>
+                       </dl>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="updateEventPrivilege" class="btn btn-primary">Commit</button>
+                  </div>
+              </form>
+
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- Update Group Modal -->
+
+          <!-- Show Group Modal -->
+          <div class="modal fade bs-example-modal-lg" id="showEventPrivileges_modal" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h3 class="modal-title" id="showEventModalHead">Event Privileges</h3>
+                </div>
+
+                <div class="modal-body">
+                  <!-- Show Group Tab -->
+                  <div>
+
+                    <ul class="nav nav-tabs">
+                      <% _.each(roles, function(roleitem) { %>
+                      <%if(roleitem!=null){%>
+                        <%if(roleitem.name=="eventowner"){%>
+                          <li class="active"><a data-toggle="pill" href="#<%=roleitem.name%>"><%=roleitem.name%></a></li>
+                        <%}else{%>
+                          <li><a data-toggle="pill" href="#<%=roleitem.name%>"><%=roleitem.name%></a></li>
+                        <%}%>
+                      <%}%>
+                      <%})%>
+                    </ul>
+                    
+                    <div class="tab-content">
+                      <% _.each(roles, function(roleitem) { %>
+                      <%if(roleitem!=null){%>
+                      <%if(roleitem.name=="eventowner"){%>
+                      <div id="<%=roleitem.name%>" class="tab-pane fade in active">
+                      <%}else{%>
+                      <div id="<%=roleitem.name%>" class="tab-pane fade">
+                      <%}%> 
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>Id</th>
+                              <th>Name</th>
+                            </tr>
+                          </thead>
+                          <tbody id="<%=roleitem.name%>Item">
+                          </tbody>
+                        </table>
+                      </div>
+                      <%}%>
+                      <%})%>
+                    </div>
+
+                  </div><!-- Show Group Tab -->     
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- Show Group Modal -->
+
+
+          <h3>Event Privilege</h3>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Group</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            <% _.each(eventlist, function(event) { %>
+            <%if(event!=null){%>
+              <tr>
+                <td><%=event.id%></td>
+                <td><%=event.topic%></td>
+                <td><%=event.group%></td>
+                <td>
+                  <button type="button" id="btn_showEventPrivileges_modal_<%=event.id%>" eventid="<%=event.id%>" class="btn btn-success btn-sm" data-toggle="modal" data-target="#showEventPrivileges_modal">Show Privileges</button>
+                  <button type="button" id="btn_updateEventPrivileges_<%=event.id%>" eventid="<%=event.id%>" class="btn btn-success btn-sm" data-toggle="modal" data-target="#updateEventPrivileges_modal">Update Privileges</button>
+                </td>
+              </tr>
+            <%}%>
+            <%})%>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<script language="Javascript">
+require(['jquery'], function($){
+  'use strict';
+  $(document).ready(function(){
+
+    $("[id^='btn_updateEventPrivileges']").click(function(event){
+      $('#updateEventModalHead').text("Update Event "+$(this).attr("eventid")+" Privileges");
+      $('#updateEventModalHead').attr("eventid", $(this).attr("eventid"));
+    });
+
+    $('#updateEventPrivilege').click(function(event){
+      var btn = $(this);
+      hideEventPrivilegeAlertMsg();
+      btn.button('loading');
+
+      $.post('/admin/updateEventPrivilege', {
+        'userid': $('#eventPri_userid').val(),
+        'eventid': $('#updateEventModalHead').attr("eventid"),
+        'role': $('#selPri').val()})
+      .done(function(data){
+        if(data.error){
+          showEventPrivilegeAlertMsg(data.error);
+        }else{
+          $('#update_event_privileges_alert').modal('toggle');
+          $('#update_event_privileges_alert').data('modal',null);
+          window.location.reload();
+        }
+      })
+      .fail(function(){
+        showEventPrivilegeAlertMsg();
+      })
+      .always(function(){
+        btn.button('reset');
+      });
+    });
+
+    var hideEventPrivilegeAlertMsg = function()
+    {
+      if(!$('#update_event_privileges_alert').hasClass('hidden'))
+      {
+        $('#update_event_privileges_alert').toggleClass('hidden');
+      }
+    };
+
+    var showEventPrivilegeAlertMsg = function(message)
+    {
+      if(!message)
+      {
+        message = 'Server or Network error.';
+      }
+      var dt = '<dt>'.concat(message, '</dt>');
+      $('#update_event_privileges_alert > dl').html(dt);
+      $('#update_event_privileges_alert').removeClass('hidden');
+    };
+
+    $("[id^='btn_showEventPrivileges_modal_']").click(function(event){
+      var eventid = $(this).attr("eventid");
+
+      <% _.each(roles, function(roleitem) { %>
+      <%if(roleitem!=null){%>
+        $("#"+"<%=roleitem.name%>"+"Item").empty();
+      <%}%>
+      <%})%>
+
+      $('#showEventModalHead').text("Event "+eventid+" Privileges");
+
+      $.post('/admin/showAdminSingleEventPrivilege', {
+        'eventid': eventid})
+      .done(function(data){
+        if(data.error){
+          console.log(data.error);
+        }else{
+          var roleItem;
+          var userItem;
+          for (roleItem in data.rolelist){
+            for (userItem in data.rolelist[roleItem].userlist){
+              var tr = '<tr>'
+              tr = tr + '<td>'+data.rolelist[roleItem].userlist[userItem].id+'</td>';
+              tr = tr + '<td>'+data.rolelist[roleItem].userlist[userItem].fullname+'</td>';
+              tr = tr + '</tr>';
+              $("#" + data.rolelist[roleItem].role + "Item"  ).append(tr);
+            }
+          }
+        }
+      })
+    });
+
+
+  });
+});
+</script>
+

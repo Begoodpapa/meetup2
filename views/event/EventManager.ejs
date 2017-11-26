@@ -1,0 +1,419 @@
+<input id="eventID" type="hidden" value="<%= target&&target.id %>" >
+<input id="action" type="hidden" value="<%= action %>" >
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h3><%= title %></h3>
+      </div>
+    </div>
+  </div>
+  <div class="form-group" >  
+       <div id="errMsgDiv" class="alert alert-danger alert-dismissible" role="alert" style="display:none">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <label id="errMsgLabel"></label>
+       </div>
+   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form class="form-horizontal"  action="<%= action%>" id="EventForm1" style="margin-top:10px">
+          <div class="form-group">
+              <label for="inputTopic" class="col-sm-1 control-label">Topic</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="inputTopic" name= "Topic" value="<%= target.topic %>" placeholder="">
+              </div>
+          </div>
+          <div class="form-group">
+              <!--label for="inputOrganizer" class="col-sm-2 control-label">Group</label-->
+              <div class="col-sm-3" style="display:none">
+                  <select class="form-control" id="selectGroup" name="Group" placeholder="">
+                  <% for(var i=0; i<group.length; i++) {%>
+                      <option><%= group[i].name %></option>
+                  <% } %>
+                  </select>
+              </div>
+              
+              <label for="inputAddress" class="col-sm-1 control-label">Address</label>
+              <div class="col-sm-8">
+                  <input type="text" class="form-control" id="inputAddress" name="Address" value="<%= target.address %>" placeholder="">
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="inputDate" class="col-sm-1 control-label">Begin Date</label>
+              <div class="col-sm-3">
+                <%if (target.begindate!='') {%>
+                  <% var bgdate = target.begindate.getFullYear()  + '-' + (target.begindate.getMonth() + 1) + '-' + target.begindate.getDate() %>
+                  <input type="text" readonly="readonly" class="form-control" id="inputBeginDate" name= "beginDate" value="<%=bgdate%>" placeholder="">
+                <% } else { %>
+                    <input type="text" class="form-control" id="inputBeginDate" name= "beginDate" value="" placeholder="">
+                <%} %>
+              </div>
+
+              <label for="inputTime" class="col-sm-2 control-label">Begin Time</label>
+              <div class="col-sm-3">
+                <% if (target.begindate != '') { %>
+                  <% var hh = target.begindate.getHours() %>
+                  <% if (hh < 10) { hh = '0' + hh } %>
+                  <% var mm = target.begindate.getMinutes() %>
+                  <% if (mm < 10) { mm = '0' + mm} %>
+                  <input type="time" class="form-control" id="inputBeginTime" name= "BeginTime" value="<%= hh %>:<%= mm %>" placeholder="" >
+                <% } else { %>
+                  <input type="time" class="form-control" id="inputBeginTime" name= "BeginTime" value="" placeholder="">
+                <% } %>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="inputDate" class="col-sm-1 control-label">End Date</label>
+              <div class="col-sm-3">
+                <%if (target.enddate!==''){%>
+                  <% var todate =  target.enddate.getFullYear()+'-'+(target.enddate.getMonth() + 1)+'-'+target.enddate.getDate() %>
+                  <input type="text" readonly="readonly" class="form-control" id="inputEndDate" name= "endDate" value="<%=todate%>" placeholder="">
+                <%}else{%>
+                  <input type="text" class="form-control" id="inputEndDate" name= "endDate" value="" placeholder="">
+                <%}%>
+              </div>
+
+              <label for="inputTime" class="col-sm-2 control-label">End Time</label>
+              <div class="col-sm-3">
+                <% if (target.enddate != ''){ %>
+                  <% var hh= target.enddate.getHours() %>
+                  <% if (hh < 10) { hh = '0' + hh} %>
+                  <% mm = target.enddate.getMinutes() %>
+                  <% if (mm < 10) { mm = '0' + mm } %>
+                  <input type="time" class="form-control" id="inputEndTime" name= "EndTime" value="<%=hh%>:<%=mm%>" placeholder="" >
+                <% } else { %>
+                  <input type="time" class="form-control" id="inputEndTime" name= "EndTime" value="" placeholder="" >
+                <% } %>
+              </div>
+              <label id="invalidEndDateOrEndTimeLable" class="col-sm-6 control-label" style="display:none"></label> 
+          </div>
+
+          <div class="form-group">
+            <label for="inputEvent" class="col-sm-1 control-label">Event</label>
+            <div class="col-sm-10">
+              <textarea id="editor" name="EventDetail"  rows="20" cols="80"
+                            style="height: 500px; width:100%"><%= target.desc %>
+              </textarea>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="inputtags" class="col-sm-1 control-label">Tags</label>
+            <div class="col-sm-8">
+              <div class="pillbox" data-initialize="pillbox" id="myPillbox">
+                <ul class="clearfix pill-group">
+                  ....
+                  <li class="pillbox-input-wrap btn-group">
+                    <a class="pillbox-more">and <span class="pillbox-more-count"></span> more...</a>
+                    <input type="text" class="form-control dropdown-toggle pillbox-add-item" placeholder="add tags">
+                    <button type="button" class="dropdown-toggle sr-only">
+                      <span class="caret"></span>
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="suggest dropdown-menu" role="menu" data-toggle="dropdown" data-flip="auto"></ul>
+                  </li>
+                </ul>
+              </div>
+              <input id="attached_tags_json" type="hidden" value="<%= attached_tags_json %>" >
+            </div>
+            
+          </div>
+
+          <div class="form-group">
+              <div class="col-sm-offset-1 col-sm-10">
+                <button type="button" id="save-event" class="btn btn-primary btn-lg" form="EventForm1">Save</button>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#eventPublishModal">Save and Publish
+                </button>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#eventCancelModal">Cancel</button>
+              </div>
+
+              <!-- Modal -->
+              <div class="modal fade" id="eventPublishModal" role="dialog">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Notice</h4>
+                    </div>
+                    <div class="modal-body">
+                       <p>The event invitation will be sent to all the group members by email, are you sure ?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" id="publish-event" class="btn btn-default" form="EventForm1">Yes, I'm sure!</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="eventCancelModal" role="dialog">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Notice</h4>
+                    </div>
+                    <div class="modal-body">
+                       <p>The event creation or modification process will be terminated, are you sure ?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" id="leave-event" class="btn btn-default" form="EventForm1">Yes, I'm sure!</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script language="Javascript">
+
+require(['jquery','xhEditor','pickmeup','kindeditor'], function($){
+  $(document).ready(function() {
+
+      var imgUploadUrl, fileManagerJson, allowFileManager;
+      var action = $('#action').val();
+
+      if(action === 'edit'){
+        imgUploadUrl = '/event/imageupload?groupID=' + $('#groupID').val()+ '&eventID='+ $('#eventID').val();
+        fileManagerJson = '/group/imagemanager?groupid=' + $('#groupID').val();
+        allowFileManager = true;
+      }else{
+        imgUploadUrl = '/event/imageupload?hash=' + '123';
+        fileManagerJson = '/group/imagemanager?groupid=' + $('#groupID').val();
+        allowFileManager = true;
+        var nowDate = new Date();
+        var year = nowDate.getFullYear().toString();
+        var month = (nowDate.getMonth()+1)>9 ? (nowDate.getMonth()+1).toString() : '0' + (nowDate.getMonth()+1);
+        var day = nowDate.getDate()>9 ? nowDate.getDate().toString() : '0'+nowDate.getDate();
+        $('#inputBeginTime').val(nowDate.getHours()+':'+ '00');
+        $('#inputEndTime').val(nowDate.getHours()+':'+'30');
+        $('#inputBeginDate').val(year + '-' + month + '-' + day);
+        $('#inputEndDate').val(year + '-' + month + '-' + day);
+      }
+      
+      var kindeditorOption = ['source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent',
+        'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+        'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'map','pagebreak',
+        'anchor', 'link', 'unlink', '|', 'about'];
+      
+      window.editor = KindEditor.create('#editor', {items: kindeditorOption, uploadJson: imgUploadUrl, allowFileManager : allowFileManager, fileManagerJson: fileManagerJson});
+
+      var attached_tags = JSON.parse($('#attached_tags_json').val());
+      for(var i=0; i<attached_tags.length; i++ ){
+        $('#myPillbox').pillbox('addItems', 1, [{ text: attached_tags[i], value: attached_tags[i], attr: {}, data: {} }]);
+      }
+
+      function showAlertForInvalidDate(){
+
+        $('#invalidEndDateOrEndTimeLable').text('Invalid End date or End Time, please check');
+        $('#invalidEndDateOrEndTimeLable').css({"color":'red',"align":'center'});
+        $('#inputEndDate').css({ "border": '#FF0000 1px solid'});
+        $('#inputEndTime').css({ "border": '#FF0000 1px solid'});           
+        $('#invalidEndDateOrEndTimeLable').show();
+      
+      };
+
+      function hideAlertForInvalidDate(){
+
+        $('#inputEndDate').css({ "border": ''});
+        $('#inputEndTime').css({ "border": ''});
+        $('#invalidEndDateOrEndTimeLable').hide();
+
+      };
+
+      function showAlertForInvalidTime(){
+
+        $('#invalidEndDateOrEndTimeLable').text('Invalid Begin time or End Time, please check');
+        $('#invalidEndDateOrEndTimeLable').css({"color":'red',"align":'center'});
+        $('#inputBeginTime').css({ "border": '#FF0000 1px solid'});
+        $('#inputEndTime').css({ "border": '#FF0000 1px solid'});           
+        $('#invalidEndDateOrEndTimeLable').show();
+      
+      };
+
+      function hideAlertForInvalidTime(){
+
+        $('#inputBeginTime').css({ "border": ''});
+        $('#inputEndTime').css({ "border": ''});
+        $('#invalidEndDateOrEndTimeLable').hide();
+
+      }
+
+      function validateDateTime(){
+        var beginDateStr = $('#inputBeginDate').val();
+        var endDateStr = $('#inputEndDate').pickmeup('get_date', 'Y-m-d');
+        var beginTimeStr= $('#inputBeginTime').val();
+        var endTimeStr= $('#inputEndTime').val();
+        
+        var beginDateTxt = beginDateStr.split('-');  
+        var beginTimeTxt; 
+        if(beginTimeStr){
+            beginTimeTxt = beginTimeStr.split(':');  
+        }       
+                
+        var endDateTxt = endDateStr.split('-'); 
+        var endTimeTxt;
+        if(endTimeStr){
+             endTimeTxt = endTimeStr.split(':');
+        }       
+        
+        var begindate;
+        var enddate;
+        if(beginTimeTxt && endTimeTxt){
+             begindate= new Date(beginDateTxt[0], beginDateTxt[1] - 1, beginDateTxt[2], beginTimeTxt[0], beginTimeTxt[1]);
+             enddate = new Date(endDateTxt[0], endDateTxt[1] - 1, endDateTxt[2], endTimeTxt[0], endTimeTxt[1]);
+        }else{
+            
+            begindate= new Date(beginDateTxt[0], beginDateTxt[1] - 1, beginDateTxt[2]);
+            enddate = new Date(endDateTxt[0], endDateTxt[1] - 1, endDateTxt[2]);
+        }
+
+        if(begindate > enddate){
+            showAlertForInvalidDate();
+            return false;
+        }else{
+            $('#inputEndDate').css({ "border": ''});
+            $('#inputEndTime').css({ "border": ''});
+            $('#invalidEndDateOrEndTimeLable').hide();
+            return true;
+        }
+      }  
+
+      function saveEvent(event, is_need_publish) {
+
+        var Topic = $('#inputTopic').val();
+        var Group = $('#groupID').val();
+        var Address = $('#inputAddress').val();
+        var beginDate = $('#inputBeginDate').val();
+        var beginTime = $('#inputBeginTime').val();
+        var endDate = $('#inputEndDate').val();
+        var endTime = $('#inputEndTime').val();
+        
+        if(!beginTime || !endTime){
+          showAlertForInvalidTime();
+          return;
+        }
+
+        if(!validateDateTime()){
+          return;
+        }
+
+        var EventDetail = editor.html();;
+        var tagList = [];
+        var addedTags = $('#myPillbox').pillbox('items');
+        for(var i=0; i<addedTags.length; i++){
+          tagList.push(addedTags[i].text);
+        }
+        var attached_tag_str = JSON.stringify(tagList);
+
+        var url;
+        var action = $('#action').val();
+        if(action ==='create'){
+          url = '/group/'.concat(Group,'/newEvent');
+        }else{
+          url = '/group/'.concat(Group, '/event/', $('#eventID').val(), '/eventDoEdit');
+        }
+
+        $.post(url,{
+          Topic: Topic,
+          Group: Group,
+          Address: Address,
+          beginDate: beginDate,
+          BeginTime: beginTime,
+          endDate: endDate,
+          EndTime: endTime,
+          EventDetail: EventDetail,
+          Tag: attached_tag_str,
+          Publish: is_need_publish,
+        })
+          .done(function(data){
+            if(data.error){
+                $('#errMsgLabel').text(data.error);
+                $('#errMsgDiv').show();
+             }else{
+                //Redirect the location if the page was redirected to login page.
+                if ($(data).has('#login_form').length) {
+                    location.href = '/login';
+                }else{
+                  location.href = '#/group/'+$('#groupID').val()+'/event/'+ data.id +'/show';
+                  location.reload();
+                }
+            }
+          })
+          .fail(function(xhr, status, errorThrown){
+            console.log(status + errorThrown);
+          });
+      }
+
+      function loadGroupHome(){
+        var groupid = $('#groupID').val();
+        var action = $('#action').val();
+        if(action =='edit' || action == 'create'){
+          location.href = '#/group/'+groupid+'/load';
+          location.reload();
+        }
+        else{
+          console.log('Nothing canceled.');
+        }
+      }
+
+      $('#save-event').click(function(event){
+        saveEvent(event, false);
+      });
+
+      $('#publish-event').click(function(event){
+        saveEvent(event, true);
+      });
+
+      $('#leave-event').click(function(){
+        loadGroupHome();
+      });
+
+      $('#inputBeginDate').pickmeup({
+        position: 'right',
+        hide_on_select: true,
+        format: 'Y-m-d',
+        change: function(){
+          var datestr = $('#inputBeginDate').pickmeup('get_date', 'Y-m-d');
+          $('#inputEndDate').pickmeup('set_date', datestr);
+        },
+      });
+
+      $('#inputEndDate').pickmeup({
+        position: 'right',
+        hide_on_select: true,
+        format: 'Y-m-d',
+        change:function(){
+          validateDateTime();     
+        }
+      });
+
+      $('#inputBeginDate').focus(function(event){
+        $('#inputBeginDate').pickmeup('show');
+      });
+
+      $('#inputEndDate').focus(function(event){
+        $('#inputEndDate').pickmeup('show');
+      });
+
+      $('#inputBeginTime').focus(function(event){
+        hideAlertForInvalidTime();
+      });
+
+      $('#inputEndTime').focus(function(event){
+        hideAlertForInvalidTime();
+      });
+
+  });
+});
+
+
+</script>

@@ -1,0 +1,70 @@
+@meetup-title-color:#000;
+
+
+.fixtop{
+  position: fixed;
+  color: rgba(0,0,0,0.6);
+  z-index: 9999;
+  width: 58.7%;
+  top:0px;
+  background-color: @background-color;
+  box-shadow: rgba(0,0,0,.5) 0 0 18px 0;
+  border-radius: 3px;
+}
+
+#meetup-day-group{
+
+  color: rgba(0,0,0,0.6);
+
+  .meetup-date{
+    color: #aaa;
+    text-shadow: #fff 1px 1px 0;
+    display: block;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 28px;
+    padding: 0 0 8px;
+    margin: 10px 0;
+  }
+
+  ul{
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+  }
+
+
+  li{
+    display: inline-block;
+    min-height: 100px;
+    padding: 10px 0;
+    border-top: 1px rgba(0,0,0,0.5) solid;
+    border-left: 1px rgba(0,0,0,0.5) solid;
+    border-right: 1px rgba(0,0,0,0.5) solid;
+  }
+
+  li:last-of-type{
+    border-top: 1px rgba(0,0,0,0.5) solid;
+    border-left: 1px rgba(0,0,0,0.5) solid;
+    border-right: 1px rgba(0,0,0,0.5) solid;
+    border-bottom: 1px rgba(0,0,0,0.5) solid;
+  }
+
+  .meetup-calender{
+
+    display: block;
+    .meetup-time{
+      font-size: 15px;
+    }
+
+    .meetup-title{
+      font-size: 30px;
+      font-style: bold;
+      color:@meetup-title-color;
+      font-family: Whitney, helvetica, arial, sans-serif;
+    }
+
+  }
+
+}

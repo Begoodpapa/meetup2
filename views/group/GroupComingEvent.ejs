@@ -1,0 +1,38 @@
+<div class="group-event">
+  <ul class="group-event-ul">
+  <% if (comingEvents!= null) { %>
+    <% for(var i = 0; i < comingEvents.length; i++) {%>
+      <li class="group-events-li">
+        <div class="event-time">
+          <% var dd= comingEvents[i].begindate; %>
+          <h5><%= dd.toLocaleDateString() %></h5>
+          <% var hh='' %>
+          <% if (dd!='') {%>
+          <% hh= dd.getHours() %>
+          <% if (hh<10) {hh='0'+hh} %>
+          <% var mm= dd.getMinutes() %>
+          <% if (mm<10) {mm='0'+mm} %>
+          <% } %>
+          <h5><%= hh %>:<%= mm %></h5>
+        </div>
+        <div class="event-add-title-member">
+          <div class="event-localtion"><%= comingEvents[i].address %></div>
+          <div class="event-title">
+            <a href="#<%= '/group/'.concat(group.id, '/event/', comingEvents[i].id, '/show') %>" >
+                <%= comingEvents[i].topic %>
+            </a>
+          </div>
+          <div class="event-members"><%= comingEvents[i].user.length %> <span>hacks Going</span>
+          </div>
+        </div>
+      </li>
+    <%}%>
+  <% } %>
+  </ul>
+</div>
+
+<script type="text/javascript">
+
+  mediator.send('comingEventUploaded', <%=comingEvents.length%>);
+
+</script>

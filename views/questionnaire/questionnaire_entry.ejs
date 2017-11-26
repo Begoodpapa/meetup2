@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+          <% if ( type == 'paper') {%>
+          <div  onclick = "javascript: window.location.href='#/group/<%= groupid %>/papermanage'" class="col-md-3 entry_block" >
+          <% }else{ %>
+          <div  onclick = "javascript: window.location.href='#/group/<%= groupid %>/survey/surveymanage'" class="col-md-3 entry_block" >
+          <% }%>
+            <img src="/images/questionnaire_upload.png"></img>
+            <p>upload json </p>
+          </div>
+          <div  class="col-md-3 entry_block" onclick = "javascript: window.location.href='#/group/<%= groupid %>/questionnaire?type=<%=type%>'" >
+            <img src="/images/questionnaire_create.png"></img>
+            <p>create by UI</p>
+          </div>
+        </div>
+    </div>
+</div>

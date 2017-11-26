@@ -1,0 +1,126 @@
+<% var user = req.session.user %>
+    <!-- Fixed Bar -->
+<div class="fixed-bar animated-quick">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/" class="logo" title="Go Home"><img src="/images/banner.png" alt="Beehive home"></a>
+      </div>
+      <nav class="col-sm-9">
+           <ul id = "fixbar-nav">
+               <li><a href="/newGroup" title = "New a group">New</a></li>
+                <li><a href="#findModal" data-toggle="modal" data-backdrop="static">Find</a></li>
+                <li><a href="http://beehive.eecloud.dynamic.nsn-net.net:1338/">Persona</a></li>
+                <li><a href="http://beehive.eecloud.dynamic.nsn-net.net:1341">Webond</a></li>
+                <li><a href="http://beehive.eecloud.dynamic.nsn-net.net:4567/">Discuss</a></li>
+
+                <% if(!user) { %>
+                <li><a href="#loginModal" data-toggle="modal" data-backdrop="static" id = "fixbar-login">Log in</a>
+                </li>
+
+                <script type="text/javascript">
+                  require(['common/login_modal']);
+                </script>
+              <% } else { %>
+                <li>
+                  <a href="/auth/logout">Log out</a>
+                </li>
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <span id="username"><%= user.fullname %></span>
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/user/myprofile">My Profile</a>
+                    </li>
+                    <li><a href="/user/mygroup">My Group</a>
+                    </li>
+                    <li><a href="/user/myevent">My Event</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+
+                    <% if (!user.userfd) { %>
+                      <img src="/images/default_upp.jpg" alt="..." class="img-circle portrait" ,id ="nav_user_fd" , height = 30>
+                    <% } else {%>
+                      <img src="<%=user.userfd%>" alt="..." class="img-circle portrait" ,id ="nav_user_fd" , height = 30>
+                    <% } %>
+
+                </li>
+              <% } %>
+            </ul>
+        </nav>
+        <div class="col-sm-1">
+          <a href="#top" id="back-to-top" title="Back To Top">Back To Top</a>
+        </div>
+    </div>
+  </div>
+</div>
+<header class="splash" id = "top">
+      <div class="container">
+        <div class="row main-nav">
+          <div class="col-sm-2">
+            <a href="/" title="Go Home" class="logo"><img src="/images/banner.png" alt="Beehive Home"></a>
+          </div>
+          <div class="col-sm-10">
+            <nav>
+                <ul id = "header-nav">
+                    <li><a href="/newGroup" title = "New a group">New</a></li>
+                    <li><a href="#findModal" data-toggle="modal" data-backdrop="static">Find</a></li>
+                    <li><a href="http://beehive.eecloud.dynamic.nsn-net.net:1338/">Persona</a></li>
+                    <li><a href="http://beehive.eecloud.dynamic.nsn-net.net:1341">Webond</a></li>
+                    <li><a href="http://beehive.eecloud.dynamic.nsn-net.net:4567/">Discuss</a></li>
+                    <% if(!user) { %>
+                          <li><a href="#loginModal" data-toggle="modal" data-backdrop="static" id = "header-login">Log in</a>
+                          </li>
+
+                          <script type="text/javascript">
+                            require(['common/login_modal']);
+                          </script>
+                        <% } else { %>
+                          <li>
+                            <a href="/auth/logout">Log out</a>
+                          </li>
+
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                              <span id="username"><%= user.fullname %></span>
+                              <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="/user/myprofile">My Profile</a>
+                              </li>
+                              <li><a href="/user/mygroup">My Group</a>
+                              </li>
+                              <li><a href="/user/myevent">My Event</a>
+                              </li>
+                            </ul>
+                          </li>
+
+                          <li>
+
+                              <% if (!user.userfd) { %>
+                                <img src="/images/default_upp.jpg" alt="..." class="img-circle portrait" ,id ="nav_user_fd">
+                              <% } else {%>
+                                <img src="<%=user.userfd%>" alt="..." class="img-circle portrait" ,id ="nav_user_fd">
+                              <% } %>
+
+                          </li>
+                        <% } %>
+                </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="row intro">
+          <div class="col-sm-8 col-sm-offset-2">
+            <h1>Beehive is</h1>
+            <p>designed for us to find <em>interesting</em> communities and events for <em>sharing</em> and <em>learning</em>.
+            </p>
+            <a href="#row-content" title="View More" class="button-link">View More ...</a>
+          </div>
+        </div>
+      </div>
+    </header>

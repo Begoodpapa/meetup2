@@ -1,0 +1,18 @@
+
+
+  <div class="container-fluid" style="margin-top: 20px">
+
+    <% if (page == "dashboard"){%>
+      <% include adminDashboard %>
+    <%} else if (page == "globalPrivilege") {%>
+      <% include adminGlobalPrivilege %>
+    <%} else if(page == "groupPrivilege"){%>
+      <% include adminGroupPrivilege %>
+    <%} else if(page == "eventPrivilege"){%>
+      <% include adminEventPrivilege %>
+    <%} else if(page == "roleManage"){%>
+      <% include adminRoleManage %>
+    <%}%>
+
+  </div>
+

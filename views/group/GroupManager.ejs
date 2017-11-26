@@ -1,0 +1,131 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="page-header">
+          <h1><%= title %></h1>
+        </div>
+        <form enctype="multipart/form-data" method="post" action="<%= action %>" id="GroupForm1" >
+            <input id="action" type="hidden" value="<%= action %>" >
+            <div class="form-group form-group-lg">
+                <label for="inputName">Name</label>
+                <input type="text" class="form-control" id="inputName" name= "Name" placeholder="Group name" required="required" value="<%= typeof group === 'undefined' ? '' : group.name %>">
+                <input id="groupID" type="hidden" value="<%= typeof group==='undefined' ? '' : group.id%>" >
+            </div>
+            <% if (action==='/newGroup') { %>
+            <div class="form-group form-group-lg">
+                <label for="fatherGroup">Belong to:</label>
+                <select id="fatherGroup" class="form-control">
+                  <option value='0'>Independent(default)</option>
+                  <% for (var i=0; i< existedGroups.length; i++) {%>
+                    <option value = <%= existedGroups[i].id %> ><%= existedGroups[i].name %></option>
+                  <% } %>
+                </select>
+            </div>
+            <% } %>
+            <div class="form-group">
+              <label for="inputDesc">Group description</label>
+              <div id="group-desc">
+                <textarea id="editor" name="Desc"  class="form-control" rows="20" cols="80" style="height: 500px;">
+                  <%- typeof group === 'undefined' ? '' : group.desc %>
+                </textarea>
+              </div>
+            </div>
+            <div class="form-group form-group-lg">
+              <label for="inputPic">Group picture </label>
+              <input id="inputPic" type="file" name="groupflag" accept="image/*">
+              <input id="cropPic" type="hidden" name="Pic" >
+              <p class="help-block">Drag the cursor to crop image as group head</p>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-8 col-xs-12">
+                  <img id="orig_img" alt="<%= typeof group === 'undefined' ? '' : group.groupfd %>" src="<%= typeof group === 'undefined' ? '' : group.groupfd %>">
+                </div>
+                <div class="col-md-4 hidden-xs">
+                  <canvas id="canvas" class="img-responsive" style="width:284px; height:258px"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-lg">
+              <button id="submit_btn" type="submit" class="btn btn-primary btn-lg" autocomplete="off">Public</button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+</div>
+
+<script language="Javascript">
+  require(['jquery','common/simple_cropper', 'kindeditor'], function($, cropper){
+    'use strict';
+    $(document).ready(function(){
+
+      var actionUrl = $('#action').val();
+      var imgUploadUrl, fileManagerJson, allowFileManager;
+
+      if( actionUrl === '/editGroup/'){
+        imgUploadUrl = '/group/uploadimage?groupID=' + $('#groupID').val();
+        fileManagerJson = '/group/imagemanager?groupid=' + $('#groupID').val();
+        allowFileManager = true;
+      }else{
+        imgUploadUrl = '/group/uploadimage?hash=' + '123';
+        fileManagerJson = '';
+        allowFileManager = false;
+      }
+
+
+      var kindeditorOption = ['source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 
+        'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+        'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'map','pagebreak',
+        'anchor', 'link', 'unlink', '|', 'about'];
+      
+      window.editor = KindEditor.create('#editor', {items: kindeditorOption, uploadJson: imgUploadUrl, allowFileManager : allowFileManager, fileManagerJson: fileManagerJson});
+
+
+      var previewer = cropper('inputPic', 'orig_img', 'canvas');
+      
+      $('#GroupForm1').submit(function(event) {
+
+        event.preventDefault();
+        var data = {};
+
+        data.Name = $('#inputName').val();
+
+        if( $('#inputPic').val() )
+        {
+          data.Pic = previewer.getCroppedData();
+          if(!data.Pic){
+            alert('Please crop image before submit ^_^');
+            return;
+          }
+        }
+
+        data.Desc = editor.html();
+
+        if(actionUrl === '/newGroup'){
+          data.Father = $('#fatherGroup').val();
+        }
+        
+        //if the action is to edit group, then need append group id
+        if(actionUrl === '/editGroup/'){
+          actionUrl = actionUrl+$('#groupID').val();
+        }
+
+        $.post(actionUrl, data, function(res){
+          location.href = res.url;
+        }, 'json')
+        .fail(function(res){
+          alert('there is something wrong'+res.responseText);
+        })
+
+        
+      });
+
+    });
+  });
+</script>

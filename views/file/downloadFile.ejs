@@ -1,0 +1,57 @@
+
+<table class='table' id='file_table'>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Desc</th>
+            <th>Uploader</th>
+            <th>Downloads</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id='file_list_body'>
+        <% _.each(files, function(file) { %>
+        <tr data-id="<%= file.id %>" data-model="file">
+            <td id="filename_<%= file.id %>"><%= file.name %></td>
+            <td id="filedecs_<%= file.id %>"><%= file.desc %></td>
+            <td id="fileowner_<%= file.id %>"><%= file.owner.fullname %></td>
+            <td id="filedownloads_<%= file.id %>"><%= file.downloads %></td>
+            <td><a class="btn btn-default" href="/group/<%=groupid%>/downloadfile?fileid=<%=file.id%>"
+                    fileid="<%= file.id %>" groupid="<%= groupid %>"
+                     tagbtn="Download" role="button">Download</a></td>
+
+        </tr>
+        <%})%>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+
+require(['jquery'], function($){
+
+  $('#file_list_body').on('click', 'a', function(){
+    var fileid = $(this).attr("fileid");
+    var groupid = $(this).attr("groupid");
+
+    if($(this).attr("tagbtn")==='Download'){
+
+      $.post('/group/'+ groupid +'/getdownloads', {fileid: fileid}, null, 'json')
+        .done(function(data){
+          if(data.error){
+          }else{
+            $('#filedownloads_'+fileid)[0].innerText = data.downloads;
+          }
+        })
+        .fail(function(){
+        })
+        .always(function(){
+        });
+    }
+
+  });
+
+});
+
+
+</script>

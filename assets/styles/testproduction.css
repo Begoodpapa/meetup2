@@ -1,0 +1,71 @@
+#find  h1{
+  font-weight: 800;
+  font-size: 800%;
+  //line-height:200%;
+  margin-top:100px;
+  text-align: left;
+}
+
+#find  h2{
+  margin-bottom: 100px;
+  text-align: left;
+}
+
+.page {
+  padding: 80px;
+}
+.jumbotron {
+	padding: 50px;	
+}
+.navbar {
+  margin-bottom:0px;
+}
+
+.find {
+    background: url(/images/find.jpeg) no-repeat;
+    background-size: cover;
+    /*background-size: 200px 200px;*/   
+    color: #fff;
+    text-align: center;
+}
+
+.meetup {
+    background: url(/images/meetup.jpeg) no-repeat;
+    background-size: cover;
+    /*background-size: 200px 200px;*/   
+    color: #fff;
+    text-align: center;
+}
+
+#random{
+  border:none;
+  border-radius:10px;
+  background-color:rgba(255, 255, 255, 0.17);
+  //border-color: rgba(255, 255, 255, 0.17);
+}
+
+#random a{
+  color: rgba(255, 255, 255, 0.67);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+#random .title {
+  background-color: rgb(184, 92, 92);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+#random .title a{
+  color: #ffffff;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.overlay {
+    padding-top: 90px;
+    background-color: rgba(161, 96, 35, 0.30);
+    min-height: 600px;
+    color: #fff;
+    
+}
+

@@ -1,0 +1,28 @@
+.entry_block{
+    background-color: #f9fcfe;
+    border:solid 1px #b8daef;
+    margin: 100px 100px;
+    padding: 30px 50px;
+    text-align: center;
+}
+
+.entry_block:hover{
+   background-color: #e2e5e6;
+}
+
+.entry_block img{
+
+    margin: auto;
+
+    width: 120px;
+    height: 120px;
+}
+
+.entry_block p{
+    color: #333;
+    margin: 16px 0 0;
+    text-align: center;
+    line-height: 1.428;
+    font-size: 16px;
+    font-weight: bold;
+}

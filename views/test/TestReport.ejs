@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h3><%= tests.length %> tests in this group</h3>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-md-12" >
+
+      <table id="testlist" class="table table-hover">
+        <thead>
+          <tr>
+            <th>TestID</th>
+            <th>Name</th>
+            <th>Paper</th>
+            <th>Owner</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="test_list_body">
+          <% _.each(tests, function(test,index){ %>
+          <tr>
+            <td><%= test.id %></td>
+            <td><%= test.name %></td>
+            <td><%= test.paper&&test.paper.name %></td>
+            <td><%= test.owner&&test.owner.fullname %></td>
+            <td><input type="button" class="btn btn-sm btn-default pull-right get_simple_report_btn" value="SimpleReport"/></td>
+            <td><input type="button" class="btn btn-sm btn-default pull-right get_detail_report_btn" value="DetailReport"/></td>          
+          </tr>
+          <% }) %>
+        </tbody>
+       </table>
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+require(['jquery'], function($){
+
+  $('#test_list_body').on('click', 'input', function(){
+
+        var me = this;
+        var testId= $(this).parent().parent().children(":first").html();
+
+        if($(this).val()==='SimpleReport'){
+          location.href = '#/test/'+testId+'/showsimplereport';
+        }else if($(this).val()==='DetailReport'){
+          location.href = '#/test/'+testId+'/showdetailreport';
+        }
+
+      });
+    
+  })
+
+
+</script>

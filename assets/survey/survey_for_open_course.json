@@ -1,0 +1,80 @@
+[
+{
+"name":"How would you rate this open course overall?: ", 
+"multichoice":"no",
+"choices":
+[
+"Excellent",
+"Very good",
+"Good",
+"Fair",
+"Poor"
+] 
+},
+
+{
+"name":"Did this program meet?: ", 
+"multichoice":"no",
+"choices":
+[
+"all of your expectations",
+"most of your expectations",
+"some of your expectations",
+"none of your expectations"
+] 
+},
+
+{
+"name":" In your opinion, what was the quality of the material?: ", 
+"multichoice":"no",
+"choices":
+[
+"Very good",
+"Good",
+"Fair",
+"Poor"
+] 
+},
+
+{
+"name":" In your opinion, what was the size of content?: ", 
+"multichoice":"no",
+"choices":
+[
+"Enough for the time allocated",
+"A bit too much",
+"Too much",
+"Not enough"
+] 
+},
+
+{
+"name":"How would you rate the trainer who delivered the course?: ", 
+"multichoice":"no",
+"choices":
+[
+"Excellent",
+"Very Good",
+"Good",
+"Fair",
+"Poor"
+] 
+},
+
+{
+"name":"He/She was?: ", 
+"multichoice":"yes",
+"choices":
+[
+"Clear",
+"Unclear",
+"Motivated, enthusiast",
+"Not motivated, not enthusiast",
+"Answered questions properly",
+"Answered questions poorly",
+"Experienced",
+"Insufficiently experienced"
+] 
+}
+
+]

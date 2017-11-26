@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h3>Galary with all photos</h3>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="album_container">
+    <% if(galary.length === 0) { %>
+      <div class="alert alert-info" role="alert">
+        No event yet! <a href="#/group/<%= gid %>/newEvent" class="alert-link">Create Event</a> right now.
+      </div>
+    <% } else { _.each(galary, function(album){ %>
+      <div class="album-item col-md-4 col-xs-12 col-sm-6">
+        <div class="thumbnail">
+          <a href="#<%= album.thumbnailhref %>">
+            <% if(album.amount !== 0) { var photoRoot = sails.config.upload.photo.root %>
+              <div class="row">
+                <div class="col-md-12 col-xs-12 col-sm-12">
+                  <% for(var i=0; i < album.photos.length && i < 6; i++) { %>
+                    <img src="<%= photoRoot + album.photos[i].thumbnail %>" style="width:32%;" class="img-rounded" alt="<%= album.photos[i].thumbnail %>"/>
+                  <% } %>
+                </div>
+              </div>
+            <% } %>
+          </a>
+          <div class="caption">
+            <a href="#<%= album.thumbnailhref %>">
+              <h3><%= album.topic %></h3>
+            </a>
+            <p>
+              <span class="badge" title="<%= album.amount %> Photos"><%= album.amount %></span>
+              <a href="#<%= album.uploadhref %>" title="upload photos" class="pull-right">
+                <span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Upload
+                <span class="sr-only">Upload photos</span>
+              </a>
+            </p>
+            <p class="help-block"><%=  album.phoDescrip %></p>
+          </div>
+        </div>
+      </div>
+    <% }) } %>
+  </div>
+</div>
+<script type="text/javascript">
+  require(['masonry'], function(Masonry){
+    $(document).ready(function(){
+      var elem = document.querySelector('#album_container');
+      var mnsry = new Masonry(elem, {
+        itemSelector: '.album-item',
+        columnWidth: '.album-item'
+      });
+    });
+  });
+</script>

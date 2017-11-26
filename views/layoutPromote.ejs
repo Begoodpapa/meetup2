@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title||'Beehive in Nokia' %></title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <!--
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+    <link href="/vender/bootstrap/dist/fonts/glyphicons-halflings-regular.woff">
+    <link rel="stylesheet" href="/vender/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vender/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/styles/animate.css">
+    <link rel="stylesheet" href="/styles/homePage.css">
+
+    <script type="text/javascript" src="/js/requirejs/require.min.js"></script>
+    <script type="text/javascript" src="/js/config.js?1ae361e3"></script>
+
+  </head>
+
+  <body>
+    <div class="main-wrapper">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login Modal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="loginModalTitle">Log In</h4>
+      </div>
+      <div class="modal-body center-block login-modal">
+          <div id="login_alert" class="alert alert-danger hidden" role="alert">
+            <dl>
+            </dl>
+          </div>
+          <% include component/login_form %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="findModal" tabindex="-1" role="dialog" aria-labelledby="Find Modal" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Find Group</h4>
+      </div>
+      <div class="modal-body">
+          <form action="/" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" name="GroupSearchString" placeholder="Search Group">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="join-us" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="modal-label">Welcome to join us</h4>
+          </div>
+          <div class="modal-body">
+            <p>If you're interested in Beehive and Node.js development, and are willing to learn new things, don't hestitate to join us - just send an email to <a href="mailto:gang-layner.wang@nokia.com?subject=I'd like to join Beehive development">Wang, Gang-Layner</a>.</p>
+            <p>We have Javascript/Node.js trainings and pair work sessions to ramp you up on Beehive development.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% include component/home_nav %>
+
+    <section class="content" role="main">
+      <%- body %>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Useful links for you</h2>
+            <ul class="links">
+              <li><a href="/aboutus" >About us</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#join-us" >Join us</a></li>
+              <li><a href="http://hzegsav40.china.nsn-net.net:4567/" >Discuss</a></li>
+              <li><a href="/thanks">Contribution</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-6 message">
+            <h3>Beehive</h3>
+            <p>This site was crafted with Nokia Ranking System Development Group and implemented by hand using <a href="http://www.sailsjs.org/" title="Sails Js" target="_blank">Sails</a> (build base on the most popular web server <a href="https://nodejs.org/" title="Nodejs" target="_blank">Nodejs</a>). The site is fully responsive and will adapt to the device you are viewing it on as we using the responsive front-end framework-<a href="http://bootstrap.evget.com/" title="Boostrap" target="_blank">Bootstrap</a>. </p>
+            <p>Special thanks to all team members for your contribution that making great design and user experiences.</p>
+          </div>
+        </div>
+        <div class="row small">
+          <div class="col-sm-12">
+            <small>Copyright © 2016, Nokia</small>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  </body>
+  <script  type="text/javascript" >
+     require(['common/homePage']);
+  </script>
+</html>

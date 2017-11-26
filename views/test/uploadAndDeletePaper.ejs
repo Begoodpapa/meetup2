@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div id="upload_paper_alert" class="alert alert-danger hidden" role="alert">
+          <dl>
+          </dl>
+        </div>
+        <form id="upload_paper_form" method="POST" role="form" enctype="multipart/form-data">
+          <legend>Upload Paper</legend>
+
+          <div class="form-group">
+            <label for="paperDesc">Paper Description</label>
+            <input type="text" class="form-control" id="paperDesc" name="paperdesc" placeholder="Paper Description">
+          </div>
+
+          <div class="form-group">
+            <label for="inputPaper">File Input</label>
+            <input id="inputPaper" type="file" name="paper">
+            <p class="help-block">The file shall be in JSON format</p>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="upload_paper_btn">Submit</button>
+        </form>
+
+        <p>
+        </br>
+        <label class="pull-right">Existed Paper</label>
+
+        <table class='table' id='paper_table'>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Desc</th>
+                    <th>Owner</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id='paper_list_body'>
+                <% _.each(papers, function(paper) { %>
+                <tr data-id="<%= paper.id %>" data-model="paper">
+                    <input type="hidden" value = <%= paper.id %>> 
+                    <td><%= paper.name %></td>
+                    <td><%= paper.desc %></td>
+                    <td><%= paper.owner.fullname %></td>
+                    <td><input type="button" class="btn btn-sm btn-default pull-right delete_paper_btn" value="Delete" /></td>
+                </tr>
+                <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" >
+
+  require.undef('common/upload_and_delete_paper');
+  require(['common/upload_and_delete_paper']);
+
+
+</script>

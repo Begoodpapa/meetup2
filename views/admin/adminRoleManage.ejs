@@ -1,0 +1,314 @@
+<div class="row">
+
+    <div id="sidebar" class="col-md-3 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/admin/showAdminDashboard"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Privilege Manage <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/admin/showAdminGlobalPrivilege"> Global Privilege</a></li>
+                <li><a href="/admin/showAdminGroupPrivilege"> Group Privilege</a></li>
+                <li><a href="/admin/showAdminEventPrivilege"> Event Privilege</a></li>                
+              </ul>
+            </li>
+            <li class="active"><a href="#"><span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span> Role Manage</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="workspace" class="col-md-9 col-xs-12" >
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <h3>Role Manage</h3>
+
+          <div class="modal fade bs-example-modal-lg" id="RoleModal" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="roleModalHead">Role</h4>
+                </div>
+
+                <form id="add_new_role_form" method="POST" role="form" enctype="multipart/form-data">
+                  <div class="modal-body">
+
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">Role Name</span>
+                        <input type="text" id="role_name_id" class="form-control" placeholder="Role Name" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <h4>Scope</h4>
+                      <div id = "role_scope_item">
+                        <label class="radio-inline"><input type="radio" name="scopeRadio" checked="true" value="global">Global</label>
+                        <label class="radio-inline"><input type="radio" name="scopeRadio" value="group">Group</label>
+                        <label class="radio-inline"><input type="radio" name="scopeRadio" value="event">Event</label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                     <h4>Right</h4>
+                      <table class="table table-striped">
+                        <tbody id = "role_right_item">
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="form-group">
+                      <div id="add_new_role_alert" class="alert alert-danger hidden" role="alert">
+                       <dl>
+                       </dl>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="addOrUpdateRole" class="btn btn-primary">Commit</button>
+                  </div>
+                </form>
+
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Role Name</th>
+                <th>Scope</th>
+                <th>Is Default Role</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id = "role_table_list">
+              <% _.each(adminRoleList, function(roleItem) { %>
+              <%if(roleItem!=null){%>
+              <tr>
+                <td><%=roleItem.name%></td>
+                <td><%=roleItem.scope%></td>
+                <td><%=roleItem.isDefaultRole%></td>
+                <td>
+                  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" rolename="<%=roleItem.name%>" id="btn_show_roledetail_<%roleItem.name%>" data-target="#RoleModal">Show Detail</button>
+                  <%if(roleItem.isDefaultRole=='no'){%>
+                  <input type="button" class="btn btn-sm btn-success" id="btm_deleteRole_<%roleItem.name%>" rolename="<%=roleItem.name%>" value="Delete" />
+                  <%}%>
+                </td>
+              </tr>
+              <%}%>
+              <%})%>
+            </tbody>
+          </table>
+
+          <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="btn_add_role" data-target="#RoleModal">Add New Role</button>
+
+
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<script language="Javascript">
+require(['jquery'], function($){
+  'use strict';
+
+  var g_role_list = [ ["deletegroup","editgroup"], 
+                      ["addgroupmember","deletegroupmember","exportgroupmember"],
+                      ["deleteevent","editevent","publishevent"],
+                      ["addeventmember","deleteeventmember","exporteventmember"],
+                      ["uploadpaper","deletepaper","gettestreport"],
+                      ["createtag","deletetag"],
+                      ["deletefile"],
+                      ["admincontrol"]];
+
+  var g_scope_list = ["global", "group", "event"]  ;
+
+  $(document).ready(function(){
+
+    var resetRoleModal = function(){
+      $('#role_name_id').val("");
+      $("#role_right_item" ).empty();
+      $("#role_scope_item" ).empty();
+    };
+
+    var showRoleDetailModal = function(role){
+      $('#role_name_id').val(role.name);
+
+      var scopeItem;
+      var tr_scope = '';
+      for (scopeItem in g_scope_list){
+
+        var scopename = g_scope_list[scopeItem];
+        if(scopename==role.scope){
+          tr_scope = tr_scope + '<label class="radio-inline"><input type="radio" name="scopeRadio" checked="true" value=\"'+ scopename +'\">'+ scopename +'</label>';
+        }else{
+          tr_scope = tr_scope + '<label class="radio-inline"><input type="radio" name="scopeRadio" value=\"'+ scopename +'\">'+ scopename +'</label>';
+        }
+      }
+      $("#role_scope_item" ).append(tr_scope);
+
+      var roleItem;
+      var roleType;
+      for (roleType in g_role_list){
+        var tr = '<tr>';
+        for (roleItem in g_role_list[roleType]){
+          var rolename = g_role_list[roleType][roleItem];
+          tr = tr + '<td><label class="checkbox-inline">';
+          tr = tr + '<input type="checkbox" id=\"'+rolename+'\"';
+          if(role[rolename]=="yes"){
+             tr = tr + ' checked ';
+          }
+          tr = tr + '>'+rolename;
+          tr = tr + '</label></td>';
+        }
+        tr = tr + '</tr>';
+        $("#role_right_item" ).append(tr);
+      }
+    };
+
+    var showRoleAddModal = function(){
+
+      var scopeItem;
+      var tr_scope = '';
+      for (scopeItem in g_scope_list){
+        var scopename = g_scope_list[scopeItem];
+        tr_scope = tr_scope + '<label class="radio-inline"><input type="radio" name="scopeRadio" value=\"'+ scopename +'\">'+ scopename +'</label>';
+      }
+      $("#role_scope_item" ).append(tr_scope);
+
+      var roleItem;
+      var roleType;
+      for (roleType in g_role_list){
+        var tr = '<tr>';
+        for (roleItem in g_role_list[roleType]){
+          var rolename = g_role_list[roleType][roleItem];
+          tr = tr + '<td><label class="checkbox-inline">';
+          tr = tr + '<input type="checkbox" id=\"'+rolename+'\">'+rolename;
+          tr = tr + '</label></td>';
+        }
+        tr = tr + '</tr>';
+        $("#role_right_item" ).append(tr);
+      }
+
+    };
+
+
+    $("[id^='btn_show_roledetail']").click(function(event){
+      var rolename = $(this).attr("rolename");
+      $('#roleModalHead').text("Role \""+rolename+"\" Detail");
+      
+      resetRoleModal();
+      hideNewRoleAlertMsg();
+
+      $.post('/admin/getAdminRoleDetail', {
+        'rolename': rolename})
+      .done(function(data){
+        if(data.error){
+          console.log(data.error);
+        }else{
+          showRoleDetailModal(data.roleDetail);
+        }
+      })
+    });
+
+    $('#btn_add_role').click(function(event){
+      $('#roleModalHead').text("Add New Role");
+      hideNewRoleAlertMsg();
+      resetRoleModal();
+      showRoleAddModal();
+    });
+
+    $("[id^='btm_deleteRole']").click(function(event){
+      var rolename = $(this).attr("rolename");
+
+      $.post('/admin/deleteAdminRole', {
+        'rolename': rolename})
+      .done(function(data){
+        if(data.error){
+          alert(data.error);
+        }else{
+          window.location.reload();
+        }
+      })
+
+    });
+
+    $('#addOrUpdateRole').click(function(event){
+      var roleObj={};
+      var btn = $(this);
+      hideNewRoleAlertMsg();
+      btn.button('loading');
+
+      /*get the name*/
+      roleObj["name"] = $('#role_name_id').val();
+
+      /*get the scope*/
+      roleObj["scope"] = $("input[name=scopeRadio]:checked").attr("value");
+
+      /*right*/
+      var roleItem;
+      var roleType;
+      for (roleType in g_role_list){
+        for (roleItem in g_role_list[roleType]){
+          var rolename = g_role_list[roleType][roleItem];
+          if($('#'+rolename).prop("checked")==true){
+            roleObj[rolename] = 'yes';
+          }else{
+            roleObj[rolename] = 'no';
+          }
+        }
+      }
+
+      /*post*/
+      $.post('/admin/addOrUpdateAdminRole', {
+        'roleObj': roleObj})
+      .done(function(data){
+        if(data.error){
+          showNewRoleAlertMsg(data.error);
+        }else{
+          $('#add_new_role_alert').modal('toggle');
+          $('#add_new_role_alert').data('modal',null);
+          window.location.reload();
+        }
+      })
+      .fail(function(){
+        showNewRoleAlertMsg();
+      })
+      .always(function(){
+        btn.button('reset');
+      });
+
+      console.log(roleObj);
+
+    });
+
+    var hideNewRoleAlertMsg = function()
+    {
+      if(!$('#add_new_role_alert').hasClass('hidden'))
+      {
+        $('#add_new_role_alert').toggleClass('hidden');
+      }
+    };
+
+    var showNewRoleAlertMsg = function(message)
+    {
+      if(!message)
+      {
+        message = 'Server or Network error.';
+      }
+      var dt = '<dt>'.concat(message, '</dt>');
+      $('#add_new_role_alert > dl').html(dt);
+      $('#add_new_role_alert').removeClass('hidden');
+    }; 
+
+  });
+});
+</script>
+

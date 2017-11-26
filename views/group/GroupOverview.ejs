@@ -1,0 +1,96 @@
+<div class="panel panel-default">
+      <div class="panel-body">
+        <div class="group-desc-div">
+          <textarea id="groupDesc" name="groupDesc"  class="form-control" rows="20" cols="80" style="height: 500px; display:none">
+            <%- group&&group.desc %>
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1 id="welcome-msg" class="panel-title">Welcome!</h1>
+      </div>
+      <div class="panel-body">
+        <div class="group-list-div">
+          <ul id="groupTab" class="nav nav-tabs">
+            <% if (RecentEvent) { %>
+            <li role="presentation" class="active" ><a href="#recent-event" data-toggle="tab">Recent Event</a></li>
+            <% } %>
+            <li role="presentation" class="<%= (RecentEvent) ? '' : 'active' %>"><a href="#coming-event" data-toggle="tab">Coming Events</a></li>
+            <li role="presentation" ><a href="#past-event" data-toggle="tab">Past Events</a></li>
+            <li role="presentation" ><a href="#group-calendar" data-toggle="tab">Calendar</a></li>
+      	  </ul>
+      	  <div id="groupTabContent" class="tab-content">
+      		<% if (RecentEvent) { %>
+          <div id="recent-event" class ="tab-pane group-event-tab active">
+           	<div id="event_title">
+      				<h2 style="margin-top:5px"> <a href="#<%= '/group/'.concat(group.id, '/event/', RecentEvent.id, '/show') %>" ><%= RecentEvent.topic %></a></h2>
+      		  </div>
+      			<div id="event-content">
+      				<div id="event_when">
+                <time itemprop="startDate" datetime="2015-03-14T09:30:00+08:00">
+                <% var begindate = RecentEvent.begindate %>
+                <h4 class="h4-date">Begin: <%= begindate.toLocaleDateString() %></h4>
+                <p class="subtext"><%= begindate.toLocaleTimeString() %></p>
+                <% var enddate = RecentEvent.enddate %>
+                <h4 class="h4-date">End: <%= enddate.toLocaleDateString() %></h4>
+                <p class="subtext"><%= enddate.toLocaleTimeString() %></p>
+                </time>
+              </div>
+              <div id="event_where">
+                <h3><%= RecentEvent.address %></h3>
+              </div>
+
+              <div id="divide-line">
+              </div>
+
+              <div class="event-desc">
+                <textarea id="recentEventDesc" name="recentEventDesc"  class="form-control" rows="20" cols="80" style="height: 500px; display:none">
+                  <%- RecentEvent&&RecentEvent.desc %>
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <% } %>
+          <div class ="tab-pane group-event-tab <%= (RecentEvent) ? '' : 'active' %>" id="coming-event">
+              <% include GroupComingEvent %>
+          </div>
+      		<div class ="tab-pane group-event-tab" id="past-event">
+        			<% include GroupPastEvent %>
+          </div>
+          <div class ="tab-pane group-event-tab" id="group-calendar" >
+              <% include GroupCalendar %>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script type="text/javascript">
+      require(['jquery', 'kindeditor', 'fullcalendar'], function($){
+
+        $(document).ready(function(){
+
+          $('#groupDesc').show();
+          KindEditor.create('#groupDesc', {items:[], readonlyMode:true, themesPath: '/styles/kindeditor/', themeType : 'readonly'});
+          $('#recentEventDesc').show();
+          KindEditor.create('#recentEventDesc', {items:[], readonlyMode:true, themesPath: '/styles/kindeditor/', themeType : 'readonly'});
+
+          $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+
+            if( $(e.target).attr("href") == '#group-calendar'){
+                $('#calendar').fullCalendar({
+                  events:  '/group/' + $('#groupID').val() + '/calendarinjson',
+                  eventColor: 'yellow',
+                });
+            }
+
+          });
+        });
+
+      });
+
+    </script>
+    

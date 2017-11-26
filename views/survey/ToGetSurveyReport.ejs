@@ -1,0 +1,35 @@
+
+<form action="" method="POST" role="form">
+  <legend>Please select the survey and the type of report</legend>
+
+  <div class="form-group">
+    <label for="surveyname">Survey Name</label>
+    <select name="surveyname" id="surveyName" class="form-control" required="required">
+      <% _.each(surveys, function(survey) { %>
+        <option value=<%=survey.id%>><%=survey.desc%></option>
+      <%})%>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="surveytype">Report Type</label>
+    <select name="surveytype" id="surveyType" class="form-control" required="required">
+        <option value=0>General Report</option>
+        <option value=1>Detail Report</option>
+    </select>
+  </div>
+
+  <button type="submit" id="getSurveyReport" class="btn btn-primary">Go</button>
+
+</form>
+
+<script type="text/javascript">
+
+   $('#getSurveyReport').click(function(event){
+    
+    event.preventDefault();
+    location.href= '/survey/'+$('#surveyName').val()+'/getreport?surveytype='+$('#surveyType').val();
+
+   })
+
+</script>

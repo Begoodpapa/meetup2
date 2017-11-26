@@ -1,0 +1,190 @@
+<div class="row">
+
+    <div id="sidebar" class="col-md-3 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/admin/showAdminDashboard"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard</a></li>
+            <li class="active dropdown" >
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Privilege Manage <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/admin/showAdminGlobalPrivilege"> Global Privilege</a></li>
+                <li><a href="/admin/showAdminGroupPrivilege"> Group Privilege</a></li>
+                <li><a href="/admin/showAdminEventPrivilege"> Event Privilege</a></li>                
+              </ul>
+            </li>
+            <li><a href="/admin/showAdminRoleManage"><span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span> Role Manage</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="workspace" class="col-md-9 col-xs-12" >
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <h3>Global Privilege</h3>
+          <div>
+
+            <ul class="nav nav-tabs">
+              <% _.each(rolelist, function(roleitem) { %>
+              <%if(roleitem!=null){%>
+                <%if(roleitem.role=="administrator"){%>
+                  <li class="active"><a data-toggle="pill" href="#<%=roleitem.role%>"><%=roleitem.role%></a></li>
+                <%}else{%>
+                  <li><a data-toggle="pill" href="#<%=roleitem.role%>"><%=roleitem.role%></a></li>
+                <%}%>
+              <%}%>
+              <%})%>
+            </ul>
+            
+            <div class="tab-content">
+
+              <% _.each(rolelist, function(roleitem) { %>
+              <%if(roleitem!=null){%>
+              <%if(roleitem.role=="administrator"){%>
+              <div id="<%=roleitem.role%>" class="tab-pane fade in active">
+              <%}else{%>
+              <div id="<%=roleitem.role%>" class="tab-pane fade">
+              <%}%> 
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% _.each(roleitem.userlist, function(userItem) { %>
+                    <%if(userItem!=null){%>
+                    <tr>
+                      <td><%=userItem.id%></td>
+                      <td><%=userItem.fullname%></td>
+                    </tr>
+                    <%}%>
+                    <%})%>
+                  </tbody>
+                </table>
+              </div>
+              <%}%>
+              <%})%>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="modal fade" id="updateGlobalPrivileges" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="gridSystemModalLabel">Update Global Privileges</h4>
+                </div>
+
+                <form id="update_global_privileges_form" method="POST" role="form" enctype="multipart/form-data">
+                  <div class="modal-body">
+
+                    <div class="form-group">
+                      <label>Choose User:</label>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">User ID</span>
+                        <input type="text" id="globPri_userid" class="form-control" placeholder="User ID" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="selPri">Select Privilege:</label>
+                      <select class="form-control" id="selPri">
+                      <% _.each(rolelist, function(roleitem) { %>
+                      <%if(roleitem!=null){%>
+                        <option><%=roleitem.role%></option>
+                      <%}%>
+                      <%})%>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <div id="update_global_privileges_alert" class="alert alert-danger hidden" role="alert">
+                       <dl>
+                       </dl>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="updateGlobalPrivilege" class="btn btn-primary">Commit</button>
+                  </div>
+              </form>
+
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+          <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#updateGlobalPrivileges">Update Global Privileges</button>
+
+
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<script language="Javascript">
+require(['jquery'], function($){
+  'use strict';
+  $(document).ready(function(){
+
+    $('#updateGlobalPrivilege').click(function(event){
+      var btn = $(this);
+      hideGlobalPrivilegeAlertMsg();
+      btn.button('loading');
+
+      $.post('/admin/updateGlobalPrivilege', {
+        'userid': $('#globPri_userid').val(),
+        'role': $('#selPri').val()})
+      .done(function(data){
+        console.log(data);
+        if(data.error){
+          showGlobalPrivilegeAlertMsg(data.error);
+        }else{
+          $('#update_global_privileges_alert').modal('toggle');
+          $('#update_global_privileges_alert').data('modal',null);
+          window.location.reload();
+        }
+      })
+      .fail(function(){
+        showGlobalPrivilegeAlertMsg();
+      })
+      .always(function(){
+        btn.button('reset');
+      });
+    });
+
+    var hideGlobalPrivilegeAlertMsg = function()
+    {
+      if(!$('#update_global_privileges_alert').hasClass('hidden'))
+      {
+        $('#update_global_privileges_alert').toggleClass('hidden');
+      }
+    };
+
+    var showGlobalPrivilegeAlertMsg = function(message)
+    {
+      if(!message)
+      {
+        message = 'Server or Network error.';
+      }
+      var dt = '<dt>'.concat(message, '</dt>');
+      $('#update_global_privileges_alert > dl').html(dt);
+      $('#update_global_privileges_alert').removeClass('hidden');
+    };
+
+  });
+});
+</script>
+

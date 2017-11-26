@@ -1,0 +1,77 @@
+
+<div class="page-header">
+  <h1><%= fullname %>,<small> welcome and please click submit button when you complete questions</small></h1>
+</div>
+<div class="jumbotron">
+  <div class="container">
+    <% _.each(questions, function(question, qid){ %>
+      <% var formid = 'page'+ qid %>
+      <form id= <%= formid %> action="" method="POST" role="form">
+        <legend><pre><%= question.name %></pre></legend>
+        <% _.each(question.choices, function(choice, index){ %>
+          <div class=<%= (question.multichoice==='yes')? "checkbox" : "radio" %> >
+            <label>
+              <% var input_name='question_'+ qid %>
+              <input name=<%= input_name %> type=<%= (question.multichoice==='yes')? "checkbox" : "radio" %> value=<%= index%> >
+              <%= choice%>
+            </label>
+          </div>
+        <% }) %> 
+      </form>
+    <% }) %>
+
+    <% var formid = 'page'+questions.length %>
+    <form id= <%= formid%> action="" method="POST" role="form">
+        <button id="submitsurvey" type="button" class="btn btn-danger" style="float:right;">Submit</button>
+        </p>
+    </form>
+    <input id="eid" type="hidden" value=<%= eid %> >
+    <input id="question_num" type="hidden" value=<%= questions.length %> >
+    <input id="amount" type="hidden" value=<%= amount %> >  
+    <input id="survey" type="hidden" value=<%= surveyid %> >
+  </div>
+</div>
+
+
+<script language='Javascript'>
+
+'use strict';
+
+require(['jquery'], function($){
+
+  $(document).ready(function(){
+
+      $('#submitsurvey').click(function(event){
+
+        var selects = [];
+        var questions_num = $('#question_num').val();
+        for (var i=0; i< questions_num; i++) {
+          var input_filter = 'input[name="question_'+i+'"]:checked';
+          var form_filter = '#page'+i;
+          var selected = [];
+          $(input_filter, form_filter).each(function(){
+            selected.push($(this).val());
+          })
+          if (selected.length===0){
+            selects.push('');
+          }else{
+            selects.push(selected.join('&'));
+          }
+        }
+        $.post('/survey/submitsurvey',{
+          'selects':JSON.stringify(selects), 
+          'eid':$('#eid').val(), 
+          'survey': $('#survey').val(), 
+          'amount': $('#amount').val()}, 
+          function(data){
+            $('body').html(data);
+          }
+        );
+
+      });
+
+  });
+
+});
+    
+</script>

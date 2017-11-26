@@ -1,0 +1,1 @@
+node_modules/.bin/sails  lift --silly

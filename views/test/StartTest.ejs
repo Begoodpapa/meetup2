@@ -1,0 +1,149 @@
+
+<form class="form-horizontal" action="" method="POST" role="form">
+  <legend>Please select one test</legend>
+  <div class="form-group">
+    <label for="testname" class="col-sm-2 control-label">Test</label>
+    <div class="col-sm-10">
+      <select name="testname" id="testname" class="form-control" required="required">
+        <% _.each(tests, function(test) { %>
+          <option value=<%=test.id%>><%=test.name%></option>
+        <%})%>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Paper name</label>
+    <div class="col-sm-10">
+      <p id="papername" class="form-control-static"></p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Answer visibile</label>
+    <div class="col-sm-10">
+      <p id="answervisible" class="form-control-static"></p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Number of questions for test</label>
+    <div class="col-sm-10">
+      <p id="numfortest" lass="form-control-static"></p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Maxmium test times</label>
+    <div class="col-sm-10">
+      <p id="limitedtimes" lass="form-control-static"></p>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Date from</label>
+    <div class="col-sm-10">
+      <p id="datefrom" class="form-control-static"></p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Date to</label>
+    <div class="col-sm-10">
+      <p id="dateto" class="form-control-static"></p>
+    </div>
+  </div>
+  
+  <button type="submit" class="btn btn-primary" id="startTest">Go</button>
+
+</form>
+
+<script type="text/javascript">
+
+require(['jquery'], function($){
+  $(document).ready(function(){
+
+    var getTestInfo = function(testid){
+      $.get('/test/ajaxGetTest?testid='+testid)
+      .done(function(data){
+        if(data.err){
+          alert(data.err);
+        }else{
+          testObj = data.test;
+          $("#papername").html(testObj.paper.name);
+          rules = JSON.parse(testObj.rules);
+          $("#answervisible").html(rules.answervisible);
+          $("#numfortest").html(rules.numfortest);
+          $("#limitedtimes").html(rules.limitedtimes);
+          $("#datefrom").html(rules.fromdate);
+          $("#dateto").html(rules.todate);
+        }
+      })
+      .fail(function(xhr, status, errorThrown){
+            console.log(status + errorThrown);
+      });
+
+    };
+
+    $('#testname').change(function(event){
+
+      var testObj;
+      var rules;
+      getTestInfo($('#testname').val());
+
+    });
+
+    //datestr format: 2016/05/3 8:20
+
+    var createDate = function(datestr){
+      var dateymd = datestr.split(' ')[0];
+      var datehm = datestr.split(' ')[1];
+      var year = dateymd.split('/')[0];
+      var month = dateymd.split('/')[1];
+      var day = dateymd.split('/')[2];
+      var hour = datehm.split(':')[0];
+      var minute = datehm.split(':')[1];
+      var newDate = new Date(year, month-1, day, hour, minute);
+      return newDate;
+    }
+
+    $('#startTest').on('click', function(event){
+      var fromdate, todate, today;
+      var parameter;
+      event.preventDefault();
+      today = new Date();
+      if($('#datefrom').html()){
+        fromdate = createDate($('#datefrom').html());
+        if (today.getTime()<fromdate.getTime()){
+          alert("Sorry, the test is not open for test yet");
+          return;
+        }
+      }
+      if($('#dateto').html()){
+        todate = createDate($('#dateto').html());
+        if(today.getTime()>todate.getTime()){
+          alert("Sorry, the test has been closed");
+          return; 
+        }  
+      }
+      parameter = 'testid='+$('#testname').val();
+      parameter = parameter + '&paper='+$("#papername").html();
+      parameter = parameter + '&answervisible='+$("#answervisible").html();
+      parameter = parameter + '&numfortest='+$('#numfortest').html();
+      parameter = parameter + '&limitedtimes='+$('#limitedtimes').html();
+      location.href = '/group/'+$('#groupID').val()+'/starttest?'+parameter;
+    
+    });
+
+    if($('#testname').val()){
+      getTestInfo($('#testname').val());
+    }
+    
+  });
+
+  
+
+});
+
+</script>

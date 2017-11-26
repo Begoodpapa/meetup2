@@ -1,0 +1,51 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h3>Contributors (based on the order of family name) </h3>
+      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>BL</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% _.each(contributors, function(contributor) { %>
+          <tr data-id="<%= contributor.name %>" data-model="contributor">
+          <td><%= contributor.name %></td>
+          <td><%= contributor.BL %></td>
+          <td><%= contributor.mail %></td>
+          </tr>
+        <% }) %>
+        </tbody>
+      </table>
+
+
+      <div class="page-header">
+        <h3>Used Open Source SW</h3>
+      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>License</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% _.each(thirdparts, function(thirdpart) { %>
+          <tr data-id="<%= thirdpart.name %>" data-model="contributor">
+          <td><%= thirdpart.name %></td>
+          <td><%= thirdpart.license %></td>
+          <td><%= thirdpart.link %></td>
+          </tr>
+        <% }) %>
+        </tbody>
+       </table>
+    </div>
+  </div>
+</div>

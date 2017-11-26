@@ -1,0 +1,169 @@
+
+<div class="page-header">
+  <h3><small> welcome visit detail report</small></h3>
+</div>
+<div class="jumbotron">
+  <div class="container">
+    <div id="svgcontainer" style="float:left">
+     <input id="testId" type="hidden" value=<%= testId %> >
+    </div>
+    <div id="questionAndChoice" style="float:left; width:400px">
+      <h4 id="choiceList"></h4>
+    </div>
+  </div>
+  <div>
+    <h5 id="questionIndex" style="float:right">question 1</h5>
+  </div>
+</div>
+<div id="nav" style="float:clear">
+  <ul class="pager">
+    <li><a id="pre" href="#">Previous</a></li>
+    <li><a id="next" href="#">Next</a></li>
+  </ul>
+</div>
+
+
+<script language='Javascript'>
+
+'use strict';
+
+require(['jquery', 'd3'], function($, d3){
+
+  $(document).ready(function(){
+
+    var renderQuestionPie = function(dataset){
+
+      //clear svg
+      var pie = d3.layout.pie();
+      var piedata = pie([]);
+      svg.selectAll("g")
+              .data(piedata)
+              .exit().remove();
+
+      //draw the new page based on dataset
+      piedata = pie(dataset);
+      var arcs = svg.selectAll("g")
+            .data(piedata)
+            .enter()
+            .append('g')
+            .attr("transform","translate("+ (width/2) +","+ (width/2) +")");
+      arcs.append("path")
+        .attr("fill",function(d,i){
+          return color(i);
+        })
+        .attr("d",function(d){
+          return arc(d);
+        });
+      arcs.append("text")
+        .attr("transform",function(d){
+          return "translate(" + arc.centroid(d) + ")";
+        })
+        .attr("text-anchor","middle")
+        .text(function(d){
+          return d.data;
+        });
+
+      
+    };
+
+    var renderQuestionContent = function(question){
+
+      $('#choiceList').html(question.name);
+
+      for(var i=0; i<question.choices.length; i++){
+        $('#choiceList').append('<h6>'+question.choices[i].name+': '+ question.choices[i].numOfSelected+'</h6>');
+      }
+      
+    };
+
+    var renderQuestionIndex = function(questionIndex){
+
+      var questionIndexForShow = questionIndex+1;
+      $('#questionIndex').html('question '+ questionIndexForShow + '/' + numOfQuestion);
+
+    };
+
+    var showQuestionReport = function(questions, questionIndex){
+
+      var question = questions[questionIndex];
+      var data_set = [];
+
+      for(var i=0; i<question.choices.length; i++){
+        if(question.choices[i].numOfSelected>0){
+          data_set.push(question.choices[i].numOfSelected);  
+        }
+      }
+      renderQuestionPie(data_set);
+      renderQuestionContent(question);
+      renderQuestionIndex(questionIndex);
+
+    };
+
+    var getQuestionReport = function(testId){
+
+      $.getJSON( '/test/'+testId+'/getdetailreport', function( data ) {
+        questions = data;
+        numOfQuestion = questions.length;
+        showQuestionReport(questions, 0);
+      });
+
+    };
+
+    var question_index=0;
+
+    var width = 400;
+    var height = 400;
+    
+    var svg = d3.select("#svgcontainer")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    var color = d3.scale.category10();
+    var outerRadius = 150; //外半径
+    var innerRadius = 50; //内半径，为0则中间没有空白
+    var arc = d3.svg.arc()  //弧生成器
+          .innerRadius(innerRadius) //设置内半径
+          .outerRadius(outerRadius);  //设置外半径
+
+    var questions;
+    var numOfQuestion=0;
+    var testId = $('#testId').val();
+
+    getQuestionReport(testId);
+    
+    $('#pre').click(function(event) {
+      /* Act on the event */
+      if(question_index>0){
+        question_index--;
+        if (question_index===0){
+          $('#pre').addClass('disabled');
+        }
+        if (question_index<numOfQuestion-1){
+          $('#next').removeClass('disabled');
+        }
+        showQuestionReport(questions, question_index);
+      }
+
+    });
+
+    $('#next').click(function(event) {
+      /* Act on the event */
+      if(question_index<numOfQuestion-1){
+        question_index++;
+        if (question_index === numOfQuestion-1){
+          $('#next').addClass('disabled');
+        }
+        if(question_index>0){
+          $('#pre').removeClass('disabled'); 
+        }
+        showQuestionReport(questions, question_index);
+      }        
+    });
+
+      
+  });
+
+});
+    
+</script>

@@ -1,0 +1,88 @@
+
+
+  <form class="form-horizontal" id="TagForm" style="padding-top:20px">
+    <div class="form-group form-group-sm">
+      <label class="col-sm-2 control-label" for="tagName">Tag Name</label>
+      <div class="col-sm-7">
+        <input class="form-control" type="text" id="tagName" name="name" >
+      </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+      <label class="col-sm-2 control-label" for="parentTag">Belong to</label>
+      <div class="col-sm-7">
+        <input class="form-control" type="text" id="parentTag" name="parent" >
+      </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+      <label class="col-sm-2 control-label" for="tagDesc">Tag Description</label>
+      <div class="col-sm-9">
+        <input class="form-control" type="text" id="tagDesc" name="desc" >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="button" id="public-tag" class="btn btn-default" form="TagForm">OK</button>
+      </div>
+    </div>
+    
+
+  </form>
+  
+
+<div id="upstrurl-div" style="display:none">
+       <span id="upstrurl" >
+         <% if(action=='new'){ %>/tag/new/<% }else{ %>/tag/update/<%=tag.id%><% } %>
+       </span>
+</div>
+
+
+<script language="Javascript">
+
+require(['jquery', 'bootstrap'], function($){
+
+  $(document).ready(function() {
+
+
+    <% if(action==='edit') { %>
+      $('#tagName').val('<%= tag.name %>');
+      $('#parentTag').val('<%= tag.uplevel %>');
+      $('#tagDesc').val('<%= tag.desc %>');
+    <% } %>
+    
+    $('#public-tag').click(function(event){
+
+      var strposturl = $('#upstrurl').text();
+      
+      var tagname = $('#tagName').val();
+      var parenttag = $('#parentTag').val();
+      var tagdesc = $('#tagDesc').val();
+      
+        
+      $.post(strposturl,{
+        tagname: tagname,
+        parenttag: parenttag,
+        tagdesc: tagdesc,
+        },function(data){
+            if (data.redirect) {
+                window.location.href = '#'+ data.redirect;
+            }
+            else{
+                $('#workspace').html(data);
+                console.log('something wrong.');
+            }
+        },'json')
+        .fail(function(xhr, textStatus, errorThrown){
+          var restxt = JSON.parse(xhr.responseText);
+          alert(restxt.error);
+        });
+
+    });
+
+});
+
+});
+
+</script>

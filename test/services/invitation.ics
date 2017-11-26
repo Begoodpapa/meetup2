@@ -1,0 +1,68 @@
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 12.0 MIMEDIR//EN
+VERSION:2.0
+METHOD:REQUEST
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VEVENT
+ATTENDEE;CN="Shu, Pengfei (Nokia - CN/Hangzhou)";RSVP=TRUE:mailto:pengfei.s
+	hu@nokia.com
+ATTENDEE;CN="I_EXT_HZ_ANYCODE_COMMUNITY_GMS DG";RSVP=TRUE:mailto:I_EXT_HZ_A
+	NYCODE_COMMUNITY@internal.nsn.com
+CATEGORIES:2Me
+CLASS:PUBLIC
+CREATED:20150324T010641Z
+DESCRIPTION:When: 2015年3月10日星期二 16:00-17:00 (UTC+08:00) Beijing
+	\, Chongqing\, Hong Kong\, Urumqi.\nWhere: The West\, 18F\n\nNote: The GMT
+	 offset above does not reflect daylight saving time adjustments.\n\n*~*~*~
+	*~*~*~*~*~*~*\n\nHi\,\n\nHappy new year! Long time no see!\n\nLet’s meet
+	 and learn from each other. This time Yan Junhui will introduce one TNSDL 
+	grammar checking way via build in script in sublime tool. \n\nAs usual\, i
+	n the beginning\, we will have short time sharing. Please everyone prepare
+	 the sharing contents.\n\nBr\nLayner\n
+DTEND:20150310T090000Z
+DTSTAMP:20150304T084326Z
+DTSTART:20150310T080000Z
+LAST-MODIFIED:20150324T010641Z
+LOCATION:The West\, 18F
+ORGANIZER;CN="Wang, Gang-Layner (Nokia - CN/Hangzhou)":mailto:gang-layner.w
+	ang@nokia.com
+PRIORITY:5
+SEQUENCE:0
+SUMMARY;LANGUAGE=zh-cn:Anycode meetup
+TRANSP:OPAQUE
+UID:040000008200E00074C5B7101A82E0080000000090E5F4BE9956D001000000000000000
+	0100000002522EF34B704DD48847F67ABFA0CB42A
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//E
+	N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange Server ve
+	rsion 08.00.0681.000">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n<!-- Converted f
+	rom text/rtf format -->\n\n<P DIR=LTR><SPAN LANG="en-us"><FONT FACE="Calib
+	ri">When: 2015</FONT></SPAN><SPAN LANG="en-us"><FONT FACE="宋体">年</FO
+	NT></SPAN><SPAN LANG="en-us"><FONT FACE="Calibri">3</FONT></SPAN><SPAN LAN
+	G="en-us"><FONT FACE="宋体">月</FONT></SPAN><SPAN LANG="en-us"><FONT FA
+	CE="Calibri">10</FONT></SPAN><SPAN LANG="en-us"><FONT FACE="宋体">日星
+	期二</FONT></SPAN><SPAN LANG="en-us"><FONT FACE="Calibri"> 16:00-17:00 (
+	UTC+08:00) Beijing\, Chongqing\, Hong Kong\, Urumqi.</FONT></SPAN></P>\n\n
+	<P DIR=LTR><SPAN LANG="en-us"><FONT FACE="Calibri">Where: The West\, 18F</
+	FONT></SPAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"><FONT FACE="Calibri">Not
+	e: The GMT offset above does not reflect daylight saving time adjustments.
+	</FONT></SPAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"><FONT FACE="Calibri">*
+	~*~*~*~*~*~*~*~*~*</FONT></SPAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"><FON
+	T FACE="Calibri">Hi\,</FONT></SPAN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"><
+	FONT FACE="Calibri">Happy new year! Long time no see!</FONT></SPAN></P>\n\
+	n<P DIR=LTR><SPAN LANG="en-us"><FONT FACE="Calibri">Let</FONT><FONT FACE="
+	Calibri">’</FONT><FONT FACE="Calibri">s meet and learn from each other. 
+	This time Yan Junhui will introduce one TNSDL grammar checking way via bui
+	ld in script in sublime tool. </FONT></SPAN></P>\n\n<P DIR=LTR><SPAN LANG=
+	"en-us"><FONT FACE="Calibri">As usual\, in the beginning\, we will have sh
+	ort time sharing. Please everyone prepare the sharing contents.</FONT></SP
+	AN></P>\n\n<P DIR=LTR><SPAN LANG="en-us"></SPAN></P>\n\n<P DIR=LTR><SPAN L
+	ANG="en-us"><FONT FACE="Calibri">Br</FONT></SPAN></P>\n\n<P DIR=LTR><SPAN 
+	LANG="en-us"><FONT FACE="Calibri">Layner</FONT></SPAN><SPAN LANG="en-us"><
+	/SPAN></P>\n\n</BODY>\n</HTML>
+X-MICROSOFT-CDO-BUSYSTATUS:TENTATIVE
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-CDO-INTENDEDSTATUS:BUSY
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
+X-MS-OLK-CONFTYPE:0
+END:VEVENT
+END:VCALENDAR
