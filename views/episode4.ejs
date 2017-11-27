@@ -9,8 +9,8 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <meta name=ProgId content=Word.Document>
 <meta name=Generator content="Microsoft Word 15">
 <meta name=Originator content="Microsoft Word 15">
-<link rel=File-List href="episode4_files/filelist.xml">
-<link rel=Edit-Time-Data href="episode4_files/editdata.mso">
+<link rel=File-List href="episode4.ejs_files/filelist.xml">
+<link rel=Edit-Time-Data href="episode4.ejs_files/editdata.mso">
 <!--[if !mso]>
 <style>
 v\:* {behavior:url(#default#VML);}
@@ -19,11 +19,13 @@ w\:* {behavior:url(#default#VML);}
 .shape {behavior:url(#default#VML);}
 </style>
 <![endif]-->
-<link rel=themeData href="episode4_files/themedata.thmx">
-<link rel=colorSchemeMapping href="episode4_files/colorschememapping.xml">
+<link rel=themeData href="episode4.ejs_files/themedata.thmx">
+<link rel=colorSchemeMapping href="episode4.ejs_files/colorschememapping.xml">
 <!--[if gte mso 9]><xml>
  <w:WordDocument>
   <w:View>Print</w:View>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
   <w:TrackMoves>false</w:TrackMoves>
   <w:TrackFormatting/>
   <w:ValidateAgainstSchemas/>
@@ -664,7 +666,7 @@ w\:* {behavior:url(#default#VML);}
 	mso-font-signature:647 0 0 0 159 0;}
 @font-face
 	{font-family:ï¿½ï¿½ï¿½ï¿½;
-	mso-font-alt:ËÎÌå;
+	mso-font-alt:ï¿½ï¿½ï¿½ï¿½;
 	mso-font-charset:134;
 	mso-generic-font-family:auto;
 	mso-font-pitch:variable;
@@ -764,6 +766,12 @@ p.msopapdefault, li.msopapdefault, div.msopapdefault
 span.apple-converted-space
 	{mso-style-name:apple-converted-space;
 	mso-style-unhide:no;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
 .MsoChpDefault
 	{mso-style-type:export-only;
 	mso-default-props:yes;
@@ -882,7 +890,7 @@ ul
 	font-family:"Calibri",sans-serif;}
 </style>
 <![endif]--><!--[if gte mso 9]><xml>
- <o:shapedefaults v:ext="edit" spidmax="1036"/>
+ <o:shapedefaults v:ext="edit" spidmax="1026"/>
 </xml><![endif]--><!--[if gte mso 9]><xml>
  <o:shapelayout v:ext="edit">
   <o:idmap v:ext="edit" data="1"/>
@@ -910,8 +918,9 @@ ul
   style='mso-bidi-font-weight:normal'><u><span lang=EN-US>Work Episode 4<o:p></o:p></span></u></b></p>
   <p class=MsoNormal style='line-height:105%'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;mso-para-margin-top:.5gd;
-  line-height:105%'><span lang=EN-US>Software design and implementation for QoS
-  strategy and a high-efficiency network packet generating tool(PKTGEN)</span></p>
+  line-height:105%'><span lang=EN-US>Software design and implementation for <span
+  class=SpellE>QoS</span> strategy and a high-efficiency network packet
+  generating tool(PKTGEN)</span></p>
   <p class=MsoNormal style='line-height:105%'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='line-height:105%'><b style='mso-bidi-font-weight:
   normal'><u><span lang=EN-US>Overview of the project<o:p></o:p></span></u></b></p>
@@ -944,102 +953,60 @@ ul
   <p class=MsoNormal style='line-height:105%'><b style='mso-bidi-font-weight:
   normal'><span lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>C.E
   3.1.1</span></b><span lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:
-  105%'> Quality of Service (QoS) is an essential feature of a professional
-  telecommunication product. It means that a product should schedule and
-  transmit mobile phone traffic e.g. voice call / data call based on traffic
-  priority and network bandwidth. QoS is important to ensure mobile phone end
-  user have an excellent experience on their daily usage, or else they can
-  directly perceive network latency, voice jitter, unstable download speed etc.
-  Along with explosive increasing of smart phone traffic in recent years, it
-  raises new challenge to design more accurate and smart QoS strategy for a
+  105%'> Quality of Service (<span class=SpellE>QoS</span>) is an essential
+  feature of a professional telecommunication product. It means that a product
+  should schedule and transmit mobile phone traffic e.g. voice call / data call
+  based on traffic priority and network bandwidth. <span class=SpellE>QoS</span>
+  is important to ensure mobile phone end user have an excellent experience on
+  their daily usage, or else they can directly perceive network latency, voice
+  jitter, unstable download speed etc. Along with explosive increasing of smart
+  phone traffic in recent years, it raises new challenge to design more
+  accurate and smart <span class=SpellE>QoS</span> strategy for a
   telecommunication product.<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;mso-para-margin-top:.5gd;
   line-height:105%'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
   style='mso-bidi-font-size:9.0pt;line-height:105%'>C.E 3.1.2 </span></b><span
   lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>One Radio
   Network Controller (RNC) manages hundreds to thousands of Base Stations, and
-  each mobile phone connects to Base Stations by wireless link. Today, users'
-  behaviour could varies quite differently among different Base Stations, so
-  one of enhanced QoS strategies is to apply Base-Station-Specified data
-  scheduling and prioritization. Main target of this project is to design
-  Base-Station-Specified QoS in RNC product to fine adjust each Base Station's
-  schedule and priority based on their different customer behaviours. I was one
-  of major contributors to this project and individually designed a traffic
-  shaping mechanism named Leaky Bucket Shaper.<b style='mso-bidi-font-weight:
+  each mobile phone connects to Base Stations by wireless link. Today, users' <span
+  class=SpellE>behaviour</span> could varies quite differently among different
+  Base Stations, so one of enhanced <span class=SpellE>QoS</span> strategies is
+  to apply Base-Station-Specified data scheduling and prioritization. Main
+  target of this project is to design Base-Station-Specified <span
+  class=SpellE>QoS</span> in RNC product to fine adjust each Base Station's
+  schedule and priority based on their different customer <span class=SpellE>behaviours</span>.
+  I was one of major contributors to this project and individually designed a
+  traffic shaping mechanism named Leaky Bucket Shaper.<b style='mso-bidi-font-weight:
   normal'><o:p></o:p></b></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;mso-para-margin-top:.5gd;
   line-height:105%'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
   style='mso-bidi-font-size:9.0pt;line-height:105%'>CE 3.1.3</span></b><span
-  lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'> QoS schedules
-  each segment of a variety of mobile phone traffic such as VoIP, data call,
-  streaming video etc. So, for testing purpose it requires some professional
-  hardware/tool to generate testing traffic to verify QoS functionality. Before
-  emergence of a pure internal software tool named PKTGEN (means traffic
-  generator), our R&amp;D team always use some 3<sup>rd</sup> party hardware
-  e.g. TESTCENTER (by Spirent) to simulate packet generation in QoS related
-  features integration. TESTCENTER is powerful and professional, but it is very
-  expensive and either has low utilization efficiency, because it has limited
-  Ethernet ports while each port can be only occupied by one test suite at a
-  time. Below picture demonstrates how PKTGEN initiates packets generation, and
-  eventually receives the packets by itself. The numbers and arrows present
-  flow of packets in the whole procedure. With this innovation idea, testers
-  could get rid of TESTCENTER and use PKTGEN to verify QoS functionality as
-  well as do traffic throughput testing for general purpose e.g. to verify
-  other protocol types of packets transmitting.<o:p></o:p></span></p>
+  lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'> <span
+  class=SpellE>QoS</span> schedules each segment of a variety of mobile phone
+  traffic such as VoIP, data call, streaming video etc. So, for testing purpose
+  it requires some professional hardware/tool to generate testing traffic to
+  verify <span class=SpellE>QoS</span> functionality. Before emergence of a
+  pure internal software tool named PKTGEN (means traffic generator), our
+  R&amp;D team always use some 3<sup>rd</sup> party hardware e.g. TESTCENTER
+  (by Spirent) to simulate packet generation in <span class=SpellE>QoS</span>
+  related features integration. TESTCENTER is powerful and professional, but it
+  is very expensive and either has low utilization efficiency, because it has
+  limited Ethernet ports while each port can be only occupied by one test suite
+  at a time. Below picture demonstrates how PKTGEN initiates packets
+  generation, and eventually receives the packets by itself. The numbers and
+  arrows present flow of packets in the whole procedure. With this innovation
+  idea, testers could get rid of TESTCENTER and use PKTGEN to verify <span
+  class=SpellE>QoS</span> functionality as well as do traffic throughput
+  testing for general purpose e.g. to verify other protocol types of packets
+  transmitting.<o:p></o:p></span></p>
   <p class=MsoNormal align=center style='text-align:center;line-height:105%'><b><u><span
   lang=EN-NZ style='mso-ansi-language:EN-NZ'><o:p><span style='text-decoration:
    none'>&nbsp;</span></o:p></span></u></b></p>
   <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
   margin-bottom:0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:
   .5gd;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
-  1.0gd;mso-para-margin-bottom:.0001pt;text-align:center;line-height:105%'><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><span style='mso-element:field-begin;mso-field-lock:yes'></span><span
-  style='mso-spacerun:yes'>&nbsp;</span>SHAPE <span
-  style='mso-spacerun:yes'>&nbsp;</span>\* MERGEFORMAT <span style='mso-element:
-  field-separator'></span></span><![endif]--><span lang=EN-US><!--[if gte vml 1]><v:rect
-   id="Picture_x0020_4" o:spid="_x0000_s1035" style='width:421.5pt;height:212.25pt;
-   visibility:visible;mso-wrap-style:square;mso-left-percent:-10001;
-   mso-top-percent:-10001;mso-position-horizontal:absolute;
-   mso-position-horizontal-relative:char;mso-position-vertical:absolute;
-   mso-position-vertical-relative:line;mso-left-percent:-10001;
-   mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="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
-AAAA
-" filled="f" stroked="f">
-   <o:lock v:ext="edit" aspectratio="t"/>
-   <w:wrap type="none"/>
-   <w:anchorlock/>
-  </v:rect><![endif]--><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+  1.0gd;mso-para-margin-bottom:.0001pt;text-align:center;line-height:105%'><span
+  lang=EN-US style='mso-no-proof:yes'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
    coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
    filled="f" stroked="f">
    <v:stroke joinstyle="miter"/>
@@ -1059,11 +1026,11 @@ AAAA
    </v:formulas>
    <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
    <o:lock v:ext="edit" aspectratio="t"/>
-  </v:shapetype><![endif]--></span><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><v:shape id="_x0000_i1034" type="#_x0000_t75" style='width:421.5pt;
-   height:212.25pt'>
-   <v:imagedata croptop="-65520f" cropbottom="65520f"/>
-  </v:shape><span style='mso-element:field-end'></span></span><![endif]--><span
+  </v:shapetype><v:shape id="Picture_x0020_11" o:spid="_x0000_i1034" type="#_x0000_t75"
+   style='width:468pt;height:236.4pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="episode4.ejs_files/image001.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img width=624 height=315
+  src="../../../../../imgs/homepageimg/works/4/1.png" v:shapes="Picture_x0020_11"><![endif]></span><span
   lang=EN-US style='font-size:9.0pt;line-height:105%'><o:p></o:p></span></p>
   <p class=MsoNormal align=center style='margin-top:6.0pt;mso-para-margin-top:
   .5gd;text-align:center;line-height:105%'><b style='mso-bidi-font-weight:normal'><span
@@ -1075,15 +1042,15 @@ AAAA
   style='mso-bidi-font-size:9.0pt;line-height:105%'>C.E 3.1.4 </span></b><span
   lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>After
   introduction of PKTGEN, it dramatically reduces usage rate of TESTCENTER in
-  many scenarios, because PKTGEN provides similar functionality and behaviour
-  as TESTCENTER. Business case is that it saves R&amp;D cost for more than
-  100,000USD per year.<o:p></o:p></span></p>
+  many scenarios, because PKTGEN provides similar functionality and <span
+  class=SpellE>behaviour</span> as TESTCENTER. Business case is that it saves
+  R&amp;D cost for more than 100,000USD per year.<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;mso-para-margin-top:.5gd;
   line-height:105%'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
   style='mso-bidi-font-size:9.0pt;line-height:105%'>C.E 3.1.5 </span></b><span
   lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>PKTGEN also
-  makes QoS testing easy, and as internal software it has better functionality
-  scalability than physical hardware like TESTCENTER. <o:p></o:p></span></p>
+  makes <span class=SpellE>QoS</span> testing easy, and as internal software it
+  has better functionality scalability than physical hardware like TESTCENTER. <o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;mso-para-margin-top:.5gd;
   line-height:105%'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
   style='mso-bidi-font-size:9.0pt;line-height:105%'>C.E 3.1.6 </span></b><span
@@ -1116,18 +1083,18 @@ AAAA
   lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>As<b
   style='mso-bidi-font-weight:normal'> </b>one of 8-person sized team member<b
   style='mso-bidi-font-weight:normal'>, </b>I was a key person on contributing
-  full set of Base-Station-Specified<b style='mso-bidi-font-weight:normal'> </b>QoS
-  solution, and individually owned Leaky Bucket design and corresponding code
-  implementation.<o:p></o:p></span></p>
+  full set of Base-Station-Specified<b style='mso-bidi-font-weight:normal'> </b><span
+  class=SpellE>QoS</span> solution, and individually owned Leaky Bucket design
+  and corresponding code implementation.<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;mso-para-margin-top:.5gd;
   line-height:105%'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
   style='mso-bidi-font-size:9.0pt;line-height:105%'>CE 3.2.2 </span></b><span
   lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>I<b
   style='mso-bidi-font-weight:normal'> </b>deployed one static code analysis
-  tool 'Klocwork' to this project, and then recommended to all other traffic
-  transport responsible teams to use. I urged people to keep a good habit to
-  check and fix Klocwork findings regularly.<b style='mso-bidi-font-weight:
-  normal'><o:p></o:p></b></span></p>
+  tool '<span class=SpellE>Klocwork</span>' to this project, and then
+  recommended to all other traffic transport responsible teams to use. I urged
+  people to keep a good habit to check and fix <span class=SpellE>Klocwork</span>
+  findings regularly.<b style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;mso-para-margin-top:.5gd;
   line-height:105%'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
   style='mso-bidi-font-size:9.0pt;line-height:105%'>CE3.2.3 </span></b><span
@@ -1161,8 +1128,8 @@ AAAA
   lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'> I designed and
   developed 2 biggest functionalities of PKTGEN, and exposed PKTGEN
   functionalities by a man-machine interface (i.e. a command line tool) to
-  setup testing, i.e. to config QoS parameters, generate desired traffic and
-  produce a testing report.<o:p></o:p></span></p>
+  setup testing, i.e. to config <span class=SpellE>QoS</span> parameters,
+  generate desired traffic and produce a testing report.<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;mso-para-margin-top:.5gd;
   line-height:105%'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
   style='mso-bidi-font-size:9.0pt;line-height:105%'>C.E 3.2.5</span></b><span
@@ -1208,9 +1175,9 @@ AAAA
   <p class=MsoNormal style='line-height:105%'><b style='mso-bidi-font-weight:
   normal'><u><span lang=EN-US><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></span></u></b></p>
   <p class=MsoNormal style='line-height:105%'><b style='mso-bidi-font-weight:
-  normal'><u><span lang=EN-US>Complexities (using the complexity
-  definitions)<span style='mso-spacerun:yes'>&nbsp;&nbsp; </span>and challenges
-  of the project <o:p></o:p></span></u></b></p>
+  normal'><u><span lang=EN-US>Complexities (using the complexity <span
+  class=GramE>definitions)<span style='mso-spacerun:yes'>&nbsp;&nbsp; </span></span>and
+  challenges of the project <o:p></o:p></span></u></b></p>
   <p class=MsoNormal style='line-height:105%'><b style='mso-bidi-font-weight:
   normal'><u><span lang=EN-US><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></span></u></b></p>
   <p class=MsoNormal style='margin-top:6.0pt;mso-para-margin-top:.5gd;
@@ -1218,13 +1185,14 @@ AAAA
   style='mso-bidi-font-size:9.0pt;line-height:105%'>CE 3.3.1</span></b><span
   lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'> As described in
   <b style='mso-bidi-font-weight:normal'>C.E 3.1.1</b>,<b style='mso-bidi-font-weight:
-  normal'> </b>how to apply additional QoS strategy to each individual Base Station
-  is a new requirement. It has no obvious solution at the beginning, and we
-  can't get useful reference materials from competitors on modelling this QoS
-  strategy. If we could provide an excellent solution to this, Nokia product
-  will be a differentiator in the market, which might bring our company more
-  business revenue by this feature, because it will help Mobile Network
-  Operators to obtain more customer (their mobile phone users) satisfaction. <o:p></o:p></span></p>
+  normal'> </b>how to apply additional <span class=SpellE>QoS</span> strategy
+  to each individual Base Station is a new requirement. It has no obvious solution
+  at the beginning, and we can't get useful reference materials from
+  competitors on modelling this <span class=SpellE>QoS</span> strategy. If we
+  could provide an excellent solution to this, Nokia product will be a
+  differentiator in the market, which might bring our company more business
+  revenue by this feature, because it will help Mobile Network Operators to
+  obtain more customer (their mobile phone users) satisfaction. <o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;mso-para-margin-top:.5gd;
   line-height:105%'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
   style='mso-bidi-font-size:9.0pt;line-height:105%'>C.E.3.3.2</span></b><span
@@ -1234,9 +1202,9 @@ AAAA
   significant gap to expected maximum traffic throughput which was specified as
   10 Gb/s. Another big problem was that PKTGEN was unable to generate traffic
   in an even shape. Instead, the throughput benchmark jumped upside and down,
-  and at some points it even fell down dramatically. Tester expected to see
-  PKTGEN could generate traffic with even speed, and could reach 10Gb/s
-  benchmark.<o:p></o:p></span></p>
+  and at some points it even <span class=GramE>fell down</span> dramatically.
+  Tester expected to see PKTGEN could generate traffic with even speed, and
+  could reach 10Gb/s benchmark.<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;mso-para-margin-top:.5gd;
   line-height:105%'><span lang=EN-US style='mso-bidi-font-size:9.0pt;
   line-height:105%'>TESTCENTER didn't have any of these problems. It could work
@@ -1256,14 +1224,15 @@ AAAA
   source bring mutual benefit to both software owner and contributors. At that
   time, Nokia has not yet too much involvement in any external open source
   project, but company recommended software engineers 'open' their software
-  code to whole company to practise open source activities. One more reason is
-  that internal open source project could attract more software contributors to
-  continuously improve software quality, enrich functionality as well as
-  improve communication. PKTGEN was expected a widely-used testing tool and new
-  features delivery is not fast because I was the only main software developer.
-  Thus, PKTGEN became one internal open source project and I was nominated as
-  project coordinator. But, how to deploy open source culture and engineering
-  practice is a challenge to me.<b style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+  code to whole company to <span class=SpellE>practise</span> open source
+  activities. One more reason is that internal open source project could
+  attract more software contributors to continuously improve software quality,
+  enrich functionality as well as improve communication. PKTGEN was expected a
+  widely-used testing tool and new features delivery is not fast because I was
+  the only main software developer. Thus, PKTGEN became one internal open
+  source project and I was nominated as project coordinator. But, how to deploy
+  open source culture and engineering practice is a challenge to me.<b
+  style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
   <p class=MsoNormal style='line-height:105%'><b style='mso-bidi-font-weight:
   normal'><u><span lang=EN-US><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></span></u></b></p>
   <p class=MsoNormal style='line-height:105%'><b style='mso-bidi-font-weight:
@@ -1287,13 +1256,14 @@ AAAA
   line-height:105%'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
   style='mso-bidi-font-size:9.0pt;line-height:105%'>CE3.4.1</span></b><span
   lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'> I was a main
-  contributor for Base-Station-Specific QoS overall strategy which is described
-  in<b style='mso-bidi-font-weight:normal'> CE3.3.1, </b>and individually
-  responsible for design<b style='mso-bidi-font-weight:normal'> Leaky Bucket
-  Shaper</b> (will be elaborated in <b style='mso-bidi-font-weight:normal'>CE3.4.1.5</b>).
-  Based on my former experience and some research articles from similar QoS
-  solution in our industry, I had many ideas in my mind. I contributed below
-  ideas to the team and led others to finally jointly define a IPBR level QoS
+  contributor for Base-Station-Specific <span class=SpellE>QoS</span> overall
+  strategy which is described in<b style='mso-bidi-font-weight:normal'>
+  CE3.3.1, </b>and individually responsible for design<b style='mso-bidi-font-weight:
+  normal'> Leaky Bucket Shaper</b> (will be elaborated in <b style='mso-bidi-font-weight:
+  normal'>CE3.4.1.5</b>). Based on my former experience and some research
+  articles from similar <span class=SpellE>QoS</span> solution in our industry,
+  I had many ideas in my mind. I contributed below ideas to the team and led
+  others to finally jointly define a IPBR level <span class=SpellE>QoS</span>
   strategy -<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
@@ -1307,58 +1277,13 @@ AAAA
   <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
   margin-bottom:0cm;margin-left:55.0pt;margin-bottom:.0001pt;mso-para-margin-top:
   .5gd;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
-  5.0gd;mso-para-margin-bottom:.0001pt;text-align:center;line-height:105%'><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><span style='mso-element:field-begin;mso-field-lock:yes'></span><span
-  style='mso-spacerun:yes'>&nbsp;</span>SHAPE <span
-  style='mso-spacerun:yes'>&nbsp;</span>\* MERGEFORMAT <span style='mso-element:
-  field-separator'></span></span><![endif]--><span lang=EN-US><!--[if gte vml 1]><v:rect
-   id="Picture_x0020_5" o:spid="_x0000_s1034" style='width:330.75pt;height:223.5pt;
-   visibility:visible;mso-wrap-style:square;mso-left-percent:-10001;
-   mso-top-percent:-10001;mso-position-horizontal:absolute;
-   mso-position-horizontal-relative:char;mso-position-vertical:absolute;
-   mso-position-vertical-relative:line;mso-left-percent:-10001;
-   mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="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
-AAAA
-" filled="f" stroked="f">
-   <o:lock v:ext="edit" aspectratio="t"/>
-   <w:wrap type="none"/>
-   <w:anchorlock/>
-  </v:rect><![endif]--></span><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><v:shape id="_x0000_i1033" type="#_x0000_t75" style='width:330.75pt;
-   height:223.5pt'>
-   <v:imagedata croptop="-65520f" cropbottom="65520f"/>
-  </v:shape><span style='mso-element:field-end'></span></span><![endif]--><span
+  5.0gd;mso-para-margin-bottom:.0001pt;text-align:center;line-height:105%'><span
+  lang=EN-US style='font-size:9.0pt;line-height:105%;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+   id="Picture_x0020_12" o:spid="_x0000_i1033" type="#_x0000_t75" style='width:415.8pt;
+   height:282pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="episode4.ejs_files/image003.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img width=554 height=376
+  src="../../../../../imgs/homepageimg/works/4/2.png" v:shapes="Picture_x0020_12"><![endif]></span><span
   lang=EN-US style='font-size:9.0pt;line-height:105%'><o:p></o:p></span></p>
   <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
   margin-bottom:0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:
@@ -1375,85 +1300,43 @@ AAAA
   3.4.1.2</span></b><span lang=EN-US style='mso-bidi-font-size:9.0pt;
   line-height:105%'> I pointed that team target was to have
   Base-Station-Specific (equivalent to <b style='mso-bidi-font-weight:normal'>IPBR</b>)
-  QoS in addition to current physical/hardware interface level QoS. This means
-  that an overall interface level (means the physical port towards all BTSes)
-  has been existing before we introduced IPBR level of QoS, and IPBR QoS is to
-  further satisfy recent changes to user behavior. For example, urban area base
-  stations have much more short link data connection than rural areas; in dense
-  area, data call need to reserve more bandwidth than voice call; in a stadium,
-  stream video traffic is the top one when there is a match; in a rural area,
-  most of traffic type are voice calls and they have less possibility to have
-  traffic burst at one time point. All of those need to schedule and prioritize
-  correctly and smartly based on character of base station categories (defined
-  by geo-location, user behaviour etc.).<o:p></o:p></span></p>
+  <span class=SpellE>QoS</span> in addition to current physical/hardware
+  interface level <span class=SpellE>QoS</span>. This means that an overall
+  interface level (means the physical port towards all <span class=SpellE>BTSes</span>)
+  has been existing before we introduced IPBR level of <span class=SpellE>QoS</span>,
+  and IPBR <span class=SpellE>QoS</span> is to further satisfy recent changes
+  to user behavior. For example, urban area base stations have much more short
+  link data connection than rural areas; in dense area, data call need to
+  reserve more bandwidth than voice call; in a stadium, stream video traffic is
+  the top one when there is a match; in a rural area, most of traffic type are
+  voice calls and they have less possibility to have traffic burst at one time
+  point. All of those need to schedule and prioritize correctly and smartly
+  based on character of base station categories (defined by geo-location, user <span
+  class=SpellE>behaviour</span> etc.).<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   6.0pt;margin-left:11.0pt;mso-para-margin-top:.5gd;mso-para-margin-right:0cm;
   mso-para-margin-bottom:.5gd;mso-para-margin-left:1.0gd;line-height:105%'><b
   style='mso-bidi-font-weight:normal'><span lang=EN-US style='mso-bidi-font-size:
   9.0pt;line-height:105%'>CE3.4.1.3</span></b><span lang=EN-US
-  style='mso-bidi-font-size:9.0pt;line-height:105%'> I raised ideas that 1) we
-  need to have separate scheduling queue in software for each base station. 2)
-  traffic priority should be identified by some tag in the packet, and better to
-  re-use current existing members in IP protocol structure (RNC transmits pure
-  IP traffic). 3) In addition to packets prioritization, we need to have
+  style='mso-bidi-font-size:9.0pt;line-height:105%'> I raised ideas that 1) we need
+  to have separate scheduling queue in software for each base station. 2)
+  traffic priority should be identified by some tag in the packet, and better
+  to re-use current existing members in IP protocol structure (RNC transmits
+  pure IP traffic). 3) In addition to packets prioritization, we need to have
   traffic shaping against guaranteed bandwidth of each BTS to maximize
   bandwidth utilization as well as try to reduce packet retransmission in case
   traffic volume exceeds the threshold. 4) need to consider some smart flow
   control mechanism to avoid network congestion happens. Eventually, we had
-  such a model as complete solution for IPBR level QoS -<o:p></o:p></span></p>
+  such a model as complete solution for IPBR level <span class=SpellE>QoS</span>
+  -<o:p></o:p></span></p>
   <p class=MsoNormal align=center style='margin-left:11.0pt;mso-para-margin-left:
-  1.0gd;text-align:center;line-height:105%'><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><span style='mso-element:field-begin;mso-field-lock:yes'></span><span
-  style='mso-spacerun:yes'>&nbsp;</span>SHAPE <span
-  style='mso-spacerun:yes'>&nbsp;</span>\* MERGEFORMAT <span style='mso-element:
-  field-separator'></span></span><![endif]--><span lang=EN-US><!--[if gte vml 1]><v:rect
-   id="Picture_x0020_6" o:spid="_x0000_s1033" style='width:423.75pt;height:5in;
-   visibility:visible;mso-wrap-style:square;mso-left-percent:-10001;
-   mso-top-percent:-10001;mso-position-horizontal:absolute;
-   mso-position-horizontal-relative:char;mso-position-vertical:absolute;
-   mso-position-vertical-relative:line;mso-left-percent:-10001;
-   mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="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
-AAA=
-" filled="f" stroked="f">
-   <o:lock v:ext="edit" aspectratio="t"/>
-   <w:wrap type="none"/>
-   <w:anchorlock/>
-  </v:rect><![endif]--></span><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><v:shape id="_x0000_i1032" type="#_x0000_t75" style='width:423.75pt;
-   height:5in'>
-   <v:imagedata croptop="-65520f" cropbottom="65520f"/>
-  </v:shape><span style='mso-element:field-end'></span></span><![endif]--><span
+  1.0gd;text-align:center;line-height:105%'><span lang=EN-US style='mso-bidi-font-size:
+  9.0pt;line-height:105%;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_13"
+   o:spid="_x0000_i1032" type="#_x0000_t75" style='width:468pt;height:397.2pt;
+   visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="episode4.ejs_files/image005.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img width=624 height=530
+  src="../../../../../imgs/homepageimg/works/4/3.png" v:shapes="Picture_x0020_13"><![endif]></span><span
   lang=EN-US style='font-size:10.5pt;mso-bidi-font-size:11.0pt;line-height:
   105%'><o:p></o:p></span></p>
   <p class=MsoNormal style='line-height:105%'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
@@ -1462,34 +1345,35 @@ AAA=
   mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
   1.0gd;mso-para-margin-bottom:.0001pt;line-height:105%'><span lang=EN-US
   style='mso-bidi-font-size:9.0pt;line-height:105%'>Topmost rectangle was
-  already existing QoS strategy, what we added is IPBR level QoS strategy
-  according to the reason mentioned upper. The downmost oval illustrates
-  details of IPBR level QoS solution which applies to each IPBR. <o:p></o:p></span></p>
+  already existing <span class=SpellE>QoS</span> strategy, what we added is
+  IPBR level <span class=SpellE>QoS</span> strategy according to the reason
+  mentioned upper. The downmost oval illustrates details of IPBR level <span
+  class=SpellE>QoS</span> solution which applies to each IPBR. <o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
   mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
   1.0gd;mso-para-margin-bottom:.0001pt;line-height:105%'><b style='mso-bidi-font-weight:
   normal'><span lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>CE
   3.4.1.4 </span></b><span lang=EN-US style='mso-bidi-font-size:9.0pt;
-  line-height:105%'>Elaboration of IPBR level QoS: Step 1, packets can be
-  identified as 6 categories per DSCP tag defined in TOS of IP protocol header.
-  Among them EF is special because it represents Expedited Forwarding which
-  should be granted with highest priority. One EF packets example is Voice over
-  IP traffic which deserves top priority because it is voice call. Step 2,
-  those categorized packets are enqueued to corresponding queues (EF, AF1~4 and
-  BE). Step 3, WFQ algorithm will dequeue AF1~4 and BE packets based on weights
-  of each queue. Step 4, a Strict Priority (SP) scheduler will always sending
-  out all EF packets then schedule WFQ packets which has been all prioritized
-  in step 3. This means that SP's logic is always give priority to EF queue as
-  long as there is pending packets inside it, and WFQ packets can be only
-  schedule once EF queue is empty. Step 5, all mixed traffic should be shaped
-  against Base Station guaranteed bandwidth before sending, which is
-  coordinated by one mechanism called Leaky Bucket. Basically, Leaky Bucket
-  detects with packets real sending rate, and use a 'bucket' to cache over
-  limit packets. When there is a chance (means sending rate lowered than limit)
-  to send out 'bucket' packets and the 'bucket' is still not full, those
-  packets will be scheduled to send out. But if bucket is full then it starts
-  to leak packets. <o:p></o:p></span></p>
+  line-height:105%'>Elaboration of IPBR level <span class=SpellE>QoS</span>:
+  Step 1, packets can be identified as 6 categories per DSCP tag defined in TOS
+  of IP protocol header. Among them EF is special because it represents
+  Expedited Forwarding which should be granted with highest priority. One EF
+  packets example is Voice over IP traffic which deserves top priority because
+  it is voice call. Step 2, those categorized packets are enqueued to
+  corresponding queues (EF, AF1~4 and BE). Step 3, WFQ algorithm will dequeue
+  AF1~4 and BE packets based on weights of each queue. Step 4, a Strict
+  Priority (SP) scheduler will always sending out all EF packets then schedule
+  WFQ packets which has been all prioritized in step 3. This means that SP's
+  logic is always give priority to EF queue <span class=GramE>as long as</span>
+  there is pending packets inside it, and WFQ packets can be only schedule once
+  EF queue is empty. Step 5, all mixed traffic should be shaped against Base
+  Station guaranteed bandwidth before sending, which is coordinated by one
+  mechanism called Leaky Bucket. Basically, Leaky Bucket detects with packets
+  real sending rate, and use a 'bucket' to cache over limit packets. When there
+  is a chance (means sending rate lowered than limit) to send out 'bucket'
+  packets and the 'bucket' is still not full, those packets will be scheduled
+  to send out. But if bucket is full then it starts to leak packets. <o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
   mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
@@ -1498,63 +1382,24 @@ AAA=
   Note: </span></b><span lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:
   105%'>Based on industry general rules and our product business needs, I
   designed mapping table between PHB class (AF1~4, BE, EF) and DSCP tag
-  (originally defined at IP header) as below -<o:p></o:p></span></p>
+  (originally defined at IP header) as below ï¿½C<o:p></o:p></span></p>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:
+  .5gd;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
+  1.0gd;mso-para-margin-bottom:.0001pt;text-align:center;line-height:105%'><span
+  lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%;mso-no-proof:
+  yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_14" o:spid="_x0000_i1031"
+   type="#_x0000_t75" style='width:468pt;height:100.8pt;visibility:visible;
+   mso-wrap-style:square'>
+   <v:imagedata src="episode4.ejs_files/image007.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img width=624 height=134
+  src="../../../../../imgs/homepageimg/works/4/4.png" v:shapes="Picture_x0020_14"><![endif]></span><span
+  lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
   mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
-  1.0gd;mso-para-margin-bottom:.0001pt;line-height:105%'><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><span style='mso-element:field-begin;mso-field-lock:yes'></span><span
-  style='mso-spacerun:yes'>&nbsp;</span>SHAPE <span
-  style='mso-spacerun:yes'>&nbsp;</span>\* MERGEFORMAT <span style='mso-element:
-  field-separator'></span></span><![endif]--><span lang=EN-US><!--[if gte vml 1]><v:rect
-   id="Picture_x0020_8" o:spid="_x0000_s1032" style='width:421.5pt;height:90.75pt;
-   visibility:visible;mso-wrap-style:square;mso-left-percent:-10001;
-   mso-top-percent:-10001;mso-position-horizontal:absolute;
-   mso-position-horizontal-relative:char;mso-position-vertical:absolute;
-   mso-position-vertical-relative:line;mso-left-percent:-10001;
-   mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="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
-" filled="f" stroked="f">
-   <o:lock v:ext="edit" aspectratio="t"/>
-   <w:wrap type="none"/>
-   <w:anchorlock/>
-  </v:rect><![endif]--></span><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><v:shape id="_x0000_i1031" type="#_x0000_t75" style='width:421.5pt;
-   height:90.75pt'>
-   <v:imagedata croptop="-65520f" cropbottom="65520f"/>
-  </v:shape><span style='mso-element:field-end'></span></span><![endif]--><b
-  style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:9.0pt;
-  line-height:105%'><o:p></o:p></span></b></p>
+  1.0gd;mso-para-margin-bottom:.0001pt;line-height:105%'><b style='mso-bidi-font-weight:
+  normal'><span lang=EN-US style='font-size:9.0pt;line-height:105%'><o:p>&nbsp;</o:p></span></b></p>
   <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
   margin-bottom:0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:
   .5gd;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
@@ -1566,10 +1411,10 @@ AAAPAAAAAAAAAAAAAAAAAA0FAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAQABADzAAAAFwYAAAAA
   0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
   mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
   1.0gd;mso-para-margin-bottom:.0001pt;line-height:105%'><span lang=EN-US
-  style='mso-bidi-font-size:9.0pt;line-height:105%'>In short, in QoS software
-  PHB classes are used to identify packet priority, while PHB class comes from
-  DSCP value, which is originally extracted from IP protocol header. So, it
-  doesn't need to have any change to protocol.<o:p></o:p></span></p>
+  style='mso-bidi-font-size:9.0pt;line-height:105%'>In short, in <span
+  class=SpellE>QoS</span> software PHB classes are used to identify packet priority,
+  while PHB class comes from DSCP value, which is originally extracted from IP
+  protocol header. So, it doesn't need to have any change to protocol.<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
   mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
@@ -1577,14 +1422,15 @@ AAAPAAAAAAAAAAAAAAAAAA0FAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAQABADzAAAAFwYAAAAA
   normal'><span lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>CE3.4.1.5
   </span></b><span lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>Leaky
   bucket (Step5 in CE3.4.1.4) is used to control the rate limit of traffic
-  before sending packet to next hop (interface level QoS described in
-  CE3.4.1.3), and it provides the mechanism that burst traffic can be shaped to
-  the steady stream in order to optimize or guarantee the network performance.
-  It can buffer some packets when burst packets come in, and also inform WFQ
-  that bandwidth threshold is about to reach. WFQ will then initiate further
-  actions to inform the sender (who sends packets to QoS module) to decrease
-  sending speed. So, this feedback mechanism can help to reduce frequency of
-  packet retransmission from the source. <o:p></o:p></span></p>
+  before sending packet to next hop (interface level <span class=SpellE>QoS</span>
+  described in CE3.4.1.3), and it provides the mechanism that burst traffic can
+  be shaped to the steady stream <span class=GramE>in order to</span> optimize
+  or guarantee the network performance. It can buffer some packets when burst
+  packets come in, <span class=GramE>and also</span> inform WFQ that bandwidth
+  threshold is about to reach. WFQ will then initiate further actions to inform
+  the sender (who sends packets to <span class=SpellE>QoS</span> module) to
+  decrease sending speed. So, this feedback mechanism can help to reduce
+  frequency of packet retransmission from the source. <o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
   mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
@@ -1604,58 +1450,13 @@ AAAPAAAAAAAAAAAAAAAAAA0FAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAQABADzAAAAFwYAAAAA
   1.0gd;mso-para-margin-bottom:.0001pt;line-height:105%'><span lang=EN-US
   style='font-size:9.0pt;line-height:105%'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal align=center style='margin-top:6.0pt;mso-para-margin-top:
-  .5gd;text-align:center;line-height:105%'><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><span style='mso-element:field-begin;mso-field-lock:yes'></span><span
-  style='mso-spacerun:yes'>&nbsp;</span>SHAPE <span
-  style='mso-spacerun:yes'>&nbsp;</span>\* MERGEFORMAT <span style='mso-element:
-  field-separator'></span></span><![endif]--><span lang=EN-US><!--[if gte vml 1]><v:rect
-   id="Picture_x0020_7" o:spid="_x0000_s1031" style='width:426.75pt;height:141.75pt;
-   visibility:visible;mso-wrap-style:square;mso-left-percent:-10001;
-   mso-top-percent:-10001;mso-position-horizontal:absolute;
-   mso-position-horizontal-relative:char;mso-position-vertical:absolute;
-   mso-position-vertical-relative:line;mso-left-percent:-10001;
-   mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="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
-AA==
-" filled="f" stroked="f">
-   <o:lock v:ext="edit" aspectratio="t"/>
-   <w:wrap type="none"/>
-   <w:anchorlock/>
-  </v:rect><![endif]--></span><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><v:shape id="_x0000_i1030" type="#_x0000_t75" style='width:426.75pt;
-   height:141.75pt'>
-   <v:imagedata croptop="-65520f" cropbottom="65520f"/>
-  </v:shape><span style='mso-element:field-end'></span></span><![endif]--><b
+  .5gd;text-align:center;line-height:105%'><span lang=EN-US style='mso-bidi-font-size:
+  9.0pt;line-height:105%;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_15"
+   o:spid="_x0000_i1030" type="#_x0000_t75" style='width:468pt;height:155.4pt;
+   visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="episode4.ejs_files/image009.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img width=624 height=207
+  src="../../../../../imgs/homepageimg/works/4/5.png" v:shapes="Picture_x0020_15"><![endif]></span><b
   style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:9.0pt;
   line-height:105%'><o:p></o:p></span></b></p>
   <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
@@ -1675,7 +1476,7 @@ AA==
   key members in data structure of Leaky Bucket are as follows<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:11.0pt;mso-para-margin-left:1.0gd;
   text-indent:12.0pt;line-height:105%'><span lang=EN-GB style='mso-bidi-font-size:
-  9.0pt;line-height:105%;mso-ansi-language:EN-GB'>struct leaky_fifo_control_t<o:p></o:p></span></p>
+  9.0pt;line-height:105%;mso-ansi-language:EN-GB'>struct <span class=SpellE>leaky_fifo_control_t</span><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:11.0pt;mso-para-margin-left:1.0gd;
   text-indent:12.0pt;line-height:105%'><span lang=EN-GB style='mso-bidi-font-size:
   9.0pt;line-height:105%;mso-ansi-language:EN-GB'>{<o:p></o:p></span></p>
@@ -1689,107 +1490,66 @@ AA==
   <p class=MsoNormal style='margin-left:22.0pt;mso-para-margin-left:2.0gd;
   text-indent:12.0pt;line-height:105%'><span lang=EN-GB style='mso-bidi-font-size:
   9.0pt;line-height:105%;mso-ansi-language:EN-GB'>uint32_t<span
-  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </span>max_burst_bits;<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;
-  </span><o:p></o:p></span></p>
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+  class=SpellE>max_burst_bits</span>;<span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:22.0pt;mso-para-margin-left:2.0gd;
   text-indent:12.0pt;line-height:105%'><span lang=EN-GB style='mso-bidi-font-size:
   9.0pt;line-height:105%;mso-ansi-language:EN-GB'>FIFO<span
   style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </span>*fifo;<o:p></o:p></span></p>
+  </span>*<span class=SpellE>fifo</span>;<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:22.0pt;mso-para-margin-left:2.0gd;
   text-indent:12.0pt;line-height:105%'><span lang=EN-GB style='mso-bidi-font-size:
   9.0pt;line-height:105%;mso-ansi-language:EN-GB'>uint32_t<span
   style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </span>borrow_bits;<o:p></o:p></span></p>
+  </span><span class=SpellE>borrow_bits</span>;<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:22.0pt;mso-para-margin-left:2.0gd;
   text-indent:12.0pt;line-height:105%'><span lang=EN-GB style='mso-bidi-font-size:
   9.0pt;line-height:105%;mso-ansi-language:EN-GB'>struct callout<span
-  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </span>timer_callout;<span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+  class=SpellE>timer_callout</span>;<span
   style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:22.0pt;mso-para-margin-left:2.0gd;
   text-indent:12.0pt;line-height:105%'><span lang=EN-GB style='mso-bidi-font-size:
   9.0pt;line-height:105%;mso-ansi-language:EN-GB'>uint32_t<span
-  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </span><span style='mso-spacerun:yes'>&nbsp;&nbsp;</span>quota;<o:p></o:p></span></p>
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>quota;<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:11.0pt;mso-para-margin-left:1.0gd;
   text-indent:12.0pt;line-height:105%'><span lang=EN-GB style='mso-bidi-font-size:
-  9.0pt;line-height:105%;mso-ansi-language:EN-GB'>} leaky_fifo_control_t;<o:p></o:p></span></p>
+  9.0pt;line-height:105%;mso-ansi-language:EN-GB'>} <span class=SpellE>leaky_fifo_control_t</span>;<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:11.0pt;mso-para-margin-left:1.0gd;
   line-height:105%'><span lang=EN-GB style='mso-bidi-font-size:9.0pt;
   line-height:105%;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-left:11.0pt;mso-para-margin-left:1.0gd;
   line-height:105%'><span lang=EN-US style='mso-bidi-font-size:9.0pt;
   line-height:105%'>field <b style='mso-bidi-font-weight:normal'>speed</b> is
-  the sending rate of the leaky bucket; <b style='mso-bidi-font-weight:normal'>max_burst_bits</b>
-  stands for the maximum packets rate; <b style='mso-bidi-font-weight:normal'>fifo</b>
-  is the queue to buffer packets; <b style='mso-bidi-font-weight:normal'>borrow_bits</b>
-  is used to record the extra (means over rate limit) number of bits sent in
-  last time. If borrow_bits is bigger than zero, it would be paid off in next
+  the sending rate of the leaky bucket; <span class=SpellE><b style='mso-bidi-font-weight:
+  normal'>max_burst_bits</b></span> stands for the maximum packets rate; <span
+  class=SpellE><b style='mso-bidi-font-weight:normal'>fifo</b></span> is the
+  queue to buffer packets; <span class=SpellE><b style='mso-bidi-font-weight:
+  normal'>borrow_bits</b></span> is used to record the extra (means over rate
+  limit) number of bits sent in last time. If <span class=SpellE>borrow_bits</span>
+  <span class=GramE>is</span> bigger than zero, it would be paid off in next
   schedule time, that means Leaky Bucket Shaper will only send out the remained
-  bits of (max_burst_bits minus borrow_bits). If Leaky Bucket Shaper used out
-  the <b style='mso-bidi-font-weight:normal'>quota</b> bits this time, a timer
-  will be set on and the elapsed time is the value of (<b style='mso-bidi-font-weight:
-  normal'>borrow_bits</b> divide <b style='mso-bidi-font-weight:normal'>speed</b>).
-  During this period, Leaky Bucket Shaper will not send out any packet.<o:p></o:p></span></p>
+  bits of (<span class=SpellE>max_burst_bits</span> minus <span class=SpellE>borrow_bits</span>).
+  If Leaky Bucket Shaper used out the <b style='mso-bidi-font-weight:normal'>quota</b>
+  bits this time, a timer will be set on and the elapsed time is the value of (<span
+  class=SpellE><b style='mso-bidi-font-weight:normal'>borrow_bits</b></span>
+  divide <b style='mso-bidi-font-weight:normal'>speed</b>). During this period,
+  Leaky Bucket Shaper will not send out any packet.<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   6.0pt;margin-left:11.0pt;mso-para-margin-top:.5gd;mso-para-margin-right:0cm;
   mso-para-margin-bottom:.5gd;mso-para-margin-left:1.0gd;line-height:105%'><span
   lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>The flow chart
   of the Leaky Bucket Shaper is as follows -<o:p></o:p></span></p>
-  <p class=MsoNormal align=center style='text-align:center;line-height:105%'><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><span style='mso-element:field-begin;mso-field-lock:yes'></span><span
-  style='mso-spacerun:yes'>&nbsp;</span>SHAPE <span
-  style='mso-spacerun:yes'>&nbsp;</span>\* MERGEFORMAT <span style='mso-element:
-  field-separator'></span></span><![endif]--><span lang=EN-US><!--[if gte vml 1]><v:rect
-   id="Picture_x0020_10" o:spid="_x0000_s1030" style='width:283.5pt;height:142.5pt;
-   visibility:visible;mso-wrap-style:square;mso-left-percent:-10001;
-   mso-top-percent:-10001;mso-position-horizontal:absolute;
-   mso-position-horizontal-relative:char;mso-position-vertical:absolute;
-   mso-position-vertical-relative:line;mso-left-percent:-10001;
-   mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="UEsDBBQABgAIAAAAIQC2gziS/gAAAOEBAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbJSRQU7DMBBF
-90jcwfIWJU67QAgl6YK0S0CoHGBkTxKLZGx5TGhvj5O2G0SRWNoz/78nu9wcxkFMGNg6quQqL6RA
-0s5Y6ir5vt9lD1JwBDIwOMJKHpHlpr69KfdHjyxSmriSfYz+USnWPY7AufNIadK6MEJMx9ApD/oD
-OlTrorhX2lFEilmcO2RdNtjC5xDF9pCuTyYBB5bi6bQ4syoJ3g9WQ0ymaiLzg5KdCXlKLjvcW893
-SUOqXwnz5DrgnHtJTxOsQfEKIT7DmDSUCaxw7Rqn8787ZsmRM9e2VmPeBN4uqYvTtW7jvijg9N/y
-JsXecLq0q+WD6m8AAAD//wMAUEsDBBQABgAIAAAAIQA4/SH/1gAAAJQBAAALAAAAX3JlbHMvLnJl
-bHOkkMFqwzAMhu+DvYPRfXGawxijTi+j0GvpHsDYimMaW0Yy2fr2M4PBMnrbUb/Q94l/f/hMi1qR
-JVI2sOt6UJgd+ZiDgffL8ekFlFSbvV0oo4EbChzGx4f9GRdb25HMsYhqlCwG5lrLq9biZkxWOiqY
-22YiTra2kYMu1l1tQD30/bPm3wwYN0x18gb45AdQl1tp5j/sFB2T0FQ7R0nTNEV3j6o9feQzro1i
-OWA14Fm+Q8a1a8+Bvu/d/dMb2JY5uiPbhG/ktn4cqGU/er3pcvwCAAD//wMAUEsDBBQABgAIAAAA
-IQDCtioRtAIAALgFAAAOAAAAZHJzL2Uyb0RvYy54bWysVG1v0zAQ/o7Ef7D8PcvLnDaJlk6jaRDS
-gEmDH+AmTmOR2MF2mw7Ef+fstF27fUFAPlg+n/3c3XNP7uZ233dox5TmUuQ4vAowYqKSNRebHH/9
-UnoJRtpQUdNOCpbjJ6bx7eLtm5txyFgkW9nVTCEAETobhxy3xgyZ7+uqZT3VV3JgApyNVD01YKqN
-Xys6Anrf+VEQzPxRqnpQsmJaw2kxOfHC4TcNq8znptHMoC7HkJtxq3Lr2q7+4oZmG0WHlleHNOhf
-ZNFTLiDoCaqghqKt4q+gel4pqWVjrirZ+7JpeMVcDVBNGLyo5rGlA3O1ADl6ONGk/x9s9Wn3oBCv
-cxxjJGgPLXrgldkqhkLHzjjoDC49Dg/K1qeHe1l900jIZUvFht3pATiGzsPr45FScmwZrSHN0BLs
-X2BYQwMaWo8fZQ3x6NZIx92+Ub2NAaygvWvR06lFbG9QBYfXsyAgMXSyAl+YBOkcDBuDZsfng9Lm
-PZM9spscK8jPwdPdvTbT1eMVG03Ikned00EnLg4AczqB4PDU+mwarq0/0yBdJauEeCSarTwSFIV3
-Vy6JNyvDeVxcF8tlEf6ycUOStbyumbBhjhILyZ+18CD2SRwnkWnZ8drC2ZS02qyXnUI7ChIv3Xcg
-5Oyaf5mG4wtqeVFSGJHgXZR65SyZe6QksZfOg8QLwvRdOgtISorysqR7Lti/l4TGHKdxFLsunSX9
-orbAfa9ro1nPDQyRjvc5Tk6XaGY1uBK1a62hvJv2Z1TY9J+pgHYfG+0Ua0Vq54jO1rJ+AsEqCXIC
-6cG4g00r1Q+MRhgdOdbft1QxjLoPAkSfhoTYWeMMEs8jMNS5Z33uoaICqBwbjKbt0kzzaTsovmkh
-UuiIEfIOfpSGOwk/Z3X4vWA8uEoOo8zOn3Pb3XoeuIvfAAAA//8DAFBLAwQUAAYACAAAACEAriEu
-IN0AAAAFAQAADwAAAGRycy9kb3ducmV2LnhtbEyPQWvCQBCF7wX/wzJCL6VuFLQSsxERSqUUxFg9
-r9lpEpqdjdk1Sf99p720lwePN7z3TbIebC06bH3lSMF0EoFAyp2pqFDwfnx+XILwQZPRtSNU8IUe
-1unoLtGxcT0dsMtCIbiEfKwVlCE0sZQ+L9FqP3ENEmcfrrU6sG0LaVrdc7mt5SyKFtLqinih1A1u
-S8w/s5tV0Of77nx8e5H7h/PO0XV33WanV6Xux8NmBSLgEP6O4Qef0SFlpou7kfGiVsCPhF/lbL54
-YntRMFvOI5BpIv/Tp98AAAD//wMAUEsBAi0AFAAGAAgAAAAhALaDOJL+AAAA4QEAABMAAAAAAAAA
-AAAAAAAAAAAAAFtDb250ZW50X1R5cGVzXS54bWxQSwECLQAUAAYACAAAACEAOP0h/9YAAACUAQAA
-CwAAAAAAAAAAAAAAAAAvAQAAX3JlbHMvLnJlbHNQSwECLQAUAAYACAAAACEAwrYqEbQCAAC4BQAA
-DgAAAAAAAAAAAAAAAAAuAgAAZHJzL2Uyb0RvYy54bWxQSwECLQAUAAYACAAAACEAriEuIN0AAAAF
-AQAADwAAAAAAAAAAAAAAAAAOBQAAZHJzL2Rvd25yZXYueG1sUEsFBgAAAAAEAAQA8wAAABgGAAAA
-AA==
-" filled="f" stroked="f">
-   <o:lock v:ext="edit" aspectratio="t"/>
-   <w:wrap type="none"/>
-   <w:anchorlock/>
-  </v:rect><![endif]--></span><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><v:shape id="_x0000_i1029" type="#_x0000_t75" style='width:283.5pt;
-   height:142.5pt'>
-   <v:imagedata croptop="-65520f" cropbottom="65520f"/>
-  </v:shape><span style='mso-element:field-end'></span></span><![endif]--><span
+  <p class=MsoNormal align=center style='text-align:center;line-height:105%'><span
+  lang=EN-US style='font-size:9.0pt;line-height:105%;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+   id="Picture_x0020_16" o:spid="_x0000_i1029" type="#_x0000_t75" style='width:283.2pt;
+   height:142.8pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="episode4.ejs_files/image011.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img width=378 height=190
+  src="../../../../../imgs/homepageimg/works/4/6.png" v:shapes="Picture_x0020_16"><![endif]></span><span
   lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'><o:p></o:p></span></p>
   <p class=MsoNormal align=center style='text-align:center;line-height:105%'><b
   style='mso-bidi-font-weight:normal'><span lang=EN-US style='mso-bidi-font-size:
@@ -1829,63 +1589,19 @@ AA==
   avoid it get starved. This means that other processes which ever co-exist
   with PKTGEN on the same core should be moved to other cores, or even another
   hardware board. Below picture illustrate one example of changed CPU cores
-  deployment. Note: one typical Cavium Octeon CPU has 16~32 cores which depends
-  its model type. Below picture is just one example that 8 cores are allocated
-  for a group of software processes, and in reality, cores could be flexible
-  allocated based on business needs.</span><span lang=EN-US style='font-size:
-  9.0pt;line-height:105%'><o:p></o:p></span></p>
+  deployment. Note: one typical Cavium <span class=SpellE>Octeon</span> CPU has
+  16~32 cores which depends its model type. Below picture is just one example
+  that 8 cores are allocated for a group of software processes, and in reality,
+  cores could be flexible allocated based on business needs.</span><span
+  lang=EN-US style='font-size:9.0pt;line-height:105%'><o:p></o:p></span></p>
   <p class=MsoNormal align=center style='margin-top:6.0pt;mso-para-margin-top:
-  .5gd;text-align:center;line-height:105%'><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><span style='mso-element:field-begin;mso-field-lock:yes'></span><span
-  style='mso-spacerun:yes'>&nbsp;</span>SHAPE <span
-  style='mso-spacerun:yes'>&nbsp;</span>\* MERGEFORMAT <span style='mso-element:
-  field-separator'></span></span><![endif]--><span lang=EN-US><!--[if gte vml 1]><v:rect
-   id="Picture_x0020_9" o:spid="_x0000_s1029" style='width:436.5pt;height:184.5pt;
-   visibility:visible;mso-wrap-style:square;mso-left-percent:-10001;
-   mso-top-percent:-10001;mso-position-horizontal:absolute;
-   mso-position-horizontal-relative:char;mso-position-vertical:absolute;
-   mso-position-vertical-relative:line;mso-left-percent:-10001;
-   mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="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
-" filled="f" stroked="f">
-   <o:lock v:ext="edit" aspectratio="t"/>
-   <w:wrap type="none"/>
-   <w:anchorlock/>
-  </v:rect><![endif]--></span><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><v:shape id="_x0000_i1028" type="#_x0000_t75" style='width:436.5pt;
-   height:184.5pt'>
-   <v:imagedata croptop="-65520f" cropbottom="65520f"/>
-  </v:shape><span style='mso-element:field-end'></span></span><![endif]--><span
+  .5gd;text-align:center;line-height:105%'><span lang=EN-US style='font-size:
+  9.0pt;line-height:105%;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_17"
+   o:spid="_x0000_i1028" type="#_x0000_t75" style='width:468pt;height:198pt;
+   visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="episode4.ejs_files/image013.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img width=624 height=264
+  src="../../../../../imgs/homepageimg/works/4/7.png" v:shapes="Picture_x0020_17"><![endif]></span><span
   lang=EN-US style='font-size:9.0pt;line-height:105%'><o:p></o:p></span></p>
   <p class=MsoNormal align=center style='margin-top:6.0pt;mso-para-margin-top:
   .5gd;text-align:center;line-height:105%'><b style='mso-bidi-font-weight:normal'><span
@@ -1905,8 +1621,8 @@ AAAPAAAAAAAAAAAAAAAAAA0FAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAQABADzAAAAFwYAAAAA
   1.0gd;mso-para-margin-bottom:.0001pt;line-height:105%'><b style='mso-bidi-font-weight:
   normal'><span lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>CE3.4.2.2</span></b><span
   lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'> PKTGEN used a
-  periodical Timer as system interrupt to trigger generating a certain amount of
-  packet. Thus, I tried to observe time consumption of each system interrupt
+  periodical Timer as system interrupt to trigger generating a certain amount
+  of packet. Thus, I tried to observe time consumption of each system interrupt
   processing if generating same amount of traffic was ordered to PKTGEN. The
   result showed that interrupt processing time varied significantly in
   different time window and in different cores. This even became worse in large
@@ -1918,14 +1634,14 @@ AAAPAAAAAAAAAAAAAAAAAA0FAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAQABADzAAAAFwYAAAAA
   less than 20ms to generate 200MB of data. This observation explained why
   traffic volume generate is not even and could have big jump or fall-down.
   Thus, the improvement idea was to improve interrupt processing to make it
-  more quickly, and also to shorten Timer interval to make trigger points more
-  densely, which could finally help to generate traffic evenly. In my optimized
-  code, PKTEN will have 10,000 (and is configurable) trigger points per second,
-  and in each trigger point, PKTGEN will create and send out certain number of
-  packets according to parameters Timer Interval and Packet Rate. For example,
-  10 GB of data is expected to be generated by 1 second, this means that every
-  timer interval (1s / 10,000 = 100 us) it needs to generate 10 GB / 10,000 = 1
-  MB of data. <o:p></o:p></span></p>
+  more quickly, <span class=GramE>and also</span> to shorten Timer interval to
+  make trigger points more densely, which could finally help to generate
+  traffic evenly. In my optimized code, PKTEN will have 10,000 (and is
+  configurable) trigger points per second, and in each trigger point, PKTGEN
+  will create and send out certain number of packets according to parameters
+  Timer Interval and Packet Rate. For example, 10 GB of data is expected to be
+  generated by 1 second, this means that every timer interval (1s / 10,000 = 100
+  us) it needs to generate 10 GB / 10,000 = 1 MB of data. <o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
   mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
@@ -1946,58 +1662,18 @@ AAAPAAAAAAAAAAAAAAAAAA0FAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAQABADzAAAAFwYAAAAA
   <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
   margin-bottom:0cm;margin-left:33.0pt;margin-bottom:.0001pt;mso-para-margin-top:
   .5gd;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
-  3.0gd;mso-para-margin-bottom:.0001pt;text-align:center;line-height:105%'><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><span style='mso-element:field-begin;mso-field-lock:yes'></span><span
-  style='mso-spacerun:yes'>&nbsp;</span>SHAPE <span
-  style='mso-spacerun:yes'>&nbsp;</span>\* MERGEFORMAT <span style='mso-element:
-  field-separator'></span></span><![endif]--><span lang=EN-US><!--[if gte vml 1]><v:rect
-   id="Picture_x0020_11" o:spid="_x0000_s1028" style='width:352.5pt;height:240.75pt;
-   visibility:visible;mso-wrap-style:square;mso-left-percent:-10001;
-   mso-top-percent:-10001;mso-position-horizontal:absolute;
-   mso-position-horizontal-relative:char;mso-position-vertical:absolute;
-   mso-position-vertical-relative:line;mso-left-percent:-10001;
-   mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="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
-AA==
-" filled="f" stroked="f">
-   <o:lock v:ext="edit" aspectratio="t"/>
-   <w:wrap type="none"/>
-   <w:anchorlock/>
-  </v:rect><![endif]--></span><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><v:shape id="_x0000_i1027" type="#_x0000_t75" style='width:352.5pt;
-   height:240.75pt'>
-   <v:imagedata croptop="-65520f" cropbottom="65520f"/>
-  </v:shape><span style='mso-element:field-end'></span></span><![endif]--><span
+  3.0gd;mso-para-margin-bottom:.0001pt;text-align:center;line-height:105%'><span
+  lang=EN-US style='font-size:9.0pt;line-height:105%;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+   id="Picture_x0020_18" o:spid="_x0000_i1027" type="#_x0000_t75" style='width:396pt;
+   height:271.2pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="episode4.ejs_files/image015.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img width=528 height=362
+  src="../../../../../imgs/homepageimg/works/4/8.png" v:shapes="Picture_x0020_18"><![endif]><!--[if gte vml 1]><v:shape
+   id="Picture_x0020_19" o:spid="_x0000_i1026" type="#_x0000_t75" style='width:422.4pt;
+   height:273.6pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="episode4.ejs_files/image017.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img width=563 height=365
+  src="../../../../../imgs/homepageimg/works/4/9.png" v:shapes="Picture_x0020_19"><![endif]></span><span
   lang=EN-US style='font-size:9.0pt;line-height:105%'><o:p></o:p></span></p>
   <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
   margin-bottom:0cm;margin-left:33.0pt;margin-bottom:.0001pt;mso-para-margin-top:
@@ -2005,59 +1681,8 @@ AA==
   3.0gd;mso-para-margin-bottom:.0001pt;text-align:center;line-height:105%'><span
   lang=EN-US style='font-size:9.0pt;line-height:105%'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal align=center style='margin-left:33.0pt;mso-para-margin-left:
-  3.0gd;text-align:center;line-height:105%'><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><span style='mso-element:field-begin;mso-field-lock:yes'></span><span
-  style='mso-spacerun:yes'>&nbsp;</span>SHAPE <span
-  style='mso-spacerun:yes'>&nbsp;</span>\* MERGEFORMAT <span style='mso-element:
-  field-separator'></span></span><![endif]--><span lang=EN-US><!--[if gte vml 1]><v:rect
-   id="Picture_x0020_13" o:spid="_x0000_s1027" style='width:372pt;height:241.5pt;
-   visibility:visible;mso-wrap-style:square;mso-left-percent:-10001;
-   mso-top-percent:-10001;mso-position-horizontal:absolute;
-   mso-position-horizontal-relative:char;mso-position-vertical:absolute;
-   mso-position-vertical-relative:line;mso-left-percent:-10001;
-   mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="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
-BgAAAAA=
-" filled="f" stroked="f">
-   <o:lock v:ext="edit" aspectratio="t"/>
-   <w:wrap type="none"/>
-   <w:anchorlock/>
-  </v:rect><![endif]--></span><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><v:shape id="_x0000_i1026" type="#_x0000_t75" style='width:372pt;
-   height:241.5pt'>
-   <v:imagedata croptop="-65520f" cropbottom="65520f"/>
-  </v:shape><span style='mso-element:field-end'></span></span><![endif]--><span
-  lang=EN-US style='font-size:9.0pt;line-height:105%'><o:p></o:p></span></p>
+  3.0gd;text-align:center;line-height:105%'><span lang=EN-US style='font-size:
+  9.0pt;line-height:105%'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
   mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
@@ -2065,9 +1690,9 @@ BgAAAAA=
   normal'><span lang=EN-US style='font-size:10.0pt;mso-bidi-font-size:9.0pt;
   line-height:105%'>Note</span></b><span lang=EN-US style='font-size:10.0pt;
   mso-bidi-font-size:9.0pt;line-height:105%'>: the left picture shows the
-  benchmark achieved before optimization. Each type of traffic is executed by
-  an individual core, but none of these 3 cores could achieve its target
-  (5Gb/s, 3Gb/s and 2 Gb/s respectively). And the right picture shows the optimized
+  benchmark achieved before optimization. Each type of traffic is executed by an
+  individual core, but none of these 3 cores could achieve its target (5Gb/s,
+  3Gb/s and 2 Gb/s respectively). And the right picture shows the optimized
   benchmark, which is perfectly match with expectation if do benchmark sampling
   every second. <o:p></o:p></span></p>
   <p class=MsoNormal align=center style='margin-top:6.0pt;mso-para-margin-top:
@@ -2076,57 +1701,13 @@ BgAAAAA=
   <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
   margin-bottom:0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:
   .5gd;mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
-  1.0gd;mso-para-margin-bottom:.0001pt;text-align:center;line-height:105%'><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><span style='mso-element:field-begin;mso-field-lock:yes'></span><span
-  style='mso-spacerun:yes'>&nbsp;</span>SHAPE <span
-  style='mso-spacerun:yes'>&nbsp;</span>\* MERGEFORMAT <span style='mso-element:
-  field-separator'></span></span><![endif]--><span lang=EN-US><!--[if gte vml 1]><v:rect
-   id="Picture_x0020_12" o:spid="_x0000_s1026" style='width:401.25pt;height:210pt;
-   visibility:visible;mso-wrap-style:square;mso-left-percent:-10001;
-   mso-top-percent:-10001;mso-position-horizontal:absolute;
-   mso-position-horizontal-relative:char;mso-position-vertical:absolute;
-   mso-position-vertical-relative:line;mso-left-percent:-10001;
-   mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="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
-" filled="f" stroked="f">
-   <o:lock v:ext="edit" aspectratio="t"/>
-   <w:wrap type="none"/>
-   <w:anchorlock/>
-  </v:rect><![endif]--></span><!--[if mso & !supportInlineShapes & supportFields]><span
-  lang=EN-US><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:401.25pt;
-   height:210pt'>
-   <v:imagedata croptop="-65520f" cropbottom="65520f"/>
-  </v:shape><span style='mso-element:field-end'></span></span><![endif]--><span
+  1.0gd;mso-para-margin-bottom:.0001pt;text-align:center;line-height:105%'><span
+  lang=EN-US style='font-size:9.0pt;line-height:105%;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+   id="Picture_x0020_20" o:spid="_x0000_i1025" type="#_x0000_t75" style='width:468pt;
+   height:244.8pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="episode4.ejs_files/image019.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img width=624 height=326
+  src="../../../../../imgs/homepageimg/works/4/10.png" v:shapes="Picture_x0020_20"><![endif]></span><span
   lang=EN-US style='font-size:9.0pt;line-height:105%'><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:11.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
@@ -2139,17 +1720,18 @@ AAAPAAAAAAAAAAAAAAAAAA4FAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAQABADzAAAAFwYAAAAA
   <p class=MsoNormal style='margin-top:6.0pt;mso-para-margin-top:.5gd;
   line-height:105%'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
   style='mso-bidi-font-size:9.0pt;line-height:105%'>CE3.4.3 </span></b><span
-  lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>Besides fundamental
-  functionality of simulating packets generation for several types of network
-  protocol, PKTGEN was designed to support QoS related testing such as QoS
-  parameters (like WFQ, Bandwidth) setting, QoS internal statistical counters
-  display, user call establishment (e.g. simulates a mobile phone data
-  exploring) etc., with these features, PKTGEN is a useful tool to verify QoS
-  functionality as well as other types of traffic transport testing. I
-  participated in this part of work and finished several Command Line Interface
-  related code. testers could write automatic scripts to execute those commands
-  in their cases to complete a specific testing case.<b style='mso-bidi-font-weight:
-  normal'><o:p></o:p></b></span></p>
+  lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>Besides
+  fundamental functionality of simulating packets generation for several types
+  of network protocol, PKTGEN was designed to support <span class=SpellE>QoS</span>
+  related testing such as <span class=SpellE>QoS</span> parameters (like WFQ,
+  Bandwidth) setting, <span class=SpellE>QoS</span> internal statistical
+  counters display, user call establishment (e.g. simulates a mobile phone data
+  exploring) etc., with these features, PKTGEN is a useful tool to verify <span
+  class=SpellE>QoS</span> functionality as well as other types of traffic
+  transport testing. I participated in this part of work and finished several
+  Command Line Interface related code. testers could write automatic scripts to
+  execute those commands in their cases to complete a specific testing case.<b
+  style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
   <p class=MsoNormal style='line-height:105%'><span lang=EN-US
   style='mso-bidi-font-size:9.0pt;line-height:105%'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='line-height:105%'><b style='mso-bidi-font-weight:
@@ -2176,8 +1758,9 @@ AAAPAAAAAAAAAAAAAAAAAA4FAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAQABADzAAAAFwYAAAAA
   lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>issue tracking
   product) as the place for putting project backlog items (means
   features/problems to be implemented/solved), technical details e.g. software
-  design thinking, requirement clarification, and also progress information of
-  each item. I can easily trace the status of each item.<o:p></o:p></span></p>
+  design thinking, requirement clarification, <span class=GramE>and also</span>
+  progress information of each item. I can easily trace the status of each
+  item.<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:22.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
   mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
@@ -2205,8 +1788,8 @@ AAAPAAAAAAAAAAAAAAAAAA4FAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAQABADzAAAAFwYAAAAA
   normal'><span lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>CE3.4.4.2
   </span></b><span lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>Tools
   deployment. This project would be jointly contributed by engineers from many
-  teams, and some of them had not gained experience on PKTGEN before. So,
-  establish some quality assurance framework would be essential.<o:p></o:p></span></p>
+  teams, and some of them had not gained experience on PKTGEN before. So, establish
+  some quality assurance framework would be essential.<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:22.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
   mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
@@ -2224,10 +1807,11 @@ AAAPAAAAAAAAAAAAAAAAAA4FAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAQABADzAAAAFwYAAAAA
   2.0gd;mso-para-margin-bottom:.0001pt;line-height:105%'><b style='mso-bidi-font-weight:
   normal'><span lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>CE3.4.4.2.2
   </span></b><span lang=EN-US style='mso-bidi-font-size:9.0pt;line-height:105%'>I
-  established Klocwork Insight project to run code static analysis once there
-  was one new submission. I send out Klocwork new findings regularly and ask
-  the original author who introduced the risk to check further, or fix it as
-  soon as possible.<o:p></o:p></span></p>
+  established <span class=SpellE>Klocwork</span> Insight project to run code
+  static analysis once there was one new submission. I send out <span
+  class=SpellE>Klocwork</span> new findings regularly and ask the original
+  author who introduced the risk to check further, or fix it as soon as
+  possible.<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:22.0pt;margin-bottom:.0001pt;mso-para-margin-top:.5gd;
   mso-para-margin-right:0cm;mso-para-margin-bottom:0cm;mso-para-margin-left:
