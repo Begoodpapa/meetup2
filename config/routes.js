@@ -25,7 +25,20 @@ module.exports.routes = {
     }
   }, 
 
+'GET /episode1': {
+    view: "episode1",
+    locals: {
+        layout: null
+    }
+ }, 
 
+'GET /episode2': {
+    view: "episode2",
+    locals: {
+        layout: null
+    }
+  },   
+  
 'GET /episode3': {
     view: "episode3",
     locals: {

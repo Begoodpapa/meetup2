@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>Work Episode 2</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vender/bootstrap/dist/css/bootstrap.css" rel="stylesheet">        
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="/styles/subpagecss/main.css" >
+
+    <!-- Fonts -->
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:300,400,700'>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">Hi, I am Leo </a>
+					<!-- img src="/imgs/myself.png" width="100px" height="100px" -->          
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Home</a></li>
+            <li><a href="contact.html">CV</a></li>            
+            <li><a href="about.html">Certificate</a></li>
+            <li><a href="blog.html">Referrence Letter</a></li>
+            <li><a href="blog.html">Photos</a></li>            
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	
+	<!-- +++++ Post +++++ -->
+	<div id="white">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<p> <h3>Episode 2: Automatic Testing, Continuous Integration/Delivery for mcRNC product</h3></p>
+					<p><bd>Software Tester</bd></p>
+					<p>
+					<a href="/imgs/homepageimg/works/2/ATC.doc" target="_blank" class="but">Test Plan</a>
+					<a href="/episode2" class="but" target="_blank">Python Keywords</a>
+					<a href="/episode2" class="but" target="_blank">Automatic Cases</a>									
+					<br>
+					<h4>Overview of the project</h4>					
+					<h6><li>Chronology: 2009 to 2011</li></h6>
+					<h6><li>Geographical Location: Hangzhou, China</li></h6>
+					<h6><li>Name of Organization: R&D Centre, Nokia Solutions and Networks</li></h6>
+					<h6><li>Position Occupied: Test Engineer</li></h6>
+					</p>
+					<p>
+						mcRNC is a realization of the UTRAN 3G Radio Network Controller on hardware comprised of many multi-core SoC processors along with necessary memory, storage, switching and networking equipment in a rack mount box configuration. The functionality of the RNC is achieved by the software executing typically on 2 more such modules (a.k.a. Controller Modules)
+The software complies with the 3GPP specified protocols for interacting with other Network Elements.
+					</p>
+					<p>
+Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD). It has easy-to-use tabular test data syntax and it utilizes the keyword-driven testing approach. Its testing capabilities can be extended by test libraries implemented either with Python or Java, and users can create new higher-level keywords from existing ones using the same syntax that is used for creating test cases.						
+					</p>
+					<p>
+						The framework was initially developed at Nokia Networks and it is nowadays sponsored by Robot Framework Foundation.
+					</p>
+          <img src="/imgs/homepageimg/works/2/robot.jpg" alt="">	
+          <br>
+          <br>          
+					<p>mcRNC is the system under test. Test Data consists of case steps, parameters, commands, result evalution related scripts etc. The data is parsed by Robot Framework, which drives cases exectution by invoking test libraries and test tools(in needed cases). In my case we used Robot stardard test libraries, as well as
+						our own developed extension libraries which encapusulates a lot of common operation and useful tookit. Some kind of testing requires 3rd party test tools such as IXIA/Test Center/Junipter related equipment to simulate some traffic transport related scenarios.
+					</p>					
+					<br>					
+					<h4>My role and responsibilities</h4>	
+					<p>I responsible for Traffic Transport relavant testing and autumation, and is a key person to build Continuous Integration framework for the whole R&D teams and the mcRNC platform.</p>
+					<h5> Test Automatiion</h5>					
+					<li>Extension Test Library	
+						<p>The entire extension library should be centralized managed and stored in the folder SS_RCPCI/libraries/rcplib, the structure as follow:
+	There are two part under the rpclib folder:</p>						
+						<ul>
+							<li>rpclib: the main part of keyword storage, and the keyword can be classified into three type: atomic, common and domain
+								<ul>
+									<li>common
+										<h6>This module provide the basic keywords, it contains three folders: connection, exceptions and utils.</h6>
+									</li>
+									<li>atomic
+										<h6>This module provide the keywords which package only one command’s execution and the result analysis, it also contains three folders: cli, scli, stub</h6>
+									</li>
+									<li>domain
+										<h6>This module provide the conflict keywords which implemented with more than two keywords, and it should be organized with the sub module named as the domain name, such as backup_restore, certification_management, etc.</h6>
+									</li>
+								</ul>
+								<img src="/imgs/homepageimg/works/2/testlibrary.png" alt="">
+							</li>
+							<li>unittest: store the unittest of the python keyword, the folder structure should be same to the rpclib</li>
+						</ul>
+					</li>
+
+					<li>Python keyword implementation
+						<p>Think of a keyword as a single test step. Just as a test is conceptually made up of many steps, a robot test is made up of many keywords. Keywords are the foundation upon which all robot tests are built.
+There are generic keywords provided by Robot, and there are special-purpose keywords that we should create by ourselves. The real power of robot framework is when you create your own keywords so that tests can focus on the test logic rather than the underlying implementation.
+For example, a traffic transport tseting case might look something like this:
+							<ul>
+								<li>Case Setup: configure system variants, and create some basic resource</li>
+								<li>Establish ransport connection in mcRNC </li>
+								<li>Use test tool to geneate network traffic and send to certain port of mcRNC</li>
+								<li>Verify traffic statistics counters</li>
+								<li>Case Teardown: clear all testing resource and reset system environment to default</li>
+							</ul>
+							Each step is a high level keyword of a test case, and each high level keyword is realized by low level keywords implemented by stardard or extension test library. 
+						</p>
+					</li>
+										
+					<li>
+						Keyword examples written by me
+						<ul>
+								<li><a href="/episode2" target="_blank">########</a></li>
+								<li><a href="/episode2" target="_blank">########</a></li>
+								<li><a href="/episode2" target="_blank">########</a></li>		
+						</ul>
+					</li>
+
+					<li>Robot Case Implementation
+						<p>
+							A robot case is a single but complete test case to be performed by Robot Framework. Typically, I execute and debug robot cases by Robot IDE and editors. Here are some robot cases written by me for mcRNC testing:  
+							<ul>
+								<li><a href="/episode2" target="_blank">########</a></li>
+								<li><a href="/episode2" target="_blank">########</a></li>
+								<li><a href="/episode2" target="_blank">########</a></li>								
+							</ul>
+							<h6>And one exmaple of Robot Case execution result </h6>
+							<img src="/imgs/homepageimg/works/2/testsuite.png" style="width: 787px; height: 648px;" alt="">
+							<h6>in this exmaple, one test case named 'Verify IPQoS Measurement With Vlan on all Queue' is one case inside a test suite(a group of relevant test cases.)</h6>
+						</p>
+					</li>
+					
+					<h5>Continuous Integration Framwork</h5>
+					<p>
+						Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly. 					
+					</p>
+					<p>
+						I am one of key person to setup Continuous Integration framework for mcRNC platform.
+						<li>Feasibility study for CI product. finally Hudson is selected</li>
+						<li>Use lab servers to install and deploy CI projects</li>
+						<li>Integrate all existing automatic testing cases into CI framework</li>
+						<li>Coach SW developer and testers for right working ways for CI</li>
+						<li>Lead a series of CI system improvement e.g. shorten compilation time, reduce manual interruption</li>
+					</p>	
+					<p>
+						Specific process of CI and continuously delivery:
+						<img src="/imgs/homepageimg/works/2/CI_Process.png" alt="">
+					</p>	
+					
+					<p>In order to satisfy fast integration and delivery target, the CI system will schedule all tests cases with several parallel queues. And, compilation and unit testing are executed in parallel, too. The final performance of the CI&CD system is less than 3 hours, which means everyday the whole R&D team could get several up-to-date software builds, and every developer/tester could receive verification feedback in a half day.</p>
+					<img src="/imgs/homepageimg/works/2/CI_Performance.png" alt="">
+		
+					<p>
+						I cooridnate some CI&CD related improvement such as :
+						<li>Shorten compilation time</li>
+						<li>Reduce manual interruption</li>
+						<li>Unify makefile format for all software modules</li>
+						<li>Error/Critical log clearance after running positive cases</li>
+						<li>Automatically send mail in case of linux coredump created during cases running</li>
+					</p>						
+					<br>
+					<h4>Examples of Test Plan written by me</h4>
+					<li><a href="/imgs/homepageimg/works/2/ATC.doc" target="_blank">Test Plan for L2-L2 Transport Agent</a></li>
+					<br>						
+					<h4>Segments of Python Test Libraries written by me</h4>
+					<br>
+					<h4>Examples of Robot Automatic Cases written by me</h4>
+					<br>	
+					<h4>One real CI improvement activity cooridnated by me</h4>
+					<li><a href="/imgs/homepageimg/works/2/CI_Improvement_Newsletter.msg" target="_blank">Shorten Compilation and Unit Testing Exectuion Time Cycle</a></li>
+					<br>						
+					<p><bt>TAGS: <a href="#">Robot Framework</a> - <a href="#">Test Automation</a> - <a href="#">Continuous Improvement</a> - <a href="#">Continuous Delivery</a> - <a href="#">Python</a></bt></p>
+					<hr>
+					<p><a>#Work Episode 1&nbsp;&nbsp;</a>
+					<a href="/episode3">#Work Episode 3&nbsp;&nbsp;</a>
+					<a href="/episode4">#Work Episode 4&nbsp;&nbsp;</a>
+					<a href="/episode5">#Work Episode 5&nbsp;&nbsp;</a>
+					<a href="/episode6">#Work Episode 6</a>
+					</p>
+				</div>
+
+			</div><!-- /row -->
+	    </div> <!-- /container -->
+	</div><!-- /white -->
+	
+	
+	
+	
+	<!-- +++++ Footer Section +++++ -->
+	
+  <footer id="footer" class="row">
+      <div class="footer-content page">
+          <div class="col f1">
+              <p>© 2017 Leo Liang. &nbsp I live in the amazing New Zealand.</p>
+          </div>
+      </div>
+  </footer>
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/homepagejs/bootstrap.min.js"></script>
+  </body>
+</html>
