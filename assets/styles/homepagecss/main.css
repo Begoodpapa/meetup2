@@ -130,6 +130,7 @@ h1, h2, h3, h4, h5, h6, p {
     font-size: 16px;    
     padding: 0 40px;
     line-height: 55px;
+    margin-bottom: 10px;
     background-color: #F10061;
 
     -webkit-border-radius: 45px;
