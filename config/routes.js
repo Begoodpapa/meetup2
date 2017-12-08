@@ -44,7 +44,7 @@ module.exports.routes = {
     locals: {
         layout: null
     }
-  },   
+ },    
 
 'GET /episode4': {
     view: "episode4",
@@ -72,7 +72,7 @@ module.exports.routes = {
     locals: {
         layout: null
     }
-  },
+  },  
 
   '/sview': {
     view: 'sEvent'

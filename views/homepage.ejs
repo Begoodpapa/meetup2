@@ -23,6 +23,9 @@
 
         <!-- Fonts -->
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:300,400,700'>
+				<link rel="stylesheet" href="/vender/bootstrap/dist/css/bootstrap.min.css">
+				<script src="/js/homepagejs/jquery-1.11.0.min.js"></script>				
+				<script src="/js/homepagejs/bootstrap.min.js"></script>   
 
     </head>
     <body>   
@@ -76,7 +79,7 @@
                 </div>
             </section>
             
-            <hr>
+            <hr class="hrline">
             
             <section id="services" class="row">       
                 <div class="services-content page">
@@ -151,7 +154,7 @@
                 </div>
             </section>
 
-            <hr><div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+            <hr class="hrline">
 
             <section id="work" class="row">
                 <div class="work-content page">
@@ -246,8 +249,72 @@
                 </div>
             </section>
 
-            <hr>
+            <hr class="hrline">
 
+            <section id="letters" class="row">          
+                <div class="contact-content page">
+                    <div class="col contact-title">
+                        <h3
+                            data-100="-webkit-transform: translateX(100px); opacity:0;"
+                            data-500="-webkit-transform: translateX(0px); opacity:1;"
+                        >Reference Letters</h3>
+                    </div>      
+										<div class="container">
+										    <div class="row">
+										      <div class="col-xs-1 col-sm-3"></div>
+											    <div class="col-xs-10 col-sm-6">
+															<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+														    <!-- 轮播（Carousel）指标 -->
+														    <ol class="carousel-indicators">
+														        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+														        <li data-target="#myCarousel" data-slide-to="1"></li>
+														        <li data-target="#myCarousel" data-slide-to="2"></li>
+														    </ol>   
+														    <!-- 轮播（Carousel）项目 -->
+														    <div class="carousel-inner">
+														        <div class="item active">
+														            <img src="/imgs/homepageimg/works/4.jpg" alt="First slide">
+														        </div>
+														        <div class="item">
+														            <img src="/imgs/homepageimg/works/5.jpg" alt="Second slide">							           
+														        </div>
+														        <div class="item">
+														            <img src="/imgs/homepageimg/works/6.jpg" alt="Third slide">							            
+														        </div>
+														    </div>
+
+																<div style="text-align:center;">
+																	<input type="button" class="btn prev-slide" value="<">
+																	<input type="button" class="btn next-slide" value=">">
+																</div>														    
+														    
+															</div>							      	
+											    </div>      											   							   
+											  </div>            	
+			            	</div>
+			          </div>  	
+            </section>
+
+            <hr class="hrline">         
+            
+            <section id="employers" class="row">
+                <div class="contact-content page">
+                    <div class="col contact-title">
+                        <h3
+                            data-100="-webkit-transform: translateX(100px); opacity:0;"
+                            data-500="-webkit-transform: translateX(0px); opacity:1;"
+                        >My Former Employers</h3>
+                    </div>                  
+                    <div>
+                        <a href="https://www.nokia.com/en_int" target="_blank"><img src="/imgs/homepageimg/Nokia.jpg"></a>    
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="http://www.hundsun.com/en/" target="_blank"><img src="/imgs/homepageimg/Hundson.jpg"></a>                          
+                    </div>
+                </div>
+            </section>      
+                        
+            <hr class="hrline">
+            
             <section id="contact" class="row">
                 <div class="contact-content page">
                     <div class="col contact-title">
@@ -264,22 +331,6 @@
                     <div class="col empty">&nbsp;</div>             
                 </div>
             </section>
-            <hr>            
-            <section id="contact" class="row">
-                <div id="employers" class="contact-content page">
-                    <div class="col contact-title">
-                        <h3
-                            data-100="-webkit-transform: translateX(100px); opacity:0;"
-                            data-500="-webkit-transform: translateX(0px); opacity:1;"
-                        >My Former Employers</h3>
-                    </div>                  
-                    <div>
-                        <a href="https://www.nokia.com/en_int" target="_blank"><img src="/imgs/homepageimg/Nokia.jpg"></a>    
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="http://www.hundsun.com/en/" target="_blank"><img src="/imgs/homepageimg/Hundson.jpg"></a>                          
-                    </div>
-                </div>
-            </section>            
 
             <footer id="footer" class="row">
                 <div class="footer-content page">
@@ -294,10 +345,22 @@
         <div class="loader"></div>
         
         <!-- JavaScript -->
-        <script src="/js/homepagejs/jquery-1.11.0.min.js"></script>
         <script src="/js/homepagejs/modernizr-2.6.2.min.js"></script>
         <script src="/js/homepagejs/skrollr.js"></script>
         <script src="/js/homepagejs/main.js"></script>
+
+				<script>
+					$(function(){	
+						// 循环轮播到上一个项目
+						$(".prev-slide").click(function(){
+							$("#myCarousel").carousel('prev');
+						});
+						// 循环轮播到下一个项目
+						$(".next-slide").click(function(){
+							$("#myCarousel").carousel('next');
+						});						
+					});
+				</script>
 
     </body>
 
