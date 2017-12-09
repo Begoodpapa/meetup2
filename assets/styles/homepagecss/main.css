@@ -221,7 +221,7 @@ h1, h2, h3, h4, h5, h6, p {
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 3px;
-    padding: 18px 0 18px 45px;
+    padding: 15px 0 15px 45px;
 
     -webkit-transition: background 0.2s ease, color 0.2s ease;
        -moz-transition: background 0.2s ease, color 0.2s ease;
@@ -415,6 +415,10 @@ h1, h2, h3, h4, h5, h6, p {
     line-height: 2.25rem;
     line-height: 36px;
     color: #666;
+}
+
+.about-content p{
+	text-align: left;
 }
 
 /* ==========================================================================
@@ -815,6 +819,7 @@ h1, h2, h3, h4, h5, h6, p {
         .span_12,
         .home-title,
         .about-title,
+        .about-img,
         .about-description,
         .services-design,
         .services-frontend,
@@ -957,6 +962,7 @@ h1, h2, h3, h4, h5, h6, p {
         .span_12,
         .home-title,
         .about-title,
+        .about-img,		
         .about-description,
         .services-design,
         .services-frontend,
@@ -1088,6 +1094,7 @@ h1, h2, h3, h4, h5, h6, p {
         .span_12,
         .home-title,
         .about-title,
+        .about-img,
         .work-title,
         .contact-title,
         .f1 {
@@ -1172,12 +1179,15 @@ h1, h2, h3, h4, h5, h6, p {
         }
         .span_12,
         .home-title,
-        .about-title,
+        .about-title,	
         .work-title,
         .contact-title,
         .f1 {
             margin-left:0;
             width:100%;
+        }
+        .about-img{
+            width:33.3333333333%;
         }
     }
 
@@ -1257,12 +1267,15 @@ h1, h2, h3, h4, h5, h6, p {
         }
         .span_12,
         .home-title,
-        .about-title,
+        .about-title,        
         .work-title,
         .contact-title,
         .f1 {
             margin-left:0;
             width:100%;
         }
+        .about-img{
+            width:33.3333333333%;
+        }		
     }
 

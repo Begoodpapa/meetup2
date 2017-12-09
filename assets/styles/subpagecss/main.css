@@ -154,6 +154,7 @@ a:after {
     font-size: 14px;    
     padding: 0 30px;
     line-height: 40px;
+    margin-bottom: 10px;	
     background-color: #F10061;
 
     -webkit-border-radius: 45px;
