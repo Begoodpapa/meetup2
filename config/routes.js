@@ -67,6 +67,27 @@ module.exports.routes = {
     }
   },   
   
+'GET /certificate': {
+    view: "cert",
+    locals: {
+        layout: null
+    }
+  }, 
+  
+'GET /cv': {
+    view: "cv",
+    locals: {
+        layout: null
+    }
+  }, 
+  
+'GET /letters': {
+    view: "letters",
+    locals: {
+        layout: null
+    }
+  },   
+  
 'GET /beehive': {
     view: "index",
     locals: {
