@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-    <title>Work Episode 1 </title>
+    <title>Certificate </title>
 
     <!-- Bootstrap core CSS -->
     <link href="/vender/bootstrap/dist/css/bootstrap.css" rel="stylesheet">        
@@ -30,30 +30,7 @@
 
   <body>
 
-    <!-- Static navbar -->
-    <div class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand">Hi, I am Leo </a>
-					<!-- img src="/imgs/myself.png" width="100px" height="100px" -->          
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/">Home</a></li>
-            <li><a href="/cv">CV</a></li>            
-            <li><a href="/certificate">Certificates</a></li>
-            <li><a href="/letters">Referrence Letters</a></li>                    
-
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-
+	<%include sitehead.ejs%>
 	
 	<!-- +++++ Post +++++ -->
 	<div id="white">
@@ -105,6 +82,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/homepagejs/bootstrap.min.js"></script>
+    
+    <%include navitemmodal.ejs%>
+    
   </body>
 </html>

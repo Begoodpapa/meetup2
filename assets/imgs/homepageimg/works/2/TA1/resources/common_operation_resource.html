@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>common operation resource</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">common operation resource</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#b3b3b3" width="20%">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#b3b3b3" width="20%">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width="20%">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width="20%">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width="20%">
+<p class="western">Value</p>
+</th></tr><tr bgcolor="#ffffff"><td><b>Resource</b></td><td colspan="4">il.html</td></tr>
+</tbody></table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#b3b3b3" width="20%">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#b3b3b3" width="80%">
+<p class="western">Value</p>
+</th></tr><tr bgcolor="#ffffff"><td>${SSH_IP}</td><td>%{HOSTIP}</td></tr>
+<tr bgcolor="#ffffff"><td>${SSH_PORT}</td><td>%{PORT}</td></tr>
+<tr bgcolor="#ffffff"><td>${SSH_USER}</td><td>%{USERNAME}</td></tr>
+<tr bgcolor="#ffffff"><td>${SSH_PASSWORD}</td><td>%{PASSWD}</td></tr>
+<tr bgcolor="#ffffff"><td>${TIME_OUT}</td><td>21</td></tr>
+</tbody></table>
+<br><br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#b3b3b3" width="20%">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#b3b3b3" width="20%">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width="20%">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width="20%">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width="20%">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor="#ffffb9"><td colspan="5"><b>connect to target hardware</b></td></tr>
+<tr><td><br></td><td>${SSH_SRNC}</td><td>Connect to il</td><td>${SSH_IP}</td><td>${SSH_PORT}</td></tr>
+<tr><td><br></td><td>...</td><td><br></td><td>${SSH_USER}</td><td>${SSH_PASSWORD}</td></tr>
+<tr><td><br></td><td>...</td><td>SSH</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>set global variable</td><td>\${SSH_SRNC}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor="#ffffb9"><td colspan="5"><b>disconnect from target hardware</b></td></tr>
+<tr><td><br></td><td colspan="4">disconnect all ils</td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor="#ffffb9"><td colspan="5"><b>get active and standby cfcp ru server</b></td></tr>
+<tr><td><br></td><td>${exec_result}</td><td>Execute Cli</td><td>fshascli --bare ru | grep %{CFCP_TYPE_NAME}</td><td><br></td></tr>
+<tr><td><br></td><td>@{cfcp_list}</td><td>Set Variable</td><td>${exec_result.strip().splitlines()}</td><td><br></td></tr>
+<tr><td><br></td><td>:for</td><td>${cfcp}</td><td>in</td><td>@{cfcp_list}</td></tr>
+<tr><td><br></td><td><br></td><td>${exec_result}</td><td>Execute Cli</td><td>fshascli -s ${cfcp}</td></tr>
+<tr><td><br></td><td><br></td><td>run keyword if</td><td>${exec_result.find("role(ACTIVE)")} != -1</td><td>set suite variable</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>\${ACTIVE_CFCP}</td><td>${cfcp}</td></tr>
+<tr><td><br></td><td><br></td><td>run keyword if</td><td>${exec_result.find("role(HOTSTANDBY)")} != -1</td><td>set suite variable</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>\${HOTSTANDBY_CFCP}</td><td>${cfcp}</td></tr>
+</tbody></table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

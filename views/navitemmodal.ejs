@@ -1,0 +1,51 @@
+    <script src="/js/homepagejs/bootstrap.min.js"></script>
+    
+		<div class="modal fade" id="contactmodal">  
+		    <div class="modal-dialog">  
+		        <div class="modal-content">  
+		            <div class="modal-header">  
+		                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>  
+		                <h4 class="modal-title">My Contact Infomation</h4>  
+		            </div>  
+		            <div class="modal-body">  
+		                <p>Email: 13905538@qq.com</p>
+		                <p>MP: 021 2357623 / (0086) 139 5713 1445</p>
+		            </div>  
+		            <div class="modal-footer">  
+		                <a href="mailto:13905538@qq.com" class='btn btn-primary'>Email me</a>  		                
+		            </div>  
+		        </div><!-- /.modal-content -->  
+		    </div><!-- /.modal-dialog -->  
+		</div><!-- /.modal -->  
+		
+		<div class="modal fade" id="cvmodal">  
+		    <div class="modal-dialog">  
+		        <div class="modal-content">  
+		            <div class="modal-header">  
+		                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>  
+		                <h4 class="modal-title">My CV</h4>  
+		            </div>  
+		            <div class="modal-body">  
+		                <p>If you would like to have my latest CV, please Email me at 13905538@qq.com</p>		                
+		            </div>  
+		            <div class="modal-footer">  
+		                <a href="/cv/HuiLiang-CV.pdf" class='btn btn-primary'>Download CV</a>  		                
+		            </div>  
+		        </div><!-- /.modal-content -->  
+		    </div><!-- /.modal-dialog -->  
+		</div><!-- /.modal -->  		
+
+    <script type="text/javascript">  
+    
+	  $(function(){  
+	    $("#contact").click(function(){  
+	      $("#contactmodal").modal("toggle");  
+	    }); 
+	  })
+	  
+	  $(function(){  
+	    $("#cv").click(function(){  
+	      $("#cvmodal").modal("toggle");  
+	    }); 
+	  })	  
+    </script>  

@@ -809,29 +809,8 @@ div.WordSection1
 
 <body lang=ZH-CN link=blue vlink="#954F72" style='tab-interval:21.0pt'>
 
-    <!-- Static navbar -->
-    <div class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand">Hi, I am Leo </a>
-					<!-- img src="/imgs/myself.png" width="100px" height="100px" -->          
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/">Home</a></li>
-            <li><a href="/cv">CV</a></li>            
-            <li><a href="/certificate">Certificates</a></li>
-            <li><a href="/letters">Referrence Letters</a></li>                      
-
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+	<%include sitehead.ejs%>
+	
 <div class=WordSection1>
 
 <p class=IPENZBodyText><span lang=EN-NZ style='mso-ansi-language:EN-NZ'>&nbsp;</span></p>
@@ -1454,7 +1433,15 @@ div.WordSection1
   </td>
  </tr>
 </table>
-
+					<br>
+					<p><bt>TAGS: <a href="#">RSA</a> - <a href="#">Performance Optimization</a> - <a href="#">Memory Leak</a> - <a href="#">Logging Optimization</a></bt></p>
+					<hr style="max-width: 800pt;"}>
+					<p><a href="/episode1">#Work Episode 1&nbsp;&nbsp;</a>
+					<a href="/episode2" target="_blank">#Work Episode 2&nbsp;&nbsp;</a>
+					<a href="/episode3" target="_blank">#Work Episode 3&nbsp;&nbsp;</a>
+					<a href="/episode4" target="_blank">#Work Episode 4&nbsp;&nbsp;</a>
+					<a href="/episode5" target="_blank">#Work Episode 5</a>
+					</p>   
 </div>
 
 <p class=MsoNormal><span lang=EN-NZ style='mso-ansi-language:EN-NZ'>&nbsp;</span></p>
@@ -1474,6 +1461,8 @@ div.WordSection1
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/homepagejs/bootstrap.min.js"></script>
+
+    <%include navitemmodal.ejs%>
+    
   </body>
 </html>

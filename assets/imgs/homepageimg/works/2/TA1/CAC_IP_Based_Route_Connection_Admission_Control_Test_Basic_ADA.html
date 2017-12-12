@@ -1,0 +1,2124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>CAC IP Based Route Connection Admission Control Test Basic ADA</title>
+</head>
+<body>
+<h1>CAC IP Based Route Connection Admission Control Test Basic ADA</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Setting</th>
+</tr>
+<tr>
+<td class="name">Suite Setup</td>
+<td>Connect to Target Hardware and Create Test Resource</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Suite Teardown</td>
+<td>Disconnect From Target Hardware</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Test Teardown</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Force Tags</td>
+<td>Product_Backlog_ID-B01179</td>
+<td>Product_Backlog_ID-B01180</td>
+<td>Iteration_ID-I00693</td>
+<td>Iteration_ID-I00694</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>EFS_ID-RNC_EFS_2222_467</td>
+<td>owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com</td>
+<td>element-il</td>
+<td>exec_type-automatic</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>exec_level-pre</td>
+<td>type-FUT</td>
+<td>release-IL1</td>
+<td>reviewer-</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>reason-LDAP and switch to OMU spend a lot of time</td>
+<td>hw_env-ADA</td>
+<td>QL-4</td>
+<td>HW_TYPE-ADA_FTLB</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>FRS_ID-XXX</td>
+<td>PRS_ID-XXX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>./resources/IPBR_basic_operation_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>./resources/common_operation_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>./resources/cac_basic_operation_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../SS_ILCallMgmt/resources/cm_resource.tsv</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>il.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>Collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variable</th>
+</tr>
+<tr>
+<td class="name">${ETHER1_1}</td>
+<td>eth3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${EITPUPTRMRG}</td>
+<td>/GFCPRG</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IPRO_GROUP_1}</td>
+<td>{'IPBR_ID':'9', "NAME":"IPBR9", "IP_ADDR":"193.234.20.4", "COMMIT_BW":"1000", "ROUTE_BW":"10000","SIG_BW":"0","DCN_BW":"0", "IFACE":"${ETHER1_1}","OWNER":"${EITPUPTRMRG}"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${ACTIVE_USCP}</td>
+<td>USCP-0</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${BITRATE_200KB}</td>
+<td>200000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${BITRATE_300KB}</td>
+<td>300000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${BITRATE_600KB}</td>
+<td>600000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${BITRATE_800KB}</td>
+<td>800000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${BITRATE_120KB}</td>
+<td>120000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${COMMIT_BW_1000KB}</td>
+<td>1000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${ERR_CODE_NO_BW}</td>
+<td>0x450D</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${ERR_CODE_NO_IPRO}</td>
+<td>0x450E</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IUCS_IPBR_ID_5_DEC}</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IUCS_IPBR_ID_1_DEC}</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${COMMIT_BW_10000KB}</td>
+<td>1000000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${COMMIT_BW_120KB}</td>
+<td>120</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IPRO_GROUP_2}</td>
+<td>{'IPBR_ID':'10', "NAME":"IPBR10", "IP_ADDR":"193.234.20.4", "COMMIT_BW":"1000", "ROUTE_BW":"10000","SIG_BW":"0","DCN_BW":"0", "IFACE":"${ETHER1_1}","OWNER":"${EITPUPTRMRG}"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${RES_TYPE}</td>
+<td>OUT</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Case</th>
+</tr>
+<tr>
+<td class="name"><a name="test_Reserve and Release RTP/GTP leg with one IPBR ID">Reserve and Release RTP/GTP leg with one IPBR ID</a></td>
+<td>[Tags]</td>
+<td>ATC_ID-TT_IPBR_CAC.FUT.001.I00693.AT</td>
+<td>ATC_ID-TT_IPBR_CAC.FUT.001.I00694.AT</td>
+<td>ct-negative</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>create leg list</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info_1}</td>
+<td>Create IuCS leg with CAC requirement successfully</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info_2}</td>
+<td>Create GTP tunnel with CAC requirement successfully</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create IuCS leg with CAC requirement failed for the free bandwidth cannot meet the requirement</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_800KB}</td>
+<td>${BITRATE_600KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create GTP tunnel with CAC requirement failed for the free bandwidth cannot meet the requirement</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_800KB}</td>
+<td>${BITRATE_600KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info_3}</td>
+<td>Create IuCS leg without CAC requirement successfully</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info_4}</td>
+<td>Create GTP tunnel without CAC requirement successfully</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release IuCS leg with CAC requirement successfully</td>
+<td>${leg_info_1}</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release GTP tunnel with CAC requirement successfully</td>
+<td>${leg_info_2}</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release IuCS leg without CAC requirement successfully</td>
+<td>${leg_info_3}</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release GTP tunnel without CAC requirement successfully</td>
+<td>${leg_info_4}</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Release all legs created in the test case</td>
+<td>${GROUP_1}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Reserve and Release RTP/GTP leg with Multi IPBR IDs">Reserve and Release RTP/GTP leg with Multi IPBR IDs</a></td>
+<td>[Tags]</td>
+<td>ATC_ID-TT_IPBR_CAC.FUT.002.I00693.AT</td>
+<td>ATC_ID-TT_IPBR_CAC.FUT.002.I00694.AT</td>
+<td>ct-positive</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>create leg list</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create IUCS leg with different IPBR ID and CAC requirement successfully</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release IUCS legs with different IPBR ID and CAC requirement successfully</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create GTP tunnel with different IPBR ID and CAC requirement successfully</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release GTP tunnel with different IPBR ID and CAC requirement successfully</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>run keyword if test failed</td>
+<td>release legs created in test case</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_IPBR information notification for RTP/GTP leg">IPBR information notification for RTP/GTP leg</a></td>
+<td>[Tags]</td>
+<td>ct-negative</td>
+<td>ATC_ID-TT_IPBR_CAC.FUT.003.I00693.AT</td>
+<td>ATC_ID-TT_IPBR_CAC.FUT.003.I00694.AT</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>create leg list</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>register expect error log with no usable IPRO</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create GTP tunnel without CAC requirement failed caused by IPRO not exist</td>
+<td>${GROUP_2["IPBR_ID"]}</td>
+<td>${BITRATE_300KB}</td>
+<td>${BITRATE_200KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create IuCS leg without CAC requirement failed caused by IPRO not exist</td>
+<td>${GROUP_2["IPBR_ID"]}</td>
+<td>${BITRATE_300KB}</td>
+<td>${BITRATE_200KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info_1}</td>
+<td>Create GTP tunnel with CAC requirement successfully</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release GTP tunnel with CAC requirement successfully</td>
+<td>${leg_info_1}</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info_2}</td>
+<td>Create IuCS leg with CAC requirement successfully</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release IuCS leg with CAC requirement successfully</td>
+<td>${leg_info_2}</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>update ipbr committed bandwidth successfully</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${COMMIT_BW_120KB}</td>
+<td>${COMMIT_BW_120KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create GTP tunnel with CAC requirement failed for the free bandwidth cannot meet the requirement</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_300KB}</td>
+<td>${BITRATE_200KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create IuCS leg with CAC requirement failed for the free bandwidth cannot meet the requirement</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_300KB}</td>
+<td>${BITRATE_200KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>update ipbr committed bandwidth successfully</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${COMMIT_BW_1000KB}</td>
+<td>${COMMIT_BW_10000KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info_1}</td>
+<td>Create GTP tunnel with CAC requirement successfully</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_120KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_120KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release GTP tunnel with CAC requirement successfully</td>
+<td>${leg_info_1}</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_120KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_120KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info_2}</td>
+<td>Create IuCS leg with CAC requirement successfully</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_120KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_120KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release IuCS leg with CAC requirement successfully</td>
+<td>${leg_info_2}</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${BITRATE_120KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_120KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>update ipbr committed bandwidth successfully</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${COMMIT_BW_1000KB}</td>
+<td>${COMMIT_BW_10000KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Release all legs created in the test case</td>
+<td>${GROUP_1}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keyword</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Connect to Target Hardware and Create Test Resource">Connect to Target Hardware and Create Test Resource</a></td>
+<td>common_operation_resource.connect_to_target_hardware</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>switch to active OMU</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set test parameters</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Get Active CP Units</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Get Random USCP Unit</td>
+<td>${FLASH_PRE_INDEX}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set test parameters">set test parameters</a></td>
+<td>${GROUP_1}</td>
+<td>evaluate</td>
+<td>${IPRO_GROUP_1}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Suite Variable</td>
+<td>\${GROUP_1}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${GROUP_2}</td>
+<td>evaluate</td>
+<td>${IPRO_GROUP_2}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Suite Variable</td>
+<td>\${GROUP_2}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Release Test Resource and Disconnect from Target Hardware">Release Test Resource and Disconnect from Target Hardware</a></td>
+<td>common_operation_resource.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td># common_operation_resource.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create IUCS leg Failed caused by IPRO not exist">Create IUCS leg Failed caused by IPRO not exist</a></td>
+<td>[Arguments]</td>
+<td>${ipro_info_group}</td>
+<td>${rate}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>Create IUCS leg Failed</td>
+<td>${ipro_info_group["IPBR_ID"]}</td>
+<td>${rate}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.error_code}</td>
+<td>${ERR_CODE_NO_IPRO}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create IuCS leg with CAC requirement successfully">Create IuCS leg with CAC requirement successfully</a></td>
+<td>[Arguments]</td>
+<td>${ipbr_id}</td>
+<td>${max_bitrate}</td>
+<td>${avg_bitrate}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_org_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>create rtp leg</td>
+<td>${USCP}</td>
+<td>${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>NCAC=0,FMBR=${max_bitrate},FABR=${avg_bitrate}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Append to List</td>
+<td>${OUT_LEG_LIST}</td>
+<td>${leg_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_new_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${increase_bitrate}</td>
+<td>evaluate</td>
+<td>${ipbr_new_info.res_bw}-${ipbr_org_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${except_bitrate}</td>
+<td>evaluate</td>
+<td>${max_bitrate}*0.2 + ${avg_bitrate}*0.8</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal as integers</td>
+<td>${increase_bitrate}</td>
+<td>${except_bitrate}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${leg_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create IuCS leg with CAC requirement failed for the free bandwidth cannot meet the requirement">Create IuCS leg with CAC requirement failed for the free bandwidth cannot meet the requirement</a></td>
+<td>[Arguments]</td>
+<td>${ipbr_id}</td>
+<td>${max_bitrate}</td>
+<td>${avg_bitrate}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>create rtp leg</td>
+<td>${USCP}</td>
+<td>${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>NCAC=0,FMBR=${max_bitrate},FABR=${avg_bitrate}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>"${leg_info.result}" == "SUCCESSFUL"</td>
+<td>Append to List</td>
+<td>${OUT_LEG_LIST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${leg_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.result}</td>
+<td>FAILED</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.error_code}</td>
+<td>${ERR_CODE_NO_BW}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create IuCS leg without CAC requirement successfully">Create IuCS leg without CAC requirement successfully</a></td>
+<td>[Arguments]</td>
+<td>${ipbr_id}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_org_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>create rtp leg</td>
+<td>${USCP}</td>
+<td>${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>NCAC=1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Append to List</td>
+<td>${OUT_LEG_LIST}</td>
+<td>${leg_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_new_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal as integers</td>
+<td>${ipbr_new_info.res_bw}</td>
+<td>${ipbr_org_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${leg_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Release IuCS leg with CAC requirement successfully">Release IuCS leg with CAC requirement successfully</a></td>
+<td>[Arguments]</td>
+<td>${leg_info}</td>
+<td>${ipbr_id}</td>
+<td>${max_bitrate}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${avg_bitrate}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_org_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>release rtp leg</td>
+<td>${USCP}</td>
+<td>${leg_info.call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should contain</td>
+<td>${result}</td>
+<td>RELEASING SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_new_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${decrease_bitrate}</td>
+<td>evaluate</td>
+<td>${ipbr_org_info.res_bw}-${ipbr_new_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${except_bitrate}</td>
+<td>evaluate</td>
+<td>${max_bitrate}*0.2 + ${avg_bitrate}*0.8</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal as integers</td>
+<td>${decrease_bitrate}</td>
+<td>${except_bitrate}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Release IuCS leg without CAC requirement successfully">Release IuCS leg without CAC requirement successfully</a></td>
+<td>[Arguments]</td>
+<td>${leg_info}</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_org_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>release rtp leg</td>
+<td>${USCP}</td>
+<td>${leg_info.call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should contain</td>
+<td>${result}</td>
+<td>RELEASING SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_new_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal as integers</td>
+<td>${ipbr_org_info.res_bw}</td>
+<td>${ipbr_new_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Release all legs created in the test case">Release all legs created in the test case</a></td>
+<td>[Arguments]</td>
+<td>${ipro_info_group}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if test failed</td>
+<td>release leg and update ipbr bandwidth</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create IuCS leg without CAC requirement failed caused by IPRO not exist">Create IuCS leg without CAC requirement failed caused by IPRO not exist</a></td>
+<td>[Arguments]</td>
+<td>${ipbr_id}</td>
+<td>${max_bitrate}</td>
+<td>${avg_bitrate}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>create rtp leg</td>
+<td>${USCP}</td>
+<td>${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>NCAC=0,FMBR=${max_bitrate},FABR=${avg_bitrate}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>"${leg_info.result}" == "SUCCESSFUL"</td>
+<td>Append to List</td>
+<td>${OUT_LEG_LIST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${leg_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.result}</td>
+<td>FAILED</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.error_code}</td>
+<td>${ERR_CODE_NO_IPRO}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create IUCS leg with different IPBR ID and CAC requirement successfully">Create IUCS leg with different IPBR ID and CAC requirement successfully</a></td>
+<td>${ipbr_5_init_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_5_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${CALL_INFO_1}</td>
+<td>Create IuCS leg with CAC requirement successfully</td>
+<td>${IUCS_IPBR_ID_1_DEC}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_5_last_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_5_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${ipbr_5_last_info.res_bw}</td>
+<td>${ipbr_5_init_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_1_init_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_1_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${CALL_INFO_2}</td>
+<td>Create IuCS leg with CAC requirement successfully</td>
+<td>${IUCS_IPBR_ID_5_DEC}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_1_last_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_1_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${ipbr_1_last_info.res_bw}</td>
+<td>${ipbr_1_init_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set test variable</td>
+<td>\${CALL_INFO_1}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set test variable</td>
+<td>\${CALL_INFO_2}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Release IUCS legs with different IPBR ID and CAC requirement successfully">Release IUCS legs with different IPBR ID and CAC requirement successfully</a></td>
+<td>${ipbr_5_init_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_5_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release IuCS leg with CAC requirement successfully</td>
+<td>${CALL_INFO_1}</td>
+<td>${IUCS_IPBR_ID_1_DEC}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_5_last_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_5_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${ipbr_5_last_info.res_bw}</td>
+<td>${ipbr_5_init_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_1_init_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_1_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release IuCS leg with CAC requirement successfully</td>
+<td>${CALL_INFO_2}</td>
+<td>${IUCS_IPBR_ID_5_DEC}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_1_last_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_1_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${ipbr_1_last_info.res_bw}</td>
+<td>${ipbr_1_init_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create GTP Tunnel Failed caused by IPRO not exist">Create GTP Tunnel Failed caused by IPRO not exist</a></td>
+<td>[Arguments]</td>
+<td>${ipro_info_group}</td>
+<td>${rate}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>Create GTP Tunnel For PS-NRT Call failed</td>
+<td>${ipro_info_group["IPBR_ID"]}</td>
+<td>${rate}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.error_code}</td>
+<td>${ERR_CODE_NO_IPRO}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create GTP tunnel with CAC requirement successfully">Create GTP tunnel with CAC requirement successfully</a></td>
+<td>[Arguments]</td>
+<td>${ipbr_id}</td>
+<td>${max_bitrate}</td>
+<td>${avg_bitrate}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_org_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>Create GTP Leg Direct</td>
+<td>${USCP}</td>
+<td>${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>NCAC=0,FMBR=${max_bitrate},FABR=${avg_bitrate}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Append to List</td>
+<td>${OUT_LEG_LIST}</td>
+<td>${leg_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_new_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${increase_bitrate}</td>
+<td>evaluate</td>
+<td>${ipbr_new_info.res_bw}-${ipbr_org_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${except_bitrate}</td>
+<td>evaluate</td>
+<td>${max_bitrate}*0.2 + ${avg_bitrate}*0.8</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal as integers</td>
+<td>${increase_bitrate}</td>
+<td>${except_bitrate}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${leg_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Release test IPROU resource and all GTP Tunnel">Release test IPROU resource and all GTP Tunnel</a></td>
+<td>[Arguments]</td>
+<td>${ipro_info_group}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release IPROU without Check</td>
+<td>${ipro_info_group}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if test failed</td>
+<td>release all GTP Tunnels</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Release GTP tunnel with CAC requirement successfully">Release GTP tunnel with CAC requirement successfully</a></td>
+<td>[Arguments]</td>
+<td>${leg_info}</td>
+<td>${ipbr_id}</td>
+<td>${max_bitrate}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${avg_bitrate}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_org_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>release leg</td>
+<td>${leg_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should contain</td>
+<td>${result}</td>
+<td>RELEASING SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_new_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${decrease_bitrate}</td>
+<td>evaluate</td>
+<td>${ipbr_org_info.res_bw}-${ipbr_new_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${except_bitrate}</td>
+<td>evaluate</td>
+<td>${max_bitrate}*0.2 + ${avg_bitrate}*0.8</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal as integers</td>
+<td>${decrease_bitrate}</td>
+<td>${except_bitrate}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create GTP tunnel with CAC requirement failed for the free bandwidth cannot meet the requirement">Create GTP tunnel with CAC requirement failed for the free bandwidth cannot meet the requirement</a></td>
+<td>[Arguments]</td>
+<td>${ipbr_id}</td>
+<td>${max_bitrate}</td>
+<td>${avg_bitrate}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>Create GTP Leg Direct</td>
+<td>${USCP}</td>
+<td>${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>NCAC=0,FMBR=${max_bitrate},FABR=${avg_bitrate}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>"${leg_info.result}" == "SUCCESSFUL"</td>
+<td>Append to List</td>
+<td>${OUT_LEG_LIST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${leg_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.result}</td>
+<td>FAILED</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.error_code}</td>
+<td>${ERR_CODE_NO_BW}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create GTP tunnel with different IPBR ID and CAC requirement successfully">Create GTP tunnel with different IPBR ID and CAC requirement successfully</a></td>
+<td>${ipbr_5_init_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_5_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${CALL_INFO_1}</td>
+<td>Create GTP tunnel with CAC requirement successfully</td>
+<td>${IUCS_IPBR_ID_1_DEC}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_5_last_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_5_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${ipbr_5_last_info.res_bw}</td>
+<td>${ipbr_5_init_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_1_init_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_1_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${CALL_INFO_2}</td>
+<td>Create GTP tunnel with CAC requirement successfully</td>
+<td>${IUCS_IPBR_ID_5_DEC}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_1_last_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_1_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${ipbr_1_last_info.res_bw}</td>
+<td>${ipbr_1_init_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set test variable</td>
+<td>\${CALL_INFO_1}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set test variable</td>
+<td>\${CALL_INFO_2}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Release GTP tunnel with different IPBR ID and CAC requirement successfully">Release GTP tunnel with different IPBR ID and CAC requirement successfully</a></td>
+<td>${ipbr_5_init_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_5_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release GTP tunnel with CAC requirement successfully</td>
+<td>${CALL_INFO_1}</td>
+<td>${IUCS_IPBR_ID_1_DEC}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_5_last_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_5_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${ipbr_5_last_info.res_bw}</td>
+<td>${ipbr_5_init_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_1_init_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_1_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Release GTP tunnel with CAC requirement successfully</td>
+<td>${CALL_INFO_2}</td>
+<td>${IUCS_IPBR_ID_5_DEC}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_1_last_info}</td>
+<td>get ipbr resource info</td>
+<td>${IUCS_IPBR_ID_1_DEC}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${ipbr_1_last_info.res_bw}</td>
+<td>${ipbr_1_init_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create GTP tunnel without CAC requirement failed caused by IPRO not exist">Create GTP tunnel without CAC requirement failed caused by IPRO not exist</a></td>
+<td>[Arguments]</td>
+<td>${ipbr_id}</td>
+<td>${max_bitrate}</td>
+<td>${avg_bitrate}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>Create GTP Leg Direct</td>
+<td>${USCP}</td>
+<td>${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>NCAC=0,FMBR=${max_bitrate},FABR=${avg_bitrate}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>"${leg_info.result}" == "SUCCESSFUL"</td>
+<td>Append to List</td>
+<td>${OUT_LEG_LIST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${leg_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.result}</td>
+<td>FAILED</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.error_code}</td>
+<td>${ERR_CODE_NO_IPRO}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_release leg">release leg</a></td>
+<td>[Arguments]</td>
+<td>${leg_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>execute cli</td>
+<td>lgutilgx RV:${leg_info.computer}:${leg_info.call_id}:${leg_info.leg_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_get eitpuptrmrg list">get eitpuptrmrg list</a></td>
+<td>${exec_result}</td>
+<td>execute cli</td>
+<td>fshascli --bare rg | grep %{EITPUPTRM_TYPE_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${eitpuptrmrg_list}</td>
+<td>set variable</td>
+<td>${exec_result.strip().splitlines()}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${eitpuptrmrg_list}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Release GTP tunnel without CAC requirement successfully">Release GTP tunnel without CAC requirement successfully</a></td>
+<td>[Arguments]</td>
+<td>${leg_info}</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_org_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>release leg</td>
+<td>${leg_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should contain</td>
+<td>${result}</td>
+<td>RELEASING SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_new_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal as integers</td>
+<td>${ipbr_org_info.res_bw}</td>
+<td>${ipbr_new_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create GTP tunnel without CAC requirement successfully">Create GTP tunnel without CAC requirement successfully</a></td>
+<td>[Arguments]</td>
+<td>${ipbr_id}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_org_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>Create GTP Leg Direct</td>
+<td>${USCP}</td>
+<td>${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>NCAC=1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Append to List</td>
+<td>${OUT_LEG_LIST}</td>
+<td>${leg_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_new_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal as integers</td>
+<td>${ipbr_new_info.res_bw}</td>
+<td>${ipbr_org_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${leg_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_update ipbr committed bandwidth successfully">update ipbr committed bandwidth successfully</a></td>
+<td>[Arguments]</td>
+<td>${ipbr_id}</td>
+<td>${committe_bw}</td>
+<td>${route_bw}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>mod_ip_based_route</td>
+<td>${ipbr_id}</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${route_bw}</td>
+<td>${committe_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${result["IPBR Modify"]}</td>
+<td>Success</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_release leg and update ipbr bandwidth">release leg and update ipbr bandwidth</a></td>
+<td>update ipbr committed bandwidth successfully</td>
+<td>${GROUP_1["IPBR_ID"]}</td>
+<td>${COMMIT_BW_1000KB}</td>
+<td>${COMMIT_BW_10000KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>release legs created in test case</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_register expect error log with no usable IPRO">register expect error log with no usable IPRO</a></td>
+<td>register expect syslog</td>
+<td>fail to get IPRO, no IPRO available</td>
+<td>0x450e</td>
+<td>0x450E</td>
+</tr>
+</table>
+</body>
+</html>

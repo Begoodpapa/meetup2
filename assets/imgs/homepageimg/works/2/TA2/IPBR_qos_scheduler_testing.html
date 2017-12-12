@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>IPBR_qos_scheduler_testing</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western"></h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#b3b3b3" width=17%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#b3b3b3" width=33%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=17%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=17%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=17%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Document</b></td><td><font color=green>IPBR qos scheduler : This test suite verifies IPBR qos scheduler can work normally.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B01177</td><td><font color=dark red>Iteration_ID-I02109</td><td><font color=dark red>release-IL1</td><td><font color=dark red>exec_type-automatic</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>owner-I_EXT_MBB_WCDMA_SWD3_TEAM_ROBIN@internal.nsn.com</td><td><font color=dark red>element-IL</td><td><font color=dark red>type-FUT</td><td><font color=dark red>HW_ENV-RNC_S1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>HW_ENV-RNC</td><td><font color=dark red>QL-7</td><td><font color=dark red>EFS_ID-2222_114</td><td><font color=dark red>EFS_ID-2222_117</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>EFS_ID-2222_110</td><td><font color=dark red>EFS_ID-2222_111</td><td><font color=dark red>EFS_ID-2222_121</td><td><font color=dark red>PRS_ID-IL_PRS_4349</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_4348</td><td><font color=dark red>PRS-IL_PRS_1903</td><td><font color=dark red>PRS_ID-IL_PRS_4347</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect RNC And Add Resources</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Delete Resources and Disconnect</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/QoS_SCLI_Resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/traffic_call_resources.html</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#b3b3b3" width=18%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#b3b3b3" width=20%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=13%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=13%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=12%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=12%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=12%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${IPHB_PROFILE_ID}</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IPHB_PROFILE_NAME}</td><td>iphb1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IDSP_PROFILE_ID}</td><td>0</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IPBR_ID}</td><td>3721</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IPBR_NAME}</td><td>ipbr3721</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IPBR_COMMIT_BW}</td><td>8000</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IPBR_ROUTE_BW_INIT}</td><td>1001000</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SCHEDULER_TYPE_RQ}</td><td>realQueue</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SCHEDULER_TYPE_VQ}</td><td>virtualQueue</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{SCHEDULER_TYPE}</td><td>none</td><td>realQueue</td><td>virtualQueue</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IFC_TYPE}</td><td>E-RED</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SIG_BW}</td><td>900</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DCN_BW}</td><td>100</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${COMMIT_BW}</td><td>1000</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${QNUP_ADDR}</td><td>%{HEAD_OF_TRAFFIC_IP}.%{FPC_INDEX}.%{HOST_INDEX}.28</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IP_IFACE}</td><td>ethtest20</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${UP_ADDR}</td><td>%{HEAD_OF_TRAFFIC_IP}.%{FPC_INDEX}.%{HOST_INDEX}.41/16</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${UP_PORT}</td><td>5000</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${UP_NODE_NAME}</td><td>uspu-1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${QNUP_RG_NAME}</td><td>%{EITPUPTRM_TYPE_NAME}-3</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${EXPECT_RESULT}</td><td>Success</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IPRO_FORCE_DELETE}</td><td>forced</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${GTP_PORT}</td><td>2152</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IMSI}</td><td>54321</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ROUTE_BW_SMALL}</td><td>51000</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ROUTE_BW_BIG}</td><td>301000</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{DSCP_LIST_DEFAULT}</td><td>2E</td><td>22</td><td>1A</td><td>14</td><td>C</td><td>0</td></tr>
+<tr bgcolor=#FFFFFF><td>@{WEIGHT_LIST_DEFAULT}</td><td>x</td><td>60</td><td>25</td><td>10</td><td>4</td><td>1</td></tr>
+<tr bgcolor=#FFFFFF><td>@{WEIGHT_LIST_EQUAL}</td><td>x</td><td>50</td><td>50</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{WEIGHT_LIST_GAP}</td><td>x</td><td>99</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{IPHB_PARA_EQUAL}</td><td>50</td><td>10</td><td>100</td><td>10</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{IPHB_PARA_GAP_AF4}</td><td>99</td><td>10</td><td>100</td><td>10</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{IPHB_PARA_GAP_AF3}</td><td>1</td><td>10</td><td>100</td><td>10</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{IPHB_PARA_DEFAULT_AF4}</td><td>60</td><td>10</td><td>100</td><td>10</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{IPHB_PARA_DEFAULT_AF3}</td><td>25</td><td>10</td><td>100</td><td>10</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RATIO_RQ}</td><td>0.03</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RATIO_VQ}</td><td>0.07</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${VQ_MINOR_OFFSET}</td><td>1.5</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{PKT_RATE_RQ}</td><td>10000</td><td>100000</td><td>100000</td><td>100000</td><td>100000</td><td>100000</td></tr>
+<tr bgcolor=#FFFFFF><td>@{PKT_RATE_VQ}</td><td>10000</td><td>42000</td><td>17000</td><td>7000</td><td>3000</td><td>700</td></tr>
+<tr bgcolor=#FFFFFF><td>@{PKT_RATE_EQUAL}</td><td>10000</td><td>80000</td><td>80000</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{PKT_RATE_VQ_GAP}</td><td>${PKT_RATE_VQ[0]}</td><td>${PKT_RATE_VQ[1]}</td><td>${PKT_RATE_VQ[5]}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TTI}</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${PKT_NUMBER}</td><td>0</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CALL_NUMBER}</td><td>3</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TTI_ZERO}</td><td>0</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WAIT_TIME}</td><td>180 sec</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WAIT_INTERVAL}</td><td>18 sec</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=blue>#${DEFAULT_WQE_RQ_51M}</td><td colspan=6><font color=blue>${type};${queue_num};${leg_type};${scheduler_type};${pkt_size};${route_bw}</td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_WQE_RQ_51M}</td><td colspan=6>default;6;udp;@{SCHEDULER_TYPE}[1];80;${ROUTE_BW_SMALL}</td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_WQE_VQ_51M}</td><td colspan=6>default;6;udp;@{SCHEDULER_TYPE}[2];80;${ROUTE_BW_SMALL}</td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_WQE_RQ_301M}</td><td colspan=6>default;6;iub;@{SCHEDULER_TYPE}[1];800;${ROUTE_BW_BIG}</td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_WQE_VQ_301M}</td><td colspan=6>default;6;iub;@{SCHEDULER_TYPE}[2];800;${ROUTE_BW_BIG}</td></tr>
+<tr bgcolor=#FFFFFF><td>${EQUAL_WQE_RQ_51M}</td><td colspan=6>equal;3;rtp;@{SCHEDULER_TYPE}[1];80;${ROUTE_BW_SMALL}</td></tr>
+<tr bgcolor=#FFFFFF><td>${EQUAL_WQE_VQ_51M}</td><td colspan=6>equal;3;rtp;@{SCHEDULER_TYPE}[2];80;${ROUTE_BW_SMALL}</td></tr>
+<tr bgcolor=#FFFFFF><td>${EQUAL_WQE_RQ_301M}</td><td colspan=6>equal;3;rtp;@{SCHEDULER_TYPE}[1];500;${ROUTE_BW_BIG}</td></tr>
+<tr bgcolor=#FFFFFF><td>${EQUAL_WQE_VQ_301M}</td><td colspan=6>equal;3;rtp;@{SCHEDULER_TYPE}[2];500;${ROUTE_BW_BIG}</td></tr>
+<tr bgcolor=#FFFFFF><td>${GAP_WQE_RQ_51M}</td><td colspan=6>gap;3;gtp;@{SCHEDULER_TYPE}[1];200;${ROUTE_BW_SMALL}</td></tr>
+<tr bgcolor=#FFFFFF><td>${GAP_WQE_VQ_51M}</td><td colspan=6>gap;3;gtp;@{SCHEDULER_TYPE}[2];200;${ROUTE_BW_SMALL}</td></tr>
+<tr bgcolor=#FFFFFF><td>${GAP_WQE_RQ_301M}</td><td colspan=6>gap;3;gtp;@{SCHEDULER_TYPE}[1];1000;${ROUTE_BW_BIG}</td></tr>
+<tr bgcolor=#FFFFFF><td>${GAP_WQE_VQ_301M}</td><td colspan=6>gap;3;gtp;@{SCHEDULER_TYPE}[2];1000;${ROUTE_BW_BIG}</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#b3b3b3" width=20%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#b3b3b3" width=20%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#b3b3b3" width=20%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#b3b3b3" width=14%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#b3b3b3" width=13%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#b3b3b3" width=13%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#CCFFFF><td colspan=6><b>Check IPBR qos scheduler</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Sheduler.FUT.001.AT</td><td>ct-positive</td><td>1</td><td><br></td></tr>
+<tr><td><br></td><td>[Setup]</td><td>Initial the test mode of node</td><td>${UP_NODE_NAME}</td><td>${UP_ADDR}</td><td>${QNUP_RG_NAME}</td></tr>
+<tr><td><br></td><td>[Template]</td><td>Send traffic with pktgen</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WEIGHT_LIST_DEFAULT}</td><td>${PKT_RATE_RQ}</td><td>${DEFAULT_WQE_RQ_51M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WEIGHT_LIST_DEFAULT}</td><td>${PKT_RATE_VQ}</td><td>${DEFAULT_WQE_VQ_51M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WEIGHT_LIST_DEFAULT}</td><td>${PKT_RATE_RQ}</td><td>${DEFAULT_WQE_RQ_301M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WEIGHT_LIST_DEFAULT}</td><td>${PKT_RATE_VQ}</td><td>${DEFAULT_WQE_VQ_301M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WEIGHT_LIST_EQUAL}</td><td>${PKT_RATE_EQUAL}</td><td>${EQUAL_WQE_RQ_51M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WEIGHT_LIST_EQUAL}</td><td>${PKT_RATE_EQUAL}</td><td>${EQUAL_WQE_VQ_51M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WEIGHT_LIST_EQUAL}</td><td>${PKT_RATE_EQUAL}</td><td>${EQUAL_WQE_RQ_301M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WEIGHT_LIST_EQUAL}</td><td>${PKT_RATE_EQUAL}</td><td>${EQUAL_WQE_VQ_301M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WEIGHT_LIST_GAP}</td><td>${PKT_RATE_RQ}</td><td>${GAP_WQE_RQ_51M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WEIGHT_LIST_GAP}</td><td>${PKT_RATE_VQ_GAP}</td><td>${GAP_WQE_VQ_51M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WEIGHT_LIST_GAP}</td><td>${PKT_RATE_RQ}</td><td>${GAP_WQE_RQ_301M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WEIGHT_LIST_GAP}</td><td>${PKT_RATE_VQ_GAP}</td><td>${GAP_WQE_VQ_301M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Teardown]</td><td>Reset the test mode of node</td><td>${UP_NODE_NAME}</td><td>${UP_ADDR}</td><td>${QNUP_RG_NAME}</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#b3b3b3" width=13%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#b3b3b3" width=16%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width=19%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width=14%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width=12%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width=12%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width=14%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#FFFFb9><td><b>Connect RNC And Add Resources</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SUT and OMU</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${node_index}</td><td>Get the node indexes of wo units</td><td>/${QNUP_RG_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${EIPU_INDEX}</td><td>Get from list</td><td>${node_index}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${EIPU_INDEX}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${USCP}=</td><td>Execute cli</td><td>ilclifunit -u | grep USPU-1/QNUSCPServer |awk '{print $1}' | awk 'NR==1'</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${USCP}</td><td>${USCP.strip()}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Add PHB Profile Operation And Check The PHB Profile Is Added In LDAP</td><td>${IPHB_PROFILE_ID}</td><td>${IPHB_PROFILE_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ADD IP Based Route Operation</td><td>${IPBR_ID}</td><td>${IPBR_NAME}</td><td>${IPBR_COMMIT_BW}</td><td>${IPBR_ROUTE_BW_INIT}</td><td>@{SCHEDULER_TYPE}[0]</td></tr>
+<tr><td><br></td><td>...</td><td>${IDSP_PROFILE_ID}</td><td>${IPHB_PROFILE_ID}</td><td>${IFC_TYPE}</td><td>${IFC_TYPE}</td><td>${SIG_BW}</td></tr>
+<tr><td><br></td><td>...</td><td>${DCN_BW}</td><td>${EXPECT_RESULT}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Add ipro</td><td>${IPBR_ID}</td><td>${QNUP_ADDR}</td><td>/${QNUP_RG_NAME}</td><td>${IP_IFACE}</td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td><b>Delete Resources and Disconnect</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Delete ipro</td><td>${IPBR_ID}</td><td>${QNUP_ADDR}</td><td>/${QNUP_RG_NAME}</td><td>${IP_IFACE}</td><td>${IPRO_FORCE_DELETE}</td></tr>
+<tr><td><br></td><td>Delete IP Based Route Operation</td><td>${IPBR_ID}</td><td>${EXPECT_RESULT}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Delete IPHB Profile Operation</td><td>${IPHB_PROFILE_ID}</td><td>${IPHB_PROFILE_NAME}</td><td>${EXPECT_RESULT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All ILs</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td><b>Send traffic with pktgen</b></td><td><font color=dark red>[Arguments]</td><td><font color=dark red>${weight_list}</td><td><font color=dark red>${pkt_rate}</td><td><font color=dark red>${para_string}</td><td><font color=dark red>${unit_name}=${USCP}</td><td><br></td></tr>
+<tr><td><br></td><td>Modify IPHB and IPBR</td><td>${para_string.split(';')[0].strip()}</td><td>${para_string.split(';')[5].strip()}</td><td>${para_string.split(';')[3].strip()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disable the test mode</td><td>${UP_NODE_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Enable the test mode</td><td>${UP_NODE_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Connection with Traffic</td><td>${para_string.split(';')[1].strip()}</td><td>${para_string.split(';')[2].strip()}</td><td>${pkt_rate}</td><td>${para_string.split(';')[4].strip()}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue># Run Keyword And Ignore Error</td><td><font color=blue>execute cli</td><td><font color=blue>eitputil qos connection show</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue># Run Keyword And Ignore Error</td><td><font color=blue>execute cli</td><td><font color=blue>eitputil tae show -u 6</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${WAIT_TIME}</td><td>${WAIT_INTERVAL}</td><td>Get and check result</td><td>${weight_list}</td><td>${para_string.split(';')[0].strip()}</td></tr>
+<tr><td><br></td><td>...</td><td>${para_string.split(';')[1].strip()}</td><td>${pkt_rate}</td><td>${para_string.split(';')[3].strip()}</td><td>${para_string.split(';')[4].strip()}</td><td>${para_string.split(';')[5].strip()}</td></tr>
+<tr><td><br></td><td>:FOR</td><td>${index}</td><td>INRANGE</td><td>0</td><td>${para_string.split(';')[1].strip()}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Release Basic Call</td><td>${call_id_list[${index}]}</td><td>${unit_name}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td><b>Modify IPHB and IPBR</b></td><td><font color=dark red>[Arguments]</td><td><font color=dark red>${type}</td><td><font color=dark red>${route_bw}</td><td><font color=dark red>${schedule_type}</td><td><font color=dark red>${ifc_type}=${IFC_TYPE}</td><td><br></td></tr>
+<tr><td><br></td><td>Modify the IPHB Queue Weight</td><td>af4-queue</td><td>af3-queue</td><td>${type}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Modify IPBR and Check the IPBR is Modified in LDAP</td><td>${IPBR_ID}</td><td>${IPBR_NAME}</td><td>${IPBR_COMMIT_BW}</td><td>${route_bw}</td><td>${schedule_type}</td></tr>
+<tr><td><br></td><td>...</td><td>${IDSP_PROFILE_ID}</td><td>${IPHB_PROFILE_ID}</td><td>${ifc_type}</td><td>${ifc_type}</td><td>${SIG_BW}</td></tr>
+<tr><td><br></td><td>...</td><td>${DCN_BW}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get The Scheduler Info</td><td>${IPBR_ID}</td><td>${EIPU_INDEX}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td><b>Create Connection with Traffic</b></td><td><font color=dark red>[Arguments]</td><td><font color=dark red>${number}</td><td><font color=dark red>${leg_type}</td><td><font color=dark red>${pkt_rate}</td><td><font color=dark red>${pkt_size}</td><td><br></td></tr>
+<tr><td><br></td><td>${conn_id_list}</td><td>Create list</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${conn_id_list}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${call_id_list}</td><td>Create list</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${call_id_list}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Leg and Send traffic</td><td>${pkt_rate[0]}</td><td>${DSCP_LIST_DEFAULT[0]}</td><td>${leg_type}</td><td>${pkt_size}</td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${index}</td><td>INRANGE</td><td>1</td><td>${number}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Create Leg and Send traffic</td><td>${pkt_rate[${index}]}</td><td>${DSCP_LIST_DEFAULT[${index}]}</td><td>${leg_type}</td><td>${pkt_size}</td></tr>
+<tr bgcolor=#FFFFb9><td><b>Create Leg and Send traffic</b></td><td><font color=dark red>[Arguments]</td><td><font color=dark red>${pkt_rate}</td><td><font color=dark red>${dscp}</td><td><font color=dark red>${leg_type}</td><td><font color=dark red>${pkt_size}</td><td><font color=dark red>${unit_name}=${USCP}</td></tr>
+<tr><td><br></td><td>${remote_ip}</td><td>Evaluate</td><td>'${UP_ADDR}'.split('/')[0]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Use pktgen to send traffic to a leg</td><td>${unit_name}</td><td>${remote_ip}</td><td>${IPBR_ID}</td><td>${dscp}</td><td>${pkt_size}</td></tr>
+<tr><td><br></td><td>...</td><td>${pkt_rate}</td><td>${TTI}</td><td>${leg_type}</td><td>${PKT_NUMBER}</td><td><br></td></tr>
+<tr><td><br></td><td>Append to list</td><td>${conn_id_list}</td><td>${leg_info[0]}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append to list</td><td>${call_id_list}</td><td>${leg_info[1]}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td><b>Get and check result</b></td><td><font color=dark red>[Arguments]</td><td><font color=dark red>${weight_list}</td><td><font color=dark red>${type}</td><td><font color=dark red>${number}</td><td><font color=dark red>${pkt_rate}</td><td><font color=dark red>${schedule_type}</td></tr>
+<tr><td><br></td><td>...</td><td>${pkt_size}</td><td>${route_bw}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result_list}</td><td>Create list</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${result_list}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get pktgen stat result</td><td>${UP_NODE_NAME}</td><td>summary</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${index}</td><td>INRANGE</td><td>0</td><td>${number}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${pkt_result}</td><td>Get pktgen stat result</td><td>${UP_NODE_NAME}</td><td>connection 0x${conn_id_list[${index}]}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Append to list</td><td>${result_list}</td><td>${pkt_result['rx_bps']}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get pktgen stat result</td><td>${UP_NODE_NAME}</td><td>all</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>${actual_bw}</td><td>(int(${route_bw})-int(${COMMIT_BW}))*1000</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>${minor}</td><td>0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>${ef_bw}</td><td>int(${pkt_size}*8*${pkt_rate[0]})</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the result range</td><td>${result_list[0]}</td><td>${ef_bw}</td><td>${schedule_type}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${index}</td><td>INRANGE</td><td>1</td><td>${number}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Set Test Variable</td><td>${queue_bw}</td><td>int((${actual_bw}-${ef_bw})*${weight_list[${index}]}/100)</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><font color=blue># Run keyword if</td><td><font color=blue>'${schedule_type}'=='virtualQueue' and ${index}&gt;3</td><td><font color=blue>Set Test Variable</td><td><font color=blue>${minor}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><font color=blue># ...</td><td><font color=blue>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check the result range</td><td>${result_list[${index}]}</td><td>${queue_bw}</td><td>${schedule_type}</td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td><b>Modify the IPHB Queue Weight</b></td><td><font color=dark red>[Arguments]</td><td><font color=dark red>${queue_1}</td><td><font color=dark red>${queue_2}</td><td><font color=dark red>${type}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'${type}'=='equal'</td><td>Modify the IPHB of Queue</td><td>${IPHB_PROFILE_ID}</td><td>${IPHB_PROFILE_NAME}</td><td>${queue_1}</td></tr>
+<tr><td><br></td><td>...</td><td>${IPHB_PARA_EQUAL[0]}</td><td>${IPHB_PARA_EQUAL[1]}</td><td>${IPHB_PARA_EQUAL[2]}</td><td>${IPHB_PARA_EQUAL[3]}</td><td>${IPHB_PARA_EQUAL[4]}</td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'${type}'=='equal'</td><td>Modify the IPHB of Queue</td><td>${IPHB_PROFILE_ID}</td><td>${IPHB_PROFILE_NAME}</td><td>${queue_2}</td></tr>
+<tr><td><br></td><td>...</td><td>${IPHB_PARA_EQUAL[0]}</td><td>${IPHB_PARA_EQUAL[1]}</td><td>${IPHB_PARA_EQUAL[2]}</td><td>${IPHB_PARA_EQUAL[3]}</td><td>${IPHB_PARA_EQUAL[4]}</td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'${type}'=='gap'</td><td>Modify the IPHB of Queue</td><td>${IPHB_PROFILE_ID}</td><td>${IPHB_PROFILE_NAME}</td><td>${queue_1}</td></tr>
+<tr><td><br></td><td>...</td><td>${IPHB_PARA_GAP_AF4[0]}</td><td>${IPHB_PARA_GAP_AF4[1]}</td><td>${IPHB_PARA_GAP_AF4[2]}</td><td>${IPHB_PARA_GAP_AF4[3]}</td><td>${IPHB_PARA_GAP_AF4[4]}</td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'${type}'=='gap'</td><td>Modify the IPHB of Queue</td><td>${IPHB_PROFILE_ID}</td><td>${IPHB_PROFILE_NAME}</td><td>${queue_2}</td></tr>
+<tr><td><br></td><td>...</td><td>${IPHB_PARA_GAP_AF3[0]}</td><td>${IPHB_PARA_GAP_AF3[1]}</td><td>${IPHB_PARA_GAP_AF3[2]}</td><td>${IPHB_PARA_GAP_AF3[3]}</td><td>${IPHB_PARA_GAP_AF3[4]}</td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'${type}'=='default'</td><td>Modify the IPHB of Queue</td><td>${IPHB_PROFILE_ID}</td><td>${IPHB_PROFILE_NAME}</td><td>${queue_1}</td></tr>
+<tr><td><br></td><td>...</td><td>${IPHB_PARA_DEFAULT_AF4[0]}</td><td>${IPHB_PARA_DEFAULT_AF4[1]}</td><td>${IPHB_PARA_DEFAULT_AF4[2]}</td><td>${IPHB_PARA_DEFAULT_AF4[3]}</td><td>${IPHB_PARA_DEFAULT_AF4[4]}</td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'${type}'=='default'</td><td>Modify the IPHB of Queue</td><td>${IPHB_PROFILE_ID}</td><td>${IPHB_PROFILE_NAME}</td><td>${queue_2}</td></tr>
+<tr><td><br></td><td>...</td><td>${IPHB_PARA_DEFAULT_AF3[0]}</td><td>${IPHB_PARA_DEFAULT_AF3[1]}</td><td>${IPHB_PARA_DEFAULT_AF3[2]}</td><td>${IPHB_PARA_DEFAULT_AF3[3]}</td><td>${IPHB_PARA_DEFAULT_AF3[4]}</td></tr>
+<tr bgcolor=#FFFFb9><td><b>Check the result range</b></td><td><font color=dark red>[Arguments]</td><td><font color=dark red>${pkt_result}</td><td><font color=dark red>${queue_bw}</td><td><font color=dark red>${schedule_type}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${normal_result}</td><td>evaluate</td><td>${queue_bw}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'${schedule_type}'=='virtualQueue'</td><td>Set Test Variable</td><td>${offset}</td><td>${normal_result}*${RATIO_VQ}</td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'${schedule_type}'=='realQueue'</td><td>Set Test Variable</td><td>${offset}</td><td>${normal_result}*${RATIO_RQ}</td><td><br></td></tr>
+<tr><td><br></td><td>${min}</td><td>evaluate</td><td>${normal_result}-${offset}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${max}</td><td>evaluate</td><td>${normal_result}+${offset}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check the number range</td><td>${pkt_result}</td><td>${min}</td><td>${max}</td><td><br></td></tr>
+<tr><td><br></td><td>Should be equal as strings</td><td>${result}</td><td>True</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

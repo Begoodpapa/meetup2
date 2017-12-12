@@ -30,30 +30,7 @@
 
   <body>
 
-    <!-- Static navbar -->
-    <div class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand">Hi, I am Leo </a>
-					<!-- img src="/imgs/myself.png" width="100px" height="100px" -->          
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/">Home</a></li>
-            <li><a href="/cv">CV</a></li>            
-            <li><a href="/certificate">Certificates</a></li>
-            <li><a href="/letters">Referrence Letters</a></li>                       
-
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-
+	<%include sitehead.ejs%>
 	
 	<!-- +++++ Post +++++ -->
 	<div id="white">
@@ -65,7 +42,8 @@
 					<p>
 					<a href="/episode2" class="but" target="_blank">Code Segments</a>
 					<a href="/episode2" class="but" target="_blank">Unit Test</a>
-					<a href="/episode2" class="but" target="_blank">Automatic Test</a>									
+					<a href="/episode2" class="but" target="_blank">Automatic Test</a>
+					<a href="/beehive" class="but" target="_blank">Demo</a>		
 					<br>
 					<h4>Overview of the project</h4>					
 					<h6><li>Chronology: Dec 2015 to Dec 2017</li></h6>
@@ -74,7 +52,7 @@
 					<h6><li>Position Occupied: Test Engineer & Software Engineer</li></h6>
 					</p>
 					<p>Beehive a Sails based web application. It is used inside NOKIA for public group and event. Group is an abstract concept used to organize relevant events. The event can be one contest, workshop or training.... It is the bridge between event organizer and other people. People can join the interested group and event with his own needs. Previously the communication mainly relies on newsletter which is not so efficient.</p>
-					<p>Now Beehive has been deployed in my personal website, you can visit it via: http://www.nzleo.net/beehive</p>
+					<p>Now Beehive has been deployed in my personal website, you can visit it via: <h4><a href="/beehive" target="_blank">http://www.nzleo.net/beehive</a></h4></p>
 					<p>Followed by this project, we also have plan to develop one system called Persona which can show the competence level of our employee, further we will build another system called WeBond on which our employee can exchange knowledge. Beehive project is the base for coming two system.</p>
 					<p>All of these three systems will work together to help build strength community and software craftsmanship culture in the company.</p>
 					<br>
@@ -170,11 +148,11 @@
 					<br>					
 					<p><bt>TAGS: <a href="#">Web Development</a> - <a href="#">Web Testing</a> - <a href="#">Selenium</a> - <a href="#">MySQL</a> - <a href="#">React</a></bt></p>
 					<hr>
-					<p><a href="/episode2">#Work Episode 2&nbsp;&nbsp;</a>
-					<a href="/episode3">#Work Episode 3&nbsp;&nbsp;</a>
-					<a href="/episode4">#Work Episode 4&nbsp;&nbsp;</a>
-					<a href="/episode5">#Work Episode 5&nbsp;&nbsp;</a>
-					<a href="/episode6">#Work Episode 6</a></p>
+					<p><a href="/episode2" target="_blank">#Work Episode 2&nbsp;&nbsp;</a>
+					<a href="/episode3" target="_blank">#Work Episode 3&nbsp;&nbsp;</a>
+					<a href="/episode4" target="_blank">#Work Episode 4&nbsp;&nbsp;</a>
+					<a href="/episode5" target="_blank">#Work Episode 5&nbsp;&nbsp;</a>
+					<a href="/episode6" target="_blank">#Work Episode 6</a></p>
 				</div>
 
 			</div><!-- /row -->
@@ -196,6 +174,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/homepagejs/bootstrap.min.js"></script>
+
+    <%include navitemmodal.ejs%>
+
   </body>
 </html>

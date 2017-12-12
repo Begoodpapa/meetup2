@@ -30,30 +30,7 @@
 
   <body>
 
-    <!-- Static navbar -->
-    <div class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand">Hi, I am Leo </a>
-					<!-- img src="/imgs/myself.png" width="100px" height="100px" -->          
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/">Home</a></li>
-            <li><a href="/cv">CV</a></li>            
-            <li><a href="/certificate">Certificates</a></li>
-            <li><a href="/letters">Referrence Letters</a></li>                     
-
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-
+	<%include sitehead.ejs%>
 	
 	<!-- +++++ Post +++++ -->
 	<div id="white">
@@ -64,8 +41,9 @@
 					<p><bd>Software Tester</bd></p>
 					<p>
 					<a href="/imgs/homepageimg/works/2/ATC.doc" target="_blank" class="but">Test Plan</a>
-					<a href="/episode2" class="but" target="_blank">Python Keywords</a>
-					<a href="/episode2" class="but" target="_blank">Automatic Cases</a>									
+					<a href="#robotcase1" class="but">Automatic Case 1</a>
+					<a href="#robotcase2" class="but">Automatic Case 2</a>		
+					<a href="#kwexamples" class="but">Python Keywords</a>												
 					<br>
 					<h4>Overview of the project</h4>					
 					<h6><li>Chronology: 2009 to 2011</li></h6>
@@ -115,7 +93,7 @@ Robot Framework is a generic test automation framework for acceptance testing an
 						</ul>
 					</li>
 
-					<li>Python keyword implementation
+					<li id="pythonkw">Python keyword implementation
 						<p>Think of a keyword as a single test step. Just as a test is conceptually made up of many steps, a robot test is made up of many keywords. Keywords are the foundation upon which all robot tests are built.
 There are generic keywords provided by Robot, and there are special-purpose keywords that we should create by ourselves. The real power of robot framework is when you create your own keywords so that tests can focus on the test logic rather than the underlying implementation.
 For example, a traffic transport tseting case might look something like this:
@@ -133,24 +111,21 @@ For example, a traffic transport tseting case might look something like this:
 					<li>
 						Keyword examples written by me
 						<ul>
-								<li><a href="/episode2" target="_blank">########</a></li>
-								<li><a href="/episode2" target="_blank">########</a></li>
-								<li><a href="/episode2" target="_blank">########</a></li>		
+								<li><a href="#kwexamples" target="_blank">Vist three examples from here</a></li>
 						</ul>
 					</li>
 
 					<li>Robot Case Implementation
 						<p>
 							A robot case is a single but complete test case to be performed by Robot Framework. Typically, I execute and debug robot cases by Robot IDE and editors. Here are some robot cases written by me for mcRNC testing:  
-							<ul>
-								<li><a href="/episode2" target="_blank">########</a></li>
-								<li><a href="/episode2" target="_blank">########</a></li>
-								<li><a href="/episode2" target="_blank">########</a></li>								
-							</ul>
-							<h6>And one exmaple of Robot Case execution result </h6>
-							<img src="/imgs/homepageimg/works/2/testsuite.png" style="width: 787px; height: 648px;" alt="">
-							<h6>in this exmaple, one test case named 'Verify IPQoS Measurement With Vlan on all Queue' is one case inside a test suite(a group of relevant test cases.)</h6>
-						</p>
+						</p>	
+						<ul>
+								<li><a href="#robotcase1">Example 1</a></li>
+								<li><a href="#robotcase2">Example 2</a></li>			
+						</ul>
+						<h6>And one exmaple of Robot Case execution result </h6>
+						<img src="/imgs/homepageimg/works/2/testsuite.png" style="width: 787px; height: 648px;" alt="">
+						<h6>in this exmaple, one test case named 'Verify IPQoS Measurement With Vlan on all Queue' is one case inside a test suite(a group of relevant test cases.)</h6>
 					</li>
 					
 					<h5>Continuous Integration Framwork</h5>
@@ -184,29 +159,68 @@ For example, a traffic transport tseting case might look something like this:
 					<br>
 					<h4>Examples of Test Plan written by me</h4>
 					<li><a href="/imgs/homepageimg/works/2/ATC.doc" target="_blank">Test Plan for L2-L2 Transport Agent</a></li>
-					<br>						
-					<h4>Segments of Python Test Libraries written by me</h4>
 					<br>
 					<h4>Examples of Robot Automatic Cases written by me</h4>
+					<li id="robotcase1">
+						Example 1: A test suite for verifying Connection Admission Control functionality of mcRNC
+							<ul>
+								<li><a href="/imgs/homepageimg/works/2/TA1/CAC_IP_Based_Route_Connection_Admission_Control_Test_Basic_ADA.html" target="_blank">Test Suite Source File</a></li>
+							  <li><a href="/imgs/homepageimg/works/2/TA1/resources/cac_basic_operation_resource.html" target="_blank">Included Resource File 1</a></li>
+							  <li><a href="/imgs/homepageimg/works/2/TA1/resources/common_operation_resource.html" target="_blank">Included Resource file 2</a></li>							  
+							</ul>		
+					  	<p><b>Note:</b> Connection Admission means accept or reject new client connection establishment. It decides based on network resource situation such as bandwidth, connection type and priorities. In the test suite it contains three test cases, and those three test cases uses around 30 user keywords which could be found from the bottom of the test suite file. Besides, the test suite includes five other external resource files(two as examples attached here) and one Robot Framework stardard library - Connections.</p>							
+					</li>						
+					<li id="robotcase2">
+						Example 2: A test suite for verifying QoS(Quality of Service) scheduling of mcRNC
+						<ul>
+							<li><a href="/imgs/homepageimg/works/2/TA2/IPBR_qos_scheduler_testing.html" target="_blank">Test Suite Source File</a></li>
+						  <li><a href="/imgs/homepageimg/works/2/TA2/resources/QoS_SCLI_Resource.html" target="_blank">Included Resource file 1</a></li>
+						  <li><a href="/imgs/homepageimg/works/2/TA2/resources/traffic_call_resources.html" target="_blank">Included Resource file 2</a></li>
+							<li><a href="/imgs/homepageimg/works/2/TA2/resources/IPBR_test_resources_for_CM.html" target="_blank">Included Resource file 3</a></li>						  
+						</ul>
+						<p><b>Note:</b> Quality of service (QoS) is the description or measurement of the overall performance of mcRNC product, which is the performance seen by the users of the network. To quantitatively measure quality of service, several related aspects of the network service are often considered, such as packet loss, bit rate, throughput, transmission delay, availability, jitter, etc.Although the test suite contains only one test cases, actually it realizes 12 sub-cases based on one common template. Those sub-test-cases uses nine user keywords which could be found from the bottom of the test suite file. Besides, the test suite includes two other external resource files(both attached here, and one more recursively included resource file also).</p>
+					</li>				
 					<br>	
-					<h4>One real CI improvement activity cooridnated by me</h4>
-					<li><a href="/imgs/homepageimg/works/2/CI_Improvement_Newsletter.msg" target="_blank">Shorten Compilation and Unit Testing Exectuion Time Cycle</a></li>
+					<h4 id="kwexamples">Examples of Python Keywords written by me</h4>
+					<li>
+						Example 1: A test library for verifying Connection Admission Control functionality of mcRNC
+						<ul>
+							<li><a href="/imgs/homepageimg/works/2/KW/cac/il_caclib.py">Source File</a></li>
+							<li><a href="/imgs/homepageimg/works/2/KW/cac/test_il_caclib.py">Unit Test File</a></li>
+						</ul>
+					</li>
+					<li>
+						Example 2: A test library for verifying Logging functionality of mcRNC
+						<ul>
+							<li><a href="/imgs/homepageimg/works/2/KW/log/il_log.py">Source File</a></li>
+							<li><a href="/imgs/homepageimg/works/2/KW/log/test_il_log.py">Unit Test File</a></li>
+						</ul>
+					</li>		
+					<li>
+						Example 3: A test library for verifying Name Server functionality of mcRNC
+						<ul>
+							<li><a href="/imgs/homepageimg/works/2/KW/nameserver/name_server.py">Source File</a></li>
+							<li><a href="/imgs/homepageimg/works/2/KW/nameserver/test_name_server.py">Unit Test File</a></li>
+						</ul>
+					</li>													
+					<p><b>Note:</b> <a href="#pythonkw">An explanation of Python based robot keyword</a><br>Test libraries are resource files of robot cases, and in most cases a test library consists of a lot of Python keywords. </p>
+					<br>					
+					<h4>One of improvement activities for Continuous Integration Framework cooridnated by me</h4>
+					<li><a href="/imgs/homepageimg/works/2/CI_Improvement_Newsletter.msg">Shorten Compilation and Unit Testing Exectuion Time Cycle</a></li>
 					<br>						
 					<p><bt>TAGS: <a href="#">Robot Framework</a> - <a href="#">Test Automation</a> - <a href="#">Continuous Improvement</a> - <a href="#">Continuous Delivery</a> - <a href="#">Python</a></bt></p>
 					<hr>
-					<p><a>#Work Episode 1&nbsp;&nbsp;</a>
-					<a href="/episode3">#Work Episode 3&nbsp;&nbsp;</a>
-					<a href="/episode4">#Work Episode 4&nbsp;&nbsp;</a>
-					<a href="/episode5">#Work Episode 5&nbsp;&nbsp;</a>
-					<a href="/episode6">#Work Episode 6</a>
+					<p><a href="/episode1">#Work Episode 1&nbsp;&nbsp;</a>
+					<a href="/episode3" target="_blank">#Work Episode 3&nbsp;&nbsp;</a>
+					<a href="/episode4" target="_blank">#Work Episode 4&nbsp;&nbsp;</a>
+					<a href="/episode5" target="_blank">#Work Episode 5&nbsp;&nbsp;</a>
+					<a href="/episode6" target="_blank">#Work Episode 6</a>
 					</p>
 				</div>
 
 			</div><!-- /row -->
 	    </div> <!-- /container -->
 	</div><!-- /white -->
-	
-	
 	
 	
 	<!-- +++++ Footer Section +++++ -->
@@ -223,6 +237,8 @@ For example, a traffic transport tseting case might look something like this:
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/homepagejs/bootstrap.min.js"></script>
+
+    <%include navitemmodal.ejs%>
+    
   </body>
 </html>

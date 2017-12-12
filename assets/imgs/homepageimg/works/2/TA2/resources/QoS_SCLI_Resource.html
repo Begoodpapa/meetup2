@@ -1,0 +1,623 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>QoS_SCLI_Resource.html</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">QoS SCLI Resource</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#b3b3b3" width=23%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#b3b3b3" width=34%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=14%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=14%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=14%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><b>Library</b></td><td>Collections</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Library</b></td><td>OperatingSystem</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>il.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>../../../../TestCase/SS_ILCAC/resources/IPBR_test_resources_for_CM.html</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#b3b3b3" width=18%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#b3b3b3" width=18%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=12%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=14%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=13%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=12%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#b3b3b3" width=13%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${MAX TIME FOR CONNECT}</td><td>60</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{EF_QUEUE_PHB_INITIAL_INFO}</td><td>x</td><td>x</td><td>x</td><td>x</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{BE_QUEUE_PHB_INITIAL_INFO}</td><td>1</td><td>10</td><td>100</td><td>10</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{AF1_QUEUE_PHB_INITIAL_INFO}</td><td>4</td><td>10</td><td>100</td><td>10</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{AF2_QUEUE_PHB_INITIAL_INFO}</td><td>10</td><td>10</td><td>100</td><td>10</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{AF3_QUEUE_PHB_INITIAL_INFO}</td><td>25</td><td>10</td><td>100</td><td>10</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{AF4_QUEUE_PHB_INITIAL_INFO}</td><td>60</td><td>10</td><td>100</td><td>10</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{NON_EF_QUEUE_SET_INFO}</td><td>50</td><td>50</td><td>100</td><td>50</td><td>5</td><td>5</td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{EF_QUEUE_DSCP_INITIAL_INFO}</td><td>46</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{AF1_QUEUE_DSCP_INITIAL_INFO}</td><td>10</td><td>12</td><td>14</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{AF2_QUEUE_DSCP_INITIAL_INFO}</td><td>18</td><td>20</td><td>22</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{AF3_QUEUE_DSCP_INITIAL_INFO}</td><td>26</td><td>28</td><td>30</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{AF4_QUEUE_DSCP_INITIAL_INFO}</td><td>34</td><td>36</td><td>38</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{BE_QUEUE_DSCP_INITIAL_INFO}</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+<tr><td>...</td><td>6</td><td>7</td><td>8</td><td>9</td><td>11</td><td>13</td></tr>
+<tr><td>...</td><td>15</td><td>16</td><td>17</td><td>19</td><td>21</td><td>23</td></tr>
+<tr><td>...</td><td>24</td><td>25</td><td>27</td><td>29</td><td>31</td><td>32</td></tr>
+<tr><td>...</td><td>33</td><td>35</td><td>37</td><td>39</td><td>40</td><td>41</td></tr>
+<tr><td>...</td><td>42</td><td>43</td><td>44</td><td>45</td><td>47</td><td>48</td></tr>
+<tr><td>...</td><td>49</td><td>50</td><td>51</td><td>52</td><td>53</td><td>54</td></tr>
+<tr><td>...</td><td>55</td><td>56</td><td>57</td><td>58</td><td>59</td><td>60</td></tr>
+<tr><td>...</td><td>61</td><td>62</td><td>63</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{EF_QUEUE_DSCP_INFO}</td><td>2</td><td>46</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{AF1_QUEUE_DSCP_INFO}</td><td>3</td><td>10</td><td>12</td><td>14</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{AF2_QUEUE_DSCP_INFO}</td><td>4</td><td>18</td><td>20</td><td>22</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{AF3_QUEUE_DSCP_INFO}</td><td>5</td><td>26</td><td>28</td><td>30</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{AF4_QUEUE_DSCP_INFO}</td><td>6</td><td>34</td><td>36</td><td>38</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{BE_QUEUE_DSCP_INFO}</td><td>0</td><td>1</td><td>7</td><td>8</td><td>9</td><td>11</td></tr>
+<tr><td>...</td><td>13</td><td>15</td><td>16</td><td>17</td><td>19</td><td>21</td></tr>
+<tr><td>...</td><td>23</td><td>24</td><td>25</td><td>27</td><td>29</td><td>31</td></tr>
+<tr><td>...</td><td>32</td><td>33</td><td>35</td><td>37</td><td>39</td><td>40</td></tr>
+<tr><td>...</td><td>41</td><td>42</td><td>43</td><td>44</td><td>45</td><td>47</td></tr>
+<tr><td>...</td><td>48</td><td>49</td><td>50</td><td>51</td><td>52</td><td>53</td></tr>
+<tr><td>...</td><td>54</td><td>55</td><td>56</td><td>57</td><td>58</td><td>59</td></tr>
+<tr><td>...</td><td>60</td><td>61</td><td>62</td><td>63</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IP_ADDRESS_ACTIVE}</td><td>%{DSP0_IUB_IP}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RG_EITP}</td><td>/%{IPPLAN_RG_IPRO}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IP_IFACE}</td><td>%{ETH1_1}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IPRO_DELETE_MODE}</td><td>forced</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${BCN2_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${QOSA_FAMILY_ID}</td><td>0xA01</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IPBR_START_MSG}</td><td>0xE1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IPBR_REQ_MSG}</td><td>0xE3</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#b3b3b3" width=6%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#b3b3b3" width=9%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width=16%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width=14%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width=14%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width=14%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width=14%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#b3b3b3" width=13%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#FFFFb9><td colspan=8><b>Connect To SUT</b></td></tr>
+<tr><td><br></td><td>Connect To IL</td><td>%{HOSTIP}</td><td><br></td><td>${MAX TIME FOR CONNECT}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>%{USERNAME}</td><td>%{PASSWD}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Disconnect From SUT</b></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check Related Unit State</b></td></tr>
+<tr><td><font color=blue>#</td><td><font color=blue>Switch IL Connection</td><td><font color=blue>${ngRNC_CONN}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=blue>#</td><td><font color=blue>Change To Ru Env</td><td><font color=blue>%{OMU_0_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=blue>#</td><td><font color=blue>${status}</td><td><font color=blue>Check Managed Object State</td><td><font color=blue>%{OMU_0_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=blue>#</td><td><font color=blue>Should Be True</td><td><font color=blue>${status}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>execute cli</td><td>cat /proc/dmxmsg/mac_addr_tbl</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=blue>#</td><td><font color=blue>${status}</td><td><font color=blue>Check Managed Object State</td><td><font color=blue>%{EITPUPTRM_0_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=blue>#</td><td><font color=blue>Should Be True</td><td><font color=blue>${status}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Initial the Test Env</b></td></tr>
+<tr><td><br></td><td>Connect To SUT and OMU</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Related Unit State</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set the environment variable</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Connect To SUT and OMU</b></td></tr>
+<tr><td><br></td><td>Connect To SUT</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${active_omu}</td><td>Get Wo Units</td><td>/%{IPPLAN_RG_OMU}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change Ru</td><td>${active_omu[0]}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Set the environment variable</b></td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'%{DETAIL_HW}' == 'BCN'</td><td>Set the BCN1 eipu node index</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'%{DETAIL_HW}' == 'BCN_S1'</td><td>Set the BCN1 eipu node index</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'%{DETAIL_HW}' == 'FGW'</td><td>Set the BCN1 eipu node index</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'%{DETAIL_HW}' == 'ADA'</td><td>Set the ADA variable</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Set the BCN1 eipu node index</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[Arguments]</td><td><font color=dark red>${rg_name}=${RG_EITP}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${node_index}</td><td>Get the node indexes of wo units</td><td>${rg_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${eipu_index}</td><td>Get from list</td><td>${node_index}</td><td>0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${BCN1_EIPU_NODE}</td><td>${eipu_index}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Set the ADA variable</b></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${BCN1_EIPU_NODE}</td><td>0</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${USCP}</td><td>%{GFCP_TYPE_NAME}-0</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Initial the All IPHB Set List</b></td></tr>
+<tr><td><br></td><td>${NON_EF_QUEUE_SET_LIST}</td><td>Create list</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>5</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Append to List</td><td>${NON_EF_QUEUE_SET_LIST}</td><td>@{NON_EF_QUEUE_SET_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set suite variable</td><td>\${NON_EF_QUEUE_SET_LIST}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Managed Object Should Be Ready</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[Arguments]</td><td><font color=dark red>${moname}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Check Managed Object State</td><td>${moname}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${True}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>ADD IP Based Route Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_name}</td><td><font color=dark red>${ipbr_commit_bw}</td><td><font color=dark red>${ipbr_route_bw}</td><td><font color=dark red>${scheduler_type}</td><td><font color=dark red>${idsp_id}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${iphb_id}</td><td><font color=dark red>${ifc_nrtdch}</td><td><font color=dark red>${ifc_nrthsdpa}</td><td><font color=dark red>${committed-sig-bandwidth}</td><td><font color=dark red>${committed-dcn-bandwidth}</td><td><font color=dark red>${expection}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${mux_enable}=disable</td><td><font color=dark red>${dscp}=</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>add ip based route</td><td>${ipbr_id}</td><td>${ipbr_name}</td><td>${ipbr_route_bw}</td><td>${ipbr_commit_bw}</td><td>${committed-sig-bandwidth}</td></tr>
+<tr><td><br></td><td>...</td><td>${committed-dcn-bandwidth}</td><td>${ifc_nrtdch}</td><td>${ifc_nrthsdpa}</td><td>${scheduler_type}</td><td>${iphb_id}</td><td>${idsp_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${mux_enable}</td><td><br></td><td><br></td><td><br></td><td>${dscp}</td><td><br></td></tr>
+<tr><td><br></td><td>should be equal</td><td>${result["IPBR Add"]}</td><td>${expection}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Modify IPBR and Check the IPBR is Modified in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_name}</td><td><font color=dark red>${ipbr_commit_bw}</td><td><font color=dark red>${ipbr_route_bw}</td><td><font color=dark red>${scheduler_type}</td><td><font color=dark red>${idsp_id}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${iphb_id}</td><td><font color=dark red>${ifc_nrtdch}</td><td><font color=dark red>${ifc_nrthsdpa}</td><td><font color=dark red>${committed-sig-bandwidth}</td><td><font color=dark red>${committed-dcn-bandwidth}</td><td><br></td></tr>
+<tr><td><br></td><td>modify IP Based Route Operation</td><td>${ipbr_id}</td><td>${ipbr_name}</td><td>${ipbr_commit_bw}</td><td>${ipbr_route_bw}</td><td>${scheduler_type}</td><td>${idsp_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${iphb_id}</td><td>${ifc_nrtdch}</td><td>${ifc_nrthsdpa}</td><td>${committed-sig-bandwidth}</td><td>${committed-dcn-bandwidth}</td><td>Success</td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Modify IPBR and Check the IPBR is Modified in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_name}</td><td><font color=dark red>${ipbr_commit_bw}</td><td><font color=dark red>${ipbr_route_bw}</td><td><font color=dark red>${scheduler_type}</td><td><font color=dark red>${idsp_id}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${iphb_id}</td><td><font color=dark red>${ifc_nrtdch}</td><td><font color=dark red>${ifc_nrthsdpa}</td><td><font color=dark red>${committed-sig-bandwidth}</td><td><font color=dark red>${committed-dcn-bandwidth}</td><td><font color=dark red>${eipu_index}</td></tr>
+<tr><td><br></td><td>Modify IPBR and Check the IPBR is Modified in LDAP</td><td>${ipbr_id}</td><td>${ipbr_name}</td><td>${ipbr_commit_bw}</td><td>${ipbr_route_bw}</td><td>${scheduler_type}</td><td>${idsp_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${iphb_id}</td><td>${ifc_nrtdch}</td><td>${ifc_nrthsdpa}</td><td>${committed-sig-bandwidth}</td><td>${committed-dcn-bandwidth}</td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>4 sec</td><td>1 sec</td><td>Check the IPBR is right in qos linux sharemem</td><td>${ipbr_id}</td><td>${ipbr_route_bw}</td><td>${scheduler_type}</td></tr>
+<tr><td><br></td><td>...</td><td>${idsp_id}</td><td>${iphb_id}</td><td>${committed-sig-bandwidth}</td><td>${committed-dcn-bandwidth}</td><td>${eipu_index}</td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IPBR is right in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_route_bw}</td><td><font color=dark red>${scheduler_type}</td><td><font color=dark red>${idsp_id}</td><td><font color=dark red>${iphb_id}</td><td><font color=dark red>${committed-sig-bandwidth}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${committed-dcn-bandwidth}</td><td><font color=dark red>${eipu_index}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${ipbr_info}=</td><td>Get the IPBR info in qos linux sharemem</td><td>${ipbr_id}</td><td>${eipu_index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${ipbr_info["IPBR ID"]}</td><td>${ipbr_id}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should be equal</td><td>${ipbr_info["Scheduler Type"]}</td><td>${scheduler_type}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${ipbr_info["DSPM Profile ID"]}</td><td>${idsp_id}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${ipbr_info["PHB Profile ID"]}</td><td>${iphb_id}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${ipbr_info["Route BW"]}</td><td>${ipbr_route_bw}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${ipbr_info["Committed Signaling BW"]}</td><td>${committed-sig-bandwidth}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${ipbr_info["Committed DCN BW"]}</td><td>${committed-dcn-bandwidth}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add IPBR and Check the IPBR is Added in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_name}</td><td><font color=dark red>${ipbr_commit_bw}</td><td><font color=dark red>${ipbr_route_bw}</td><td><font color=dark red>${scheduler_type}</td><td><font color=dark red>${idsp_id}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${iphb_id}</td><td><font color=dark red>${ifc_nrtdch}</td><td><font color=dark red>${ifc_nrthsdpa}</td><td><font color=dark red>${committed-sig-bandwidth}</td><td><font color=dark red>${committed-dcn-bandwidth}</td><td><font color=dark red>${ip_address}=${IP_ADDRESS_ACTIVE}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${rg_name}=${RG_EITP}</td><td><font color=dark red>${iface}=${IP_IFACE}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ADD IP Based Route</td><td>${ipbr_id}</td><td>${ipbr_name}</td><td>${ipbr_route_bw}</td><td>${ipbr_commit_bw}</td><td>${committed-sig-bandwidth}</td><td>${committed-dcn-bandwidth}</td></tr>
+<tr><td><br></td><td>...</td><td>${ifc_nrtdch}</td><td>${ifc_nrthsdpa}</td><td>${scheduler_type}</td><td>${iphb_id}</td><td>${idsp_id}</td><td><br></td></tr>
+<tr><td><br></td><td>Add IPRO</td><td>${ipbr_id}</td><td>${ip_address}</td><td>${rg_name}</td><td>${iface}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>4 sec</td><td>1 sec</td><td>Check the IPBR is right in qos linux sharemem</td><td>${ipbr_id}</td><td>${ipbr_route_bw}</td><td>${scheduler_type}</td></tr>
+<tr><td><br></td><td>...</td><td>${idsp_id}</td><td>${iphb_id}</td><td>${committed-sig-bandwidth}</td><td>${committed-dcn-bandwidth}</td><td>${BCN1_EIPU_NODE}</td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Delete IP Based Route Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${expection}=''</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Del ip based route</td><td>${ipbr_id}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>should be equal</td><td>${result["IPBR Delete"]}</td><td>${expection}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Modify IP Based Route Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_name}</td><td><font color=dark red>${ipbr_commit_bw}</td><td><font color=dark red>${ipbr_route_bw}</td><td><font color=dark red>${scheduler_type}</td><td><font color=dark red>${idsp_id}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${iphb_id}</td><td><font color=dark red>${ifc_nrtdch}</td><td><font color=dark red>${ifc_nrthsdpa}</td><td><font color=dark red>${committed-sig-bandwidth}</td><td><font color=dark red>${committed-dcn-bandwidth}</td><td><font color=dark red>${exception}</td></tr>
+<tr><td><br></td><td>${result}</td><td>mod ip based route</td><td>${ipbr_id}</td><td>${ipbr_name}</td><td>${ipbr_route_bw}</td><td>${ipbr_commit_bw}</td><td>${committed-sig-bandwidth}</td></tr>
+<tr><td><br></td><td>...</td><td>${committed-dcn-bandwidth}</td><td>${ifc_nrtdch}</td><td>${ifc_nrthsdpa}</td><td>${scheduler_type}</td><td>${iphb_id}</td><td>${idsp_id}</td></tr>
+<tr><td><br></td><td>should be equal</td><td>${result["IPBR Modify"]}</td><td>${exception}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Modify ipbr with non-existed IPHB profile should be failed</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_name}</td><td><font color=dark red>${ipbr_commit_bw}</td><td><font color=dark red>${ipbr_route_bw}</td><td><font color=dark red>${scheduler_type}</td><td><font color=dark red>${idsp_id}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${iphb_id}</td><td><font color=dark red>${ifc_nrtdch}</td><td><font color=dark red>${ifc_nrthsdpa}</td><td><font color=dark red>${committed-sig-bandwidth}</td><td><font color=dark red>${committed-dcn-bandwidth}</td><td><br></td></tr>
+<tr><td><br></td><td>modify IP Based Route Operation</td><td>${ipbr_id}</td><td>${ipbr_name}</td><td>${ipbr_commit_bw}</td><td>${ipbr_route_bw}</td><td>${scheduler_type}</td><td>${idsp_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${iphb_id}</td><td>${ifc_nrtdch}</td><td>${ifc_nrthsdpa}</td><td>${committed-sig-bandwidth}</td><td>${committed-dcn-bandwidth}</td><td>Failed</td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Delete IPBR and Check the IPBR is Deleted in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>delete IPRO</td><td>${ipbr_id}</td><td>${IP_ADDRESS_ACTIVE}</td><td>${RG_EITP}</td><td>${IP_IFACE}</td><td>${IPRO_DELETE_MODE}</td><td><br></td></tr>
+<tr><td><br></td><td>Delete IP Based Route Operation</td><td>${ipbr_id}</td><td>Success</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>4 sec</td><td>1 sec</td><td>Check the IPBR is Non-Exist in qos linux sharemem</td><td>${ipbr_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>4 sec</td><td>1 sec</td><td>Check the schedule is Non-Exist in qos linux sharemem</td><td>${ipbr_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the schedule is Non-Exist in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${eipu_index}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${sched_info}</td><td>Get the scheduler info</td><td>${ipbr_id}</td><td>${eipu_index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should be equal as strings</td><td>${sched_info["sched_state"]}</td><td>no schedule</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the ipbr is Initial in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${eipu_index}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${ipbr_info}=</td><td>Get the IPBR info in qos linux sharemem</td><td>${ipbr_id}</td><td>${eipu_index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${ipbr_info["IPBR ID"]}</td><td>${ipbr_id}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IPBR is Non-Exist in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${eipu_index}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${flag}=</td><td>Get the IPBR info in qos linux sharemem</td><td>${ipbr_id}</td><td>${eipu_index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should contain</td><td>${flag}</td><td>this ipbr doesn't exist</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IPBR is Exist in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${ipbr_info}=</td><td>Get the IPBR info in qos linux sharemem</td><td>${ipbr_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${ipbr_info["IPBR ID"]}</td><td>${ipbr_id}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add IPHB Profile and Check the IPHB Profile is Added in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Add PHB Profile Operation and check the PHB profile is added in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IPHB profile is same as set in qos linux sharemem</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add non-default IPHB Profile and Check the IPHB Profile is Added in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Add Non-Default IPHB Profile Operation and check the IPHB profile is added in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IPHB profile is same as set in qos linux sharemem</td><td>${profile_id}</td><td>${profile_name}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td>${NON_EF_QUEUE_SET_INFO}</td></tr>
+<tr><td><br></td><td>...</td><td>${NON_EF_QUEUE_SET_INFO}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add PHB Profile Operation and Check the PHB Profile is Added in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Add IPHB Profile Operation</td><td>${profile_id}</td><td>${profile_name}</td><td>IPHB added successfully</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IPHB profile is same as set in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add IPHB Profile Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${exception}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Add IPHB profile</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>should contain</td><td>${result}</td><td>${exception}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add Non-Default IPHB Profile Operation and check the IPHB profile is added in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Add Non-Default IPHB Profile Operation</td><td>${profile_id}</td><td>${profile_name}</td><td>IPHB added successfully</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IPHB profile is same as set in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td>${NON_EF_QUEUE_SET_INFO}</td></tr>
+<tr><td><br></td><td>...</td><td>${NON_EF_QUEUE_SET_INFO}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add Non-Default IPHB Profile Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${exception}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Add IPHB Profile</td><td>${profile_id}</td><td>${profile_name}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='success'</td><td>should contain</td><td>${result}</td><td>IPHB added successfully</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='fail'</td><td>Should not contain</td><td>${result}</td><td>successfully</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Modify IPHB Profile and Check the IPHB profile is Modified in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Modify the IPHB of all the queue</td><td>${profile_id}</td><td>${profile_name}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>should contain</td><td>${result}</td><td>IPHB set successfully</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IPHB profile is same as set in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td>${NON_EF_QUEUE_SET_INFO}</td></tr>
+<tr><td><br></td><td>...</td><td>${NON_EF_QUEUE_SET_INFO}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Modify IPHB Profile and Check the IPHB profile is Modified in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Modify IPHB Profile and Check the IPHB profile is Modified in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>4 sec</td><td>1 sec</td><td>Check the IPHB profile is same as set in qos linux sharemem</td><td>${profile_id}</td><td>${profile_name}</td><td>${NON_EF_QUEUE_SET_INFO}</td></tr>
+<tr><td><br></td><td>...</td><td>${NON_EF_QUEUE_SET_INFO}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td>${NON_EF_QUEUE_SET_INFO}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Modify the IPHB of the Queue Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${queue_type}</td><td><font color=dark red>${queue_weight}</td><td><font color=dark red>${min_Thresh}</td><td><font color=dark red>${max_Thresh}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${max_prob}</td><td><font color=dark red>${exp_weight}</td><td><font color=dark red>${exception}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Modify the IPHB of Queue</td><td>${profile_id}</td><td>${profile_name}</td><td>${queue_type}</td><td>${queue_weight}</td><td>${min_Thresh}</td></tr>
+<tr><td><br></td><td>...</td><td>${max_Thresh}</td><td>${max_prob}</td><td>${exp_weight}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${exception}'=='success'</td><td>should contain</td><td>${result}</td><td>IPHB set successfully</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${exception}'=='fail'</td><td>should not contain</td><td>${result}</td><td>successfully</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${exception}'=='not-exist'</td><td>should contain</td><td>${result}</td><td>Failed to set IPHB. IPHB with iphb-id (${profile_id}) does not exist.</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the iphb profile is same as set in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${be_queue_list}=${BE_QUEUE_PHB_INITIAL_INFO}</td><td><font color=dark red>${af1_queue_list}=${AF1_QUEUE_PHB_INITIAL_INFO}</td><td><font color=dark red>${af2_queue_list}=${AF2_QUEUE_PHB_INITIAL_INFO}</td><td><font color=dark red>${af3_queue_list}=${AF3_QUEUE_PHB_INITIAL_INFO}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${af4_queue_list}=${AF4_QUEUE_PHB_INITIAL_INFO}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${phb_profile_content_dict}=</td><td>Check the iphb profile is exist in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IPHB profile is same as set</td><td>${phb_profile_content_dict}</td><td>${be_queue_list}</td><td>${af1_queue_list}</td><td>${af2_queue_list}</td><td>${af3_queue_list}</td><td>${af4_queue_list}</td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IPHB profile is same as set in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${be_queue_list}=${BE_QUEUE_PHB_INITIAL_INFO}</td><td><font color=dark red>${af1_queue_list}=${AF1_QUEUE_PHB_INITIAL_INFO}</td><td><font color=dark red>${af2_queue_list}=${AF2_QUEUE_PHB_INITIAL_INFO}</td><td><font color=dark red>${af3_queue_list}=${AF3_QUEUE_PHB_INITIAL_INFO}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${af4_queue_list}=${AF4_QUEUE_PHB_INITIAL_INFO}</td><td><font color=dark red>${node_index}=${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${phb_profile_content_dict}=</td><td>Get the IPHB Profile in qos linux sharemem</td><td>${profile_id}</td><td>${node_index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IPHB profile is same as set</td><td>${phb_profile_content_dict}</td><td>${be_queue_list}</td><td>${af1_queue_list}</td><td>${af2_queue_list}</td><td>${af3_queue_list}</td><td>${af4_queue_list}</td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IPHB profile is same as set</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${phb_profile_content_dict}</td><td><font color=dark red>${be_queue_list}</td><td><font color=dark red>${af1_queue_list}</td><td><font color=dark red>${af2_queue_list}</td><td><font color=dark red>${af3_queue_list}</td><td><font color=dark red>${af4_queue_list}</td></tr>
+<tr><td><br></td><td>${result}=</td><td>Select entries from list</td><td>${phb_profile_content_dict}</td><td>profile_id=${profile_id}</td><td>phb=BE</td><td>weight=${be_queue_list[0]}</td><td>min_Thresh=${be_queue_list[1]}</td></tr>
+<tr><td><br></td><td>...</td><td>max_Thresh=${be_queue_list[2]}</td><td>max_Prob=${be_queue_list[3]}</td><td>exp_weight=${be_queue_list[4]}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should not be empty</td><td>${result}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Select entries from list</td><td>${phb_profile_content_dict}</td><td>profile_id=${profile_id}</td><td>phb=EF</td><td>min_Thresh=@{EF_QUEUE_PHB_INITIAL_INFO}[0]</td><td>max_Thresh=@{EF_QUEUE_PHB_INITIAL_INFO}[1]</td></tr>
+<tr><td><br></td><td>...</td><td>max_Prob=@{EF_QUEUE_PHB_INITIAL_INFO}[2]</td><td>exp_weight=@{EF_QUEUE_PHB_INITIAL_INFO}[3]</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should not be empty</td><td>${result}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Select entries from list</td><td>${phb_profile_content_dict}</td><td>profile_id=${profile_id}</td><td>phb=AF1</td><td>weight=${af1_queue_list[0]}</td><td>min_Thresh=${af1_queue_list[1]}</td></tr>
+<tr><td><br></td><td>...</td><td>max_Prob=${af1_queue_list[3]}</td><td>exp_weight=${af1_queue_list[4]}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should not be empty</td><td>${result}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Select entries from list</td><td>${phb_profile_content_dict}</td><td>profile_id=${profile_id}</td><td>phb=AF2</td><td>weight=${af2_queue_list[0]}</td><td>min_Thresh=${af2_queue_list[1]}</td></tr>
+<tr><td><br></td><td>...</td><td>max_Prob=${af2_queue_list[3]}</td><td>exp_weight=${af2_queue_list[4]}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should not be empty</td><td>${result}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Select entries from list</td><td>${phb_profile_content_dict}</td><td>profile_id=${profile_id}</td><td>phb=AF3</td><td>weight=${af3_queue_list[0]}</td><td>min_Thresh=${af3_queue_list[1]}</td></tr>
+<tr><td><br></td><td>...</td><td>max_Prob=${af3_queue_list[3]}</td><td>exp_weight=${af3_queue_list[4]}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should not be empty</td><td>${result}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Select entries from list</td><td>${phb_profile_content_dict}</td><td>profile_id=${profile_id}</td><td>phb=AF4</td><td>weight=${af4_queue_list[0]}</td><td>min_Thresh=${af4_queue_list[1]}</td></tr>
+<tr><td><br></td><td>...</td><td>max_Prob=${af4_queue_list[3]}</td><td>exp_weight=${af4_queue_list[4]}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should not be empty</td><td>${result}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Delete IPHB Profile Operation and Check the IPHB Profile is Deleted in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Delete PHB Profile Operation and Check the PHB Profile is Deleted in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>4 sec</td><td>1 sec</td><td>Check the IPHB profile is Non-Exist in qos linux sharemem</td><td>${profile_id}</td><td>${profile_name}</td><td>${BCN1_EIPU_NODE}</td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IPHB Profile is Non-Exist in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${eipu_index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${flag}=</td><td>Get the IPHB Profile in qos linux sharemem</td><td>${profile_id}</td><td>${eipu_index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should contain</td><td>${flag}</td><td>this iphb doesn't exist</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Delete IPHB Profile Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${exception}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Delete IPHB profile</td><td>${profile_id}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${exception}'=='success'</td><td>should contain</td><td>${result}</td><td>IPHB deleted successfully.</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${exception}'=='fail'</td><td>should not contain</td><td>${result}</td><td>successfully</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${exception}'=='not-exist'</td><td>should contain</td><td>${result}</td><td>Failed to delete IPHB. IPHB with iphb-id (${profile_id}) does not exist.</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Delete PHB Profile Operation and Check the PHB Profile is Deleted in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Delete IPHB profile Operation</td><td>${profile_id}</td><td>${profile_name}</td><td>success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${flag} =</td><td>Check the IPHB profile is exist in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should contain</td><td>${flag}</td><td>IPHB with iphb-id (${profile_id}) and iphb-name (${profile_name}) does not exist.</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Show IPHB profile Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${exception}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Check the IPHB profile is exist in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='success'</td><td>Should not contain</td><td>${result}</td><td>Failed</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='not-exist'</td><td>Should contain</td><td>${result}</td><td>IPHB with iphb-id (${profile_id}) and iphb-name (${profile_name}) does not exist.</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Initial the IDSP Set List</b></td></tr>
+<tr><td><br></td><td>${DSCP_SET_LIST}</td><td>Create list</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>6</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Append to List</td><td>${DSCP_SET_LIST}</td><td>@{DSCP_SET_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set suite variable</td><td>\${DSCP_SET_LIST}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add IDSP Profile and Check the IDSP Profile is Added in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Add IDSP Profile Operation and check the IDSP Profile is added in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IDSP Profile is same as default profile in qos linux sharemem</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IDSP Profile is Exist in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${flag}=</td><td>Get the IDSP Profile in qos linux sharemem</td><td>${profile_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should not contain</td><td>${flag}</td><td>this dscp doesn't exist</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add IDSP Profile Operation and Check the IDSP Profile is Added in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Add IDSP Profile Operation</td><td>${profile_id}</td><td>${profile_name}</td><td>success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IDSP Profile is same as default profile in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add IDSP Profile Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${exception}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Add IDSP Profile</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='success'</td><td>should contain</td><td>${result}</td><td>IDSP added successfully.</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='fail'</td><td>Should not contain</td><td>${result}</td><td>successfully</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='already exist'</td><td>should contain</td><td>${result}</td><td>Failed to add IDSP. IDSP with idsp-id (${profile_id}) already exists.</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add Non-Default DSCP Profile Operation and check the DSCP Profile is added in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Add Non-Default IDSP Profile Operation</td><td>${profile_id}</td><td>${profile_name}</td><td>success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IDSP Profile is same as set in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add non-default IDSP Profile and Check the IDSP Profile is Added in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Add Non-Default DSCP Profile Operation and check the DSCP Profile is added in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IDSP Profile is same as set in qos linux sharemem</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Add Non-Default IDSP Profile Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${exception}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Add IDSP Profile</td><td>${profile_id}</td><td>${profile_name}</td><td>${DSCP_SET_LIST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='success'</td><td>should contain</td><td>${result}</td><td>IDSP added successfully.</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='fail'</td><td>Should not contain</td><td>${result}</td><td>successfully</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Modify IDSP Profile and Check the IDSP Profile is Modified in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Modify the DSCP of all the queue</td><td>${profile_id}</td><td>${profile_name}</td><td>${DSCP_SET_LIST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>should contain</td><td>${result}</td><td>IDSP set successfully.</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IDSP Profile is same as set in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Modify IDSP Profile and Check the IDSP Profile is Modified in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Modify IDSP Profile and Check the IDSP Profile is Modified in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>4 sec</td><td>1 sec</td><td>Check the IDSP Profile is same as set in qos linux sharemem</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Modify the DSCP of Queue Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${queue_type}</td><td><font color=dark red>${dscp_value_list}</td><td><font color=dark red>${exception}</td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Modify the DSCP of Queue</td><td>${profile_id}</td><td>${profile_name}</td><td>${queue_type}</td><td>${dscp_value_list}</td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='success'</td><td>should contain</td><td>${result}</td><td>IDSP set successfully.</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='fail'</td><td>Should not contain</td><td>${result}</td><td>successfully</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IDSP Profile is same as set in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${DSCP_profile_content_dict}=</td><td>Check the IDSP Profile is exist in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IDSP Profile is same as set</td><td>${DSCP_profile_content_dict}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IDSP Profile is same as set in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${DSCP_profile_content_dict}=</td><td>Get the IDSP Profile in qos linux sharemem</td><td>${profile_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IDSP Profile is same as set</td><td>${DSCP_profile_content_dict}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IDSP Profile is same as set</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${DSCP_profile_content_dict}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${set_info0}</td><td>Get from list</td><td>${DSCP_SET_LIST}</td><td>0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${set_info1}</td><td>Get from list</td><td>${DSCP_SET_LIST}</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${set_info2}</td><td>Get from list</td><td>${DSCP_SET_LIST}</td><td>2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${set_info3}</td><td>Get from list</td><td>${DSCP_SET_LIST}</td><td>3</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${set_info4}</td><td>Get from list</td><td>${DSCP_SET_LIST}</td><td>4</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${set_info5}</td><td>Get from list</td><td>${DSCP_SET_LIST}</td><td>5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},BE'].dscp_value_list}</td><td>${set_info0}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},EF'].dscp_value_list}</td><td>${set_info1}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},AF1'].dscp_value_list}</td><td>${set_info2}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},AF2'].dscp_value_list}</td><td>${set_info3}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},AF3'].dscp_value_list}</td><td>${set_info4}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},AF4'].dscp_value_list}</td><td>${set_info5}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IDSP Profile is same as default profile in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${DSCP_profile_content_dict}=</td><td>Check the IDSP Profile is exist in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IDSP profile as the same as default profile</td><td>${DSCP_profile_content_dict}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IDSP Profile is same as default profile in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${DSCP_profile_content_dict}=</td><td>Get the IDSP Profile in qos linux sharemem</td><td>${profile_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the IDSP profile as the same as default profile</td><td>${DSCP_profile_content_dict}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IDSP profile as the same as default profile</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${DSCP_profile_content_dict}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>51</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},BE'].dscp_value_list}</td><td>@{BE_QUEUE_DSCP_INITIAL_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},EF'].dscp_value_list}</td><td>@{EF_QUEUE_DSCP_INITIAL_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>3</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},AF1'].dscp_value_list}</td><td>@{AF1_QUEUE_DSCP_INITIAL_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>3</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},AF2'].dscp_value_list}</td><td>@{AF2_QUEUE_DSCP_INITIAL_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>3</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},AF3'].dscp_value_list}</td><td>@{AF3_QUEUE_DSCP_INITIAL_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>3</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},AF4'].dscp_value_list}</td><td>@{AF4_QUEUE_DSCP_INITIAL_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Delete IDSP Profile Operation and Check the IDSP Profile is Deleted in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Delete DSCP Profile Operation and Check the DSCP Profile is Deleted in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>4 sec</td><td>1 sec</td><td>Check the IDSP Profile is Non-Exist in qos linux sharemem</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IDSP Profile is Non-Exist in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${flag}=</td><td>Get the IDSP Profile in qos linux sharemem</td><td>${profile_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should contain</td><td>${flag}</td><td>this idsp doesn't exist</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Delete IDSP Profile Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${exception}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Delete IDSP Profile</td><td>${profile_id}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='success'</td><td>should contain</td><td>${result}</td><td>IDSP deleted successfully.</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='fail'</td><td>Should not contain</td><td>${result}</td><td>successfully</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='not-exist'</td><td>Should contain</td><td>${result}</td><td>Failed to delete IDSP. IDSP with idsp-id (${profile_id}) does not exist.</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Delete DSCP Profile Operation and Check the DSCP Profile is Deleted in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Delete IDSP Profile Operation</td><td>${profile_id}</td><td>${profile_name}</td><td>success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${flag} =</td><td>Check the IDSP Profile is exist in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should contain</td><td>${flag}</td><td>IDSP with idsp-id (${profile_id}) and idsp-name (${profile_name}) does not exist.</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Show the IDSP Profile Operation</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><font color=dark red>${exception}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Check the IDSP Profile is exist in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='success'</td><td>Should not contain</td><td>${result}</td><td>Failed</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword If</td><td>'${exception}'=='not-exist'</td><td>Should contain</td><td>${result}</td><td>IDSP with idsp-id (${profile_id}) and idsp-name (${profile_name}) does not exist.</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the scheduler shaper of ipbr is same as the ipbr set</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_bandwidth}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${ipbr_info}=</td><td>Get the IPBR info in qos linux sharemem</td><td>${ipbr_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'${ipbr_info["Scheduler Type"]}'=='virtualQueue'</td><td>Check the vq scheduler shaper of ipbr is same as the ipbr set</td><td>${ipbr_id}</td><td>${ipbr_bandwidth}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'${ipbr_info["Scheduler Type"]}'=='realQueue'</td><td>Check the rq scheduler shaper of ipbr is same as the ipbr set</td><td>${ipbr_id}</td><td>${ipbr_bandwidth}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the vq scheduler shaper of ipbr is same as the ipbr set</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_bandwidth}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>4 sec</td><td>1 sec</td><td>Check the vq scheduler shaper of ipbr is same as the ipbr set in specific time</td><td>${ipbr_id}</td><td>${ipbr_bandwidth}</td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the vq scheduler shaper of ipbr is same as the ipbr set in specific time</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_bandwidth}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${sched_info}</td><td>Get the scheduler info</td><td>${ipbr_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${ipbr_info}</td><td>Get the IPBR info in qos linux sharemem</td><td>${ipbr_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${shaper_varlue}</td><td>evaluate</td><td>int((${ipbr_bandwidth}-${ipbr_info["Committed Signaling BW"]} -${ipbr_info["Committed DCN BW"]})*124/128)</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should be equal as integers</td><td>${sched_info["speed"]}</td><td>${shaper_varlue}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the rq scheduler shaper of ipbr is same as the ipbr set</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_bandwidth}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>4 sec</td><td>1 sec</td><td>Check the rq scheduler shaper of ipbr is same as the ipbr set in specific time</td><td>${ipbr_id}</td><td>${ipbr_bandwidth}</td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the rq scheduler shaper of ipbr is same as the ipbr set in specific time</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_bandwidth}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${sched_info}</td><td>Get the scheduler info</td><td>${ipbr_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${ipbr_info}</td><td>Get the IPBR info in qos linux sharemem</td><td>${ipbr_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${shaper_varlue}</td><td>evaluate</td><td>${ipbr_bandwidth}-${ipbr_info["Committed Signaling BW"]} -${ipbr_info["Committed DCN BW"]}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should be equal as strings</td><td>${sched_info["speed"]}</td><td>${shaper_varlue}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the qos scheduler type is same as the ipbr set</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_scheduler_type}</td><td><font color=dark red>${node_index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Execute cli</td><td>cat /proc/dmxmsg/comp_addr_tbl | grep 4B5</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>4 sec</td><td>1 sec</td><td>Check the qos scheduler type is same as the ipbr set in specific time</td><td>${ipbr_id}</td><td>${ipbr_scheduler_type}</td><td>${node_index}</td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the qos scheduler type is same as the ipbr set in specific time</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_scheduler_type}</td><td><font color=dark red>${node_index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${sched_info}=</td><td>get the scheduler info</td><td>${ipbr_id}</td><td>${node_index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should be equal as strings</td><td>${ipbr_scheduler_type}</td><td>${sched_info["sched_state"]}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the RQ IPHB profile that mapping to sheduler id is same as the arguments</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${sched_info}</td><td><font color=dark red>${non_ef_queue_set_list_parameter}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${non_ef_queue_weight}</td><td>Get from list</td><td>${non_ef_queue_set_list_parameter}</td><td>0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${non_ef_min_Thresh}</td><td>Get from list</td><td>${non_ef_queue_set_list_parameter}</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${non_ef_max_Thresh}</td><td>Get from list</td><td>${non_ef_queue_set_list_parameter}</td><td>2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${non_ef_max_Prob}</td><td>Get from list</td><td>${non_ef_queue_set_list_parameter}</td><td>3</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${non_ef_exp_weight}</td><td>Get from list</td><td>${non_ef_queue_set_list_parameter}</td><td>4</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${rq_non_ef_min_th}</td><td>evaluate</td><td>${non_ef_min_Thresh}*pow(2,${non_ef_exp_weight})</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${rq_non_ef_max_th}</td><td>evaluate</td><td>${non_ef_max_Thresh}*pow(2,${non_ef_exp_weight})</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${key}</td><td>Get Dictionary keys</td><td>${sched_info}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>5</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${queue_info}</td><td>Get From Dictionary</td><td>${sched_info}</td><td>${key[${index}+6]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should be equal as integers</td><td>${queue_info["weight"]}</td><td>${non_ef_queue_weight}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should be equal as integers</td><td>${queue_info["min_th"]}</td><td>${rq_non_ef_min_th}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should be equal as integers</td><td>${queue_info["max_th"]}</td><td>${rq_non_ef_max_th}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should be equal as integers</td><td>${queue_info["p_log"]}</td><td>${non_ef_max_Prob}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should be equal as integers</td><td>${queue_info["w_log"]}</td><td>${non_ef_exp_weight}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the VQ IPHB profile that mapping to sheduler id is same as the arguments</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${sched_info}</td><td><font color=dark red>${non_ef_queue_set_list_parameter}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${non_ef_queue_weight}</td><td>Get from list</td><td>${non_ef_queue_set_list_parameter}</td><td>0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${non_ef_min_Thresh}</td><td>Get from list</td><td>${non_ef_queue_set_list_parameter}</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${non_ef_max_Thresh}</td><td>Get from list</td><td>${non_ef_queue_set_list_parameter}</td><td>2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${non_ef_max_Prob}</td><td>Get from list</td><td>${non_ef_queue_set_list_parameter}</td><td>3</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${non_ef_exp_weight}</td><td>Get from list</td><td>${non_ef_queue_set_list_parameter}</td><td>4</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${key}</td><td>Get Dictionary keys</td><td>${sched_info}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>5</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${queue_info}</td><td>Get From Dictionary</td><td>${sched_info}</td><td>${key[${index}+5]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should be equal as integers</td><td>${queue_info["weight"]}</td><td>${non_ef_queue_weight}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${vq_non_ef_min_th}</td><td>Evaluate</td><td>int(${sched_info["speed"]}/8196)*${non_ef_min_Thresh}*512</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${vq_non_ef_max_th}</td><td>evaluate</td><td>int(${sched_info["speed"]}/8196)*200*512</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should be equal as integers</td><td>${queue_info["min_th"]}</td><td>${vq_non_ef_min_th}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should be equal as integers</td><td>${queue_info["max_th"]}</td><td>${vq_non_ef_max_th}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IPHB profile that mapping to sheduler id is same as the set</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>4 sec</td><td>1 sec</td><td>Check the IPHB profile that mapping to sheduler id is same as the arguments in specific time</td><td>${ipbr_id}</td><td>${ipbr_name}</td><td>${NON_EF_QUEUE_SET_INFO}</td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the IPHB profile that mapping to sheduler id is same as the arguments in specific time</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${ipbr_name}</td><td><font color=dark red>${non_ef_queue_set_list_parameter}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${sched_info}=</td><td>Get the scheduler info</td><td>${ipbr_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'${sched_info["sched_state"]}'=='virtualQueue'</td><td>Check the VQ IPHB profile that mapping to sheduler id is same as the arguments</td><td>${sched_info}</td><td>${non_ef_queue_set_list_parameter}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run keyword if</td><td>'${sched_info["sched_state"]}'=='realQueue'</td><td>Check the RQ IPHB profile that mapping to sheduler id is same as the arguments</td><td>${sched_info}</td><td>${non_ef_queue_set_list_parameter}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the set dscp value and remain dscp value in the range of 0~63 are set right phb mapping</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the set dscp value and remain dscp value in the range of 0~63 are set right phb mapping in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the set dscp value and remain dscp value in the range of 0~63 are set right phb mapping in qos linux sharemem</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the set dscp value and remain dscp value in the range of 0~63 are set right phb mapping in LDAP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${DSCP_profile_content_dict}=</td><td>Check the IDSP Profile is exist in LDAP</td><td>${profile_id}</td><td>${profile_name}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the set dscp value and remain dscp value in the range of 0~63 are set right phb</td><td>${DSCP_profile_content_dict}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the set dscp value and remain dscp value in the range of 0~63 are set right phb</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${DSCP_profile_content_dict}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>46</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},BE'].dscp_value_list}</td><td>@{BE_QUEUE_DSCP_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>2</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},EF'].dscp_value_list}</td><td>@{EF_QUEUE_DSCP_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>4</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},AF1'].dscp_value_list}</td><td>@{AF1_QUEUE_DSCP_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>4</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},AF2'].dscp_value_list}</td><td>@{AF2_QUEUE_DSCP_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>4</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},AF3'].dscp_value_list}</td><td>@{AF3_QUEUE_DSCP_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${index}</td><td>INRANGE</td><td>0</td><td>4</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>List Should Contain Value</td><td>${DSCP_profile_content_dict['${profile_id},AF4'].dscp_value_list}</td><td>@{AF4_QUEUE_DSCP_INFO}[${index}]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the set dscp value and remain dscp value in the range of 0~63 are set right phb mapping in qos linux sharemem</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[arguments]</td><td><font color=dark red>${profile_id}</td><td><font color=dark red>${profile_name}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${DSCP_profile_content_dict}=</td><td>Get the IDSP Profile in qos linux sharemem</td><td>${profile_id}</td><td>${BCN1_EIPU_NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check the set dscp value and remain dscp value in the range of 0~63 are set right phb</td><td>${DSCP_profile_content_dict}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>TAF send start_c message to DP</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[Arguments]</td><td><font color=dark red>${work_ru}</td><td><font color=dark red>${family_id}=${QOSA_FAMILY_ID}</td><td><font color=dark red>${msg_type}=${IPBR_START_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Simulate TAF to send msg to DP</td><td>${work_ru}</td><td>${family_id}</td><td>${msg_type}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should not contain</td><td>${result}</td><td>failed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check no ipbr data info in message</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[Arguments]</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${work_ru}</td><td><font color=dark red>${family_id}=${QOSA_FAMILY_ID}</td><td><font color=dark red>${msg_type}=${IPBR_REQ_MSG}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Get the counter of traffica</td><td>${work_ru}</td><td>${family_id}</td><td>${msg_type}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should not contain</td><td>${result}</td><td>IPBR_${ipbr_id}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFb9><td colspan=8><b>Check the counter of IPBR traffica in data_s messge</b></td></tr>
+<tr><td><br></td><td><font color=dark red>[Arguments]</td><td><font color=dark red>${result}</td><td><font color=dark red>${ipbr_id}</td><td><font color=dark red>${pkt_out_range}</td><td><font color=dark red>${pkt_in_range}</td><td><font color=dark red>${ip_eg_route_bw}</td><td><br></td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${cur_ip_udp_conn}</td><td><font color=dark red>${commite_bit_rate}</td><td><font color=dark red>${cur_reserved_rate}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${ipbr_info}</td><td>Get From Dictionary</td><td>${result}</td><td>IPBR_${ipbr_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${check_out_result}</td><td>Check the number range</td><td>${ipbr_info['OUT']}</td><td>${pkt_out_range.split(',')[0].strip()}</td><td>${pkt_out_range.split(',')[1].strip()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Strings</td><td>${check_out_result}</td><td>True</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${check_in_result}</td><td>Check the number range</td><td>${ipbr_info['IN']}</td><td>${pkt_in_range.split(',')[0].strip()}</td><td>${pkt_in_range.split(',')[1].strip()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Strings</td><td>${check_in_result}</td><td>True</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Strings</td><td>${ipbr_info['IP_EG_BW_CONFIG']}</td><td>${ip_eg_route_bw}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Strings</td><td>${ipbr_info['CUR_IP_UDP_CONN']}</td><td>${cur_ip_udp_conn}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Strings</td><td>${ipbr_info['COMMITED_BIT_RATE']}</td><td>${commite_bit_rate}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Strings</td><td>${ipbr_info['CUR_RESERVED_RATE']}</td><td>${cur_reserved_rate}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%"></table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

@@ -1,0 +1,1013 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Cac Basic Operation Resource</title>
+</head>
+<body>
+<h1>Cac Basic Operation Resource</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Setting</th>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>il.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../TestCase/SS_ILCallMgmt/resources/cell_hs-cell_cch_resource.tsv</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../TestCase/SS_ILCAC/resources/IPBR_test_resources_for_CM.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variable</th>
+</tr>
+<tr>
+<td class="name">${OUT_LEG}</td>
+<td>OUT</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IN_LEG}</td>
+<td>IN</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${RTP_LEG_TYPE}</td>
+<td>34</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IUB_LEG_TYPE}</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${GTP_TUNNEL_TYPE}</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${UDP_TYPE}</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SSH_IP}</td>
+<td>%{HOSTIP}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SSH_PORT}</td>
+<td>%{PORT}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SSH_USER}</td>
+<td>%{USERNAME}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SSH_PASSWORD}</td>
+<td>%{PASSWD}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IPBR_ID_4090}</td>
+<td>4090</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IPBR_NAME_4090}</td>
+<td>BTS-4090</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IPBR_ID_1}</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TERM}</td>
+<td>TERM</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keyword</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_connect to target BCN hardware">connect to target BCN hardware</a></td>
+<td>${SSH_SRNC}</td>
+<td>Connect to il</td>
+<td>${SSH_IP}</td>
+<td>${SSH_PORT}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td></td>
+<td>${SSH_USER}</td>
+<td>${SSH_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>SSH</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set global variable</td>
+<td>\${SSH_SRNC}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_get active omu ru server">get active omu ru server</a></td>
+<td>${exec_result}</td>
+<td>Execute Cli</td>
+<td>fshascli --bare ru | grep %{OMU_TYPE_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{omu_list}</td>
+<td>Set Variable</td>
+<td>${exec_result.strip().splitlines()}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${omu}</td>
+<td>IN</td>
+<td>@{omu_list}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${exec_result}</td>
+<td>Execute Cli</td>
+<td>fshascli -s ${omu}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>run keyword if</td>
+<td>${exec_result.find("role(ACTIVE)")} != -1</td>
+<td>set suite variable</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>\${ACTIVE_OMU}</td>
+<td>${omu}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_disconnect from target hardware">disconnect from target hardware</a></td>
+<td>disconnect all ils</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_create rtp leg">create rtp leg</a></td>
+<td>[Arguments]</td>
+<td>${computer}</td>
+<td>${ipbr_id}</td>
+<td>${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${call_id}=0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>Allocate Resource</td>
+<td>${computer}</td>
+<td>${call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${OUT_LEG}</td>
+<td>3.3.3.3</td>
+<td>3,,,${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${RTP_LEG_TYPE}</td>
+<td></td>
+<td>${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Object</td>
+<td>${result}</td>
+<td>computer</td>
+<td>${computer}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_release rtp leg">release rtp leg</a></td>
+<td>[Arguments]</td>
+<td>${computer}</td>
+<td>${call_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>Execute Cli</td>
+<td>lgutilgx RV:${computer}:${call_id}:${OUT_LEG}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_create iub leg">create iub leg</a></td>
+<td>[Arguments]</td>
+<td>${computer}</td>
+<td>${ipbr_id}</td>
+<td>${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${call_id}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>Allocate Resource</td>
+<td>${computer}</td>
+<td>${call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${IN_LEG}</td>
+<td>3.3.3.3</td>
+<td>5,,,${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${IUB_LEG_TYPE}</td>
+<td></td>
+<td>${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Object</td>
+<td>${result}</td>
+<td>computer</td>
+<td>${computer}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Object</td>
+<td>${result}</td>
+<td>call_id</td>
+<td>${call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_release iub leg">release iub leg</a></td>
+<td>[Arguments]</td>
+<td>${computer}</td>
+<td>${call_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>Execute Cli</td>
+<td>lgutilgx RV:${computer}:${call_id}:${IN_LEG}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_create gtp tunnel">create gtp tunnel</a></td>
+<td>[Arguments]</td>
+<td>${computer}</td>
+<td>${ipbr_id}</td>
+<td>${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>Allocate Resource</td>
+<td>${computer}</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${OUT_LEG}</td>
+<td>191.205.102.1</td>
+<td>868,,,${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${GTP_TUNNEL_TYPE}</td>
+<td></td>
+<td>ENC=11,LTUL=FF,LTUL=FF,LTDL=55,QOS=2,DSP=4,FF,FF,TEID=8,${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Object</td>
+<td>${result}</td>
+<td>computer</td>
+<td>${computer}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_create gtp leg">create gtp leg</a></td>
+<td>[Arguments]</td>
+<td>${computer}</td>
+<td>${ipbr_id}</td>
+<td>${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${call_id}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>add signaling traffic to call</td>
+<td>${computer}</td>
+<td>${call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${OUT_LEG}</td>
+<td>20.34.1.2</td>
+<td>419,,8,${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${GTP_TUNNEL_TYPE}</td>
+<td></td>
+<td>DEST=111,SDEST=22,DSCP=E,PHB=FF,QOS=2,LTUL=49,LTDL=FF,DSP=4,0F,0,${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Object</td>
+<td>${result}</td>
+<td>computer</td>
+<td>${computer}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Object</td>
+<td>${result}</td>
+<td>call_id</td>
+<td>${call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create GTP Leg Direct">Create GTP Leg Direct</a></td>
+<td>[Arguments]</td>
+<td>${computer}</td>
+<td>${ipbr_id}</td>
+<td>${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>Allocate Resource</td>
+<td>${computer}</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${RES_TYPE}</td>
+<td>191.205.102.1</td>
+<td>868,,,${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${GTP_TUNNEL_TYPE}</td>
+<td></td>
+<td>ENC=11,DSP=4,F,0,TEID=8,${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Object</td>
+<td>${result}</td>
+<td>computer</td>
+<td>${computer}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_release gtp leg">release gtp leg</a></td>
+<td>[Arguments]</td>
+<td>${computer}</td>
+<td>${call_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>Execute Cli</td>
+<td>lgutilgx RV:${computer}:${call_id}:${OUT_LEG}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_create udp leg">create udp leg</a></td>
+<td>[Arguments]</td>
+<td>${computer}</td>
+<td>${ipbr_id}</td>
+<td>${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${call_id}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>Allocate Resource</td>
+<td>${computer}</td>
+<td>${call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${IN_LEG}</td>
+<td>3.3.3.3</td>
+<td>4,,,${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${UDP_TYPE}</td>
+<td></td>
+<td>BRA=T,DSCP=E,PHB=FF,QOS=2,LTUL=49,LTDL=FF,DSP=4,7,0,${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Object</td>
+<td>${result}</td>
+<td>computer</td>
+<td>${computer}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Object</td>
+<td>${result}</td>
+<td>call_id</td>
+<td>${call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_release udp leg">release udp leg</a></td>
+<td>[Arguments]</td>
+<td>${computer}</td>
+<td>${call_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>Execute Cli</td>
+<td>lgutilgx RV:${computer}:${call_id}:${IN_LEG}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_create leg list">create leg list</a></td>
+<td>${OUT_LEG_LIST}</td>
+<td>Create List</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set test variable</td>
+<td>\${OUT_LEG_LIST}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${IN_LEG_LIST}</td>
+<td>Create List</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set test variable</td>
+<td>\${IN_LEG_LIST}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_release legs created in test case">release legs created in test case</a></td>
+<td>run keyword and ignore error</td>
+<td>release in legs</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword and ignore error</td>
+<td>release out legs</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_release out legs">release out legs</a></td>
+<td>@{IN_LEG_LIST}</td>
+<td>Set Variable</td>
+<td>${IN_LEG_LIST}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${in_leg_info}</td>
+<td>IN</td>
+<td>@{IN_LEG_LIST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>execute cli</td>
+<td>lgutilgx RV:${in_leg_info.computer}:${in_leg_info.call_id}:IN</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_release in legs">release in legs</a></td>
+<td>@{OUT_LEG_LIST}</td>
+<td>Set Variable</td>
+<td>${OUT_LEG_LIST}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${out_leg_info}</td>
+<td>IN</td>
+<td>@{OUT_LEG_LIST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>execute cli</td>
+<td>lgutilgx RV:${out_leg_info.computer}:${out_leg_info.call_id}:OUT</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_create cch call">create cch call</a></td>
+<td>[Arguments]</td>
+<td>${computer}</td>
+<td>${ipbr_id}</td>
+<td>${transport_param}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>Allocate Resource</td>
+<td>${computer}</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${TERM}</td>
+<td></td>
+<td>,,,${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>2,T</td>
+<td></td>
+<td>${transport_param},USERID=1,ENC=52,BRA=F,DSP=00,00,00</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Object</td>
+<td>${result}</td>
+<td>computer</td>
+<td>${computer}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_release cch call">release cch call</a></td>
+<td>[Arguments]</td>
+<td>${computer}</td>
+<td>${call_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>execute cli</td>
+<td>lgutilgx RV:${computer}:${call_id}:TERM-00</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_get call information in tac prb">get call information in tac prb</a></td>
+<td>[Arguments]</td>
+<td>${call_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index}</td>
+<td>Evaluate</td>
+<td>'${CSCP.split('-')[1]}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>Execute Cli</td>
+<td>lgutilgx RID:${call_info.computer}:${call_info.hand_id},${call_info.hand_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${conn_id_list}</td>
+<td>get connection id</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{conn_id_list}</td>
+<td>Set Variable</td>
+<td>${conn_id_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${conn_id}</td>
+<td>IN</td>
+<td>@{conn_id_list}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${conn_id}</td>
+<td>hex 2 dec</td>
+<td>${conn_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${conn_id}</td>
+<td>Convert To String</td>
+<td>${conn_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${result}</td>
+<td>inquiry connection id</td>
+<td>CSCP</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${index}</td>
+<td>${conn_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Not Be Empty</td>
+<td>${result}</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>
