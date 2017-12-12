@@ -72,14 +72,7 @@ module.exports.routes = {
     locals: {
         layout: null
     }
-  }, 
-  
-'GET /cv': {
-    view: "cv",
-    locals: {
-        layout: null
-    }
-  }, 
+ }, 
   
 'GET /letters': {
     view: "letters",
