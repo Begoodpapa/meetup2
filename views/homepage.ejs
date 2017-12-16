@@ -357,14 +357,31 @@
         </div>
 
         <div class="loader"></div>
-        
+
+				<div class="modal fade" id="cvmodal">  
+				    <div class="modal-dialog">  
+				        <div class="modal-content">  
+				            <div class="modal-header">  
+				                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>  
+				                <h4 class="modal-title">My CV</h4>  
+				            </div>  
+				            <div class="modal-body">  
+				                <p>If you would like to have my latest CV, please Email me at 13905538@qq.com</p>		                
+				            </div>  
+				            <div class="modal-footer">  
+				                <a href="/cv/HuiLiang-CV.pdf" target="_blank" class='btn btn-primary'>Download CV</a>  		                
+				            </div>  
+				        </div><!-- /.modal-content -->  
+				    </div><!-- /.modal-dialog -->  
+				</div><!-- /.modal -->  	
+
         <!-- JavaScript -->
         <!--script src="/js/homepagejs/modernizr-2.6.2.min.js"></script-->
         <!--script src="/js/homepagejs/skrollr.js"></script-->
         <script src="/js/homepagejs/skrollr.min.js"></script>
         <script src="/js/homepagejs/main.js"></script>
 
-				<script>
+				<script type="text/javascript">
 					$(function(){	
 						// 循环轮播到上一个项目
 						$(".prev-slide").click(function(){
@@ -375,6 +392,12 @@
 							$("#myCarousel").carousel('next');
 						});						
 					});
+					
+					$(function(){  
+						$("#cv").click(function(){  
+						  $("#cvmodal").modal("toggle");  
+						}); 
+					})	  					
 				</script>
 
     </body>
