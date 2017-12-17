@@ -4,17 +4,17 @@ import { connect } from 'react-redux';
 import Header from 'components/header/header';
 import Footer from 'components/footer/footer';
 import GroupArr from 'components/group/grouparray';
-import {Button, Grid, Col, Row, Panel, DropdownButton, MenuItem, Thumbnail} from "react-bootstrap";
+import { Button, Grid, Col, Row, Panel, DropdownButton, MenuItem, Thumbnail } from "react-bootstrap";
 import { hashHistory } from 'react-router';
 var _ = require("lodash");
 require('../../assets/styles/homePage.css');
 var $ = require('jquery');
 
 class Main extends React.Component {
- 
-  render(){
-  	     
-    return (
+
+  render() {
+
+    return(
       <div>
         <header>
           <Header allHeaderClasses={["find", "meetup"]} />
@@ -35,36 +35,36 @@ class Main extends React.Component {
             </Row>
 
             <div className="container">
-    					<div className="row hottest" id = "row-content">
-      					<h2 className="section-title">Popular</h2>
-      					<div id="populargroups">
-                	<GroupArr 
-                	  type = 'hottest'
-                	/>
-      					</div>
-          		</div>
+              <div className="row hottest" id = "row-content">
+                <h2 className="section-title">Popular</h2>
+                <div id="populargroups">
+                  <GroupArr 
+                    type = 'hottest'
+                  />
+                </div>
+              </div>
             </div> 
 
             <div className="container">
-    					<div className="row latest" id = "row-content">
-      					<h2 className="section-title">Latest</h2>
-      					<div id="latestgroups">
-                	<GroupArr 
-                	  type = 'latest'
-                	/>       					
-      					</div>
-          		</div>
+              <div className="row latest" id = "row-content">
+                <h2 className="section-title">Latest</h2>
+                <div id="latestgroups">
+                  <GroupArr 
+                    type = 'latest'
+                  />                 
+                </div>
+              </div>
             </div>           
           
             <div className="container">
-    					<div className="row all" id = "row-content">
-      					<h2 className="section-title">All</h2>
-      					<div id="allgroups">
-                	<GroupArr 
-                	  type = 'all'
-                	/>        	
-      					</div>
-          		</div>
+              <div className="row all" id = "row-content">
+                <h2 className="section-title">All</h2>
+                <div id="allgroups">
+                  <GroupArr 
+                    type = 'all'
+                  />          
+                </div>
+              </div>
             </div>    
                                  
             <Row>
@@ -74,10 +74,9 @@ class Main extends React.Component {
           </Grid>
           <Footer/>
         </section>
-      </div>  
-    )     
+      </div>
+    )
   }
 }
 
 export default Main;
-

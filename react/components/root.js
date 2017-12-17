@@ -1,8 +1,8 @@
-import React, { Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Route, Router, IndexRoute, hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import NavApp from './nav/nav';
-import MyComponent  from './notification';
+import MyComponent from './notification';
 import Main from "./index";
 import MyProfile from "./profile";
 import MyGroup from "./mygroup";
@@ -10,17 +10,15 @@ import MyEvent from "./myevent";
 import GroupSR from "./group/searchresult";
 import GroupMgr from "./group/groupmanager";
 import EventMgr from "./event/eventmanager";
-import {Col} from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
-//import ContainerWithSidebar from "./sidebar/container_with_sidebar";
-//import MyEditor from "./testDraft";
 import ShowGroup from './group/showgroup';
 import Footer from './footer/footer';
-import {openLoginModal} from '../core/loginmodal/actions';
+import { openLoginModal } from '../core/loginmodal/actions';
 
 class Wrap extends Component {
-  render(){
-    return (
+  render() {
+    return(
       <div>
         <NavApp/>
         <MyComponent/>
@@ -30,20 +28,19 @@ class Wrap extends Component {
   }
 }
 
-
 export class Root extends Component {
   static propTypes = {
     store: PropTypes.object.isRequired
   };
 
   requireAuth(nextState, replace) {
-    
-    const {store, router} = this.props;
-    const {auth} = store.getState();
+
+    const { store, router } = this.props;
+    const { auth } = store.getState();
     console.log('require Auth');
-    if(!auth.authenticated){
-        hashHistory.goBack();
-        store.dispatch(openLoginModal());
+    if(!auth.authenticated) {
+      hashHistory.goBack();
+      store.dispatch(openLoginModal());
     }
   }
 
@@ -51,10 +48,10 @@ export class Root extends Component {
 
     const { store } = this.props;
 
-		return (
-			<Provider store={store}>
-				<Router history={hashHistory}>
-					<Route path="/" component={Wrap}>
+    return(
+      <Provider store={store}> 
+        <Router history={hashHistory}>
+          <Route path="/" component={Wrap}>
             <IndexRoute component={Main} />
             <Route path="myprofile" component={MyProfile}/>
             <Route path="mygroup" component={MyGroup}/>
@@ -64,10 +61,9 @@ export class Root extends Component {
             <Route path="group/show/:groupId/:contentTag(/:eid)" component={ShowGroup}/>
             //oprTag is one of [new,edit]
             <Route path="group/manage/:oprTag(/:groupId)" component={GroupMgr}/>
-					</Route>
-				</Router>
-			</Provider>
-		);
-	}
+          </Route>
+        </Router>
+      </Provider>
+    );
+  }
 }
-
