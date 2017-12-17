@@ -1,36 +1,34 @@
-import { connect } from 'react-redux'; 
-import React, { Component, PropTypes } from 'react'; 
-import {Navbar, NavItem, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import React, { Component, PropTypes } from 'react';
+import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
 import { authActions } from 'core/auth';
 import { loginmodalActions } from 'core/loginmodal';
 import LoginModal from "components/auth/login";
 import FindModal from "components/group/findmodal";
 
-
-
 class UserNavItem extends React.Component {
 
-  render(){
+  render() {
     const {
-      auth, 
-      login, 
-      logout , 
+      auth,
+      login,
+      logout,
       openLoginModal,
       service,
       request,
       bottle
     } = this.props
 
-    if (!auth.authenticated){
-      return (
+    if(!auth.authenticated) {
+      return(
         <Nav pullRight>
           <NavItem eventKey={1} href="#" onClick={openLoginModal.bind(this)}> Log in </NavItem>
           <LoginModal />
         </Nav>
       )
-    }else{
+    } else {
 
-      return (
+      return(
         <Nav pullRight>
           <NavDropdown eventKey={1} title={auth.user.fullname} id="basic-nav-dropdown">
             <MenuItem href="#myprofile" eventKey={1.1}>My profile</MenuItem>
@@ -45,26 +43,25 @@ class UserNavItem extends React.Component {
   }
 }
 
-
 class NavApp extends React.Component {
-  constructor(){
-	  super();
-	  
-	  this.state = {
-	  	showgrpfind : false
-	  }
+  constructor() {
+    super();
+
+    this.state = {
+      showgrpfind: false
+    }
   }
-  
-  showgrpfind(){
-  	this.setState({
-  		showgrpfind : true
-  	})
+
+  showgrpfind() {
+    this.setState({
+      showgrpfind: true
+    })
   }
-  
-  closegrpfind = ()=>{
-  	this.setState({
-  		showgrpfind : false
-  	})  	
+
+  closegrpfind = () => {
+    this.setState({
+      showgrpfind: false
+    })
   }
 
   static propTypes = {
@@ -72,9 +69,9 @@ class NavApp extends React.Component {
 
   };
 
-  render(){
+  render() {
     const {
-      auth ,
+      auth,
       login,
       logout,
       openLoginModal,
@@ -83,7 +80,7 @@ class NavApp extends React.Component {
       request
     } = this.props
 
-    var style = {color: "#00d8ff"}
+    var style = { color: "#00d8ff" }
 
     const navbarInstance = (
       <Navbar inverse fixedTop style={{"backgroundColor":"#181718"}}>
@@ -124,4 +121,4 @@ class NavApp extends React.Component {
 
 export default connect((state, ownProps) => ({
   auth: state.auth
-}), Object.assign({}, authActions, loginmodalActions ))(NavApp);
+}), Object.assign({}, authActions, loginmodalActions))(NavApp);
