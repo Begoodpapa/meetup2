@@ -12,103 +12,136 @@ var groupUtil = require('../../lib/groupUtil.js');
 var groupHeadRoot  = sails.config.upload.groupHead.root;
 var fileUtil = require('../../lib/fileUtil.js');
 var _ = require('lodash');
-var fs = require('fs');
-var Promise = require('bluebird');
-
-const {getCommingEventByGroupid, getPassedEventByGroupid} = require('../../lib/eventUtil')
-
-var writeFile = Promise.promisify(fs.writeFile);
-
-function populateAllUsers(group){
-  return group.populateUser()
-  .then(users=>{
-    group.user = users
-    return Promise.resolve(group)
-  })
-}
 
 module.exports = {
 
   getGroupsAjax: function(req, res){
-
-    function populateAllGroupUsers(allGroups){
-      return Promise.all(allGroups.map(populateAllUsers))
-    }
-
-    Group.find({sort: 'createdAt DESC' })
-    .then(populateAllGroupUsers) //need to refractor in the front end
-    .then(allgroups=>{
-      const latestGroups = allgroups.slice(0, 3);
-      const hottestGroups = allgroups.sort((a, b)=>(b.userIds - a.userIds)).slice(0, 3);
-      return Promise.resolve({latestGroups, hottestGroups, allgroups})
-    })
-    .then(result=>{
-      return res.json(200, result);
-    })
-    .catch(err=>{
-      console.error(err)
-      return res.json(200, {error: err.message})
-    })
-  },
-
+  	
+	var GroupSearchString = req.param('GroupSearchString');  	
+	
+	async.waterfall([
+	  function(callback){
+	    Group.find({sort: 'createdAt DESC' }).populate('user').exec(callback) ;
+	  },
+	
+	  function(allgroups, callback){
+	    var hottestGroups = {},latestGroups={}, resetGroups={};
+	
+	    latestGroups = allgroups.slice(0, 3);
+	    hottestGroups = _.sortBy(allgroups, function(g){ return 0-g.user.length});
+	    hottestGroups = hottestGroups.slice(0,3);
+	
+	    callback(null, latestGroups, hottestGroups, allgroups);
+	  },
+	
+	], function(err, latestGroups, hottestGroups, allgroups){
+	  if(err){
+	    sails.log.error(err);
+	    //return res.negotiate(err);
+	    return res.json(200, {error: "error in filling groups"});
+	  }else{
+	    //sails.log.error("latestGroups[%d], hottedGroups[%d], groups[%d] ",latestGroups.length, hottedGroups.length, groups.length);
+	    return res.json(200, {latestGroups: latestGroups, hottestGroups: hottestGroups, allgroups: allgroups});
+	  }
+    });  	  	
+  },	
+  
+  
 
   loadoneGroupAjax: function(req, res){
-
     var groupid = req.param('gid');
     var user = req.session.user;
-    let ingroup = false;
-    let gro = null;
 
     //sails.log.info("groupid in req is:"+ groupid);
     //sails.log.info("user in req is:"+ user);
-    //
 
-    function checkParams(groupid, user){
-      if(!groupid){
-        return Promise.reject(new Error(`no such group: ${groupid}`))
+    Group.find({
+      id: groupid
+    }).populate('user').populate('owner').exec(function(err, groups) {
+      if (err) {
+        sails.log.error(err);
+        return res.negotiate(err);
       }
-      if(!user){
-        return Promise.reject(new Error(`no such user: ${user}`))
+      if (groups.length === 0) {
+        err = 'No group is found, groupid: ' + groupid;
+        sails.log.error(err);
+        return res.negotiate(err);
       }
-      return Promise.resolve()
-    }
 
-    function ifGroupExist(group){
-      if(!group){
-        return Promise.reject(new Error(`no group find : ${groupid}`))
-      }
-      if(~group.userIds.indexOf(user._id)){
-        ingroup = true
-      }
-      gro = group
-      return Promise.resolve(group)
-    }
+      var ingroup = false;
 
-    Promise.resolve()
-    .then(()=>checkParams(groupid, user))
-    .then(()=>Group.findOne({id: groupid}))
-    .then(ifGroupExist)
-    .then(populateAllUsers)
-    .then(()=>Event.find({group: groupid}))
-    //.tap(()=>{
-    //  Group.find(console.log)
-    //  Event.find(console.log)
-    //})
-    .then(()=>{
-      return Promise.all([getCommingEventByGroupid(groupid), getPassedEventByGroupid(groupid)])
-    })
-    .then(result=>{
-      return res.json(200, {
-        comingEvents: result[0],
-        RecentEvent: result[1][0],
-        pastEvents: result[1],
-        events: result[0].concat(result[1]),
-        group: gro,
-        user: user,
-        ingroup: ingroup
-      })
-    })
-    .catch(res.negotiate)
+      if ((user !== undefined) && (user !== null)) {
+        for (var i = 0; i < groups[0].user.length; i++) {
+          if (user.id === groups[0].user[i].id) {
+            ingroup = true;
+            break;
+          }
+        }
+      }
+      
+      var gro = groups[0];
+
+      Event.find({
+        group: groupid
+      }).where({
+        enddate: {
+          '>=': new Date()
+        }
+      }).sort({
+        "begindate": -1
+      }).populate('user').exec(function(err, events) {
+        if (err) {
+          err = 'Failed to seach Event with groupid:' + groupid;
+          sails.log.error(err);
+          return res.negotiate(err);
+        }
+
+        var comingEvents = _.sortBy(events, function(o){return o.begindate;});
+
+        Event.find({
+          group: groupid
+        }).where({
+          enddate: {
+            '<': new Date()
+          }
+        }).sort({
+          "begindate": -1
+        }).populate('user').exec(function(err, pastEvents) {
+          if (err) {
+            err = 'Failed to seach past event with groupid:' + groupid;
+            sails.log.error(err);
+            //return res.negotiate(err);
+            return res.json(200, {error: "Failed to seach past events"});
+          }
+
+          var allEvents = comingEvents.concat(pastEvents);
+
+          return res.json(200, {
+	    comingEvents: comingEvents,
+	    RecentEvent: pastEvents[0],
+	    pastEvents: pastEvents,
+	    events: allEvents,
+	    group: gro,
+	    user: user,
+	    ingroup: ingroup
+	    });
+			
+		/*
+          return res.view('group/GroupOverview', {
+            comingEvents: comingEvents,
+            RecentEvent: pastEvents[0],
+            pastEvents: pastEvents,
+            events: allEvents,
+            group: gro,
+            user: user,
+            ingroup: ingroup,
+            layout: null
+          });*/
+        });
+
+      });
+    });
+
   },  
 	
   /**
@@ -116,7 +149,7 @@ module.exports = {
    */
   create: function(req, res) {
 
-    var action = '/newgroup';
+    var action = '/newGroup';
     var user = req.session.user;
 
 
@@ -207,9 +240,9 @@ module.exports = {
    */
   createAjax: function(req, res) {
 
-    let newGroup = {};
-    let redirectstr;
-    let savedPicFilename = null;
+    var groupid;
+    var newGroup = {};
+    var redirectstr;
 
     newGroup.name = req.param('Name');
     newGroup.desc = req.param('Desc');
@@ -217,53 +250,58 @@ module.exports = {
     newGroup.owner = req.session.user;
     newGroup.father = req.param('Father');
 
-    const userId = req.session.user._id;
+    async.waterfall([
+      function(callback){
+        Group.create(newGroup, callback);
+      },
 
-    function savePic(picData, filename){
-      if (typeof picData !== 'undefined' && picData.length > 0) {
-        picData = picData.replace(/^data:image\/\w+;base64,/, "");//get rid of base 64 head, and the leftover is the content of image
-        const dataBuffer = new Buffer(picData, 'base64');
-        return writeFile(filename, picData);
-      }else{
-        return Promise.resolve(null);
+      function(createdGroup, callback){
+        groupid = createdGroup.id;
+        redirectstr = '#/group/show/'+createdGroup.id+'/overview';
+        createdGroup.user.add(req.session.user.id);
+        createdGroup.save(callback);
+      },
+
+      function(createdGroup, callback){
+        var picData = req.param('Pic');
+        if(typeof picData !== 'undefined' && picData.length > 0)
+        {
+          var fs = require('fs');
+          var dataBuffer = new Buffer(picData, 'base64');
+          var filename = require('path').join(sails.config.appPath, sails.config.assetsdir.directory, groupHeadRoot) + createdGroup.id + '.jpg';
+          fs.writeFile(filename, dataBuffer, function(err){
+            callback(err, createdGroup, filename);
+          });
+        }else{
+          callback(null, createdGroup, null);
+        }
+      },
+
+      function(createdGroup, filename, callback){
+        var groupFd;
+
+        if(filename){
+          groupFd = groupHeadRoot + createdGroup.id + '.jpg';
+        }else{
+          groupFd = '/images/group_default.jpg';
+        }
+        Group.update(createdGroup.id, {
+                groupfd: groupFd,
+        }, callback);
       }
-    }
-    const assignPrivilege = Promise.promisify(privilegeUtil.assignPrivilege);
 
-    Group.create(newGroup)
-    .then((createdGroup)=>{
-      const {id: groupid} = createdGroup;
-      newGroup.groupid = groupid;
-      redirectstr = `#/group/show/${groupid}/overview`;
-      //createdGroup.user.add(userId);
-      return groupUtil.add_user_to_group(userId, createdGroup.id )
-      //return createdGroup.save();
-    })
-    .then((createdGroup)=>{
-      const picData = req.param('Pic');
-      const filename = require('path').join(sails.config.appPath, sails.config.assetsdir.directory, groupHeadRoot) + createdGroup.id + '.jpg';
+      ], function(err, updatedGroups){
+        if(err){
+          sails.log.error(err);
+          return res.json(500, err);
+        }else{
+          privilegeUtil.assignPrivilege(newGroup.owner.id, 'groupowner', 'group', groupid, function(err, createdPrivilege){
+            if(err){console.log(err);}
+            return res.json(200, {url: redirectstr});
+          });
+        }
 
-      return savePic(picData, filename)
-      .then(filename=>{
-        savedPicFilename = filename;
-        return Promise.resolve(createdGroup);
-      })
-    })
-    .then(createdGroup=>{
-      const groupFd = groupHeadRoot + createdGroup.id + '.jpg';
-      const defautGroupFd = '/images/group_default.jpg';
-      return Group.update(createdGroup.id, { groupfd: savedPicFilename?groupFd:defautGroupFd});
-    })
-    .then(updatedGroups=>{
-      return assignPrivilege(newGroup.owner._id, 'groupowner', 'group', newGroup.groupid);
-    })
-    .then(()=>{
-      return res.json(200, {url: redirectstr});
-    })
-    .catch(err=>{
-      //sails.log.error(err);
-      return res.json(500, err);
-    })
+    });
   },
 
 
@@ -610,42 +648,61 @@ module.exports = {
     var user = req.session.user;
     var groupid = req.param('gid');
 
-
-    function checkAddUserToGroupFather(userid, group){
-      return new Promise((resolve, reject)=>{
-        if(!group.father){
-          resolve()
-        } else {
-          groupUtil.add_user_to_group(userid, group.father)
-          .then(userid=>{
-            resolve(userid)
+    Group.findOne(groupid, function(err, found){
+      if(err){
+        err = 'Failed to add user to group:' + user;
+        sails.log.error(err);
+        return res.json(200, {error: 'Failed to add user to group, group search failed'});
+      }else{
+        if(found.father){
+          groupUtil.add_user_to_group(user, found.father, function(err){
+            if(err){
+              err = 'Failed to add user to group:' + user;
+              sails.log.error(err);
+              return res.json(200, {error: 'Failed to add user to group, failed to add user to father group'});
+            }else{
+              groupUtil.add_user_to_group(user, groupid, function(err){
+                if(err){
+                  err = 'Failed to add user to group:' + user;
+                  sails.log.error(err);
+                  return res.json(200, {error: 'Failed to add user to group'});
+                }else{
+                  return res.json(200, {ingroup: 'yes'});
+                }
+              })
+            }
           })
-          .catch(reject)
-        }
-      })
-    }
+        }else{
+          groupUtil.add_user_to_group(user, groupid, function(err){
+            if(err){
+              err = 'Failed to add user to group:' + user;
+              sails.log.error(err);
+              return res.json(200, {error: 'Failed to add user to group'});
+            }else{
+              return res.json(200, {ingroup: 'yes'});
+            }
+          })
 
-    Group.findOne(groupid)
-    .catch(err=>{
-      throw(new Error(`cant find group, groupid: ${groupid}, user: ${user._id}`))
-    })
-    .then((group)=>checkAddUserToGroupFather(user._id, group))
-    .then(()=>add_user_to_group(user._id, groupid))
-    .then(()=>{
-      return res.json(200, {ingroup: 'yes'});
-    })
-    .catch(err=>{
-      return res.json(200, {error: err.message});
-    })
+        }
+
+      }
+    });
+
   },
 
   removeUserFromGroup: function(req, res) {
+
     var user = req.session.user;
     var groupid = req.param('gid');
 
-    groupUtil.remove_user_from_group(user._id, groupid)
-    .then(()=>res.json(200, {ingroup: 'no'}))
-    .catch((err)=>res.joson(200, {error: err.message}))
+    groupUtil.remove_user_from_group(user, groupid, function(err) {
+      if (err) {
+        sails.log.error(err);
+        return res.json(200, {error: err.message});;
+      } else {
+        return res.json(200, {ingroup: 'no'});;
+      }
+    });
   },
 
   showMembers: function(req, res) {
@@ -713,9 +770,11 @@ module.exports = {
       },
 
       function(user_list, callback){
-        groupUtil.addUsersToGroup(user_list.map(usr=>user._id), groupid)
-        .then(()=>callback(null))
-        .catch(callback)
+
+        async.map(user_list, function(entry, cb){
+          groupUtil.add_user_to_group(entry, groupid, cb);
+          }, callback);
+
       }
       ], function(err, results){
       if(err){
@@ -768,7 +827,7 @@ module.exports = {
         fs.exists(file, function( exists ){
            if( exists ){
               fs.unlink(file, function(){
-              //Console.log('success') ;
+              //console.log('success') ;
               });
            }
         });
@@ -792,9 +851,9 @@ module.exports = {
       },
 
       function(user_list, callback){
-        addUsersToGroup(user_list.map(user=>user._id), groupid)
-        .then(()=>callback(null))
-        .catch(callback)
+        async.map(user_list, function(entry, cb){
+          groupUtil.add_user_to_group(entry, groupid, cb);
+          }, callback);
       }
       ], function(err, results){
       if(err){
@@ -817,18 +876,23 @@ module.exports = {
       return res.json(200, 'no user was found');
     }
 
-    Group.findOne({id: groupID})
-    .then(populateAllUsers)
-    .tap(console.log)
-    .then(findGroup=>{
-      const filterUsers = findGroup.user
-      .filter(user=>searchCriteria.test(user.fullname))
-      return res.json(200, {user: filterUsers});
-    })
-    .catch((err)=>{
-      console.log(err)
-      return res.json(200, 'no user was found');
-    })
+    Group.find({id:groupID}).populate('user').exec(function(err, foundGroups){
+
+      if (err) { return res.json(500, {error: err.message}); }
+
+      if(foundGroups.length>0){
+        var users = foundGroups[0].user;
+        var filterusers = _.filter(users, function(user) {
+          return (searchCriteria.test(user.fullname));
+        });
+        return res.json(200, {user: filterusers});
+      }else{
+        return res.json(200, 'no user was found');
+      }
+
+    });
+
+
   },
 
   showBigEvent: function(req, res){

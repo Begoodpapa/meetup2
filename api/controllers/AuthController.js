@@ -98,7 +98,7 @@ module.exports = {
     if(req.session.user){
       var user = req.session.user;
       User
-        .findOne({_id:user._id})       
+        .findOne({id:user.id})       
         .then(function (user) {
           return res.json(200, {user: user});
         })

@@ -5,17 +5,6 @@ var eventUtil = require('../../lib/eventUtil.js');
 var personaUtil = require('../../lib/personaUtil.js');
 var fileUtil = require('../../lib/fileUtil.js');
 var privilegeUtil = require('../../lib/privilegeUtil.js');
-var Promise = require('bluebird');
-
-const { addOwnerToEvent, } = require('../../lib/eventUtil')
-
-function populateAllUsers(event){
-  return event.populateUser()
-  .then(users=>{
-    event.user = users
-    return Promise.resolve(event)
-  })
-}
 
 module.exports = {
 
@@ -168,68 +157,125 @@ module.exports = {
 
   showAjax: function(req, res) {
 
-    const eventId = req.param('eid');
-    const user = req.session.user;
-    const userId = user._id
+    var eventId = req.param('eid');
+    var user = req.session.user;
+    var owner = false;
 
-    function checkEventExist(event){
-      if (!event){
-        throw new Error('no event is found')
-      } else {
-        return Promise.resolve(event)
+    Event.find({
+      id: eventId
+    }).populate('user').populate('group').exec(function(err, events) {
+
+      if (err) {
+        sails.log.error(err);
+        return res.negotiate(err);
       }
-    }
 
-    Event.findOne({id: eventId})
-    .populate('group')
-    .then(checkEventExist)
-    .then(populateAllUsers)
-    .then(event=>{
-      const inGroup = !!~event.group.userIds.indexOf(userId)
-      const inEvent = !!~event.userIds.indexOf(userId)
-      const attached_tags_list = ((event.tags===undefined) || (event.tags===null)) ? '[]' : event.tags;
-      const owner = (!!user) && (event.owner === user.id)
+      if (events.length === 0) {
+        err = 'no event is found with the event id:' + eventId;
+        sails.log.error(err);
+        //return res.negotiate(err);
+        return res.json(200, {error: err});
+      }
 
-      return res.json(200, 
-      	{
-	      	event: event, 
-	        user: user,
-	        inevent: inEvent,
-	        group: event.group,
-	        ingroup: inGroup,
-	        owner: owner,
-	        layout: null,
-	        attached_tags_json: attached_tags_list
+      Group.findOne({
+        id: events[0].group.id
+      }).populate('user').exec(function(err, group) {
+        var inevent = false;
+        var ingroup = false;
+        if ((user !== undefined) && (user !== null)) {
+
+          for (var i = 0; i < events[0].user.length; i++) {
+            if (user.id === events[0].user[i].id) {
+              inevent = true;
+              break;
+            }
+          }
+
+          if( !err ){
+            for (var k = 0; k < group.user.length; k++) {
+              if (user.id === group.user[k].id) {
+                ingroup = true;
+                break;
+              }
+            }
+          }
+
         }
-      );
-    })
-    .catch(res.negotiate)
+
+        var attached_tags_list = ((events[0].tags===undefined) || (events[0].tags===null)) ? '[]' : events[0].tags; 
+          
+        if ((user)&&(events[0].owner === user.id)){
+          owner = true;
+        }
+
+        return res.json(200, 
+        	{
+	        	event: events[0], 
+	          user: user,
+	          inevent: inevent,
+	          group: events[0].group,
+	          ingroup: ingroup,
+	          owner: owner,
+	          layout: null,
+	          attached_tags_json: attached_tags_list
+          }
+        );
+				/*
+        res.view('event/EventDetail', {
+          target: events[0],
+          user: user,
+          inevent: inevent,
+          group: events[0].group,
+          ingroup: ingroup,
+          owner: owner,
+          layout: null,
+          attached_tags_json: attached_tags_list,
+        });
+        */            
+      });
+    });
   },
 
   doCreate: function(req, res) {
-    const assignPrivilegeAsync = Promise.promisify(privilegeUtil.assignPrivilege)
 
     var newEvent = eventUtil.createEventObjFromHttp(req);
     var user = req.session.user;
-    let createdEvent;
 
-    function sentNotiyIfPublish(event){
-      if(!!event.publish){
-        return eventUtil.sendNotifyMailOnEventCreate(events[0],cb);
-      }else{
-        return Promise.resolve()
-      }
-    }
+    async.waterfall([
 
-    Event.create(newEvent)
-    .then(event=>{
-      createdEvent = event
-      return addOwnerToEvent(event, user._id)
-    })
-    .then(()=> sentNotiyIfPublish(createdEvent))
-    .then(()=> assignPrivilegeAsync(user._id, 'eventowner', 'event', createdEvent.id))
-    .then(()=> res.json(200, {id: createdEvent.id}))
-    .catch(res.negotiate)
+      function createEvent(callback){
+        Event.create(newEvent, callback);
+      },
+
+      function addOwnerToEvent(createdEvent, callback) {
+        createdEvent.user.add(user.id);
+        createdEvent.save(callback);
+      },
+      ], function(err, createdEvent){
+
+        if(err){
+          sails.log.error(err);
+          return res.negotiate(err);
+        }
+
+        if(createdEvent.publish == true){
+          Event.find({
+            id: createdEvent.id
+          }).exec(function(err, events){
+            var cb = function(err, created_mail){
+              if(err){ console.log(err); }
+            };
+            eventUtil.sendNotifyMailOnEventCreate(events[0],cb);
+          });
+        }
+
+        privilegeUtil.assignPrivilege(user.id, 'eventowner', 'event', createdEvent.id, function(err, createdPrivilege){
+          if(err){sails.log.error(err);}
+        });
+
+        return res.json(200, {id:createdEvent.id});
+    });
+
   },
 
 
@@ -400,9 +446,10 @@ module.exports = {
     var users = req.param('users');
 
     async.waterfall([
+
       function(callback){
         async.map(users, function(user, cb){
-          User.findOne({_id: user}, cb);
+          User.findOne({id: user}, cb);
           }, callback);
 
       },
@@ -441,7 +488,7 @@ module.exports = {
         return res.negotiate(err);
       }
 
-      //console.log("InviteFriendToEvent: from " + from + ", to " + to);
+      console.log("InviteFriendToEvent: from " + from + ", to " + to);
       var subject = "Your friend " + from + " invite you to Beehive event: " + events[0].topic;
       eventUtil.sendEventMailToUser(events[0], to, subject); 
       

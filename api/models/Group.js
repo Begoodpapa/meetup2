@@ -17,20 +17,13 @@ module.exports = {
       model: 'user'
     },
     groupfd: 'string',
-    //user: {
-    //  collection: 'User',
-    //  via: 'group'
-    //},
-    userIds: {
-      type: 'array',
-      defaultsTo: []
+    user: {
+      collection: 'User',
+      via: 'group'
     },
     tags:'string',      //use json string to link the tags, many-to-many relation is too complex.
     father: {
       model: 'group'
-    },
-    populateUser: function(){ // populate user from userIds
-      return User.find({_id: this.userIds})
     }
   }
 };

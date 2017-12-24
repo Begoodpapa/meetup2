@@ -27,7 +27,7 @@ module.exports = {
       type: 'email'
     },
 
-    _id: {
+    id: {
       type: 'string',
       primaryKey: true,
       unique: true
@@ -35,15 +35,15 @@ module.exports = {
 
     userfd: 'string',
 
-    //group: {
-    //  collection: 'Group',
-    //  via: 'user'
-    //},
+    group: {
+      collection: 'Group',
+      via: 'user'
+    },
 
-    //events: {
-    //  collection: 'Event',
-    //  via: 'user'
-    //},
+    events: {
+      collection: 'Event',
+      via: 'user'
+    },
 
     likedcomments: {
       collection: 'Comment',

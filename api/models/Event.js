@@ -31,15 +31,11 @@ module.exports = {
     group: {
       model: 'group'
     },
-    userIds: {
-      type: 'array',
-      defaultsTo: []
+    user: {
+      collection: 'user',
+      via: 'events',
+      dominant: true
     },
-    //user: {
-    //  collection: 'user',
-    //  via: 'events',
-    //  dominant: true
-    //},
     photos: {
       collection: 'Photo',
       via: 'album',
@@ -52,9 +48,6 @@ module.exports = {
       type: 'boolean',
       defaultsTo: 'false'
     },
-    populateUser: function(){ // populate user from userIds
-      return User.find({_id: this.userIds})
-    }
 
   }
 };

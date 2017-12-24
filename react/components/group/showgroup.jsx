@@ -222,7 +222,7 @@ class ShowGroup extends React.Component {
         head_group_name = field.name;
         groupowner_fullname = field.owner; //TODO replace with name later, because field.owner is actually owner id
         groupfd = field.groupfd;
-        num_members = field.userIds.length;
+        num_members = field.user.length;
 
         return false;
       }
