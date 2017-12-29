@@ -21,7 +21,7 @@ class GroupArr extends React.Component {
             <a href= {'#/group/show/' + groupid + '/overview'}>
               <h3> {groupname} </h3> 
               <img style={{width:'100%', height:'300px'}} src= {groupfd} />
-              <p>{item.userIds.length} members</p>
+              <p>{item.user.length} members</p>
             </a>
           </div> 
         </div>)

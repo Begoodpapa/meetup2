@@ -32,7 +32,7 @@ class PastEvents extends React.Component {
                   {event.topic}
                 </a>
               </div>
-            <div className="event-members"> {event.userIds.length} <span>hacks Going</span> </div>
+              <div className="event-members"> {event.user.length} <span>hacks Going</span> </div>
           </div> 
         </li>
       )

@@ -9,14 +9,6 @@
 var portraitRoot = sails.config.upload.portrait.root;
 var privilegeUtil = require('../../lib/privilegeUtil.js');
 
-function checkIfExist(obj){
-  if (!obj){
-    return Promise.reject(new Error('obj not find'))
-  } else {
-    return Promise.resolve(obj)
-  }
-}
-
 module.exports = {
 
 
@@ -39,24 +31,33 @@ module.exports = {
 		});
 	},
 	
+
 	showMyEventAjax: function(req, res) {
+
 	  var user = req.session.user;
-	  //console.log(' showMyEventAjax user id:%s', user._id);
-    User.findOne({_id: user._id})
-    .then(checkIfExist)
-    .then(user=>{
-      return Event.find({userIds: user._id})
-    })
-    .then(events=>{
+	  //console.log(' showMyEventAjax user id:%s', user.id);
+        
+	  User.find({
+	    id: user.id
+	  }).populate('events').exec(function(err, users) {
+	  if (err) {
+	    return res.json(200, {error: "Failed to seach events"});
+	  } else {
+	    var events = users[0].events;
+	    /*
+	    return res.view('event/MyCalendar', {
+	      events: events,
+	      user: user,
+	    });
+	    */
 	    return res.json(200, {
 	      events: events,
 	      user: user,
 	    });				
-    })
-    .catch(()=>{
-	    return res.json(200, {error: "Failed to seach events"});
-    })
+	    }
+	  });
 	},	
+
 
 	showMyGroup: function(req, res) {
 
@@ -88,23 +89,30 @@ module.exports = {
 	
 
 	showMyGroupAjax: function(req, res) {
-		const user = req.session.user;
 
-    User.findOne({_id: user._id})
-    .then(checkIfExist)
-    .then(user=>{
-      return Group.find({userIds: user._id})
-    })
-    .then(group=>{
-	    return res.json(200, {
-	      groups: group,
-	      user: user,
-	    });				
-    })
-    .catch(()=>{
-	    return res.json(200, {error: "Failed to seach groups"});
-    })
+		var user = req.session.user;
+		
+		//console.log("showMyGroupAjax user id is:"+user.id);
 
+		User.find({
+			id: user.id
+		}).populate('group').exec(function(err, users) {
+
+			if (err) {
+				sails.log.error(err);
+        return res.json(200, {error: "Failed to seach groups"});
+			} else {
+				var groups = users[0].group;
+
+				var now = new Date();
+
+        return res.json(200, {
+					groups: groups,
+					user: user,
+	      });
+			}
+
+		});
 
 	},
 
