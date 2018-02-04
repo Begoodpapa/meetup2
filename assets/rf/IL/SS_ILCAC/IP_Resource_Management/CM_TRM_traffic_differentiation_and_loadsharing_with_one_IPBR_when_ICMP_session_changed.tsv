@@ -1,0 +1,272 @@
+*Setting*							
+Suite Setup	Prepare Test Environment and Resource						
+Suite Teardown	Clear test resource and disconnect from target hardware						
+Force Tags	Product_Backlog_ID-RAN2897_1R_M1	hw_env-RNC_S1	exec_type-automatic	element-IL	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	exec_level-pre	FP_version-COUGAR
+...	reason-add and delete ip spend much time	ct-negative	QL-6	HW_TYPE-BCN_A1	BCN_STEP-BCN_S1	PRS_ID-XXX	type-FUT
+...	FRS_ID-PCM_100201_7_R1709	EFS_ID-RNC_EFS_1709_379	EFS_ID-RNC_EFS_1709_357	FRS_ID-PCM_100201_48_R2897	EFS_ID-RNC_EFS_2897_171	EFS_ID-RNC_EFS_2897_174	EFS_ID-RNC_EFS_2897_168
+...	release-RU50EP1	PRS_ID-IL_PRS_4915					
+Resource	il.html						
+Resource	../resources/common_operation_resource.html						
+Resource	../resources/cac_basic_operation_resource.html						
+Resource	../resources/IPBR_basic_operation_resource.html						
+Resource	../../SS_ILCallMgmt/resources/cm_resource.tsv						
+Library	../resources/cacprb_test_resources.py						
+Library	Collections						
+							
+*Variable*							
+${LOCAL_IP1}	191.254.%{HOST_INDEX}.60						
+${LOCAL_IP2}	191.254.%{HOST_INDEX}.61						
+${LOCAL_IP3}	191.254.%{HOST_INDEX}.62						
+${REMOTE_IP1}	191.254.%{HOST_INDEX}.65						
+${REMOTE_IP2}	191.254.%{HOST_INDEX}.66						
+${CONN_DOWN_EC}	0x267						
+${IPBR_ID_1}	1						
+${IPBR_ID_4019}	4019						
+${CHECK_TIMEOUT}	8s						
+${CHECK_INTERVAL}	0.5s						
+${IPBR_STATUS_AVALIB}	Usable						
+${IPBR_STATUS_UNAVALIB}	Unusable						
+${ICMP_MON}	Yes						
+${ICMP_NO_MON}	No						
+${ICMP_4019_RG0_NAME}	Flash-4019-RG0						
+${ICMP_4019_RG1_NAME}	Flash-4019-RG1						
+${ICMP_4019_RG2_NAME}	Flash-4019-RG2						
+${ICMP_4019_RG3_NAME}	Flash-4019-RG3						
+${ICMP_STATUS_CONN_DOWN}	CONN_DOWN						
+${ICMP_STATUS_WORK}	WORK						
+${ICMP_RG_0}	/%{EITPUPTRM_TYPE_NAME}-0						
+${ICMP_RG_1}	/%{EITPUPTRM_TYPE_NAME}-1						
+${ICMP_RG_2}	/%{EITPUPTRM_TYPE_NAME}-2						
+${ICMP_RG_3}	/%{EITPUPTRM_TYPE_NAME}-3						
+${ICMP_ALARM}	70364						
+${VRF_11_NAME}	vrf11						
+${VRF_11_ID}	11						
+${IFACE_OF_VRF11}	ethvrf						
+${IFACE_OF_ETHTEST20}	%{ETH1_1}						
+${ONE_TIME}	1						
+${TWO_TIMES}	2						
+${THREE_TIMES}	3						
+${LEG_OTHER_PARA}	NCAC=1						
+${LOCAL_IP1_LEG_NUM}	0						
+${LOCAL_IP2_LEG_NUM}	0						
+${LOCAL_IP3_LEG_NUM}	0						
+${DSCP_AF4_VALUE}	26						
+${DSCP_AF2_VALUE}	12						
+${DSCP_AF3_VALUE}	1C						
+							
+*Test Case*							
+Create Iur and Iu leg when the ICMP sessions both up	[Setup]	Create leg list and reserve test srb call for prepare					
+	CAC selects IP and IPBR when create Iur and Iu in different condition	${THREE_TIMES}	${IPBR_ID_4019}	${LEG_OTHER_PARA}			
+	Check the legs assigned with expect IPs	4	4	4			
+	[Teardown]	release legs created in test case					
+							
+Create Iur and Iu leg when the ICMP sessions one is up and one changes frome up to down	[Setup]	Create leg list and reserve test srb call for prepare					
+	register expect alarm	${ICMP_ALARM}					
+	Set IPRO1 related ICMP session down						
+	check the IPBR and IPRO's status	${IPBR_ID_4019}	${IPBR_STATUS_AVALIB}	ip_addr=${LOCAL_IP1},monitor=${ICMP_MON},status=${ICMP_STATUS_CONN_DOWN},vrf_id=11	ip_addr=${LOCAL_IP2},monitor=${ICMP_MON},status=${ICMP_STATUS_WORK},vrf_id=0	ip_addr=${LOCAL_IP3},monitor=${ICMP_NO_MON},status=${ICMP_STATUS_WORK},vrf_id=0	
+	CAC selects IP and IPBR when create Iur and Iu in different condition	${TWO_TIMES}	${IPBR_ID_4019}	${LEG_OTHER_PARA}			
+	Check the legs assigned with expect IPs	0	4	4			
+	Set IPRO1 related ICMP session up						
+	check the IPBR and IPRO's status	${IPBR_ID_4019}	${IPBR_STATUS_AVALIB}	ip_addr=${LOCAL_IP1},monitor=${ICMP_MON},status=${ICMP_STATUS_WORK},vrf_id=11	ip_addr=${LOCAL_IP2},monitor=${ICMP_MON},status=${ICMP_STATUS_WORK},vrf_id=0	ip_addr=${LOCAL_IP3},monitor=${ICMP_NO_MON},status=${ICMP_STATUS_WORK},vrf_id=0	
+	[Teardown]	Release legs created in test case and set IPRO1 up if test failed					
+							
+Create Iur and Iu leg when the ICMP sessions both down change to one up and one down	[Setup]	Create leg list and reserve test srb call for prepare					
+	Register expect error syslog and alarm						
+	Set IPRO1 related ICMP session down						
+	Set IPRO2 related ICMP session down						
+	check the IPBR and IPRO's status	${IPBR_ID_4019}	${IPBR_STATUS_UNAVALIB}	ip_addr=${LOCAL_IP1},monitor=${ICMP_MON},status=${ICMP_STATUS_CONN_DOWN},vrf_id=11	ip_addr=${LOCAL_IP2},monitor=${ICMP_MON},status=${ICMP_STATUS_CONN_DOWN},vrf_id=0	ip_addr=${LOCAL_IP3},monitor=${ICMP_NO_MON},status=${ICMP_STATUS_CONN_DOWN},vrf_id=0	
+	Create legs failed and check error code	${IPBR_ID_4019}	${CONN_DOWN_EC}	${LEG_OTHER_PARA}			
+	Set IPRO1 related ICMP session up						
+	CAC selects IP and IPBR when create Iur and Iu in different condition	${TWO_TIMES}	${IPBR_ID_4019}	${LEG_OTHER_PARA}			
+	Check the legs assigned with expect IPs	4	0	4			
+	Set IPRO2 related ICMP session up						
+	check the IPBR and IPRO's status	${IPBR_ID_4019}	${IPBR_STATUS_AVALIB}	ip_addr=${LOCAL_IP1},monitor=${ICMP_MON},status=${ICMP_STATUS_WORK},vrf_id=11	ip_addr=${LOCAL_IP2},monitor=${ICMP_MON},status=${ICMP_STATUS_WORK},vrf_id=0	ip_addr=${LOCAL_IP3},monitor=${ICMP_NO_MON},status=${ICMP_STATUS_WORK},vrf_id=0	
+	[Teardown]	Release legs created in test case and set IPRO1 and IPRO2 up if test failed					
+							
+Create Iur and Iu leg when IPROs with different PHB and the ICMP sessions both down change to one up and one down	[Setup]	Create leg list and reserve test srb call for prepare					
+	Register expect error syslog and alarm						
+	modify three IPROs with different PHB						
+	Set IPRO1 related ICMP session down						
+	check the IPBR and IPRO's status	${IPBR_ID_4019}	${IPBR_STATUS_AVALIB}	ip_addr=${LOCAL_IP1},monitor=${ICMP_MON},status=${ICMP_STATUS_CONN_DOWN},vrf_id=11	ip_addr=${LOCAL_IP2},monitor=${ICMP_MON},status=${ICMP_STATUS_WORK},vrf_id=0	ip_addr=${LOCAL_IP3},monitor=${ICMP_NO_MON},status=${ICMP_STATUS_WORK},vrf_id=0	
+	Create legs failed and check error code	${IPBR_ID_4019}	${CONN_DOWN_EC}	DSCP=${DSCP_AF4_VALUE}			
+	CAC selects IP and IPBR when create Iur and Iu in different condition	${ONE_TIME}	${IPBR_ID_4019}	DSCP=${DSCP_AF3_VALUE}			
+	Check the legs assigned with expect IPs	0	0	4			
+	CAC selects IP and IPBR when create Iur and Iu in different condition	${ONE_TIME}	${IPBR_ID_4019}	DSCP=${DSCP_AF2_VALUE}			
+	Check the legs assigned with expect IPs	0	2	6			
+	Set IPRO1 related ICMP session up						
+	check the IPBR and IPRO's status	${IPBR_ID_4019}	${IPBR_STATUS_AVALIB}	ip_addr=${LOCAL_IP1},monitor=${ICMP_MON},status=${ICMP_STATUS_WORK},vrf_id=11	ip_addr=${LOCAL_IP2},monitor=${ICMP_MON},status=${ICMP_STATUS_WORK},vrf_id=0	ip_addr=${LOCAL_IP3},monitor=${ICMP_NO_MON},status=${ICMP_STATUS_WORK},vrf_id=0	
+	CAC selects IP and IPBR when create Iur and Iu in different condition	${ONE_TIME}	${IPBR_ID_4019}	DSCP=${DSCP_AF4_VALUE}			
+	Check the legs assigned with expect IPs	4	2	6			
+	[Teardown]	Release legs created in test case and set IPRO1 and IPRO2 up if test failed					
+							
+*Keyword*							
+Prepare Test Environment and Resource	Connect to Target Hardware						
+	Switch to active OMU						
+	Get Active CP Units						
+	Get Random USCP Unit						
+	Add three local IPs and two remote IPs for prepare						
+	Add four ICMP sessions with different IPBR and VRF for prepare						
+	Add three IPROs with one IPBR for prepare						
+	Wait Until Keyword Succeeds	${CHECK_TIMEOUT}	${CHECK_INTERVAL}	check the IPBR and IPRO's status	${IPBR_ID_4019}	${IPBR_STATUS_AVALIB}	ip_addr=${LOCAL_IP1},monitor=${ICMP_MON},status=${ICMP_STATUS_WORK},vrf_id=11
+	...	ip_addr=${LOCAL_IP2},monitor=${ICMP_MON},status=${ICMP_STATUS_WORK},vrf_id=0	ip_addr=${LOCAL_IP3},monitor=${ICMP_NO_MON},status=${ICMP_STATUS_WORK},vrf_id=0				
+							
+check the IPBR and IPRO's status	[Arguments]	${ipbr_id}	${ipbr_status}	${ip1_status_list}	${ip2_status_list}	${ip3_status_list}	
+	${ipbr_info}=	Get Specific Ipbr Info In Cac	${ipbr_id}				
+	Should Be Equal As Strings	${ipbr_info.ip_list[0]}	${ip1_status_list}				
+	Should Be Equal As Strings	${ipbr_info.ip_list[1]}	${ip2_status_list}				
+	Should Be Equal As Strings	${ipbr_info.ip_list[2]}	${ip3_status_list}				
+	should be equal	${ipbr_info.ipbr_status}	${ipbr_status}				
+							
+Create leg list and reserve test srb call for prepare	create leg list						
+	${leg_info}	Reserve Srb Call	${USCP}	${IPBR_ID_1}			
+	should be equal	${leg_info.result}	SUCCESSFUL				
+	set test variable	\${CALL_ID}	${leg_info.call_id}				
+	Set To Object	${leg_info}	computer	${USCP}			
+	Set To Object	${leg_info}	leg_id	IN			
+	append to list	${IN_LEG_LIST}	${leg_info}				
+							
+Check IP's status should be as expected	[Arguments]	${ipbr_id}	${ip_index}	${ip_status}			
+	${ipbr_info}=	Get Specific Ipbr Info In Cac	${ipbr_id}				
+	Should Be Equal As Strings	${ipbr_info.ip_list[${ip_index}]}	${ip_status}				
+							
+Set IPRO1 related ICMP session up	add test IP address successfully	${ICMP_RG_2}	${IFACE_OF_ETHTEST20}	${REMOTE_IP1}/25			
+	Wait Until Keyword Succeeds	${CHECK_TIMEOUT}	${CHECK_INTERVAL}	Check IP's status should be as expected	${IPBR_ID_4019}	0	ip_addr=${LOCAL_IP1},monitor=${ICMP_MON},status=${ICMP_STATUS_WORK},vrf_id=11
+							
+Set IPRO1 related ICMP session down	delete test IP address successfully	${ICMP_RG_2}	${IFACE_OF_ETHTEST20}	${REMOTE_IP1}			
+	Wait Until Keyword Succeeds	${CHECK_TIMEOUT}	${CHECK_INTERVAL}	Check IP's status should be as expected	${IPBR_ID_4019}	0	ip_addr=${LOCAL_IP1},monitor=${ICMP_MON},status=${ICMP_STATUS_CONN_DOWN},vrf_id=11
+							
+Set IPRO2 related ICMP session up	add test IP address successfully	${ICMP_RG_3}	${IFACE_OF_ETHTEST20}	${REMOTE_IP2}/25			
+	Wait Until Keyword Succeeds	${CHECK_TIMEOUT}	${CHECK_INTERVAL}	Check IP's status should be as expected	${IPBR_ID_4019}	1	ip_addr=${LOCAL_IP2},monitor=${ICMP_MON},status=${ICMP_STATUS_WORK},vrf_id=0
+							
+Set IPRO2 related ICMP session down	delete test IP address successfully	${ICMP_RG_3}	${IFACE_OF_ETHTEST20}	${REMOTE_IP2}			
+	Wait Until Keyword Succeeds	${CHECK_TIMEOUT}	${CHECK_INTERVAL}	Check IP's status should be as expected	${IPBR_ID_4019}	1	ip_addr=${LOCAL_IP2},monitor=${ICMP_MON},status=${ICMP_STATUS_CONN_DOWN},vrf_id=0
+							
+Release legs created in test case and set IPRO1 and IPRO2 up if test failed	release legs created in test case						
+	run keyword if test failed	Set IPRO1 related ICMP session up					
+	run keyword if test failed	Set IPRO2 related ICMP session up					
+							
+Clear test resource and disconnect from target hardware	Delete three IPROs with one IPBR						
+	Delete two ICMP sessions with different VRF						
+	Delete three local IPs and two remote IPs						
+	disconnect from target hardware						
+							
+Register expect error syslog and alarm	register expect syslog	fail to get IPRO, no working IPRO, IPBR ID = 4019, 65535.	fail to get interface unit, status = 0x267.	cac_res_reserve_ack_s error(0x267). ipbr_list=0xfb6/0xffff.	alloc_logi_tt_cac_res: cac_res_reserve_req__r error(0x267)	leg_create_proc: error(0x267),	work_rm_ip_res_req_proc: error(0x267),
+	...	RMUH02: Create call failed. error_code is 615 (0x267)					
+	register expect alarm	${ICMP_ALARM}					
+							
+Add four ICMP sessions with different IPBR and VRF for prepare	${result}	Add mon icmp with scli	${ICMP_RG_0}	${LOCAL_IP1}	${REMOTE_IP1}	${ICMP_4019_RG0_NAME}	${VRF_11_NAME}
+	...	${IPBR_ID_4019}					
+	should be equal	${result}	SUCCESS				
+	${result}	Add mon icmp with scli	${ICMP_RG_2}	${REMOTE_IP1}	${LOCAL_IP1}	${ICMP_4019_RG2_NAME}	${VRF_11_NAME}
+	should be equal	${result}	SUCCESS				
+	${result}	Add mon icmp with scli	${ICMP_RG_1}	${LOCAL_IP2}	${REMOTE_IP2}	${ICMP_4019_RG1_NAME}	${EMPTY}
+	...	${IPBR_ID_4019}					
+	should be equal	${result}	SUCCESS				
+	${result}	Add mon icmp with scli	${ICMP_RG_3}	${REMOTE_IP2}	${LOCAL_IP2}	${ICMP_4019_RG3_NAME}	
+	should be equal	${result}	SUCCESS				
+							
+Add three local IPs and two remote IPs for prepare	add test IP address successfully	${ICMP_RG_0}	${IFACE_OF_VRF11}	${LOCAL_IP1}/25	${VRF_11_NAME}		
+	add test IP address successfully	${ICMP_RG_1}	${IFACE_OF_ETHTEST20}	${LOCAL_IP2}/25			
+	add test IP address successfully	${ICMP_RG_2}	${IFACE_OF_ETHTEST20}	${REMOTE_IP1}/25			
+	add test IP address successfully	${ICMP_RG_3}	${IFACE_OF_ETHTEST20}	${REMOTE_IP2}/25			
+	add test IP address successfully	${ICMP_RG_2}	${IFACE_OF_ETHTEST20}	${LOCAL_IP3}/25			
+							
+Add three IPROs with one IPBR for prepare	Add IPRO successfully	${IPBR_ID_4019}	${LOCAL_IP1}	${ICMP_RG_0}	${IFACE_OF_VRF11}		${VRF_11_NAME}
+	Add IPRO successfully	${IPBR_ID_4019}	${LOCAL_IP2}	${ICMP_RG_1}	${IFACE_OF_ETHTEST20}		
+	Add IPRO successfully	${IPBR_ID_4019}	${LOCAL_IP3}	${ICMP_RG_2}	${IFACE_OF_ETHTEST20}		
+							
+CAC selects IP and IPBR when create Iur and Iu in different condition	[Arguments]	${repeat_time}	${ipbr_id}	${other_para}			
+	repeat keyword	${repeat_time}	Create test IuCS leg	${ipbr_id}	${other_para}		
+	repeat keyword	${repeat_time}	Create test out Iur leg	${ipbr_id}	${other_para}		
+	repeat keyword	${repeat_time}	Create test direct IuPS leg	${ipbr_id}	${other_para}		
+	repeat keyword	${repeat_time}	Create test indirect IuPS leg	${ipbr_id}	${other_para}		
+							
+Create test IuCS leg	[Arguments]	${ipbr_id}	${other_para}				
+	${IuCS_info}	create rtp leg	${USCP}	${ipbr_id}	${other_para}		
+	run keyword if	'${IuCS_info.result}'=='SUCCESSFUL'	Append to List	${OUT_LEG_LIST}	${IuCS_info}		
+	Check create leg successfully and register IP used number	${IuCS_info}	${ipbr_id}				
+							
+Create test direct IuPS leg	[Arguments]	${ipbr_id}	${other_para}				
+	${IuPS_info}	Create GTP Leg Direct	${USCP}	${ipbr_id}	${other_para}		
+	run keyword if	'${IuPS_info.result}'=='SUCCESSFUL'	append to list	${OUT_LEG_LIST}	${IuPS_info}		
+	Check create leg successfully and register IP used number	${IuPS_info}	${ipbr_id}				
+							
+Create test indirect IuPS leg	[Arguments]	${ipbr_id}	${other_para}				
+	${tunnel_info}	cac_basic_operation_resource.Create GTP Tunnel	${USCP}	${ipbr_id}	${other_para}		
+	should be equal	${tunnel_info.result}	SUCCESSFUL				
+	Append to List	${OUT_LEG_LIST}	${tunnel_info}				
+	${IuPS_info}	create GTP leg	${USCP}	${tunnel_info.call_id}	${tunnel_info.return_ipbr_id}		
+	run keyword if	'${IuPS_info.result}'=='SUCCESSFUL'	append to list	${OUT_LEG_LIST}	${IuPS_info}		
+	Check create leg successfully and register IP used number	${tunnel_info}	${ipbr_id}				
+							
+Create test out Iur leg	[Arguments]	${ipbr_id}	${other_para}				
+	${Iur_info}	Create out Iur leg	${USCP}	${ipbr_id}	${CALL_ID}	${other_para}	
+	run keyword if	'${Iur_info.result}'=='SUCCESSFUL'	append to list	${OUT_LEG_LIST}	${Iur_info}		
+	Check create leg successfully and register IP used number	${Iur_info}	${ipbr_id}				
+							
+Check the legs assigned with expect IPs	[Arguments]	${ip1_local_num}	${ip2_local_num}	${ip3_local_num}			
+	Should Be Equal As Numbers	${LOCAL_IP1_LEG_NUM}	${ip1_local_num}				
+	Should Be Equal As Numbers	${LOCAL_IP2_LEG_NUM}	${ip2_local_num}				
+	Should Be Equal As Numbers	${LOCAL_IP3_LEG_NUM}	${ip3_local_num}				
+							
+Delete three local IPs and two remote IPs	delete test IP address successfully	${ICMP_RG_0}	${IFACE_OF_VRF11}	${LOCAL_IP1}/25	${VRF_11_NAME}		
+	delete test IP address successfully	${ICMP_RG_1}	${IFACE_OF_ETHTEST20}	${LOCAL_IP2}/25			
+	delete test IP address successfully	${ICMP_RG_2}	${IFACE_OF_ETHTEST20}	${REMOTE_IP1}/25			
+	delete test IP address successfully	${ICMP_RG_3}	${IFACE_OF_ETHTEST20}	${REMOTE_IP2}/25			
+	delete test IP address successfully	${ICMP_RG_2}	${IFACE_OF_ETHTEST20}	${LOCAL_IP3}/25			
+							
+Delete two ICMP sessions with different VRF	${result}	delete mon icmp with scli	${ICMP_RG_0}	${ICMP_4019_RG0_NAME}	${VRF_11_NAME}		
+	should be equal	${result}	SUCCESS				
+	${result}	delete mon icmp with scli	${ICMP_RG_2}	${ICMP_4019_RG2_NAME}	${VRF_11_NAME}		
+	should be equal	${result}	SUCCESS				
+	${result}	delete mon icmp with scli	${ICMP_RG_1}	${ICMP_4019_RG1_NAME}			
+	should be equal	${result}	SUCCESS				
+	${result}	delete mon icmp with scli	${ICMP_RG_3}	${ICMP_4019_RG3_NAME}			
+	should be equal	${result}	SUCCESS				
+							
+Delete three IPROs with one IPBR	Delete IPRO successfully	${IPBR_ID_4019}	${LOCAL_IP1}	${ICMP_RG_0}	${IFACE_OF_VRF11}	forced	
+	Delete IPRO successfully	${IPBR_ID_4019}	${LOCAL_IP2}	${ICMP_RG_1}	${IFACE_OF_ETHTEST20}	forced	
+	Delete IPRO successfully	${IPBR_ID_4019}	${LOCAL_IP3}	${ICMP_RG_2}	${IFACE_OF_ETHTEST20}	forced	
+							
+Local IP1 leg number increase	${new_leg_num}	Evaluate	${LOCAL_IP1_LEG_NUM}+1				
+	set test variable	${LOCAL_IP1_LEG_NUM}	${new_leg_num}				
+							
+Local IP2 leg number increase	${new_leg_num}	Evaluate	${LOCAL_IP2_LEG_NUM}+1				
+	set test variable	${LOCAL_IP2_LEG_NUM}	${new_leg_num}				
+							
+Local IP3 leg number increase	${new_leg_num}	Evaluate	${LOCAL_IP3_LEG_NUM}+1				
+	set test variable	${LOCAL_IP3_LEG_NUM}	${new_leg_num}				
+							
+Create legs failed and check error code	[Arguments]	${ipbr_id}	${error_code}	${other_para}			
+	${IuCS_info}	create rtp leg	${USCP}	${ipbr_id}			
+	run keyword if	'${IuCS_info.result}'=='SUCCESSFUL'	Append to List	${OUT_LEG_LIST}	${IuCS_info}		
+	Check create leg failed and retun IPBR	${IuCS_info}	${ipbr_id}	${error_code}			
+	${IuPS_info}	Create GTP Leg Direct	${USCP}	${ipbr_id}			
+	run keyword if	'${IuPS_info.result}'=='SUCCESSFUL'	Append to List	${OUT_LEG_LIST}	${IuPS_info}		
+	Check create leg failed and retun IPBR	${IuPS_info}	${ipbr_id}	${error_code}			
+	${Iur_info}	Create out Iur leg	${USCP}	${ipbr_id}	${CALL_ID}		
+	run keyword if	'${Iur_info.result}'=='SUCCESSFUL'	Append to List	${OUT_LEG_LIST}	${Iur_info}		
+	Check create leg failed and retun IPBR	${Iur_info}	${ipbr_id}	${error_code}			
+							
+Release legs created in test case and set IPRO1 up if test failed	release legs created in test case						
+	run keyword if test failed	Set IPRO1 related ICMP session up					
+							
+Modify three IPROs with different PHB	${result}	Modify Ipro	${IPBR_ID_4019}	${LOCAL_IP1}	${ICMP_RG_0}	${IFACE_OF_VRF11}	EF,AF4
+	...	${VRF_11_NAME}					
+	should be equal	${result['result']}	Success				
+	${result}	Modify Ipro	${IPBR_ID_4019}	${LOCAL_IP2}	${ICMP_RG_1}	${IFACE_OF_ETHTEST20}	AF2,AF1,BE
+	should be equal	${result['result']}	Success				
+	${result}	Modify Ipro	${IPBR_ID_4019}	${LOCAL_IP3}	${ICMP_RG_2}	${IFACE_OF_ETHTEST20}	AF3,AF2,AF1,BE
+	should be equal	${result['result']}	Success				
+							
+Check create leg failed and retun IPBR	[Arguments]	${leg_info}	${exp_return_ipbr}	${error_code}			
+	should be equal	${leg_info.result}	FAILED				
+	should be equal	${leg_info.error_code}	${error_code}				
+	should be equal	${leg_info.return_ipbr_id}	${exp_return_ipbr}				
+							
+Check create leg successfully and register IP used number	[Arguments]	${leg_info}	${exp_return_ipbr}				
+	should be equal	${leg_info.result}	SUCCESSFUL				
+	should be equal	${leg_info.return_ipbr_id}	${exp_return_ipbr}				
+	run keyword if	'${leg_info.local_ip}' == '${LOCAL_IP1}'	Local IP1 leg number increase				
+	run keyword if	'${leg_info.local_ip}' == '${LOCAL_IP2}'	Local IP2 leg number increase				
+	run keyword if	'${leg_info.local_ip}' == '${LOCAL_IP3}'	Local IP3 leg number increase				

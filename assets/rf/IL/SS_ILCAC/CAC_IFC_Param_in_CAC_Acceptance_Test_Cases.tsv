@@ -1,0 +1,278 @@
+*Setting*							
+Suite Setup	Connect to Target Hardware and Create Test Resource						
+Suite Teardown	Release Test Resource and Disconnect from Target Hardware						
+Force Tags	Product_Backlog_ID-B01177	Iteration_ID-I01222	Iteration_ID-I01574	PRS_ID-IL_PRS_3624	PRS_ID-IL_PRS_4351	EFS_ID-RNC_EFS_2222_123	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com
+...	element-il	exec_type-automatic	type-FUT	release-IL1	reviewer-	reason-LDAP operation and switch to OMU spend a lot of time	hw_env-RNC_S0
+...	hw_env-RNC_S1	exec_level-pre	QL-6	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	HW_TYPE-ADA_FTLB	FRS_ID-XXX
+...	PRS_ID-XXX						
+Resource	./resources/common_operation_resource.html						
+Resource	./resources/IPBR_basic_operation_resource.html						
+Resource	./resources/cac_basic_operation_resource.html						
+Resource	../../CasePool/Traffic/QoS/resources/QoS_SCLI_Resource.html						
+							
+*Variable*							
+${ONE_GROUP}	1						
+${IPHB_PROFILE_ID_0}	0						
+${IPHB_PROFILE_ID_9}	9						
+${IPHB_PROFILE_NAME_9}	iphb-9						
+${IDSP_PROFILE_ID_0}	0						
+${IDSP_PROFILE_ID_9}	9						
+${IDSP_PROFILE_NAME_9}	idsp-9						
+@{DSCP_SET_INFO}	1	2	3	4	14	6	
+${ACTIVE_USCP}	USCP-0						
+${IPBR_ID_4095}	4095						
+${IPBR_ID_4020}	4020						
+${E_RED}	E-RED						
+${IFC}	IFC						
+${QOS_CLASS_0}	0						
+${QOS_CLASS_2}	2						
+${QOS_CLASS_3}	3						
+${DSCP_VALUE}	E						
+${NEW_DSCP_VALUE}	1A						
+${IFC_ENABLE_VALUE}	1						
+${IFC_DISABLE_VALUE}	0						
+${EXPECT_ACTIVE_IFC_FLAG}	0x32						
+${EXPECT_INACTIVE_IFC_FLAG}	0x0						
+${EXPECT_QUE_ID_FOR_CLASS_2}	4						
+${EXPECT_QUE_ID_FOR_CLASS_0}	0						
+${EXPECT_QUE_ID_FOR_NEW_DSCP}	2						
+${EXPECT_QUE_ID_FOR_NEW_PROFILE}	2						
+${EXPECT_QUE_ID_FOR_DROP}	4						
+${EXPECT_PHB_FOR_NEW_PROFILE}	AF3						
+${EXPECT_PHB_FOR_CLASS_0}	EF						
+${EXPECT_PHB_FOR_CLASS_2}	AF1						
+${EXPECT_HEX_PHB_FOR_CLASS_2}	15						
+${EXPECT_PHB_FOR_DROP}	AF1						
+${EXPECT_PHB_FOR_NEW_DSCP}	AF3						
+${SCHEDULER_TYPE_NONE}	none						
+${SCHEDULER_TYPE_VQ}	virtualQueue						
+${SCHEDULER_TYPE_RQ}	realQueue						
+${CN_IP_ADDRESS}	%{FPCIP_ETH1}						
+${IPBR_ID_FOR_UDP}	4						
+${GTP_PORT}	868						
+${UL_TEID}	8						
+${HSDPA_UDP_LEG_INFO}	${EMPTY}						
+${HSDPA_GTP_LEG_INFO}	${EMPTY}						
+@{GTP-TUNNEL_CREATE_PMR}	${GTP_PORT},,,2	5		ENC=11,LTUL=FF,LTUL=FF,LTDL=55,QOS=2,DSP=4,FF,FF,TEID=${UL_TEID}			
+@{GTP_CREATE_PMR}	OUT	20.34.1.2	419,,8,2	5		DEST=111,SDEST=22,DSCP=E,PHB=FF,QOS=2,LTUL=49,LTDL=FF,DSP=4,0F,0	
+@{UDP_CREATE_PMR}	IN		,,,${IPBR_ID_FOR_UDP}	4		BRA=T,DSCP=E,PHB=FF,QOS=2,IFC=${IFC_ENABLE_VALUE},LTUL=49,LTDL=FF,DSP=4,7,0	
+${UDP_PMR}	IN						
+${GTP_PMR}	OUT						
+							
+*Test Case*							
+IFC and QoS Result Should Be Changed When Using Different Configuration in LDAP	[Tags]	ATC_ID-IFC_Param_in_CAC.FUT.001.AT	ct-positive				
+	reserve resources for HSDPA Call						
+	Configure The IPBR With New Profile ID Then Create Related DL Iub Leg And Check The IFC And Qos Parameters						
+	Configure the IPBR with Droping IFC then Create Related DL Iub Leg and Check the IFC and Qos Parameters						
+	[Teardown]	Release resources of HSDPA Call without error check					
+							
+IFC and QoS Result Should Be Changed When Creating Different Iub Legs	[Tags]	ATC_ID-IFC_Param_in_CAC.FUT.002.AT	ct-positive				
+	[Setup]	Prepare Resource for Test IFC In diferent Iub Legs					
+	Create DL Iub Leg with Different Flow Type and Check the IFC and Qos Parameters						
+	Create DL Iub Leg with Conversational Class Class and Check the IFC and Qos Parameters						
+	Create DL Iub Leg with A New DSCP Value and Check the IFC and Qos Parameters						
+	Create DL Iub Leg with Inactive IFC and Check the IFC and Qos Parameters						
+	[Teardown]	Release the Iub Resource Without Check					
+							
+QoS Result Should Be Changed and IFC Should Be Inactive When Creating Non-HSDPA/NRT_DCH Call with Different QoS parameter	[Tags]	ATC_ID-IFC_Param_in_CAC.FUT.003.AT	ct-positive				
+	Create Iucs Out Leg with Background Class and Check the IFC and Qos Parameters						
+	Create Iucs Out Leg with Interactive Class and Check the IFC and Qos Parameters						
+	Create Iucs Out Leg with Conversational Class and Check the IFC and Qos Parameters						
+	[Teardown]	Release All Resource For Iucs Call Without Check					
+							
+QoS Result Should Be Changed When Creating Iups Gtp Tunnel	[Tags]	ATC_ID-IFC_Param_in_CAC.FUT.004.AT	ct-positive				
+	Create One Gtp Tunnel And Check the IFC and Qos Parameters						
+	[Teardown]	Release Gtp Tunnel Without Check					
+							
+*Keyword*							
+Create Iucs Out Leg with Background Class and Check the IFC and Qos Parameters	${iucs_leg_info}	Create IuCS leg with IFC Parameters Successfully	${DSCP_VALUE}	${QOS_CLASS_3}	${IFC_ENABLE_VALUE}		
+	Check the Result of IFC and QoS Should be Correct	${IPBR_ID_4020}	${EXPECT_INACTIVE_IFC_FLAG}	${EXPECT_QUE_ID_FOR_CLASS_2}	${EXPECT_PHB_FOR_CLASS_2}	${DSCP_VALUE}	${iucs_leg_info.local_ip}
+	...	${iucs_leg_info.local_port}					
+	set test variable	\${IUCS_CALL_ID_1}	${iucs_leg_info.call_id}				
+							
+Create Iucs Out Leg with Interactive Class and Check the IFC and Qos Parameters	${iucs_leg_info}	Create IuCS leg with IFC Parameters Successfully	${NEW_DSCP_VALUE}	${QOS_CLASS_2}	${IFC_ENABLE_VALUE}		
+	Check the Result of IFC and QoS Should be Correct	${IPBR_ID_4020}	${EXPECT_INACTIVE_IFC_FLAG}	${EXPECT_QUE_ID_FOR_NEW_DSCP}	${EXPECT_PHB_FOR_NEW_PROFILE}	${NEW_DSCP_VALUE}	${iucs_leg_info.local_ip}
+	...	${iucs_leg_info.local_port}					
+	set test variable	\${IUCS_CALL_ID_2}	${iucs_leg_info.call_id}				
+							
+Create Iucs Out Leg with Conversational Class and Check the IFC and Qos Parameters	${iucs_leg_info}	Create IuCS leg with IFC Parameters Successfully	${NEW_DSCP_VALUE}	${QOS_CLASS_0}	${IFC_ENABLE_VALUE}		
+	Check the Result of IFC and QoS Should be Correct	${IPBR_ID_4020}	${EXPECT_INACTIVE_IFC_FLAG}	${EXPECT_QUE_ID_FOR_CLASS_0}	${EXPECT_PHB_FOR_CLASS_0}	${DSCP_VALUE}	${iucs_leg_info.local_ip}
+	...	${iucs_leg_info.local_port}					
+	set test variable	\${IUCS_CALL_ID_3}	${iucs_leg_info.call_id}				
+							
+Release All Resource For Iucs Call Without Check	Release Resource	${ACTIVE_USCP}	${IUCS_CALL_ID_1}	OUT			
+	Release Resource	${ACTIVE_USCP}	${IUCS_CALL_ID_2}	OUT			
+	Release Resource	${ACTIVE_USCP}	${IUCS_CALL_ID_3}	OUT			
+							
+Create IuCS leg with IFC Parameters Successfully	[Arguments]	${dscp_value}	${qos_class}	${ifc_value}			
+	${rtp_leg_info}	create rtp leg	${ACTIVE_USCP}	${IPBR_ID_4020}	DSCP=${dscp_value},QOS=${qos_class},IFC=${ifc_value}		
+	should be equal	${rtp_leg_info.result}	SUCCESSFUL				
+	[Return]	${rtp_leg_info}					
+							
+Create GTP Tunnel For IFC Test	[Arguments]	${ipbr_id_hex}	${dscp_value}	${ifc_value}	${qos_class}		
+	${gtp_callinfo}	Allocate Resource	${ACTIVE_USCP}		OUT	16.16.16.2	89,,,${ipbr_id_hex}
+	...	10		ENC=11,LTUL=FF,LTDL=55,DSCP=${dscp_value},IFC=${ifc_value},QOS=${qos_class},DSP=9,FF,FF			
+	Should Contain	${gtp_callinfo.result}	SUCCESSFUL				
+	[Return]	${gtp_callinfo}					
+							
+Release Gtp Tunnel Without Check	Release Resource	${ACTIVE_USCP}	${GTP_LEGINFO.call_id}	OUT			
+							
+Search QoS info by teid	[Arguments]	${teid}					
+	${result}	execute cli	"ssh EIPU-0 ""eitpste gtp show -t ${teid} "" | grep -P -i ""QUEUE"""				
+	[Return]	${result}					
+							
+Get Qos Params Of GTP Tunnel From Iue	${qos_info}	Search QoS info by teid	0x${GTP_LEGINFO.local_teid}				
+	${match}	${real_que_id}	Should Match Regexp	${qos_info}	(?s)^.*Queue\\s+ID:\\s+0x(\\w+).*$		
+	[Return]	${real_que_id}					
+							
+Check the Result of QoS Should be Correct	[Arguments]	${expected_que_id}					
+	${real_que_id}	Get Qos Params Of GTP Tunnel From Iue					
+	should be equal	${expected_que_id}	${real_que_id}				
+							
+Create One Gtp Tunnel And Check the IFC and Qos Parameters	${GTP_LEGINFO}	Create GTP Tunnel For IFC Test	${IPBR_ID_4020}	${DSCP_VALUE}	${IFC_ENABLE_VALUE}	${QOS_CLASS_2}	
+	Set Test Variable	\${GTP_LEGINFO}					
+	Check the Result of QoS Should be Correct	${EXPECT_QUE_ID_FOR_CLASS_2}					
+							
+Create UDP Leg for IFC in PS-NRT Call Successful	[Arguments]	${ipbr_id}	${call_id}	${qos_class}	${dscp_value}	${ifc_value}	
+	${iub_leg_info}	Create IUB leg For PS-NRT Call	${ipbr_id}	${call_id}	${qos_class}	${dscp_value}	${ifc_value}
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Set Test Variable	\${PSNRT_IUB_IP_ADDRESS}	${iub_leg_info.local_ip}				
+	Set Test Variable	\${PSNRT_IUB_IP_PORT}	${iub_leg_info.local_port}				
+							
+Create DL UDP Leg for IFC in HSDPA Call Successful	[Arguments]	${ipbr_id_hex}	${call_id}	${qos_class}	${dscp_value}	${ifc_value}	
+	${iub_leg_info}	Create DL IUB leg For HSDPA Call	${ipbr_id_hex}	${call_id}	${qos_class}	${dscp_value}	${ifc_value}
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Set Test Variable	\${HSDPA_IUB_IP_ADDRESS}	${iub_leg_info.local_ip}				
+	Set Test Variable	\${HSDPA_IUB_IP_PORT}	${iub_leg_info.local_port}				
+							
+Create PS-NRT DL Iub Leg and Check the IFC and Qos Parameters	Create UDP Leg for IFC in PS-NRT Call Successful	${IPBR_ID_4020}	${PSNRT_CALL_ID}	${QOS_CLASS_3}	${DSCP_VALUE}	${IFC_ENABLE_VALUE}	
+	Check the Result of IFC and QoS Should be Correct	${IPBR_ID_4020}	${EXPECT_ACTIVE_IFC_FLAG}	${EXPECT_QUE_ID_FOR_CLASS_2}	${EXPECT_PHB_FOR_CLASS_2}	${DSCP_VALUE}	${PSNRT_IUB_IP_ADDRESS}
+	...	${PSNRT_IUB_IP_PORT}					
+							
+Create HSDPA DL Iub Leg and Check the IFC and Qos Parameters	Create DL UDP Leg for IFC in HSDPA Call Successful	${IPBR_ID_4020}	${HSDPA_CALL_ID}	${QOS_CLASS_3}	${DSCP_VALUE}	${IFC_ENABLE_VALUE}	
+	Check the Result of IFC and QoS Should be Correct	${IPBR_ID_4020}	${EXPECT_ACTIVE_IFC_FLAG}	${EXPECT_QUE_ID_FOR_CLASS_2}	${EXPECT_PHB_FOR_CLASS_2}	${DSCP_VALUE}	${HSDPA_IUB_IP_ADDRESS}
+	...	${HSDPA_IUB_IP_PORT}					
+							
+Create DL Iub Leg with Different Flow Type and Check the IFC and Qos Parameters	Create PS-NRT DL Iub Leg and Check the IFC and Qos Parameters						
+	Create HSDPA DL Iub Leg and Check the IFC and Qos Parameters						
+							
+Create DL Iub Leg with Conversational Class and Check the IFC and Qos Parameters	Create UDP Leg for IFC in PS-NRT Call Successful	${IPBR_ID_4020}	${PSNRT_CALL_ID}	${QOS_CLASS_0}	${DSCP_VALUE}	${IFC_ENABLE_VALUE}	
+	Check the Result of IFC and QoS Should be Correct	${IPBR_ID_4020}	${EXPECT_INACTIVE_IFC_FLAG}	${EXPECT_QUE_ID_FOR_CLASS_0}	${EXPECT_PHB_FOR_CLASS_0}	${DSCP_VALUE}	${PSNRT_IUB_IP_ADDRESS}
+	...	${PSNRT_IUB_IP_PORT}					
+							
+Create DL Iub Leg with Interactive Class and Check the IFC and Qos Parameters	Create UDP Leg for IFC in PS-NRT Call Successful	${IPBR_ID_4020}	${PSNRT_CALL_ID}	${QOS_CLASS_2}	${DSCP_VALUE}	${IFC_ENABLE_VALUE}	
+	Check the Result of IFC and QoS Should be Correct	${IPBR_ID_4020}	${EXPECT_ACTIVE_IFC_FLAG}	${EXPECT_QUE_ID_FOR_CLASS_2}	${EXPECT_PHB_FOR_CLASS_2}	${DSCP_VALUE}	${PSNRT_IUB_IP_ADDRESS}
+	...	${PSNRT_IUB_IP_PORT}					
+							
+Create DL Iub Leg with Conversational Class Class and Check the IFC and Qos Parameters	Create DL Iub Leg with Conversational Class and Check the IFC and Qos Parameters						
+	Create DL Iub Leg with Interactive Class and Check the IFC and Qos Parameters						
+							
+Create DL Iub Leg with A New DSCP Value and Check the IFC and Qos Parameters	Create UDP Leg for IFC in PS-NRT Call Successful	${IPBR_ID_4020}	${PSNRT_CALL_ID}	${QOS_CLASS_2}	${NEW_DSCP_VALUE}	${IFC_ENABLE_VALUE}	
+	Check the Result of IFC and QoS Should be Correct	${IPBR_ID_4020}	${EXPECT_ACTIVE_IFC_FLAG}	${EXPECT_QUE_ID_FOR_NEW_DSCP}	${EXPECT_PHB_FOR_NEW_DSCP}	${NEW_DSCP_VALUE}	${PSNRT_IUB_IP_ADDRESS}
+	...	${PSNRT_IUB_IP_PORT}					
+							
+Create DL Iub Leg with Inactive IFC and Check the IFC and Qos Parameters	Create DL UDP Leg for IFC in HSDPA Call Successful	${IPBR_ID_4020}	${HSDPA_CALL_ID}	${QOS_CLASS_2}	${DSCP_VALUE}	${IFC_DISABLE_VALUE}	
+	Check the Result of IFC and QoS Should be Correct	${IPBR_ID_4020}	${EXPECT_INACTIVE_IFC_FLAG}	${EXPECT_QUE_ID_FOR_CLASS_2}	${EXPECT_PHB_FOR_CLASS_2}	${DSCP_VALUE}	${HSDPA_IUB_IP_ADDRESS}
+	...	${HSDPA_IUB_IP_PORT}					
+							
+Release the Iub Resource Without Check	Release Resource	${ACTIVE_USCP}	${HSDPA_CALL_ID}	IN			
+	Release Resource	${ACTIVE_USCP}	${HSDPA_CALL_ID}	OUT			
+	Release Resource	${ACTIVE_USCP}	${PSNRT_CALL_ID}	IN			
+	Release Resource	${ACTIVE_USCP}	${PSNRT_CALL_ID}	OUT			
+							
+Create GTP Tunnel For IFC in PS-NRT Call	${resource}	Allocate Resource	${ACTIVE_USCP}		${GTP_PMR}	${CN_IP_ADDRESS}	@{GTP-TUNNEL_CREATE_PMR}[0]
+	...	@{GTP-TUNNEL_CREATE_PMR}[1]	@{GTP-TUNNEL_CREATE_PMR}[2]	@{GTP-TUNNEL_CREATE_PMR}[3]			
+	Set Suite Variable	\${PSNRT_CALL_ID}	${resource.call_id}				
+	Set Suite Variable	\${PSNRT_DL_TEID}	${resource.local_teid}				
+	Should Contain	${resource.result}	SUCCESSFUL				
+	Set Suite Variable	\${RNC_IU_IP_ADDRESS}	${resource.gtp_ip}				
+	[Return]	${resource.call_id}					
+							
+Create GTP Leg For IFC in PS-NRT Call	[Arguments]	${call_id}					
+	${resource}	Add Signaling Traffic To Call	${ACTIVE_USCP}	${call_id}	@{GTP_CREATE_PMR}[0]	@{GTP_CREATE_PMR}[1]	@{GTP_CREATE_PMR}[2]
+	...	@{GTP_CREATE_PMR}[3]	@{GTP_CREATE_PMR}[4]	@{GTP_CREATE_PMR}[5]			
+	Set Suite Variable	\${LEG_INFO}	${resource}				
+	Should Contain	${resource.result}	SUCCESSFUL				
+							
+Reserve Resources for PS-NRT Call	Set Suite Variable	\${CN_IP_ADDRESS}	%{FPCIP_ETH1}				
+	${call_id}	Create GTP Tunnel For IFC in PS-NRT Call					
+	Create GTP Leg For IFC in PS-NRT Call	${call_id}					
+							
+Prepare Resource for Test IFC In diferent Iub Legs	Reserve Resources for PS-NRT Call						
+	Reserve Resources for HSDPA Call						
+							
+Configure the IPBR with Droping IFC then Create Related DL Iub Leg and Check the IFC and Qos Parameters	update IPBR's IFC parameters successfully	${IPBR_ID_4020}	${IDSP_PROFILE_ID_0}	${IPHB_PROFILE_ID_0}	${E_RED}	${E_RED}	${SCHEDULER_TYPE_VQ}
+	Create DL UDP Leg For IFC In HSDPA Call Successful	${IPBR_ID_4020}	${HSDPA_CALL_ID}	${QOS_CLASS_2}	${DSCP_VALUE}	${IFC_ENABLE_VALUE}	
+	Check The Result Of IFC And QoS Should Be Correct	${IPBR_ID_4020}	${EXPECT_INACTIVE_IFC_FLAG}	${EXPECT_QUE_ID_FOR_DROP}	${EXPECT_PHB_FOR_DROP}	${DSCP_VALUE}	${HSDPA_IUB_IP_ADDRESS}
+	...	${HSDPA_IUB_IP_PORT}					
+							
+update IPBR's IFC parameters successfully	[Arguments]	${ipbr_id}	${idsp_profile}=${IDSP_PROFILE_ID_0}	${iphb_profile}=${IPHB_PROFILE_ID_0}	${ifc_nrthsdpa}=${IFC}	${ifc_nrtdch}=${IFC}	${scheduler_type}=${SCHEDULER_TYPE_RQ}
+	${result}	Set IP based route with specified parameters	${ipbr_id}	dspm-profile-id=${idsp_profile}	phb-profile-id=${iphb_profile}	ifc-nrthsdpa=${ifc_nrthsdpa}	scheduler-type=${SCHEDULER_TYPE_VQ}
+	...	ifc-nrtdch=${ifc_nrtdch}					
+	should be equal	"${result[""IPBR Modify""]}"	Success				
+							
+Configure The IPBR With New Profile ID Then Create Related DL Iub Leg And Check The IFC And Qos Parameters	update IPBR's IFC parameters successfully	${IPBR_ID_4020}	${IDSP_PROFILE_ID_9}	${IPHB_PROFILE_ID_9}	${IFC}	${E_RED}	${SCHEDULER_TYPE_VQ}
+	Create DL UDP Leg For IFC In HSDPA Call Successful	${IPBR_ID_4020}	${HSDPA_CALL_ID}	${QOS_CLASS_2}	${DSCP_VALUE}	${IFC_ENABLE_VALUE}	
+	Check The Result Of IFC And QoS Should Be Correct	${IPBR_ID_4020}	${EXPECT_ACTIVE_IFC_FLAG}	${EXPECT_QUE_ID_FOR_NEW_PROFILE}	${EXPECT_PHB_FOR_NEW_PROFILE}	${DSCP_VALUE}	${HSDPA_IUB_IP_ADDRESS}
+	...	${HSDPA_IUB_IP_PORT}					
+							
+Create GTP Tunnel for test Successfully	${result}	cac_basic_operation_resource.Create GTP Tunnel	${ACTIVE_USCP}	${IPBR_ID_4095}			
+	should be equal	${result.result}	SUCCESSFUL				
+	Create HSDPA Call OUT_C Leg	${result.call_id}					
+	[Return]	${result}					
+							
+Create Test HSDPA Call IN_C Leg Successfully	${result}	Allocate Resource	${ACTIVE_USCP}	${HSDPA_CALL_ID}	IN	98.76.54.32	6897,,,${IPBR_ID_4095}
+	...	12		ENC=12,BRA=T,DSCP=E,PHB=FF,QOS=2,FCLA=D,BCLA=C,LTUL=53,LTDL=FF,DSP=9,7,4			
+	should be equal	${result.result}	SUCCESSFUL				
+							
+reserve resources for HSDPA Call	${gtp_tunnel_info}	Create GTP Tunnel for test Successfully					
+	set test variable	\${HSDPA_CALL_ID}	${gtp_tunnel_info.call_id}				
+	Create Test HSDPA Call IN_C Leg Successfully						
+							
+Release resources of HSDPA Call without error check	Release Resource	${ACTIVE_USCP}	${HSDPA_CALL_ID}	IN			
+	Release Resource	${ACTIVE_USCP}	${HSDPA_CALL_ID}	OUT			
+	update IPBR's IFC parameters successfully	${IPBR_ID_4020}					
+							
+Connect to Target Hardware and Create Test Resource	common_operation_resource.connect_to_target_hardware						
+	switch to active OMU						
+	Initial the IDSP Set List						
+	Add Non-Default DSCP Profile Operation And Check The DSCP Profile Is Added In LDAP	${IDSP_PROFILE_ID_9}	${IDSP_PROFILE_NAME_9}				
+	Add PHB Profile Operation And Check The PHB Profile Is Added In LDAP	${IPHB_PROFILE_ID_9}	${IPHB_PROFILE_NAME_9}				
+							
+Release Test Resource and Disconnect from Target Hardware	run keyword if any tests failed	update IPBR's IFC parameters successfully	${IPBR_ID_4020}				
+	Run Keyword And Ignore Error	Delete DSCP Profile Operation and Check the DSCP Profile is Deleted in LDAP	${IDSP_PROFILE_ID_9}	${IDSP_PROFILE_NAME_9}			
+	Run Keyword And Ignore Error	Delete PHB Profile Operation and Check the PHB Profile is Deleted in LDAP	${IPHB_PROFILE_ID_9}	${IPHB_PROFILE_NAME_9}			
+	common_operation_resource.Disconnect from Target Hardware						
+							
+Create DL IUB leg For HSDPA Call	[Arguments]	${ipbr_id}	${call_id}	${qos_class}	${dscp_value}	${ifc_value}	
+	${hsdpa_leginfo}	Allocate Resource	${ACTIVE_USCP}	${call_id}	IN	12.34.56.78	1234,,,${ipbr_id}
+	...	F		ENC=12,BRA=T,DSCP=${dscp_value},PHB=FF,QOS=${qos_class},IFC=${ifc_value},FCLA=10,BCLA=11,LTDL=66,LTUL=FF,DSP=9,4,4			
+	Should be equal	${hsdpa_leginfo.result}	SUCCESSFUL				
+	[Return]	${hsdpa_leginfo}					
+							
+Check The Result Of IFC And QoS Should Be Correct	[Arguments]	${ipbr_id}	${ifc_flag}	${que_id}	${phb}	${dscp_value}	${local_ip}
+	...	${local_port}					
+	${qos_list}	get_qos_by_udp	${local_ip}	${local_port}			
+	should be equal	${qos_list.ipbr}	${ipbr_id}				
+	should be equal	${qos_list.ifc.upper()}	${ifc_flag.upper()}				
+	should be equal	${qos_list.queue.upper()}	${que_id.upper()}				
+	should be equal	${qos_list.phb.upper()}	${phb.upper()}				
+							
+Create HSDPA Call OUT_C Leg	[Arguments]	${call_id}					
+	${gtp_leginfo}	Add Signaling Traffic To Call	${ACTIVE_USCP}	${call_id}	OUT	20.34.1.2	,,,${IPBR_ID_4095}
+	...	10		ENC=11,DEST=111,SDEST=222,DSCP=E,PHB=FF,QOS=0,LTUL=FF,LTDL=66,DSP=9,F,4			
+	Should Contain	${gtp_leginfo.result}	SUCCESSFUL				
+	[Return]	${gtp_leginfo}					
+							
+Create IUB leg For PS-NRT Call	[Arguments]	${ipbr_id}	${call_id}	${qos}=0	${dscp}=E	${ifc}=0	
+	${iub_leg_info}	Allocate Resource	${ACTIVE_USCP}	${call_id}	IN	23.45.56.78	2345,,,${ipbr_id}
+	...	4		QOS=${qos},DSCP=${dscp},IFC=${ifc}			
+	[Return]	${iub_leg_info}					
+							
+Release UDP Leg For PS-NRT Call With Call ID	[Arguments]	${call_id}					
+	${resource}	Release Resource	${ACTIVE_USCP}	${call_id}	IN		
+	Should Contain	${resource.result}	SUCCESSFUL				
+							
+Release GTP Leg For PS-NRT Call With Call ID	[Arguments]	${call_id}					
+	${resource}	Release Resource	${ACTIVE_USCP}	${call_id}	OUT		
+	Should Contain	${resource.result}	SUCCESSFUL				

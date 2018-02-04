@@ -1,0 +1,96 @@
+* Setting *
+Suite Setup 	connect to target hardware and prepare test environment
+Suite Teardown	clear test resource and disconnect from hardware
+Force Tags	element-il  exec_type-automatic release-IL1 type-FUT
+       ...	HW_TYPE-BCN_A1  BCN_STEP-BCN_S0 hw_env-RNC_S0
+       ...	PRS_ID-PRS_4255 EFS_ID-RNC_EFS_2222_372 FRS_ID-PCM_100201_36_R2222
+       ...	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com
+       ...	Product_Backlog_ID-XXX	QL-5
+Resource	il.html
+Resource	../resources/common_operation_resource.html
+Library 	../resources/IP_based_route_resource.py
+Library 	../resources/cacprb_test_resources.py
+
+* Variable *
+${TEST_IP_ADDRESS}	128.0.1.3
+${TEST_IFACE}	lo
+${QNUP_RG1}     	/QNUP-1
+${IPBR_ID_4080}	4080
+${CALL_PARM}	FMBR=10000,FABR=10000,NCAC=0
+${ORIGINAL_IPBR_ATTRS}	ipbr_id=${IPBR_ID_4080} route_bw=20 commit_bw=20 commit_sig_bw=0 commit_dcn_bw=0 scheduler_type=none ifc_nrthsdpa=E-RED ifc_nrtdch=E-RED phb_profile=0 dspm_profile=0
+${IPBR_BANDWIDTH_UPDATE}	ipbr_id=${IPBR_ID_4080} commit_bw=15 route_bw=15
+${IPBR_PHB_PROFILE_UPDATE}	ipbr_id=${IPBR_ID_4080}
+${IPBR_DSPM_PROFILE_UPDATE}	ipbr_id=${IPBR_ID_4080}
+${IPBR_IFC_UPDATE}	ipbr_id=${IPBR_ID_4080}
+${IPBR_SCHEDULE_TYPE_UPDATE}	ipbr_id=${IPBR_ID_4080}
+${IPRO_ATTRS}	ipbr_id=${IPBR_ID_4080} iface=${TEST_IFACE} ip_address=${TEST_IP_ADDRESS} owner=${QNUP_RG1}
+
+* Test Case *
+IPBR bandwidth update will only take effect on new transport bear reservation
+	[teardown]	release old SRB call and rollback IPBR update
+	reserve SRB call before IPBR update
+	get reserved SRB call's bandwidth info
+	update IPBR parameter successfully	${IPBR_BANDWIDTH_UPDATE}
+	get reserved SRB call's bandwidth info after IPBR udpate, and the bandwidth should not be changed
+	reserve new SRB call with CAC request would be failed
+
+
+* Keyword *
+reserve SRB call before IPBR update
+	${RESERVED_CALL}	reserve SRB call successfully	${USCP}	${IPBR_ID_4080}	${CALL_PARM}
+	set test variable	\${RESERVED_CALL}
+
+get reserved SRB call's bandwidth info
+	${RESERVED_CAC} 	inquiry udp conn resource info	${RESERVED_CALL.legs['${RESERVED_CALL.leg_id}'].local_ip}	${RESERVED_CALL.legs['${RESERVED_CALL.leg_id}'].local_port}
+	set test variable	\${RESERVED_CAC}
+
+get reserved SRB call's bandwidth info after IPBR udpate, and the bandwidth should not be changed
+	${cac_info}	inquiry udp conn resource info	${RESERVED_CALL.legs['${RESERVED_CALL.leg_id}'].local_ip}	${RESERVED_CALL.legs['${RESERVED_CALL.leg_id}'].local_port}
+	should be equal 	${RESERVED_CAC} 	${cac_info}
+
+reserve new SRB call with CAC request would be failed
+	${srb_call}	reserve SRB call	${USCP}	${IPBR_ID_4080}	${CALL_PARM}
+	run keyword if  	'${srb_call.result}' == 'SUCCESSFUL'	release leg resource successfully	${srb_call.owner}	${srb_call.call_id}	${srb_call.leg_id}
+	should be equal  	${srb_call.result}	FAILED
+
+release old SRB call and rollback IPBR update
+	release leg resource successfully	${RESERVED_CALL.owner}	${RESERVED_CALL.call_id}	${RESERVED_CALL.leg_id}
+	rollback IPBR attributes update with default attribute
+
+connect to target hardware and prepare test environment
+	connect to target hardware
+	switch to active OMU
+	select random QNUP and QNUSCP on target hardware
+	reserve IPBR and IPRO successfully
+
+clear test resource and disconnect from hardware
+	${result}	delete ipro with attributes	ipbr_id=${IPBR_ID_4080} iface=${TEST_IFACE} ip_address=${TEST_IP_ADDRESS} owner=${QNUP_RG1} mode=forced
+	should be equal	${result['result'].upper()}	SUCCESS
+	${result}	delete IP based route with attributes	ipbr_id=${IPBR_ID_4080}
+	should be equal 	${result['result'].upper()}	SUCCESS
+	${result}	scli delete networking address	${QNUP_RG1}	${TEST_IFACE}	${TEST_IP_ADDRESS}
+	should be empty 	${result.strip()}
+	disconnect all ils
+    
+select random QNUP and QNUSCP on target hardware
+	${QNUP_RG1} 	select random QNUP from hardware
+	set suite variable	\${QNUP_RG1}
+	set suite variable	\${USCP}	USCP-0
+
+reserve IPBR and IPRO successfully
+	${result}	scli add networking address	${QNUP_RG1}	${TEST_IFACE}	${TEST_IP_ADDRESS}/32
+	should be empty	${result.strip()}
+	${result}	add IP based route with attributes	${ORIGINAL_IPBR_ATTRS}
+	should be equal	${result['result'].upper()}	SUCCESS
+	${result}	add IPRO with attributes	ipbr_id=${IPBR_ID_4080} iface=${TEST_IFACE} ip_address=${TEST_IP_ADDRESS} owner=${QNUP_RG1}
+	should be equal	${result['result'].upper()}	SUCCESS
+
+rollback IPBR attributes update with default attribute
+	${result}	update IP based route with attributes	${ORIGINAL_IPBR_ATTRS}
+	should be equal	${result['result'].upper()}	SUCCESS
+
+update IPBR parameter successfully
+	[arguments]	${ipbr_params}
+	${result}	update IP based route with attributes	${ipbr_params}
+	should be equal	${result['result'].upper()}	SUCCESS
+

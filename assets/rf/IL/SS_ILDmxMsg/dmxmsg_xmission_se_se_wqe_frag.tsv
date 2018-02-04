@@ -1,0 +1,149 @@
+D M X M S G   X M I S S I O N   S E   S E . W Q E   F R A G
+
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	resources/dmxmsg.tsv
+Suite Setup	Set Test Env
+Suite Teardown	Disconnect From SUT
+Force Tags	Product_Backlog_ID-B01050	Iteration_ID-I00668	PRS_ID-IL_PRS_3980	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL
+...	exec_type-automatic	type-FUT	release-IL1_RIS2	reviewer-xiaoping.wang.ext@nsn.com	rw-weekly
+...	hw_env-RNC	ct-positive	hw_env-RNC_S0	hw_env-RNC_S1	exec_level-pre
+...	QL-1	EFS_ID-RNC_EFS_2117_91	HW_TYPE-BCN_A1	HW_TYPE-BCN_B2	BCN_STEP-BCN_S0
+
+
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+${WO_ADDR}	0x1000
+${SE_FAMILY1}	459
+${SE_FAMILY2}	45A
+${SE_FAMILY3}	44D
+${SE_FAMILY4}	44E
+${SE_FAMILY5}	44F
+${TIMEOUT}	30
+${MAX TIME FOR CONNECT}	500
+
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+6.10 SE A send 10 dmxmsg (length 0) to SE B	[Tags]	ATC_ID- DMXMSG.FUT.010.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${PURE_SE_A}	${PURE_SE_B}	10
+	...	0	1	0	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.11 SE A send 10 dmxmsg (length 65535-16) to SE B	[Tags]	ATC_ID- DMXMSG.FUT.011.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${PURE_SE_A}	${PURE_SE_B}	1
+	...	1	10	65519	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.12 Pure SE A send 10 dmxmsg (no data) to 6WIND SE B	[Tags]	ATC_ID- DMXMSG.FUT.012.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${PURE_SE_A}	${6WIND_SE}	10
+	...	0	1	0	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.13 Pure SE A send 10 dmxmsg (length 65535-16) to 6WIND SE B	[Tags]	ATC_ID- DMXMSG.FUT.013.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${PURE_SE_A}	${6WIND_SE}	1
+	...	1	10	65519	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.14 6wind SE A send 10 dmxmsg (no data) to Pure SE B	[Tags]	ATC_ID- DMXMSG.FUT.014.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${6WIND_SE}	${PURE_SE_B}	10
+	...	0	1	0	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.15 6wind SE A send 10 dmxmsg (65535) to Pure SE B	[Tags]	ATC_ID- DMXMSG.FUT.015AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${6WIND_SE}	${PURE_SE_B}	1
+	...	1	10	65519	1
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.16 Send No-Data Message from 6Win SE to Pure SE with different source and destionation family ID meanwhile	[Tags]	ATC_ID- DMXMSG.FUT.016.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${ 6WIND_SE_ F1&F2}	${PURE_SE_B F3&F4}	1
+	...	1	10	0	${WOKE MODE DE}
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.17 Send largest Message from 6Win SE to Pure SE with different source and destionation family ID meanwhile	[Tags]	ATC_ID- DMXMSG.FUT.017.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${ 6WIND_SE_ F1&F2}	${PURE_SE_B F3&F4}	1
+	...	1	10	65519	${WOKE MODE DE}
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.18 Send No-Data Message from 6Win SE to Pure SE with same source and different destionation family ID meanwhile	[Tags]	ATC_ID- DMXMSG.FUT.018.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${6WIND_SE&6WIND_SE}	${PURE_SE_B F3&F4}	1
+	...	1	10	0	${WOKE MODE DE}
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.19 Send largest Message from 6Win SE to Pure SE with same source and different destionation family ID meanwhile	[Tags]	ATC_ID- DMXMSG.FUT.019.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${6WIND_SE&6WIND_SE}	${PURE_SE_B F3&F4}	1
+	...	1	10	65519	${WOKE MODE DE}
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.20 Send no-data message from Pure SE B to 6Wind SE A, meanwhile Send no-data message from 6Wind SE A to Pure SE C	[Tags]	ATC_ID- DMXMSG.FUT.020.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${PURE_SE_B&6WIND_SE}	${6WIND_SE &PURE_SE_A}	1
+	...	1	10	0	0-1
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.21 Send largest message from Pure SE B to 6Wind SE A, meanwhile Send largest message from 6Wind SE A to Pure SE C	[Tags]	ATC_ID- DMXMSG.FUT.021.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${PURE_SE_B&6WIND_SE}	${6WIND_SE &PURE_SE_A}	1
+	...	1	10	65519	0-1
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.22 Send largest message from Pure SE B to 6Win SE A, meanwhile Send largest message from Pure SE C to 6Wind SE A.	[Tags]	ATC_ID- DMXMSG.FUT.022.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${PURE_SE_A&PURE_SE_B}	${6WIND_SE &6WIND_SE}	1
+	...	1	10	65519	0-0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+7.0 Send and echo frag type message to 6Win SE A, message should be echo successfully.
+	[Documentation]	Add for cover PR137106ESPE02: When  se_stub's wqe handler try to echo a frag type msg will cause eitp crash.
+	[Tags]	ATC_ID- DMXMSG.FUT.023.AT	FRS_ID-PTT_320301_73_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${PURE_SE_B}	${6WIND_SE_WQE_DAEMON}	1
+	...	1	10	655	${WORK MODE ECHO}
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail	@{NODE LIST}
+
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Set Test Env	Connect To SUT	${MAX TIME FOR CONNECT}
+	${EITP_SE_ADDR}	Evaluate	hex(%{EITP_0_LOG_ADDR}+${WO_ADDR})
+	${CSUP_SE_ADDR}	Evaluate	hex(%{CSUP_0_LOG_ADDR}+${WO_ADDR})
+	${USUP_SE_ADDR}	Evaluate	hex(%{USUP_0_LOG_ADDR}+${WO_ADDR})
+	Set Suite Variable	\${PURE_SE_A}	${CSUP_SE_ADDR}:${SE_FAMILY3}:0
+	Set Suite Variable	\${PURE_SE_B}	${USUP_SE_ADDR}:${SE_FAMILY4}:0
+	Set Suite Variable	\${6WIND_SE}	${EITP_SE_ADDR}:${SE_FAMILY2}:0
+	Set Suite Variable	\${6WIND_SE_WQE_DAEMON}	${EITP_SE_ADDR}:${SE_FAMILY2}:0
+	Set Suite Variable	\${6WIND_SE_FRAG_DAEMON}	${EITP_SE_ADDR}:${SE_FAMILY4}:0
+	Set Suite Variable	\${ 6WIND_SE_ F1&F2}	${EITP_SE_ADDR}:${SE_FAMILY1}:0-${EITP_SE_ADDR}:${SE_FAMILY2}:0
+	Set Suite Variable	\${PURE_SE_B F3&F4}	${USUP_SE_ADDR}:${SE_FAMILY4}:0-${USUP_SE_ADDR}:${SE_FAMILY5}:0
+	Set Suite Variable	\${6WIND_SE &PURE_SE_A}	${EITP_SE_ADDR}:${SE_FAMILY2}:0-${CSUP_SE_ADDR}:${SE_FAMILY4}:0
+	Set Suite Variable	\${PURE_SE_B&6WIND_SE}	${USUP_SE_ADDR}:${SE_FAMILY5}:0-${EITP_SE_ADDR}:${SE_FAMILY2}:0
+	Set Suite Variable	\${6WIND_SE &6WIND_SE}	${EITP_SE_ADDR}:${SE_FAMILY1}:0-${EITP_SE_ADDR}:${SE_FAMILY2}:0
+	Set Suite Variable	\${PURE_SE_A&PURE_SE_B}	${CSUP_SE_ADDR}:${SE_FAMILY3}:0-${USUP_SE_ADDR}:${SE_FAMILY1}:0
+	Run Keyword If	\'%{DETAIL_HW}'=='FGW'	Set FGW Node
+	Run Keyword Unless	\'%{DETAIL_HW}'=='FGW'	Set BCN Node List
+	Check node env	@{NODE LIST}
+
+Set FGW Node	@{NODE LIST}	Set variable	CLA-0	CLA-0
+	Set Suite Variable	\@{NODE LIST}
+
+Set BCN Node List	@{NODE LIST}	Set variable	CFPU-0	EIPU-0	CSPU-0
+	...	USPU-0
+	Set Suite Variable	\@{NODE LIST}

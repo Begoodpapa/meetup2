@@ -1,0 +1,256 @@
+D M X M S G   I N P U T   S Y N C   S W I T C H O V E R . M I P S						
+						
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*	
+Resource	resources/dmxmsg.tsv					
+Library	resources/dmx_ex.py					
+Suite Setup	Connect To SUT Input Sync Env Setup					
+Suite Teardown	RestoreLogicAddressAndDisconn					
+Test Teardown	Kill all stubs on all nodes and restore state					
+Force Tags	Product_Backlog_ID-B01248	Iteration_ID-I01004	Product_Backlog_ID-B01249	Iteration_ID-I01740		
+...	Product_Backlog_ID-IL0011	Iteration_ID-I02974	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com			
+...	element-ILexec_type-restrict_automatic	type-FUT	release-IL1_RIS3	reviewer-xiaoping.wang@nsn.com		
+...	rw-weekly	hw_env-AB	ct-positive	PRS_ID-IL_PRS_2582		
+						
+						
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*	
+#${NODE_WO}	IPNIU-0					
+#${NODE_SP}	IPNIU-1					
+#${NODE_SENDER}	IPNIU-0					
+#@{NODE LIST}	${NODE_WO}	${NODE_SP}	${NODE_SENDER}			
+${DMX_STUB}	dmx_generic_stub					
+${DMX_STUB_LOG}	/tmp/dmx_generic_stub.log					
+${RU_INDEX}	0xe00					
+${SENDER_FAMILY_A}	fff0					
+${RECEIVER_FAMILY}	fff1					
+${LOGICAL_ADDR}	7FF0					
+${GROUP_ADDR}	8FF0					
+${WOSP_DST_ADDR}	${LOGICAL_ADDR}:${RECEIVER_FAMILY}:0					
+${RU_STATE_SP}	2f					
+${RU_STATE_WO}	0					
+${type}	control					
+${SLEEP_TIME}	600ms					
+						
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	
+7.1 Switchover normal case	[Tags]	ATC_ID-DMXMSG.FUT.201				
+	Check only when WO sends out sync message then the new SP can got the corresponding WOSP message	${SENDER_CONN}	${WO_CONN}	${SP_CONN}		
+	Trigger switchover					
+	Check only when WO sends out sync message then the new SP can got the corresponding WOSP message	${SENDER_CONN}	${SP_CONN}	${WO_CONN}		
+						
+"7.2 Switchover occurred, WO has pending messages"	[Tags]	ATC_ID-DMXMSG.FUT.202				
+	Goto node and run keyword	${WO_CONN}	Register stub to wait recv messages and save log	${DMX_STUB_LOG}		
+	Goto node and run keyword	${SP_CONN}	Configure stub to recv messages and save log	${DMX_STUB_LOG}		
+	Goto node and run keyword	${SENDER_CONN}	Send messages	${SENDER_FAMILY_A}	${WOSP_DST_ADDR}	
+	...	1				
+	Goto node and run keyword	${SP_CONN}	Should logged message in file	0	${DMX_STUB_LOG}	
+	Set Node RU State	${WO_CONN}	${WO_Phys_Addr}	${RU_STATE_SP}		
+	Ask stub start to recv message					
+	Should logged message in file	0	${DMX_STUB_LOG}			
+	Set SP SWO Prepare	${SP_CONN}	${SP_Phys_Addr}	${RU_STATE_WO}	${type}	
+	Should logged message in file	0	${DMX_STUB_LOG}			
+	Set Node RU State	${SP_CONN}	${SP_Phys_Addr}	${RU_STATE_WO}		
+	Should logged message in file	1	${DMX_STUB_LOG}			
+	Goto node and run keyword	${WO_CONN}	Should logged message in file	1	${DMX_STUB_LOG}	
+	Goto node and run keyword	${SENDER_CONN}	Send messages	${SENDER_FAMILY_A}	${WOSP_DST_ADDR}	
+	...	1				
+	Goto node and run keyword	${WO_CONN}	Should logged message in file	2	${DMX_STUB_LOG}	
+	Goto node and run keyword	${SP_CONN}	Should logged message in file	2	${DMX_STUB_LOG}	
+						
+"7.3 Switchover occurred, SP has pending messages before SWO prepare"	[Tags]	ATC_ID-DMXMSG.FUT.203 				
+	Goto node and run keyword	${WO_CONN}	Configure stub to recv messages and save log	${DMX_STUB_LOG}		
+	Goto node and run keyword	${SP_CONN}	Register stub to wait recv messages and save log	${DMX_STUB_LOG}		
+	Goto node and run keyword	${SENDER_CONN}	Send messages	${SENDER_FAMILY_A}	${WOSP_DST_ADDR}	
+	...	1				
+	Set Node RU State	${WO_CONN}	${WO_Phys_Addr}	${RU_STATE_SP}		
+	Set SP SWO Prepare in background	${SP_CONN}	${SP_Phys_Addr}	${RU_STATE_WO}	${type}	
+	Ask stub start to recv message					
+	Should logged message in file	1	${DMX_STUB_LOG}			
+	Set Node RU State	${SP_CONN}	${SP_Phys_Addr}	${RU_STATE_WO}		
+	Goto node and run keyword	${SENDER_CONN}	Send messages	${SENDER_FAMILY_A}	${WOSP_DST_ADDR}	
+	...	1				
+	Goto node and run keyword	${WO_CONN}	Should logged message in file	2	${DMX_STUB_LOG}	
+	Goto node and run keyword	${SP_CONN}	Should logged message in file	2	${DMX_STUB_LOG}	
+						
+"7.4 Switchover occurred, SP has pending messages before SWO prepare and timeout"	[Tags]	ATC_ID-DMXMSG.FUT.204				
+	Goto node and run keyword	${WO_CONN}	Configure stub to recv messages and save log	${DMX_STUB_LOG}		
+	Goto node and run keyword	${SP_CONN}	Register stub to wait recv messages and save log	${DMX_STUB_LOG}		
+	Goto node and run keyword	${SENDER_CONN}	Send messages	${SENDER_FAMILY_A}	${WOSP_DST_ADDR}	
+	...	1				
+	Should logged message in file	1	${DMX_STUB_LOG}			
+	Set Node RU State	${WO_CONN}	${WO_Phys_Addr}	${RU_STATE_SP}		
+	Set SP SWO Prepare	${SP_CONN}	${SP_Phys_Addr}	${RU_STATE_WO}	${type}	
+	Set Node RU State	${SP_CONN}	${SP_Phys_Addr}	${RU_STATE_WO}		
+	Ask stub start to recv message					
+	Goto node and run keyword	${SENDER_CONN}	Send messages	${SENDER_FAMILY_A}	${WOSP_DST_ADDR}	
+	...	1				
+	sleep	4000ms				
+	Goto node and run keyword	${WO_CONN}	Should logged message in file	2	${DMX_STUB_LOG}	
+	Goto node and run keyword	${SP_CONN}	Should logged message in file	2	${DMX_STUB_LOG}	
+						
+"7.5 Daemon registered with no_input_sync flag, can receive WOSP messages before and after switchover"	[Tags]	ATC_ID-DMXMSG.FUT.002.AT				
+	With no input sync flag check only when WO sends out sync message then the new SP can got the corresponding WOSP message	${SENDER_CONN}	${WO_CONN}	${SP_CONN}		
+	Trigger switchover					
+	With no input sync flag check only when WO sends out sync message then the new SP can got the corresponding WOSP message	${SENDER_CONN}	${SP_CONN}	${WO_CONN}		
+	Trigger switchover back					
+	With no input sync flag check only when WO sends out sync message then the new SP can got the corresponding WOSP message	${SENDER_CONN}	${WO_CONN}	${SP_CONN}		
+	Trigger switchover					
+						
+						
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	
+Connect To SUT Input Sync Env Setup	Set MGW node					
+	${SP_CONN}=	Setup Connect To	${NODE_SP}			
+	Set Suite Variable	\${SP_CONN}				
+	${WO_CONN}=	Setup Connect To	${NODE_WO}			
+	Set Suite Variable	\${WO_CONN}				
+	${SENDER_CONN}=	Setup Connect To	${NODE_SENDER}			
+	Set Suite Variable	\${SENDER_CONN}				
+	Set Suite Variable	\@{ALL_NODE_CONN}	${WO_CONN}	${SP_CONN}	${SENDER_CONN}	
+	${WO_RU Status}=	Query All RU Status From Node RUTable 	${NODE_WO}			
+	${SP_RU Status}=	Query All RU Status From Node RUTable 	${NODE_SP}			
+	${SENDER_RU Status}=	Query All RU Status From Node RUTable 	${NODE_SENDER}			
+	Set Suite Variable	\${WO_RU Status}				
+	Set Suite Variable	\${SP_RU Status}				
+	Set Suite Variable	\${SENDER_RU Status}				
+	Kill all stubs on all nodes	@{ALL_NODE_CONN}				
+	Get WO SP Physical Addr					
+	CONFIG SP Env					
+	CONFIG WO Env					
+	CONFIG SENDER Env					
+						
+Set MGW node	${NODE_WO}	Get MGW MIPS Node0 Name				
+	${NODE_SP}	Get MGW MIPS Node1 Name				
+	${NODE_SENDER}	Get MGW MIPS Node0 Name				
+	@{NODE LIST}	Set variable	${NODE_WO}	${NODE_SP}	${NODE_SENDER}	
+	Set Suite Variable	\${NODE_WO}				
+	Set Suite Variable	\${NODE_SP}				
+	Set Suite Variable	\${NODE_SENDER}				
+	Set Suite Variable	\@{NODE LIST}				
+						
+						
+Check only when WO sends out sync message then the new SP can got the corresponding WOSP message	[Arguments]	${sender}	${wo}	${sp}		
+	Goto node and run keyword	${wo}	Register stub to wait recv messages and save log	${DMX_STUB_LOG}		
+	Goto node and run keyword	${sp}	Configure stub to recv messages and save log	${DMX_STUB_LOG}		
+	Goto node and run keyword	${sender}	Send messages	${SENDER_FAMILY_A}	${WOSP_DST_ADDR}	
+	...	3				
+	Goto node and run keyword	${sp}	Should logged message in file	0	${DMX_STUB_LOG}	
+	Goto node and run keyword	${wo}	Ask stub start to recv message			
+	WaitUntilKeywordSucceeds	5	1	Should logged message in file	3	
+	...	${DMX_STUB_LOG}				
+	Goto node and run keyword	${sp}	WaitUntilKeywordSucceeds	5	1	
+	...	Should logged message in file	3	${DMX_STUB_LOG}		
+	Kill all stubs on all nodes	@{ALL_NODE_CONN}				
+						
+Trigger switchover	Set Node RU State	${WO_CONN}	${WO_Phys_Addr}	${RU_STATE_SP}		
+	Set SP SWO Prepare	${SP_CONN}	${SP_Phys_Addr}	${RU_STATE_WO}	${type}	
+	Set Node RU State	${SP_CONN}	${SP_Phys_Addr}	${RU_STATE_WO}		
+						
+Trigger switchover back	Set Node RU State	${SP_CONN}	${SP_Phys_Addr}	${RU_STATE_SP}		
+	Set SP SWO Prepare	${WO_CONN}	${WO_Phys_Addr}	${RU_STATE_WO}	${type}	
+	Set Node RU State	${WO_CONN}	${WO_Phys_Addr}	${RU_STATE_WO}		
+						
+Set Node RU State	[Arguments]	${addr}	${processor_id}	${new_state}		
+	Goto node and run keyword	${addr}	dmxcli2_Update_unit_state	${processor_id}	${new_state}	
+						
+Set SP SWO Prepare	[Arguments]	${addr}	${processor_id}	${new_state}	${type}	
+	Goto node and run keyword	${addr}	dmxcli2_Swo_prepare	${processor_id}	${new_state}	${type} 
+						
+Set SP SWO Prepare in background	[Arguments]	${addr}	${processor_id}	${new_state}	${type}	
+	Goto node and run keyword	${addr}	execute cli	"dmxcli2 -P ${processor_id}=${new_state},${type}&"		
+						
+Config computer and group addr	dmxcli2_Config_comp_table	FF0	${LOGICAL_ADDR}	${GROUP_ADDR}	${WO_Phys_Addr}	
+	...	${SP_Phys_Addr}				
+	${Group_addr_conf} =	SetVariable	"${GROUP_ADDR},2,${WO_Phys_Addr},${SP_Phys_Addr}"			
+	ExecuteCli	dmxcli2 -G ${Group_addr_conf}				
+						
+Get WO SP Physical Addr	Swtich To	${SP_CONN}				
+	${SP_PROCESSOR}=	GetRealFileContent	/proc/dmxmsg/processor_index			
+	Set Suite Variable	\${SP_PROCESSOR}				
+	${SP_Phys_Addr}=	Evaluate	hex(${RU_INDEX}+0x${SP_PROCESSOR})			
+	Set Suite Variable	\${SP_Phys_Addr}				
+	${SWO_PREPARE_TIME}=	GetRealFileContent	/proc/dmxmsg/switchover_prepare_time			
+	Set Suite Variable	\${SWO_PREPARE_TIME}				
+	Swtich To	${WO_CONN}				
+	${WO_PROCESSOR}=	GetRealFileContent	/proc/dmxmsg/processor_index			
+	Set Suite Variable	\${WO_PROCESSOR}				
+	${WO_Phys_Addr}=	Evaluate	hex(${RU_INDEX}+0x${WO_PROCESSOR})			
+	Set Suite Variable	\${WO_Phys_Addr}				
+						
+Configure stub to recv messages and save log	[Arguments]	${log}				
+	Set RU Index for Receiver					
+	execute cli	${DMX_STUB} recv ${RECEIVER_FAMILY} >${log}&				
+	sleep	${SLEEP_TIME}				
+						
+Register stub to wait recv messages and save log	[Arguments]	${log}				
+	Set RU Index for Receiver					
+	execute cli	${DMX_STUB} recv ${RECEIVER_FAMILY} -w >${log}&				
+	sleep	${SLEEP_TIME}				
+						
+CONFIG SP Env	Swtich To	${SP_CONN}				
+	Config computer and group addr					
+	Set Node RU State	${SP_CONN}	${SP_Phys_Addr}	${RU_STATE_SP}		
+	execute cli	dmxcli2 -c ${SP_Phys_Addr}=${WO_Phys_Addr}				
+	execute cli	echo 5000 > /proc/dmxmsg/switchover_prepare_time				
+						
+CONFIG WO Env	Swtich To	${WO_CONN}				
+	Config computer and group addr					
+	Set Node RU State	${WO_CONN}	${WO_Phys_Addr}	${RU_STATE_WO}		
+	execute cli	dmxcli2 -c ${WO_Phys_Addr}=${SP_Phys_Addr}				
+	execute cli	echo 50 > /proc/dmxmsg/switchover_prepare_time				
+						
+CONFIG SENDER Env	Swtich To	${SENDER_CONN}				
+	Config computer and group addr					
+						
+Send messages	[Arguments]	${src_family}	${dst_addr}	${send_num}		
+	execute cli	${DMX_STUB} send ${src_family} ${dst_addr} -n ${send_num}				
+						
+Should logged message in file	[Arguments]	${num}	${log_file_path}			
+	Get file content	${log_file_path}				
+	${got_num}	CountLinesContainStr	Got	${log_file_path}		
+	Should be equal	${num}	${got_num}			
+						
+#	HupProcess	${DMX_STUB}				
+Ask stub start to recv message	Execute_Cli_Without_Check	killall -36 ${DMX_STUB}				
+	sleep	${SLEEP_TIME}				
+						
+Kill all stubs on all nodes	[Arguments]	@{nodelist}				
+	:for	${node}	in	@{nodelist}		
+		Goto node and run keyword	${node}	execute cli	killall -9 ${DMX_STUB} | tee	
+						
+Kill all stubs on all nodes and restore state						
+	Check node env if case fail 	@{NODE LIST}				
+	Kill all stubs on all nodes	@{ALL_NODE_CONN}				
+	Trigger switchover back					
+						
+						
+Set RU Index for Receiver						
+	${PROCESSOR}=	GetRealFileContent	/proc/dmxmsg/processor_index			
+	${Phys_Addr}=	Evaluate	hex(${RU_INDEX}+0x${PROCESSOR})			
+	execute cli	export LIBGEN_USE_PHYS_ADDR=${Phys_Addr}				
+						
+RestoreLogicAddressAndDisconn						
+	Goto node and run keyword	${WO_CONN}	execute cli	echo ${SWO_PREPARE_TIME} > /proc/dmxmsg/switchover_prepare_time		
+	Goto node and run keyword	${SP_CONN}	execute cli	echo ${SWO_PREPARE_TIME} > /proc/dmxmsg/switchover_prepare_time		
+	Kill all stubs on all nodes	@{ALL_NODE_CONN}				
+	Update All RU Status To Node RUTable 	${NODE_SENDER}	${SENDER_RU Status}			
+	Update All RU Status To Node RUTable 	${NODE_WO}	${WO_RU Status}			
+	Update All RU Status To Node RUTable 	${NODE_SP}	${SP_RU Status}			
+	Disconnect From SUT					
+						
+						
+With no input sync flag check only when WO sends out sync message then the new SP can got the corresponding WOSP message	[Arguments]	${sender}	${wo}	${sp}		
+	Goto node and run keyword	${wo}	Register stub to wait recv messages and save log	${DMX_STUB_LOG}		
+	Goto node and run keyword	${sp}	With no input sync flag Configure stub to recv messages and save log	${DMX_STUB_LOG}		
+	Goto node and run keyword	${sender}	Send messages	${SENDER_FAMILY_A}	${WOSP_DST_ADDR}	
+	...	3				
+	Goto node and run keyword	${sp}	WaitUntilKeywordSucceeds	5	1	
+	...	Should logged message in file	3	${DMX_STUB_LOG}		
+	Goto node and run keyword	${wo}	Ask stub start to recv message			
+	WaitUntilKeywordSucceeds	5	1	Should logged message in file	3	
+	...	${DMX_STUB_LOG}				
+	Goto node and run keyword	${sp}	WaitUntilKeywordSucceeds	5	1	
+	...	Should logged message in file	3	${DMX_STUB_LOG}		
+	Kill all stubs on all nodes	@{ALL_NODE_CONN}				
+						
+With no input sync flag Configure stub to recv messages and save log	[Arguments]	${log}				
+	Set RU Index for Receiver					
+	execute cli	${DMX_STUB} recv ${RECEIVER_FAMILY} -n >${log}&				
+	sleep	${SLEEP_TIME}				

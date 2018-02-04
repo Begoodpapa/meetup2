@@ -1,0 +1,254 @@
+ D M X M S G  T R A N S  A M O N G  B C N  4 B O X					
+					
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	resources/dmxmsg.tsv				
+Suite Setup	Connect_And_Init				
+Suite Teardown	Disconnect_And_Leave_Test_Mode				
+Force Tags	Product_Backlog_ID-B01317	Iteration_ID-I02215	PRS-	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL
+...	exec_type-automatic	type-FUT	release-IL1	reviewer-xiaoping.wang@nsn.com	rw-weekly
+...	hw_env-RNC_S3	ct-positive	exec_level_per		
+...	QL-1
+					
+					
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+${DAEMON_FAMILY}	AD9C				
+${SE_FAMILY}	45B				
+${MAX TIME FOR CONNECT}	50				
+${TIMEOUT}	15				
+					
+					
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+6.1 CLA-0 send and receive dmxmsg to CLA-1	[Tags]	ATC_ID-DMXMSG.FUT.001.AT	FRS_ID-PTT_320301_79_0000			
+	Send dmx messages successful	${CLA_0_DAEMON}	${CLA_1_DAEMON}		
+	[Teardown]	Check node env if case fail 	CLA-0	CLA-1	
+					
+6.2 CLA-0 send and receive dmxmsg to CSPU-2 linux	[Tags]	ATC_ID-DMXMSG.FUT.002.AT	FRS_ID-PTT_320301_83_0000			
+	Send dmx messages successful	${CLA_0_DAEMON}	${CSPU_2_LINUX}		
+	[Teardown]	Check node env if case fail 	CLA-0	CSPU-2	
+					
+6.3 CLA-0 send and receive dmxmsg to CSPU-2 SE	[Tags]	ATC_ID-DMXMSG.FUT.003.AT	FRS_ID-PTT_320301_78_0000		
+	Send dmx messages successful	${CLA_0_DAEMON}	${CSPU_2_SE}		
+	[Teardown]	Check node env if case fail 	CLA-0	CSPU-2	
+					
+6.4 CLA-0 send and receive dmxmsg to USPU-3 linux	[Tags]	ATC_ID-DMXMSG.FUT.004.AT			
+	Send dmx messages successful	${CLA_0_DAEMON}	${USPU_3_LINUX}		
+	[Teardown]	Check node env if case fail 	CLA-0	USPU-3	
+					
+6.5 CLA-0 send and receive dmxmsg to USPU-3 SE	[Tags]	ATC_ID-DMXMSG.FUT.005.AT			
+	Send dmx messages successful	${CLA_0_DAEMON}	${USPU_3_SE}		
+	[Teardown]	Check node env if case fail 	CLA-0	USPU-3	
+					
+6.6 CLA-0 send and receive dmxmsg to EIPU-1 linux	[Tags]	ATC_ID-DMXMSG.FUT.006.AT			
+	Send dmx messages successful	${CLA_0_DAEMON}	${EIPU_1_LINUX}		
+	[Teardown]	Check node env if case fail 	CLA-0	EIPU-1	
+					
+6.7 CLA-0 send and receive dmxmsg to EIPU-1 SE	[Tags]	ATC_ID-DMXMSG.FUT.007.AT			
+	Send dmx messages successful	${CLA_0_DAEMON}	${EIPU_1_SE}		
+	[Teardown]	Check node env if case fail 	CLA-0	EIPU-1	
+					
+6.8 CLA-0 send and receive dmxmsg to USPU-6 linux	[Tags]	ATC_ID-DMXMSG.FUT.008.AT			
+	Send dmx messages successful	${CLA_0_DAEMON}	${USPU_6_LINUX}		
+	[Teardown]	Check node env if case fail 	CLA-0	USPU-6	
+					
+6.9 CLA-0 send and receive dmxmsg to USPU-6 SE	[Tags]	ATC_ID-DMXMSG.FUT.09.AT			
+	Send dmx messages successful	${CLA_0_DAEMON}	${USPU_6_SE}		
+	[Teardown]	Check node env if case fail 	CLA-0	USPU-6	
+					
+6.10 CLA-0 send and receive dmxmsg to USPU-10 linux	[Tags]	ATC_ID-DMXMSG.FUT.010.AT			
+	Send dmx messages successful	${CLA_0_DAEMON}	${USPU_10_LINUX}		
+	[Teardown]	Check node env if case fail 	CLA-0	USPU-10	
+					
+6.11 CLA-0 send and receive dmxmsg to USPU-10 SE	[Tags]	ATC_ID-DMXMSG.FUT.011.AT			
+	Send dmx messages successful	${CLA_0_DAEMON}	${USPU_10_SE}		
+	[Teardown]	Check node env if case fail 	CLA-0	USPU-10	
+					
+6.12 CSPU-0 linux send and receive dmxmsg to USPU-5 linux	[Tags]	ATC_ID-DMXMSG.FUT.012.AT			
+	Send dmx messages successful	${CSPU_0_LINUX}	${USPU_5_LINUX}		
+	[Teardown]	Check node env if case fail 	CSPU-0	USPU-5	
+					
+6.13 CSPU-0 SE send and receive dmxmsg to USPU-5 SE	[Tags]	ATC_ID-DMXMSG.FUT.013.AT			
+	Send dmx messages successful	${CSPU_0_SE}	${USPU_5_SE}		
+	[Teardown]	Check node env if case fail 	CSPU-0	USPU-5	
+					
+6.14 CSPU-1 linux send and receive dmxmsg to USPU-6 linux	[Tags]	ATC_ID-DMXMSG.FUT.014.AT			
+	Send dmx messages successful	${CSPU_1_LINUX}	${USPU_6_LINUX}		
+	[Teardown]	Check node env if case fail 	CSPU-1	USPU-6	
+					
+6.15 CSPU-1 SE send and receive dmxmsg to USPU-6 SE	[Tags]	ATC_ID-DMXMSG.FUT.015.AT			
+	Send dmx messages successful	${CSPU_1_SE}	${USPU_6_SE}		
+	[Teardown]	Check node env if case fail 	CSPU-1	USPU-6	
+					
+6.16 USPU-1 linux send and receive dmxmsg to  EIPU-3 linux	[Tags]	ATC_ID-DMXMSG.FUT.016.AT			
+	Send dmx messages successful	${USPU_1_LINUX}	${EIPU_3_LINUX}		
+	[Teardown]	Check node env if case fail 	USPU-1	EIPU-3	
+					
+6.17 USPU-1 SE send and receive dmxmsg to  EIPU-3 SE	[Tags]	ATC_ID-DMXMSG.FUT.017.AT			
+	Send dmx messages successful	${USPU_1_SE}	${EIPU_3_SE}		
+	[Teardown]	Check node env if case fail 	USPU-1	EIPU-3	
+					
+6.18 EIPU-1 linux send and receive dmxmsg to  EIPU-2 linux	[Tags]	ATC_ID-DMXMSG.FUT.018.AT			
+	Send dmx messages successful	${EIPU_1_LINUX}	${EIPU_2_LINUX}		
+	[Teardown]	Check node env if case fail 	EIPU-1	EIPU-2	
+					
+6.19 EIPU-1 SE send and receive dmxmsg to  EIPU-2 SE	[Tags]	ATC_ID-DMXMSG.FUT.019.AT			
+	Send dmx messages successful	${EIPU_1_SE}	${EIPU_2_SE}		
+	[Teardown]	Check node env if case fail 	EIPU-1	EIPU-2	
+					
+					
+6.20 CSPU-3 linux send and receive dmxmsg to  EIPU-4 linux	[Tags]	ATC_ID-DMXMSG.FUT.020.AT			
+	Send dmx messages successful	${CSPU_3_LINUX}	${EIPU_4_LINUX}		
+	[Teardown]	Check node env if case fail 	CSPU-3	EIPU-4	
+					
+6.21 CSPU-3 SE send and receive dmxmsg to  EIPU-4 SE	[Tags]	ATC_ID-DMXMSG.FUT.021.AT			
+	Send dmx messages successful	${CSPU_3_SE}	${EIPU_4_SE}		
+	[Teardown]	Check node env if case fail 	CSPU-3	EIPU-4	
+					
+6.22 CSPU-3 linux send and receive dmxmsg to  EIPU-7 linux	[Tags]	ATC_ID-DMXMSG.FUT.023.AT			
+	Send dmx messages successful	${CSPU_3_LINUX}	${EIPU_7_LINUX}		
+	[Teardown]	Check node env if case fail 	CSPU-3	EIPU-7	
+					
+6.23 CSPU-3 SE send and receive dmxmsg to  EIPU-7 SE	[Tags]	ATC_ID-DMXMSG.FUT.022.AT			
+	Send dmx messages successful	${CSPU_3_SE}	${EIPU_7_SE}		
+	[Teardown]	Check node env if case fail 	CSPU-3	EIPU-7	
+					
+6.24 CSPU-4 linux send and receive dmxmsg to  EIPU-0 linux	[Tags]	ATC_ID-DMXMSG.FUT.024.AT			
+	Send dmx messages successful	${CSPU_4_LINUX}	${EIPU_0_LINUX}		
+	[Teardown]	Check node env if case fail 	CSPU-4	EIPU-0	
+					
+6.25 CSPU-4 SE send and receive dmxmsg to  EIPU-0 SE	[Tags]	ATC_ID-DMXMSG.FUT.025.AT			
+	Send dmx messages successful	${CSPU_4_SE}	${EIPU_0_SE}		
+	[Teardown]	Check node env if case fail 	CSPU-4	EIPU-0	
+					
+6.26 EIPU-6 linux send and receive dmxmsg to  EIPU-3 linux	[Tags]	ATC_ID-DMXMSG.FUT.026.AT			
+	Send dmx messages successful	${EIPU_6_LINUX}	${EIPU_3_LINUX}		
+	[Teardown]	Check node env if case fail 	EIPU-6	EIPU-3	
+					
+6.27 EIPU-6 SE send and receive dmxmsg to  EIPU-3 SE	[Tags]	ATC_ID-DMXMSG.FUT.027.AT			
+	Send dmx messages successful	${EIPU_6_SE}	${EIPU_3_SE}		
+	[Teardown]	Check node env if case fail 	EIPU-6	EIPU-3	
+					
+6.28 EIPU-6 linux send and receive dmxmsg to  EIPU-5 linux	[Tags]	ATC_ID-DMXMSG.FUT.028.AT			
+	Send dmx messages successful	${EIPU_6_LINUX}	${EIPU_5_LINUX}		
+	[Teardown]	Check node env if case fail 	EIPU-6	EIPU-5	
+					
+6.29 EIPU-6 SE send and receive dmxmsg to  EIPU-5 SE	[Tags]	ATC_ID-DMXMSG.FUT.029.AT			
+	Send dmx messages successful	${EIPU_6_SE}	${EIPU_5_SE}		
+	[Teardown]	Check node env if case fail 	EIPU-6	EIPU-5	
+					
+6.30 USPU-10 linux send and receive dmxmsg to CSPU-1 linux	[Tags]	ATC_ID-DMXMSG.FUT.030.AT			
+	Send dmx messages successful	${USPU_10_LINUX}	${CSPU_1_LINUX}		
+	[Teardown]	Check node env if case fail 	USPU-10	CSPU-1	
+					
+6.31 USPU-10 SE send and receive dmxmsg to CSPU-1 SE	[Tags]	ATC_ID-DMXMSG.FUT.031.AT			
+	Send dmx messages successful	${USPU_10_SE}	${USPU_5_SE}		
+	[Teardown]	Check node env if case fail 	USPU-10	CSPU-1	
+					
+6.32 USPU-13 linux send and receive dmxmsg to USPU-3 linux	[Tags]	ATC_ID-DMXMSG.FUT.032.AT			
+	Send dmx messages successful	${USPU_13_LINUX}	${USPU_3_LINUX}		
+	[Teardown]	Check node env if case fail 	USPU-13	USPU-3	
+					
+6.33 USPU-13 SE send and receive dmxmsg to USPU-3 SE	[Tags]	ATC_ID-DMXMSG.FUT.033.AT			
+	Send dmx messages successful	${USPU_13_SE}	${USPU_3_SE}		
+	[Teardown]	Check node env if case fail 	USPU-13	USPU-3	
+					
+6.34 EIPU-7 linux send and receive dmxmsg to  EIPU-4 linux	[Tags]	ATC_ID-DMXMSG.FUT.035.AT			
+	Send dmx messages successful	${EIPU_7_LINUX}	${EIPU_4_LINUX}		
+	[Teardown]	Check node env if case fail 	EIPU-7	EIPU-4	
+					
+6.35 EIPU-7 SE send and receive dmxmsg to  EIPU-4 SE	[Tags]	ATC_ID-DMXMSG.FUT.034.AT			
+	Send dmx messages successful	${EIPU_7_SE}	${EIPU_4_SE}		
+	[Teardown]	Check node env if case fail 	EIPU-7	EIPU-4	
+					
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Connect_And_Init	Connect To SUT	${MAX TIME FOR CONNECT}			
+	Change to RU Env	omu			
+	${CLA_0_DAEMON_ADDR}	QueryPhysAddrByUnitType	%{OMU_TYPE}	0	
+	${CLA_1_DAEMON_ADDR}	QueryPhysAddrByUnitType	%{OMU_TYPE}	1	
+	${CSPU_0_SE_ADDR}	QueryPhysAddrByUnitType	%{CSUP_TYPE}	0	
+	${CSPU_1_SE_ADDR}	QueryPhysAddrByUnitType	%{CSUP_TYPE}	1	
+	${CSPU_2_SE_ADDR}	QueryPhysAddrByUnitType	%{CSUP_TYPE}	2	
+	${CSPU_3_SE_ADDR}	QueryPhysAddrByUnitType	%{CSUP_TYPE}	3	
+	${CSPU_4_SE_ADDR}	QueryPhysAddrByUnitType	%{CSUP_TYPE}	4	
+	${CSPU_0_LINUX_ADDR}	QueryPhysAddrByUnitType	%{CSUPProxy_TYPE}	0	
+	${CSPU_1_LINUX_ADDR}	QueryPhysAddrByUnitType	%{CSUPProxy_TYPE}	1	
+	${CSPU_2_LINUX_ADDR}	QueryPhysAddrByUnitType	%{CSUPProxy_TYPE}	2	
+	${CSPU_3_LINUX_ADDR}	QueryPhysAddrByUnitType	%{CSUPProxy_TYPE}	3	
+	${CSPU_4_LINUX_ADDR}	QueryPhysAddrByUnitType	%{CSUPProxy_TYPE}	4	
+	${USPU_1_SE_ADDR}	QueryPhysAddrByUnitType	%{USUP_TYPE}	1	
+	${USPU_3_SE_ADDR}	QueryPhysAddrByUnitType	%{USUP_TYPE}	3	
+	${USPU_5_SE_ADDR}	QueryPhysAddrByUnitType	%{USUP_TYPE}	5	
+	${USPU_6_SE_ADDR}	QueryPhysAddrByUnitType	%{USUP_TYPE}	6	
+	${USPU_10_SE_ADDR}	QueryPhysAddrByUnitType	%{USUP_TYPE}	a	
+	${USPU_13_SE_ADDR}	QueryPhysAddrByUnitType	%{USUP_TYPE}	d	
+	${USPU_1_LINUX_ADDR}	QueryPhysAddrByUnitType	%{USUPProxy_TYPE}	1	
+	${USPU_3_LINUX_ADDR}	QueryPhysAddrByUnitType	%{USUPProxy_TYPE}	3	
+	${USPU_5_LINUX_ADDR}	QueryPhysAddrByUnitType	%{USUPProxy_TYPE}	5	
+	${USPU_6_LINUX_ADDR}	QueryPhysAddrByUnitType	%{USUPProxy_TYPE}	6	
+	${USPU_10_LINUX_ADDR}	QueryPhysAddrByUnitType	%{USUPProxy_TYPE}	a	
+	${USPU_13_LINUX_ADDR}	QueryPhysAddrByUnitType	%{USUPProxy_TYPE}	d	
+	${EIPU_0_SE_ADDR}	QueryPhysAddrByUnitType	%{EITP_TYPE}	0	
+	${EIPU_1_SE_ADDR}	QueryPhysAddrByUnitType	%{EITP_TYPE}	1	
+	${EIPU_2_SE_ADDR}	QueryPhysAddrByUnitType	%{EITP_TYPE}	2	
+	${EIPU_3_SE_ADDR}	QueryPhysAddrByUnitType	%{EITP_TYPE}	3	
+	${EIPU_4_SE_ADDR}	QueryPhysAddrByUnitType	%{EITP_TYPE}	4	
+	${EIPU_5_SE_ADDR}	QueryPhysAddrByUnitType	%{EITP_TYPE}	5	
+	${EIPU_6_SE_ADDR}	QueryPhysAddrByUnitType	%{EITP_TYPE}	6	
+	${EIPU_7_SE_ADDR}	QueryPhysAddrByUnitType	%{EITP_TYPE}	7	
+	${EIPU_0_LINUX_ADDR}	QueryPhysAddrByUnitType	%{EITPProxy_TYPE}	0	
+	${EIPU_1_LINUX_ADDR}	QueryPhysAddrByUnitType	%{EITPProxy_TYPE}	1	
+	${EIPU_2_LINUX_ADDR}	QueryPhysAddrByUnitType	%{EITPProxy_TYPE}	2	
+	${EIPU_3_LINUX_ADDR}	QueryPhysAddrByUnitType	%{EITPProxy_TYPE}	3	
+	${EIPU_4_LINUX_ADDR}	QueryPhysAddrByUnitType	%{EITPProxy_TYPE}	4	
+	${EIPU_5_LINUX_ADDR}	QueryPhysAddrByUnitType	%{EITPProxy_TYPE}	5	
+	${EIPU_6_LINUX_ADDR}	QueryPhysAddrByUnitType	%{EITPProxy_TYPE}	6	
+	${EIPU_7_LINUX_ADDR}	QueryPhysAddrByUnitType	%{EITPProxy_TYPE}	7	
+					
+	Set Suite Variable	\${CLA_0_DAEMON}	${CLA_0_DAEMON_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${CLA_1_DAEMON}	${CLA_1_DAEMON_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${CSPU_0_LINUX}	${CSPU_0_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${CSPU_0_SE}	${CSPU_0_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${CSPU_1_LINUX}	${CSPU_1_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${CSPU_1_SE}	${CSPU_1_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${CSPU_2_LINUX}	${CSPU_2_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${CSPU_2_SE}	${CSPU_2_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${CSPU_3_LINUX}	${CSPU_3_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${CSPU_3_SE}	${CSPU_3_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${CSPU_4_LINUX}	${CSPU_4_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${CSPU_4_SE}	${CSPU_4_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${USPU_1_LINUX}	${USPU_1_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${USPU_1_SE}	${USPU_1_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${USPU_3_LINUX}	${USPU_3_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${USPU_3_SE}	${USPU_3_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${USPU_5_LINUX}	${USPU_5_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${USPU_5_SE}	${USPU_5_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${USPU_6_LINUX}	${USPU_6_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${USPU_6_SE}	${USPU_6_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${USPU_10_LINUX}	${USPU_10_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${USPU_10_SE}	${USPU_10_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${USPU_13_LINUX}	${USPU_13_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${USPU_13_SE}	${USPU_13_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${EIPU_0_LINUX}	${EIPU_0_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${EIPU_0_SE}	${EIPU_0_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${EIPU_1_LINUX}	${EIPU_1_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${EIPU_1_SE}	${EIPU_1_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${EIPU_2_LINUX}	${EIPU_2_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${EIPU_2_SE}	${EIPU_2_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${EIPU_3_LINUX}	${EIPU_3_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${EIPU_3_SE}	${EIPU_3_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${EIPU_4_LINUX}	${EIPU_4_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${EIPU_4_SE}	${EIPU_4_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${EIPU_5_LINUX}	${EIPU_5_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${EIPU_5_SE}	${EIPU_5_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${EIPU_6_LINUX}	${EIPU_6_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${EIPU_6_SE}	${EIPU_6_SE_ADDR}:${SE_FAMILY}:0		
+	Set Suite Variable	\${EIPU_7_LINUX}	${EIPU_7_LINUX_ADDR}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${EIPU_7_SE}	${EIPU_7_SE_ADDR}:${SE_FAMILY}:0		
+					
+Disconnect_And_Leave_Test_Mode	Disconnect From SUT				
+					
+					
+Send dmx messages successful	[Arguments]	${Computer Source}	${Computer Destination}		
+	${out}	Use Dmxcli To Send Messages	${Computer Source}	${Computer Destination}	${BURST MIN}
+	...	${INTERVAL DEFAULT}	${NUMBER DEFAULT}	${LEN SHORT}	${WORK MODE ECHO}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		

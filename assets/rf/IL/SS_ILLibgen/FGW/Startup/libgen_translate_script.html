@@ -1,0 +1,538 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>libgen translate script</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">libgen translate script</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-RAN3000_1R_M1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-RAN3000_1R_M1_SSU_70</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-RNC_EFS_</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-il</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-RU50</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-meeting</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-BCN_A2</td><td><font color=dark red>hw_type-BCN_B2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC</td><td><font color=dark red>hw_env-RNC_S0</td><td><font color=dark red>hw_env-RNC_S1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>bcn_step-BCN_S0</td><td><font color=dark red>bcn_step-BCN_S1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT and Get Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Env And Disconnect From SUT</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td colspan=4>../../resources/libgen_resource.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${MAX TIME FOR CONNECT}</td><td>240</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_NAME_INDEX1}</td><td>warmprocmas:6003</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_NAME_INDEX2}</td><td>wuptstproc</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_NAME_INDEX3}</td><td>wutimas:40995</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{MASTER_NAME_INDEX4}</td><td>WupStub1:40996</td><td>WupStub2:40997</td></tr>
+<tr><td>...</td><td>WupStub3:40998</td><td>WupStub4:40999</td></tr>
+<tr><td>...</td><td>WupStub5:41010</td><td>WupStub6:41011</td></tr>
+<tr><td>...</td><td>WupStub7:41012</td><td>WupStub8:41013</td></tr>
+<tr><td>...</td><td>WupStub9:41014</td><td>WupStub10:41015</td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_INDEX}</td><td>default</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ARRTRIBUTE_INDEX}</td><td>stack_size</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SPECIFIC_VALUE1}</td><td>500000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SPECIFIC_VALUE2}</td><td>600000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SPECIFIC_VALUE3}</td><td>700000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_PROCESS_TYPE}</td><td>IL_TestWarmStubType</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEMP_CONFIG_FILE}</td><td>/root/__libgen_config</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FILE_PREFIX}</td><td>/etc/LibgenConfig_</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FILE_POSTFIX}</td><td>.ini</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MANUAL_FILE_ROOT_AND_NAME}</td><td>/etc/CLIStub.ini</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG1}</td><td>family_number=40996</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>timer_heap_size=10500</td><td>stack_size=700000</td></tr>
+<tr><td>...</td><td>use_focus=1</td><td>msg_pool_size=6000000</td></tr>
+<tr><td>...</td><td>msg_malloc_size=2000000</td><td>max_threads=10</td></tr>
+<tr><td>...</td><td>fd_thread_count=2</td><td>endless_loop_monitor_interval=0</td></tr>
+<tr><td>...</td><td>endless_loop_monitor_threshold=0</td><td>use_fatal_handler=1</td></tr>
+<tr><td>...</td><td>pmq_msg_max=10000</td><td>error_messages_to_master=1</td></tr>
+<tr><td>...</td><td>pmq_msgsize_max=200</td><td>input_sync_disable=1</td></tr>
+<tr><td>...</td><td>cntx_pool_free_thrd=30</td><td>sync_hand_creation_optimize=1</td></tr>
+<tr><td>...</td><td>malloc_block_count=100</td><td>malloc_block_size=900</td></tr>
+<tr><td>...</td><td>log_burst_level=1</td><td>log_burst_limit=10</td></tr>
+<tr><td>...</td><td>msg_conversion_enable=0</td><td>msg_queue_limit=65535</td></tr>
+<tr><td>...</td><td>pool_128=128</td><td>pool_512=64</td></tr>
+<tr><td>...</td><td>pool_2k=32</td><td>pool_8k=8</td></tr>
+<tr><td>...</td><td>pool_64k=2</td><td>scheduler_type=1</td></tr>
+<tr><td>...</td><td>tnsdl_timer_to_external=0</td><td>catch_fatal_sig=1</td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG2}</td><td>family_number=40997</td><td>warming_enable=1</td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG3}</td><td>family_number=40998</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>timer_heap_size=10500</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG4}</td><td>family_number=40999</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>stack_size=700000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG5}</td><td>family_number=41010</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>use_focus=1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG6}</td><td>family_number=41011</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>msg_pool_size=6000000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG7}</td><td>family_number=41012</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>msg_malloc_size=2000000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG8}</td><td>family_number=41013</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>max_threads=10</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG9}</td><td>family_number=41014</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>fd_thread_count=2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG10}</td><td>family_number=41015</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>endless_loop_monitor_interval=0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG_CASE1}</td><td>${CHANGED_STUB_CONFIG1}</td><td>${CHANGED_STUB_CONFIG2}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG3}</td><td>${CHANGED_STUB_CONFIG4}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG5}</td><td>${CHANGED_STUB_CONFIG6}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG7}</td><td>${CHANGED_STUB_CONFIG8}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG9}</td><td>${CHANGED_STUB_CONFIG10}</td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG11}</td><td>family_number=40996</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>endless_loop_monitor_interval=0</td><td>timer_heap_size=20000</td></tr>
+<tr><td>...</td><td>cntx_pool_free_thrd=30</td><td>msg_queue_limit=100</td></tr>
+<tr><td>...</td><td>stack_size=700000</td><td>max_threads=10</td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG12}</td><td>family_number=40997</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>max_threads=11</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG131}</td><td>family_number=40998</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>max_threads=5</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG132}</td><td>family_number=40998</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>max_threads=6</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG133}</td><td>family_number=40998</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>max_threads=10</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG14}</td><td>family_number=40999</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>endless_loop_monitor_interval=0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG15}</td><td>family_number=41010</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>timer_heap_size=20000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG16}</td><td>family_number=41011</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>cntx_pool_free_thrd=30</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG17}</td><td>family_number=41012</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>msg_queue_limit=100</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG18}</td><td>family_number=41013</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>stack_size=500000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG19}</td><td>family_number=41014</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>stack_size=600000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG20}</td><td>family_number=41015</td><td>warming_enable=1</td></tr>
+<tr><td>...</td><td>stack_size=700000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG_CASE21}</td><td>${CHANGED_STUB_CONFIG11}</td><td>${CHANGED_STUB_CONFIG12}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG131}</td><td>${CHANGED_STUB_CONFIG14}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG15}</td><td>${CHANGED_STUB_CONFIG16}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG17}</td><td>${CHANGED_STUB_CONFIG18}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG19}</td><td>${CHANGED_STUB_CONFIG20}</td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG_CASE22}</td><td>${CHANGED_STUB_CONFIG11}</td><td>${CHANGED_STUB_CONFIG12}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG132}</td><td>${CHANGED_STUB_CONFIG14}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG15}</td><td>${CHANGED_STUB_CONFIG16}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG17}</td><td>${CHANGED_STUB_CONFIG18}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG19}</td><td>${CHANGED_STUB_CONFIG20}</td></tr>
+<tr bgcolor=#FFFFFF><td>@{CHANGED_STUB_CONFIG_CASE23}</td><td>${CHANGED_STUB_CONFIG11}</td><td>${CHANGED_STUB_CONFIG12}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG133}</td><td>${CHANGED_STUB_CONFIG14}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG15}</td><td>${CHANGED_STUB_CONFIG16}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG17}</td><td>${CHANGED_STUB_CONFIG18}</td></tr>
+<tr><td>...</td><td>${CHANGED_STUB_CONFIG19}</td><td>${CHANGED_STUB_CONFIG20}</td></tr>
+<tr bgcolor=#FFFFFF><td>${SAVE_CONFIG_COMPLETE}</td><td>store_config complete</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RECOVER_CONFIG_COMPLETE}</td><td>recover_config_back complete</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHANGE_CONFIG_COMPLETE1}</td><td>change_and_commit_continue_for_same_process complete</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHANGE_CONFIG_COMPLETE2}</td><td>change_and_commit_continue_for_different_processes complete</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHANGE_CONFIG_COMPLETE3}</td><td>change_and_commit_once_for_same_process complete</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHANGE_CONFIG_COMPLETE4}</td><td>change_and_commit_once_for_different_processes complete</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${UT_SUCCESS}</td><td>All translator UT passed</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{RNC_NODE_LIST1}</td><td>CFPU-0</td><td>CFPU-1</td></tr>
+<tr bgcolor=#FFFFFF><td>@{RNC_NODE_LIST2}</td><td>CSPU-0</td><td>CSPU-1</td></tr>
+<tr><td>...</td><td>CSPU-2</td><td>CSPU-3</td></tr>
+<tr bgcolor=#FFFFFF><td>@{RNC_NODE_LIST3}</td><td>EIPU-0</td><td>EIPU-1</td></tr>
+<tr><td>...</td><td>EIPU-2</td><td>EIPU-3</td></tr>
+<tr bgcolor=#FFFFFF><td>@{RNC_RU_TYPE_LIST1}</td><td>CFCP</td><td>OMU</td></tr>
+<tr bgcolor=#FFFFFF><td>@{RNC_RU_TYPE_LIST2}</td><td>CSCP</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{RNC_RU_TYPE_LIST3}</td><td>QNIU</td><td>QNIUB</td></tr>
+<tr><td>...</td><td>QNUP</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>@{MGW_NODE_LIST}</td><td>CLA-0</td><td>CLA-1</td></tr>
+<tr bgcolor=#FFFFFF><td>@{MGW_RU_TYPE_LIST}</td><td>CM</td><td>OMU</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>For RU Instance With Same RU TYPE, There Should Be Only One Libgen Configuration File In A Node</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All node status is OK\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get libgen configuration file in the node which contains RU instance\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Get the number of libgen configuration file for RU instance with same RU TYPE\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Get the name of all RU's libgen configuration file\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check libgen configuration file exist in the node which contains RU instance\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check all libgen configuration files should have corresponding RU instance in the node\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check libgen configuration file is unique for RU instance with same RU TYPE\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check the name of all RU's libgen configuration file follow the default naming rules(/etc/LibgenConfig_RUTYPE.ini)\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-TRANSCRIPT.FUT.001.AT.RAN3000_1R_M1_SSU_70</td><td>QL-6</td><td>hw_type-MGW_AB3</td><td>hw_type-MGW_AB4</td></tr>
+<tr><td><br></td><td>...</td><td>hw_env-AB</td><td>hw_type-ADA_FTLB</td><td>hw_env-ADA</td><td>exec_type-automatic</td></tr>
+<tr><td><br></td><td>Check The Number And Name Of Libgen Configuration File Should Be Correct In Each Node</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>The Values Of All Attributes Should Be Correct For A Family Located In RU</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is configured in the RU\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get Test process's all attributes values in all RU's libgen configuration file\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check Test process's all attributes value should be same as it's process type configuration\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check Test process's all attributes value should be same as it's process type configuration\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-TRANSCRIPT.FUT.002.AT.RAN3000_1R_M1_SSU_70</td><td>QL-6</td><td>hw_type-MGW_AB3</td><td>hw_type-MGW_AB4</td></tr>
+<tr><td><br></td><td>...</td><td>hw_env-AB</td><td>hw_type-ADA_FTLB</td><td>hw_env-ADA</td><td>exec_type-automatic</td></tr>
+<tr><td><br></td><td>Get Test Process's All Attributes Values In LDAP By Process Type On OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test Process's All Attributes Values In All Libgen Configuration File Should Be Same With The Corresponding Values In LDAP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>The Values Of All Attributes Should Be Correct For A Family Located In Manual Configuration File</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is configured in CLIStub.ini and CLIStub.ini is available in the node\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get Test process's all attributes values in all RU's libgen configuration file\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check Test process's all attributes values should be same as it's configuration in CLIStub.ini\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check Test process's all attributes values should be same as it's configuration in CLIStub.ini\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-TRANSCRIPT.FUT.003.AT.RAN3000_1R_M1_SSU_70</td><td>QL-6</td><td>hw_type-MGW_AB3</td><td>hw_type-MGW_AB4</td></tr>
+<tr><td><br></td><td>...</td><td>hw_env-AB</td><td>hw_type-ADA_FTLB</td><td>hw_env-ADA</td><td>exec_type-automatic</td></tr>
+<tr><td><br></td><td>Check Test Process's All Attributes Values In All Libgen Configuration File Should Be Same With The Corresponding Values In Manual Configuration File</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Default Value Should Be Provided In Libgen Configuration File, And Have Own Value For Different Products</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Default value is configured in Libgen_translate.py\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Default value has own value for different products\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. All node status is OK\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get default value in all RU's libgen configuration file\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check default value is configured in all RU's libgen configuration file\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check default value should be same as configuration in Libgen_translate.py for different products\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-TRANSCRIPT.FUT.004.AT.RAN3000_1R_M1_SSU_70</td><td>QL-6</td><td>hw_type-MGW_AB3</td><td>hw_type-MGW_AB4</td></tr>
+<tr><td><br></td><td>...</td><td>hw_env-AB</td><td>hw_type-ADA_FTLB</td><td>hw_env-ADA</td><td>exec_type-automatic</td></tr>
+<tr><td><br></td><td>Check Default Value In All Libgen Configuration File Should Be Same With The Value In Libgen Translate Script For Different Products</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>The Value Should Be Correct For Specific RU TYPE Configuration Or Specific Processor Type Configuration</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Specific RU TYPE configuration is configured in Test process's process type\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Specific processor type configuration is configured in Test process's process type\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. All node status is OK\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get the Test process's specific attribute value on specific RU TYPE's libgen configuration file\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Get the Test process's specific attribute value on none_specific RU TYPE's libgen configuration file\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Get the Test process's specific attribute value on specific processor type's libgen configuration file\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Get the Test process's specific attribute value on none_specific processor type's libgen configuration file\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check the Test process's specific attribute value on all RU's libgen configuration file should be same as it's own configuration in process type\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-TRANSCRIPT.FUT.005.AT.RAN3000_1R_M1_SSU_70</td><td>QL-6</td><td>hw_type-MGW_AB3</td><td>hw_type-MGW_AB4</td></tr>
+<tr><td><br></td><td>...</td><td>hw_env-AB</td><td>hw_type-ADA_FTLB</td><td>hw_env-ADA</td><td>exec_type-automatic</td></tr>
+<tr><td><br></td><td>Check Test Process's Specific Attribute Value In All Libgen Configuration File Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>The Value Should Be Updated Correctly After Single Dynamic Configuration Change Operation</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. All node status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Single Dynamic configuration change script should be ready\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get Test process's specific attribute value in libgen configuration file before executing script\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Execute Single LDAP dynamic configuration change script\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Get script Libgen_translate.py execution time\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Get Test process's specific attribute value in libgen configuration file after executing script\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Recover default configuration of Test process's specific attribute\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check the script Libgen_translate.py execution time should be 10 times faster than before\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check Test process's specific attribute value in all RU's libgen configuration file should be same as defined value in LDAP dynamic configuration change script after executing script\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-TRANSCRIPT.FUT.006.AT.RAN3000_1R_M1_SSU_70</td><td>ct-negative</td><td>QL-7</td><td>exec_type-automatic</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Backup Default Configuration Of Test Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Single LDAP Dynamic Configuration Change Script</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test Process's All Attributes Values In All Libgen Configuration File Should Be Same With The Corresponding Values In Single Dynamic Configuration Change Script</td><td>${CHANGED_STUB_CONFIG_CASE1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Recover Default Configuration Of Test Process After Execution Dynamic Configuration Change Script</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>The Value Should Be Updated Correctly After Continuous Dynamic Configure Change Operation</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. All node status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Continuous dynamic configuration change script should be ready\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get Test process's specific attribute value in libgen configuration file before executing script\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Execute continuous LDAP dynamic configuration change script\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Get script Libgen_translate.py execution time\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Get Test process's specific attribute value in libgen configuration file after executing script\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Recover default configuration of Test process's specific attribute\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check the script Libgen_translate.py execution time should be 10 times faster than before\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check Test process's specific attribute value in all RU's libgen configuration file should be same as defined value in LDAP dynamic configuration change script after executing script\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-TRANSCRIPT.FUT.007.AT.RAN3000_1R_M1_SSU_70</td><td>ct-negative</td><td>QL-7</td><td>exec_type-automatic</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Backup Default Configuration Of Test Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Continuous LDAP Dynamic Configuration Change Script</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test Process's All Attributes Values In All Libgen Configuration File Should Be Same With The Corresponding Values In Continuous Dynamic Configuration Change Script</td><td>${CHANGED_STUB_CONFIG_CASE21}</td><td>${CHANGED_STUB_CONFIG_CASE22}</td><td>${CHANGED_STUB_CONFIG_CASE23}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Recover Default Configuration Of Test Process After Execution Dynamic Configuration Change Script</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>The Value Should Be Updated Correctly After Parallel Dynamic Configure Change Operation</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. All node status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Parallel dynamic configuration change script should be ready\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get Test process's specific attribute value in libgen configuration file before executing script\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Execute parallel LDAP dynamic configuration change script\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Get script Libgen_translate.py execution time\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Get Test process's specific attribute value in libgen configuration file after executing script\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Recover default configuration of Test process's specific attribute\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check the script Libgen_translate.py execution time should be 10 times faster than before\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check Test process's specific attribute value in all RU's libgen configuration file should be same as defined value in LDAP dynamic configuration change script after executing script\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-TRANSCRIPT.FUT.001.MT.RAN3000_1R_M1_SSU_70</td><td>ct-negative</td><td>exec_type-manual</td><td>QL-7</td></tr>
+<tr><td><br></td><td>...</td><td>hw_type-MGW_AB3</td><td>hw_type-MGW_AB4</td><td>hw_env-AB</td><td>hw_type-ADA_FTLB</td></tr>
+<tr><td><br></td><td>...</td><td>hw_env-ADA</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Backup Default Configuration Of Test Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Parallel LDAP Dynamic Configuration Change Script</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test Process's All Attributes Values In All Libgen Configuration File Should Be Same With The Corresponding Values In Dynamic Configuration Change Script</td><td>${CHANGED_STUB_CONFIG_CASE3}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Recover Default Configuration Of Test Process After Execution Dynamic Configuration Change Script</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Configuration File Should Be Generated Correctly After Node Restart Operation For Each Node</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. All node status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Dynamic configuration change script should be ready\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Execute LDAP dynamic configuration change script make it work after node restart\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Restart each node in sequence\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Get script Libgen_translate.py execution time\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check all restarted node status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check Test process's all attributes value should be same as it's process type configuration\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Recover default configuration of Test process's specific attribute\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check the script Libgen_translate.py execution time should be 10 times faster than before\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check all restarted node status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check Test process's all attributes value should be same as it's process type configuration\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-TRANSCRIPT.FUT.002.MT.RAN3000_1R_M1_SSU_70</td><td>ct-negative</td><td>exec_type-manual</td><td>type-AVA</td></tr>
+<tr><td><br></td><td>...</td><td>QL-7</td><td>hw_type-MGW_AB3</td><td>hw_type-MGW_AB4</td><td>hw_env-AB</td></tr>
+<tr><td><br></td><td>...</td><td>hw_type-ADA_FTLB</td><td>hw_env-ADA</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute LDAP Dynamic Configuration Change Script</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Each Node In Sequence</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Libgen Translate Script Execution Time</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Restarted Node Status Is OK</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test Process's All Attributes Values In All Libgen Configuration File Should Be Same With The Corresponding Values In Dynamic Configuration Change Script</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Recover Default Configuration Of Test Process After Execution Dynamic Configuration Change Script</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Configuration File Should Be Generated Correctly After Cluster Restart Operation</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. All node status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Dynamic configuration change script should be ready\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Execute LDAP dynamic configuration change script make it work after cluster restart\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Restart cluster\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Get script Libgen_translate.py execution time\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check all node status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check Test process's all attributes value should be same as it's process type configuration\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Recover default configuration of Test process's specific attribute\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check the script Libgen_translate.py execution time should be 10 times faster than before\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check all node status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check Test process's all attributes value should be same as it's process type configuration\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-TRANSCRIPT.FUT.003.MT.RAN3000_1R_M1_SSU_70</td><td>ct-negative</td><td>exec_type-manual</td><td>type-AVA</td></tr>
+<tr><td><br></td><td>...</td><td>QL-7</td><td>hw_type-MGW_AB3</td><td>hw_type-MGW_AB4</td><td>hw_env-AB</td></tr>
+<tr><td><br></td><td>...</td><td>hw_type-ADA_FTLB</td><td>hw_env-ADA</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute LDAP Dynamic Configuration Change Script</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart cluster</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Libgen Translate Script Execution Time</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Node Status Is OK</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test Process's All Attributes Values In All Libgen Configuration File Should Be Same With The Corresponding Values In Dynamic Configuration Change Script</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Recover Default Configuration Of Test Process After Execution Dynamic Configuration Change Script</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Script Libgen_translate.py Execution Time Should Be 10 Times Faster Than Before</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. All node status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Large LDAP data should be ready\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Restart node to trigger execute script Libgen_translate.py\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Get script Libgen_translate.py execution time\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check the script Libgen_translate.py execution time should be 10 times faster than before\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check Test process's all attributes value should be same as it's process type configuration\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-TRANSCRIPT.FUT.004.MT.RAN3000_1R_M1_SSU_70</td><td>ct-negative</td><td>exec_type-manual</td><td>type-PER</td></tr>
+<tr><td><br></td><td>...</td><td>QL-8</td><td>hw_type-MGW_AB3</td><td>hw_type-MGW_AB4</td><td>hw_env-AB</td></tr>
+<tr><td><br></td><td>...</td><td>hw_type-ADA_FTLB</td><td>hw_env-ADA</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Node to Trigger Execute Libgen Translate Script</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Libgen Translate Script Execution Time</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Test Process's All Attributes Values In LDAP By Process Type On OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test Process's All Attributes Values In All Libgen Configuration File Should Be Same With The Corresponding Values In LDAP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Connect To SUT and Get Env</b></td></tr>
+<tr><td><br></td><td>Setup Connection For Adaptive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{node_list}</td><td>Get Active Nodes</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\@{NODE_LIST}</td><td>@{NODE_LIST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>ll /opt/nokiasiemens/testutils/UT*</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Libgen Translate Script UT Successfully</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Backup Test Process's Attributes Values In Libgen Configuration File</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Libgen Translate Script Execution Time</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Execute Libgen Translate Script UT Successfully</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>UT_Libgen_translate.py</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${UT_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Backup Test Process's Attributes Values In Libgen Configuration File</b></td></tr>
+<tr><td><br></td><td>${WO_OMU_node}=</td><td>Get Node From Unit</td><td>${WO_OMU_NAME}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO_OMU_NODE_NAME}</td><td>${WO_OMU_node}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{values_in_file_before}=</td><td>Get All Test Process's Attributes Values In Libgen Configuration File By Index</td><td>${WO_OMU_NODE_NAME}</td><td>${OMU_TYPE}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\@{VALUES_IN_FILE_BEFORE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get Libgen Configuration File Name By RU_TYPE</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${ru_type}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${file_root_and_name}=</td><td>Catenate</td><td>SEPARATOR=</td><td>${FILE_PREFIX}</td><td>${ru_type}</td></tr>
+<tr><td><br></td><td>${file_root_and_name}=</td><td>Catenate</td><td>SEPARATOR=</td><td>${file_root_and_name}</td><td>${FILE_POSTFIX}</td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${file_root_and_name}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Env And Disconnect From SUT</b></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${START_UP_TIME}</td><td>${CHECK FREQUENCY}</td><td>Temp Config File Should Not Exist</td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Temp Config File Should Not Exist</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If File Exist</td><td>${TEMP_CONFIG_FILE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${result}'=='${ACK_EXIST}'</td><td>Recover Default Configuration Of Test Process</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_NOT_EXIST}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check The Number And Name Of Libgen Configuration File Should Be Correct In Each Node</b></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{NODE_LIST}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Change Node Env</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>@{configuration_file_name_list}=</td><td>Get All The Names Of Libgen Configuration File</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>@{ru_type_list}=</td><td>Get RU Type On A Node</td><td>${node}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${result}</td><td>Two List Should Be Same</td><td>${configuration_file_name_list}</td><td>${ru_type_list}</td></tr>
+<tr><td><br></td><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get Test Process's All Attributes Values In LDAP By Process Type On OMU</b></td></tr>
+<tr><td><br></td><td>Change Node Env</td><td>${WO_OMU_NODE_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{values_in_ldap}=</td><td>Get Attributes Values In LDAP By Process Type</td><td>${TEST_PROCESS_TYPE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${values_in_ldap}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Test Process's All Attributes Values In All Libgen Configuration File Should Be Same With The Corresponding Values In LDAP</b></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{NODE_LIST}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Change Node Env</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In LDAP On A Node</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In LDAP On A Node</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${node}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{ru_type_list}=</td><td>Get RU Type On A Node</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${ru_type}</td><td>In</td><td>@{ru_type_list}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${file_root_and_name}=</td><td>Get Libgen Configuration File Name By RU_TYPE</td><td>${ru_type}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>@{values_in_file}=</td><td>Get Attributes Values In File By Index</td><td>${MASTER_NAME_INDEX1}</td><td>${file_root_and_name}</td></tr>
+<tr><td><br></td><td><br></td><td>${result}</td><td>Two List Should Be Same</td><td>${values_in_file}</td><td>${values_in_ldap}</td></tr>
+<tr><td><br></td><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Test Process's All Attributes Values In All Libgen Configuration File Should Be Same With The Corresponding Values In Manual Configuration File</b></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{NODE_LIST}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Change Node Env</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Manual Configuration File On A Node</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Manual Configuration File On A Node</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${node}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{ru_type_list}=</td><td>Get RU Type On A Node</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${ru_type}</td><td>In</td><td>@{ru_type_list}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${file_root_and_name}=</td><td>Get Libgen Configuration File Name By RU_TYPE</td><td>${ru_type}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>@{values_in_file}=</td><td>Get Attributes Values In File By Index</td><td>${MASTER_NAME_INDEX2}</td><td>${file_root_and_name}</td></tr>
+<tr><td><br></td><td><br></td><td>@{values_in_clistub}=</td><td>Get Attributes Values In File By Index</td><td>${MASTER_NAME_INDEX2}</td><td>${MANUAL_FILE_ROOT_AND_NAME}</td></tr>
+<tr><td><br></td><td><br></td><td>${result}</td><td>Two List Should Be Same</td><td>${values_in_file}</td><td>${values_in_clistub}</td></tr>
+<tr><td><br></td><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Default Value In All Libgen Configuration File Should Be Same With The Value In Libgen Translate Script For Different Products</b></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{NODE_LIST}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Change Node Env</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Default Value In Libgen Configuration File Should Be Same With The Value In Libgen Translate Script On A Node For Different Products</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Default Value In Libgen Configuration File Should Be Same With The Value In Libgen Translate Script On A Node For Different Products</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${node}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{ru_type_list}=</td><td>Get RU Type On A Node</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${ru_type}</td><td>In</td><td>@{ru_type_list}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${file_root_and_name}=</td><td>Get Libgen Configuration File Name By RU_TYPE</td><td>${ru_type}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>@{values_in_file}=</td><td>Get Attributes Values In File By Index</td><td>${DEFAULT_INDEX}</td><td>${file_root_and_name}</td></tr>
+<tr><td><br></td><td><br></td><td>@{values_in_script}=</td><td>Get Default Value In Libgen Translate Script By HW Type</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${result}</td><td>Two List Should Be Same</td><td>${values_in_file}</td><td>${values_in_script}</td></tr>
+<tr><td><br></td><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Test Process's Specific Attribute Value In All Libgen Configuration File Should Be Correct</b></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{NODE_LIST}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Change Node Env</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's Specific Attribute Value In Libgen Configuration File Should Be Correct On A Node</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test Process's Specific Attribute Value In Libgen Configuration File Should Be Correct On A Node</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${node}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{ru_type_list}=</td><td>Get RU Type On A Node</td><td>${node}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${ru_type}</td><td>In</td><td>@{ru_type_list}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${processor_type}</td><td>Get Processor Type</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${specific_value}=</td><td>Get Specific Attribute Value In Libgen Configuration File</td><td>${MASTER_NAME_INDEX3}</td><td>${ARRTRIBUTE_INDEX}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${ru_type}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Run Keyword If</td><td>'${ru_type}'=='OMU'</td><td>Check Two List Should Be Same</td><td>${specific_value}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${SPECIFIC_VALUE2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Run Keyword If</td><td>'${ru_type}'!='OMU' and '${processor_type}'=='${OCTEONPLUS_NAME}'</td><td>Check Two List Should Be Same</td><td>${specific_value}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${SPECIFIC_VALUE3}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Run Keyword If</td><td>'${ru_type}'!='OMU' and '${processor_type}'!= '${OCTEONPLUS_NAME}'</td><td>Check Two List Should Be Same</td><td>${specific_value}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${SPECIFIC_VALUE1}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Two List Should Be Same</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${list1}</td><td><font color=#FF6600>${list2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Two List Should Be Same</td><td>${list1}</td><td>${list2}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test Process's All Attributes Values In All Libgen Configuration File Should Be Same With The Corresponding Values In Single Dynamic Configuration Change Script</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${changed_stub_config}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${hw_type}'=='MGW'</td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Single Dynamic Configuration Change Script On MGW</td><td>${changed_stub_config}</td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${hw_type}'=='RNC'</td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Single Dynamic Configuration Change Script On RNC</td><td>${changed_stub_config}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Single Dynamic Configuration Change Script On MGW</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${changed_stub_config}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{MGW_NODE_LIST}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Single Dynamic Configuration Change Script On Target Node</td><td>${node}</td><td>${changed_stub_config}</td><td>@{MGW_RU_TYPE_LIST}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Single Dynamic Configuration Change Script On RNC</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${changed_stub_config}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{RNC_NODE_LIST1}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Single Dynamic Configuration Change Script On Target Node</td><td>${node}</td><td>${changed_stub_config}</td><td>@{RNC_RU_TYPE_LIST1}</td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{RNC_NODE_LIST2}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Single Dynamic Configuration Change Script On Target Node</td><td>${node}</td><td>${changed_stub_config}</td><td>@{RNC_RU_TYPE_LIST2}</td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{RNC_NODE_LIST3}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Single Dynamic Configuration Change Script On Target Node</td><td>${node}</td><td>${changed_stub_config}</td><td>@{RNC_RU_TYPE_LIST3}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Single Dynamic Configuration Change Script On Target Node</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${node}</td><td><font color=#FF6600>${changed_stub_config}</td><td><font color=#FF6600>@{ru_type_list}</td><td><br></td></tr>
+<tr><td><br></td><td>Change Node Env</td><td>${node}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${ru_type}</td><td>In</td><td>@{ru_type_list}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>@{values_in_file_after}=</td><td>Get All Test Process's Attributes Values In Libgen Configuration File By Index</td><td>${node}</td><td>${ru_type}</td></tr>
+<tr><td><br></td><td><br></td><td>${result}</td><td>Two List Should Be Same</td><td>${values_in_file_after}</td><td>${changed_stub_config}</td></tr>
+<tr><td><br></td><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test Process's All Attributes Values In All Libgen Configuration File Should Be Same With The Corresponding Values In Continuous Dynamic Configuration Change Script</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${changed_stub_config1}</td><td><font color=#FF6600>${changed_stub_config2}</td><td><font color=#FF6600>${changed_stub_config3}</td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${hw_type}'=='MGW'</td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Continuous Dynamic Configuration Change Script On MGW</td><td>${changed_stub_config1}</td><td>${changed_stub_config2}</td></tr>
+<tr><td><br></td><td>...</td><td>${changed_stub_config3}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${hw_type}'=='RNC'</td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Continuous Dynamic Configuration Change Script On RNC</td><td>${changed_stub_config1}</td><td>${changed_stub_config2}</td></tr>
+<tr><td><br></td><td>...</td><td>${changed_stub_config3}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Continuous Dynamic Configuration Change Script On MGW</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${changed_stub_config1}</td><td><font color=#FF6600>${changed_stub_config2}</td><td><font color=#FF6600>${changed_stub_config3}</td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{MGW_NODE_LIST}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Continuous Dynamic Configuration Change Script On Target Node</td><td>${node}</td><td>${changed_stub_config1}</td><td>${changed_stub_config2}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${changed_stub_config3}</td><td>@{MGW_RU_TYPE_LIST}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Continuous Dynamic Configuration Change Script On RNC</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${changed_stub_config1}</td><td><font color=#FF6600>${changed_stub_config2}</td><td><font color=#FF6600>${changed_stub_config3}</td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{RNC_NODE_LIST1}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Continuous Dynamic Configuration Change Script On Target Node</td><td>${node}</td><td>${changed_stub_config1}</td><td>${changed_stub_config2}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${changed_stub_config3}</td><td colspan=2>@{RNC_RU_TYPE_LIST1}</td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{RNC_NODE_LIST2}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Continuous Dynamic Configuration Change Script On Target Node</td><td>${node}</td><td>${changed_stub_config1}</td><td>${changed_stub_config2}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${changed_stub_config3}</td><td>@{RNC_RU_TYPE_LIST2}</td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{RNC_NODE_LIST3}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Continuous Dynamic Configuration Change Script On Target Node</td><td>${node}</td><td>${changed_stub_config1}</td><td>${changed_stub_config2}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${changed_stub_config3}</td><td>@{RNC_RU_TYPE_LIST3}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With The Corresponding Values In Continuous Dynamic Configuration Change Script On Target Node</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${node}</td><td><font color=#FF6600>${changed_stub_config1}</td><td><font color=#FF6600>${changed_stub_config2}</td><td><font color=#FF6600>${changed_stub_config3}</td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600><font color=#FF6600>@{ru_type_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change Node Env</td><td>${node}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${ru_type}</td><td>In</td><td>@{ru_type_list}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${processor_type}</td><td>Get Processor Type</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>@{values_in_file_after}=</td><td>Get All Test Process's Attributes Values In Libgen Configuration File By Index</td><td>${node}</td><td>${ru_type}</td></tr>
+<tr><td><br></td><td><br></td><td>Run Keyword If</td><td>'${ru_type}'=='OMU'</td><td>Check Two List Should Be Same</td><td>${values_in_file_after}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${changed_stub_config1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Run Keyword If</td><td>'${ru_type}'!='OMU' and '${processor_type}'=='${OCTEONPLUS_NAME}'</td><td>Check Two List Should Be Same</td><td>${values_in_file_after}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${changed_stub_config2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Run Keyword If</td><td>'${ru_type}'!='OMU' and '${processor_type}'!= '${OCTEONPLUS_NAME}'</td><td>Check Two List Should Be Same</td><td>${values_in_file_after}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${changed_stub_config3}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get All Test Process's Attributes Values In Libgen Configuration File By Index</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${node}</td><td><font color=#FF6600>${ru_type}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${file_root_and_name}=</td><td>Get Libgen Configuration File Name By RU_TYPE</td><td>${ru_type}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{values_in_file}=</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${name_index}</td><td>In</td><td>@{MASTER_NAME_INDEX4}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>@{values}=</td><td>Get Attributes Values In File By Index</td><td>${name_index}</td><td>${file_root_and_name}</td></tr>
+<tr><td><br></td><td><br></td><td>Append To List</td><td>${values_in_file}</td><td>${values}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>@{values_in_file}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Recover Default Configuration Of Test Process</b></td></tr>
+<tr><td><br></td><td>Change Node Env</td><td>${WO_OMU_NODE_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>bash modify_recover_config.sh recover_config_back</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${RECOVER_CONFIG_COMPLETE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${hw_type}'=='MGW'</td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With Default Values Before Execution Dynamic Configuration Change Scrip On MGW</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${hw_type}'=='RNC'</td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With Default Values Before Execution Dynamic Configuration Change Scrip On RNC</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With Default Values Before Execution Dynamic Configuration Change Scrip On MGW</b></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{MGW_NODE_LIST}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With Default Values Before Execution Dynamic Configuration Change Script On Target Node</td><td>${node}</td><td>@{MGW_RU_TYPE_LIST}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With Default Values Before Execution Dynamic Configuration Change Scrip On RNC</b></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{RNC_NODE_LIST1}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With Default Values Before Execution Dynamic Configuration Change Script On Target Node</td><td>${node}</td><td>@{RNC_RU_TYPE_LIST1}</td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{RNC_NODE_LIST2}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With Default Values Before Execution Dynamic Configuration Change Script On Target Node</td><td>${node}</td><td>@{RNC_RU_TYPE_LIST2}</td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{RNC_NODE_LIST3}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With Default Values Before Execution Dynamic Configuration Change Script On Target Node</td><td>${node}</td><td>@{RNC_RU_TYPE_LIST3}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Recover Default Configuration Of Test Process After Execution Dynamic Configuration Change Script</b></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${SAVE_CONFIG}'=='success'</td><td>Recover Default Configuration Of Test Process</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test Process's All Attributes Values In Libgen Configuration File Should Be Same With Default Values Before Execution Dynamic Configuration Change Script On Target Node</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${node}</td><td><font color=#FF6600>@{ru_type_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change Node Env</td><td>${node}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${ru_type}</td><td>In</td><td>@{ru_type_list}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>@{values_in_file_recover}=</td><td>Get All Test Process's Attributes Values In Libgen Configuration File By Index</td><td>${node}</td><td>${ru_type}</td></tr>
+<tr><td><br></td><td><br></td><td>${result}</td><td>Two List Should Be Same</td><td>${values_in_file_recover}</td><td>${VALUES_IN_FILE_BEFORE}</td></tr>
+<tr><td><br></td><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Backup Default Configuration Of Test Process</b></td></tr>
+<tr><td><br></td><td>Change Node Env</td><td>${WO_OMU_NODE_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>bash modify_recover_config.sh store_config</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result.strip()}</td><td>${SAVE_CONFIG_COMPLETE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${SAVE_CONFIG}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Execute Single LDAP Dynamic Configuration Change Script</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>bash modify_recover_config.sh change_and_commit_continue_for_same_process</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.strip()}</td><td>${CHANGE_CONFIG_COMPLETE1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>bash modify_recover_config.sh change_and_commit_continue_for_different_processes</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.strip()}</td><td>${CHANGE_CONFIG_COMPLETE2}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Execute Continuous LDAP Dynamic Configuration Change Script</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>bash modify_recover_config.sh change_and_commit_once_for_same_process</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.strip()}</td><td>${CHANGE_CONFIG_COMPLETE3}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>bash modify_recover_config.sh change_and_commit_once_for_different_processes</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.strip()}</td><td>${CHANGE_CONFIG_COMPLETE4}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Execute Parallel LDAP Dynamic Configuration Change Script</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>bash test.sh</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.strip()}</td><td>${CHANGE_CONFIG_COMPLETE5}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get Libgen Translate Script Execution Time</b></td></tr>
+<tr><td><br></td><td>:For</td><td>${node}</td><td>In</td><td>@{NODE_LIST}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Get Libgen Translate Script Execution Time Of Target Node</td><td>${node}</td><td>${WO_OMU_NODE_NAME}</td><td><br></td></tr>
+<tr><td><br></td><td>Change Node Env</td><td>${WO_OMU_NODE_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

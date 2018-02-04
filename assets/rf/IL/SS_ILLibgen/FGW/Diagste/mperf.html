@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Gather Message Performance Data via Diagste</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Gather Message Performance Data via Diagste</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>""" Diagste improvement: support CPU time &amp; avg message length statistics. """</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-T99999</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I02122</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-IL_PRS_2731</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-il</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td>QL-7</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL3_RIS4</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-mail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC_S0</td><td><font color=dark red>hw_env-RNC_S1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT And Setup TestEnv</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Test Env And Disconnect</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td colspan=4>./resources/Libgen.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${SEND_FAMILY_ID}</td><td>0x44d</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${START_COUNT}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${END_COUNT}</td><td>10</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SE_MSGNUM}</td><td>2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TOTAL_MSGNUM}</td><td>121</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CPU_RATE}</td><td>800</td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>Message Length And Count Get Correctly Via Diagste</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. Test Proc Start\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. LIBGEN Starts Gathering Message Performance Data\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Send A Msg To Testproc From Inter-node\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send A Msg To Testproc From Intra-node and SE\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Send A Msg To Testproc From Inter-node SE\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Check Message Length And Count Get Correctly With Different Options\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. Message Length And Count Get Correctly.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Digste.FUT.001.AT.I02122</td><td>Digste.FUT.002.AT.I02122</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td colspan=4><font color=dark red>Start Gathering Message Performance Data</td></tr>
+<tr><td><br></td><td colspan=5>Send A Msg To Testproc From Intra-family</td></tr>
+<tr><td><br></td><td colspan=5>Send A Msg To Testproc From Inter-node</td></tr>
+<tr><td><br></td><td colspan=5>Send A Msg To Testproc From Intra-node SE</td></tr>
+<tr><td><br></td><td colspan=5>Send A Msg To Testproc From Inter-node SE</td></tr>
+<tr><td><br></td><td colspan=5>Check Message Length And Count Get Correctly With Different Options</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td colspan=4><font color=dark red>Stop Gathering Message Performance Data</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Start Gathering Message Performance Data</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CSCP0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>diagste -u ${WO_CSCP0_ADDR} -f ${FAMILY_ID} -r spar -t mperf -v 1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${WO_CSCP0_ADDR} -f ${FAMILY_ID} -r gpar -t mperf</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Get CPU Rate</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get CPU Rate</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CSCP0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>cat /proc/octeon_info|grep eclock_hz|awk '{print $2}'</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${CPU_RATE}</td><td>Evaluate</td><td>${result.strip()}/1000000</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${CPU_RATE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Gathering Message Performance Data</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CSCP0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>diagste -u ${WO_CSCP0_ADDR} -f ${FAMILY_ID} -r spar -t mperf -v 0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${WO_CSCP0_ADDR} -f ${FAMILY_ID} -r gpar -t mperf</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Reset Gathering Message Performance Data</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CSCP0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>diagste -u ${WO_CSCP0_ADDR} -f ${FAMILY_ID} -r mperf -t reset</td><td>v</td><td colspan=2>1s</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send A Msg To Testproc From Intra-family</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CSCP0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -q %s -c %s -t %s</td><td>${WO_CSCP0_ADDR}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>get_buf_stat</td><td>q</td></tr>
+<tr><td><br></td><td>...</td><td>100</td><td colspan=3>1000</td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send A Msg To Testproc From Inter-node</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CSCP1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>IN RANGE</td><td>${START_COUNT}</td><td>${END_COUNT}</td></tr>
+<tr><td><br></td><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>failure</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -t %s</td><td>${WO_CSCP0_ADDR}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>still_alive</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>5s</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send A Msg To Testproc From Intra-node SE</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CSCP0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5><font color=blue>#dmxcli -s 1302:44d:0 -r 1:1234:0 -l 50 -n 2</td></tr>
+<tr><td><br></td><td><font color=blue>#${result}</td><td><font color=blue>Execute Cmd With Check Expected</td><td><font color=blue>dmxcli -s ${SE_ADDR_CSCP0}:${SEND_FAMILY_ID}:${MASTER_PROCESS_ID} -r ${WO_CSCP0_ADDR}:${FAMILY_ID}:${MASTER_PROCESS_ID} -l 50 -n ${SE_MSGNUM} &amp;</td><td><font color=blue>setup connect</td><td><font color=blue>3s</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>dmxcli -s ${SE_ADDR_CSCP0}:${SEND_FAMILY_ID}:${MASTER_PROCESS_ID} -r ${WO_CSCP0_ADDR}:${FAMILY_ID}:${MASTER_PROCESS_ID} -l 50 -n ${SE_MSGNUM} -t 3</td><td>end connect</td><td>3.5s</td></tr>
+<tr><td><br></td><td><font color=blue>#${pid}</td><td><font color=blue>ShouldMatchRegexp</td><td><font color=blue>${result.strip()}</td><td colspan=2><font color=blue>(?&lt;=\\[\\d\\] )\\d*</td></tr>
+<tr><td><br></td><td><font color=blue>#Sleep</td><td><font color=blue>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Execute Cmd With Check Expected</td><td><font color=blue>kill ${pid}</td><td><font color=blue>msgsent:${SE_MSGNUM}</td><td><font color=blue>3s</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send A Msg To Testproc From Inter-node SE</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CSCP1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5><font color=blue>#dmxcli -s 1302:44d:0 -r 1:1234:0 -l 100 -n 2</td></tr>
+<tr><td><br></td><td><font color=blue>#${result}</td><td><font color=blue>Execute Cmd With Check Expected</td><td><font color=blue>dmxcli -s ${SE_ADDR_CSCP1}:${SEND_FAMILY_ID}:${MASTER_PROCESS_ID} -r ${WO_CSCP0_ADDR}:${FAMILY_ID}:${MASTER_PROCESS_ID} -l 100 -n ${SE_MSGNUM} &amp;</td><td><font color=blue>setup connect</td><td><font color=blue>3s</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>dmxcli -s ${SE_ADDR_CSCP1}:${SEND_FAMILY_ID}:${MASTER_PROCESS_ID} -r ${WO_CSCP0_ADDR}:${FAMILY_ID}:${MASTER_PROCESS_ID} -l 100 -n ${SE_MSGNUM} -t 3</td><td>end connect</td><td>3.5s</td></tr>
+<tr><td><br></td><td><font color=blue>#${pid}</td><td><font color=blue>ShouldMatchRegexp</td><td><font color=blue>${result.strip()}</td><td colspan=2><font color=blue>(?&lt;=\\[\\d\\] )\\d*</td></tr>
+<tr><td><br></td><td><font color=blue>#Sleep</td><td><font color=blue>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Execute Cmd With Check Expected</td><td><font color=blue>kill ${pid}</td><td><font color=blue>msgsent:${SE_MSGNUM}</td><td><font color=blue>3s</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Message Length And Count Get Correctly With Different Options</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CSCP0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result_s}</td><td>Execute CLI</td><td>diagste -u ${WO_CSCP0_ADDR} -f ${FAMILY_ID} -r mperf -t get -s -v ${CPU_RATE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Summary of Message Length And Count</td><td>${result_s}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result_msglc_s}</td><td>Execute CLI</td><td>diagste -u ${WO_CSCP0_ADDR} -f ${FAMILY_ID} -r mperf -t get -s -c msglc -v ${CPU_RATE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Summary of Message Length And Count</td><td>${result_msglc_s}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Message Length Get Correctly</td><td>${result_msglc_s}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result_msglc}</td><td>Execute CLI</td><td>diagste -u ${WO_CSCP0_ADDR} -f ${FAMILY_ID} -r mperf -t get -c msglc -v ${CPU_RATE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result_mslc}</td><td>Execute CLI</td><td>diagste -u ${WO_CSCP0_ADDR} -f ${FAMILY_ID} -r mperf -t get -c mslc -v ${CPU_RATE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result_mlc}</td><td>Execute CLI</td><td>diagste -u ${WO_CSCP0_ADDR} -f ${FAMILY_ID} -r mperf -t get -c mlc -v ${CPU_RATE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Message Length And Count With Different Options</td><td>${result_msglc_s}</td><td>${result_msglc}</td><td>${result_mslc}</td><td>${result_mlc}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check The Summary of Message Length And Count</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_info}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${in_info}</td><td colspan=3>Total count:${TOTAL_MSGNUM}</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${in_info}</td><td colspan=3>Intra-node(from Linux\, intra-family) count:102\, %84.297521</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${in_info}</td><td colspan=3>Intra-node(from Linux\, inter-family) count:3\, %2.479339</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${in_info}</td><td colspan=3>Intra-node(from SE) count:2\, %1.652893</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${in_info}</td><td colspan=3>Inter-node(from Linux) count:12\, %9.917355</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${in_info}</td><td>Inter-node(from SE) count:2\, %1.652893</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Message Length Get Correctly</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_info}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${in_info}</td><td colspan=3>${FAMILY_ID.replace('0x','')}\,C351\,2\,00\,75.0000</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${in_info}</td><td colspan=3>${FAMILY_ID.replace('0x','')}\,6037\,2\,00\,65510.0000</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Message Length And Count With Different Options</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${result_msglc_s}</td><td><font color=#FF6600>${result_msglc}</td><td><font color=#FF6600>${result_mslc}</td><td><font color=#FF6600>${result_mlc}</td></tr>
+<tr><td><br></td><td>Check Information Should Be The Same At First Nums Lines</td><td>${result_msglc_s}</td><td>${result_msglc}</td><td>8</td><td><br></td></tr>
+<tr><td><br></td><td>Check Information Should Be The Same Except Specific Column</td><td>${result_msglc}</td><td>${result_mslc}</td><td>4</td><td><br></td></tr>
+<tr><td><br></td><td>Check Information Should Be The Same Except Specific Column</td><td>${result_mslc}</td><td>${result_mlc}</td><td>3</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Information Should Be The Same At First Nums Lines</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_info1}</td><td><font color=#FF6600>${in_info2}</td><td><font color=#FF6600>${num}</td><td><br></td></tr>
+<tr><td><br></td><td>@{List}</td><td>Set Variable</td><td>${in_info2.splitlines()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>In</td><td colspan=2>@{List}</td></tr>
+<tr><td><br></td><td><br></td><td>Should Contain</td><td>${in_info1}</td><td>${Index}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Information Should Be The Same Except Specific Column</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_info1}</td><td><font color=#FF6600>${in_info2}</td><td><font color=#FF6600>${column}</td><td><br></td></tr>
+<tr><td><br></td><td>@{List}</td><td>Set Variable</td><td>${in_info1.strip().splitlines()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>In</td><td colspan=2>@{List}</td></tr>
+<tr><td><br></td><td><br></td><td>Run Keyword IF</td><td>${column}==3</td><td>Cut Specific Column_3</td><td>${Index}</td></tr>
+<tr><td><br></td><td><br></td><td>Run Keyword IF</td><td>${column}==4</td><td>Cut Specific Column_4</td><td>${Index}</td></tr>
+<tr><td><br></td><td><br></td><td>Should Contain</td><td>${in_info2}</td><td>${info1}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>OLD Check Information Should Be The Same At First Nums Lines</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_info1}</td><td><font color=#FF6600>${in_info2}</td><td><font color=#FF6600>${num}</td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>IN RANGE</td><td>1</td><td>${num}</td></tr>
+<tr><td><br></td><td><br></td><td><font color=blue>#${info}</td><td><font color=blue>Get Line</td><td><font color=blue>${in_info2}</td><td><font color=blue>${Index}</td></tr>
+<tr><td><br></td><td><br></td><td>Set Test Variable</td><td>\${info}</td><td>${in_info2.getline(${Index})}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should Contain</td><td>${in_info1}</td><td>${info}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>OLD Check Information Should Be The Same Except Specific Column</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_info1}</td><td><font color=#FF6600>${in_info2}</td><td><font color=#FF6600>${column}</td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>IN RANGE</td><td>1</td><td>8</td></tr>
+<tr><td><br></td><td><br></td><td><font color=blue>#${line}</td><td><font color=blue>Get Line</td><td><font color=blue>${in_info1}</td><td><font color=blue>${Index}</td></tr>
+<tr><td><br></td><td><br></td><td>Set Test Variable</td><td>\${info}</td><td>${in_info1.getline(${Index})}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Run Keyword IF</td><td>${column}==3</td><td>Cut Specific Column_3</td><td>${line}</td></tr>
+<tr><td><br></td><td><br></td><td>Run Keyword IF</td><td>${column}==4</td><td>Cut Specific Column_4</td><td>${line}</td></tr>
+<tr><td><br></td><td><br></td><td>Should Contain</td><td>${in_info2}</td><td>${info1}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Cut Specific Column_3</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=4><font color=#FF6600>${in_info}</td></tr>
+<tr><td><br></td><td>${info1}</td><td>Execute CLI</td><td colspan=3>echo ${in_info}|awk -F, '{print $1,$2,$4,$5,$6,$7}'|sed -e 's/ /,/g'</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${info1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Cut Specific Column_4</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=4><font color=#FF6600>${in_info}</td></tr>
+<tr><td><br></td><td>${info1}</td><td>Execute CLI</td><td colspan=3>echo ${in_info}|awk -F, '{print $1,$2,$3,$5,$6,$7,$8}'|sed -e 's/ /,/g'</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${info1}</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

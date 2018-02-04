@@ -1,0 +1,56 @@
+*Setting*							
+Suite Setup	connect to target hardware and create test resouce						
+Suite Teardown	remove test resource and disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B01701	Iteration_ID-I01619	hw_env-RNC	hw_env-RNC_S0	hw_env-RNC_S1	type-FUT	exec_type-automatic
+...	element-IL	release-IL1	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	reason-there_are_a_lot_of_SCLI_operation_in_test_case	exec_level-pre	ct-negative	QL-6
+...	HW_TYPE-ADA_FTLB	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	PRS_ID-XXX			
+Resource	il.html						
+Resource	../resources/common_operation_resource.html						
+Resource	../resources/IPBR_basic_operation_resource.html						
+							
+*Variable*							
+${IPBR_4010}	4010						
+${TEST_IP_ADDRESS}	12.13.14.15						
+${TEST_IP_ADDRESS_1}	13.14.15.16						
+${IP_DELETE_ERROR_INFO}	This IP address is associated with an IP based route. Please use 'delete networking ipro' SCLI command to remove this association first.	
+							
+*Test Case*							
+IP normal deletion basic operation	[Tags]	TT_IP.FUT.001.AT.I01619	FRS_ID-PCM_100201_39_R2222				
+	reserve IP address 250.250.250.250 successfully						
+	reserve IP address 251.251.251.251 successfully						
+	Reserve IPRO with IPBR 4010 and IP Address 250.250.250.250						
+	Delete IP Address failed because of IP address bind with IPRO						
+	Delete IP Address 251.251.251.251 successfully						
+	Release IPRO with IPBR 4010 and IP address 250.250.250.250						
+	Delete IP Address 250.250.250.250 successfully						
+	[Teardown]	release test resource for test teardown					
+							
+*Keyword*							
+connect to target hardware and create test resouce	Connect to Target Hardware						
+	switch to active OMU						
+	select EITPUPTRMRG for test						
+							
+remove test resource and disconnect from target hardware	Disconnect from Target Hardware						
+							
+Delete IP Address failed because of IP address bind with IPRO	${result}	delete ip address	${EITPUPTRMRG_0}	${ETHER1_1}	${TEST_IP_ADDRESS}/16		
+	should contain	${result}	${IP_DELETE_ERROR_INFO}				
+	${ip_addr_info}	show ip address	${TEST_IP_ADDRESS}				
+	should be equal	${ip_addr_info['address']}	${TEST_IP_ADDRESS}/16				
+							
+Reserve IPRO with IPBR 4010 and IP Address 250.250.250.250	Add IPRO successfully	${IPBR_4010}	${TEST_IP_ADDRESS}	${EITPUPTRMRG_0}	${ETHER1_1}		
+							
+release IPRO with IPBR 4010 and IP Address 250.250.250.250	delete IPRO successfully	${IPBR_4010}	${TEST_IP_ADDRESS}	${EITPUPTRMRG_0}	${ETHER1_1}		
+							
+Delete IP Address 250.250.250.250 successfully	delete ip address	${EITPUPTRMRG_0}	${ETHER1_1}	${TEST_IP_ADDRESS}/16			
+	${error_info}	Run Keyword And Expect Error	*	show ip address	${TEST_IP_ADDRESS}		
+							
+reserve IP address 250.250.250.250 successfully	add ip address	${EITPUPTRMRG_0}	${ETHER1_1}	${TEST_IP_ADDRESS}/16			
+							
+reserve IP address 251.251.251.251 successfully	add ip address	${EITPUPTRMRG_0}	${ETHER1_1}	${TEST_IP_ADDRESS_1}/16			
+							
+Delete IP Address 251.251.251.251 successfully	delete ip address	${EITPUPTRMRG_0}	${ETHER1_1}	${TEST_IP_ADDRESS_1}/16			
+	${error_info}	Run Keyword And Expect Error	*	show ip address	${TEST_IP_ADDRESS_1}		
+							
+release test resource for test teardown	run keyword if test failed	run keyword and ignore error	delete IPRO successfully	${IPBR_4010}	${TEST_IP_ADDRESS}	${EITPUPTRMRG_0}	${ETHER1_1}
+	run keyword if test failed	run keyword and ignore error	delete test IP address	${EITPUPTRMRG_0}	${ETHER1_1}	${TEST_IP_ADDRESS}/16	
+	run keyword if test failed	run keyword and ignore error	delete test IP address	${EITPUPTRMRG_0}	${ETHER1_1}	${TEST_IP_ADDRESS_1}/16	

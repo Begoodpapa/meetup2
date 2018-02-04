@@ -1,0 +1,71 @@
+*Setting*							
+Suite Setup	Connect to target hardware and reserve test resource						
+Suite Teardown	Release test resource and disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B01178	Iteration_ID-I00369	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	element-IL	exec_type-automatic	exec_level-pre	type-FUT
+...	hw_env-RNC_S0	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0 	QL-5	release-RU50
+Resource	il.html						
+Resource	../resources/common_operation_resource.html						
+Library	../resources/IP_based_route_resource.py						
+							
+*Variable*							
+${IPBR_ID_4080}	4080						
+${IPBR_ID_4081}	4081						
+${IPBR_ID_4082}	4082						
+${TEST_IP_ADDR_1}	192.168.1.21						
+${TEST_IP_ADDR_2}	192.168.1.22						
+${OWNER_NAME_1}	/QNUP-0						
+${OWNER_NAME_2}	/QNUP-1						
+${INVALID_OWNER}	/INVALID_OWNER						
+${IFACE_NAME}	lo						
+${TEST_BASE_IPBR_1}	ipbr_id=${IPBR_ID_4080} route_bw=10000 commit_bw=10000 commit_sig_bw=0 commit_dcn_bw=0 scheduler_type=virtualQueue						
+${TEST_BASE_IPBR_2}	ipbr_id=${IPBR_ID_4081} route_bw=10000 commit_bw=10000 commit_sig_bw=0 commit_dcn_bw=0						
+${NORMAL_IPRO_ATTRIBUTES}	ipbr_id=${IPBR_ID_4080} iface=${IFACE_NAME} owner=${OWNER_NAME_1} ip_address=${TEST_IP_ADDR_1}						
+${PHB_SET_IS_NOT_CONTINOUS}	${NORMAL_IPRO_ATTRIBUTES} phb_set=EF,AF4,AF2						
+${PHB_SET_DO_NOT_CONTAIN_BE}	${NORMAL_IPRO_ATTRIBUTES} phb_set=AF2,AF1						
+${PHB_SET_HAS_DUPLICATE_VALUE}	${NORMAL_IPRO_ATTRIBUTES} phb_set=EF,AF4,AF4						
+${PHB_SET_HAS_INVALID_VALUE_BF}	${NORMAL_IPRO_ATTRIBUTES} phb_set=BF						
+${NONE_EXIST_IPRO_INSTANCE}	iface=${IFACE_NAME} owner=${OWNER_NAME_2} ip_address=${TEST_IP_ADDR_2} ipbr_id=${IPBR_ID_4080}						
+${SAME_ATTRIBUTE_AS_BEFORE}	${NORMAL_IPRO_ATTRIBUTES} phb_set=ALL						
+${DIFFERENT_VALID_ATTRIBUTE_FROM_BEFORE}	${NORMAL_IPRO_ATTRIBUTES} phb_set=EF,AF4,AF3						
+${IPRO_WITH_INVALID_OWNER_NAME}	ipbr_id=${IPBR_ID_4082} iface=${IFACE_NAME} owner=${INVALID_OWNER} ip_address=${TEST_IP_ADDR_1}						
+							
+*Test Case*							
+Set IPRO with valid and invalid parameters	[Tags]	FRS_ID-PCM_100201_9_R1709	EFS_ID-RNC_EFS_1709_329	EFS_ID-RNC_EFS_1709_344	EFS_ID-TT_SFS_IPTransport.2990	PRS_ID-PRS_4221	PRS_ID-PRS_4225
+	[Template]	Update IPRO and check result					
+	${SAME_ATTRIBUTE_AS_BEFORE}	SUCCESS					
+	${DIFFERENT_VALID_ATTRIBUTE_FROM_BEFORE}	SUCCESS					
+	${NONE_EXIST_IPRO_INSTANCE}	FAIL					
+	${PHB_SET_DO_NOT_CONTAIN_BE}	FAIL	BE_OR_EF_MISSING	AF2,AF1			
+	${PHB_SET_HAS_DUPLICATE_VALUE}	FAIL	PHB_DUPLICATE	EF,AF4,AF4			
+	${PHB_SET_IS_NOT_CONTINOUS}	FAIL	PHB_NOT_CONSECUTIVE	EF,AF4,AF2			
+	${PHB_SET_HAS_INVALID_VALUE_BF}	FAIL	PHB_INVALID_STR	BF			
+	${IPRO_WITH_INVALID_OWNER_NAME}	FAIL					
+							
+*Keyword*							
+Update IPRO and check result	[Arguments]	${attr_str}	${expect_result}	${error_type}=	${error_value}=	${error_param}=	
+	${result}	update IPRO with attributes	${attr_str}				
+	check IPRO operation result	${result}	${expect_result}	SET	${error_type}	${error_param}	${error_value}
+							
+Reserve IP Address, IPBR and IPRO as test resource	add network address	${OWNER_NAME_1}	${IFACE_NAME}	${TEST_IP_ADDR_1}	dedicated		
+	add network address	${OWNER_NAME_2}	${IFACE_NAME}	${TEST_IP_ADDR_2}	dedicated		
+	${result}	add IP based route with attributes	${TEST_BASE_IPBR_1}				
+	should be equal	${result['result']}	Success				
+	${result}	add IP based route with attributes	${TEST_BASE_IPBR_2}				
+	should be equal	${result['result']}	Success				
+	${result}	add IPRO with attributes	${NORMAL_IPRO_ATTRIBUTES}				
+	Should be equal	${result['result']}	Success				
+							
+Release test resource	${result}	Delete IPRO with attributes	${NORMAL_IPRO_ATTRIBUTES}				
+	Should be equal	${result['IPRO Delete']}	Success				
+	Delete network address	${OWNER_NAME_1}	${IFACE_NAME}	${TEST_IP_ADDR_1}	dedicated		
+	Delete network address	${OWNER_NAME_2}	${IFACE_NAME}	${TEST_IP_ADDR_2}	dedicated		
+	${result}	Delete IP based route with attributes	${TEST_BASE_IPBR_1}				
+	Should be equal	${result['result']}	Success				
+	${result}	Delete IP based route with attributes	${TEST_BASE_IPBR_2}				
+	Should be equal	${result['result']}	Success				
+							
+Connect to target hardware and reserve test resource	Connect to target hardware						
+	Reserve IP Address, IPBR and IPRO as test resource						
+							
+Release test resource and disconnect from target hardware	Release test resource						
+	Disconnect from target hardware						

@@ -1,0 +1,153 @@
+*Setting*							
+Suite Setup	connect to target hardware and add ipro						
+Suite Teardown	release test resource and disconnect from target hardware						
+Force Tags	Product_Backlog_ID-RAN2897_1R_M1	release-RU50EP1	exec_type-automatic	type-FUT	hw_env-RNC_S0	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	QL-5
+...	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	EFS_ID-RNC_EFS_2897_171	EFS_ID-RNC_EFS_2897_174	RNC_EFS_2897_159	EFS_ID-RNC_EFS_2897_161	FRS_ID-PCM_100201_64_R2897
+...	EFS_ID-RNC_EFS_2897_163	PRS_ID-IL_PRS_4915					
+Default Tags							
+Resource	il.html						
+Resource	../resources/common_operation_resource.html						
+Resource	../resources/cac_basic_operation_resource.html						
+Resource	../resources/IPBR_basic_operation_resource.html						
+Resource	../../SS_ILCallMgmt/resources/cm_resource.tsv						
+Library	Collections						
+Library	../resources/cacprb_test_resources.py						
+							
+*Variable*							
+${IPBR_ID_4002}	4002						
+${IPBR_ID_4003}	4003						
+${IPBR_ID_4095}	4095						
+${IP_1}	%{BFD_TEST_IP_1}						
+${IP_1_OWNER}	/%{EITPUPTRM_TYPE_NAME}-2						
+${IP_1_IFACE}	%{ETH1_1}						
+${IP_2}	%{VRF_TEST_IP_1}						
+${IP_2_OWNER}	/%{EITPUPTRM_TYPE_NAME}-0						
+${IP_2_IFACE}	ethvrf						
+${VRF_11}	vrf11						
+${PHB_AF2_AF1_BE}	AF2,AF1,BE						
+${PHB_EF_AF4}	EF,AF4						
+${PHB_ALL}	ALL						
+${IP_AF2_AF1_BE}	${IP_1}						
+${IP_EF_AF4}	${IP_2}						
+${IP_ALL}	${IP_1}						
+${WITH_CAC_DSCP_EF}	NCAC=0,FABR=20000,FMBR=30000,DSCP=2E						
+${WITH_CAC_DSCP_BE}	NCAC=0,FABR=20000,FMBR=30000,DSCP=37						
+${WITH_CAC_DSCP_AF3}	NCAC=0,FABR=20000,FMBR=30000,DSCP=1C						
+${CS1_MODIFY_WITH_BW_DOWNGRADE_EF}	UPGR=0,NCAC=0,FABR=1000,FMBR=2000,DSCP=2E						
+${CS1_MODIFY_WITH_BW_DOWNGRADE_BE}	UPGR=0,NCAC=0,FABR=1000,FMBR=2000,DSCP=37						
+${ERR_CODE_450E}	0x450E						
+${DSCP_MATCH}	SUCCESSFUL						
+${DSCP_DISMATCH}	FAILED						
+${NO_NEED_CHECK_ERR_CODE}	${EMPTY}						
+${NO_NEED_CHECK_IP}	${EMPTY}						
+							
+*Test Case*							
+Select IP Address with mismatching DSCP in one IPBR one IPRO differential mode	[Tags]						
+	[Setup]	Register log and Create SRB call successfully					
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4002}	${WITH_CAC_DSCP_EF}	${DSCP_DISMATCH}	${ERR_CODE_450E}	${IPBR_ID_4002}
+	...	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4002}	${CALL_ID}	${WITH_CAC_DSCP_EF}	${DSCP_DISMATCH}	${ERR_CODE_450E}
+	...	${IPBR_ID_4002}	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}			
+	Create Direct IuPS leg and check result	${USCP}	${IPBR_ID_4002}	${WITH_CAC_DSCP_EF}	${DSCP_DISMATCH}	${ERR_CODE_450E}	${IPBR_ID_4002}
+	...	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}				
+	[Teardown]	release legs created in test case					
+							
+Select IP Address with matching DSCP in one IPBR one IPRO differential mode	[Setup]	Create SRB call successfully for prepare					
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4002}	${WITH_CAC_DSCP_BE}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4002}
+	...	${IP_AF2_AF1_BE}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4002}	${CALL_ID}	${WITH_CAC_DSCP_BE}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4002}	${IP_AF2_AF1_BE}	${OUT_LEG_LIST}			
+	Create Direct IuPS leg and check result	${USCP}	${IPBR_ID_4002}	${WITH_CAC_DSCP_BE}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4002}
+	...	${IP_AF2_AF1_BE}	${OUT_LEG_LIST}				
+	[Teardown]	release legs created in test case					
+							
+Select IP Address with mismatching DSCP in one IPBR two IPRO differential mode	[Tags]						
+	[Setup]	Register log and Create SRB call successfully					
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4003}	${WITH_CAC_DSCP_AF3}	${DSCP_DISMATCH}	${ERR_CODE_450E}	${IPBR_ID_4003}
+	...	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4003}	${CALL_ID}	${WITH_CAC_DSCP_AF3}	${DSCP_DISMATCH}	${ERR_CODE_450E}
+	...	${IPBR_ID_4003}	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}			
+	Create Direct IuPS leg and check result	${USCP}	${IPBR_ID_4003}	${WITH_CAC_DSCP_AF3}	${DSCP_DISMATCH}	${ERR_CODE_450E}	${IPBR_ID_4003}
+	...	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}				
+	[Teardown]	release legs created in test case					
+							
+Select IP Address with matching DSCP in one IPBR two IPRO differential mode	[Setup]	Create SRB call successfully for prepare					
+	Create IuCS CS1 leg with same DSCP						
+	Create Iur CS1 leg with same DSCP						
+	Create IuCS CS1 leg with diff DSCP						
+	Create Iur CS1 leg with diff DSCP						
+	Create Direct IuPS leg and check result	${USCP}	${IPBR_ID_4002}	${WITH_CAC_DSCP_BE}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4002}
+	...	${IP_AF2_AF1_BE}	${OUT_LEG_LIST}				
+	[Teardown]	release legs created in test case					
+							
+Select IP Address with matching DSCP in one IPBR two IPRO overlap differential mode	[Setup]	Modify IPRO and Create SRB call successfully					
+	Create legs with non-overlap PHB						
+	Create legs with overlap PHB in RR mode						
+	[Teardown]	release legs created in test case					
+							
+*Keyword*							
+Create SRB call successfully	${srb_leg}	reserve srb call	${USCP}	${IPBR_ID_4095}	${WITH_CAC_DSCP_BE}		
+	set test variable	\${CALL_ID}	${srb_leg.call_id}				
+	Set To Object	${srb_leg}	computer	${USCP}			
+	Set To Object	${srb_leg}	leg_id	IN			
+	should be equal	${srb_leg.result}	SUCCESSFUL				
+	run keyword if	'${srb_leg.result}' == 'SUCCESSFUL'	append to list	${IN_LEG_LIST}	${srb_leg}		
+							
+Register log and Create SRB call successfully	register expect syslog	0x450E	Fail to get IPRO, no IPRO available				
+	create leg list						
+	Create SRB call successfully						
+							
+Modify IPRO and Create SRB call successfully	modify IPRO successfully	${IPBR_ID_4003}	${IP_1}	${IP_1_OWNER}	${IP_1_IFACE}	${PHB_ALL}	
+	create leg list						
+	Create SRB call successfully						
+							
+Create SRB call successfully for prepare	create leg list						
+	Create SRB call successfully						
+							
+Create IuCS CS1 leg with same DSCP	${orig_leg}	Create IuCS leg and check result	${USCP}	${IPBR_ID_4003}	${WITH_CAC_DSCP_EF}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4003}	${IP_EF_AF4}	${OUT_LEG_LIST}			
+	${new_leg}	Create IuCS leg and check result	${USCP}	${IPBR_ID_4003}	${CS1_MODIFY_WITH_BW_DOWNGRADE_EF}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4003}	${IP_EF_AF4}	${OUT_LEG_LIST}			
+	should not be equal	${orig_leg.local_port}	${new_leg.local_port}				
+							
+Create Iur CS1 leg with same DSCP	${orig_leg}	Create Iur leg and check result	${USCP}	${IPBR_ID_4003}	${CALL_ID}	${WITH_CAC_DSCP_EF}	${DSCP_MATCH}
+	...	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4003}	${IP_EF_AF4}	${OUT_LEG_LIST}		
+	${new_leg}	Create Iur leg and check result	${USCP}	${IPBR_ID_4003}	${CALL_ID}	${CS1_MODIFY_WITH_BW_DOWNGRADE_EF}	${DSCP_MATCH}
+	...	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4003}	${IP_EF_AF4}	${OUT_LEG_LIST}		
+	should not be equal	${orig_leg.local_port}	${new_leg.local_port}				
+							
+Create IuCS CS1 leg with diff DSCP	Create IuCS leg and check result	${USCP}	${IPBR_ID_4003}	${WITH_CAC_DSCP_EF}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4003}
+	...	${IP_EF_AF4}	${OUT_LEG_LIST}				
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4003}	${CS1_MODIFY_WITH_BW_DOWNGRADE_BE}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4003}
+	...	${IP_AF2_AF1_BE}	${OUT_LEG_LIST}				
+							
+Create Iur CS1 leg with diff DSCP	Create Iur leg and check result	${USCP}	${IPBR_ID_4003}	${CALL_ID}	${WITH_CAC_DSCP_EF}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4003}	${IP_EF_AF4}	${OUT_LEG_LIST}			
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4003}	${CALL_ID}	${CS1_MODIFY_WITH_BW_DOWNGRADE_BE}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4003}	${IP_AF2_AF1_BE}	${OUT_LEG_LIST}			
+							
+Create legs with non-overlap PHB	Create IuCS leg and check result	${USCP}	${IPBR_ID_4003}	${WITH_CAC_DSCP_BE}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4003}
+	...	${IP_AF2_AF1_BE}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4003}	${CALL_ID}	${WITH_CAC_DSCP_BE}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4003}	${IP_AF2_AF1_BE}	${OUT_LEG_LIST}			
+	Create Direct IuPS leg and check result	${USCP}	${IPBR_ID_4003}	${WITH_CAC_DSCP_BE}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4003}
+	...	${IP_AF2_AF1_BE}	${OUT_LEG_LIST}				
+							
+Create legs with overlap PHB in RR mode	Create IuCS leg and check result	${USCP}	${IPBR_ID_4003}	${WITH_CAC_DSCP_EF}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4003}
+	...	${IP_EF_AF4}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4003}	${CALL_ID}	${WITH_CAC_DSCP_EF}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4003}	${IP_AF2_AF1_BE}	${OUT_LEG_LIST}			
+	Create Direct IuPS leg and check result	${USCP}	${IPBR_ID_4003}	${WITH_CAC_DSCP_EF}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4003}
+	...	${IP_EF_AF4}	${OUT_LEG_LIST}				
+							
+connect to target hardware and add ipro	connect to target hardware						
+	switch to active OMU						
+	Get Active CP Units						
+	Get Random USCP Unit						
+	Add IPRO successfully	${IPBR_ID_4002}	${IP_1}	${IP_1_OWNER}	${IP_1_IFACE}	${PHB_AF2_AF1_BE}	
+	Add IPRO successfully	${IPBR_ID_4003}	${IP_1}	${IP_1_OWNER}	${IP_1_IFACE}	${PHB_AF2_AF1_BE}	
+	Add IPRO successfully	${IPBR_ID_4003}	${IP_2}	${IP_2_OWNER}	${IP_2_IFACE}	${PHB_EF_AF4}	${VRF_11}
+							
+release test resource and disconnect from target hardware	release ipro with specified ipbr id	${IPBR_ID_4002}					
+	release ipro with specified ipbr id	${IPBR_ID_4003}					
+	Disconnect From Target Hardware						

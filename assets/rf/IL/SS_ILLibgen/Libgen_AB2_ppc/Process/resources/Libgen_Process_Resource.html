@@ -1,0 +1,2161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+
+
+
+  
+  
+  
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252"><title>Libgen_Process_Resource</title>
+
+
+
+  
+
+
+  
+  
+  
+  
+  
+  
+  <meta name="GENERATOR" content="OpenOffice.org 2.3 (Win32)">
+
+
+
+
+  
+  
+  
+  <meta name="CREATED" content="20070731;12001513">
+
+
+
+
+  
+  
+  
+  <meta name="CHANGED" content="20080425;5033887">
+
+
+
+
+  
+  
+  
+  <style type="text/css">
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+TD P { margin-bottom: 0cm; color: #000000; font-family: "Arial", sans-serif; font-size: 9pt }
+H1 { margin-bottom: 0.21cm; color: #000000 }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+P { margin-bottom: 0.21cm; color: #000000 }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm; color: #000000 }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+TH P { margin-bottom: 0cm; color: #000000 }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+TH P.cjk { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P.ctl { font-family: "Arial", sans-serif; font-size: 9pt }
+-->
+  </style></head><body style="direction: ltr; color: rgb(0, 0, 0);" lang="en-US">
+
+
+
+
+<h1 style="font-family: Arial;" class="western">Libgen_Process_Resource</h1>
+
+
+
+
+<h2 class="western">Settings</h2>
+
+
+
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+
+
+
+  <colgroup><col width="51"><col width="51"><col width="51"><col width="51"></colgroup><tbody>
+
+
+
+    <tr valign="top">
+
+
+
+      <th bgcolor="#b3b3b3" width="25%">
+      
+      
+      <p class="western">Setting</p>
+
+
+      </th>
+
+
+
+      <th bgcolor="#b3b3b3" width="25%">
+      
+      
+      <p class="western">Value</p>
+
+
+      </th>
+
+
+
+      <th bgcolor="#b3b3b3" width="25%">
+      
+      
+      <p class="western">Value</p>
+
+
+      </th>
+
+
+
+      <th bgcolor="#b3b3b3" width="25%">
+      
+      
+      <p class="western">Value</p>
+
+
+      </th>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td>Resource</td>
+
+
+
+      <td>il.html</td>
+
+
+
+      <td>
+      
+      
+      <p><br>
+
+
+      </p>
+
+
+      </td>
+
+
+
+      <td>
+      
+      
+      <p><br>
+
+
+      </p>
+
+
+      </td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td>
+      
+      
+      <p><br>
+
+
+      </p>
+
+
+      </td>
+
+
+
+      <td>
+      
+      
+      <p><br>
+
+
+      </p>
+
+
+      </td>
+
+
+
+      <td>
+      
+      
+      <p><br>
+
+
+      </p>
+
+
+      </td>
+
+
+
+      <td>
+      
+      
+      <p><br>
+
+
+      </p>
+
+
+      </td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<h2 style="font-family: Arial;" class="western"></h2>
+
+
+
+
+<h2 style="font-family: Arial;" class="western">Variables</h2>
+
+
+
+
+<table style="font-family: Arial;" border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+
+
+
+
+  <col width="64*"> <col width="64*"> <col width="64*"> <col width="64*"> <tbody>
+
+
+
+
+    <tr valign="top">
+
+
+
+
+      <th bgcolor="#b3b3b3" width="25%">
+      
+      
+      
+      <p class="western">Variable</p>
+
+
+
+
+      </th>
+
+
+
+
+      <th bgcolor="#b3b3b3" width="25%">
+      
+      
+      
+      <p class="western">Value</p>
+
+
+
+
+      </th>
+
+
+
+
+      <th bgcolor="#b3b3b3" width="25%">
+      
+      
+      
+      <p class="western">Value</p>
+
+
+
+
+      </th>
+
+
+
+
+      <th bgcolor="#b3b3b3" width="25%">
+      
+      
+      
+      <p class="western">Value</p>
+
+
+
+
+      </th>
+
+
+
+
+    </tr>
+
+
+
+
+    
+    
+
+
+
+
+    <tr>
+
+
+
+
+      <td>${TESTING_PROCESS}</td>
+
+
+
+
+      <td>lbgprtst</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr><td>${TIME_QUOTA}</td><td>3</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${TIME_DURATION}</td><td>2</td><td><br>
+</td></tr><tr><td>${LIBGENTST_FAMILY_ID}</td><td>0x0400</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${PROCESS_ID}</td><td>0x0</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${C_TEST_MSG_S}</td><td>0x6034</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${START_UP_TIME}</td><td>1</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>0xffff11</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${DSPM}</td><td>%{DSPM_0_NAME}</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${UNIT_INDEX}</td><td>0</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${DSPM_UNIT_TYPE}</td><td>%{DSPM_TYPE}</td><td><br>
+</td><td><br>
+</td></tr>
+
+
+
+
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+<br>
+
+
+
+
+<h2 style="font-family: Arial;" class="western">User
+Keywords</h2>
+
+
+
+
+<table style="font-family: Arial; width: 100%;" border="1" bordercolor="#000000" cellpadding="4" cellspacing="0">
+
+
+
+
+  <col width="30*"> <col width="48*"> <col width="37*"> <col width="55*"> <col width="37*"> <col width="26*"> <col width="23*"> <tbody>
+
+
+
+
+    <tr valign="top">
+
+
+
+
+      <th style="width: 116px;" bgcolor="#b3b3b3">
+      
+      
+      
+      <p class="western">Keyword</p>
+
+
+
+
+      </th>
+
+
+
+
+      <th style="width: 200px;" bgcolor="#b3b3b3">
+      
+      
+      
+      <p class="western">Action</p>
+
+
+
+
+      </th>
+
+
+
+
+      <th style="width: 283px;" bgcolor="#b3b3b3">
+      
+      
+      
+      <p class="western">Argument</p>
+
+
+
+
+      </th>
+
+
+
+
+      <th style="width: 200px;" bgcolor="#b3b3b3">
+      
+      
+      
+      <p class="western">Argument</p>
+
+
+
+
+      </th>
+
+
+
+
+      <th style="width: 259px;" bgcolor="#b3b3b3">
+      
+      
+      
+      <p class="western">Argument</p>
+
+
+
+
+      </th>
+
+
+
+
+      <th style="width: 206px;" bgcolor="#999999">
+      
+      
+      
+      <p class="western" align="center"><font size="2"><b>Argument</b></font></p>
+
+
+
+
+      </th>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="background-color: rgb(255, 255, 153);" colspan="6" rowspan="1">Libgen Clear All Hands</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>Send&nbsp;Msg To Target Process Clear All Hands</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${LIBGENTST_FAMILY_ID}</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td>
+
+
+
+
+      
+
+
+
+
+      
+
+
+
+
+      
+
+
+
+
+      
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>...<br></td><td>${DMX_ATTR_DEFAULT_VALUE}</td>
+
+
+
+
+      
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="background-color: rgb(255, 255, 153);" colspan="6" rowspan="1">Libgen Stop Hand And Return Success</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>[Arguments]</td>
+
+
+
+
+      <td>${hand_process_id}</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>${result}</td>
+
+
+
+
+      <td>Send Msg To Target Process Stop Hand</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${LIBGENTST_FAMILY_ID}</td><td>${PROCESS_ID}</td>
+
+
+
+
+      
+
+
+
+
+      
+
+
+
+
+      
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr><td><br>
+</td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${hand_process_id}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br>
+</td><td><br>
+</td></tr>
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="background-color: rgb(255, 255, 153);" colspan="6" rowspan="1">Libgen Next Reserved</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>[Arguments]</td>
+
+
+
+
+      <td>${hand_group}</td>
+
+
+
+
+      <td>${hand_process_id}</td>
+
+
+
+
+      <td>${expected_reserved}</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>${result}<br></td>
+
+
+
+
+      <td>Send Msg To Target Process Get Next Reserved</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${LIBGENTST_FAMILY_ID}</td><td>${PROCESS_ID}</td>
+
+
+
+
+      
+
+
+
+
+      
+
+
+
+
+      
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr><td><br>
+</td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${hand_group}</td><td>${hand_process_id}</td></tr><tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>Should Be Equal</td>
+
+
+
+
+      <td>${result}</td>
+
+
+
+
+      <td>${expected_reserved}</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="background-color: rgb(255, 255, 153);" colspan="6" rowspan="1">Libgen Find Focus</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>[Arguments]</td>
+
+
+
+
+      <td>${target_family_id}</td><td>${hand_process_id}</td>
+
+
+
+
+      
+
+
+
+
+      <td>${expected_focus}</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>${result}</td>
+
+
+
+
+      <td>Send Msg To Target Process Find Focus</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${LIBGENTST_FAMILY_ID}</td><td>${PROCESS_ID}</td>
+
+
+
+
+      
+
+
+
+
+      
+
+
+
+
+      
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr><td><br>
+</td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${target_family_id}</td><td>${hand_process_id}</td></tr><tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>Should Be Equal</td><td>${result}</td><td>${expected_focus}</td>
+
+
+
+
+      
+
+
+
+
+      
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="background-color: rgb(255, 255, 153);" colspan="6" rowspan="1">Libgen Hand Process Count</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>[Arguments]</td>
+
+
+
+
+      <td>${target_family_id}<br></td><td>${hand_group}</td>
+
+
+
+
+      
+
+
+
+
+      <td>${expected_count}</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>${result}</td><td>Send Msg To Target Process Count Hand</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${LIBGENTST_FAMILY_ID}</td>
+
+
+
+
+      
+
+
+
+
+      
+
+
+
+
+      
+
+
+
+
+      <td>${PROCESS_ID}</td>
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>...</td><td>${C_TEST_MSG_S}</td>
+
+
+
+
+      
+
+
+
+
+      <td>${DMX_ATTR_DEFAULT_VALUE}</td>
+
+
+
+
+      <td>${target_family_id}</td>
+
+
+
+
+      <td>${hand_group}</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr><td><br>
+</td><td>Should Be Equal</td><td>${result}</td><td>${expected_count}</td><td><br>
+</td><td><br>
+</td></tr><tr>
+
+
+
+
+      <td style="background-color: rgb(255, 255, 153);" colspan="6" rowspan="1">Libgen Hand Alive</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>[Arguments]</td>
+
+
+
+
+      <td>${hand_process_id}</td><td>${log_info}</td>
+
+
+
+
+      
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>${result}</td><td>Send Msg To Target Process Alive Check</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${LIBGENTST_FAMILY_ID}</td><td>${PROCESS_ID}</td>
+
+
+
+
+      
+
+
+
+
+      
+
+
+
+
+      
+
+
+
+
+      
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td>
+
+
+
+
+      
+
+
+
+
+      
+
+
+
+
+      <td>${hand_process_id}</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr><td><br>
+</td><td>Should Be Equal</td><td>${result}</td><td>${log_info}</td><td><br>
+</td><td><br>
+</td></tr><tr>
+
+
+
+
+      <td style="background-color: rgb(255, 255, 153);" colspan="6" rowspan="1">Libgen Disconnect from SUT</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>Disconnect All Ils</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="background-color: rgb(255, 255, 153);" colspan="6" rowspan="1">Libgen kill Testing
+Process&nbsp;</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>Kill Process</td>
+
+
+
+
+      <td>${TESTING_PROCESS}</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr style="font-family: Arial;">
+
+
+
+
+      <td style="width: 208px;" colspan="6" bgcolor="#ffffb3">Libgen Restart Testing Process&nbsp;</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    <tr><td><br>
+</td><td>execute_mml_without_check</td><td>killall&nbsp;${TESTING_PROCESS}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>sleep</td><td>${START_UP_TIME}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>execute_mml_without_check</td>
+
+
+
+
+      <td>${TESTING_PROCESS}<font size="-1">&amp;</font></td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>sleep</td>
+
+
+
+
+      <td>${START_UP_TIME}</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="background-color: rgb(255, 255, 153);" colspan="6" rowspan="1">Libgen <font size="-1">Connect To SUT</font></td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>${index}=</td>
+
+
+
+
+      <td>Connect To Il</td>
+
+
+
+
+      <td>%{HOSTIP}</td>
+
+
+
+
+      <td>%{PORT}</td>
+
+
+
+
+      <td>120sec</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>...</td>
+
+
+
+
+      <td>%{USERNAME}</td>
+
+
+
+
+      <td>%{PASSWD}</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td>[return]</td>
+
+
+
+
+      <td>${index}</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      <td><br>
+</td>
+
+
+
+
+      
+
+
+
+
+    </tr><tr><td><br>
+</td><td>Change Node Env</td><td>TCU-0</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Execute CLI</td><td>ilcliru.sh&nbsp;${DSPM}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Set Variable Of Libgen Use Phys Addr</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>Set Variable Of Libgen Use Phys Addr</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>Get Libgen Use Phys Addr</td><td>${DSPM_UNIT_TYPE}</td><td>${UNIT_INDEX}</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Set Suite Variable</td><td>\${OMU_PHYSICAL_ADDRESS}</td><td><br></td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr>
+
+
+
+
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+<p class="western" style="margin-bottom: 0cm; font-family: Arial;"><br>
+
+
+
+
+</p>
+
+
+
+
+</body></html>

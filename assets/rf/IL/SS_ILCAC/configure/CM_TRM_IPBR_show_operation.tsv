@@ -1,0 +1,57 @@
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*
+Suite Setup	Connect to target hardware						
+Suite Teardown	Disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B01178	Iteration_ID-I00369	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	element-IL	exec_type-automatic	exec_level-pre	type-FUT
+...	hw_env-RNC_S0	hw_env-ADA	hw_env-RNC	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	HW_TYPE-ADA_FTLB	QL-5
+...	FRS_ID-PCM_100201_64_0000	release-RU50	EFS_ID-XXX	PRS_ID-XXX			
+Resource	il.html						
+Resource	../resources/common_operation_resource.html						
+Library	../resources/IP_based_route_resource.py						
+							
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*
+${TEST_IPBR_RESOURCE_1}	ipbr_id=4080 ipbr_name=ipbr-name-same						
+${TEST_IPBR_RESOURCE_2}	ipbr_id=4081 ipbr_name=ipbr-name-same						
+${TEST_IPBR_RESOURCE_3}	ipbr_id=4082 ipbr_name=other-name						
+${EXIST_IPBR_ID}	ipbr_id=4080						
+${IPBR_NAME_WITH_TWO_INSTANCE}	ipbr_name=ipbr-name-sAme						
+${NONE_EXIST_IPBR_ID}	ipbr_id=4083						
+${NONE_EXIST_IPBR_NAME}	ipbr_name=name-not-exist						
+${IPBR_ID_AND_NAME_MISMATCH}	ipbr_id=4080 ipbr_name=other-name						
+${ERROR_IPBR_ID_NOT_EXIST}	IPBR with ipbr-id (4083) does not exist.						
+${ERROR_IPBR_NAME_NOT_EXIST}	IPBR with ipbr-name (name-not-exist) does not exist.						
+${ERROR_IPBR_ID_AND_NAME_MISMATCH}	IPBR with ipbr-id (4080) and ipbr-name (other-name) does not exist.						
+							
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*
+Show IP based route with valid or invalid paramters	[Setup]	Reserve test IP based route resource					
+	[Template]	Show IPBR information and check result					
+	${EXIST_IPBR_ID}	SUCCESS	${TEST_IPBR_RESOURCE_1}				
+	${IPBR_NAME_WITH_TWO_INSTANCE}	SUCCESS	${TEST_IPBR_RESOURCE_1}	${TEST_IPBR_RESOURCE_2}			
+	${NONE_EXIST_IPBR_ID}	FAILED			${ERROR_IPBR_ID_NOT_EXIST}		
+	${NONE_EXIST_IPBR_NAME}	FAILED			${ERROR_IPBR_NAME_NOT_EXIST}		
+	${IPBR_ID_AND_NAME_MISMATCH}	FAILED			${ERROR_IPBR_ID_AND_NAME_MISMATCH}		
+	[Teardown]	Release test IP based route resource					
+							
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*
+Show IPBR information and check result	[Arguments]	${parameters}	${expect_result}	${expect_group_1}=	${expect_group_2}=	${error_info}=	
+	${instance}	initialize IP based route attribute with default value	${parameters}				
+	${result}	Show IP based route	${instance.ipbr_id}	${instance.ipbr_name}			
+	should be equal	${expect_result}	${result['result']}				
+	run keyword if	'${expect_result}' == 'FAILED'	should be equal	${result['error_info']}	${error_info}		
+	run keyword if	'${expect_result}' == 'SUCCESS'	Compare IPBR search result with expect value	${result}	${expect_group_1}	${expect_group_2}	
+							
+Compare IPBR search result with expect value	[Arguments]	${search_result}	${expect_group_1}	${expect_group_2}=			
+	${expect_instance_1}	initialize IP based route attribute with default value	${expect_group_1}				
+	run keyword if	'${expect_group_2}' == ''	compare IP based route attributes in detail	${search_result}	${expect_instance_1}		
+	${expect_instance_2}	initialize IP based route attribute with default value	${expect_group_2}				
+	run keyword if	'${expect_group_2}' != ''	compare IP based route attributes in list	${search_result}	2	${expect_instance_1}	${expect_instance_2}
+							
+Reserve test IP based route resource	${result}	add IP based route with attributes	${TEST_IPBR_RESOURCE_1}				
+	check IP based route operation result	${result}	SUCCESS	ADD			
+	${result}	add IP based route with attributes	${TEST_IPBR_RESOURCE_2}				
+	check IP based route operation result	${result}	SUCCESS	ADD			
+							
+Release test IP based route resource	${result}	Delete IP based route with attributes	${TEST_IPBR_RESOURCE_1}				
+	check IP based route operation result	${result}	SUCCESS	DEL			
+	${result}	Delete IP based route with attributes	${TEST_IPBR_RESOURCE_2}				
+	check IP based route operation result	${result}	SUCCESS	DEL			
+							

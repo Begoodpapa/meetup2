@@ -1,0 +1,114 @@
+*Setting*							
+Suite Setup	Connect to target hardware and create test resource						
+Suite Teardown	Clear test resource						
+Force Tags	Product_Backlog_ID-B01178	Iteration_ID-I00369	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	element-IL	exec_type-automatic	exec_level-pre	type-FUT
+...	release-RU50	hw_env-RNC_S0	exec_type-automatic	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	HW_TYPE-ADA_FTLB	QL-5
+...	PRS_ID-XXX						
+Resource	../resources/cac_basic_operation_resource.html						
+Resource	../resources/common_operation_resource.html						
+Resource	../resources/IPBR_basic_operation_resource.html						
+Resource	il.html						
+Library	Collections						
+							
+*Variable*							
+${IPBR_ID_4002}	4002						
+${IPBR_ID_4003}	4003						
+${IPBR_NAME_4002}	IPBR-4002						
+${IPBR_NAME_4003}	IPBR-4003						
+${MUX_LOCAL_PORT_53000}	53000						
+${MUX_LOCAL_PORT_50000}	50000						
+${MUX_LOCAL_PORT_50001}	50001						
+${TEST_PORT_51000}	51000						
+${TEST_PORT_51002}	51002						
+${ONE_GROUP}	1						
+${USCP}	USCP-0						
+${IUB_PORT_TYPE}	UDP						
+${BUFFER_PORT_TYPE}	BUFFERED						
+${MUX_PORT_TYPE}	MUX						
+${EME_PARA}	QPRI=255						
+							
+*Test Case*							
+Verify to add IPRO in normal and forced mode with the local-mux-port which already been used by transport bearers	[Tags]	ct-negative	CM.TRM.CONFIG.FUT.044	CM.TRM.CONFIG.FUT.045	FRS_ID-PCM_100201_1_R1886		
+	[Setup]	Create Iub Leg with specified udp port	${IPBR_ID_4002}	${MUX_LOCAL_PORT_50000}	${MUX_LOCAL_PORT_50001}		
+	Add IPRO failed in normal mode when bind IP and port already been used by transport bearers						
+	Add IPRO successfully in forced mode when bind IP and port already been used by transport bearers						
+	[Teardown]	Delete test IPRO					
+							
+Verify to set IPBR in normal and forced mode with the local-mux-port which already been used by transport bearers	[Tags]	ct-negative	CM.TRM.CONFIG.FUT.026	CM.TRM.CONFIG.FUT.025	FRS_ID-PCM_100201_17_R1886	EFS_ID-RNC_EFS_1886_47	PRS_ID-IL_PRS_4416
+	...	FRS_ID-PCM_100201_15_R1886	CR_ID-CRS1676				
+	[Setup]	Create Iub Leg with specified udp port	${IPBR_ID_4002}	${MUX_LOCAL_PORT_50000}	${MUX_LOCAL_PORT_50001}		
+	Set IPBR failed in normal mode with the local-mux-port which already been used by transport bearers						
+	Set IPBR successfully in forced mode with the local-mux-port which already been used by transport bearers						
+	[Teardown]						
+							
+Verify to delete IPRO in normal and forced mode when transport bearers based on it	[Tags]	ct-negative	CM.TRM.CONFIG.FUT.056	CM.TRM.CONFIG.FUT.057	FRS_ID-PCM_100201_40_R2222	FRS_ID-PCM_100201_41_R2222	FRS_ID-PCM_100201_42_R2222
+	...	EFS_ID-RNC_EFS_2222_372	PRS_ID-IL_PRS_4255	FRS_ID-PCM_100201_39_R2222			
+	[Setup]	Create test leg and add test IPRO					
+	Delete IPRO in normal mode fail when the transport bearers on it						
+	Delete IPRO in forced mode succeed when the transport bearers on it						
+	[Teardown]	run keyword if test failed	delete IPRO successfully	${IPBR_ID_4003}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}
+	...	forced					
+							
+*Keyword*							
+Connect to target hardware and create test resource	connect to target hardware						
+	switch to active OMU						
+	Check Remain Resource And If Resource Exist Then Handle	setup					
+	run keyword if	'%{HW}' == 'ADA'	Set test resource for ADA				
+	run keyword if	'%{HW}' == 'RNC'	Set test resource for RNC				
+	Set test IPBR and add test IPRO resource						
+							
+Clear test resource	delete IPRO successfully	${IPBR_ID_4002}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	forced	
+	common_operation_resource.Disconnect From Target Hardware						
+							
+Add IPRO failed in normal mode when bind IP and port already been used by transport bearers	${result}	Add IPRO failed	${IPBR_ID_4003}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	ALL
+	should be equal	${result['error_info']}	Failed to add IPRO. local-mux-port (50000) is used by transport bearers.				
+	Check the Iub leg in CACPRB	${IP_GROUP_1.ip_addr}	${MUX_LOCAL_PORT_50000}	${IUB_PORT_TYPE}			
+							
+Add IPRO successfully in forced mode when bind IP and port already been used by transport bearers	${result}	add_ipro	${IPBR_ID_4003}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	ALL
+	...		forced				
+	Should be equal	${result['IPRO Add']}	Success				
+	Check the Iub leg in CACPRB	${IP_GROUP_1.ip_addr}	${MUX_LOCAL_PORT_50000}	${MUX_PORT_TYPE}			
+							
+Set IPBR failed in normal mode with the local-mux-port which already been used by transport bearers	${result}	set ip based route with specified parameters	${IPBR_ID_4002}	local-mux-port =${MUX_LOCAL_PORT_50000}			
+	should be equal	"${result[""IPBR Modify""]}"	Fail				
+	should be equal	${result['error_info']}	Failed to set IPBR. local-mux-port (50000) is used by transport bearers.				
+	Check the Iub leg in CACPRB	${IP_GROUP_1.ip_addr}	${MUX_LOCAL_PORT_50000}	${IUB_PORT_TYPE}			
+							
+Set IPBR successfully in forced mode with the local-mux-port which already been used by transport bearers	${result}	set ip based route with specified parameters	${IPBR_ID_4002}	local-mux-port =${MUX_LOCAL_PORT_50000}	mode=forced		
+	should be equal	"${result[""IPBR Modify""]}"	Success				
+	Check the Iub leg in CACPRB	${IP_GROUP_1.ip_addr}	${MUX_LOCAL_PORT_50000}	${MUX_PORT_TYPE}			
+							
+Delete IPRO in normal mode fail when the transport bearers on it	${result}	Delete IPRO	${IPBR_ID_4003}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	
+	should be equal	${result['error_info']}	Failed to delete IPRO. There are transport bearers based on this IPRO.				
+	Check the Iub leg in CACPRB	${IP_GROUP_1.ip_addr}	${TEST_PORT_51000}	${IUB_PORT_TYPE}			
+							
+Delete IPRO in forced mode succeed when the transport bearers on it	Delete IPRO Successfully	${IPBR_ID_4003}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	forced	
+	Check the Iub leg in CACPRB	${IP_GROUP_1.ip_addr}	${TEST_PORT_51000}	${BUFFER_PORT_TYPE}	false		
+							
+Create Iub Leg with specified udp port	[Arguments]	${ipbr_id}	${start_port}	${max_port}			
+	create leg list						
+	${rtp_leg_info}	create RTP leg	${USCP}	${ipbr_id}	NCAC=1,UDP=${start_port},MUDP=${max_port},${EME_PARA}		
+	should be equal	${rtp_leg_info.result}	SUCCESSFUL				
+	Append to List	${OUT_LEG_LIST}	${rtp_leg_info}				
+	set test variable	\${CALL_ID}	${rtp_leg_info.call_id}				
+							
+Set test resource for ADA	${IP_GROUP}	select_random_IP_address_and_recovery_group_ADA	${ONE_GROUP}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+							
+Set test resource for RNC	${IP_GROUP}	select_random_IP_address_and_recovery_group	${ONE_GROUP}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+							
+Set test IPBR and add test IPRO resource	set ip based route with specified parameters	${IPBR_ID_4002}	local-mux-port =${MUX_LOCAL_PORT_53000}				
+	set ip based route with specified parameters	${IPBR_ID_4003}	local-mux-port =${MUX_LOCAL_PORT_50000}				
+	Add IPRO successfully	${IPBR_ID_4002}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}		
+							
+Delete test IPRO	delete IPRO successfully	${IPBR_ID_4003}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}		
+	run keyword if test failed	delete IPRO successfully	${IPBR_ID_4003}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	forced
+							
+Check the Iub leg in CACPRB	[Arguments]	${ip_addr}	${port}	${port_type}	${filter}=		
+	${result}	Inquiry Udp Conn Port Info	${ip_addr}	${port}		false	
+	should be equal	${result['${ip_addr}:${port}']['type']}	${port_type}				
+							
+Create test leg and add test IPRO	${result}	add_ipro	${IPBR_ID_4003}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	ALL
+	Should be equal	${result['IPRO Add']}	Success				
+	Create Iub Leg with specified udp port	${IPBR_ID_4003}	${TEST_PORT_51000}	${TEST_PORT_51002}			

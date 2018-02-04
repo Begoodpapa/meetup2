@@ -1,0 +1,198 @@
+D M X   G E N E R I C   S T U B					
+					
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Library	Collections				
+Library	dmx_comm.py				
+					
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+${GENERIC_STUB_DAEMON}	dmxd				
+${GENERIC_STUB_NAME}	dmx_generic_stub				
+${GENERIC_STUB_CLI_NAME}	dgscli				
+					
+					
+${DAEMON ECHO NUM}	1d72				
+${OMU RU NAME}	omu				
+					
+					
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+GetGenericDaemonPIDFromItsLog	[Arguments]	${log}			
+	GetFileContent	${log}			
+	${result} =	ExecuteCli	head -n10 ${log} | grep 'Listen on PID'|cut -d' ' -f 4		
+	${PID}	SetVariable	${result.split('\r\n')[1]}		
+	ShouldMatchRegexp	${PID}	"[0-9a-f]{0,4}:[0-9a-f]{0,4}:[0-9a-f]{0,2}"	Start DMX Generic Stub error! Check if Kernel Modules have been inserted	
+	[Return]	${PID}			
+					
+GetRecvDeamonAdressFromItsLog	[Arguments]	${log}			
+	${content} =	GetFileContent	${log}		
+	${re} =	ShouldMatchRegexp	${content}	"(?<=Start receive on: )[0-9a-f]{0,4}:[0-9a-f]{0,4}:[0-9a-f]{0,4}"	
+	${PID}	SetVariable	${re.strip()}		
+	[Return]	${PID}			
+					
+Export Libgen	[Arguments]	${addr}			
+	execute cli	export LIBGEN_USE_PHYS_ADDR=${addr}			
+					
+GetLatestRecvMsgNumber	[Arguments]	${log}	${pid}		
+	${num} =	GetLastLineNumber	${log}	${pid}	
+	[Return]	${num}			
+					
+GetLatestRecvQueueSize	[Arguments]	${log}	${pid}		
+	${num} =	GetLastQueueSize	${log}	${pid}	
+	[Return]	${num}			
+					
+GetLatestRecvQueueLimit	[Arguments]	${log}	${pid}		
+	${num} =	GetLastQueueLimit	${log}	${pid}	
+	[Return]	${num}			
+					
+GetLatestRecvQueueMsgs	[Arguments]	${log}	${pid}		
+	${num} =	GetLastQueueMsgs	${log}	${pid}	
+	[Return]	${num}			
+					
+StartGenericDaemon	[Arguments]	${log}			
+	execute cli	${GENERIC_STUB_DAEMON} > ${log} 2>&1 &			
+	${pid} =	GetGenericDaemonPIDFromItsLog	${log}		
+	[Return]	${pid}			
+					
+StartGenericDaemonOnFu	[Arguments]	${FuncUnit}	${log}		
+	execute cli	LIBGEN_USE_PHYS_ADDR=${FuncUnit}00 ${GENERIC_STUB_DAEMON} > ${log} 2>&1 &			
+	${pid} =	GetGenericDaemonPIDFromItsLog	${log}		
+	[Return]	${pid}			
+					
+StartGenericRecv	[Arguments]	${MyFamily}	${log}		
+	${process_pid} =	execute cli	${GENERIC_STUB_NAME} recv ${MyFamily} > ${log} 2>&1 &		
+	${pid} =	ShouldMatchRegexp	${process_pid.strip()}	(?<=\\[\\d\\] )\\d*	
+	[Return]	${pid} 			
+					
+Generic Ready for Recv	[Arguments]	${family}	${log}		
+	StartGenericRecv	${family}	${log}		
+	sleep	5ms			
+	${recv address} =	GetRecvDeamonAdressFromItsLog	${log}		
+	[Return]	${recv address}			
+					
+					
+					
+					
+StartGenericRecvQuite	[Arguments]	${MyFamily}	${log}		
+	${process_pid} =	execute cli	${GENERIC_STUB_NAME} recv ${MyFamily} -q > ${log} 2>&1 &		
+	${pid} =	ShouldMatchRegexp	${process_pid.strip()}	(?<=\\[\\d\\] )\\d*	
+	[Return]	${pid} 			
+					
+					
+StartGenericWaitRecvtAndQuite	[Arguments]	${MyFamily}	${log}		
+	${process_pid} =	execute cli	${GENERIC_STUB_NAME} recv ${MyFamily} -q -w > ${log} 2>&1 &		
+	${pid} =	ShouldMatchRegexp	${process_pid.strip()}	(?<=\\[\\d\\] )\\d*	
+	[Return]	${pid} 			
+					
+StartGenericQuiteRecvWithout PID	[Arguments]	${MyFamily}	${log}		
+	execute cli	${GENERIC_STUB_NAME} recv ${MyFamily} -q -w > ${log} 2>&1 &			
+					
+					
+Recv Num Should Equal with Quite 	[Arguments]	${log file}	${pid}	${recv num}	
+	${got num}	GetLatestRecvMsgNumber	${log file}	${pid}	
+	ShouldBeEqual	${got num}	${recv num}		
+					
+					
+Recv Num Should Equal	[Arguments]	${log file}	${recv num}		
+	${got num}	CountLinesContainStr	Got	${log file}	
+	ShouldBeEqual	${got num}	${recv num}		
+					
+Recv Num Should Not Equal	[Arguments]	${log file}	${recv num}		
+	${got num}	CountLinesContainStr	Got	${log file}	
+	ShouldNotBeEqual	${got num}	${recv num}		
+					
+StartGenericRecvCheckPayload	[Arguments]	${MyFamily}	${log}		
+	${process_pid} =	execute cli	${GENERIC_STUB_NAME} recv ${MyFamily} -q -f > ${log} 2>&1 &		
+	${pid} =	ShouldMatchRegexp	${process_pid.strip()}	(?<=\\[\\d\\] )\\d*	
+	[Return]	${pid} 			
+					
+StartGenericRecvQuiteNoSyncFlag	[Arguments]	${MyFamily}	${log}		
+	${process_pid} =	execute cli	${GENERIC_STUB_NAME} recv ${MyFamily} -q -n > ${log} 2>&1 &		
+	${pid} =	ShouldMatchRegexp	${process_pid.strip()}	(?<=\\[\\d\\] )\\d*	
+	[Return]	${pid} 			
+					
+GenericSend	[Arguments]	${MyFamily}	${target}	${msg_num}	
+	execute cli	${GENERIC_STUB_NAME} send ${MyFamily} ${target} -n ${msg_num}			
+					
+Generic Stub Send Msg	[Arguments]	${family}	${peer addr}	${send num}	${length}
+	...	${seque}	${interval}	${back groud}	
+	${result}	Generic Send Msg	${family}	${peer addr}	${send num}
+	...	${length}	${seque}	${interval}	${back groud}
+	...	\			
+	[Return]	${result}			
+					
+Generic Ready for Send	[Arguments]	${family}	${peer addr}	${send num}	
+	${result}	Generic Send Msg	${family}	${peer addr}	${send num}
+	...	\	\	\	\
+	...	\			
+	ResultShouldNotContain	${result}	error		
+					
+Generic Send Msg Quite	[Arguments]	${family}	${peer addr}	${send num}	${length}
+	...	${seque}	${interval}	${back groud}	
+	${result}	Generic Send Msg	${family}	${peer addr}	${send num}
+	...	${length}	${seque}	${interval}	${back groud}
+	...	1			
+	[Return]	${result}			
+					
+GenericSendWithCheckPayload	[Arguments]	${MyFamily}	${target}	${msg_num}	${length}
+	${result}	execute cli	${GENERIC_STUB_NAME} send ${MyFamily} ${target} -n ${msg_num} -l ${length} -f		
+	[Return]	${result}			
+					
+GenericRdsDrop	[Arguments]	${num}	${sequence}	${seq interval}	
+	${result}	execute cli	${GENERIC_STUB_NAME} rds_drop_msg RDS_MSG -n ${num} -s ${sequence} -i ${seq interval}		
+	ResultShouldNotContain	${result}	error		
+					
+GenericAckDrop	[Arguments]	${num}			
+	${result}	execute cli	${GENERIC_STUB_NAME} rds_drop_msg ACK_MSG -n ${num}		
+	ResultShouldNotContain	${result}	error		
+					
+GenericRetrasReqDrop	[Arguments]	${num}			
+	${result}	execute cli	${GENERIC_STUB_NAME} rds_drop_msg RDS_RETR -n ${num}		
+	ResultShouldNotContain	${result}	error		
+					
+GenericRdsDupli	[Arguments]	${num}	${sequence}	${seq interval}	
+	${result}	execute cli	${GENERIC_STUB_NAME} rds_dup_msg RDS_MSG  -n ${num} -s ${sequence} -i ${seq interval}		
+	ResultShouldNotContain	${result}	error		
+					
+GenericAckDupli	[Arguments]	${num}			
+	${result}	execute cli	${GENERIC_STUB_NAME} rds_dup_msg ACK_MSG -n ${num} 		
+	ResultShouldNotContain	${result}	error		
+					
+GenericRetrReqDupli	[Arguments]	${num}			
+	${result}	execute cli	${GENERIC_STUB_NAME} rds_dup_msg RDS_RETR -n ${num} 		
+	ResultShouldNotContain	${result}	error		
+					
+Go To Node	[Arguments]	${node}			
+	execute cli	ssh ${node}			
+					
+KillallDmxmsgUsers	execute cli	kill -9 `ps ax |grep '${GENERIC_STUB_NAME}'|grep -v grep|cut -d' ' -f1`|tee			
+					
+KillallDmxmsgStat	execute cli	kill -2 `ps ax |grep '${GENERIC_STUB_NAME}'|grep -v grep|cut -d' ' -f1`|tee			
+					
+GenericSendWithHighPriority	[Arguments]	${MyFamily}	${target}		
+	execute cli	${GENERIC_STUB_NAME} send ${MyFamily} ${target} -p 2			
+					
+DumpStatInfoFromCli	ExecuteCli	killall ${GENERIC_STUB_CLI_NAME}|tee			
+					
+GetStatisticsFromCliLog	[Arguments]	${cli_log}			
+	GetFileContent	${cli_log}			
+	${stats} =	ExecuteCli	gawk '/Endpoint:/{send+=$5; recv+=$7}END{print send; print recv}' ${cli_log}		
+	[Return]	${stats.split('\r\n')[1:-1]}			
+					
+StatsShouldBeEqual	[Arguments]	${stats}	${send_num}	${recv_num}	
+	ShouldBeEqual	${stats[0]}	${send_num}		
+	ShouldBeEqual	${stats[1]}	${recv_num}		
+					
+DgscliLogStatsShouldBeEqual	[Arguments]	${log}	${send_num}	${recv_num}	
+	${stats} =	GetStatisticsFromCliLog	${log}		
+	StatsShouldBeEqual	${stats}	${send_num}	${recv_num}	
+					
+CliSendShutdownCmdToGenericDaemon	[Arguments]	${daemon_pid}	${log}		
+	execute cli	echo 'daemon ${daemon_pid} shutdown' |${GENERIC_STUB_CLI_NAME} -w1 >${log} 2>&1 &			
+Generic Send and Recv Message Should Successful	[Arguments]	${send fam}	${recv address}	${msg_num}	
+	Change To RU	${OMU RU NAME}			
+	${result}	execute cli	dmx_generic_stub send_recv ${send fam} ${recv address} -n ${msg_num} -N ${DAEMON ECHO NUM} -L -t 500 -l 3000		
+	ResultShouldContain	${result}	Total match:${msg_num}		
+					
+Generic Send and Recv Message Should Fail	[Arguments]	${send fam}	${recv address}	${msg_num}	
+	Change To RU	${OMU RU NAME}			
+	${result}	execute cli	dmx_generic_stub send_recv ${send fam} ${recv address} -n ${msg_num} -N ${DAEMON ECHO NUM} -L -t 500		
+	ResultShouldContain	${result}	No route to host		

@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>% headline: Monster Priority Change Test Cases</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western"></h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td colspan=4><font color=green>This test suite will test monster priority(only for frame handle thread) can be changed by user(RAN2906).<br>1.&nbsp;&nbsp;&nbsp;&nbsp;Check nice value of frame handle thread in top printout is same as the expected default value(0).<br>2.&nbsp;&nbsp;&nbsp;&nbsp;Give the nice value and check if the thread has the right value.<br>3.&nbsp;&nbsp;&nbsp;&nbsp;Give the incorrect nice value and check the printout.<br>4.&nbsp;&nbsp;&nbsp;&nbsp;No root user set the nice value and check the printout.(+ ok, - nok) - not ready</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B03704</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I07870</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-IL_PRS_</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-IL</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-7</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-review_meeting</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-ADA</td><td><font color=dark red>hw_env-RNC</td><td><font color=dark red>hw_env-RNC_S0</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-AB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Env Setup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clean Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Setup</b></td><td>Case Env Setup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Teardown</b></td><td>Case Env Teardown</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/monster_resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${NICE_DEFAULT_VALUE}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${USER_DEFINED_NICE_VALUES_COUNT}</td><td>2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${USER_DEFINED_NICE_VALUES}</td><td>-10</td><td>10</td></tr>
+<tr bgcolor=#FFFFFF><td>${USER_DEFINED_INVALID_NICE_VALUES_COUNT}</td><td>4</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${USER_DEFINED_INVALID_NICE_VALUES}</td><td>-25</td><td>25</td></tr>
+<tr><td>...</td><td>-21</td><td>21</td></tr>
+<tr bgcolor=#FFFFFF><td>${NON_ROOT_USER_VALUES_COUNT}</td><td>2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NON_ROOT_USER_VALUES}</td><td>5</td><td>10</td></tr>
+<tr bgcolor=#FFFFFF><td>${MONSTER_DIR}</td><td>monster_test</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NON_ROOT_USER}</td><td>nroot</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${LIBGEN FORMAT}</td><td>-o</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_CLI}</td><td>mempoolproc</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_PRB}</td><td>mempoolproc</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${STOP_SELF}</td><td>stop_prb -W</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CLI_FAMILY}</td><td>0xffff</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_FAMILY}</td><td>0xC385</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TMOUT}</td><td>3</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DELAY}</td><td>100</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_MESSAGE_NUMBER}</td><td>8000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_MESSAGE_COUNT}</td><td>10</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_MESSAGE_SIZE}</td><td>100</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MONSTER_FILE}</td><td>test</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>Monster started with default value and check the frame handle thread nice value has the right value</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start one monster with default nice value\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check the TOP output for the monster process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Stop the monster\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The frame handler thread nice value is correct\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[tags]</td><td>ATC_ID-Libgen.FUT.001.AT.I07870</td><td>EFS_ID-RNC_EFS_2906_204</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start one monster with default nice value</td><td>${MONSTER_FILE}</td><td>${LIBGEN FORMAT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send messages to test prb</td><td>${TEST_MESSAGE_NUMBER}</td><td>${TEST_MESSAGE_SIZE}</td><td>${TEST_MESSAGE_COUNT}</td><td><br></td></tr>
+<tr><td><br></td><td>Check TOP output for monster and nice value is correct</td><td>${MONSTER_PROCESS_ID}</td><td>${NICE_DEFAULT_VALUE}</td><td>root</td><td><br></td></tr>
+<tr><td><br></td><td>Stop monsters</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check monitored file can be read successfully and message count is correct</td><td>${MONSTER_DIR}</td><td>${MONSTER_FILE}</td><td>${TEST_MESSAGE_NUMBER}</td><td>${TEST_MESSAGE_SIZE}</td></tr>
+<tr><td><br></td><td>...</td><td>${TEST_MESSAGE_COUNT}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Monster started with a user defined nice value and check the frame handle thread has the right value</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start one monster with a user defined value\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check the TOP output for the monster process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Stop the monster\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The frame handler thread nice value is correct\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[tags]</td><td>ATC_ID-Libgen.FUT.002.AT.I07870</td><td>EFS_ID-RNC_EFS_2906_204</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start multi monsters with user defined nice values</td><td>${USER_DEFINED_NICE_VALUES_COUNT}</td><td>${USER_DEFINED_NICE_VALUES}</td><td>root</td><td><br></td></tr>
+<tr><td><br></td><td>Send messages to test prb</td><td>${TEST_MESSAGE_NUMBER}</td><td>${TEST_MESSAGE_SIZE}</td><td>${TEST_MESSAGE_COUNT}</td><td><br></td></tr>
+<tr><td><br></td><td>Check TOP output for each monster and nice values are correct</td><td>${USER_DEFINED_NICE_VALUES_COUNT}</td><td>${USER_DEFINED_NICE_VALUES}</td><td>root</td><td><br></td></tr>
+<tr><td><br></td><td>Stop monsters</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check monitored files can be read successfully and message count is correct</td><td>${MONSTER_DIR}</td><td>${MONSTER_FILE}</td><td>${USER_DEFINED_NICE_VALUES_COUNT}</td><td>${TEST_MESSAGE_NUMBER}</td></tr>
+<tr><td><br></td><td>...</td><td>${TEST_MESSAGE_SIZE}</td><td>${TEST_MESSAGE_COUNT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Monster started with a user defined invalid nice value and check the error output is correct</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start one monster with a user defined invalid value\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check the error output\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;monster is stopped and the error output is correct\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[tags]</td><td>ATC_ID-Libgen.FUT.003.AT.I07870</td><td>EFS_ID-RNC_EFS_2906_204</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start multi monsters with user definded invalid nice values</td><td>${USER_DEFINED_INVALID_NICE_VALUES_COUNT}</td><td>${USER_DEFINED_INVALID_NICE_VALUES}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Monster started with a non-root user defined nice value and check the positive nice value is ok and negative nice value is not ok</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>[Not ready reason]: non root user can not monitor messages<br>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Switch to one non-root user\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Start one monster with positive nice value<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check the TOP output\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Stop monster processe\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Start one monster with negative nice value<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Check the TOP output\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[tags]</td><td>ATC_ID-Libgen.FUT.004.AT.I07870</td><td>EFS_ID-RNC_EFS_2906_204</td><td>not-ready</td><td><br></td></tr>
+<tr><td><br></td><td>Add one non root user and switch to this user</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start multi monsters with user defined nice values</td><td>${NON_ROOT_USER_VALUES_COUNT}</td><td>${NON_ROOT_USER_VALUES}</td><td>${NON_ROOT_USER}</td><td><br></td></tr>
+<tr><td><br></td><td>Check TOP output for each monster and nice values are correct</td><td>${NON_ROOT_USER_VALUES_COUNT}</td><td>${NON_ROOT_USER_VALUES}</td><td>${NON_ROOT_USER}</td><td><br></td></tr>
+<tr><td><br></td><td>Stop monsters</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster should start failed for non root user with negative nice value</td><td>-5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch to root user and remove non root user</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Env Setup</b></td></tr>
+<tr><td><br></td><td>Connect To SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>create monster workdir</td><td>${MONSTER_DIR}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clean Env</b></td></tr>
+<tr><td><br></td><td>remove monster workdir</td><td>${MONSTER_DIR}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All ILs</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Case Env Setup</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${MONSTER_STARTUP}</td><td>Set Variable</td><td>No</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${MONSTER_STARTUP}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${NON_ROOT_USER_ACTIVE}</td><td>Set Variable</td><td>No</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${NON_ROOT_USER_ACTIVE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Case Env Teardown</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${MONSTER_STARTUP}' == 'Yes'</td><td>Stop monsters</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${NON_ROOT_USER_ACTIVE}' == 'Yes'</td><td>Switch to root user and remove non root user</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>clear monster workdir</td><td>${MONSTER_DIR}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Log</td><td>Test</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check And Start Test PRB</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword Unless</td><td>'${MULTI_THREAD}'=='No'</td><td>Start Test PRB</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start Test PRB</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>${TEST_PRB} -- -s &amp;</td><td>mempool hand started</td><td>10</td><td><br></td></tr>
+<tr><td><br></td><td>${MULTI_THREAD}</td><td>Set Variable</td><td>No</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MULTI_THREAD}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Test Prb</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>${TEST_CLI} -f ${CLI_FAMILY} -- -p "${OMU PHYSICAL ADDRESS} ${TEST_FAMILY} ${MASTER_PROCESS}" -v ${STOP_SELF}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send messages to test prb</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${MESSAGE_NUMBER}</td><td><font color=#FF6600>${MESSAGE_SIZE}</td><td><font color=#FF6600>${MESSAGE_COUNT}</td><td><br></td></tr>
+<tr><td><br></td><td>start message sending for monster compress test</td><td>${MESSAGE_NUMBER}</td><td>${MESSAGE_SIZE}</td><td>${MESSAGE_COUNT}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start one monster with default nice value</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${MONSTER_FILE}</td><td><font color=#FF6600>${COMPRESS_MODE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${MONSTER_PROCESS_IDS}</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${MONSTER_PROCESS_ID}</td><td>start monster at background with compress mode</td><td>${OMU PHYSICAL ADDRESS}</td><td>${TEST_FAMILY}</td><td>${MONSTER_DIR}</td></tr>
+<tr><td><br></td><td>...</td><td>${MONSTER_FILE}.bin</td><td>${TEST_MESSAGE_NUMBER}</td><td>-o</td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#${MONSTER_PROCESS_ID}</td><td><font color=blue>monster should start ok for defined nice value</td><td><font color=blue>default</td><td><font color=blue>${User}</td><td><font color=blue>1</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${MONSTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${MONSTER_STARTUP}</td><td>Set Variable</td><td>Yes</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MONSTER_STARTUP}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append to List</td><td>${MONSTER_PROCESS_IDS}</td><td>${MONSTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MONSTER_PROCESS_IDS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start multi monsters with user defined nice values</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${Nice_Values_Count}</td><td><font color=#FF6600>${Nice_Values}</td><td><font color=#FF6600>${User}</td><td><br></td></tr>
+<tr><td><br></td><td>${MONSTER_PROCESS_IDS}</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${i}</td><td>In Range</td><td>${Nice_Values_Count}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${MONSTER_PROCESS_ID}</td><td>start monster at background with compress mode</td><td>${OMU PHYSICAL ADDRESS}</td><td>${TEST_FAMILY}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${MONSTER_DIR}</td><td>${MONSTER_FILE}${i}.bin</td><td>${TEST_MESSAGE_NUMBER}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>-o</td><td>0</td><td>0</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${Nice_Values[${i}]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Append to List</td><td>${MONSTER_PROCESS_IDS}</td><td>${MONSTER_PROCESS_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MONSTER_PROCESS_IDS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>3</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start multi monsters with user definded invalid nice values</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${Invalid_Nice_Values_Count}</td><td><font color=#FF6600>${Invalid_Nice_Values}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${MONSTER_PROCESS_IDS}</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${i}</td><td>In Range</td><td>${Invalid_Nice_Values_Count}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${Error_output}</td><td>monster should start failed with invalid nice value</td><td>${Invalid_Nice_Values[${i}]}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Log</td><td>${Error_output}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check TOP output for each monster and nice values are correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${Count}</td><td><font color=#FF6600>${Nice_Values}</td><td><font color=#FF6600>${User}</td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${i}</td><td>In Range</td><td>${Count}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check TOP output for monster and nice value is correct</td><td>${MONSTER_PROCESS_IDS[${i}]}</td><td>${Nice_Values[${i}]}</td><td>${User}</td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check TOP output for monster and nice value is correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${MONSTER_PROCESS_ID}</td><td><font color=#FF6600>${Nice_Value}</td><td><font color=#FF6600>${User}</td><td><br></td></tr>
+<tr><td><br></td><td>${top_nice_values}</td><td>Check TOP output for monster</td><td>${MONSTER_PROCESS_ID}</td><td>${User}</td><td><br></td></tr>
+<tr><td><br></td><td>Log</td><td>${top_nice_values}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Nice value should be correct</td><td>${top_nice_values}</td><td>${Nice_Value}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop monsters</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>stop monsters and wait for exit</td><td>${MONSTER_PROCESS_IDS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${MONSTER_STARTUP}</td><td>Set Variable</td><td>No</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${MONSTER_STARTUP}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Add one non root user and switch to this user</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster add one non root user and switch to this user</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${NON_ROOT_USER_ACTIVE}</td><td>Set Variable</td><td>Yes</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${NON_ROOT_USER_ACTIVE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Switch to root user and remove non root user</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster switch to root user and remove non root user</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${NON_ROOT_USER_ACTIVE}</td><td>Set Variable</td><td>No</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${NON_ROOT_USER_ACTIVE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check monitored files can be read successfully and message count is correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${DIR}</td><td><font color=#FF6600>${FILE_NAME}</td><td><font color=#FF6600>${Count}</td><td><font color=#FF6600>${MESSAGE_NUMBER}</td></tr>
+<tr><td><br></td><td>...</td><td>${MESSAGE_SIZE}</td><td>${MESSAGE_COUNT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${i}</td><td>In Range</td><td>${Count}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Check monitored file can be read successfully and message count is correct</td><td>${DIR}</td><td>${FILE_NAME}${i}</td><td>${MESSAGE_NUMBER}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${MESSAGE_SIZE}</td><td>${MESSAGE_COUNT}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check monitored file can be read successfully and message count is correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${DIR}</td><td><font color=#FF6600>${FILE_NAME}</td><td><font color=#FF6600>${MESSAGE_NUMBER}</td><td><font color=#FF6600>${MESSAGE_SIZE}</td></tr>
+<tr><td><br></td><td>...</td><td>${MESSAGE_COUNT}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${FILES_NAME}</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append to List</td><td>${FILES_NAME}</td><td>${FILE_NAME}.bin</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>messages can be read successfully from file</td><td>${DIR}</td><td>${FILES_NAME}</td><td>${TEST_FAMILY}</td><td>${MESSAGE_NUMBER}</td></tr>
+<tr><td><br></td><td>...</td><td>${MESSAGE_COUNT}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>il.html</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TESTUTILS_DIR}</td><td>/opt/nokiasiemens/testutils</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DSPM}</td><td>%{DSPM_0_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=7><b>Connect To FGW And Setup TestEnv</b></td></tr>
+<tr><td><br></td><td>Prepare ngRNC Connection</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get WO RU And Index</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${WO_DSPM}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>execute_mml_without_check</td><td>cd  ${TESTUTILS_DIR}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=7><b>Prepare ngRNC Connection</b></td></tr>
+<tr><td><br></td><td>${Index}=</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>150sec</td><td>%{USERNAME}</td><td>%{PASSWD}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${Index}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change Node Env</td><td>TCU-0</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=7><b>Clear TestEnv And Disconnect From FGW</b></td></tr>
+<tr><td><br></td><td>Disconnect All ILs</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=7><b>Get WO RU And Index</b></td></tr>
+<tr><td><br></td><td>${RG} =</td><td>Get RG Name</td><td colspan=4>${DSPM}</td></tr>
+<tr><td><br></td><td>${wo_units} =</td><td>Get WO Units</td><td colspan=4>${RG}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO_DSPM}</td><td colspan=4>${wo_units[0]}</td></tr>
+<tr><td><br></td><td>${wo info}</td><td>Get Unit Type And Index By MO Name</td><td>${wo_units[0]}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO_RU_INDEX}</td><td colspan=4>${wo info.index}</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%"></table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

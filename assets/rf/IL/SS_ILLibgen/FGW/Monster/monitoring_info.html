@@ -1,0 +1,376 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Get Monitoring Session Info API Test Case</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Get Monitoring Session Info API Test Case</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite will test new Libgen API get_monitoring_session_info_r for getting monitoring sessions info.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-IL0008</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-IL</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-7</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-nenggui.zhang@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-mail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>bcn_step-BCN_S1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-BCN_A2</td><td><font color=dark red>hw_type-BCN_B2</td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-MGW_AB3</td><td><font color=dark red>hw_type-MGW_AB4</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC_S1</td><td><font color=dark red>hw_env-AB</td><td><font color=dark red>hw_env-ADA</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Env Setup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clean Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Setup</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Teardown</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>../../resources/libgen_resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${TEST_CLI}</td><td>mempoolproc</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_PRB}</td><td>mempoolproc</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_MON_INFO}</td><td>test_mon_info</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${STOP_SELF}</td><td>stop_prb -W</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CLI_FAMILY}</td><td>0xffff</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_FAMILY}</td><td>0xC385</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OTHER_FAMILY}</td><td>0xC386</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MONITOR_COND}</td><td>SR:NOT(NUM=1,2)AND(FAM=A474,C385,C386)</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MONITOR_COND_NOT_FAM}</td><td>SR:NOT(FAM=C385)AND(NUM=1)</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MULTI_THREAD}</td><td>Unknown</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${2MB_BUFFER}</td><td>2101201</td><td><br></td></tr>
+<tr><td><font color=blue>#2097152: 2048X1024 + EXTEND_BUFFER_SIZE then align with page, and then minus EXTEND_BUFFER_SIZE</td><td><font color=blue>#define EXTEND_BUFFER_SIZE (__MAX_MSG_LENGTH + offsetof(libmon_msgframe_t,msg))</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${BUFSIZE_INFO}</td><td colspan=2>5246929\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NO</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>Monitoring Session Count Should Be Zero If No Monster Started</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Kill all monster if any\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to query the monitoring session info from test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Stub call get_monitoring_session_info_r and send monitoring session info to test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. The session count should be zero\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Monitoring Session Count Should Be Zero If No Monster Started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Count Should Be Zero</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Get Monitoring Session Info Should Fail If Given Parameter Is NULL</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Use test CLI to query the monitoring session info from test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Test Stub call get_monitoring_session_info_r with NULL parameter and send result to test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. The return should be failure\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Get Monitoring Session Info Should Fail If Given Parameter Is NULL.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.002.AT.I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Monitoring Session Info Should Fail When Given NULL Parameter</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Monitoring Session Info Should Be Correct For Family Monitored by One Monster</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start one monster to monitor test Stub, the other one not monitor test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to query the monitoring session info from test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Stub call get_monitoring_session_info_r and send monitoring session info to test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. The monitoring session count should be one, and monitoring condition is correct\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Monitoring Session Info Should Be Correct For Family Monitored by One Monster.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.003.AT.I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Two Monster With One Monster For Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Info Should Be Correct For One Monster</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Monitoring Session Info Should Be Correct For Family Monitored by Different Conditions</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start one monster to monitor test Stub with no parameters, one with -u, one with -c, one with -c not include test family\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to query the monitoring session info from test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Stub call get_monitoring_session_info_r and send monitoring session info to test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. The monitoring session count should be correct, and monitoring info is correct\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Monitoring Session Info Should Be Correct For Family Monitored by Different Conditions.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.004.AT.I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start One Monster For Test PRB</td><td>-u ${WO_COMP_ADDR} -c "A:"</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Monitoring Session Info Should Be Correct For One Monster</td><td>A:\r\n\r\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start One Monster For Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Monitoring Session Info Should Be Correct For One Monster</td><td>SR:\r\n\r\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start One Monster For Test PRB</td><td>-c "${MONITOR_COND}"</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Monitoring Session Info Should Be Correct For One Monster</td><td>NO\ \ \ \ \ \ \ \ \ \ \ \ \ SR:NOT(NUM=1,2)</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start One Monster For Test PRB</td><td>-c "${MONITOR_COND_NOT_FAM}"</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Monitoring Session Info Should Be Correct For One Monster</td><td>NO\ \ \ \ \ \ \ \ \ \ \ \ \ ${MONITOR_COND_NOT_FAM}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Monitoring Session Info Should Be Correct For Family Monitored by Several Monsters</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start three monsters: one monster to monitor test Stub with no parameters, one with -u, one with -c\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to query the monitoring session info from test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Stub call get_monitoring_session_info_r and send monitoring session info to test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. The monitoring session count should be correct, and monitoring info is correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Kill all monsters\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. The monitoring session count should be zero.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Monitoring Session Info Should Be Correct For Family Monitored by Several Monsters.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Kill all monsters, the monitoring session count should be zero.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.005.AT.I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Three Monster For Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Info Should Be Correct For Three Monsters</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Count Should Be Zero</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Monitoring Session Info Should Be Correct For Family Monitored by Twenty Monsters</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start 20 monsters\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to query the monitoring session info from test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Stub call get_monitoring_session_info_r and send monitoring session info to test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. The monitoring session count should be correct, and monitoring info is correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Kill 5 monsters, monitoring session count should be correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Kill all monsters\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. The monitoring session count should be zero.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Monitoring Session Info Should Be Correct For Family Monitored by 20 Monsters.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Kill all monsters, the monitoring session count should be zero.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.006.AT.I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Twenty Monster For Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Info Should Be Correct For Twenty Monsters</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Kill Five Monsters</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Info Should Be Correct For Rest Monsters</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Count Should Be Zero</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Multi-thread Family Monitoring Session Count Should Be Zero If No Monster Started</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started with multi-thread.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Kill all monster if any\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to query the monitoring session info from test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Stub call get_monitoring_session_info_r and send monitoring session info to test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. The session count should be zero\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Multi-thread Family Monitoring Session Count Should Be Zero If No Monster Started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.007.AT.I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Check And Start Multi Thread Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Count Should Be Zero</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Multi-thread Family Get Monitoring Session Info Should Fail If Given Parameter Is NULL</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started with multi-thread.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Use test CLI to query the monitoring session info from test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Test Stub call get_monitoring_session_info_r with NULL parameter and send result to test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. The return should be failure\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Multi-thread Family Get Monitoring Session Info Should Fail If Given Parameter Is NULL.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.008.AT.I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Check And Start Multi Thread Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Monitoring Session Info Should Fail When Given NULL Parameter</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Multi-thread Family Monitoring Session Info Should Be Correct For Family Monitored by One Monster</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started with multi-thread.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start one monster to monitor test Stub, the other one not monitor test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to query the monitoring session info from test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Stub call get_monitoring_session_info_r and send monitoring session info to test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. The monitoring session count should be one, and monitoring condition is correct\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Multi-thread Family Monitoring Session Info Should Be Correct For Family Monitored by One Monster.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.009.AT.I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Check And Start Multi Thread Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Two Monster With One Monster For Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Info Should Be Correct For One Monster</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Multi-thread Family Monitoring Session Info Should Be Correct For Family Monitored by Different Conditions</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started with multi-thread.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start one monster to monitor test Stub with no parameters, one with -u, one with -c, one with -c not include test family\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to query the monitoring session info from test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Stub call get_monitoring_session_info_r and send monitoring session info to test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. The monitoring session count should be correct, and monitoring info is correct\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Multi-thread Family Monitoring Session Info Should Be Correct For Family Monitored by Different Conditions.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.010.AT.I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Check And Start Multi Thread Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start One Monster For Test PRB</td><td>-u ${WO_COMP_ADDR} -c "A:"</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Monitoring Session Info Should Be Correct For One Monster</td><td>A:\r\n\r\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start One Monster For Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Monitoring Session Info Should Be Correct For One Monster</td><td>SR:\r\n\r\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start One Monster For Test PRB</td><td>-c "${MONITOR_COND}"</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Monitoring Session Info Should Be Correct For One Monster</td><td>NO\ \ \ \ \ \ \ \ \ \ \ \ \ SR:NOT(NUM=1,2)</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start One Monster For Test PRB</td><td>-c "${MONITOR_COND_NOT_FAM}"</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Monitoring Session Info Should Be Correct For One Monster</td><td>NO\ \ \ \ \ \ \ \ \ \ \ \ \ ${MONITOR_COND_NOT_FAM}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Multi-thread Family Monitoring Session Info Should Be Correct For Family Monitored by Several Monsters</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started with multi-thread.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start three monsters: one monster to monitor test Stub with no parameters, one with -u, one with -c\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to query the monitoring session info from test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Stub call get_monitoring_session_info_r and send monitoring session info to test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. The monitoring session count should be correct, and monitoring info is correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Kill all monsters\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. The monitoring session count should be zero.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Multi-thread Family Monitoring Session Info Should Be Correct For Family Monitored by Several Monsters.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Kill all monsters, the monitoring session count should be zero.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.011.AT.I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Check And Start Multi Thread Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Three Monster For Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Info Should Be Correct For Three Monsters</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Count Should Be Zero</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Multi-thread Family Monitoring Session Info Should Be Correct For Family Monitored by Twenty Monsters</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started with multi-thread.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start 20 monsters\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to query the monitoring session info from test Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Stub call get_monitoring_session_info_r and send monitoring session info to test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. The monitoring session count should be correct, and monitoring info is correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Kill 5 monsters, monitoring session count should be correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Kill all monsters\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. The monitoring session count should be zero.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Multi-thread Family Monitoring Session Info Should Be Correct For Family Monitored by 20 Monsters.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Kill all monsters, the monitoring session count should be zero.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.012.AT.I05113</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Check And Start Multi Thread Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Twenty Monster For Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Info Should Be Correct For Twenty Monsters</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Kill Five Monsters</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Info Should Be Correct For Rest Monsters</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monitoring Session Count Should Be Zero</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Make Sure No Monster Running</b></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>killall monster</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>rm -rf mon*.log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Monitoring Session Count Should Be Zero</b></td></tr>
+<tr><td><br></td><td>${monitoring_info}</td><td>Get Monitoring Session Info From Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${monitoring_info}</td><td>Session count: 0.</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get Monitoring Session Info From Test PRB</b></td></tr>
+<tr><td><br></td><td>Connect To CLI Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5><font color=blue>#wait sometime to let all monitoring session started</td></tr>
+<tr><td><br></td><td>Sleep</td><td>0.2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${monitoring_info}</td><td>Execute Mml Without Check</td><td>${TEST_CLI} -f ${CLI_FAMILY} -- -p "${WO_COMP_ADDR} ${TEST_FAMILY} ${MASTER_PROCESS}" -v ${TEST_MON_INFO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${monitoring_info}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get Monitoring Session Info Should Fail When Given NULL Parameter</b></td></tr>
+<tr><td><br></td><td>${monitoring_info}</td><td>Execute Mml Without Check</td><td>${TEST_CLI} -f ${CLI_FAMILY} -- -p "${WO_COMP_ADDR} ${TEST_FAMILY} ${MASTER_PROCESS}" -v ${TEST_MON_INFO} -S 1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${monitoring_info}</td><td>Get monitoring session information failed.</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Two Monster With One Monster For Test PRB</b></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon1.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -f ${OTHER_FAMILY} -c "${MONITOR_COND}" &gt; mon2.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Wait Monitoring Session Info Should Be Correct For One Monster</b></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>2s</td><td>0.2s</td><td>Check Monitoring Session Info Should Be Correct For One Monster</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Monitoring Session Info Should Be Correct For One Monster</b></td></tr>
+<tr><td><br></td><td>${monitoring_info}</td><td>Get Monitoring Session Info From Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${monitoring_info}</td><td>Session count: 1.</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>NO\ \ \ \ \ \ \ \ \ \ \ \ \ ${MONITOR_COND}</td><td>1</td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>${BUFSIZE_INFO}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start One Monster For Test PRB</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${condition}=</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster ${condition} &gt; mon0.log&amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Monitoring Session Info Should Be Correct For One Monster</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${condition}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${monitoring_info}</td><td>Get Monitoring Session Info From Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${monitoring_info}</td><td>Session count: 1.</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>${condition}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Three Monster For Test PRB</b></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -c "A:" &gt; mon3.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -c "${MONITOR_COND}" &gt; mon4.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -c "A:" &gt; mon5.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Monitoring Session Info Should Be Correct For Three Monsters</b></td></tr>
+<tr><td><br></td><td>${monitoring_info}</td><td>Get Monitoring Session Info From Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${monitoring_info}</td><td>Session count: 3.</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>NO\ \ \ \ \ \ \ \ \ \ \ \ \ ${MONITOR_COND}</td><td>1</td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>${BUFSIZE_INFO}</td><td>3</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Twenty Monster For Test PRB</b></td></tr>
+<tr><td><br></td><td>Start Two Monster With One Monster For Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Three Monster For Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -c "${MONITOR_COND_NOT_FAM}" &gt; mon6.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon7.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon8.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon9.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon10.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon11.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon12.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon13.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon14.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon15.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>monster -z 2048 -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon16.log &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${Monster_pid1}</td><td>Start CLI At Background And Return Linux Pid</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon17.log &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${Monster_pid2}</td><td>Start CLI At Background And Return Linux Pid</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon18.log &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${Monster_pid3}</td><td>Start CLI At Background And Return Linux Pid</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon19.log &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${Monster_pid4}</td><td>Start CLI At Background And Return Linux Pid</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon20.log &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${Monster_pid5}</td><td>Start CLI At Background And Return Linux Pid</td><td>monster -u ${WO_COMP_ADDR} -f ${TEST_FAMILY} -c "${MONITOR_COND}" &gt; mon21.log &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${Monster_pid1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${Monster_pid2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${Monster_pid3}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${Monster_pid4}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${Monster_pid5}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Monitoring Session Info Should Be Correct For Twenty Monsters</b></td></tr>
+<tr><td><br></td><td>${monitoring_info}</td><td>Get Monitoring Session Info From Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${monitoring_info}</td><td>Session count: 20.</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>NO\ \ \ \ \ \ \ \ \ \ \ \ \ ${MONITOR_COND}</td><td>17</td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>NO\ \ \ \ \ \ \ \ \ \ \ \ \ ${MONITOR_COND_NOT_FAM}</td><td>1</td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>${BUFSIZE_INFO}</td><td>19</td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>${2MB_BUFFER}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NO</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Kill Five Monsters</b></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>kill ${Monster_pid1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>kill ${Monster_pid2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>kill ${Monster_pid3}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>kill ${Monster_pid4}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>kill ${Monster_pid5}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Monitoring Session Info Should Be Correct For Rest Monsters</b></td></tr>
+<tr><td><br></td><td>${monitoring_info}</td><td>Get Monitoring Session Info From Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${monitoring_info}</td><td>Session count: 15.</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>NO\ \ \ \ \ \ \ \ \ \ \ \ \ ${MONITOR_COND}</td><td>12</td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>NO\ \ \ \ \ \ \ \ \ \ \ \ \ ${MONITOR_COND_NOT_FAM}</td><td>1</td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>${BUFSIZE_INFO}</td><td>14</td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${monitoring_info}</td><td>${2MB_BUFFER}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NO</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check And Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Run Keyword Unless</td><td>'${MULTI_THREAD}'=='No'</td><td>Start Test PRB</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>${TEST_PRB} -- -s &amp;</td><td>mempool hand started</td><td>10</td><td><br></td></tr>
+<tr><td><br></td><td>${MULTI_THREAD}</td><td>Set Variable</td><td>No</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MULTI_THREAD}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Multi Thread Test PRB</b></td></tr>
+<tr><td><br></td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>${TEST_PRB} -t 2 -- -s &amp;</td><td>mempool hand started</td><td>10</td><td><br></td></tr>
+<tr><td><br></td><td>${MULTI_THREAD}</td><td>Set Variable</td><td>Yes</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MULTI_THREAD}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check And Start Multi Thread Test PRB</b></td></tr>
+<tr><td><br></td><td>Run Keyword Unless</td><td>'${MULTI_THREAD}'=='Yes'</td><td>Start Multi Thread Test PRB</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test Prb</b></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>${TEST_CLI} -f ${CLI_FAMILY} -- -p "${WO_COMP_ADDR} ${TEST_FAMILY} ${MASTER_PROCESS}" -v ${STOP_SELF}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Env Setup</b></td></tr>
+<tr><td><br></td><td>Setup Connection For WO And CLI</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check And Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clean Env</b></td></tr>
+<tr><td><br></td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Make Sure No Monster Running</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

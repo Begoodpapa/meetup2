@@ -1,0 +1,558 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Message_buffer Interface</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Message_buffer Interface</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>Monitor the usage of internal and external message queue.<br>The message buffer interface for geting overload control per-family level message load information.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B01249, B03109</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I01813, I07077, I07161,I07392</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-IL_PRS_2582</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-IL_PRS_365</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-RNC_EFS_2152_93</td><td><font color=dark red>RNC_EFS_2850_162</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>FRS_ID-</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-il</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-6</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL2_RIS4</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-mail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>not-ready</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>bcn_step-BCN_S1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-BCN_A2</td><td><font color=dark red>hw_type-BCN_B2</td><td><font color=dark red>hw_type-MGW_AB3</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-MGW_AB4</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC_S1</td><td><font color=dark red>hw_env-AB</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT And Setup TestEnv</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Test Env And Disconnect</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/Libgen_Msg_Resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${OMU TYPE}</td><td>%{OMU_TYPE}</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FAMILY_ID}</td><td>0xC385</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${STOP_HANDS}</td><td>restart_hand</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${START_HANDS}</td><td>create_hand</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_GET_BUF_STAT}</td><td>get_buf_stat</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WAIT_TIME_5S}</td><td>1000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${INTERNAL_QUEUE}</td><td>q</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SAVE_CHAIN}</td><td>c</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SAVE_QUEUE}</td><td>s</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${KERNEL_QUEUE}</td><td>k</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${INTERNAL_KERNEL_QUEUE}</td><td>kq</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK_ALIVE}</td><td>still_alive</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${Q_MSGCNT_0}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${Q_MSGCNT_100}</td><td>100</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${Q_MSGCNT_200}</td><td>200</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${Q_MSGCNT_300}</td><td>300</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${Q_MSGCNT_318}</td><td>318</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${Q_MSGCNT_1424}</td><td>1424</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${Q_MSGCNT_122}</td><td>122</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${Q_MSGCNT_222}</td><td>222</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${Q_USED_SIZE_0}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${LIB_Q_USED_SIZE_UNIT}</td><td>65680</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${KER_Q_USED_SIZE_UNIT}</td><td>66240</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${LIB_Q_LMT}</td><td>20971520</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${KER_Q_LMT}</td><td>94370400</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${START_COUNT}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${END_COUNT}</td><td>10</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>Msg Load Information Should Be Get Correctly After Certain Msgs In Kernel And Libgen Queue</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be ok.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Test Process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send Msg To Hand 1 And Hand Save Msg Into Save Queue By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Send Msg To Hand 2 And Hand Save Msg Into Save Chain By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Send Msg To Master Into Internal Queue And Kernel Queue\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Check If Msg Load Information Get Correctly\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The Msg Load Information Should Be Get Correctly.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MessageBuffer.FUT.001.AT.I01813</td><td>exec_level-pre</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Queue</td><td>${SAVE_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Chain</td><td>${SAVE_CHAIN}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Message State</td><td>200</td><td>10248576</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Msg Queue Status At Backgroud</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_KERNEL_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td></tr>
+<tr><td><br></td><td>Stop Msg Queue Status</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_300}</td><td>3</td><td><br></td></tr>
+<tr><td><br></td><td>${KER_SIZE}</td><td>Evaluate Kernel Queue Used Size</td><td>${Q_MSGCNT_100}</td><td>${Q_MSGCNT_0}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_100}</td><td>${Q_MSGCNT_300}</td><td>${KER_SIZE}</td></tr>
+<tr><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Msg Queue Status</td><td>200</td><td>300</td><td>1</td><td>102</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Msg Count And Queu Staus</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Msg Load Information Should Be Get Correctly After Certain Msgs Into Kernel And Libgen Queue And Internal Queue Used Up</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be ok.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Test Process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send Msg To Hand 1 And Hand Save Msg Into Save Queue By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Send Msg To Hand 2 And Hand Save Msg Into Save Chain By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Send Msg To Master Into Internal Queue And Until Internal Queue Used Up\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Check If Msg Load Information Get Correctly\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The Msg Load Information Should Be Get Correctly.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MessageBuffer.FUT.002.AT.I01813</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Queue</td><td>${SAVE_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Chain</td><td>${SAVE_CHAIN}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Msg Queue Status At Backgroud</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_KERNEL_QUEUE}</td><td>${Q_MSGCNT_122}</td><td><br></td></tr>
+<tr><td><br></td><td>Stop Msg Queue Status</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_318}</td><td>3</td><td><br></td></tr>
+<tr><td><br></td><td>${KER_SIZE}</td><td>Evaluate Kernel Queue Used Size</td><td>${Q_MSGCNT_122}</td><td>${Q_MSGCNT_0}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_122}</td><td>${Q_MSGCNT_318}</td><td>${KER_SIZE}</td></tr>
+<tr><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Msg Queue Status</td><td>200</td><td>318</td><td>1</td><td>124</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Msg Count And Queu Staus</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Msg Load Information Should Be Get Correctly After Certain Msgs Into Libgen Queue And Save Queue Used Up</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be ok.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Test Process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send Msg To Hand 2 And Hand Save Msg Into Save Chain By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Send Msg To Hand 1 And Hand Save Msg Into Save Queue And Until Save Queue Used Up By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Check If Msg Load Information Get Correctly\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MessageBuffer.FUT.003.AT.I01813</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Chain</td><td>${SAVE_CHAIN}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Queue</td><td>${SAVE_QUEUE}</td><td>${Q_MSGCNT_222}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td><td><br></td></tr>
+<tr><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_318}</td><td>2</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_318}</td><td>${Q_USED_SIZE_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Msg Count and Size</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Msg Load Information Should Be Get Correctly After Certain Msgs Libgen Queue And Save Chain Used Up</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be ok.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Test Process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send Msg To Hand 1 And Hand Save Msg Into Save Queue By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Send Msg To Hand 2 And Hand Save Msg Into Save Chain And Until Save Chain Used Up By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Check If Msg Load Information Get Correctly\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MessageBuffer.FUT.004.AT.I01813</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Queue</td><td>${SAVE_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Chain</td><td>${SAVE_CHAIN}</td><td>${Q_MSGCNT_222}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td><td><br></td></tr>
+<tr><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_318}</td><td>2</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_318}</td><td>${Q_USED_SIZE_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Msg Count and Size</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Msg Load Information Should Be Get Correctly After Certain Msgs Into Kernel And Libgen Queue And Kernel Queue Is Full</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be ok.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Test Process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send Msg To Hand 1 And Hand Save Msg Into Save Queue By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Send Msg To Hand 2 And Hand Save Msg Into Save Chain\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Send Msg To Master Into Kernel Queue And Until Queue Used Up By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Check If Msg Load Information Get Correctly\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MessageBuffer.FUT.005.AT.I01813</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Queue</td><td>${SAVE_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Chain</td><td>${SAVE_CHAIN}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Msg Queue Status At Backgroud</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${KERNEL_QUEUE}</td><td>1425</td><td><br></td></tr>
+<tr><td><br></td><td>Stop Msg Queue Status</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_200}</td><td>2</td><td><br></td></tr>
+<tr><td><br></td><td>${KER_SIZE}</td><td>Evaluate Kernel Queue Used Size</td><td>${Q_MSGCNT_1424}</td><td>${Q_MSGCNT_0}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_1424}</td><td>${Q_MSGCNT_200}</td><td>${KER_SIZE}</td></tr>
+<tr><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Msg Queue Status</td><td>200</td><td>200</td><td>1</td><td>1426</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Msg Count And Queu Staus</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Msg Load Information Should Be Get Correctly After Many Times Msg Processing</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be ok.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Test Process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send Msg To Hand 1 And Hand Save Msg Into Save Queue By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Check If Msg Load Information Get Correctly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Send Msg To Hand 2 And Hand Save Msg Into Save Chain By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Check If Msg Load Information Get Correctly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. Send Msg To Master Into Internal Queue\n<br>&nbsp;&nbsp;&nbsp;&nbsp;9. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;10. Check If Msg Load Information Get Correctly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;11. Send Msg To Master Into Kernel Queue\n<br>&nbsp;&nbsp;&nbsp;&nbsp;12. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;13. Check If Msg Load Information Get Correctly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;14. Send Msg To Master Into Internal And Kernel Queue\n<br>&nbsp;&nbsp;&nbsp;&nbsp;15. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;16. Check If Msg Load Information Get Correctly\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The Msg Load Information Should Be Get Correctly.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MessageBuffer.FUT.006.AT.I01813</td><td>ATC_ID-MessageBuffer.FUT.007.AT.I01813</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_0}</td><td>${Q_USED_SIZE_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${Q_USED_SIZE_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Queue</td><td>${SAVE_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_100}</td><td>2</td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_100}</td><td>${Q_USED_SIZE_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Chain</td><td>${SAVE_CHAIN}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td><td><br></td></tr>
+<tr><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_100}</td><td>2</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_100}</td><td>${Q_USED_SIZE_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td></tr>
+<tr><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_100}</td><td>3</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_100}</td><td>${Q_USED_SIZE_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${KERNEL_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td></tr>
+<tr><td><br></td><td>${KER_SIZE}</td><td>Evaluate Kernel Queue Used Size</td><td>${Q_MSGCNT_100}</td><td>${Q_MSGCNT_0}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_100}</td><td>${Q_MSGCNT_0}</td><td>${KER_SIZE}</td></tr>
+<tr><td><br></td><td>...</td><td>${Q_USED_SIZE_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_KERNEL_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td></tr>
+<tr><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_100}</td><td>3</td><td><br></td></tr>
+<tr><td><br></td><td>${KER_SIZE}</td><td>Evaluate Kernel Queue Used Size</td><td>${Q_MSGCNT_100}</td><td>${Q_MSGCNT_0}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_100}</td><td>${Q_MSGCNT_100}</td><td>${KER_SIZE}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=4>${LIB_SIZE}</td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_0}</td><td>${Q_USED_SIZE_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${Q_USED_SIZE_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Msg Count and Size</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Msg Load Information Should Be Get Correctly After Stop Hands</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be ok.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Test Process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send Msg To Hand 1 And Hand Save Msg Into Save Queue By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Send Msg To Hand 2 And Hand Save Msg Into Save Chain By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Send Msg To Stop All Hands\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Check If Msg Load Information Get Correctly\n\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Send Msg To Hand 1 And Hand Save Msg Into Save Queue By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. Send Msg To Hand 2 And Hand Save Msg Into Save Chain By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;9. Send Msg To Stop All Hands\n<br>&nbsp;&nbsp;&nbsp;&nbsp;10. Send Msg To Master Into Internal Queue\n<br>&nbsp;&nbsp;&nbsp;&nbsp;11. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;12. Check If Msg Load Information Get Correctly\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The Msg Load Information Should Be Get Correctly.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MessageBuffer.FUT.008.AT.I01813</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Queue</td><td>${SAVE_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Chain</td><td>${SAVE_CHAIN}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Stop All Hands And Check Hand Count</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Msg Queue Status At Backgroud</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td><td><br></td></tr>
+<tr><td><br></td><td colspan=5><font color=blue>#queue may has 1 msg: CLI msg has not been hanled</td></tr>
+<tr><td><br></td><td>Stop Msg Queue Status</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_0}</td><td>${Q_USED_SIZE_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${Q_USED_SIZE_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Msg Queue Status</td><td>0</td><td>0</td><td>0</td><td>2</td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Queue</td><td>${SAVE_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Chain</td><td>${SAVE_CHAIN}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Stop All Hands And Check Hand Count</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td></tr>
+<tr><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_100}</td><td>3</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_100}</td><td>${Q_USED_SIZE_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Start All Hands</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Msg Count And Queu Staus</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Msg Load Information Should Be Get Correctly After Certain Msgs In Libgen Queue In Multi-Thread</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be ok.\n<br>&nbsp;&nbsp;&nbsp;. Test process was configured with muti-thread.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Test Process In Multi-Thread\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send Msg To Hand 1 And Hand Save Msg Into Save Queue By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Send Msg To Hand 2 And Hand Save Msg Into Save Chain By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Send Msg To Master Into Internal Queue\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Check If Msg Load Information Get Correctly\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The Msg Load Information Should Be Get Correctly.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MessageBuffer.FUT.009.AT.I01813</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td colspan=4><font color=dark red>Multi-thread Env Setup</td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Queue</td><td>${SAVE_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Chain</td><td>${SAVE_CHAIN}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Message State</td><td>200</td><td>10248576</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Msg Queue Status Directly</td><td>200</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td></tr>
+<tr><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_300}</td><td>3</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information For Multi-Thread</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_300}</td><td>${Q_USED_SIZE_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Msg Count and Size</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Msg Load Information Should Be Get Correctly After Many Times Msg Processing In Multi-Thread For Stability Test</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be ok.\n<br>&nbsp;&nbsp;&nbsp;. Test process was configured with muti-thread.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Test Process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send Msg To Hand 1 And Hand Save Msg Into Save Queue By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Check If Msg Load Information Get Correctly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Send Msg To Hand 2 And Hand Save Msg Into Save Chain By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Check If Msg Load Information Get Correctly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. Send Msg To Master Into Internal Queue\n<br>&nbsp;&nbsp;&nbsp;&nbsp;9. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;10. Check If Msg Load Information Get Correctly\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The Msg Load Information Should Be Get Correctly.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MessageBuffer.FUT.010.AT.I01813</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td colspan=4><font color=dark red>Multi-thread Env Setup</td></tr>
+<tr><td><br></td><td>:FOR</td><td>${index}</td><td>IN RANGE</td><td>${START_COUNT}</td><td>${END_COUNT}</td></tr>
+<tr><td><br></td><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td></tr>
+<tr><td><br></td><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_0}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${Q_USED_SIZE_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${Q_USED_SIZE_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Send Msg To Hand And Msg Into Save Queue</td><td>${SAVE_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_100}</td><td>2</td></tr>
+<tr><td><br></td><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td></tr>
+<tr><td><br></td><td><br></td><td>Check Test PRB Message Load Information For Multi-Thread</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_100}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${Q_USED_SIZE_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Send Msg To Hand And Msg Into Save Chain</td><td>${SAVE_CHAIN}</td><td>${Q_MSGCNT_100}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td></tr>
+<tr><td><br></td><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_100}</td><td>2</td></tr>
+<tr><td><br></td><td><br></td><td>Check Test PRB Message Load Information For Multi-Thread</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_100}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${Q_USED_SIZE_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_100}</td></tr>
+<tr><td><br></td><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_100}</td><td>3</td></tr>
+<tr><td><br></td><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_100}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${Q_USED_SIZE_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td></tr>
+<tr><td><br></td><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td></tr>
+<tr><td><br></td><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_0}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${Q_USED_SIZE_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${Q_USED_SIZE_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Msg Count and Size</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Msg Load Information Should Be Get Correctly After Continous Msg Processing In Multi-Thread</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be ok.\n<br>&nbsp;&nbsp;&nbsp;. Test process was configured with muti-thread.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Test Process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send Test Msg To Test Process Continuously\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Send Msg To Hand 1 And Hand Save Msg Into Save Queue By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Send Msg To Hand 2 And Hand Save Msg Into Save Chain By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Stop To Send Test Msg\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Send Msg To Master Into Internal Queue\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Test Message Buffer Interface By Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. Check If Msg Load Information Get Correctly\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The Msg Load Information Should Be Get Correctly.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MessageBuffer.FUT.011.AT.I01813</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td colspan=4><font color=dark red>Multi-thread Env Setup</td></tr>
+<tr><td><br></td><td>Send Test Msg To Test Process Continuously</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Queue</td><td>${SAVE_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Chain</td><td>${SAVE_CHAIN}</td><td>${Q_MSGCNT_100}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop To Send Test Msg</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_100}</td><td><br></td></tr>
+<tr><td><br></td><td>${LIB_SIZE}</td><td>Evaluate Libgen Queue Used Size</td><td>${Q_MSGCNT_300}</td><td>3</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information For Multi-Thread</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_300}</td><td>${Q_USED_SIZE_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${LIB_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Msg Count and Size</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Get Pointer Of Buffer From The Message Handle Successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be ok.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Test Process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send Test Msg To Test Process To Get The Message Buffer Pointer\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The Message Pointer Can Be Get Correctly.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MessageBuffer.FUT.001.AT.I07077</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td colspan=4><font color=dark red>Multi-thread Env Setup</td></tr>
+<tr><td><br></td><td>Send Test Msg To Test Process To Get Message Pointer And Should Succeed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Clear Test Env And Disconnect</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f msgqueue.sh msgqueue</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Stop Test Prb</td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Connect To SUT And Setup TestEnv</b></td><td>Connect To Il</td><td>%{HOSTIP}</td><td><br></td><td>${MAX TIME FOR CONNECT}</td><td>%{USERNAME}</td></tr>
+<tr><td><br></td><td>...</td><td>%{PASSWD}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get WO OMU Index</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>OMU Should Be Ready</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td colspan=4>${WO OMU NAME}</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>ulimit -c unlimited</td></tr>
+<tr><td><br></td><td>Set Variable Of Libgen Use Phys Addr</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Run Keyword And Ignore Error</td><td><font color=blue>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Start Test PRB</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>cd /mnt/backup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>echo "rm -f msgqueue;while :; do diagste -u ${WO_COMP_ADDR} -f ${FAMILY_ID} -r msgque &gt;&gt; msgqueue 2&gt;&amp;1; done" &gt; msgqueue.sh</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>mempoolproc &amp;</td><td>mempool hand started.</td><td>10s</td><td><br></td></tr>
+<tr><td><br></td><td>Change Suite Value</td><td>NO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Restart Test PRB</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Multi-thread Test PRB</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>mempoolproc -t 2 &amp;</td><td>mempool hand started.</td><td>10s</td><td><br></td></tr>
+<tr><td><br></td><td>Change Suite Value</td><td>YES</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test Prb</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_prb</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${MULTI_THREAD}"=="YES"</td><td>Change Suite Value</td><td>NO</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Change Suite Value</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_value}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${MULTI_THREAD}=</td><td>Set Variable</td><td>${in_value}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MULTI_THREAD}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get The Physical Address Of OMU</b></td></tr>
+<tr><td><br></td><td>${WO_COMP_ADDR}</td><td>Get Libgen Use Phys Addr</td><td>${OMU TYPE}</td><td colspan=2>${WO OMU INDEX}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td colspan=4>\${WO_COMP_ADDR}</td></tr>
+<tr><td><br></td><td>${SP_COMP_ADDR}</td><td>Get Libgen Use Phys Addr</td><td>${OMU TYPE}</td><td colspan=2>${SP OMU INDEX}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td colspan=4>\${SP_COMP_ADDR}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Msg And Test Message Buffer Interface</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_queue}</td><td><font color=#FF6600>${in_count}</td><td><font color=#FF6600>${in_wait_time}=${WAIT_TIME_5S}</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Test Message Buffer Interface Usage</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td>${TEST_GET_BUF_STAT}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_queue}</td><td>${in_count}</td><td>${in_wait_time}</td><td>${in_process}</td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Message Buffer Interface Usage</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_phys_addr}</td><td><font color=#FF6600>${in_family_id}</td><td><font color=#FF6600>${in_action}</td><td><font color=#FF6600>${in_queue}</td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_wait_time}</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -q %s -c %s -t %s</td><td>${in_phys_addr}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_family_id}</td><td>${in_process}</td><td>${in_action}</td><td>${in_queue}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_wait_time}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Msg To Hand And Msg Into Save Queue</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_queue}</td><td><font color=#FF6600>${in_count}</td><td><font color=#FF6600>${in_wait_time}=200</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Test Message Buffer Interface Usage For Save Queue</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td>${TEST_GET_BUF_STAT}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_queue}</td><td>${in_count}</td><td>${in_wait_time}</td><td>${in_process}</td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Message Buffer Interface Usage For Save Queue</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_phys_addr}</td><td><font color=#FF6600>${in_family_id}</td><td><font color=#FF6600>${in_action}</td><td><font color=#FF6600>${in_queue}</td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_wait_time}=200</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -q %s -c %s -t %s</td><td>${in_phys_addr}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_family_id}</td><td>${in_process}</td><td>${in_action}</td><td>${in_queue}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_wait_time}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Msg To Hand And Msg Into Save Chain</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_queue}</td><td><font color=#FF6600>${in_count}</td><td><font color=#FF6600>${in_wait_time}=200</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Test Message Buffer Interface Usage For Save Chain</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td>${TEST_GET_BUF_STAT}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_queue}</td><td>${in_count}</td><td>${in_wait_time}</td><td>${in_process}</td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Message Buffer Interface Usage For Save Chain</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_phys_addr}</td><td><font color=#FF6600>${in_family_id}</td><td><font color=#FF6600>${in_action}</td><td><font color=#FF6600>${in_queue}</td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_wait_time}</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -q %s -c %s -t %s</td><td>${in_phys_addr}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_family_id}</td><td>${in_process}</td><td>${in_action}</td><td>${in_queue}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_wait_time}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test PRB Message Load Information</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_result}</td><td><font color=#FF6600>${k_info}</td><td><font color=#FF6600>${l_info}</td><td><font color=#FF6600>${ker_used}</td></tr>
+<tr><td><br></td><td>...</td><td>${lib_used}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Message Load Information Should Be</td><td>${in_result}</td><td>${k_info}</td><td>${l_info}</td><td>${ker_used}</td></tr>
+<tr><td><br></td><td>...</td><td>${lib_used}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Test PRB Message Load Information For Multi-Thread</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_result}</td><td><font color=#FF6600>${k_info}</td><td><font color=#FF6600>${l_info}</td><td><font color=#FF6600>${ker_used}</td></tr>
+<tr><td><br></td><td>...</td><td>${lib_used}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Message Load Information Should Be</td><td>${in_result}</td><td>${k_info}</td><td>${l_info}</td><td>${ker_used}</td></tr>
+<tr><td><br></td><td>...</td><td>${lib_used}</td><td>2</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Message Load Information Should Be</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_result}</td><td><font color=#FF6600>${k_info}</td><td><font color=#FF6600>${l_info}</td><td><font color=#FF6600>${ker_used}</td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${lib_used}</td><td><font color=#FF6600>${thread_num}=0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check Message Load Information</td><td>${in_result}</td><td>${k_info}</td><td>${l_info}</td></tr>
+<tr><td><br></td><td>...</td><td>${ker_used}</td><td>${lib_used}</td><td>${KER_Q_LMT}</td><td>${LIB_Q_LMT}</td></tr>
+<tr><td><br></td><td>...</td><td>${thread_num}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Msg To Start All Hands</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -t %s</td><td>${WO_COMP_ADDR}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${START_HANDS}</td><td>${WAIT_TIME_5S}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Msg To Stop All Hands And Check Hand Count</b></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td colspan=2>Send Msg To Stop All Hands</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Msg To Stop All Hands</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -t %s</td><td>${WO_COMP_ADDR}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${STOP_HANDS}</td><td>${WAIT_TIME_5S}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Count</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Still Alive</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -t %s</td><td>${WO_COMP_ADDR}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${CHECK_ALIVE}</td><td>${WAIT_TIME_5S}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Multi-thread Test PRB Hand Received Msg</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>3</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v get_msg_count -t %s</td><td>${WO_COMP_ADDR}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${HAND_PROCESS_ID}</td><td>${WAIT_TIME_5S}</td><td><br></td></tr>
+<tr><td><br></td><td>${res} =</td><td>Libgen String Should Contain Substrings</td><td>${result}</td><td>${MAX_MSG_COUNT}</td><td>${MULTI_THREAD_MAX_MSG_COUNT}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${res}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get WO OMU Index</b></td><td>${rg_name}</td><td>Get RG Name By MOName</td><td>${OMU-0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${wo_names}</td><td>Get WO Units</td><td>${rg_name}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${wo info}</td><td>Get Unit Type And Index By MO Name</td><td>${wo_names[0]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO OMU INDEX}</td><td>${wo info.index}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO OMU NAME}</td><td>${wo_names[0]}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>OMU Should Be Ready</b></td></tr>
+<tr><td><br></td><td>Managed Object Should Be Ready</td><td colspan=4>${WO OMU NAME}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Managed Object Should Be Ready</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${moname}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Check Managed Object State</td><td>${moname}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${True}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Set Variable Of Libgen Use Phys Addr</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WO_COMP_ADDR}</td><td>Get Libgen Use Phys Addr</td><td>${OMU TYPE}</td><td colspan=2>${WO OMU INDEX}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO_COMP_ADDR}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Multi-thread Env Setup</b></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${MULTI_THREAD}"=="NO"</td><td colspan=3>Start Multi-thread Test PRB</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Msg Count And Size</b></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Check Message Count And Size</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Msg Count And Queu Staus</b></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Check Message Count And Size</td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f msgqueue</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${pid}'!='None'</td><td>Stop Msg Queue Status</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Message Count And Size</b></td></tr>
+<tr><td><br></td><td>${RET_RESULT}</td><td>Send Msg And Test Message Buffer Interface</td><td>${INTERNAL_QUEUE}</td><td>${Q_MSGCNT_0}</td><td>${WAIT_TIME_5S}</td></tr>
+<tr><td><br></td><td>Check Test PRB Message Load Information</td><td>${RET_RESULT}</td><td>${Q_MSGCNT_0}</td><td>${Q_MSGCNT_0}</td><td>${Q_USED_SIZE_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${Q_USED_SIZE_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hand Count</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=4><font color=#FF6600>${HAND_COUNT}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Use Diagste To Get Hand Count</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${result}</td><td>${HAND_COUNT}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Evaluate Libgen Queue Used Size</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_msg_cnt}</td><td><font color=#FF6600>${in_msg_subs}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${size}</td><td>Evaluate</td><td>${LIB_Q_USED_SIZE_UNIT}*(${in_msg_cnt}-${in_msg_subs})</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${size}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Evaluate Kernel Queue Used Size</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_msg_cnt}</td><td><font color=#FF6600>${in_msg_subs}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${size}</td><td>Evaluate</td><td>${KER_Q_USED_SIZE_UNIT}*(${in_msg_cnt}-${in_msg_subs})</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${size}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Test Msg To Test Process Continuously</b></td></tr>
+<tr><td><br></td><td colspan=5>Check PRB Still Alive</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>echo "sleep 0.5; while :; do mempoolproc -f 0xffff -- -p \"0X700 0xC385 0x0\" -v still_alive; mempoolproc -f 0xffff -- -p \"0X700 0xC385 0x1\" -v still_alive; mempoolproc -f 0xffff -- -p \"0X700 0xC385 0x2\" -v still_alive; done" &gt; /var/log/msgtest_msgbuffer</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>bash /var/log/msgtest_msgbuffer &gt; /dev/null &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop To Send Test Msg</b></td></tr>
+<tr><td><br></td><td>Stop Current Test At Background</td><td>msgtest_msgbuffer</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>rm -f /var/log/msgtest_msgbuffer</td></tr>
+<tr><td><br></td><td colspan=5>Check PRB Still Alive</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Test Msg To Test Process To Get Message Pointer And Should Succeed</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v test_get_buf_ptr -S 26 -t %s</td><td>${WO_COMP_ADDR}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${WAIT_TIME_5S}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>sub_id: 27</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Msg Queue Status Directly</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${lib_count}</td><td><font color=#FF6600>${ker_count}=0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${WO_COMP_ADDR} -f ${FAMILY_ID} -r msgque</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>lib_msg_count ${lib_count}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>k_msg_count ${ker_count}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Msg Queue Status</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${lib_count_min}</td><td><font color=#FF6600>${lib_count_max}</td><td><font color=#FF6600>${ker_count_min}=0</td><td><font color=#FF6600>${ker_count_max}=0</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>cat msgqueue</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>grep "lib_msg_count " msgqueue|sed 's/,//g'|awk '{print $2}'|sort -n|tail -1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be True</td><td>${lib_count_min}&lt;=${result.strip()}&lt;=${lib_count_max}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>grep "k_msg_count " msgqueue|sed 's/,//g'|awk '{print $2}'|sort -n|tail -1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be True</td><td>${ker_count_min}&lt;=${result.strip()}&lt;=${ker_count_max}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>rm -f msgqueue</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get Msg Queue Status At Backgroud</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>bash msgqueue.sh &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>0.2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Msg Queue Status</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>kill ${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${pid}</td><td>None</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Message State</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${lib_count}</td><td><font color=#FF6600>${lib_size}</td><td><font color=#FF6600>${ker_count_min}=0</td><td><font color=#FF6600>${ker_count_max}=0</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${WO_COMP_ADDR} -f ${FAMILY_ID} -r msgstate</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>message in libgen queue(including saved) :\ \ \ \ \ \ ${lib_count}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>size level 65696: current used size: ${lib_size}, max used size: ${lib_size}</td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

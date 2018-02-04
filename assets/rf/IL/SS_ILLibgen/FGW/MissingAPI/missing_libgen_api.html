@@ -1,0 +1,535 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Missing Libgen Api</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Missing Libgen Api</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><b>Resource</b></td><td colspan=3>../../resources/libgen_resource.html</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test Libgen I01247 missing APIs: lib_error_msg_s, lib_set_current_msg_r, receive_buffer_r, save_buffer_r and viewed__count_of_unhandled_msgs.\n</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>Case ATC_ID-Libgen.FUT.006.AT.I01247 has been transferred to message_buffer_set_and_free.html\n</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test pronto:43170ESPE06 mcRNC3.0 R_QNCB.13.5.5_14 syslog flood at call release due to HA3 leftover messages.\n</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT And Start Testprocess</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Stop Testprocess And Disconnect From SUT</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B01277, Product_Backlog_ID-IL0008</td><td><font color=dark red>Iteration_ID-I01247, Iteration_ID-I02688</td><td><font color=dark red>PRS_ID-IL_PRS_2582 PRS_ID=IL_PRS_364</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><font color=dark red>element-IL</td><td><font color=dark red>exec_type-automatic</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-1</td><td><font color=dark red>release-IL1_RIS4</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>reviewer-zhiyu.yang@nsn.com</td><td><br></td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>rw-automatic</td><td><font color=dark red>hw_env-RNC</td><td><font color=dark red>hw_env-AB</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>bcn_step-BCN_S1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-BCN_A2</td><td><font color=dark red>hw_type-BCN_B2</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-MGW_AB3</td><td><font color=dark red>hw_type-MGW_AB4</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC_S1</td><td><font color=dark red>hw_env-AB</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-RNC_EFS_2152_93</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${FAMILY ID}</td><td>0x1B5B</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST PROCESS2}</td><td>dmxtstproc</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST PROCESS1}</td><td>dmxtstproc_ne</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FAMILY_ID1}</td><td>0x1B5C</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FAMILY_ID2}</td><td>0x1B5B</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${PROCESS_NOT_REACHABLE}</td><td>0x1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_NOT_ALIVE}</td><td>hand not alive</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${INVALID_FOCUS_C}</td><td>invalid focus</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${LEFTOVER_MESSAGES}</td><td>leftover messages</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RECEIVE_C_TEST_MSG_S}</td><td>receive test msg</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${EQUAL TO 2}</td><td>2</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${EQUAL TO 50}</td><td>50</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${EQUAL TO 499}</td><td>499</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${EQUAL TO 500}</td><td>500</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${EQUAL TO 502}</td><td>502</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SPECIFIC PROCESS ID}</td><td>0x1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SPECIFIC PROCESS ID2}</td><td>0x2</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FOCUS_ZERO}</td><td>0x0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FOCUS_ONE}</td><td>0x1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FOCUS_TWO}</td><td>0x2</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FOCUS_THREE}</td><td>0x3</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FOCUS_FOUR}</td><td>0x4</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FOCUS_FIVE}</td><td>0x5</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FOCUS_SIX}</td><td>0x6</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FOCUS_SEVEN}</td><td>0x7</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MESSAGE_COUNT_1}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MESSAGE_COUNT_2}</td><td>0x2</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MESSAGE_COUNT_251}</td><td>0xFB</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MESSAGE_COUNT_499}</td><td>0x1f3</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MESSAGE_COUNT_500}</td><td>0x1f4</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MESSAGE_COUNT_501}</td><td>0x1f5</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DMX ATTR DEFAULT VALUE}</td><td>0xffff11</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0x0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_NUMBER}</td><td>0x6034</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DELIVERY_RANGE}</td><td>0x0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${UNIT_INDEX}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU_UNIT_TYPE}</td><td>0x2</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WARMTSTPROC}</td><td>warmprocmas:42100</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONDITION_STRING}</td><td>":(NUM=6238)"</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RETRY}</td><td>3</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEMP_INI_FILE}</td><td>LibgenConfig_OMU.ini</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_WITH_ERROR_MSGS_QUEUED}</td><td>[default]\nmax_threads=1\nstack_size=500000\ntimer_heap_size=10000\nuse_focus=0\nuse_fatal_handler=0\ncntx_pool_free_thrd=20\nmsg_conversion_enable=0\npool_128=128\npool_512=64\npool_2k=32\npool_8k=8\npool_64k=2\n\n[dmxtstproc:7003]\nfamily_number=7003\nhandgroup_1_size=10\nerror_messages_to_master=1\nuse_focus=1\nerror_msgs_queued=50\n\n[clipro:65535]\nfamily_number=65535\nendless_loop_monitor_interval=0\ninput_sync_disable=1\n[dmxtstproc_ne:7004]\nfamily_number=7004\nhandgroup_1_size=10\nuse_focus=1\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td><b>lib_error_msg_s shouldn't be triggered by libgen when ERR_MSGS_TO_MASTER attr is not set</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n . Test CLI is available\n . Test Process is available\n . ERR_MSGS_TO_MASTER attr is not set\n\n<br>Execution description\n<br>1. Test CLI sends message to hand process which is not created yet.\n<br>2. Test CLI sends another message to master process to check if received lib_error_msg_s.\n\n<br>Expected result\n<br>. Master process shoudl not receive lib_error_msg_s\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.I01247</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Process1 Which ERR_MSGS_TO_MASTER Attr Is Not Set</td><td>${PROCESS_NOT_REACHABLE}</td><td>${FOCUS_ZERO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process1 Should Not Receive lib_error_msg_s</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Message Should Be Discard If Focus Is Not Correct When ERR_MSGS_TO_MASTER Attr Is Not Set</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n<br>. Test Process is available\n<br>. ERR_MSGS_TO_MASTER attr is not set\n\n<br>Execution description\n<br>1. Test process creates one hand and return the focus.\n<br>2. Test CLI sends message to hand process with correct focus.\n<br>3. Test CLI sends another message to master process to check if received c_test_msg_s.\n<br>4. Test CLI sends message to hand process with wrong focus.\n<br>5. Test CLI sends another message to master process to check if received c_test_msg_s.\n<br>Expected result\n<br>. Master process receives c_test_msg_s or not according focus is correct\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.27091ESPE05</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process1 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Process1 With Wrong Focus Which ERR_MSGS_TO_MASTER Attr Is Not Set</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_ZERO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process1 Should Receive C_TEST_MSG_S</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Process1 With Wrong Focus Which ERR_MSGS_TO_MASTER Attr Is Not Set</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_ONE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process1 Should Not Receive C_TEST_MSG_S</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process1 Stop The Created Hand</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_ZERO}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>lib_err_msg_s will be triggered by libgen if hand process is not in a valid state</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n<br>. Test Process is available\n<br>. ERR_MSGS_TO_MASTER attr is set\n\n<br>Execution description\n<br>1. Test CLI sends message to hand process which is not created yet.\n<br>2. Test CLI sends another message to master process to check if received lib_error_msg_s.\n\n<br>Expected result\n<br>. Master process receives lib_error_msg_s with error reason hand_not_alive_c\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.002.AT.I01247</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Process2 Which ERR_MSGS_TO_MASTER Attr Is Set</td><td>${PROCESS_NOT_REACHABLE}</td><td>${FOCUS_ZERO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code Hand_not_alive_c</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>lib_err_msg_s will be triggered by libgen if hand process has been stopped</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n<br>. Test Process is available\n . ERR_MSGS_TO_MASTER attr is set\n\n<br>Execution description\n<br>1. Test process creates one hand and stop by itself.\n<br>2. Test CLI sends message to hand process.\n<br>3. Test CLI sends another message to master process to check if received lib_error_msg_s.\n\n<br>Expected result\n<br>. Master process receives lib_error_msg_s with error reason hand_not_alive_c\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.003.AT.I01247</td><td>ATC_ID-Libgen.FUT.001.AT.112607ESPE04</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster For Test Process With Special Command Parameter</td><td>${FAMILY_ID2}</td><td>-u ${WO_COMP_ADDR} -f ${FAMILY_ID2.strip('0x')} -c ${CONDITION_STRING}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Stop The Created Hand</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_ZERO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Process2 Which ERR_MSGS_TO_MASTER Attr Is Set</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_ZERO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code Hand_not_alive_c</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monster And Check Focus List Should Be Correct</td><td>${MONSTER_CONN}</td><td>${MESSAGE_COUNT_1}</td><td>${FOCUS_ZERO}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>lib_err_msg_s will be triggered by libgen if hand process's focus is incorrect</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n<br>. Test Process is available\n<br>. ERR_MSGS_TO_MASTER attr is set\n\n Execution description\n<br>1. Test process creates one hand and return the focus.\n<br>2. Test CLI sends message to hand process with wrong focus.\n<br>3. Test CLI sends another message to master process to check if received lib_error_msg_s.\n\n<br>Expected result\n<br>. Master process receives lib_error_msg_s with error reason invalid_focus_c\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.004.AT.I01247</td><td>ATC_ID-Libgen.FUT.002.AT.112607ESPE04</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster For Test Process With Special Command Parameter</td><td>${FAMILY_ID2}</td><td>-u ${WO_COMP_ADDR} -f ${FAMILY_ID2.strip('0x')} -c ${CONDITION_STRING}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Process2 With Wrong Focus Which ERR_MSGS_TO_MASTER Attr Is Set</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_ZERO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code invalid_focus_c</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monster And Check Focus List Should Be Correct</td><td>${MONSTER_CONN}</td><td>${MESSAGE_COUNT_1}</td><td>${FOCUS_ZERO}</td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Stop The Created Hand</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_ONE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>lib_err_msg_s will be triggered several time(MAX:500) by libgen if hand process has been stopped and msg queue or save_chain still exist several messages</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n<br>. Test Process is available\n<br>. ERR_MSGS_TO_MASTER attr is set\n\n<br>Execution description\n<br>1. Test process creates one hand.\n<br>2. Hand process send serveral messages (&lt;500) to itself and stops itself.\n<br>3. Master process receives lib_error_msg_s and count the number.\n<br>4. Test CLI sends message to master to query lib_error_msg_s count.\n<br>5. Test process create one hand.\n<br>6. Test CLI sends serveral messages (&lt;500 and &gt;500) to hand process and hand process save them.\n<br>7. Test CLI sends message to hand process to stop itself.\n<br>8. Master process receives lib_error_msg_s and count the number.\n<br>9. Test CLI sends message to master to query lib_error_msg_s count.\n\n Expected result\n<br>. Master process receives lib_error_msg_s with error reason leftover_msg_c with correct count number\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.005.AT.I01247</td><td>ATC_ID-Libgen.FUT.003.AT.112607ESPE04</td><td>ATC_ID-Libgen.FUT.001.AT.43170ESPE06</td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Send Messages(=2) To Itself And Stop</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_TWO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s And Message Count Number Should Be Equal To</td><td>${EQUAL TO 2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Send Messages(=500) To Itself And Stop</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_THREE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s And Message Count Number Should Be Equal To</td><td>${EQUAL TO 500}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Send Messages(&gt;500) To Itself And Save Into Save Queue</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_FOUR}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Stop The Created Hand</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_FOUR}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s And Message Count Number Should Be Equal To</td><td>${EQUAL TO 500}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Send Message(&lt;500) To Itself And Save Into Save Chain</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_FIVE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Stop The Created Hand</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_FIVE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s And Message Count Number Should Be Equal To</td><td>${EQUAL TO 499}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Send Messages(=251) To Itself And Stop</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_SIX}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Send Messages(=251) To Itself And Stop</td><td>${SPECIFIC PROCESS ID2}</td><td>${FOCUS_ZERO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s And Message Count Number Should Be Equal To</td><td>${EQUAL TO 502}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Send Messages(=251) To Itself And Save Into Save Queue</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_SEVEN}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Send Messages(=251) To Itself And Save Into Save Queue</td><td>${SPECIFIC PROCESS ID2}</td><td>${FOCUS_ONE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Stop The Created Hand</td><td>${SPECIFIC PROCESS ID}</td><td>${FOCUS_SEVEN}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Stop The Created Hand</td><td>${SPECIFIC PROCESS ID2}</td><td>${FOCUS_ONE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s And Message Count Number Should Be Equal To</td><td>${EQUAL TO 502}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>User can receive given message to buffer successfully</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n\n<br>Execution description\n<br>1. Test CLI absolutely sends 1st c_test_msg_s to itself with SENDER_COMPUTER+1, SENDER_PROCESS_ID and SENDER_FAMILY_ID.\n<br>2. Test CLI absolutely sends 2nd c_test_msg_s to itself with SENDER_COMPUTER, SENDER_PROCESS_ID+1 and SENDER_FAMILY_ID.\n<br>3. Test CLI absolutely sends 3rd c_test_msg_s to itself with SENDER_COMPUTER, SENDER_PROCESS_ID and SENDER_FAMILY_ID.\n<br>4. Test CLI calls receive_buffer_r to receive message with SENDER_COMPUTER and SENDER_PROCESS_ID, SENDER_FAMILY_ID to buffer.\n<br>5. Test CLI calls receive_buffer_r to receive messages with any sender computer, any sender process id and any sender family id.\n\n<br>Expected result\n<br>. Test CLI receives 3rd c_test_msg_s message successfully with given SENDER_COMPUTER, SENDER_PROCESS_ID and SENDER_FAMILY_ID.\n<br>. Test CLI receives 1st and 2nd c_test_msg_s messages successfully with any sender computer and any sender full process id.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.007.AT.I01247</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Libgen Receive Buffer Success</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>User failed to receive given message to buffer because of time out</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n\n<br>Execution description\n<br>1. Test CLI absolutely sends 1st c_test_msg_s to itself with SENDER_COMPUTER+1, SENDER_PROCESS_ID and SENDER_FAMILY_ID.\n<br>2. Test CLI absolutely sends 2nd c_test_msg_s to itself with SENDER_COMPUTER, SENDER_PROCESS_ID+1 and SENDER_FAMILY_ID.\n<br>3. Test CLI absolutely sends 3rd c_test_msg_s to itself with SENDER_COMPUTER, SENDER_PROCESS_ID and SENDER_FAMILY_ID+1.\n<br>4. Test CLI calls receive_buffer_r to receive message with SENDER_COMPUTER and SENDER_PROCESS_ID, SENDER_FAMILY_ID to buffer.\n<br>5. Test CLI calls receive_buffer_r to receive messages with any sender computer, any sender process id and any sender family id.\n\n<br>Expected result\n<br>. Test CLI failed to receive c_test_msg_s message with given SENDER_COMPUTER, SENDER_PROCESS_ID and SENDER_FAMILY_ID, error code return by osc_status() is TIMEOUT_EC.\n<br>. Test CLI receives 1st, 2nd and 3rd c_test_msg_s messages successfully with any sender computer and any sender full process id.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.008.AT.I01247</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Libgen Receive Buffer Timeout</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>User can save message in buffer to save queue successfully</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n\n<br>Execution description\n<br>1. Test CLI absolutely sends 1st c_test_msg_s to itself with SENDER_COMPUTER+1, SENDER_PROCESS_ID and SENDER_FAMILY_ID.\n<br>2. Test CLI absolutely sends 2nd c_test_msg_s to itself with SENDER_COMPUTER, SENDER_PROCESS_ID+1 and SENDER_FAMILY_ID.\n<br>3. Test CLI absolutely sends 3rd c_test_msg_s to itself with SENDER_COMPUTER, SENDER_PROCESS_ID and SENDER_FAMILY_ID.\n<br>4. Test CLI calls receive_buffer_r to receive message with SENDER_COMPUTER and SENDER_PROCESS_ID, SENDER_FAMILY_ID to buffer.\n<br>5. Test CLI calls save_buffer_r to store the step 4 received message in buffer to save queue.\n<br>6. Test CLI calls receive_buffer_r to receive messages with any sender computer, any sender process id and any sender family id.\n\n<br>Expected result\n<br>. Test CLI receives 3rd c_test_msg_s message successfully with given SENDER_COMPUTER, SENDER_PROCESS_ID and SENDER_FAMILY_ID.\n<br>. Test CLI save message in buffer to save queue successfully (save_buffer_r return success_ec).\n<br>. Test CLI receives 3rd, 1st and 2nd c_test_msg_s message successfully with any sender computer and any sender full process id (receive_buffer_r will first call lib_get_saved_msgs_r which will move messages in save queue to the FRONT of internal queue, so 3rd message in save queue will be received firstly).\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.009.AT.I01247</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Libgen Save Buffer Success</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>lib_error_msg_s Received Successfully When Hand Has Leftover Msgs In Internal Queue</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n<br>. Test Process is available\n<br>. ERR_MSGS_TO_MASTER attr is set\n\n<br>Execution description\n<br>1. Test process creates one hand.\n<br>2. Test CLI sends message to hand process into internl queue and master to stop the hand.\n<br>3. Test CLI sends another message to master process to check if received lib_error_msg_s.\n\n<br>Expected result\n<br>. Master process receives lib_error_msg_s with error reason leftover messages\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.53236ESPE03</td><td>ATC_ID-Libgen.FUT.001.AT.47461ESPE05</td><td>ATC_ID-Libgen.FUT.002.AT.43170ESPE06</td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg3 To Internal And Stop Used By Missingapi</td><td>${SPECIFIC PROCESS ID}</td><td>${CUR_FOCUS_ID}</td><td>${MESSAGE_COUNT_501}</td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code leftover_messages And Message Count Number Should Be Equal To</td><td>${EQUAL TO 500}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg3 To Internal And Stop Used By Missingapi</td><td>${SPECIFIC PROCESS ID}</td><td>${CUR_FOCUS_ID}</td><td>${MESSAGE_COUNT_501}</td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code Hand_not_alive_c</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>lib_error_msg_s Received Successfully When Hand Has Leftover Msgs In Save Queue</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n<br>. Test Process is available\n<br>. ERR_MSGS_TO_MASTER attr is set\n\n<br>Execution description\n<br>1. Test process creates one hand.\n<br>2. Test CLI sends message to hand process into save queue<br>3. Test CLi sends msssage to master to stop the hand.\n<br>4. Test CLI sends another message to master process to check if received lib_error_msg_s.\n\n<br>Expected result\n<br>. Master process receives lib_error_msg_s with error reason leftover messages\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.002.AT.53236ESPE03</td><td>ATC_ID-Libgen.FUT.003.AT.43170ESPE06</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg3 To Save Queue By Missingapi</td><td>${SPECIFIC PROCESS ID}</td><td>${CUR_FOCUS_ID}</td><td>${MESSAGE_COUNT_501}</td><td><br></td></tr>
+<tr><td><br></td><td>Stop One Hand For Err Code leftover_messages Test</td><td>${SPECIFIC PROCESS ID}</td><td>${CUR_FOCUS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code leftover_messages And Message Count Number Should Be Equal To</td><td>${EQUAL TO 500}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>lib_error_msg_s Received Successfully When Hand Has Leftover Msgs In Save Chain</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n<br>. Test Process is available\n<br>. ERR_MSGS_TO_MASTER attr is set\n\n<br>Execution description\n<br>1. Test process creates one hand.\n<br>2. Test CLI sends message to hand process into save chain and stop the hand.\n<br>3. Test CLi sends msssage to master to stop the hand.\n<br>4. Test CLI sends another message to master process to check if received lib_error_msg_s.\n\n<br>Expected result\n<br>. Master process receives lib_error_msg_s with error reason leftover messages\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.003.AT.53236ESPE03</td><td>ATC_ID-Libgen.FUT.004.AT.43170ESPE06</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg3 To Save Chain By Missingapi</td><td>${SPECIFIC PROCESS ID}</td><td>${CUR_FOCUS_ID}</td><td>${MESSAGE_COUNT_501}</td><td><br></td></tr>
+<tr><td><br></td><td>Stop One Hand For Err Code leftover_messages Test</td><td>${SPECIFIC PROCESS ID}</td><td>${CUR_FOCUS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code leftover_messages And Message Count Number Should Be Equal To</td><td>${EQUAL TO 500}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Timer Messages Can Trigger lib_error_msg_s Message To Master Correctly</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n<br>. Test Process is available\n<br>. ERR_MSGS_TO_MASTER attr is set\n\n<br>Execution description\n<br>1. Test process creates one hand.\n<br>2. Test CLI send serveral timer messages (&gt;500) to hand process into internl queue and stop the hand.\n<br>3. Test CLI sends another message to master process to check if received lib_error_msg_s.\n\n<br>Expected result\n<br>. Master process receives lib_error_msg_s with error reason hand not alive\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.005.AT.43170ESPE06</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Timer Msg To Hand By Missingapi</td><td>${SPECIFIC PROCESS ID}</td><td>${CUR_FOCUS_ID}</td><td>${MESSAGE_COUNT_501}</td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code Hand_not_alive_c</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Message Should Be Discard If There Are Already Maximum(Default:500) lib_error_msg_s Messages In Internal Message Queue For Master</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n<br>. Test Process is available\n<br>. ERR_MSGS_TO_MASTER attr is set\n\n<br>Execution description\n<br>1. Test process creates one hand.\n<br>2. Test CLI send messages to let master go to state where lib_error_msg_s is saved.\n<br>3. Test CLI send serveral messages (&gt;500) to hand process into internl queue and stop the hand.\n<br>4. Test CLI send messages to let master quit the state where lib_error_msg_s is saved.\n<br>5. Check the messages send to hand(&gt;500) has discard.\n<br>6. Test CLI sends another message to master process to check if received lib_error_msg_s.\n\n<br>Expected result\n<br>. Master process receives lib_error_msg_s with error reason hand not alive\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.006.AT.43170ESPE06</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Let Master Go To State To Save lib_error_msg_s</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Timer Msg To Hand By Missingapi</td><td>${SPECIFIC PROCESS ID}</td><td>${CUR_FOCUS_ID}</td><td>${MESSAGE_COUNT_501}</td><td><br></td></tr>
+<tr><td><br></td><td>Let Master Quit The State Which Save lib_error_msg_s</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code Hand_not_alive_c</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Get Unit Pending Message Count successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n<br>. Test Process is available\n\n<br>Execution description\n<br>1. Test process2 get unit pending messages count and should be less than 10000.\n<br>2. Test&nbsp;&nbsp;process1 send 10000 messages to external queue and call sleep directly let message kept in external.\n<br>3. Test process2 send 10000 messages to external queue and get unit pending messages count.\n\n<br>Expected result\n<br>. The unit pending messages count should be bigger than or equal to 10000\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.I02688</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Get Unit Pending Messages Count And Should Be Less Than 10000</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process1 Send 10000 Messages To External Queue And Sleep</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>cat /proc/dmxmsg/clients|grep ^010</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Get Unit Pending Messages Count And Should Be Bigger Than 10000</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Configurable Parameter Queued lib_error_msg_s Messages Count Should Be Set Correctly</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>. Test CLI is available\n<br>. ERR_MSGS_TO_MASTER attr is set\n\n<br>Execution description\n<br>1. Update default ERROR_MSGS_QUEUED value to a configurable value(50).\n<br>2. Test process creates one hand.\n<br>3. Test CLI send serveral messages (&gt;50) to hand process into internl queue and stop the hand.\n<br>4. Test CLI sends another message to master process to check if received lib_error_msg_s.\n\n<br>Expected result\n<br>. Master process receives lib_error_msg_s with error reason timer messages\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.007.AT.43170ESPE06</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Export Temporarily Ini With Configurable ERROR_MSGS_QUEUED value</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Testprocess</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Testprocess</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process2 Create One Hand</td><td>${SPECIFIC PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg3 To Save Chain By Missingapi</td><td>${SPECIFIC PROCESS ID}</td><td>${CUR_FOCUS_ID}</td><td>${MESSAGE_COUNT_501}</td><td><br></td></tr>
+<tr><td><br></td><td>Stop One Hand For Err Code leftover_messages Test</td><td>${SPECIFIC PROCESS ID}</td><td>${CUR_FOCUS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code leftover_messages And Message Count Number Should Be Equal To</td><td>${EQUAL TO 50}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Temporarily Ini</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td><b>Test Process Redefine The Current_buffer And Reuse It Success</b></td><td>${result}</td><td>Redefine Current Buffer And Reuse</td><td>${WO_COMP_ADDR}</td><td>${FAMILY ID}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test Process Redefine The Current_buffer And Reuse It Success Again</b></td><td>Test Process Redefine The Current_buffer And Reuse It Success</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Connect To SUT And Start Testprocess</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Setup Connection For WO</td></tr>
+<tr><td><br></td><td>Start Testprocess</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${NODE}</td><td>Get Node From Unit</td><td>${OMU}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${NODE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start Testprocess</b></td><td>Execute Cmd With Check Expected</td><td>${TEST PROCESS1} &amp;</td><td>Dmxtestproc_master start</td><td>10</td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>${TEST PROCESS2} &amp;</td><td>Dmxtestproc_master start</td><td>10</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Testprocess And Disconnect From SUT</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Testprocess</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Testprocess</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Kill Process</td><td>${TEST PROCESS1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Kill Process</td><td>${TEST PROCESS2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Message To Process1 Which ERR_MSGS_TO_MASTER Attr Is Not Set</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Process Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID1}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${focus}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Master Process Of Process1 Should Not Receive C_TEST_MSG_S</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Receive Err Msg</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID1}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Master Process Of Process1 Should Receive C_TEST_MSG_S</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Receive Err Msg</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID1}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${RECEIVE_C_TEST_MSG_S}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Master Process Of Process1 Should Not Receive lib_error_msg_s</b></td><td>${result}</td><td>Check If Receive Err Msg</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID1}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Message To Process2 Which ERR_MSGS_TO_MASTER Attr Is Set</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Process Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${focus}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Message To Process1 With Wrong Focus Which ERR_MSGS_TO_MASTER Attr Is Not Set</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Process Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID1}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${focus}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Message To Process2 With Wrong Focus Which ERR_MSGS_TO_MASTER Attr Is Set</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Process Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${focus}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code Hand_not_alive_c</b></td><td>${result}</td><td>Check If Receive Err Msg</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${HAND_NOT_ALIVE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code invalid_focus_c</b></td><td>${result}</td><td>Check If Receive Err Msg</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${INVALID_FOCUS_C}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Master Process Of Process2 Should Receive lib_error_msg_s And Message Count Number Should Be Equal To</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${message_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Receive Err Msg And Return Count</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${message_count}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process1 Create One Hand</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create One Hand Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID1}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Be Equal</td><td>${result}</td><td>return wrong</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${CUR_FOCUS_ID}</td><td>${result}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process2 Create One Hand</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create One Hand Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Be Equal</td><td>${result}</td><td>return wrong</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${CUR_FOCUS_ID}</td><td>${result}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process1 Stop The Created Hand</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop One Hand Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID1}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${focus}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process2 Stop The Created Hand</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop One Hand Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${focus}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process2 Send Messages(=2) To Itself And Stop</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg1 To Own And Stop Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${focus}</td><td>${MESSAGE_COUNT_2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process2 Send Messages(=251) To Itself And Stop</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg1 To Own And Stop Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${focus}</td><td>${MESSAGE_COUNT_251}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process2 Send Messages(=500) To Itself And Stop</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg1 To Own And Stop Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${focus}</td><td>${MESSAGE_COUNT_500}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process2 Send Messages(&gt;500) To Itself And Save Into Save Queue</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg2 To Own And Stop Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${focus}</td><td>${MESSAGE_COUNT_501}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process2 Send Messages(=251) To Itself And Save Into Save Queue</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg2 To Own And Stop Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${focus}</td><td>${MESSAGE_COUNT_251}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process2 Send Message(&lt;500) To Itself And Save Into Save Chain</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg3 To Own And Stop Used By MissingAPI</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${process_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${focus}</td><td>${MESSAGE_COUNT_499}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test Libgen Receive Buffer Success</b></td><td>${result} =</td><td>Libgen Test Receive Buffer Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test Libgen Receive Buffer Timeout</b></td><td>${result} =</td><td>Libgen Test Receive Buffer Timeout</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test Libgen Save Buffer Success</b></td><td>${result} =</td><td>Libgen Test Save Buffer Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Msg3 To Internal And Stop Used By Missingapi</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus_id}</td><td><font color=#FF6600>${msg_count}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>ILDMXTestCli -- -i -r %s %s %s -s 0x33 %s %s 0x2 %s</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${process_id}</td><td>${focus_id}</td><td>${msg_count}</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Msg3 To Save Queue By Missingapi</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus_id}</td><td><font color=#FF6600>${msg_count}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>ILDMXTestCli -- -i -r %s %s %s -s 0x82 0 %s 0x2 %s</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td>${focus_id}</td><td>${msg_count}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Msg3 To Save Chain By Missingapi</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus_id}</td><td><font color=#FF6600>${msg_count}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>ILDMXTestCli -- -i -r %s %s %s -s 0x83 0 %s 0x2 %s</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td>${focus_id}</td><td>${msg_count}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Timer Msg To Hand By Missingapi</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus_id}</td><td><font color=#FF6600>${msg_count}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>ILDMXTestCli -- -i -r %s %s %s -s 0x84 0 %s 0x2 %s</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td>${focus_id}</td><td>${msg_count}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop One Hand For Err Code leftover_messages Test</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${focus_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>ILDMXTestCli -- -i -r %s %s %s -s 0x32 0x1 0x0 0x1</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Master Process Of Process2 Should Receive lib_error_msg_s With Err Code leftover_messages And Message Count Number Should Be Equal To</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${msg_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Receive Err Msg And Count</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${LEFTOVER_MESSAGES}</td><td>${msg_count}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process2 Get Unit Pending Messages Count And Should Be Less Than 10000</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Get Unit Pending Message And Should Be Less Than Value</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process1 Send 10000 Messages To External Queue And Sleep</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Messages To External Queue And Sleep</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID1}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Process2 Get Unit Pending Messages Count And Should Be Bigger Than 10000</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Get Unit Pending Message And Should Be Larger Than Value</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Update Ini Configuration On WO And Start Testprocess</b></td></tr>
+<tr><td><br></td><td>${BACKUP_FILE}</td><td>update_ini_configuration</td><td>${CONFIG_FILE}</td><td>add</td><td>${WARMTSTPROC}</td></tr>
+<tr><td><br></td><td>...</td><td>null</td><td>error_messages_to_master=1</td><td>SAVE</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td colspan=4>\${BACKUP_FILE}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>warmtstproc -f 0xffff -t 2 &amp;</td><td>Test warmingproc_master start</td><td>10s</td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>cat /proc/dmxmsg/clients|grep warmtstproc</td></tr>
+<tr><td><br></td><td>${family_id}</td><td>Execute CLI</td><td colspan=3>cat /proc/dmxmsg/clients|grep warmtstproc|grep -v "1773|A474|A476"|awk -F: '{print "0x"$2}'</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${TESTPRB_FAMILY_ID}</td><td>${family_id}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Let Testproc Into Stateful</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v let_tstproc_stateful</td><td>${WO_COMP_ADDR}</td><td>${family_id}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Let Testproc Exit Stateful</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v quit_stateful</td><td>${WO_COMP_ADDR}</td><td>${family_id}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Let Master Go To State To Save lib_error_msg_s</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>ILDMXTestCli -- -r %s %s 0 -s 0x85 0x0 0x0</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Let Master Quit The State Which Save lib_error_msg_s</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>ILDMXTestCli -- -r %s %s 0 -s 0x86 0x0 0x0</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start Monster For Test Process With Special Command Parameter</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${test_process_id}</td><td><font color=#FF6600>${cmd_parmas}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Setup Connection For WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Wait Until Succeeds Start Monster Monitor Family On Specific Node</td><td>${RETRY}</td><td>${NODE}</td><td>${cmd_parmas}</td></tr>
+<tr><td><br></td><td>...</td><td>${test_process_id.strip('0x')}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result['result']}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${MONSTER_CONN}</td><td>${result['connection']}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Setup Connection For WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Monster</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${monster_conn}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monster With Target Connect_id</td><td>${monster_conn}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${MONSTER_CONN}</td><td>None</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Monster And Check Focus List Should Be Correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${monster_conn}</td><td><font color=#FF6600>${msg_count}</td><td><font color=#FF6600>${focus_id_list}</td><td><br></td></tr>
+<tr><td><br></td><td>${msg_buf}</td><td>Stop Monster And Get Result</td><td>${monster_conn}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${MONSTER_CONN}</td><td>None</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_list}</td><td>Get Msg From Monitoring Result</td><td>${msg_buf}</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td>Check Focus List Should Be Correct</td><td>${msg_list}</td><td>${msg_count}</td><td>${focus_id_list}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Monster And Check Focus Should Be Correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${monster_conn}</td><td><font color=#FF6600>${msg_count}</td><td><font color=#FF6600>${focus_id}</td><td><br></td></tr>
+<tr><td><br></td><td>${msg_buf}</td><td>Stop Monster And Get Result</td><td>${monster_conn}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${MONSTER_CONN}</td><td>None</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_list}</td><td>Get Msg From Monitoring Result</td><td>${msg_buf}</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td>Check Focus Should Be Correct</td><td>${msg_list}</td><td>${msg_count}</td><td>${focus_id}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Focus List Should Be Correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${msg_list}</td><td><font color=#FF6600>${msg_count}</td><td><font color=#FF6600>${focus_id_list}</td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>In Range</td><td>0</td><td>${msg_count}</td></tr>
+<tr><td><br></td><td><br></td><td>Should Be Equal As Integers</td><td>${msg_list[${Index}]['msg']['focus']}</td><td>${focus_id_list[${Index}].replace('0x','')}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Focus Should Be Correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${msg_list}</td><td><font color=#FF6600>${msg_count}</td><td><font color=#FF6600>${focus_id}</td><td><br></td></tr>
+<tr><td><br></td><td>${focus_id}=</td><td>Convert To Integer</td><td>${focus_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>In Range</td><td>0</td><td>${msg_count}</td></tr>
+<tr><td><br></td><td><br></td><td>Should Be Equal As Integers</td><td>${msg_list[${Index}]['msg']['focus']}</td><td>${focus_id}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Monster</b></td></tr>
+<tr><td><br></td><td>Setup Connection For WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${MONSTER_CONN}'!= 'None'</td><td>Stop Monster With Target Connect_id</td><td>${MONSTER_CONN}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Monster With Target Connect_id</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${monster_conn}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Monster And Get Result</td><td>${monster_conn}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Export Temporarily Ini With Configurable ERROR_MSGS_QUEUED value</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>echo -e "${DEFAULT_WITH_ERROR_MSGS_QUEUED}" &gt;./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>cat ./${TEMP_INI_FILE}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Temporarily Ini</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=/etc/LibgenConfig_OMU.ini</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><b>Library</b></td><td>Collections</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>il.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${OMU TYPE NAME}</td><td>%{OMU_TYPE_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU TYPE}</td><td>%{OMU_TYPE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU0}</td><td>%{OMU_0_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MAX TIME FOR CONNECT}</td><td>20</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SUCCESS RESULT}</td><td>success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER ID}</td><td>0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND ID}</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND COUNT}</td><td colspan=4>1</td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK TIMEOUT}</td><td>10</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK INTERVAL}</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=5><b>Connect To SUT And Setup TestEnv</b></td></tr>
+<tr><td><br></td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td>${MAX TIME FOR CONNECT}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>%{USERNAME}</td><td>%{PASSWD}</td></tr>
+<tr><td><br></td><td>Get WO OMU index</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${WO OMU NAME}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get The Physical Address of WO OMU</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Disconnect From SUT</b></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get WO OMU index</b></td><td>${rg_name}</td><td>Get RG Name By MOName</td><td>${OMU0}</td><td><br></td></tr>
+<tr><td><br></td><td>${wo_names}</td><td>Get WO Units</td><td>${rg_name}</td><td><br></td></tr>
+<tr><td><br></td><td>${wo info}</td><td>Get Unit Type And Index By MO Name</td><td>${wo_names[0]}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO OMU INDEX}</td><td>${wo info.index}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO OMU NAME}</td><td>${wo_names[0]}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Get The Physical Address Of WO OMU</b></td></tr>
+<tr><td><br></td><td>${WO_COMP_ADDR}</td><td>Get Libgen Use Phys Addr</td><td>${OMU TYPE}</td><td>${WO OMU INDEX}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td colspan=3>\${WO_COMP_ADDR}</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%"></table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

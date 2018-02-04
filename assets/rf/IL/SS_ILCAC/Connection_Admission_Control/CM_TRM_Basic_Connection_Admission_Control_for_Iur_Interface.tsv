@@ -1,0 +1,94 @@
+*Setting*							
+Suite Setup	Select active UP and set test resource						
+Suite Teardown	common_operation_resource.Disconnect From Target Hardware						
+Force Tags	EFS_ID-RNC_EFS_2222_308	EFS_ID-RNC_EFS_2222_325	EFS_ID-RNC_EFS_2222_326	EFS_ID-RNC_EFS_2222_327	EFS_ID-RNC_EFS_74_115	EFS_ID-RNC_EFS_74_121	EFS_ID-RNC_EFS_74_147
+...	EFS_ID-RNC_EFS_1225_107	EFS_ID-RNC_EFS_1225_329	EFS_ID-RNC_EFS_74_146	EFS_ID-RNC_EFS_1225_119	EFS_ID-RNC_EFS_74_145	EFS_ID-RNC_EFS_74_388	EFS_ID-RNC_EFS_1644_97
+...	EFS_ID-RNC_EFS_1644_342	EFS_ID-RNC_EFS_1644_339	CR#S1328	CR#S1326	CR#S1350	CR#S1290	CR#1328
+...	PRS_ID-IL_PRS_4225	PRS_ID-IL_PRS_4247	PRS_ID-IL_PRS_4246	PRS_ID-PRS_614	PRS_ID-PRS_3622	PRS_ID-PRS_3281	PRS_ID-PRS_3547
+...	PRS_ID-PRS_3619	PRS_ID-PRS_3347	PRS_ID-PRS_3284	CM.TRM.CAC.FUT.005	CM.TRM.CAC.FUT.006	CM.TRM.CAC.FUT.007	CM.TRM.CAC.FUT.008
+...	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	element-il	exec_type-automatic	release-IL1	hw_env-RNC_S0	exec_level-pre	type-FUT
+...	QL-6	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	Product_Backlog_ID-B01178	FRS_ID-PCM_100201_2_R2222	FRS_ID-PCM_100201_10_R1253	
+Resource	il.html						
+Library	Collections						
+Library	../resources/cacprb_test_resources.py						
+Resource	../resources/common_operation_resource.html						
+Resource	../resources/cac_basic_operation_resource.html						
+							
+*Variable*							
+${IPBR_WITH_COMMITTED_BW}	4020						
+${IPBR_WITH_COMMITTED_BW_0}	4014						
+${BIG_AVE_BW}	2000000						
+${BIG_MAX_BW}	2000001						
+${IPBR_ID_4095}	4095						
+${RES_SUCCESS}	SUCCESSFUL						
+${RES_FAILED}	FAILED						
+${NORMAL_MAX_BW}	3000						
+${NORMAL_AVE_BW}	2000						
+${NO_FREE_BANDWIDTH_EC}	0x450D						
+${CREATE_LEG_WITH_NO_ENOUGH_BW}	NCAC=0,FABR=${BIG_AVE_BW},FMBR=${BIG_MAX_BW}						
+${CREATE_LEG_WITHOUT_CAC}	NCAC=1						
+${CREATE_LEG_WITH_COMMIT_BW_0}	NCAC=0,FABR=${NORMAL_AVE_BW},FMBR=${NORMAL_MAX_BW}						
+${CREATE_LEG_WITH_CAC}	NCAC=0,FABR=${NORMAL_AVE_BW},FMBR=${NORMAL_MAX_BW}						
+${DELTA_BW_0}	0						
+${CREATE_EME_LEG_WITH_CAC}	NCAC=0,FABR=${NORMAL_AVE_BW},FMBR=${NORMAL_MAX_BW},QPRI=255 						
+							
+*Test Case*							
+Validate_CAC_supoorts_Iur_leg	[Setup]	Create leg list and test rtp leg					
+	[Template]	Create and release Iur leg					
+	${CREATE_LEG_WITHOUT_CAC}	${RES_SUCCESS}	${IPBR_WITH_COMMITTED_BW}	${DELTA_BW_0}			
+	${CREATE_EME_LEG_WITH_CAC}	${RES_SUCCESS}	${IPBR_WITH_COMMITTED_BW}	${EXPECT_RESERVE_BW}			
+	${CREATE_LEG_WITH_NO_ENOUGH_BW}	${RES_FAILED}	${IPBR_WITH_COMMITTED_BW}	${DELTA_BW_0}	${NO_FREE_BANDWIDTH_EC}		
+	${CREATE_LEG_WITH_CAC}	${RES_SUCCESS}	${IPBR_WITH_COMMITTED_BW}	${EXPECT_RESERVE_BW}			
+	${CREATE_LEG_WITH_COMMIT_BW_0}	${RES_SUCCESS}	${IPBR_WITH_COMMITTED_BW_0}	${EXPECT_RESERVE_BW}			
+	[Teardown]	Release test resources created in the test case					
+							
+*Keyword*							
+Select active UP and set test resource	connect to target hardware						
+	switch to active OMU						
+	Get active USCP						
+	${increase_BW}	Evaluate	${NORMAL_MAX_BW}*0.2 + ${NORMAL_AVE_BW}*0.8				
+	set Suite Variable	\${EXPECT_RESERVE_BW}	${increase_BW}				
+							
+Get active USCP	${USCP_LIST}	${CSCP_LIST}	get_usable_recovery_groups				
+	set Suite Variable	\${ACTIVE_USCP}	${USCP_LIST[0]}				
+							
+Create and release Iur leg	[Arguments]	${leg_para}	${expect_result}	${ipbr_id}	${expect_bw}	${error_code}=	
+	${ipbr_orig_info}	get ipbr resource info	${ipbr_id}				
+	${Iur_info}	Create test Iur leg	${ipbr_id}	${leg_para}			
+	${ipbr_new_info}	get ipbr resource info	${ipbr_id}				
+	Check the result and failed info	${Iur_info}	${expect_result}	${error_code}			
+	Check reserve BW	${ipbr_orig_info.res_bw}	${ipbr_new_info.res_bw}	${expect_bw}			
+	run keyword if	'${Iur_info.result}' == 'SUCCESSFUL'	Check the reserve BW CPC and release leg when success	${Iur_info}	${ipbr_new_info}	${expect_bw}	
+	[Teardown]						
+							
+Check the reserve BW CPC and release leg when success	[Arguments]	${leg_info}	${ipbr_new_info}	${expect_bw}			
+	check CPC value	${leg_info.committed_up_bandwidth}	${leg_info.used_bandwidth}	${ipbr_new_info.cmmt_bw}	${ipbr_new_info.res_bw}		
+	Release Iur leg and check BW	${leg_info}	${ipbr_new_info}	${expect_bw}			
+							
+Create test Iur leg	[Arguments]	${ipbr_id}	${leg_para}				
+	${Iur_info}	create iur leg	${ACTIVE_USCP}	${ipbr_id}	${CALL_ID}	${leg_para}	
+	Set To Object	${Iur_info}	computer	${ACTIVE_USCP}			
+	run keyword if	'${Iur_info.result}' == 'SUCCESSFUL'	append to list	${IN_LEG_LIST}	${Iur_info}		
+	[Return]	${Iur_info}					
+							
+Release Iur leg and check BW	[Arguments]	${leg_info}	${ipbr_new_info}	${expect_bw}			
+	${result}	release iub leg	${ACTIVE_USCP}	${leg_info.call_id}			
+	should contain	${result}	SUCCESSFUL				
+	${leg_index}	evaluate	${leg_info.branch_number}-1				
+	remove from list	${IN_LEG_LIST}	${leg_index}				
+	${ipbr_new_info_1}	get ipbr resource info	${ipbr_new_info.ipbr_id}				
+	check reserve BW	${ipbr_new_info.res_bw}	${ipbr_new_info_1.res_bw}	${expect_bw}			
+							
+Check the result and failed info	[Arguments]	${leg_info}	${expect_result}	${error_code}			
+	should be equal	${leg_info.result}	${expect_result}				
+	run keyword if	'${leg_info.result}' == 'FAILED'	should be equal	${leg_info.error_code}	${error_code}		
+							
+Create leg list and test rtp leg	create leg list						
+	${IUCS_LEG}	create rtp leg	${ACTIVE_USCP}	${IPBR_ID_4095}			
+	Should Be Equal	${IUCS_LEG.result}	SUCCESSFUL				
+	append to list	${OUT_LEG_LIST}	${IUCS_LEG}				
+	Set Test Variable	\${CALL_ID}	${IUCS_LEG.call_id}				
+							
+Release test resources created in the test case	release legs created in test case						
+	Run Keyword If Test Failed	release legs created in test case					
+							

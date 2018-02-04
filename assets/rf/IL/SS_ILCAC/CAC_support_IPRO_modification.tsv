@@ -1,0 +1,89 @@
+*Setting*							
+Suite Setup	Connect to Target Hardware and Create IP Based Route resource						
+Suite Teardown	Release IP Based Route resource and Disconnect from Target Hardware						
+Force Tags	Product_Backlog_ID-T99999	Iteration_ID-I01993	hw_env-ADA	hw_env-RNC	hw_env-RNC_S0	hw_env-RNC_S1	type-FUT
+...	exec_type-automatic	element-IL	release-IL3	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	exec_level-pre	hw_env-ADA	HW_TYPE-BCN_A1
+...	HW_TYPE-ADA_FTLB	BCN_STEP-BCN_S0	QL-6	FRS_ID-XXX	PRS_ID-XXX		
+Resource	il.html						
+Resource	./resources/common_operation_resource.html						
+Resource	./resources/cac_basic_operation_resource.html						
+Resource	./resources/IPBR_basic_operation_resource.html						
+Library	Collections						
+Resource	../SS_ILCallMgmt/resources/cm_resource.tsv						
+							
+*Variable*							
+${IPBR_ID_4011}	4011						
+${DSP_VALUE_BE}	37						
+${DSP_VALUE_AF1}	A						
+${DSP_VALUE_AF2}	12						
+${DSP_VALUE_AF3}	1A						
+${DSP_VALUE_AF4}	26						
+${DSP_VALUE_EF}	2E						
+${PHB_SET_GROUP_EF_AF4_AF3}	EF,AF4,AF3						
+${PHB_SET_GROUP_AF2_AF1_BE}	AF2,AF1,BE						
+${ERROR_CODE_IPRO_NOT_EXSIT}	0x450E						
+${ONE_GROUP}	1						
+${IPBR_ID_4003}	4003						
+${IPBR_NAME_TEST}	IPBR-TEST-7						
+							
+*Test Case*							
+CACPRB Support IPRO Modification	[Tags]	TRM_IPBR.FUT.004.AT.I01993	ct-negative				
+	[Setup]	create leg list					
+	Register expect error syslog and alarm						
+	Reserve IPRO with PHB class set as EF,AF4,AF3						
+	Create RTP Leg with PHB Class Setting AF4 Successfully						
+	Modify IPRO with PHB class set as AF2,AF1,BE						
+	Create RTP Leg with PHB Class Setting AF2 Successfully						
+	Create RTP Leg with PHB Class Setting AF4 Failed						
+	Modify IPRO with PHB class set as EF,AF4,AF3						
+	Create RTP Leg with PHB Class Setting AF4 Successfully						
+	Create RTP Leg with PHB Class Setting AF2 Failed						
+	[Teardown]	Remove IPRO and RTP legs created in the test case					
+							
+*Keyword*							
+Create RTP Leg with PHB Class Setting AF4 Successfully	${rtp_leg}	create rtp leg	${USCP}	${IPBR_TEST}	NCAC=1,DSCP=${DSP_VALUE_AF4}		
+	should be equal	${rtp_leg.result}	SUCCESSFUL				
+	Append to List	${OUT_LEG_LIST}	${rtp_leg}				
+							
+Create RTP Leg with PHB Class Setting AF2 Successfully	${rtp_leg}	create rtp leg	${USCP}	${IPBR_TEST}	NCAC=1,DSCP=${DSP_VALUE_AF2}		
+	should be equal	${rtp_leg.result}	SUCCESSFUL				
+	Append to List	${OUT_LEG_LIST}	${rtp_leg}				
+							
+Create RTP Leg with PHB Class Setting AF4 Failed	${rtp_leg}	create rtp leg	${USCP}	${IPBR_TEST}	NCAC=1,DSCP=${DSP_VALUE_AF4}		
+	run keyword if	'${rtp_leg.result}'=='SUCCESSFUL'	Append to List	${OUT_LEG_LIST}	${rtp_leg}		
+	should be equal	${rtp_leg.result}	FAILED				
+	should be equal	${rtp_leg.error_code}	${ERROR_CODE_IPRO_NOT_EXSIT}				
+							
+Create RTP Leg with PHB Class Setting AF2 Failed	${rtp_leg}	create rtp leg	${USCP}	${IPBR_TEST}	NCAC=1,DSCP=${DSP_VALUE_AF2}		
+	run keyword if	'${rtp_leg.result}'=='SUCCESSFUL'	Append to List	${OUT_LEG_LIST}	${rtp_leg}		
+	should be equal	${rtp_leg.result}	FAILED				
+	should be equal	${rtp_leg.error_code}	${ERROR_CODE_IPRO_NOT_EXSIT}				
+							
+Connect to Target Hardware and Create IP Based Route resource	Connect to Target Hardware						
+	Switch to Active OMU						
+	run keyword if	'%{HW}' == 'ADA'	Set Resource for ADA				
+	run keyword if	'%{HW}' == 'RNC'	Set Resource for RNC				
+	Get Active CP Units						
+	Get Random USCP Unit	${FLASH_PRE_INDEX}					
+							
+Release IP Based Route resource and Disconnect from Target Hardware	delete IPRO successfully	${IPBR_TEST}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}		
+	Disconnect from Target Hardware						
+							
+Reserve IPRO with PHB class set as EF,AF4,AF3	Add IPRO Successfully	${IPBR_TEST}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	${PHB_SET_GROUP_EF_AF4_AF3}	
+							
+Modify IPRO with PHB class set as AF2,AF1,BE	Modify IPRO Successfully	${IPBR_TEST}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	${PHB_SET_GROUP_AF2_AF1_BE}	
+							
+Modify IPRO with PHB class set as EF,AF4,AF3	Modify IPRO Successfully	${IPBR_TEST}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	${PHB_SET_GROUP_EF_AF4_AF3}	
+							
+Remove IPRO and RTP legs created in the test case	release legs created in test case						
+							
+Set Resource for ADA	${IP_GROUP}	select random IP address and recovery group ADA	${ONE_GROUP}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+	Set Suite Variable	\${IPBR_TEST}	${IPBR_ID_4003}				
+							
+Set Resource for RNC	${IP_GROUP}	select random IP address and recovery group	${ONE_GROUP}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+	Set Suite Variable	\${IPBR_TEST}	${IPBR_ID_4011}				
+							
+register expect error syslog and alarm	register expect syslog	fail to get IPRO, no IPRO available, IPBR ID = 4011, 65535	fail to get interface unit, status = 0x450e	cac_res_reserve_ack_s error(0x450e). ipbr_list=0xfab/0xffff.	alloc_logi_tt_cac_res: cac_res_reserve_req__r error(0x450e)	leg_create_proc: error(0x450e)	work_rm_ip_res_req_proc: error(0x450E)
+	...	RMUH02: Create call failed. error_code is 17678 (0x450E)					

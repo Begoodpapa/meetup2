@@ -1,0 +1,123 @@
+D M X M S G   X M I S S I O N   L I N U X   S E . W Q E
+
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	resources/dmxmsg.tsv
+Suite Setup	Set Test Env
+Suite Teardown	Disconnect From SUT
+Force Tags	Product_Backlog_ID-B01050	Iteration_ID-I00668	PRS_ID-IL_PRS_2582	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL
+...	exec_type-automatic	type-FUT	release-IL1_RIS2	reviewer-xiaoping.wang.ext@nsn.com	rw-weekly
+...	hw_env-RNC	ct-positive	hw_env-RNC_S0	hw_env-RNC_S1
+...	QL-1
+
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+${TIMEOUT}	30
+${WO_ADDR}	0x1000
+${DAEMON_FAMILY}	AD9C
+${SE_FAMILY1}	45A
+${SE_FAMILY2}	459
+${MAX TIME FOR CONNECT}	50
+
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+6.1 Send Ten Short Message from LINUX to SE	[Tags]	ATC_ID- DMXMSG.FUT.001.AT	FRS_ID-PTT_320301_68_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${DAEMON}	${SE}	10
+	...	0	1	100	1
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.2 Send Ten Short Message from LINUX to SE with Different Destination Family Id	[Tags]	ATC_ID- DMXMSG.FUT.002.AT	FRS_ID-PTT_320301_68_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${SINGLE_DAEMON}	${MULTI_SE}	10
+	...	0	1	100	${WOKE MODE DE}
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.3 Send Ten Short Message From SE To Linux	[Tags]	ATC_ID- DMXMSG.FUT.003.AT	FRS_ID-PTT_320301_68_0000	FRS_ID-PTT_320301_73_0000
+	${out}	Use Dmxcli To Send Messages	${SE}	${DAEMON}	10
+	...	0	1	100	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.4 Send Ten Short Message from SE to Different LINUX Daemon	[Tags]	ATC_ID- DMXMSG.FUT.004.AT	FRS_ID-PTT_320301_68_0000	FRS_ID-PTT_320301_73_0000
+	${out}	Use Dmxcli To Send Messages	${SINGLE_SE}	${MULTI_DAEMON}	10
+	...	0	1	100	0-0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.5 Send Ten Largest Message from LINUX to SE	[Tags]	ATC_ID- DMXMSG.FUT.005.AT	exec_level-pre	FRS_ID-PTT_320301_68_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${DAEMON}	${SE}	10
+	...	0	1	65519	1
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.6 Send Ten Largest Message from LINUX to SE with Different Destination Family Id	[Tags]	ATC_ID- DMXMSG.FUT.006.AT	exec_level-pre	FRS_ID-PTT_320301_68_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${SINGLE_DAEMON}	${MULTI_SE}	10
+	...	0	1	65519	${WOKE MODE DE}
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.7 Send Ten Largest Message From SE To Linux	[Tags]	ATC_ID- DMXMSG.FUT.007.AT	exec_level-pre	FRS_ID-PTT_320301_68_0000	FRS_ID-PTT_320301_73_0000
+	${out}	Use Dmxcli To Send Messages	${SE}	${DAEMON}	10
+	...	0	1	65519	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.8 Send Ten Largest Message from SE to Different LINUX Daemon	[Tags]	ATC_ID- DMXMSG.FUT.008.AT	exec_level-pre	FRS_ID-PTT_320301_68_0000	FRS_ID-PTT_320301_73_0000
+	${out}	Use Dmxcli To Send Messages	${SINGLE_SE}	${MULTI_DAEMON}	10
+	...	0	1	65519	0-0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.9 Send No-data Message from LINUX to SE	[Tags]	ATC_ID- DMXMSG.FUT.009.AT	exec_level-pre	FRS_ID-PTT_320301_68_0000	FRS_ID-PTT_320301_72_0000
+	${out}	Use Dmxcli To Send Messages	${DAEMON}	${SE}	10
+	...	0	1	0	1
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.10 Send Largest Intra-node Message from Linux to SE	[Tags]	FRS_ID-PTT_320301_68_0000	FRS_ID-PTT_320301_72_0000
+	[Documentation]	To cover PR 43287ESPE05. Add Message transmission between linux and SE intra-node.
+	${out}	Use Dmxcli To Send Messages	${EIPU_DAEMON}	${SE}	10
+	...	0	1	65519	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail	@{NODE LIST}
+
+
+6.11 Send Largest Intra-node Message from SE to Linux	[Tags]	FRS_ID-PTT_320301_68_0000	FRS_ID-PTT_320301_73_0000
+	[Documentation]	To cover PR 43287ESPE05. Add Message transmission between linux and SE intra-node.
+	${out}	Use Dmxcli To Send Messages	${SE}	${EIPU_DAEMON}	10
+	...	0	1	65519	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail	@{NODE LIST}
+
+
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Set Test Env	Connect To SUT	${MAX TIME FOR CONNECT}
+	${OMU_DAEMON_ADDR}	Evaluate	hex(%{OMU_0_LOG_ADDR}+${WO_ADDR})
+	${EITP_SE_ADDR}	Evaluate	hex(%{EITP_0_LOG_ADDR}+${WO_ADDR})
+	${EITPPROXY_ADDR}	Evaluate	hex(%{EITPProxy_0_LOG_ADDR}+${WO_ADDR})
+	${CFCP_SE_ADDR}	Evaluate	hex(%{CFCP_0_LOG_ADDR}+${WO_ADDR})
+	Set Suite Variable	\${DAEMON}	${OMU_DAEMON_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${EIPU_DAEMON}	${EITPPROXY_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${SE}	${EITP_SE_ADDR}:${SE_FAMILY1}:0
+	Set Suite Variable	\${MULTI_SE}	${EITP_SE_ADDR}:${SE_FAMILY1}:0-${EITP_SE_ADDR}:${SE_FAMILY2}:0
+	Set Suite Variable	\${MULTI_DAEMON}	${OMU_DAEMON_ADDR}:${DAEMON_FAMILY}:0-${CFCP_SE_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${SINGLE_SE}	${EITP_SE_ADDR}:${SE_FAMILY1}:0-${EITP_SE_ADDR}:${SE_FAMILY1}:0
+	Set Suite Variable	\${SINGLE_DAEMON}	${OMU_DAEMON_ADDR}:${DAEMON_FAMILY}:0-${OMU_DAEMON_ADDR}:${DAEMON_FAMILY}:0
+	Run Keyword If	\'%{DETAIL_HW}'=='FGW'	Set FGW Node
+	Run Keyword Unless	\'%{DETAIL_HW}'=='FGW'	Set BCN Node List
+	Check node env	@{NODE LIST}
+
+Set FGW Node	@{NODE LIST}	Set variable	CLA-0	CLA-0
+	Set Suite Variable	\@{NODE LIST}
+
+Set BCN Node List	@{NODE LIST}	Set variable	CFPU-0	EIPU-0	CSPU-0
+	Set Suite Variable	\@{NODE LIST}

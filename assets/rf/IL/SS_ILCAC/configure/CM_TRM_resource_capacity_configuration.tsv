@@ -1,0 +1,74 @@
+*Setting*							
+Documentation	run case need to change some parameters as follow in common_pc_test_env_bashrc 1. {DAEMON_FGW_IP}-- BCN OMU IP 2. {IPPLAN_VER}--IP_PLAN version						
+Suite Setup	Connect to target hardware and switch OMU on logined CFPU to WO						
+Suite Teardown	Disconnect from target hardware						
+Force Tags	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	BCN_STEP-BCN_S0	HW_TYPE-BCN_A1	HW_ENV-RNC_S0	EXEC_TYPE-manual	QL-8	TYPE-CAP
+...	RELEASE-RU50	PRODUCT_BACKLOG_ID-RAN3000_1R_M1	EFS_ID-RNC_ENFS_WB_5707	EFS_ID-RNC_EFS_2959_214	EFS_ID-RNC_EFS_3000_1	EFS_ID-RNC_EFS_3000_27	PRS_ID-IL_PRS_4909
+...	FRS_ID-PCM_100201_35_R3000	PRS_ID-IL_PRS_4910	PRS_ID-IL_PRS_4911				
+Resource	../resources/CM_TRM_common_resource.tsv						
+							
+*Variable*							
+${STORE_ROOT}	/opt/nsn/testutils/sko_test_xml/						
+${PLAN_DOWNLOAD_TIMEOUT}	10						
+${PLAN_DOWNLOAD_CHECK_SLOT}	1						
+${PLAN_VALIDATION_TIMEOUT}	30						
+${PLAN_VALIDATION_CHECK_SLOT}	5						
+${PLAN_ACTIVATION_TIMEOUT}	7200						
+${PLAN_ACTIVATION_CHECK_SLOT}	300						
+${PLAN_ID_250}	250						
+							
+*Test Case*							
+Reserve and release TRM resources with capacity requirement	Generate resource reserve and release plan file and upload to the hardware						
+	Activate the resource reserve plan file and check the configuration between LDAP and CACPRB						
+	Activate the resource release plan file and check the configuration between LDAP and CACPRB						
+	[Teardown]	Remove all local and remote plan file					
+							
+*Keyword*							
+Connect to target hardware and switch OMU on logined CFPU to WO		connect to target hardware					
+	switch OMU on logined CFPU to WO						
+							
+Generate resource reserve and release plan file and upload to the hardware	${CREATE_PLAN}	${DELETE_PLAN}	${IPBR_COUNTER}	${IPRO_COUNTER}	${IP_COUNTER}	create resource plan with hardware deployment	
+	set test variable	\${CREATE_PLAN}					
+	set test variable	\${DELETE_PLAN}					
+	set test variable	\${IPBR_COUNTER}					
+	set test variable	\${IPRO_COUNTER}					
+	set test variable	\${IP_COUNTER}					
+	put file	${CREATE_PLAN}	${STORE_ROOT}${CREATE_PLAN}				
+	put file	${DELETE_PLAN}	${STORE_ROOT}${DELETE_PLAN}				
+							
+Activate the resource reserve plan file and check the configuration between LDAP and CACPRB	Download and activate the plan file successfully	${CREATE_PLAN}	${PLAN_ID_250}				
+	compare the configuration between LDAP and CACPRB after resource reserved						
+							
+Activate the resource release plan file and check the configuration between LDAP and CACPRB	Download and activate the plan file successfully	${DELETE_PLAN}	${PLAN_ID_250}				
+	compare the configuration between LDAP and CACPRB after resource released						
+							
+Download and activate the plan file successfully	[Arguments]	${plan_file}	${plan_id}				
+	connect to il	%{DAEMON_FGW_IP}	%{DAEMON_GPMPRB_PORT}	10 sec			SCTP
+	download IP plan successfully	${plan_id}	${plan_file}	${PLAN_DOWNLOAD_TIMEOUT}	${PLAN_DOWNLOAD_CHECK_SLOT}		
+	validate IP plan successfully	${plan_id}	${PLAN_VALIDATION_TIMEOUT}	${PLAN_VALIDATION_CHECK_SLOT}			
+	activate IP plan successfully	${plan_id}	${PLAN_ACTIVATION_TIMEOUT}	${PLAN_ACTIVATION_CHECK_SLOT}			
+	switch il connection	${SSH_CONN}					
+							
+Compare the configuration between LDAP and CACPRB after resource reserved	${compare_result}	check all MO between LDAP and CAC					
+	should be equal	${compare_result['IPRO']}	No Difference				
+	should be equal	${compare_result['IPBR']}	No Difference				
+	should be equal	${compare_result['IPHB']}	No Difference				
+	should be equal	${compare_result['IDSP']}	No Difference				
+	should be equal	${compare_result['SUMMARY']['same']['IPBR']}	${IPBR_COUNTER}				
+	should be equal	${compare_result['SUMMARY']['same']['IPRO']}	${IPRO_COUNTER}				
+	${ip_resource_in_cac}	get ip resource in cac					
+	should be equal	${ip_resource_in_cac['Total IP number']}	${IP_COUNTER}				
+							
+Compare the configuration between LDAP and CACPRB after resource released	${compare_result}	check all MO between LDAP and CAC					
+	should be equal	${compare_result['IPRO']}	No Difference				
+	should be equal	${compare_result['IPBR']}	No Difference				
+	should be equal	${compare_result['IPHB']}	No Difference				
+	should be equal	${compare_result['IDSP']}	No Difference				
+	should be equal	${compare_result['summary']['IPBR']}	0				
+	should be equal	${compare_result['summary']['IPRO']}	0				
+	${ip_resource_in_cac}	get ip resource in cac					
+	should be equal	${ip_resource_in_cac['Total IP number']}	0				
+							
+Remove all local and remote plan file	# execute cli rm -rf ${STORE_ROOT}${DELETE_PLAN} ${STORE_ROOT}${CREATE_PLAN}						
+	operatingSystem.Remove File	${CREATE_PLAN}					
+	operatingSystem.Remove File	${DELETE_PLAN}					

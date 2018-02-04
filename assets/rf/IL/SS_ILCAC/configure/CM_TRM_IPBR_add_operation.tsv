@@ -1,0 +1,111 @@
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*
+Suite Setup	Connect to target hardware						
+Suite Teardown	Disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B01178	Iteration_ID-I00369	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	element-IL	exec_type-automatic	exec_level-pre	type-FUT
+...	hw_env-RNC_S0	hw_env-ADA	hw_env-RNC	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	HW_TYPE-ADA_FTLB	QL-5
+...	release-RU50						
+Resource	il.html						
+Resource	../resources/common_operation_resource.html						
+Library	../resources/IP_based_route_resource.py						
+							
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*
+${OCT_IPBR_ID}	0700						
+${HEX_IPBR_ID}	FF						
+${NEGATIVE_IPBR_ID}	-1						
+${IPBR_ID_4096}	4096						
+${IPBR_ID_0}	0						
+${IPBR_ID_4081}	4081						
+${LONG_IPBR_NAME}	ipbrNameWhichLengthIsLargerThan15Characters						
+${TEST_IPBR_RESOURCE}	ipbr_id=4081						
+${IPHB_NOT_EXIST}	ipbr_id=4080 ipbr_name=ipbr-4080 phb_profile=5						
+${IDSP_NOT_EXIST}	ipbr_id=4080 ipbr_name=ipbr-4080 dspm_profile=5						
+${COMMIT_BW_MORE_THAN_ROUTE_BW}	ipbr_id=4080 route_bw=100 commit_bw=101 commit_sig_bw=0 commit_dcn_bw=0						
+${COMMIT_BW_LESS_THAN_SUM_OF_SIG_BW_AND_DCN_BW}	ipbr_id=4080 route_bw=10 commit_bw=1 commit_sig_bw=1 commit_dcn_bw=1						
+${SCHEDULER_TYPE_IS_VQ_AND_ROUTE_BW_IS_0}	ipbr_id=4080 route_bw=0 commit_bw=0 commit_sig_bw=0 commit_dcn_bw=0 scheduler_type=virtualQueue						
+${IPBR_ID_LESS_THAN_MINMUM}	ipbr_id=0						
+${IPBR_ID_LARGER_THAN_MAXIMUM}	ipbr_id=4096						
+${IPBR_ID_SET_AS_NEGATIVE_NUM}	ipbr_id=-1						
+${IPBR_ID_SET_AS_OCT_NUM}	ipbr_id=0700						
+${IPBR_ID_SET_AS_HEX_NUM_WITHOUT_PREFIX}	ipbr_id=FF						
+${RESEVED_IPBR_ID_AND_SAME_ATTRIBUTES}	ipbr_id=4081						
+${RESEVED_IPBR_ID_AND_DIFFERENT_ATTRIBUTES}	ipbr_id=4081 ipbr_name=bts4080						
+${IFC_NRTDCH_IS_ERED_IFC_NRTHSDPA_IS_IFC_AND_SCHEDULER_TYPE_IS_NONE}	ipbr_id=4080 ifc_nrtdch=E-RED ifc_nrthsdpa=IFC scheduler_type=none						
+${IFC_NRTDCH_IS_IFC_NRTHSDPA_IS_ERED_AND_SCHEDULER_TYPE_IS_RQ}	ipbr_id=4080 ifc_nrtdch=IFC ifc_nrthsdpa=E-RED scheduler_type=realQueue						
+${IPBR_NAME_LONGER_THAN_15_CHAR}	ipbr_name=${LONG_IPBR_NAME} ipbr_id=4080						
+${UDPMUXENABLED_SET_AS_ENABLE}	ipbr_id=4080 mux_flag=enable						
+${ALL_PARAMETER_IS_VALID}	ipbr_id=4080 ipbr_name=bts-4080 route_bw=10 commit_bw=10 commit_dcn_bw=0 commit_sig_bw=1 dspm_profile=0 phb_profile=0 ifc_nrtdch=E-RED ifc_nrthsdpa=E-RED scheduler_type=none mux_flag=disable max_mux_pkt_num=30 mux_local_port=65535 mux_remote_port=65535 mux_udp_dscp=46						
+${VALID_PART_PARAMETER_SPECIFIED}	ipbr_id=4080 ipbr_name=bts-4080 route_bw=10 commit_bw=10 commit_dcn_bw=0 commit_sig_bw=1 max_mux_pkt_num=20 mux_local_port=65400 mux_remote_port=65300						
+${OPTION_PARAMETER_IS_DEFAULT}	ipbr_id=4080 ipbr_name=bts-4080 route_bw=10 commit_bw=10 commit_dcn_bw=0 commit_sig_bw=1						
+${IPBR_WITH_BANDWIDTH_10G}	ipbr_id=4080 ipbr_name=bts-4080 route_bw=10000000 commit_bw=10000000 commit_dcn_bw=1000 commit_sig_bw=50000						
+${IPBR_NAME_RGE_NOT_MATCH}	ipbr_id=4081 ipbr_name=ipbr_name_test						
+${IDSP_OUT_OF_RANGE}	ipbr_id=4080 dspm_profile=11						
+${IPHB_OUT_OF_RANGE}	ipbr_id=4080 phb_profile=11						
+${IPHB_ID_11}	11						
+${IDSP_ID_11}	11						
+${IPBR_NAME_SPECIAL_CHAR}	ipbr_id=4080 ipbr_name=\\\\\\\\						
+${SPECIAL_IPBR_NAME}	${EMPTY}						
+${MISATCH_REG_IPBR_NAME}	ipbr_name_test						
+${NUM_PARAMETER_IS_SPECIAL}	ipbr_id=+04080 ipbr_name=bts-4080 route_bw=0x0a commit_bw=0X0A commit_dcn_bw=0 commit_sig_bw=1 dspm_profile=+00000 phb_profile=-000000 ifc_nrtdch=E-RED ifc_nrthsdpa=E-RED scheduler_type=none mux_flag=disable max_mux_pkt_num=+0000030 mux_local_port=65535 mux_remote_port=65535 mux_udp_dscp=46						
+${SPECIAL_NUM_PARAM_VALUE}	ipbr_id=4080 ipbr_name=bts-4080 route_bw=10 commit_bw=10 commit_dcn_bw=0 commit_sig_bw=1 dspm_profile=0 phb_profile=0 ifc_nrtdch=E-RED ifc_nrthsdpa=E-RED scheduler_type=none mux_flag=disable max_mux_pkt_num=30 mux_local_port=65535 mux_remote_port=65535 mux_udp_dscp=46						
+							
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*
+Add IP based route with valid or invalid paramters	[Tags]	FRS_ID-PCM_100201_16_R1886	PRS_ID-IL_PRS_4419	EFS_ID-RNC_EFS_1886_10	EFS_ID-RNC_EFS_1886_55	EFS_ID-RNC_EFS_2696_271	PRS_ID-IL_PRS_4371
+	...	FRS_ID-PCM_100201_18_R1886	EFS_ID-RNC_EFS_1886_57	CR_ID-CRS1676	FRS_ID-PCM_100201_19_R1886	EFS_ID-RNC_EFS_1886_58	FRS_ID-PCM_100201_20_R1886
+	...	EFS_ID-RNC_EFS_1886_56	EFS_ID-PCM_100201_21_R1886	EFS_ID-RNC_EFS_1886_86	FRS_ID-PCM_100201_52_R2696	FRS_ID-PCM_100201_24_R2696	FRS_ID-PCM_100201_69_0000
+	...	FRS_ID-PCM_100201_65_0000	FRS_ID-PCM_100201_66_0000	FRS_ID-PCM_100201_63_0000	FRS_ID-PCM_100201_70_0000		
+	[Setup]	Reserve Test IPBR resource Successfully					
+	[Template]	Reserve IPBR and check result					
+	${ALL_PARAMETER_IS_VALID}	SUCCESS				${ALL_PARAMETER_IS_VALID}	
+	${OPTION_PARAMETER_IS_DEFAULT}	SUCCESS				${OPTION_PARAMETER_IS_DEFAULT}	
+	${VALID_PART_PARAMETER_SPECIFIED}	SUCCESS				${VALID_PART_PARAMETER_SPECIFIED}	
+	${IPBR_WITH_BANDWIDTH_10G}	SUCCESS				${IPBR_WITH_BANDWIDTH_10G}	
+	${NUM_PARAMETER_IS_SPECIAL}	SUCCESS				${SPECIAL_NUM_PARAM_VALUE}	
+	${IPHB_NOT_EXIST}	FAIL	IPHB_NOT_EXIST				
+	${IDSP_NOT_EXIST}	FAIL	IDSP_NOT_EXIST				
+	${COMMIT_BW_MORE_THAN_ROUTE_BW}	FAIL	INVALID_BANDWIDTH				
+	${COMMIT_BW_LESS_THAN_SUM_OF_SIG_BW_AND_DCN_BW}	FAIL	INVALID_BANDWIDTH				
+	${SCHEDULER_TYPE_IS_VQ_AND_ROUTE_BW_IS_0}	FAIL	SECHEDULER_LIMIT				
+	${IPBR_ID_LESS_THAN_MINMUM}	FAIL	IPBR_ID_OUT_OF_RANGE	${IPBR_ID_0}			
+	${IPBR_ID_LARGER_THAN_MAXIMUM}	FAIL	IPBR_ID_OUT_OF_RANGE	${IPBR_ID_4096}			
+	${IPBR_ID_SET_AS_NEGATIVE_NUM}	FAIL	IPBR_ID_OUT_OF_RANGE	${NEGATIVE_IPBR_ID}			
+	${IPBR_ID_SET_AS_OCT_NUM}	FAIL	OCTAL_UNSUPPORT	${OCT_IPBR_ID}			
+	${IPBR_ID_SET_AS_HEX_NUM_WITHOUT_PREFIX}	FAIL	HEX_WITHOUT_PREFIX	${HEX_IPBR_ID}			
+	${IPBR_NAME_LONGER_THAN_15_CHAR}	FAIL	LONG_IPBR_NAME	${LONG_IPBR_NAME}			
+	${RESEVED_IPBR_ID_AND_SAME_ATTRIBUTES}	FAIL	IPBR_EXIST	${IPBR_ID_4081}			
+	${RESEVED_IPBR_ID_AND_DIFFERENT_ATTRIBUTES}	FAIL	IPBR_EXIST	${IPBR_ID_4081}			
+	${IFC_NRTDCH_IS_ERED_IFC_NRTHSDPA_IS_IFC_AND_SCHEDULER_TYPE_IS_NONE}	FAIL	IFC_LIMIT				
+	${IFC_NRTDCH_IS_IFC_NRTHSDPA_IS_ERED_AND_SCHEDULER_TYPE_IS_RQ}	FAIL	IFC_LIMIT				
+	${IPBR_NAME_RGE_NOT_MATCH}	FAIL	IPBR_NAME_REG_NOT_MATCH	${MISATCH_REG_IPBR_NAME}			
+	${IPHB_OUT_OF_RANGE}	FAIL	IPHB_OUT_OF_RANGE	${IPHB_ID_11}			
+	${IDSP_OUT_OF_RANGE}	FAIL	IDSP_OUT_OF_RANGE	${IDSP_ID_11}			
+	${IPBR_NAME_SPECIAL_CHAR}	FAIL	IPBR_NAME_REG_NOT_MATCH	${SPECIAL_IPBR_NAME}			
+	[Teardown]	Release Test IPBR resource Successfully					
+							
+Add IPBR failed with mux enable flag set as enable when then mulitplexing feature license disabled	[Tags]	FRS_ID-PCM_100201_51_R1886	EFS_ID-RNC_EFS_1886_10	PRS_ID-PRS_4412	EFS_ID-RNC_EFS_1886_47		
+	[Setup]	Disable the multiplexing feature					
+	[Template]	Reserve IPBR and check result					
+	${UDPMUXENABLED_SET_AS_ENABLE}	FAIL	MUX_DEACTIVATE				
+	[Teardown]	Enable the multiplexing feature					
+							
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*
+Reserve IPBR and check result	[Arguments]	${attr_str}	${expect_result}	${error_type}=	${error_value}=	${error_param}=	${expect_attr}=
+	${result}	add IP based route with attributes	${attr_str}				
+	check IP based route operation result	${result}	${expect_result}	ADD	${error_type}	${error_param}	${error_value}
+	Run Keyword if	'${expect_result.upper()}' == 'SUCCESS'	check IP based route attributes with expect value	${expect_attr}			
+	[Teardown]	Delete IP Based route when reserve successfully	${result}	${attr_str}			
+							
+Delete IP Based route when reserve successfully	[Arguments]	${result}	${attr_str}				
+	Run Keyword if	'${result['result']}' == 'Success'	Delete IP based route with attributes	${attr_str}			
+							
+Reserve Test IPBR resource Successfully	${result}	add IP based route with attributes	${TEST_IPBR_RESOURCE}				
+	check IP based route operation result	${result}	SUCCESS	ADD			
+							
+Release Test IPBR resource Successfully	${result}	Delete IP based route with attributes	${TEST_IPBR_RESOURCE}				
+	check IP based route operation result	${result}	SUCCESS	DEL			
+							
+Disable the multiplexing feature	${FEATURE_ATTR}	get_feature_license	Multiplexing				
+	Run Keyword if	'${FEATURE_ATTR}' != ''	set feature license with feature code	${FEATURE_ATTR.feature_code_list}	off		
+	Set Test Variable	\${FEATURE_ATTR}					
+							
+Enable the multiplexing feature	Run Keyword if	'${FEATURE_ATTR}' != ''	set feature license with feature code	${FEATURE_ATTR.feature_code_list}	on		
+							

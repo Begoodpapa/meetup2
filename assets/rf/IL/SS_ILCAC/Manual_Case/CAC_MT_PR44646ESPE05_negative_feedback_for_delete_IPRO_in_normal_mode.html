@@ -1,0 +1,334 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="RIDE" /> 
+<meta name="rf-template" content="False" /> 
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>CAC MT PR44646ESPE05 negative feedback for delete IPRO in normal mode</title>
+</head>
+<body>
+<h1>CAC MT PR44646ESPE05 negative feedback for delete IPRO in normal mode</h1>
+<table id="settings" border="1">
+<tr>
+<th class="name">Setting</th>
+<th colspan="4">Value</th>
+</tr>
+<tr>
+<td class="name">Force Tags</td>
+<td>Product_Backlog_ID-PR44646ESPE05</td>
+<td>Iteration_ID-PR 44646ESPE05</td>
+<td>PRS_ID-PRS_4255</td>
+<td>EFS_ID-RNC_EFS_2222_372</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>hw_env-RNC_S0</td>
+<td>type-FUT</td>
+<td>exec_type-manual</td>
+<td>element-IL</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>release-RU40</td>
+<td>owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com</td>
+<td>HW_TYPE-BCN_A1</td>
+<td>QL-8</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>BCN_STEP-BCN_S0</td>
+<td>HW_TYPE-ADA</td>
+<td>FRS_ID-PCM_100201_41_R2222</td>
+<td>EFS_ID-RNC_EFS_2222_372</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>PRS_ID-PRS_4255</td>
+<td>FRS_ID-PCM_100201_40_R2222</td>
+<td>FRS_ID-PCM_100201_41_R2222</td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Test Timeout</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table id="variables" border="1"></table>
+<table id="testcases" border="1">
+<tr>
+<th class="name">Test Case</th>
+<th>Action</th>
+<th colspan="3">Arguments</th>
+</tr>
+<tr>
+<td class="name"><a name="test_Test resource preparation">Test resource preparation</a></td>
+<td>[Tags]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Add IPBR</td>
+<td>fsclish -c "add ipbr ipbr-id 2000 route-bandwidth 0 committed-bandwidth 0 committed-dcn-bandwidth 0 committed-sig-bandwidth 0 ipbr-name ipbr2000"</td>
+<td>IPBR added successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Add IPRO</td>
+<td>fsclish -c "add ipro ipbr-id 2000 iface &lt;iface&gt; ip-address &lt;ip-address&gt; owner &lt;owner&gt;"</td>
+<td>IPRO added successfullly</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create leg on IPBR on USCP-1</td>
+<td>lgutilgx RRI:USCP-1::OUT,3.3.3.3:,,,2000:34::DSP=C,7,1,ENC=10,USERID=1,NCAC=0,FABR=30000000,FMBR=30000000</td>
+<td>Leg created successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Lock CFCP RG and delete IPRO">Lock CFCP RG and delete IPRO</a></td>
+<td>[Tags]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Lock CFCP RG</td>
+<td>fshascli -lnEF /QNCFCP</td>
+<td>CFCP RG locked successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Delete IPRO in normal mode</td>
+<td>fsclish -c "delete ipro ipbr-id 2000 iface &lt;iface&gt; ip-address &lt;ip-address&gt; owner &lt;owner&gt;"</td>
+<td>IPRO deleted successfully.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Unlock CFCP RG</td>
+<td>fshascli -unEF /QNCFCP</td>
+<td>CFCP RG unlocked successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Add IPRO</td>
+<td>fsclish -c "add ipro ipbr-id 2000 iface &lt;iface&gt; ip-address &lt;ip-address&gt; owner &lt;owner&gt;"</td>
+<td>IPRO added successfullly</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create leg on IPBR on USCP-1</td>
+<td>lgutilgx RRI:USCP-1::OUT,3.3.3.3:,,,2000:34::DSP=C,7,1,ENC=10,USERID=1,NCAC=0,FABR=30000000,FMBR=30000000</td>
+<td>Leg created successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Lock USCP-0 and delete IPRO">Lock USCP-0 and delete IPRO</a></td>
+<td>[Tags]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Lock USCP-0</td>
+<td>fshascli -lnEF /USPU-0/QNUSCPServer-0</td>
+<td>USCP-0 locked successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Delete IPRO in normal mode</td>
+<td>fsclish -c "delete ipro ipbr-id 2000 iface &lt;iface&gt; ip-address &lt;ip-address&gt; owner &lt;owner&gt;"</td>
+<td>IPRO can't be deleted and negative feedback is "Failed to delete IPRO. There are transport bearer based on it."</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Unlock USCP-0</td>
+<td>fshascli -unEF /USPU-0/QNUSCPServer-0</td>
+<td>USCP-0 unlocked successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Lock USCP-1 and delete IPRO">Lock USCP-1 and delete IPRO</a></td>
+<td>[Tags]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Lock USCP-1</td>
+<td>fshascli -lnEF /USPU-1/QNUSCPServer-1</td>
+<td>USCP-1 locked successfully.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Delete IPRO in normal mode</td>
+<td>fsclish -c "delete ipro ipbr-id 2000 iface &lt;iface&gt; ip-address &lt;ip-address&gt; owner &lt;owner&gt;"</td>
+<td>IPRO deleted successfully.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Unlock USCP-1</td>
+<td>fshascli -unEF /USPU-1/QNUSCPServer-1</td>
+<td>USCP-1 unlocked successfully.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Add IPRO</td>
+<td>fsclish -c "add ipro ipbr-id 2000 iface &lt;iface&gt; ip-address &lt;ip-address&gt; owner &lt;owner&gt;"</td>
+<td>IPRO added successfullly</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create leg on IPBR on USCP-1</td>
+<td>lgutilgx RRI:USCP-1::OUT,3.3.3.3:,,,2000:34::DSP=C,7,1,ENC=10,USERID=1,NCAC=0,FABR=30000000,FMBR=30000000</td>
+<td>Leg created successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Lock all USCP &amp; CSCP and delete IPRO">Lock all USCP &amp; CSCP and delete IPRO</a></td>
+<td>[Tags]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Lock all USCP and CSCP</td>
+<td>fshascli -lnEF fshascli -lnE /USPU-*/QNUSCPServer-* fshascli -lnEF /QNCSCP-*</td>
+<td>USCP and CSCP locked succussfully.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Delete IPRO in normal mode</td>
+<td>fsclish -c "delete ipro ipbr-id 2000 iface &lt;iface&gt; ip-address &lt;ip-address&gt; owner &lt;owner&gt;"</td>
+<td>IPRO deleted successfully.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>unlock all USCP and CSCP</td>
+<td>fshascli -unEF fshascli -lnE /USPU-*/QNUSCPServer-* fshascli -unEF /QNCSCP-*</td>
+<td>USCP and CSCP unlocked succussfully.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Test resource clear">Test resource clear</a></td>
+<td>[Tags]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Delete IPBR</td>
+<td>fsclish -c "delete ipbr ipbr-id 2000"</td>
+<td>IPRO deleted successfullly</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table id="keywords" border="1"></table>
+</body>
+</html>

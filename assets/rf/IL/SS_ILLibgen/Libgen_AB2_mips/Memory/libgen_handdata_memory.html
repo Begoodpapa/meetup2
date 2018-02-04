@@ -1,0 +1,485 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen Hand Data Area Memory Allocation Test</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen Hand Data Area Memory Allocation Test</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test Libgen more flexible hand data area memory allocation: Hand data memory return to system after hand stop.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B03829</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I07396,I07490</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-IL_PRS_</td><td><font color=dark red>CR#E0892_v4.0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-il</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td>QL-1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-in-meeting</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-mail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-AB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/libgen_resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Setup Connection For WOSP And Set Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clean Env</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${OMU_UNIT_NAME}</td><td>OMU</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FAMILY_ID}</td><td>0x1773</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WARMING_PROCESS}</td><td>IL_TestWarmStub</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0x0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEMP_INI_FILE}</td><td>LibgenConfig_OMU.ini</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_GROUP_ID}</td><td>9</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_RSS}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NUM_0}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NUM_10}</td><td>10</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NUM_20}</td><td>20</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NUM_50}</td><td>50</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NUM_100}</td><td>100</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TAIL_SYSLOG}</td><td>hddata.log</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${VIRTMEM}</td><td>Size</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RSSMEM}</td><td>Rss</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SEG_MIPS}</td><td>^60</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SEG_X86}</td><td>^4</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SEG_PPC}</td><td>^32</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${VIRTMEM_1_KEEPSIZE}</td><td>34004</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${VIRTMEM_2_ALLSIZE}</td><td>20</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${VIRTMEM_4_KEEPSIZE}</td><td>51212</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${VIRTMEM_4_ALLSIZE}</td><td>10020</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ERR_LOG}</td><td>"handgroup_1_static_pool_size\ error\ value"</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ALARM_SP}</td><td>70186</td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>PRB Which Some Hand Group Configure handgroup_static_pool_size And Some Not Can Be Started Successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. Some Hand Group Static Pool Size are not configured.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. Some Hand Group Static Pool Size are configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB with multi-thread\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Test PRB Can Be Started Successfully\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check Virtual Memory For handgroup_static_pool_size Should Be Mmaped\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test PRB Can Be Started Successfully.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check Virtual Memory For handgroup_static_pool_size Should Be Mmaped\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenHandData.FUT.001.AT.I07396</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenHandData.FUT.004.AT.I07396</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Multi-thread Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB Which handgroup_static_pool_size Greater Than hand_group_size Should Exit At Startup</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. One Hand Group Static Pool Size is configured greater than Hand Group Size.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB with multi-thread\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check PRB Can Not Start\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check Error Log Is Written\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check Error Log Is Written.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenHandData.FUT.002.AT.I07396</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Export Temporarily Ini With Negative Hand Group Static Pool Size</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Try To Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Temporarily Ini</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Not Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Temporarily Ini</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>By Default, Hand Data Memory For Group Not Configured handgroup_static_pool_size Will Kept Until Maximum Hand Group Size</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. Hand Group Static Pool Size is not configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB with multi-thread\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Create Configured Maximum Hand Size Hands And Stop\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check All Hand Memory Should Be Kept\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check All Hand Memory Should Be Kept In Rss.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenHandData.FUT.003.AT.I07396</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td colspan=4><font color=dark red>Export Temporarily Ini Without Hand Group Static Pool Size</td></tr>
+<tr><td><br></td><td>Start Multi-thread Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hands Randomly</td><td colspan=4>${NUM_100}</td></tr>
+<tr><td><br></td><td>Get And Save Hand Group Current Rss Usage</td><td>${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Hands Randomly</td><td>${NUM_100}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Group Current Rss Usage</td><td>${SEGINFO_HG[3]}</td><td>${virt}</td><td colspan=2>${rss}</td></tr>
+<tr><td><br></td><td>Get Hand Count And Memory Statistics</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Maximum Active Hand Count And Static Pool Usage</td><td>${STAT_WO}</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td><br></td><td>...</td><td>100</td><td>100</td><td>100</td><td>0</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Test PRB And Clean Ini</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Hand Data Memory Should Be Reused When It Below Static Pool Size And Returned To System Above Static Pool Size</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. Hand Group Static Pool Size is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB with multi-thread\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Create Configured Hand Group Static Pool Size Hands(N hands, specify some hand id)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Create Hands Until Configured Maximum Hand Size(M Hands, specify some hand id)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. All Hand Memory Should Be Kept\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Stop M Hands Randomly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Check N Hands' Memory Should Be Kept\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Stop N Hands Randomly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. Check N Hands' Memory Should Be Kept\n<br>&nbsp;&nbsp;&nbsp;&nbsp;9. Create Configured Hand Group Static Pool Size Hands(N hands)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;10. Check N Hands' Memory Should Be Kept\n<br>&nbsp;&nbsp;&nbsp;&nbsp;11. Stop N Hands Randomly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;12. Check N Hands' Memory Should Be Kept\n\n<br>&nbsp;&nbsp;&nbsp;&nbsp;(Hand Count: 0-&gt;N-&gt;N+M-&gt;N-&gt;0-&gt;N-&gt;0)</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check Hand Group Static Pool Size Hands' Memory Should Be Kept In Rss.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenHandData.FUT.005.AT.I07396</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenHandData.FUT.008.AT.I07396</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenHandData.FUT.009.AT.I07396</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td colspan=4>ATC_ID-LibgenHandData.FUT.010.AT.I07396</td></tr>
+<tr><td><br></td><td>[Tags]</td><td colspan=4>ATC_ID-LibgenHandData.FUT.011.AT.I07396</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Multi-thread Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hands Randomly</td><td colspan=4>${NUM_50}</td></tr>
+<tr><td><br></td><td>Get All Hands Info</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get And Save Hand Group Current Rss Usage</td><td>${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Hand Count And Memory Statistics</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Maximum Active Hand Count And Static Pool Usage</td><td>${STAT_WO}</td><td>50</td><td>50</td><td>0</td></tr>
+<tr><td><br></td><td>...</td><td>50</td><td>50</td><td>50</td><td>0</td></tr>
+<tr><td><br></td><td>Create Hands Randomly</td><td colspan=4>${NUM_50}</td></tr>
+<tr><td><br></td><td>Get Hand Group Current Rss Usage</td><td>${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Hand Count And Memory Statistics</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Maximum Active Hand Count And Static Pool Usage</td><td>${STAT_WO}</td><td>100</td><td>50</td><td>50</td></tr>
+<tr><td><br></td><td>...</td><td>100</td><td>100</td><td>50</td><td>50</td></tr>
+<tr><td><br></td><td>Stop Hands For Specific</td><td>${List}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Hand Group Current Rss Usage</td><td>${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Hand Count And Memory Statistics</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Maximum Active Hand Count And Static Pool Usage</td><td>${STAT_WO}</td><td>50</td><td>0</td><td>50</td></tr>
+<tr><td><br></td><td>...</td><td>100</td><td>100</td><td>50</td><td>50</td></tr>
+<tr><td><br></td><td>Get All Hands Info</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Hands For Specific</td><td>${List}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Group Current Rss Usage</td><td>${SEGINFO_HG[3]}</td><td>${virt}</td><td colspan=2>${rss}</td></tr>
+<tr><td><br></td><td>Get Hand Count And Memory Statistics</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Maximum Active Hand Count And Static Pool Usage</td><td>${STAT_WO}</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td><br></td><td>...</td><td>100</td><td>100</td><td>50</td><td>50</td></tr>
+<tr><td><br></td><td>Get And Save Hand Group Current Rss Usage</td><td>${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hands Randomly</td><td colspan=4>${NUM_10}</td></tr>
+<tr><td><br></td><td>Check Hand Group Current Rss Usage</td><td>${SEGINFO_HG[3]}</td><td>${virt}</td><td colspan=2>${rss}</td></tr>
+<tr><td><br></td><td>Reset Statistics For Maximum Active Hand Count</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Hand Count And Memory Statistics</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Maximum Active Hand Count And Static Pool Usage</td><td>${STAT_WO}</td><td>10</td><td>10</td><td>0</td></tr>
+<tr><td><br></td><td>...</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td><br></td><td>Create Hands Randomly</td><td colspan=4>${NUM_50}</td></tr>
+<tr><td><br></td><td>Get Hand Group Current Rss Usage</td><td>${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Hand Count And Memory Statistics</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Maximum Active Hand Count And Static Pool Usage</td><td>${STAT_WO}</td><td>60</td><td>50</td><td>10</td></tr>
+<tr><td><br></td><td>...</td><td>60</td><td>50</td><td>40</td><td>10</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Hand Data Memory Should Be Reused According To First-Freed-Fisrt-Used When Less Than Static Pool Size</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. Hand Group Static Pool Size is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB with multi-thread\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Create N Hands(N hands&lt;static_pool_size)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Stop N/2 Hands Randomly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Check N Hands' Memory Should Be Kept\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Create N/2 Hands\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Check N Hands' Memory Should Be Used\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Stop N Hands Randomly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. Check N Hands' Memory Should Be Kept\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check First Freed Memory Should Be Reused Firstly.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenHandData.FUT.006.AT.I07396</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Multi-thread Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Hand Group Current Rss Usage</td><td>${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hands Randomly</td><td>${NUM_20}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get And Save Hand Group Current Rss Usage</td><td>${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Hand Count And Memory Statistics</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Maximum Active Hand Count And Static Pool Usage</td><td>${STAT_WO}</td><td>20</td><td>20</td><td>0</td></tr>
+<tr><td><br></td><td>...</td><td>20</td><td>20</td><td>20</td><td>0</td></tr>
+<tr><td><br></td><td>Stop Hands Randomly</td><td>${NUM_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hands Randomly</td><td colspan=4>${NUM_10}</td></tr>
+<tr><td><br></td><td>Check Hand Group Current Rss Usage</td><td>${SEGINFO_HG[3]}</td><td>${virt}</td><td colspan=2>${rss}</td></tr>
+<tr><td><br></td><td>Get Hand Count And Memory Statistics</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Maximum Active Hand Count And Static Pool Usage</td><td>${STAT_WO}</td><td>20</td><td>20</td><td>0</td></tr>
+<tr><td><br></td><td>...</td><td>20</td><td>30</td><td>30</td><td>0</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Hand Data Memory On SP Should Be Used Correctly After Warming When WOSP Out Of Sync</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is warming enabled.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. Hand Group Static Pool Size is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Check Hands' Memory Should Be Kept Same On WOSP\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Create N Hands\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Stop Some Hands Randomly On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Warming This Test Stub Successfully\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Hand Memory For This Stoppted Hand Should Be Kept On SP\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Hand Memory For This Stoppted Hand Should Be Kept On SP.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenHandData.FUT.007.AT.I07396</td><td>ATC_ID-LibgenHand.FUT.001.AT.38931ESPE05</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hands Memory Should Be Kept Same On WO And SP At First</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hands On WOSP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Speficied Hand On WO</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Test Process By Wutili</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hands Should Be Stopped On SP</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hands Memory Should Be Kept Same On WO And SP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Env In Both WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Hand Data Memory On SP Should Be Reused For Sync Create Hand When WOSP Out Of Sync</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is warming enabled.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. Hand Group Static Pool Size is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Create N Hands\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Stop Some Hands Randomly On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Create These Stopped Hand On WOSP\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Hand Data Memory For This Created Hand Should Be Reused On WO And SP\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Hand Data Memory For This Created Hand Should Be Reused On WO And SP.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenHandData.FUT.008.AT.I07396</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hands Memory Should Be Kept Same On WO And SP At First</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hands On WOSP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Speficied Hand On WO</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hands On WOSP</td><td colspan=4>${hand_id}</td></tr>
+<tr><td><br></td><td>Check Hands Memory Should Be Kept Same On WO And SP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Env In Both WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Start Multi-thread Test PRB</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>mempoolproc -f 0xffff -t 2 &amp;</td><td>mempool hand started.</td><td>10s</td></tr>
+<tr><td><br></td><td>${family_id}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=family_id:\ \ )0x....</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MEMPOOL_FAMILY_ID}</td><td colspan=3>${family_id}</td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change Suite Value</td><td>YES</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Try To Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Execute MML Without Check</td><td>mempoolproc -f 0xffff -t 2 &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>0.5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute MML Without Check</td><td colspan=4>echo</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB With Own Ini</b></td></tr>
+<tr><td><br></td><td colspan=5>Export Temporarily Ini Without Malloc Pool</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>mempoolproc -f 0xffff &amp;</td><td>mempool hand started.</td><td>10s</td></tr>
+<tr><td><br></td><td>${family_id}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=family_id:\ \ )0x....</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MEMPOOL_FAMILY_ID}</td><td colspan=3>${family_id}</td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change Suite Value</td><td>NO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${DEFAULT_RSS}</td><td>Get Process Heap Info From Rss</td><td>${pid}</td><td>${RSS}</td><td><br></td></tr>
+<tr><td><br></td><td>${DEFAULT_SIZE}</td><td>Evaluate</td><td>${DEFAULT_RSS}*1024</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${DEFAULT_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test PRB And Clean Ini</b></td></tr>
+<tr><td><br></td><td colspan=5>Stop Test PRB</td></tr>
+<tr><td><br></td><td colspan=5>Clear Temporarily Ini</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test Prb</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_prb</td><td>${WO_COMP_ADDR}</td><td>${MEMPOOL_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Temporarily Ini</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=${CONFIG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Change Suite Value</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_value}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${MULTI_THREAD}=</td><td>Set Variable</td><td>${in_value}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MULTI_THREAD}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Still Alive</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v still_alive -t %s</td><td>${WO_COMP_ADDR}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>3</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Test PRB Not Alive</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>time out</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v still_alive -t 1</td><td>${WO_COMP_ADDR}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Multi-thread Teardown</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Check PRB Hand Status</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Hand Status</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>active hands 3</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>diagste -u %s -f %s -r han -t idata -m hum</td><td>${WO_COMP_ADDR}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Switch To Active Log Env</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>get_wo_units</td><td>/Log</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${ACTIVE_LOG}</td><td>${result}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>uname -n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${node}</td><td>${result.strip()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If Else</td><td>${ACTIVE_LOG} != ['/${node}/FSLogServer']</td><td>Set OMU In Node Of Active Log</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Set OMU In Node Of Active Log</b></td></tr>
+<tr><td><br></td><td colspan=5>Get SP OMU</td></tr>
+<tr><td><br></td><td>Change RU</td><td>${SPOMU}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU}</td><td>${SPOMU}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO_OMU_INDEX}</td><td>${SP_OMU_INDEX}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Setup Connection For WOSP And Set Env</b></td></tr>
+<tr><td><br></td><td colspan=5>Setup Connection For WO And SP</td></tr>
+<tr><td><br></td><td colspan=5>Get Smap Infos</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get Smap Infos</b></td></tr>
+<tr><td><br></td><td colspan=5>Start Multi-thread Test PRB</td></tr>
+<tr><td><br></td><td>${arch}</td><td>Execute CLI</td><td>uname -m</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${arch.strip()}' == 'mips64'</td><td>Set Handgroup Segment Infos</td><td colspan=2>${SEG_MIPS}</td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${arch.strip()}' == 'x86_64'</td><td>Set Handgroup Segment Infos</td><td colspan=2>${SEG_X86}</td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${arch.strip()}' == 'ppc'</td><td>Set Handgroup Segment Infos</td><td colspan=2>${SEG_PPC}</td></tr>
+<tr><td><br></td><td colspan=5>Stop Test PRB</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Set Handgroup Segment Infos</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=4><font color=#FF6600>${seg_re}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>cat /proc/${pid}/smaps|grep ${seg_re}|grep rw-p|awk -F'-' '{print $1}'</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SEGINFO_HG}</td><td colspan=3>${result.strip().splitlines()}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get Current Heap Memory Usage</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${saved}=0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Process Heap Info From Rss</td><td>${pid}</td><td>${RSSMEM}</td><td><br></td></tr>
+<tr><td><br></td><td>${cur_size}</td><td>Evaluate</td><td colspan=3>${size}*1024</td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>${saved} == 1</td><td>Set Heap Variable</td><td>${cur_size}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[return]</td><td colspan=4><font color=#FF6600>${cur_size}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Hands For Specific</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{Hands}</td><td>Set Variable</td><td>${list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${hand}</td><td>In</td><td>@{Hands}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Stop Hand</td><td>0x${hand}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Hand</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v master_stop_hand -t %s</td><td>${WO_COMP_ADDR}</td><td>${MEMPOOL_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${hand}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Create Hands Randomly</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${num}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>3</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v create_dynamicdatahand_randomly -S %s</td><td>${WO_COMP_ADDR}</td><td>${MEMPOOL_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${num}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Hands Randomly</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${num}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>3</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_dynamicdatahand_randomly -S %s</td><td>${WO_COMP_ADDR}</td><td>${MEMPOOL_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${num}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get All Hands Info</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>diagste -u ${WO_COMP_ADDR} -f ${MEMPOOL_FAMILY_ID} -r han -t idata -g 4|grep -v pem|awk '{print $1}'</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${List}</td><td>${result.strip().splitlines()}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Tail To Get Related Syslog</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>tail -f /var/log/syslog &gt; ${TAIL_SYSLOG} &amp;</td></tr>
+<tr><td><br></td><td>${TAIL_PID}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${TAIL_PID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Libgen Should Record Warning Log</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>0.2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute MML Without Check</td><td>grep mempoolproc ${TAIL_SYSLOG}|grep ${ERR_LOG}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${ERR_LOG}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Tail</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute MML Without Check</td><td>kill ${TAIL_PID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Execute CLI</td><td><font color=blue>rm -f ${TAIL_SYSLOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get And Save Hand Group Current Rss Usage</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>top -p ${pid} -b -n 1|grep ${pid}|awk '{print $1,$5,$6,$12}'</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${virt}</td><td>${result.strip().split(' ')[1]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${rss}</td><td>${result.strip().split(' ')[2]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>${virt.__contains__('m')} == True</td><td>Evaluate Memory Virt</td><td>${virt}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Evaluate Memory Virt</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${mem}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Evaluate</td><td>${mem.strip('m')}*1024</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${virt}</td><td>${result}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get Hand Group Current Rss Usage</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>top -p ${pid} -b -n 1|grep ${pid}|awk '{print $1,$5,$6,$12}'</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hand Group Current Rss Usage</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${handgoup_seg}</td><td><font color=#FF6600>${vsize}</td><td><font color=#FF6600>${rsize}</td><td><br></td></tr>
+<tr><td><br></td><td>Get And Save Hand Group Current Rss Usage</td><td>${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5><font color=blue>#will not verify it since memory usage changed when by loading some code</td></tr>
+<tr><td><br></td><td>${result}</td><td>Evaluate</td><td colspan=3>${virt} &lt;=${vsize}+101</td></tr>
+<tr><td><br></td><td><font color=blue>#Should Be True</td><td><font color=blue>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hand Group Current Virtual Mem Usage</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${handgoup_seg}</td><td><font color=#FF6600>${virt_size}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Process Specific Segment Info From Smaps</td><td>${pid}</td><td>${handgoup_seg}</td><td>${VIRTMEM}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${virt_size}</td><td colspan=3>${size}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Warming Test Process By Wutili</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#${result}</td><td><font color=blue>Warm A Family By Wutili</td><td><font color=blue>${OMU_UNIT_NAME}</td><td><font color=blue>0</td><td><font color=blue>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>wutili -- -u ${IPNIU_TYPE} 0 -f ${FAMILY_ID} -w</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get Hand Count And Memory Statistics</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}=${MEMPOOL_FAMILY_ID}</td><td><font color=#FF6600>${hg_add1}=5</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${WO_COMP_ADDR} -f ${family_id} -r hddt_stat</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>diagste -u ${WO_COMP_ADDR} -f ${family_id} -r hddt_stat|awk 'BEGIN{RS="hand group [0-9]"}{if(NR==${hg_add1}){print $0}}'|sed -e 's/ //g'</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${STAT_WO}</td><td>${result}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get Hand Count And Memory Statistics On SP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}=${MEMPOOL_FAMILY_ID}</td><td><font color=#FF6600>${hg_add1}=5</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${SP_COMP_ADDR} -f ${family_id} -r hddt_stat</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>diagste -u ${SP_COMP_ADDR} -f ${family_id} -r hddt_stat|awk 'BEGIN{RS="hand group [0-9]"}{if(NR==${hg_add1}){print $0}}'|sed -e 's/ //g'</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${STAT_SP}</td><td>${result}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Hands Memory Should Be Kept Same On WO And SP</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Hand Count And Memory Statistics</td><td>${FAMILY_ID}</td><td>10</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Maximum Active Hand Count And Static Pool Usage</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Hand Count And Memory Statistics On SP</td><td>${FAMILY_ID}</td><td>10</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5><font color=blue>#Check Maximum Active Hand Count And Static Pool Usage</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${STAT_WO}</td><td>${STAT_SP}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Hands Memory Should Be Kept Same On WO And SP At First</b></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${hg}</td><td>IN</td><td>3</td><td>4</td></tr>
+<tr><td><br></td><td>...</td><td>5</td><td>10</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Get Hand Count And Memory Statistics</td><td>${FAMILY_ID}</td><td>${hg}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Get Hand Count And Memory Statistics On SP</td><td>${FAMILY_ID}</td><td>${hg}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should Be Equal</td><td>${STAT_WO}</td><td>${STAT_SP}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Maximum Active Hand Count And Static Pool Usage</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${stat}</td><td><font color=#FF6600>${active_hand}</td><td><font color=#FF6600>${static_alloc}</td><td><font color=#FF6600>${dynamic_alloc}</td></tr>
+<tr><td><br></td><td>...</td><td>${max_active_hand}</td><td>${total}</td><td>${history_static}</td><td>${history_dynamic}</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${stat}</td><td>currentactivehands:${active_hand}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${stat}</td><td colspan=3>staticlyallocatedfrompool:${static_alloc}</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${stat}</td><td colspan=3>dynamiclyallocatedfromram:${dynamic_alloc}</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${stat}</td><td colspan=3>maxactivehandsinhistory:${max_active_hand}</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${stat}</td><td colspan=3>totalsuccessfulhandcreationinhistory:${total}</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${stat}</td><td colspan=3>staticlyallocatedfrompool:${history_static}</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${stat}</td><td colspan=3>dynamiclyallocatedfromram:${history_dynamic}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Reset Statistics For Maximum Active Hand Count</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${WO_COMP_ADDR} -f ${MEMPOOL_FAMILY_ID} -r hddt_stat_reset</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>hand\ data\ statistic\ reset</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Create Hands On WOSP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}=0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand For Specific Handgroup In Warmtstproc</td><td>${LOGICAL_ADDRESS}</td><td>${FAMILY_ID}</td><td>${HAND_GROUP_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${hand_id}</td><td>${result[1]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Exist In Both WO And SP</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Speficied Hand On WO</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v stop_prb</td><td>${WO_COMP_ADDR}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${hand_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hand Exist In Both WO And SP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Exist In WO</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Exist In SP</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hand Exist In WO</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Hand Exist</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td>${hand_id}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>exist</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hand Exist In SP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Connect To SP Env</td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Hand Exist</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td>${hand_id}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>exist</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hands Should Be Stopped On SP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Connect To SP Env</td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Hand Exist</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td>${hand_id}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>not-exist</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Env In Both WO And SP</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Managed Object</td><td>${WO_IPNIU}/${WARMING_PROCESS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Managed Object</td><td>${SP_IPNIU}/${WARMING_PROCESS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clean Env</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Env In Both WO And SP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

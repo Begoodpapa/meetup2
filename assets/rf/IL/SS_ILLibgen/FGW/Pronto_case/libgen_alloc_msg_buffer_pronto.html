@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen Alloc Msg Buffer Pronto</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen Alloc Msg Buffer Pronto</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test pronto:27420ESPE05: The pointer moving in allocate_message_buffer_r is not correct.\n</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT And Setup Env</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Disconnect From SUT</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Iteration_ID-</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_2582</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>EFS_ID-RNC_EFS_2152_93</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>element-IL</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>exec_type-automatic</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>type-FUT</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>QL-1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>release-IL1_RIS4</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>reviewer-@nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>rw-formal</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC_S0</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-AB</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>resources/Libgen.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${OMU_0}</td><td>%{OMU_0_NAME}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=3><b>The Value Should Be Correct In Allocate Message Buffer With Allocate_message_buffer_r</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Allocate Msg Buffer Test Should be Successful.\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;The Value Should Be Correct In Allocate Message Buffer With Allocate_message_buffer_r.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.AT.27420ESPE05</td></tr>
+<tr><td><br></td><td>Start Allocate Msg Buffer Test Should be Successful</td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Start Allocate Msg Buffer Test Should be Successful</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>SUCCEED</td><td>1</td><td>FAILED</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>alloc_msg_buf_tst -f 0xffff</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>OMU Should Be Ready</b></td></tr>
+<tr><td><br></td><td>Managed Object Should Be Ready</td><td>${OMU_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Managed Object Should Be Ready</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${moname}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Check Managed Object State</td><td>${moname}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${True}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Connect To SUT And Setup Env</b></td></tr>
+<tr><td><br></td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td>${MAX TIME FOR CONNECT}</td><td>%{USERNAME}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=4>%{PASSWD}</td></tr>
+<tr><td><br></td><td>OMU Should Be Ready</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${OMU_0}</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

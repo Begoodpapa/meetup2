@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libdmxmsg Message sequence_number</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libdmxmsg message queue limit</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>Libgen support message queue limit in dmx message core module. Libgen read ldif configuration parameter from libgen.ini file, set the queue limit value when initialize the module. In case we read ldif content and verify by checking dmxmsg proc infomation.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-IL0008</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I05171</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-il</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-6</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL5_RIS1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-mail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>ready</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-AB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC_S1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC_S0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT And Setup TestEnv</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Test Env And Disconnect</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/Libgen_Msg_Resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${OMU-0}</td><td colspan=2>%{OMU_0_NAME}</td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK TIMEOUT}</td><td>30</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK INTERVAL}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DMX_TEST_PROCESS}</td><td colspan=2>0x1941</td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU TYPE}</td><td>%{OMU_TYPE}</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU LOGICAL ADDRESS}</td><td>0x7002</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_CREATE}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TYPE_INTRAFAMILY}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TYPE_INTRANODE}</td><td>2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TYPE_INTERNODE}</td><td>3</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TYPE_TIMER}</td><td>4</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TYPE_REFRESH}</td><td>5</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${QUEUE_LIMIT_IN_CORE}</td><td>65535</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MESSAGE_QUEUE_LIMIT}</td><td>61234</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MESSAGE_QUEUE_ONE}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TWO_ACK_MESSAGES}</td><td>2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ONE_ACK_MESSAGES}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_QUEUE_LIMIT}</td><td>65533</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MEMPOOL_FAMILY_ID}</td><td>0xc385</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEMP_INI_FILE}</td><td>LibgenConfig.ini</td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=32%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>Message queue limit should match the parameter set in init file</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU Should Be OK.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. export a temporarily ini file for test CLI,&nbsp;&nbsp;with messsage queue limit set in default section.<br>&nbsp;&nbsp;&nbsp;&nbsp;2. run the test CLI in background.<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check the queue limit value in proc information.<br>&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;kill test CLI.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The message queue limit value should match the parameter set the teamporarily init&nbsp;&nbsp;file.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgenmsg.MsgQueLimit.FUT.001.AT.I05171</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set RU Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Export Temporarily Ini With Msg Queue Limit Set in defalut</td><td>${TEMP_INI_FILE}</td><td>${DEFAULT_QUEUE_LIMIT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${CLI_PID}</td><td>Run Test Cli In Background</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Check The Queue Limit Value In Proc Info</td><td>${DEFAULT_QUEUE_LIMIT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CLI_PID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Delete Temporarily Ini</td><td>${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Test Stub</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>limit set in default section of ini file could be overwritten by family dedicated</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU Should Be OK.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. export a temporarily ini file for test CLI,&nbsp;&nbsp;with messsage queue limit set in both default section and test CLI's section.<br>&nbsp;&nbsp;&nbsp;&nbsp;2. run the test CLI in background.<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check the queue limit value in proc information.<br>&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;kill test CLI.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The message queue limit value should match the parameter set in the dedicated section in the teamporarily init&nbsp;&nbsp;file.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgenmsg.MsgQueLimit.FUT.002.AT.I05171</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set RU Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Export Temporarily Ini With Msg Queue Limit Set in default and dedicated</td><td>${TEMP_INI_FILE}</td><td>${DEFAULT_QUEUE_LIMIT}</td><td>${MESSAGE_QUEUE_LIMIT}</td><td><br></td></tr>
+<tr><td><br></td><td>${CLI_PID}</td><td>Run Test Cli In Background</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Check The Queue Limit Value In Proc Info</td><td>${MESSAGE_QUEUE_LIMIT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CLI_PID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Delete Temporarily Ini</td><td>${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Test Stub</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>family dedicated limit value should not affect other's value</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU Should Be OK.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. export a temporarily ini file for test CLI,&nbsp;&nbsp;with messsage queue limit set in both default section and test CLI's section.<br>&nbsp;&nbsp;&nbsp;&nbsp;2. run the test CLI in background.<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check the queue limit value in proc information.<br>&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;kill test CLI.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The message queue limit value should match the parameter set in the CLI's section in the teamporarily init&nbsp;&nbsp;file, other family's queue limit should match the value in default section.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgenmsg.MsgQueLimit.FUT.003.AT.I05171</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set RU Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Export Temporarily Ini With Msg Queue Limit Set in default and dedicated</td><td>${TEMP_INI_FILE}</td><td>${DEFAULT_QUEUE_LIMIT}</td><td>${MESSAGE_QUEUE_LIMIT}</td><td><br></td></tr>
+<tr><td><br></td><td>${CLI_PID}</td><td>Run Test cmd In Background</td><td>wuptstproc</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Check The Queue Limit Value In Proc Info</td><td>${DEFAULT_QUEUE_LIMIT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CLI_PID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Delete Temporarily Ini</td><td>${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Kill Test CLI</td><td><font color=dark red>${CLI_PID}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>queue limit value scope should between 1 and 65535, otherwise set as the default value</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU Should Be OK.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. export a temporarily ini file for test CLI,&nbsp;&nbsp;with messsage queue limit set in both default section and test CLI's section.<br>&nbsp;&nbsp;&nbsp;&nbsp;2. run the test CLI in background.<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check the queue limit value in proc information.<br>&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;kill test CLI.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The message queue limit value should not exceed the range.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgenmsg.MsgQueLimit.FUT.004.AT.I05171</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set RU Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Export Temporarily Ini With Msg Queue Limit Set in default and dedicated</td><td>${TEMP_INI_FILE}</td><td>${DEFAULT_QUEUE_LIMIT}</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td>${CLI_PID}</td><td>Run Test Cli In Background</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Check The Queue Limit Value In Proc Info</td><td>${QUEUE_LIMIT_IN_CORE}</td></tr>
+<tr><td><br></td><td>...</td><td>${CLI_PID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Test Stub</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Export Temporarily Ini With Msg Queue Limit Set in default and dedicated</td><td>${TEMP_INI_FILE}</td><td>${DEFAULT_QUEUE_LIMIT}</td><td>65536</td><td><br></td></tr>
+<tr><td><br></td><td>${CLI_PID}</td><td>Run Test Cli In Background</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Check The Queue Limit Value In Proc Info</td><td>${QUEUE_LIMIT_IN_CORE}</td></tr>
+<tr><td><br></td><td>...</td><td>${CLI_PID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Test Stub</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Delete Temporarily Ini</td><td>${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Run Keyword If Test Failed</td><td><font color=dark red>Stop Test Stub</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Messages Over The Message queue limit should be dropped by DMXMSG kernel</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU Should Be OK.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Send test message by CLI to test Stub to let Stub sleep\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send two messages to Stub with defaut message queue limit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. CLI should receive two reply from Stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. export a temporarily ini file for test CLI,&nbsp;&nbsp;with messsage queue limit set to 1.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. repeat above steps 1 - 2.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Check CLI should receive only 1 reply from Stub because the second message is dropped by DMXMSG.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Messages Over The Message queue limit should be dropped by DMXMSG kernel\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgenmsg.MsgQueLimit.FUT.005.AT.I05171</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set RU Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=/etc/LibgenConfig_OMU.ini</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${CLI_PID}</td><td>Run Test Cli In Background</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check The Queue Limit Value In Proc Info</td><td><font color=blue>${DEFAULT_QUEUE_LIMIT}</td><td><font color=blue>${CLI_PID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Message Queue Limit</td><td>${TWO_ACK_MESSAGES}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Test Stub</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Export Temporarily Ini With Msg Queue Limit Set in default and dedicated</td><td>${TEMP_INI_FILE}</td><td>${DEFAULT_QUEUE_LIMIT}</td><td>${MESSAGE_QUEUE_ONE}</td><td><br></td></tr>
+<tr><td><br></td><td>${CLI_PID}</td><td>Run Test Cli In Background</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check The Queue Limit Value In Proc Info</td><td><font color=blue>${MESSAGE_QUEUE_ONE}</td><td><font color=blue>${CLI_PID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Message Queue Limit</td><td>${ONE_ACK_MESSAGES}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Test Stub</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Delete Temporarily Ini</td><td>${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Run Keyword If Test Failed</td><td><font color=dark red>Stop Test Stub</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Clear Test Env And Disconnect</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Connect To SUT And Setup TestEnv</b></td></tr>
+<tr><td><br></td><td>${SSH_WO}=</td><td>Connect to Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MAX TIME FOR CONNECT}</td><td>%{USERNAME}</td><td>%{PASSWD}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ulimit -c unlimited</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get WO And SP OMU Index</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#All OMU Should Be Ready</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${WO OMU NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get The Physical Address Of OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get The Physical Address Of OMU</b></td></tr>
+<tr><td><br></td><td>${OMU PHYSICAL ADDRESS}</td><td>Get Libgen Use Phys Addr</td><td>${OMU TYPE}</td><td colspan=2>${WO OMU INDEX}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU PHYSICAL ADDRESS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get WO And SP OMU Index</b></td></tr>
+<tr><td><br></td><td>${rg_name}</td><td>Get RG Name By MOName</td><td>${OMU-0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMURG}</td><td>${rg_name}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${wo_names}</td><td>Get WO Units</td><td>${rg_name}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${wo info}</td><td>Get Unit Type And Index By MO Name</td><td>${wo_names[0]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO OMU INDEX}</td><td>${wo info.index}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO OMU NAME}</td><td>${wo_names[0]}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>All OMU Should Be Ready</b></td></tr>
+<tr><td><br></td><td>Managed Object Should Be Ready</td><td colspan=4>${WO OMU NAME}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Set Command Options</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${mon_command}</td><td><font color=#FF6600>${command}</td><td><font color=#FF6600>${filter_data}=1</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${mon_command}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${command}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${filter_data}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Set RU Env</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Execute CLI</td><td><font color=blue>ilcliru.sh omu</td><td><font color=blue><br></td><td><font color=blue><br></td><td><font color=blue>#ilcliru.sh omu</td></tr>
+<tr><td><br></td><td><font color=blue>#Execute Mml Without Check</td><td><font color=blue>pkill mempoolproc;pkill wuptstproc</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Test Stub</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Export Temporarily Ini With Msg Queue Limit Set in default and dedicated</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${TEMP_INI_FILE}</td><td><font color=#FF6600>${DEFAULT_QUEUE_LIMIT}</td><td><font color=#FF6600>${MESSAGE_QUEUE_LIMIT}</td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>echo '[default]' &gt; ./${TEMP_INI_FILE};echo max_threads=1 &gt;&gt; ./${TEMP_INI_FILE} ;echo stack_size=500000&nbsp;&nbsp;&nbsp;&gt;&gt; ./${TEMP_INI_FILE};echo timer_heap_size=10000&nbsp;&nbsp;&gt;&gt; ./${TEMP_INI_FILE};echo use_focus=0&nbsp;&nbsp;&gt;&gt; ./${TEMP_INI_FILE};echo use_fatal_handler=0&nbsp;&nbsp;&gt;&gt; ./${TEMP_INI_FILE};echo cntx_pool_free_thrd=20&nbsp;&nbsp;&gt;&gt; ./${TEMP_INI_FILE};echo msg_conversion_enable=0&nbsp;&nbsp;&gt;&gt; ./${TEMP_INI_FILE};echo msg_queue_limit=${DEFAULT_QUEUE_LIMIT} &gt;&gt; ./${TEMP_INI_FILE} ;echo '[mempoolmas]' &gt;&gt; ./${TEMP_INI_FILE};echo family_number=50053 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_1_size=2 &gt;&gt; ./${TEMP_INI_FILE};echo endless_loop_monitor_interval=0 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_2_size=2 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_3_size=2 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_4_size=100 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_5_size=10 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_6_size=10 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_7_size=10 &gt;&gt; ./${TEMP_INI_FILE};echo catch_fatal_sig=1 &gt;&gt; ./${TEMP_INI_FILE};echo msg_queue_limit=${MESSAGE_QUEUE_LIMIT} &gt;&gt;./${TEMP_INI_FILE};echo '[wuptstproc]'&gt;&gt;./${TEMP_INI_FILE};<br>echo family_number=6007&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_1_size=10&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_1_warming=1&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_2_size=10&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_2_warming=1&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_3_size=10&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_3_warming=1&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_4_size=10&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_4_warming=1&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_5_size=10&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_5_warming=1&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_6_size=10&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_6_warming=1&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_7_size=10&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_7_warming=1&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_8_size=10&gt;&gt;./${TEMP_INI_FILE};<br>echo handgroup_8_warming=1&gt;&gt;./${TEMP_INI_FILE};<br>echo endless_loop_monitor_interval=0&gt;&gt;./${TEMP_INI_FILE};<br>echo warming_enable=1&gt;&gt;./${TEMP_INI_FILE};</td><td><br></td><td><font color=blue>#echo '[default]' &gt; ./LibgenConfig.ini ;echo max_threads=1 &gt;&gt; ./LibgenConfig.ini ;echo stack_size=500000 &gt;&gt; ./LibgenConfig.ini ;echo timer_heap_size=10000 &gt;&gt; ./LibgenConfig.ini ;echo use_focus=0 &gt;&gt; ./LibgenConfig.ini ;echo use_fatal_handler=0 &gt;&gt; ./LibgenConfig.ini ;echo cntx_pool_free_thrd=20 &gt;&gt; ./LibgenConfig.ini ;echo msg_conversion_enable=0 &gt;&gt; ./LibgenConfig.ini ;echo msg_queue_limit=65533 &gt;&gt; ./LibgenConfig.ini ;echo '[mempoolmas]' &gt;&gt; ./LibgenConfig.ini ;echo family_number=50053 &gt;&gt; ./LibgenConfig.ini ;echo handgroup_1_size=2 &gt;&gt; ./LibgenConfig.ini ;echo endless_loop_monitor_interval=0 &gt;&gt; ./LibgenConfig.ini ;echo handgroup_2_size=2 &gt;&gt; ./LibgenConfig.ini ;echo handgroup_3_size=2 &gt;&gt; ./LibgenConfig.ini;echo handgroup_4_size=100 &gt;&gt; ./LibgenConfig.ini ;echo handgroup_5_size=10 &gt;&gt; ./LibgenConfig.ini ;echo handgroup_6_size=10 &gt;&gt; ./LibgenConfig.ini ;echo handgroup_7_size=10 &gt;&gt; ./LibgenConfig.ini ;echo catch_fatal_sig=1 &gt;&gt; ./LibgenConfig.ini;echo msg_queue_limit=61234 &gt;&gt; ./LibgenConfig.ini ;cat ./LibgenConfig.ini</td><td><font color=blue>"""</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>cat ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><font color=blue>#export GET_CONFIG=./LibgenConfig.ini</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Export Temporarily Ini With Msg Queue Limit Set in defalut</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${TEMP_INI_FILE}</td><td><font color=#FF6600>${DEFAULT_QUEUE_LIMIT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>echo '[default]' &gt; ./${TEMP_INI_FILE};echo max_threads=1 &gt;&gt; ./${TEMP_INI_FILE} ;echo stack_size=500000 &gt;&gt; ./${TEMP_INI_FILE};echo timer_heap_size=10000 &gt;&gt; ./${TEMP_INI_FILE};echo use_focus=0 &gt;&gt; ./${TEMP_INI_FILE};echo use_fatal_handler=0 &gt;&gt; ./${TEMP_INI_FILE};echo cntx_pool_free_thrd=20 &gt;&gt; ./${TEMP_INI_FILE};echo msg_conversion_enable=0 &gt;&gt; ./${TEMP_INI_FILE};echo msg_queue_limit=${DEFAULT_QUEUE_LIMIT} &gt;&gt; ./${TEMP_INI_FILE} ;echo '[mempoolmas]' &gt;&gt; ./${TEMP_INI_FILE};echo family_number=50053 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_1_size=2 &gt;&gt; ./${TEMP_INI_FILE};echo endless_loop_monitor_interval=0 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_2_size=2 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_3_size=2 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_4_size=100 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_5_size=10 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_6_size=10 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_7_size=10 &gt;&gt; ./${TEMP_INI_FILE};echo catch_fatal_sig=1 &gt;&gt; ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Export Temporarily Ini With Msg Queue Limit Set in dedicated.</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${TEMP_INI_FILE}</td><td><font color=#FF6600>${MESSAGE_QUEUE_LIMIT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>echo '[default]' &gt; ./${TEMP_INI_FILE};echo max_threads=1 &gt;&gt; ./${TEMP_INI_FILE} ;echo stack_size=500000 &gt;&gt; ./${TEMP_INI_FILE};echo timer_heap_size=10000 &gt;&gt; ./${TEMP_INI_FILE};echo use_focus=0 &gt;&gt; ./${TEMP_INI_FILE};echo use_fatal_handler=0 &gt;&gt; ./${TEMP_INI_FILE};echo cntx_pool_free_thrd=20 &gt;&gt; ./${TEMP_INI_FILE};echo msg_conversion_enable=0 &gt;&gt; ./${TEMP_INI_FILE};echo '[mempoolmas]' &gt;&gt; ./${TEMP_INI_FILE};echo family_number=50053 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_1_size=2 &gt;&gt; ./${TEMP_INI_FILE};echo endless_loop_monitor_interval=0 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_2_size=2 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_3_size=2 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_4_size=100 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_5_size=10 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_6_size=10 &gt;&gt; ./${TEMP_INI_FILE};echo handgroup_7_size=10 &gt;&gt; ./${TEMP_INI_FILE};echo catch_fatal_sig=1 &gt;&gt; ./${TEMP_INI_FILE};echo msg_queue_limit=${MESSAGE_QUEUE_LIMIT} &gt;&gt;./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Run Test Cli In Background</b></td><td><font color=#FF6600>[Arguments]</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>mempoolproc &amp;</td><td>mempool hand started.</td><td>10s</td></tr>
+<tr><td><br></td><td>${CLI_PID}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[RETURN]</td><td><font color=#FF6600>${CLI_PID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Run Test cmd In Background</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${TEST_CMD}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${CLI_PID}</td><td>Start CLI At Background And Return Linux Pid</td><td>${TEST_CMD} &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[RETURN]</td><td><font color=#FF6600>${CLI_PID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check The Queue Limit Value In Proc Info</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${MESSAGE_QUEUE_LIMIT}</td><td><font color=#FF6600>${CLI_PID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${client_info}</td><td>Execute Mml Without Check</td><td>cat /proc/dmxmsg/clients | grep ${CLI_PID}</td><td><br></td><td><font color=blue># cat /proc/dmxmsg/clients | grep mempoolproc</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${client_info}</td><td>${MESSAGE_QUEUE_LIMIT}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Kill Test CLI</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${CLI_PID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>kill -9 ${CLI_PID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Test Stub</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>export GET_CONFIG=/etc/LibgenConfig_OMU.ini</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>mempoolproc -f 0xffff -- -p "${OMU PHYSICAL ADDRESS} ${MEMPOOL_FAMILY_ID} 0" -v stop_prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Delete Temporarily Ini</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><font color=blue>#rm ./LibgenConfig.ini</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Message Queue Limit</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${ack_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Execute CLI</td><td><font color=blue>ilcliru.sh omu</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Execute Mml Without Check</td><td>mempoolproc -f 0xffff -- -p "${OMU PHYSICAL ADDRESS} ${MEMPOOL_FAMILY_ID} 0" -v kernel_msg_queue_length -t 2</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>action kernel_msg_queue_length successfully</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>received alive ack ${ack_count} times.</td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

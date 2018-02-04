@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Change threshold of dead loop</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Change threshold of dead loop</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B02913</td><td><font color=dark red>Iteration_ID-I02699</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>element-IL</td><td><font color=dark red>exec_type-automatic</td><td><font color=dark red>type-FUT</td><td>QL-6</td><td><font color=dark red>release-IL1_RIS2</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>reviewer-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><font color=dark red>rw-formal</td><td><font color=dark red>hw_env-RNC</td><td><font color=dark red>hw_env-AB</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-ADA</td><td><font color=dark red>hw_env-RNC_S0</td><td><font color=dark red>hw_env-RNC_S1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>resources/Libgen.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>suite setup</b></td><td>Connect To SUT And Start Message Tester</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>suite teardown</b></td><td>Stop Message Tester And Disconnect From SUT</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${FAMILY_ID}</td><td>0x1771</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${PROCESS_ID}</td><td>0x0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${START_COUNT}</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${END_COUNT}</td><td>5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DLOOP_DETECT_CIRCLE}</td><td>20</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DLOOP_DETECT_CIRCLE_DEF}</td><td>2</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td><b>Dead loop can not be detected after change bigger of the endless loop threshold</b></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.I02699</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. test prb is started \n<br>&nbsp;&nbsp;&nbsp;. testcli is OK \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. reset endless loop interval and threshold\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. send cli :make testprb's hand go into endless loop \n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. endless loop is detected quickly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. the hand is killed \n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. change threshold bigger\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. send cli :make testprb go into endless loop \n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. sleep for a while , more than the default threshold \n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. the deadloop hand is still alive \n<br>&nbsp;&nbsp;&nbsp;&nbsp;9. stop the deadloop hand \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. hand should be dected by endless loop when threadhold is small \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Hand should not be detected by endless loop when threshold change bigger \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Hand should be detected by endless loop when threshold is small</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Hand should not be detected by endless loop when threshold change bigger</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Hand and Clear Screen</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Dead loop can not be detected after disable the endless loop with Interval Zero</b></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.002.AT.I02699</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. test prb is started \n<br>&nbsp;&nbsp;&nbsp;. testcli is OK \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. reset endless loop interval and threshold\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. send cli :make testprb's hand go into endless loop \n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. endless loop is detected quickly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. the hand is killed \n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. disable threshold with set interval zero\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. send cli :make testprb go into endless loop \n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. sleep for a while , more than the default threshold \n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. the deadloop hand is still alive \n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. hand should be dected by endless loop when threadhold is small \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Hand should not be detected when endless loop is disabled \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Hand should be detected by endless loop when threshold is small</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Hand should not be detected by endless loop when disabled endless loop with Interval</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Hand and Clear Screen</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Dead loop can not be detected after disable the endless loop with Threshold Zero</b></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.003.AT.I02699</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. test prb is started \n<br>&nbsp;&nbsp;&nbsp;. testcli is OK \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. reset endless loop interval and threshold\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. send cli :make testprb's hand go into endless loop \n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. endless loop is detected quickly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. the hand is killed \n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. disable threshold,set threshold to 0 \n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. send cli :make testprb go into endless loop \n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. sleep for a while , more than the default threshold \n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. the deadloop hand is still alive \n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. hand should be dected by endless loop when threadhold is small \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Hand should not be detected when endless loop is disabled \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Hand should be detected by endless loop when threshold is small</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Hand should not be detected by endless loop when disabled endless loop with Threshold</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Hand and Clear Screen</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Stop Hand and Clear Screen</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>ILLGTestCli Send Stop Hand Msg To Testproc Success</td><td>${HAND PROCESS ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Clear Screen of PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Hand should be detected by endless loop when threshold is small</b></td></tr>
+<tr><td><br></td><td>Reset TestProc threshold and check interval</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Create Hand</td><td>${TIME_QUOTA_5}</td><td>${TASK_DURATION_5}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Message process_frozen_by_dmxrtr_s Received</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${DLOOP_DETECT_CIRCLE}</td><td>${DLOOP_DETECT_CIRCLE_DEF}</td><td>ILLGTestCli Get Hand Count To Testproc And Return Null</td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Clear process_frozen_by_dmxrtr_s Counter</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Hand should not be detected by endless loop when threshold change bigger</b></td></tr>
+<tr><td><br></td><td>Change Threshold and Interval of Deadless Loop for TestPrb Bigger</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Create Hand</td><td>${TIME_QUOTA_5}</td><td>${TASK_DURATION_5}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Some Time For Check</td><td>${SLEEP_TIME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${DLOOP_DETECT_CIRCLE}</td><td>${DLOOP_DETECT_CIRCLE_DEF}</td><td>ILLGTestCli Get Hand Count To Testproc And Return One</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Hand should not be detected by endless loop when disabled endless loop with Interval</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disable Deadless Loop for TestPrb with Interval Zero</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Create Hand</td><td>${TIME_QUOTA_5}</td><td>${TASK_DURATION_5}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Some Time For Check</td><td>${SLEEP_TIME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${DLOOP_DETECT_CIRCLE}</td><td>${DLOOP_DETECT_CIRCLE_DEF}</td><td>ILLGTestCli Get Hand Count To Testproc And Return One</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Hand should not be detected by endless loop when disabled endless loop with Threshold</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disable Deadless Loop for TestPrb with Threshold Zero</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Create Hand</td><td>${TIME_QUOTA_5}</td><td>${TASK_DURATION_5}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Some Time For Check</td><td>${SLEEP_TIME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${DLOOP_DETECT_CIRCLE}</td><td>${DLOOP_DETECT_CIRCLE_DEF}</td><td>ILLGTestCli Get Hand Count To Testproc And Return One</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Reset TestProc threshold and check interval</b></td></tr>
+<tr><td><br></td><td colspan=5>Reset Deadless Loop of TestProcess to LDAP</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Connect To SUT And Start Message Tester</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Msg Tester Receiver</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Process</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Stop Process</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td><td>${PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start Msg Tester Receiver</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>rhtestproc -t 2&amp;</td><td>MASTER RECV...</td><td>10s</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Msg Tester Receiver</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Kill Process</td><td><font color=blue>rhtestproc</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Process</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Message Tester And Disconnect From SUT</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Msg Tester Receiver</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect From SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Enters Into Sleep</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${time_quota}</td><td><font color=#FF6600>${task_duration}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${HAND PROCESS ID}</td><td>Send Msg To Target Process Create Hand With Sleep Unconcern Timeout</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td><td>${PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${PROCESS_TYPE}</td><td>${time_quota}</td></tr>
+<tr><td><br></td><td>...</td><td>${task_duration}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${HAND PROCESS ID}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${HAND PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Create Hand</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${time_quota}</td><td><font color=#FF6600>${task_duration}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${HAND PROCESS ID}</td><td>Send Msg To Target Process Create Hand With While Unconcern Timeout</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td><td>${PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${PROCESS_TYPE}</td><td>${time_quota}</td></tr>
+<tr><td><br></td><td>...</td><td>${task_duration}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${HAND PROCESS ID}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${HAND PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Create Hand Msg With One Layer Stateful Procedure To Testproc And Testproc Create Hand</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${time_quota}</td><td><font color=#FF6600>${task_duration}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Create Hand With Stateful Procedure Unconcern Timeout</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td><td>${PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${PROCESS_TYPE}</td><td>${time_quota}</td></tr>
+<tr><td><br></td><td>...</td><td>${task_duration}</td><td>${ONE_LAYER_STATEFUL_PROCEDURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Create Hand Msg With Multi Layer Stateful Procedure To Testproc And Testproc Create Hand</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${time_quota}</td><td><font color=#FF6600>${task_duration}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Create Hand With Stateful Procedure Unconcern Timeout</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td><td>${PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${PROCESS_TYPE}</td><td>${time_quota}</td></tr>
+<tr><td><br></td><td>...</td><td>${task_duration}</td><td>${TWO_LAYER_STATEFUL_PROCEDURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Stop Hand Msg To Testproc Success</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${stop hand process id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Stop Hand</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${stop hand process id}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Get Hand Count To Testproc And Return One</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Use Diagste To Get Hand Count</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>should be equal as integers</td><td>${result}</td><td>${HAND_COUNT_ONE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Get Hand Count To Testproc And Return Null</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Use Diagste To Get Hand Count</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>should be equal as integers</td><td>${result}</td><td>${HAND_COUNT_NULL}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Wait Some Time For Check</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${time_for_sleep}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>sleep</td><td>${time_for_sleep}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check The Message process_frozen_by_dmxrtr_s Received</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${NUM}=1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${DLOOP_DETECT_CIRCLE}</td><td>${DLOOP_DETECT_CIRCLE_DEF}</td><td>Check Notification Message Received</td><td>${NUM}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Notification Message Received</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${NUM}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#${result}</td><td><font color=blue>Get Output</td><td><font color=blue>RECEIVE process_frozen_by_dmxrtr_s message</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Should Contain</td><td><font color=blue>${result}</td><td><font color=blue>RECEIVE process_frozen_by_dmxrtr_s message</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>ILLGTestCli -- -k ${OMU_PHYSICAL_ADDRESS} ${FAMILY_ID} ${PROCESS_ID}</td><td>Test Stub received ${NUM} process_frozen_by_dmxrte_s message</td><td>1s</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear process_frozen_by_dmxrtr_s Counter</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>ILLGTestCli -- -z ${OMU_PHYSICAL_ADDRESS} ${FAMILY_ID} ${PROCESS_ID}</td><td>Test Stub clear process_frozen_by_dmxrte_s message counter successfully</td><td>3s</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Screen of PRB</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Get Output</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

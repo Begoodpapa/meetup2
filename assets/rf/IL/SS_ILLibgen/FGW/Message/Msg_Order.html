@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Message Order</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Message Order</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>Keep the LIBGEN message in order in multi-thread configuration</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT And Setup Env</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Disconnect From SUT</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B01858</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Iteration_ID-I01802</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_2582</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>element-IL</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>exec_type-automatic</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>type-FUT</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>QL-1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>release-IL1_RIS4</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>reviewer-@nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>rw-formal</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC_S0</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-AB</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-RNC_EFS_2152_93</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>resources/Libgen_Msg_Resource.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${FAMILY_ID}</td><td>0x2329</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU_0}</td><td>%{OMU_0_NAME}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RET_SUCCESS}</td><td>message order test success</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RET_FAILURE}</td><td>message order test fail</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OUTPUT_LOG}</td><td>/var/log/msgorder_taillog.txt</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=3><b>The Message Should Be Received In Order When Run With Multi-Thread</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Msg Receiver With Multi-Thread.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Send A Mass Of Messages To Msg Receiver.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Message Should Be Received In Order By Msg&nbsp;&nbsp;Receiver.\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;The Message Should Be Received In Order.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMsg.FUT.001.AT.I01802</td></tr>
+<tr><td><br></td><td>Start Msg Receiver With Multi-Thread</td><td><br></td></tr>
+<tr><td><br></td><td>The Message Should Be Received In Order When A Mass Of Messages Send To Msg Receiver</td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=3><b>The Message Should Be Received In Order In Stateful When Run With Multi-Thread</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Msg Receiver With Multi-Thread.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. For Stateful Recv Msg, Send A Mass Of Messages To Msg Receiver.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Message Should Be Statefully Received In Order By Msg Receiver.\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;The Message Should Be Received In Order.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMsg.FUT.002.AT.I01802</td></tr>
+<tr><td><br></td><td>Start Msg Receiver With Multi-Thread</td><td><br></td></tr>
+<tr><td><br></td><td>The Message Should Be Statefully Received In Order When A Mass Of Messages Send To Msg Receiver</td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Start Msg Receiver With Multi-Thread</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>launcherstub -f ${FAMILY_ID} -t 5 -- -o &gt;/dev/null&amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>The Message Should Be Received In Order When A Mass Of Messages Send To Msg Receiver</b></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute MML Without Check</td><td>Family_Exist_Test -f 0xffff -- -o 10000</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${result_str}</td><td colspan=3>${result.strip().split('\n')}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${ret}</td><td>${result_str[1]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If Else</td><td>${ret.find('success')} &gt; 0</td><td colspan=3>Stop Tail Log</td></tr>
+<tr><td><br></td><td>...</td><td>Else</td><td>Stop Tail Log And Check The First Msg Num In Syslog</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>The Message Should Be Statefully Received In Order When A Mass Of Messages Send To Msg Receiver</b></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute MML Without Check</td><td>Family_Exist_Test -f 0xffff -- -p 1000</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${result_str}</td><td colspan=3>${result.strip().split('\n')}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${ret}</td><td>${result_str[1]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If Else</td><td>${ret.find('success')} &gt; 0</td><td colspan=3>Stop Tail Log</td></tr>
+<tr><td><br></td><td>...</td><td>Else</td><td>Stop Tail Log And Check The First Msg Num In Syslog</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Tail The Log</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ${OUTPUT_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>tail -f /var/log/syslog &gt; ${OUTPUT_LOG} &amp;</td></tr>
+<tr><td><br></td><td>${logpid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${logpid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Tail Log</b></td></tr>
+<tr><td><br></td><td>Execute MML Without Check</td><td>kill ${logpid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Tail Log And Check The First Msg Num In Syslog</b></td></tr>
+<tr><td><br></td><td>Stop Tail Log</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute MML Without Check</td><td>grep "launcherstub" ${OUTPUT_LOG} | grep "want_id="</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>${count}</td><td>${result.count('want_id=1')}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${num}</td><td>ShouldMatchRegexp</td><td>${ret.strip()}</td><td>(?&lt;=message order test fail )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${count}</td><td>${num}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>OMU Should Be Ready</b></td></tr>
+<tr><td><br></td><td>Managed Object Should Be Ready</td><td>${OMU_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Managed Object Should Be Ready</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${moname}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Check Managed Object State</td><td>${moname}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${True}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Connect To SUT And Setup Env</b></td></tr>
+<tr><td><br></td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td>${MAX TIME FOR CONNECT}</td><td>%{USERNAME}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=4>%{PASSWD}</td></tr>
+<tr><td><br></td><td>OMU Should Be Ready</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${OMU_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Disconnect From SUT</b></td></tr>
+<tr><td><br></td><td colspan=5>Disconnect All Ils</td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

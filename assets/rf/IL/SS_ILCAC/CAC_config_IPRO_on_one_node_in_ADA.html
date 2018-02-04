@@ -1,0 +1,689 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>CAC config IPRO on one node in ADA</title>
+</head>
+<body>
+<h1>CAC config IPRO on one node in ADA</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Setting</th>
+</tr>
+<tr>
+<td class="name">Suite Setup</td>
+<td>Connect to Target Hardware and Create Test Resource</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Suite Teardown</td>
+<td>Disconnect from Target Hardware</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Test Teardown</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Force Tags</td>
+<td>Product_Backlog_ID-T99999</td>
+<td>Iteration_ID-I01993</td>
+<td>hw_env-ADA</td>
+<td>type-FUT</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>exec_type-automatic</td>
+<td>element-IL</td>
+<td>release-IL1</td>
+<td>owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>HW_TYPE-ADA_FTLB</td>
+<td>QL-6</td>
+<td>FRS_ID-PCM_100201_56_0000</td>
+<td>EFS_ID-XXX</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>PRS_ID-XXX</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>il.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>./resources/common_operation_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>./resources/cac_basic_operation_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>./resources/IPBR_basic_operation_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>Collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../SS_ILCallMgmt/resources/cm_resource.tsv</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variable</th>
+</tr>
+<tr>
+<td class="name">${NODE_NAME}</td>
+<td>/CLA-0</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IPBR_4003}</td>
+<td>4003</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_IP_ADDR}</td>
+<td>38.38.38.38</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${ETHER1_ADA}</td>
+<td>eth3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${RES_TYPE}</td>
+<td>OUT</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Case</th>
+</tr>
+<tr>
+<td class="name"><a name="test_Config IPRO on One Node in ADA">Config IPRO on One Node in ADA</a></td>
+<td>[Tags]</td>
+<td>ct-positive</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Create Test resources and Leg list</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>reserve AMR call based on the IPRO created on Node</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>reserve PS-NRT Call based on the IPRO created on Node</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>release AMR call successfully</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>release PS-NRT call successfully</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Release Legs in Leg list if case failed and release Test resources</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keyword</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Connect to Target Hardware and Create Test Resource">Connect to Target Hardware and Create Test Resource</a></td>
+<td>common_operation_resource.connect_to_target_hardware</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>change ru</td>
+<td>%{OMU_0_NAME}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Get Active CP Units</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Get Random USCP Unit</td>
+<td>${FLASH_PRE_INDEX}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create Test resources">Create Test resources</a></td>
+<td>Add test IP address successfully</td>
+<td>${NODE_NAME}</td>
+<td>${ETHER1_ADA}</td>
+<td>${TEST_IP_ADDR}/16</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Add IPRO successfully</td>
+<td>${IPBR_4003}</td>
+<td>${TEST_IP_ADDR}</td>
+<td>${NODE_NAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${ETHER1_ADA}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Release Test resource">Release Test resource</a></td>
+<td>run keyword and ignore error</td>
+<td>Delete IPRO successfully</td>
+<td>${IPBR_4003}</td>
+<td>${TEST_IP_ADDR}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${NODE_NAME}</td>
+<td>${ETHER1_ADA}</td>
+<td>${DEL_MODE_FORCE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Create Test resources and Leg list">Create Test resources and Leg list</a></td>
+<td>Create Test resources</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>create leg list</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Release Legs in Leg list if case failed and release Test resources">Release Legs in Leg list if case failed and release Test resources</a></td>
+<td>run keyword if test failed</td>
+<td>release legs created in test case</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Delete IPRO successfully</td>
+<td>${IPBR_4003}</td>
+<td>${TEST_IP_ADDR}</td>
+<td>${NODE_NAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${ETHER1_ADA}</td>
+<td>${DEL_MODE_FORCE}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Delete test IP address successfully</td>
+<td>${NODE_NAME}</td>
+<td>${ETHER1_ADA}</td>
+<td>${TEST_IP_ADDR}/16</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_reserve AMR call based on the IPRO created on Node">reserve AMR call based on the IPRO created on Node</a></td>
+<td>${RTP_LEG}</td>
+<td>create rtp leg</td>
+<td>${USCP}</td>
+<td>${IPBR_4003}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>NCAC=1,USERID=2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set test variable</td>
+<td>\${RTP_LEG}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${RTP_LEG.result}' =='SUCCESSFUL'</td>
+<td>Append To List</td>
+<td>${OUT_LEG_LIST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${RTP_LEG}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${RTP_LEG.result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${RTP_LEG.legs['OUT'].local_ip}</td>
+<td>${TEST_IP_ADDR}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${IUB_LEG}</td>
+<td>create iub leg</td>
+<td>${USCP}</td>
+<td>${IPBR_4003}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${RTP_LEG.call_id}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set test variable</td>
+<td>\${IUB_LEG}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${IUB_LEG.result}' =='SUCCESSFUL'</td>
+<td>Append To List</td>
+<td>${IN_LEG_LIST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${IUB_LEG}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${IUB_LEG.result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_reserve PS-NRT Call based on the IPRO created on Node">reserve PS-NRT Call based on the IPRO created on Node</a></td>
+<td>${GTP_TUNNEL}</td>
+<td>create gtp tunnel</td>
+<td>${USCP}</td>
+<td>${IPBR_4003}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${GTP_TUNNEL.result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${GTP_TUNNEL.gtp_ip}</td>
+<td>${TEST_IP_ADDR}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${GTP_LEG}</td>
+<td>create gtp leg</td>
+<td>${USCP}</td>
+<td>${GTP_TUNNEL.call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${IPBR_4003}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${GTP_LEG.result}' =='SUCCESSFUL'</td>
+<td>Append To List</td>
+<td>${OUT_LEG_LIST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${GTP_LEG}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${GTP_LEG.result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set test variable</td>
+<td>\${GTP_LEG}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${UDP_LEG}</td>
+<td>create udp leg</td>
+<td>${USCP}</td>
+<td>${IPBR_4003}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${GTP_TUNNEL.call_id}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${UDP_LEG.result}' =='SUCCESSFUL'</td>
+<td>Append To List</td>
+<td>${IN_LEG_LIST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${UDP_LEG}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${UDP_LEG.result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set test variable</td>
+<td>\${UDP_LEG}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_release AMR call successfully">release AMR call successfully</a></td>
+<td>${result}</td>
+<td>release iub leg</td>
+<td>${IUB_LEG.computer}</td>
+<td>${IUB_LEG.call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should contain</td>
+<td>${result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>release rtp leg</td>
+<td>${RTP_LEG.computer}</td>
+<td>${RTP_LEG.call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should contain</td>
+<td>${result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_release PS-NRT call successfully">release PS-NRT call successfully</a></td>
+<td>${result}</td>
+<td>release udp leg</td>
+<td>${UDP_LEG.computer}</td>
+<td>${UDP_LEG.call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should contain</td>
+<td>${result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>release gtp leg</td>
+<td>${GTP_LEG.computer}</td>
+<td>${GTP_LEG.call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should contain</td>
+<td>${result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

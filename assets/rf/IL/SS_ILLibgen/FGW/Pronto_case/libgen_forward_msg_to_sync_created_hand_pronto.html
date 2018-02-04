@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen Forward Msg To Sync Created Hand Pronto</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen Forward Msg To Sync Created Hand Pronto</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test pronto: 45209ESPE03 Libgen encodes hta message wrongly which causes hta crash (Forward Msg to Just Sync Created hand should be successful).\n</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT And Setup Env</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Env and Disconnect From SUT</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Iteration_ID-</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_2582</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>EFS_ID-RNC_EFS_2152_93</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>element-IL</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>exec_type-automatic</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>type-FUT</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>QL-1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>release-IL1_RIS4</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>reviewer-@nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>rw-formal</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-AB</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>resources/Libgen.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${TEST_PRB_FAMILY_ID}</td><td>0x1773</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU_LOGICAL_ADDRESS}</td><td>0x7002</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU_0}</td><td>%{OMU_0_NAME}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_PROCESS_ID}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SIMULATE_HTA_MSG}</td><td>sim_hta_msg</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${GET_MSG_COUNT}</td><td>get_msg_count</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${STOP_PROCESS}</td><td>stop_prb</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MESSAGE_COUNT}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_GROUP}</td><td>6</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OLD_PROCESS_IDS}</td><td>[]</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=3><b>Message Can Be forwarded To Sync Created Hand Successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Test PRBs are working in WO and SP RU.\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Use Test CLI to send simulate message to Test PRBs Master by logical address.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. (Test PRBs Master create 1 Hand and forward the message to the Hand.)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Use Test CLI to check the created Hand receive the message.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Use Test CLI to stop the created Hand.\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Message Can Be forwarded To Sync Created Hand Successfully.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.AT.45209ESPE03</td></tr>
+<tr><td><br></td><td>Test CLI Send Simulate Message To Master Of Test PRBs</td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRBs Hand Received The Message</td><td><br></td></tr>
+<tr><td><br></td><td>Stop The Created Hand</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Run Keyword If Test Failed</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>Clear Env</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Simulate Message To Master Of Test PRBs</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>${HAND_PROCESS_ID}</td><td>Libgen Test Forward Msg To Sync Created Hand</td><td>mempoolproc -f 0xffff -- -p "${OMU_LOGICAL_ADDRESS} ${TEST_PRB_FAMILY_ID} ${MASTER_PROCESS_ID}" -v ${SIMULATE_HTA_MSG}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${HAND_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Log</td><td>${HAND_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Test PRBs Hand Received The Message</b></td></tr>
+<tr><td><br></td><td>PRB Received Msg Count Should Be</td><td>${OMU_LOGICAL_ADDRESS}</td><td>${TEST_PRB_FAMILY_ID}</td><td>${HAND_PROCESS_ID}</td><td>test PRB received full msg count: ${MESSAGE_COUNT}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>PRB Received Msg Count Should Be</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_phys_addr}</td><td><font color=#FF6600>${in_family_id}</td><td><font color=#FF6600>${in_process_id}</td><td><font color=#FF6600>${in_count}</td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_wait_time}=100</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>3</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v get_msg_count -t %s</td><td>${in_phys_addr}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_family_id}</td><td>${in_process_id}</td><td>${in_wait_time}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${in_count}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop The Created Hand</b></td></tr>
+<tr><td><br></td><td>Stop Specified Hand</td><td>${HAND_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute MML Without Check</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${TEST_PRB_FAMILY_ID} -r han -t idata -m hum</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Specified Hand</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_process_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v stop_prb</td><td>${OMU_LOGICAL_ADDRESS}</td><td>${TEST_PRB_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_process_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>All OMUs Should Be Ready</b></td></tr>
+<tr><td><br></td><td>${omurg} =</td><td>Get RG Name</td><td>${OMU_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{omu_units} =</td><td>Get All Units</td><td>${omurg}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>RUs Should Be Ready</td><td>@{omu_units}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Managed Object Should Be Ready</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${moname}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Check Managed Object State</td><td>${moname}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${True}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>RUs Should Be Ready</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>@{ru_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${ru}</td><td>In</td><td>@{ru_list}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Managed Object Should Be Ready</td><td>${ru}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Connect To SUT And Setup Env</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>&nbsp;&nbsp;&nbsp;&nbsp;Setup of the Test Suite.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Connect to SUT.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Use diagste to get hand group ${HAND_GROUP}'s hand process id if exists.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>All OMUs Should Be Ready</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${OLD_PROCESS_IDS} =</td><td>libgen_get_process_id_by_diagste</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${TEST_PRB_FAMILY_ID} -r han -t idata -m hum</td><td>${HAND_GROUP}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OLD_PROCESS_IDS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Env and Disconnect From SUT</b></td></tr>
+<tr><td><br></td><td>Disconnect From SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop The Hand If Created During Test</b></td></tr>
+<tr><td><br></td><td>@{process_ids} =</td><td>libgen_get_process_id_by_diagste</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${TEST_PRB_FAMILY_ID} -r han -t idata -m hum</td><td>${HAND_GROUP}</td><td>${OLD_PROCESS_IDS}</td></tr>
+<tr><td><br></td><td>:FOR</td><td>${process_id}</td><td>IN</td><td>@{process_ids}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Stop Specified Hand</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute MML Without Check</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${TEST_PRB_FAMILY_ID} -r han -t idata -m hum</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Env</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>&nbsp;&nbsp;&nbsp;&nbsp;Teardown of the Test.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Use diagste to check if ${HAND_GROUP}'s hands are new created during the test, if created, stop the new created hands.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop The Hand If Created During Test</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

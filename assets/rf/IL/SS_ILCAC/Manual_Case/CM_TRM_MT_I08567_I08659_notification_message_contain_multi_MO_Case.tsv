@@ -1,0 +1,102 @@
+*Setting*							
+Suite Setup	connect to target hardware and prepare test ENV						
+Suite Teardown	disconnect from target hardware and clear test resource						
+Force Tags	Product_Backlog_ID-B01454	Iteration_ID-I00907	PRS_ID-XXX	EFS_ID-XXX	FRS_ID-XXX	exec_type-automatic	hw_env-RNC_S0
+...	QL-6	type-FUT	element-IL	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	release-RU50	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com
+...	PR-73399ESPE01	not-ready					
+Resource	../resources/common_operation_resource.html						
+Resource	../resources/CM_TRM_common_resource.tsv						
+Resource	../../../CasePool/Traffic/QoS/resources/QoS_SCLI_Resource.html						
+							
+*Variable*							
+${FILE_PATH}	/opt/nsn/testutils/CM_TRM_MT_I08567_I08659_notification_message_contain_multi_MO_Case/						
+${PREPARE_FILE_NAME}	prepare_resource.scli						
+${FILE_NAME}	every_operation_to_MOs.scli						
+${IP_ADDR}	191.251.10.10						
+${TEST_OWNER}	/QNUP-0						
+${CLEAR_FILE_NAME}	delete_test_resource.sh						
+@{EXIST_IPBR_LIST}	100	101	102	103	104	105	106
+...	107	108	109	110	111	112	113
+...	114	115	116	117	118	119	120
+...	121	122	147	148	149	150	151
+...	152	153	154	155	156	157	158
+...	159	160	161	162	163	164	165
+...	166	167	168	169	170	195	196
+...	197	198	199	200	201	202	203
+...	204	205	206	207	208	209	210
+...	211	212	213	214	215	216	217
+...	218	219	220	221	222	223	224
+...	225	226	227	228	229	230	244
+...	247	248					
+							
+*Test Case*							
+Multiple SCLI operation about IPBRs and IPROs in two transaction message	execute cli	monster -f 0x6DD>CAC-flash.log&					
+	run keyword if	'%{HW}' == 'ADA'	Test in ADA				
+	run keyword if	'%{HW}' == 'RNC'	Test in RNC				
+	Check_every_MOs						
+							
+*Keyword*							
+Check_every_MOs	: FOR	${index}	IN	@{EXIST_IPBR_LIST}			
+		${result}	show_ip_based_route	${index}			
+		Should Not Be Equal	${result['result']}	FAILED			
+	: FOR	${index}	IN	@{EXIST_IPBR_LIST}			
+		${result}	show_ipro	${index}			
+		Should Not Be Equal	${result['result']}	FAILED			
+							
+connect to target hardware and prepare test ENV	common_operation_resource.connect to target hardware						
+	check ENV before prepare						
+	prepare test ENV						
+							
+prepare test ENV	execute cli	mount -o rw,remount /mnt/sysimg/					
+	execute cli	mkdir ${FILE_PATH}					
+	${local_path}	get locale cac test script folder					
+	put file	${local_path}/CM_TRM_MT_I08567_I08659_notification_message_contain_multi_MO_Case/*	${FILE_PATH}	0744			
+	execute cli	cd ${FILE_PATH}					
+	execute cli	ls					
+	execute cli	chmod 777 ./${PREPARE_FILE_NAME} ${FILE_NAME} ${CLEAR_FILE_NAME}					
+	execute cli	./${PREPARE_FILE_NAME} >/srv/Log/log1.txt&					
+	Wait Until Keyword Succeeds	15 min	1 min	Check The File Execute Commpetly	${PREPARE_FILE_NAME}		
+	${result}	execute command on target hw	"cat 1.txt | grep ""{cmd, result}"""				
+	should not contain	${result}	cmd				
+							
+disconnect from target hardware and clear test resource	clear test resource						
+	execute cli	rm -rf ${FILE_PATH}					
+	common_operation_resource.disconnect from target hardware						
+							
+clear test resource	execute cli	sh ./${CLEAR_FILE_NAME} > /srv/Log/log/delete.txt 2>&1 &					
+	Wait Until Keyword Succeeds	20min	1 min	Check The File Execute Commpetly	${CLEAR_FILE_NAME}		
+	execute cli	pkill monster					
+	execute cli	pkill monster					
+	Check The Iphb Profile Is Exist In LDAP	1					
+	Check The Iphb Profile Is Exist In LDAP	2					
+	Check The Iphb Profile Is Exist In LDAP	10					
+	Check The Idsp Profile Is Exist In LDAP	1					
+	Check The Idsp Profile Is Exist In LDAP	2					
+	Check The Idsp Profile Is Exist In LDAP	10					
+							
+Check The File Execute Commpetly	[Arguments]	${file}					
+	${result}	execute command on target hw	ps -ef |grep ${file}|wc -l				
+	should contain	${result}	1				
+							
+Test in ADA	execute cli	./${FILE_NAME_ADA}> ADA.txt 2>&1 &					
+	Wait Until Keyword Succeeds	20min	1 min	Check The File Execute Commpetly	${FILE_NAME_ADA}		
+	${result}	run keyword and ignore error	execute_command_on_target_hw	"cat ADA.txt | grep ""{cmd, result}"""			
+	should not contain	${result}	cmd				
+							
+Test in RNC	execute cli	./${FILE_NAME}>/srv/Log/log/RNC.txt 2>&1 &					
+	Wait Until Keyword Succeeds	20min	1 min	Check The File Execute Commpetly	${FILE_NAME}		
+	${result}	execute command on target hw	"cat RNC.txt | grep ""{cmd, result}"""				
+	should not contain	${result}	cmd				
+							
+check ENV before prepare	ileitm_subsystem_lib.Check The Iphb Profile Is Exist In LDAP	1	test1				
+	ileitm_subsystem_lib.Check The Iphb Profile Is Exist In LDAP	2	test2				
+	ileitm_subsystem_lib.Check The Iphb Profile Is Exist In LDAP	10	test10				
+	ileitm_subsystem_lib.Check The Idsp Profile Is Exist In LDAP	1	test1				
+	ileitm_subsystem_lib.Check The Idsp Profile Is Exist In LDAP	2	test2				
+	ileitm_subsystem_lib.Check The Idsp Profile Is Exist In LDAP	10	test10				
+	ileitm_subsystem_lib.Delete Iphb Profile	1					
+	ileitm_subsystem_lib.Delete Iphb Profile	2					
+	ileitm_subsystem_lib.Delete Iphb Profile	10					
+	ileitm_subsystem_lib.Delete Idsp Profile	1					
+	ileitm_subsystem_lib.Delete Idsp Profile	2					
+	ileitm_subsystem_lib.Delete Idsp Profile	10					

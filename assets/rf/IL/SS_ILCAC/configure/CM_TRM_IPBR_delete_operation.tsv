@@ -1,0 +1,62 @@
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*
+Suite Setup	Connect to target hardware						
+Suite Teardown	Disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B01178	Iteration_ID-I00369	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	element-IL	exec_type-automatic	exec_level-pre	type-FUT
+...	release-RU50	hw_env-RNC_S0	hw_env-ADA	hw_env-RNC	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	HW_TYPE-ADA_FTLB
+...	QL-5	PRS_ID-IL_PRS_4350	EFS_ID-RNC_EFS_2222_122	EFS_ID-RNC_EFS_2222_120			
+Resource	il.html						
+Resource	../resources/common_operation_resource.html						
+Library	../resources/IP_based_route_resource.py						
+							
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*
+${IPBR_ID_4081}	4081						
+${TEST_IP_ADDR}	192.168.1.21						
+${OWNER_NAME}	/QNUP-0						
+${IFACE_NAME}	lo						
+${TEST_IPRO_RESOURCE}	ipbr_id=4080 iface=${IFACE_NAME} owner=${OWNER_NAME} ip_address=${TEST_IP_ADDR}						
+${TEST_IPBR_RESOURCE}	ipbr_id=4080 ipbr_name=bts4080						
+${NONE_EXIST_IPBR_ID}	ipbr_id=4081						
+${NONE_EXIST_IPBR_ID_AND_EXIST_IPBR_NAME}	ipbr_id=4081 ipbr_name=bts4080						
+${EXIST_IPBR_ID_AND_NONE_EXIST_IPBR_NAME}	ipbr_id=4080 ipbr_name=bts4081						
+							
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*
+Delete IP based route with valid and invalid parameters	[Tags]	FRS_ID-PCM_100201_75_R74	EFS_ID-RNC_EFS_74_161	EFS_ID-RNC_EFS_74_148			
+	[Setup]	Reserve test IPBR resource Successfully					
+	[Template]	Delete IPBR and check result					
+	${NONE_EXIST_IPBR_ID}	FAIL	IPBR_NOT_EXIST	${IPBR_ID_4081}			
+	${NONE_EXIST_IPBR_ID_AND_EXIST_IPBR_NAME}	FAIL	IPBR_NOT_EXIST	${IPBR_ID_4081}			
+	${EXIST_IPBR_ID_AND_NONE_EXIST_IPBR_NAME}	FAIL					
+	${TEST_IPBR_RESOURCE}	SUCCESS					
+	[Teardown]	Release test IPBR resource Successfully					
+							
+Delete IP Based route which bind with IPRO	[Tags]	FRS_ID-PCM_100201_38_R2222					
+	[Setup]	Reserve test IPRO resource Successfully					
+	[Template]	Delete IPBR and check result					
+	${TEST_IPBR_RESOURCE}	FAIL					
+	[Teardown]	Release test IPRO resource Successfully					
+							
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*
+Delete IPBR and check result	[Arguments]	${attr_str}	${expect_result}	${error_type}=	${error_value}=	${error_param}=	
+	${result}	Delete IP based route with attributes	${attr_str}				
+	check IP based route operation result	${result}	${expect_result}	DEL	${error_type}	${error_param}	${error_value}
+	[Teardown]	Reserve test IPBR as operation teardown when release Successfully	${result['result']}				
+							
+Reserve test IPBR resource Successfully	${result}	add IP based route with attributes	${TEST_IPBR_RESOURCE}				
+	check IP based route operation result	${result}	SUCCESS	ADD			
+							
+Release test IPBR resource Successfully	${result}	Delete IP based route with attributes	${TEST_IPBR_RESOURCE}				
+	check IP based route operation result	${result}	SUCCESS	DEL			
+							
+Reserve test IPBR as operation teardown when release Successfully	[Arguments]	${result}					
+	run keyword if	'${result}' == 'Success'	Reserve test IPBR resource Successfully				
+							
+Reserve test IPRO resource Successfully	Reserve test IPBR resource Successfully						
+	Add network address	${OWNER_NAME}	${IFACE_NAME}	${TEST_IP_ADDR}	dedicated		
+	${result}	Add IPRO with attributes	${TEST_IPRO_RESOURCE}				
+	Should be equal	${result['result']}	Success				
+							
+Release test IPRO resource Successfully	${result}	Delete IPRO with attributes	${TEST_IPRO_RESOURCE}				
+	Should be equal	${result['result']}	Success				
+	Delete network address	${OWNER_NAME}	${IFACE_NAME}	${TEST_IP_ADDR}	dedicated		
+	Release test IPBR resource Successfully						
+							

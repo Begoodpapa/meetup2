@@ -1,0 +1,341 @@
+ D M X M S G  I N P U T  S Y N C  F A M I L Y  S U P P O R T					
+					
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	resources/dmxmsg.tsv				
+Resource	resources/dmx_generic_stub.tsv				
+Library	resources/dmx_rds.py				
+Library	resources/dmx_ex.py				
+Suite Setup	Connect_And_Init				
+Suite Teardown	Disconnect_And_Leave_Test_Mode				
+Force Tags	Product_Backlog_ID-B01249	Iteration_ID-I01740	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL	
+...	exec_type-automatic	type-FUT	release-IL1	reviewer-xiaoping.wang@nsn.com	rw-weekly
+...	hw_env-AB	ct-positive	Product_Backlog_ID-B01248	PRS_ID-IL_PRS_2582	
+					
+					
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+					
+					
+${CHK_TIMEOUT}	5				
+${CHK_INTVL}	1				
+${RECV FAMILY 1}	aa				
+${RECV FAMILY 2}	ab				
+${RECV FAMILY 3}	b1				
+${SENDFAMILY 1}	acc				
+${SENDFAMILY 2}	acd				
+${SENDFAMILY 3}	b01				
+${GENERIC_STUB_RECV_LOG1}	/tmp/dgr1.log				
+${GENERIC_STUB_RECV_LOG2}	/tmp/dgr2.log				
+${GENERIC_STUB_RECV_LOG3}	/tmp/dgr3.log				
+${GENERIC_STUB_RECV_LOG4}	/tmp/dgr4.log				
+${PROC_CLIENTS}	/proc/dmxmsg/clients				
+${MSG NUM NORMAL}	200				
+${MSG NUM LARGE}	2000	#1000			
+${MSG NUM SMALL}	20	#1000			
+${NODE A AB3}	CLA-0				
+${NODE A AB3 PROCESS}	0				
+#${NODE B AB3}	IPNIU-0	#IPNIU-0	TCU-0		
+${NODE B AB3 PROCESS}	4	#4	2		
+#${NODE C AB3}	IPNIU-1	#IPNIU-1	TCU-1		
+${NODE C AB3 PROCESS}	6	#6	3		
+${NODE A BCN}	CLA-0	#CSPU-1			
+${NODE A BCN PROCESS}	14	#6			
+${NODE B BCN}	CSPU-0				
+${NODE B BCN PROCESS}	5				
+${NODE C BCN}	EIPU-1				
+${NODE C BCN PROCESS}	6				
+${SLEEP TIME}	800ms				
+${MAX TIME FOR CONNECT}	6				
+${TIMEOUT}	5				
+${GET REORDERQUEUE}	"cat /proc/dmxmsg/clients |  awk  '{print $1, $5}'"				
+					
+					
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+"7.1 Daemon registered with no_input_sync flag in SP, can receive WOSP messages"	[Tags]	ATC_ID-DMXMSG.FUT.001.AT			
+	${recvlist}	Generic Ready for Recv on SP with No Sync Flag	${RECV FAMILY 2}	${GENERIC_STUB_RECV_LOG2}	${SP DEA ADDR}
+	${recv pid sp}	Set Variable	${recvlist[0]}		
+	${peer addr}	Set Variable	${WO SP ADDR}:${RECV FAMILY 2}:0		
+	Generic Ready for Send	${SENDFAMILY 1}	${peer addr}	${MSG NUM LARGE}	
+	Check Recv Num with Quite Should Sucessful	${GENERIC_STUB_RECV_LOG2}	${MSG NUM LARGE}	${NODE C}	${recv pid sp}
+	[Teardown]	Clear All Node Env			
+					
+# 7.2 in D M X M S G   I N P U T   S Y N C   S W I T C H O V E R . M I P S					
+					
+7.3 Daemon registered with input_sync flag in WO while with no_input_sync flag in SP	[Tags]	ATC_ID-DMXMSG.FUT.003.AT			
+	Switch To Node SP				
+	${last_dropped_sync_message_counter} =	Get dropped sync message number mismatch			
+	Switch To Node TX				
+	${recvlist}	Generic Ready for Recv on WO	${RECV FAMILY 3}	${GENERIC_STUB_RECV_LOG3}	${WO DEA ADDR}
+	${recv pid wo}	Set Variable	${recvlist[0]}		
+	${recvlist}	Generic Ready for Recv on SP with No Sync Flag	${RECV FAMILY 3}	${GENERIC_STUB_RECV_LOG4}	${SP DEA ADDR}
+	${recv pid sp}	Set Variable	${recvlist[0]}		
+	${peer addr}	Set Variable	${WO SP ADDR}:${RECV FAMILY 3}:0		
+	Generic Ready for Send	${SENDFAMILY 3}	${peer addr}	${MSG NUM LARGE}	
+	Check Recv Num with Quite Should Sucessful	${GENERIC_STUB_RECV_LOG3}	${MSG NUM LARGE}	${NODE B}	${recv pid wo}
+	Check Recv Num with Quite Should Sucessful	${GENERIC_STUB_RECV_LOG4}	${MSG NUM LARGE}	${NODE C}	${recv pid sp}
+	Switch To Node SP				
+	Dropped message counter should be	${MSG NUM LARGE}	${last_dropped_sync_message_counter}		
+	Switch To Node TX				
+	[Teardown]	Clear All Node Env			
+					
+					
+7.4 Daemon registered with no_input_sync flag in WO while with input_sync flag in SP	[Tags]	ATC_ID-DMXMSG.FUT.004.AT			
+	${recvlist}	Generic Ready for Recv on WO with No Sync Flag	${RECV FAMILY 3}	${GENERIC_STUB_RECV_LOG3}	${WO DEA ADDR}
+	${recv pid wo}	Set Variable	${recvlist[0]}		
+	${recvlist}	Generic Ready for Recv on SP	${RECV FAMILY 3}	${GENERIC_STUB_RECV_LOG4}	${SP DEA ADDR}
+	${recv pid sp}	Set Variable	${recvlist[0]}		
+	${peer addr}	Set Variable	${WO SP ADDR}:${RECV FAMILY 3}:0		
+	Generic Ready for Send	${SENDFAMILY 3}	${peer addr}	${MSG NUM LARGE}	
+	Check Recv Num with Quite Should Sucessful	${GENERIC_STUB_RECV_LOG3}	${MSG NUM LARGE}	${NODE B}	${recv pid wo}
+	Check Recv Num with Quite Should fail	${GENERIC_STUB_RECV_LOG4}	${MSG NUM LARGE}	${NODE C}	${recv pid sp}
+	[Teardown]	Clear All Node Env			
+					
+7.5 Register multiple PID for same client with different input-sync flag failed	[Tags]	ATC_ID-DMXMSG.FUT.005.AT			
+	Register multiple PID				
+					
+7.6 Reorder Queue amount monitor and recycle	[Tags]	ATC_ID-DMXMSG.FUT.006.AT			
+	${recvlist}	Generic Ready for Recv on WO with No Sync Flag	${RECV FAMILY 3}	${GENERIC_STUB_RECV_LOG3}	${WO DEA ADDR}
+	${recv pid wo}	Set Variable	${recvlist[0]}		
+	${recvlist}	Generic Ready for Recv on SP	${RECV FAMILY 3}	${GENERIC_STUB_RECV_LOG4}	${SP DEA ADDR}
+	${recv pid sp}	Set Variable	${recvlist[0]}		
+	${peer addr}	Set Variable	${WO SP ADDR}:${RECV FAMILY 3}:0		
+	Switch To Node SP				
+	SetReorderQueueTimeout	60			
+	Generic Ready for Send	${SENDFAMILY 3}	${peer addr}	${MSG NUM SMALL}	
+	Generic Ready for Send	${SENDFAMILY 3}	${peer addr}	${MSG NUM SMALL}	
+	Generic Ready for Send	${SENDFAMILY 3}	${peer addr}	${MSG NUM SMALL}	
+	Generic Ready for Send	${SENDFAMILY 3}	${peer addr}	${MSG NUM SMALL}	
+	Generic Ready for Send	${SENDFAMILY 3}	${peer addr}	${MSG NUM SMALL}	
+	Switch To Node SP				
+	${result1}	execute cli	"cat /proc/dmxmsg/clients | grep -i dmx_generic_stu | awk '{print $5}' |awk -F "","" '{print $1}'  "		
+	${result1}	Convert To Integer	${result1}		
+	${result1}	Evaluate	${result1}-5		
+	sleep	6000ms			
+	Switch To Node SP				
+	${result2}	execute cli	"cat /proc/dmxmsg/clients | grep -i dmx_generic_stu | awk '{print $5}'  |awk -F "","" '{print $1}'  "		
+	${result2}	Convert To Integer	${result2}		
+	should be equal	${result2}	${result2}		
+	Switch To Node SP				
+	SetReorderQueueTimeout	600			
+	[Teardown]	Clear All Node Env			
+					
+					
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+					
+Connect_And_Init	Run Keyword If	\'%{HW}'=='MGW'	Set MGW node		
+	Run Keyword Unless	\'%{HW}'=='MGW'	Set BCN node		
+	${SSH_NODE_A} =	Setup Connect To	${NODE A}		
+	Set Suite Variable	\${SSH_NODE_A}			
+	${SSH_NODE_B} =	Setup Connect To	${NODE B}		
+	Set Suite Variable	\${SSH_NODE_B}			
+	${SSH_NODE_C} =	Setup Connect To	${NODE C}		
+	Set Suite Variable	\${SSH_NODE_C}			
+	${TX_ORG_LINK_VALUE}=	Create List			
+	${TX_CUR_LINK_VALUE}=	Create List			
+	${RX_ORG_LINK_VALUE}=	Create List			
+	${RX_CUR_LINK_VALUE}=	Create List			
+	${WO_ORG_LINK_VALUE}=	Create List			
+	${WO_CUR_LINK_VALUE}=	Create List			
+	Set Suite Variable	\${TX_ORG_LINK_VALUE}			
+	Set Suite Variable	\${TX_CUR_LINK_VALUE}			
+	Set Suite Variable	\${RX_ORG_LINK_VALUE}			
+	Set Suite Variable	\${RX_CUR_LINK_VALUE}			
+	Set Suite Variable	\${WO_ORG_LINK_VALUE}			
+	Set Suite Variable	\${WO_CUR_LINK_VALUE}			
+	Configure Process Index				
+	Configure Env Address				
+	Kill All Node Stub				
+	@{NODE LIST}	Set variable	${NODE A}	${NODE B}	${NODE C}
+	Set Suite Variable	\@{NODE LIST}			
+	Cat dmxmsg rds table 				
+					
+Disconnect_And_Leave_Test_Mode	Kill All Node Stub				
+	Switch To Node TX
+	execute cli	"dmxcli2 -C 0,4FF1,0,0,0"			
+	Switch To Node SP
+	execute cli	"dmxcli2 -C 0,4FF1,0,0,0"			
+	Switch To Node RX
+	execute cli	"dmxcli2 -C 0,4FF1,0,0,0"			
+	Disconnect From SUT				
+					
+					
+					
+Kill All Node Stub	Switch To Node RX				
+	KillallDmxmsgUsers				
+	Killall Process Without Check	dmx_generic_stub			
+	Switch To Node TX				
+	Switch To Node SP				
+	KillallDmxmsgUsers				
+	Killall Process Without Check	dmx_generic_stub			
+	Switch To Node TX				
+	KillallDmxmsgUsers				
+	Killall Process Without Check	dmx_generic_stub			
+					
+					
+Set MGW node	${NODE B AB3}	Get MGW MIPS Node0 Name			
+	${NODE C AB3}	Get MGW MIPS Node1 Name			
+	Set Suite Variable	\${NODE A}	${NODE A AB3}		
+	Set Suite Variable	\${NODE A PRO}	${NODE A AB3 PROCESS}		
+	Set Suite Variable	\${NODE B}	${NODE B AB3}		
+	Set Suite Variable	\${NODE B PRO}	${NODE B AB3 PROCESS}		
+	Set Suite Variable	\${NODE C}	${NODE C AB3}		
+	Set Suite Variable	\${NODE C PRO}	${NODE C AB3 PROCESS}		
+					
+Set BCN node	Set Suite Variable	\${NODE A}	${NODE A BCN}		
+	Set Suite Variable	\${NODE A PRO}	${NODE A BCN PROCESS}		
+	Set Suite Variable	\${NODE B}	${NODE B BCN}		
+	Set Suite Variable	\${NODE B PRO}	${NODE B BCN PROCESS}		
+	Set Suite Variable	\${NODE C}	${NODE C BCN}		
+	Set Suite Variable	\${NODE C PRO}	${NODE C BCN PROCESS}		
+					
+					
+					
+Configure Process Index	Switch To Node RX				
+	${id}	GetNodeProcessId			
+	Run Keyword If	\'${id}'=='ffff'	Init Own Processor	${NODE B PRO}	
+	${NODE B PHY ADDR}	GetNodeProcessId			
+	Switch To Node SP				
+	${id}	GetNodeProcessId			
+	Run Keyword If	\'${id}'=='ffff'	Init Own Processor	${NODE C PRO}	
+	${NODE C PHY ADDR}	GetNodeProcessId			
+	Switch To Node TX				
+	${id}	GetNodeProcessId			
+	Run Keyword If	\'${id}'=='ffff'	Init Own Processor	${NODE A PRO}	
+	${NODE A PHY ADDR}	GetNodeProcessId			
+	Set Suite Variable	\${NODE A PHY ADDR}			
+	Set Suite Variable	\${NODE B PHY ADDR}			
+	Set Suite Variable	\${NODE C PHY ADDR}			
+					
+Clear All Node Env	Check node env if case fail 	@{NODE LIST}			
+	Switch To Node RX				
+	Run Keyword If Test Failed	Cat dmxmsg rds table 			
+	KillallDmxmsgUsers				
+	Killall Process Without Check	dmx_generic_stub			
+	Switch To Node TX				
+	Switch To Node SP				
+	Run Keyword If Test Failed	Cat dmxmsg rds table 			
+	KillallDmxmsgUsers				
+	Killall Process Without Check	dmx_generic_stub			
+	Switch To Node TX				
+	Run Keyword If Test Failed	Cat dmxmsg rds table 			
+	KillallDmxmsgUsers				
+	Killall Process Without Check	dmx_generic_stub			
+					
+					
+Switch To Node TX	Swtich To	${SSH_NODE_A}			
+					
+Switch To Node RX	Swtich To	${SSH_NODE_B}			
+					
+Switch To Node SP	Swtich To	${SSH_NODE_C}			
+					
+					
+					
+Generic Ready for Recv on WO	[Arguments]	${family}	${log}	${address}	
+	Switch To Node RX				
+	${recv list}=	CreateList			
+	Export Libgen	${address}			
+	${stub pid} =	StartGenericRecvQuite	${family}	${log}	
+	sleep	${SLEEP TIME}			
+	${recv address} =	GetRecvDeamonAdressFromItsLog	${log}		
+	AppendToList	${recv list}	${stub pid}		
+	AppendToList	${recv list}	${recv address}		
+	Switch To Node TX				
+	[Return]	${recv list}			
+					
+Generic Ready for Recv on WO with No Sync Flag	[Arguments]	${family}	${log}	${address}	
+	Switch To Node RX				
+	${recv list}=	CreateList			
+	Export Libgen	${address}			
+	${stub pid} =	StartGenericRecvQuiteNoSyncFlag	${family}	${log}	
+	sleep	${SLEEP TIME}			
+	${recv address} =	GetRecvDeamonAdressFromItsLog	${log}		
+	AppendToList	${recv list}	${stub pid}		
+	AppendToList	${recv list}	${recv address}		
+	Switch To Node TX				
+	[Return]	${recv list}			
+					
+Generic Ready for Recv on SP	[Arguments]	${family}	${log}	${address}	
+	Switch To Node SP				
+	${recv list}=	CreateList			
+	Export Libgen	${address}			
+	${stub pid} =	StartGenericRecvQuite	${family}	${log}	
+	sleep	${SLEEP TIME}			
+	${recv address} =	GetRecvDeamonAdressFromItsLog	${log}		
+	AppendToList	${recv list}	${stub pid}		
+	AppendToList	${recv list}	${recv address}		
+	Switch To Node TX				
+	[Return]	${recv list}			
+					
+Generic Ready for Recv on SP with No Sync Flag	[Arguments]	${family}	${log}	${address}	
+	Switch To Node SP				
+	${recv list}=	CreateList			
+	Export Libgen	${address}			
+	${stub pid} =	StartGenericRecvQuiteNoSyncFlag	${family}	${log}	
+	sleep	${SLEEP TIME}			
+	${recv address} =	GetRecvDeamonAdressFromItsLog	${log}		
+	AppendToList	${recv list}	${stub pid}		
+	AppendToList	${recv list}	${recv address}		
+	Switch To Node TX				
+	[Return]	${recv list}			
+					
+Generic Ready for Recv with Quite	[Arguments]	${family}	${log}	${node}	
+	Run Keyword If	\'${node}'=='${NODE B}'	Switch To Node RX		
+	Run Keyword If	\'${node}'=='${NODE C}'	Switch To Node SP		
+	${recv list}=	CreateList			
+	${stub pid} =	StartGenericRecvQuite	${family}	${log}	
+	sleep	${SLEEP TIME}			
+	${recv address} =	GetRecvDeamonAdressFromItsLog	${log}		
+	AppendToList	${recv list}	${stub pid}		
+	AppendToList	${recv list}	${recv address}		
+	Run Keyword Unless	\'${node}'=='${NODE A}'	Switch To Node TX		
+	[Return]	${recv list}			
+					
+Check Recv Num with Quite Should Sucessful	[Arguments]	${log}	${num}	${node}	${pid}
+	Run Keyword If	\'${node}'=='${NODE B}'	Switch To Node RX		
+	Run Keyword If	\'${node}'=='${NODE C}'	Switch To Node SP		
+	WaitUntilKeywordSucceeds	6	2	Recv Num Should Equal with Quite 	${log}
+	...	${pid}	${num}		
+	Run Keyword Unless	\'${node}'=='${NODE A}'	Switch To Node TX		
+					
+Check Recv Num with Quite Should fail	[Arguments]	${log}	${num}	${node}	${pid}
+	Run Keyword If	\'${node}'=='${NODE B}'	Switch To Node RX		
+	Run Keyword If	\'${node}'=='${NODE C}'	Switch To Node SP		
+	Sleep	2s			
+	${got num}	GetLatestRecvMsgNumber	${log}	${pid}	
+	ShouldNotBeEqual	${got num}	${num}		
+	Run Keyword Unless	\'${node}'=='${NODE A}'	Switch To Node TX		
+					
+					
+					
+Configure Env Address	${wo phy addr}	Evaluate	hex(0x0e00 + 0x${NODE B PHY ADDR})		
+	${sp phy addr}	Evaluate	hex(0x0e00 + 0x${NODE C PHY ADDR})		
+	Set Suite Variable	\${WO SP ADDR}	7FF1		
+	Set Suite Variable	\${WO DEA ADDR}	${wo phy addr}		
+	Set Suite Variable	\${SP DEA ADDR}	${sp phy addr}		
+	Switch To Node RX				
+	execute cli	"dmxcli2 -C 1F1,4FF1,8FF1,${wo phy addr},${sp phy addr}"			
+	execute cli	"dmxcli2 -G 8FF1,2,${wo phy addr},${sp phy addr}"			
+	execute cli	"dmxcli2 -U ${wo phy addr},0,${sp phy addr}"			
+	Switch To Node SP				
+	execute cli	"dmxcli2 -C 1F1,4FF1,8FF1,${wo phy addr},${sp phy addr}"			
+	execute cli	"dmxcli2 -G 8FF1,2,${wo phy addr},${sp phy addr}"			
+	execute cli	"dmxcli2 -U ${sp phy addr},2F,${wo phy addr}"			
+	Switch To Node TX				
+	execute cli	"dmxcli2 -C 1F1,4FF1,8FF1,${wo phy addr},${sp phy addr}"			
+	execute cli	"dmxcli2 -G 8FF1,2,${wo phy addr},${sp phy addr}"			
+					
+Send Msg 	${wo phy addr}	Evaluate	hex(0x0e00 + 0x${NODE B PHY ADDR})		
+	${sp phy addr}	Evaluate	hex(0x0e00 + 0x${NODE C PHY ADDR})		
+	dmxcli -s 7002:b000:0 -r 7003:b000:0 -n 1000 -i 0 -l 512 -t 300 -P 0 -b 50 -x 8				
+					
+Get dropped sync message number mismatch	${list} =	get dmxmsg statistic			
+	[Return]	${list.discarded_sync_msgs_unexpected }			
+#	[Return]	${list.discarded_msgs}			
+					
+Dropped Message Counter Should Be	[Arguments]	${num}	${last_dropped_message_counter}		
+	${cur_dropped_message_counter}	Get dropped sync message number mismatch			
+	${dropped_message} =	evaluate	${cur_dropped_message_counter} - ${last_dropped_message_counter}		
+	should be equal as strings	${num}	${dropped_message}		
+					
+					
+Register multiple PID	${result}	execute cli	dmxcli2 -n		
+	ResultShouldContain	${result}	**SUCCESS**		

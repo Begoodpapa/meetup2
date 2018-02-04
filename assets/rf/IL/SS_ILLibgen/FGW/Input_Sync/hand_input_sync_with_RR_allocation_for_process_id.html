@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Hand Input Sync With Round-robin Allocation For Process_id</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Hand Input Sync With Round-robin Allocation For Process_id</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=35%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-IL0008</td><td><font color=dark red>Iteration_ID-I02977</td><td><font color=dark red>Release-IL5_RIS4</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Type-FUT</td><td>QL-1</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><font color=dark red>Element-IL</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_4514</td><td><font color=dark red>Reviewer-@nsn.com</td><td><font color=dark red>RW-weekly</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-RNC_EFS_2446_26</td><td><br></td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-AB</td><td><font color=dark red>Exec_Type-automatic</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/Libgen.html</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Setup Connection For WO And SP</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear TestEnv And Disconnect From SUT</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=12%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${FAMILY_ID}</td><td>0x1773</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${EXIST}</td><td>exist</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ALARM_SP}</td><td>70186</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HANDGROUP_9}</td><td>9</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HANDGROUP_10}</td><td>10</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=5><b>Process Id Should Be Round-robin Allocated For Non-Warming Hand</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be OK\n<br>&nbsp;&nbsp;&nbsp;. Configure A Non-Warming Handgroup Size 5\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Create Hand In WO(Hand Id 1) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Stop Hand In WO(Hand Id 1) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Create A Specified Hand In WO(Hand Id 3) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Create Hand In WO(Hand Id 2) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Create A Specified Hand In WO(Hand Id 5) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Create Hand In WO(Hand Id 4) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Stop All Hands In WO For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. Create Hand In WO(Hand Id 1) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;9. Check Process Id Should Be Correctly As Round-robin Allocation\n<br>&nbsp;&nbsp;&nbsp;&nbsp;10. Stop Hand In WO For Testproc\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check Process Id Should Be Correctly As Round-robin Allocation.\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-InputSync_PID_RR.FUT.001.AT.I02977</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Create Hand Infos List</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hand In WO For Testproc Successfully</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set All Hand_ID Varialbes In The Group</td><td>${hand_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Hand In WO For Testproc Successfully</td><td>${HAND_ID1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create A Specified Hand In WO For Testproc Successfully</td><td>${HAND_ID3}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hand In WO For Testproc Successfully</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create A Specified Hand In WO For Testproc Successfully</td><td>${HAND_ID5}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hand In WO For Testproc Successfully</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${LISTS}</td><td>Create List</td><td>${HAND_ID3}</td><td>${HAND_ID2}</td></tr>
+<tr><td><br></td><td>...</td><td>${HAND_ID5}</td><td>${HAND_ID4}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Process Id Should Be Correctly As Round-robin Allocation</td><td>${LISTS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop All Hands In WO For Testproc</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hand In WO For Testproc Successfully</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${LISTS}</td><td>Create List</td><td>${HAND_ID1}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Process Id Should Be Correctly As Round-robin Allocation</td><td>${LISTS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Hand In WO For Testproc Successfully</td><td>${HAND_ID1}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Process Id Should Be Round-robin Allocated For Warming Hand</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU should be OK\n<br>&nbsp;&nbsp;&nbsp;. Configure A Warming Handgroup Size 5\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Create Hand In Both WO And SP(Hand Id 1) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Stop Hand In Both WO And SP(Hand Id 1) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Create A Specified Hand In Both WO And SP(Hand Id 3) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Create Hand In Both WO And SP(Hand Id 2) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Create A Specified Hand In Both WO And SP(Hand Id 5) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Create Hand In Both WO And SP(Hand Id 4) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Create Hand In Both WO And SP(Hand Id 1) For Testproc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. Check Process Id Should Be Correctly As Round-robin Allocation\n<br>&nbsp;&nbsp;&nbsp;&nbsp;9. Stop All Hands In Both WO And SP For Testproc\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check Process Id Should Be Correctly As Round-robin Allocation.\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-InputSync_PID_RR.FUT.002.AT.I02977</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Create Hand Infos List And Register Expect Alarm</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hand In Both WO And SP For Testproc Successfully</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set All Hand_ID Varialbes In The Group</td><td>${hand_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Hand In Both WO And SP For Testproc Successfully</td><td>${HAND_ID1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create A Specified Hand In Both WO And SP For Testproc Successfully</td><td>${HAND_ID3}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hand In Both WO And SP For Testproc Successfully</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create A Specified Hand In Both WO And SP For Testproc Successfully</td><td>${HAND_ID5}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hand In Both WO And SP For Testproc Successfully</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${LISTS}</td><td>Create List</td><td>${HAND_ID3}</td><td>${HAND_ID2}</td></tr>
+<tr><td><br></td><td>...</td><td>${HAND_ID5}</td><td>${HAND_ID4}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Process Id Should Be Correctly As Round-robin Allocation</td><td>${LISTS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop All Hands In Both WO And SP For Testproc</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Hand In Both WO And SP For Testproc Successfully</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${LISTS}</td><td>Create List</td><td>${HAND_ID1}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Process Id Should Be Correctly As Round-robin Allocation</td><td>${LISTS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Hand In Both WO And SP For Testproc Successfully</td><td colspan=3>${HAND_ID1}</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Env In Both WO And SP</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=11><b>Create Hand Infos List</b></td></tr>
+<tr><td><br></td><td>${HANDS_LIST}</td><td>Create List</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${HANDS_LIST}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Create Hand Infos List And Register Expect Alarm</b></td></tr>
+<tr><td><br></td><td>Create Hand Infos List</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>register_expect_alarm</td><td>${ALARM_SP}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Clear Env In Both WO And SP</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Process In WO</td><td>${WARMING_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Process In SP</td><td>${WARMING_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Clear Env In WO</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Process In WO</td><td>${WARMING_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Create Hand In Both WO And SP For Testproc Successfully</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand For Specific Handgroup In Warmtstproc</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_ID}</td><td>${HANDGROUP_9}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${hand_id}</td><td>Evaluate</td><td colspan=8>hex(${result[1]})</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Exist In Both WO And SP</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>List Should Not Contain Value</td><td>${HANDS_LIST}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append To List</td><td>${HANDS_LIST}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Create Hand In WO For Testproc Successfully</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand For Specific Handgroup In Warmtstproc</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${FAMILY_ID}</td><td>${HANDGROUP_10}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${hand_id}</td><td>Evaluate</td><td colspan=8>hex(${result[1]})</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Exist In WO</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>List Should Not Contain Value</td><td>${HANDS_LIST}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append To List</td><td>${HANDS_LIST}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Create A Specified Hand In Both WO And SP For Testproc Successfully</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand For Specific Handgroup In Warmtstproc</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_ID}</td><td>${HANDGROUP_9}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${hand_id}</td><td>Evaluate</td><td colspan=8>hex(${result[1]})</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Exist In Both WO And SP</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>List Should Not Contain Value</td><td>${HANDS_LIST}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append To List</td><td>${HANDS_LIST}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Create A Specified Hand In WO For Testproc Successfully</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand For Specific Handgroup In Warmtstproc</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${FAMILY_ID}</td><td>${HANDGROUP_10}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${hand_id}</td><td>Evaluate</td><td colspan=8>hex(${result[1]})</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Exist In WO</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>List Should Not Contain Value</td><td>${HANDS_LIST}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append To List</td><td>${HANDS_LIST}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Hand In Both WO And SP For Testproc Successfully</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v stop_prb</td><td>${OMU LOGICAL ADDRESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Remove Values From List</td><td>${HANDS_LIST}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Hand In WO For Testproc Successfully</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v stop_prb</td><td>${OMU WO PHYSICAL ADDRESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Remove Values From List</td><td>${HANDS_LIST}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop All Hands In Both WO And SP For Testproc</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{LISTS}</td><td>Convert To List</td><td>${HANDS_LIST}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>In</td><td colspan=7>@{LISTS}</td></tr>
+<tr><td><br></td><td><br></td><td>Stop Hand In Both WO And SP For Testproc Successfully</td><td>${Index}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop All Hands In WO For Testproc</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{LISTS}</td><td>Convert To List</td><td>${HANDS_LIST}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>In</td><td colspan=7>@{LISTS}</td></tr>
+<tr><td><br></td><td><br></td><td>Stop Hand In WO For Testproc Successfully</td><td>${Index}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hand Exist In Both WO And SP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Exist In WO</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Exist In SP</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hand Exist In WO</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Hand Exist</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${FAMILY_ID}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${EXIST}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hand Exist In SP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=10>Connect To SP Env</td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Hand Exist</td><td>${OMU SP PHYSICAL ADDRESS}</td><td>${FAMILY_ID}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${EXIST}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Process Id Should Be Correctly As Round-robin Allocation</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${LISTS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Lists Should Be Equal</td><td>${HANDS_LIST}</td><td colspan=8>${LISTS}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Set All Hand_ID Varialbes In The Group</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${HAND_ID1}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${HAND_ID2}</td><td>Evaluate</td><td>hex(${hand_id}+1)</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td colspan=9>\${HAND_ID2}</td></tr>
+<tr><td><br></td><td>${HAND_ID3}</td><td>Evaluate</td><td>hex(${hand_id}+2)</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td colspan=9>\${HAND_ID3}</td></tr>
+<tr><td><br></td><td>${HAND_ID4}</td><td>Evaluate</td><td>hex(${hand_id}+3)</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td colspan=9>\${HAND_ID4}</td></tr>
+<tr><td><br></td><td>${HAND_ID5}</td><td>Evaluate</td><td>hex(${hand_id}+4)</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td colspan=9>\${HAND_ID5}</td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

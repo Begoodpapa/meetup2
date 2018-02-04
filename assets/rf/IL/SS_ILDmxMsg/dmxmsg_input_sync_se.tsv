@@ -1,0 +1,91 @@
+*Setting*							
+Documentation	B03250-I02877 Support input-sync for message sent from SE to Linux PRBs\nReference ATC Doc: \ https://sharenet-ims.inside.nsn.com/Overview/D427287625						
+Suite Setup	Connect_And_Config	${MAX_TIME_FOR_CONNECT}					
+Suite Teardown	Disconnect_And_Restore						
+Force Tags	Product_Backlog_ID-B03250	Iteration_ID-I02877	Product_Backlog_ID-B03250	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL	exec_type-automatic	type-FUT
+...	release-IL_RIS3	reviewer-xiaoping.wang@nsn.com	rw-weekly	hw_env-RNC	ct-positive	PRS_ID-IL_PRS_2582	hw_env-RNC_S0
+...	hw_env-RNC_S1	QL-1					
+Resource	resources/dmxmsg.tsv						
+Resource	resources/dmx_generic_stub.tsv						
+							
+*Variable*							
+${NodeA}	CFPU-0						
+${NodeB}	EIPU-0						
+${SWITCH_RU}	/CFPU-0/QNCFCPServer-0						
+${WO_FU}	F00						
+${SP_FU}	E00						
+${UNIT_TYPE}	FF0						
+${FAMILY}	1234						
+${LOG_ADDR}	7FF5						
+${GROUP_ADDR}	8FF8						
+${UNIT_STATE_WO}	0F						
+${UNIT_STATE_SP}	2F						
+${MAX_TIME_FOR_CONNECT}	80						
+${TIMEOUT}	80						
+${log_wo}	/tmp/generic_stub_wo.log						
+${log_sp}	/tmp/generic_stub_sp.log						
+							
+							
+							
+							
+							
+							
+							
+*Test Case*							
+17.42 DMXMSG.FUT.001.AT.I02877 SE support send input sync message to Linux PRBs	[Tags]	ATC_ID-DMXMSG.FUT.012.AT					
+	Swtich To	${connection_A}					
+#	Change To RU Env	${SWITCH_RU}					
+	Export Libgen	${WO_FU}					
+	${wo_pid}=	StartGenericRecv	${FAMILY}	${log_wo}			
+	Export Libgen	${SP_FU}					
+	${wo_pid}=	StartGenericRecv	${FAMILY}	${log_sp}			
+	${out} =	Update Unit State	${WO_FU}	${UNIT_STATE_WO}			
+	Should Contain	${out}	**SUCCESS**				
+	${out} =	Update Unit Co-Unit	${WO_FU}	${SP_FU}	0		
+	Should Contain	${out}	**SUCCESS**				
+	${out} =	Update Unit State	${SP_FU}	${UNIT_STATE_SP}			
+	Should Contain	${out}	**SUCCESS**				
+	${out} =	Update Unit Co-Unit	${SP_FU}	${WO_FU}	0		
+	Should Contain	${out}	**SUCCESS**				
+	${save_wo_status}=	Query Unit Status	0x${WO_FU}				
+	${save_sp_status}=	Query Unit Status	0x${SP_FU}				
+	Swtich To	${connection_B}					
+	${out} =	Config Computer Table	${UNIT_TYPE}	${LOG_ADDR}	${GROUP_ADDR}	${WO_FU}	${SP_FU}
+	Should Contain	${out}	**SUCCESS**				
+	${out} =	Config Group Addr 2S	${GROUP_ADDR}	${WO_FU}	${SP_FU}	0	
+	Should Contain	${out}	**SUCCESS**				
+	Swtich To	${connection_A}					
+	SE_Direct_Send	${SE_ADDR}	${LOG_ADDR}				
+	execute_mml_without_check	sleep 1					
+	execute_mml_without_check	killall ${GENERIC_STUB_NAME}					
+	FileShouldContain	${log_wo}	Got				
+	FileShouldContain	${log_sp}	Got				
+	Export Libgen	${SP_FU}					
+	${wo_pid}=	StartGenericRecv	${FAMILY}	${log_sp}			
+	SE_Direct_Send	${SE_ADDR}	${LOG_ADDR}				
+	execute_mml_without_check	sleep 1					
+	execute_mml_without_check	killall ${GENERIC_STUB_NAME}					
+	${file_content}=	get file content	${log_sp}				
+	ShouldNotContain	${log_sp}	Got				
+							
+	Swtich To	${connection_A}					
+	Update Unit Status	${save_wo_status}					
+	Update Unit Status	${save_sp_status}					
+	[Teardown]	Check dmxmsg state if case fail					
+							
+*Keyword*							
+Connect_And_Config	[Arguments]	${max_time_for_connect}					
+	${SE_ADDR}=	Evaluate	hex(%{EITP_0_PHYS_ADDR})				
+	Set Suite Variable	\${SE_ADDR}					
+	${connection_A}=	Setup Connect To	${NodeA}				
+	Set Suite Variable	\${connection_A}					
+	${connection_B}=	Setup Connect To	${NodeB}				
+	Set Suite Variable	\${connection_B}					
+	Cat dmxmsg table						
+							
+Disconnect_And_Restore	execute_mml_without_check	killall ${GENERIC_STUB_NAME}					
+	Disconnect From SUT						
+							
+SE_Direct_Send	[Arguments]	${src}	${dest}				
+	${out}=	ExecuteCLI	dmxcli -D -M 1 -s ${src}:44d:0 -r ${dest}:${FAMILY}:0				
+	Should Contain	${out}	receive_addr				

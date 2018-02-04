@@ -1,0 +1,8 @@
+* Setting *
+Resource	il.html
+Resource 	common_operation_resource.html
+Resource 	IPBR_basic_operation_resource.html
+Resource 	cac_basic_operation_resource.html
+Library 	./user_keywords/traffic_resource_plan.py
+Library 	./user_keywords/utils.py
+Library  	OperatingSystem

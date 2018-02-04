@@ -1,0 +1,133 @@
+L2 L2 message transmission						
+						
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*	
+Resource	resources/dmxmsg.tsv					
+Library	resources/dmx_comm.py					
+Suite Setup	Set Test Env					
+Suite Teardown	Restore Test Env					
+Force Tags	Product_Backlog_ID-B02140	Iteration_ID-I02443	PRS_ID-IL_PRS_4500	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL	
+...	exec_type-automatic	type-FUT	release-IL1_RIS2	reviewer-xiaoping.wang.ext@nsn.com	rw-weekly	
+...	ct-positive	hw_env-RNC_S0	hw_env-RNC_S1	exec_level-pre	EFS_ID-RNC_EFS_2117_91	
+...	QL-1					
+						
+						
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*	
+${SE_WQE_FAMILY}	550					
+${SE_BUF_FAMILY}	551					
+${WO_ADDR}	0x1000					
+${NODE_EIPU}	EIPU-0					
+${DEFAULT_LEN}	100					
+${DEFAULT_COS}	5					
+${INVAILD_LOG_ADDR}	4FFA					
+${INVAILD_COS}	8					
+${NONSUPPORT_COS}	7					
+${TIMEOUT}	30					
+${MAX TIME FOR CONNECT}	500					
+						
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	
+						
+25.1 SE A send 10 l2-l2 messages (length 100) to SE B	[Tags]	DMX-L2.FUT.001.AT				
+	${out}	Use Dmxcli To Send Messages	${SE_A}	${SE_B}	10	
+	...	0	1	100	1	
+	...	${TIMEOUT}				
+	Should Contain	${out}	successful			
+	[Teardown]	Check node env if case fail	@{NODE LIST}			
+						
+25.2 SE A send 10 l2-l2 messages (length largest) to SE B	[Tags]	DMX-L2.FUT.002.AT				
+	${out}	Use Dmxcli To Send Messages	${SE_A}	${SE_B}	1	
+	...	1	10	65535	1	
+	...	${TIMEOUT}				
+	Should Contain	${out}	successful			
+	[Teardown]	Check node env if case fail	@{NODE LIST}			
+						
+25.3 SE A send messages to SE B with different priority	[Tags]	DMX-L2.FUT.003.AT	FRS_ID-PTT_320301_41_RAN2696			
+	${out}	Make L2 Sending With Cos	${SE_A}	${SE_B}	0	
+	Should Contain	${out}	successful			
+	${out}	Make L2 Sending With Cos	${SE_A}	${SE_B}	1	
+	Should Contain	${out}	successful			
+	${out}	Make L2 Sending With Cos	${SE_A}	${SE_B}	2	
+	Should Contain	${out}	successful			
+	${out}	Make L2 Sending With Cos	${SE_A}	${SE_B}	3	
+	Should Contain	${out}	successful			
+	${out}	Make L2 Sending With Cos	${SE_A}	${SE_B}	4	
+	Should Contain	${out}	successful			
+	${out}	Make L2 Sending With Cos	${SE_A}	${SE_B}	5	
+	Should Contain	${out}	successful			
+	${out}	Make L2 Sending With Cos	${SE_A}	${SE_B}	6	
+	Should Contain	${out}	successful			
+	[Teardown]	Check node env if case fail	@{NODE LIST}			
+						
+25.4 SE A send a l2-l2 message (no data) to SE B	[Tags]	DMX-L2.FUT.004.AT	ct-negative			
+	[Setup]	register_expect_syslog	create_n_send_dmx_l2_msg_wqe	failed		
+	${out}	Direct L2 Sending	${SE_A}	${SE_B}	${DEFAULT_COS} 	0
+	Should Contain	${out}	failed			
+	[Teardown]	Check node env if case fail	@{NODE LIST}			
+						
+25.5 SE A Send a L2-L2 message To SE B with invalid priority	[Tags]	DMX-L2.FUT.005.AT	ct-negative	FRS_ID-PTT_320301_41_RAN2696		
+	[Setup]	register_expect_syslog	create_n_send_dmx_l2_msg_wqe	failed		
+	${out}	Direct L2 Sending	${SE_A}	${SE_B}	${INVAILD_COS} 	${DEFAULT_LEN} 
+	Should Contain	${out}	failed			
+	[Teardown]	Check node env if case fail	@{NODE LIST}			
+						
+25.6 Send L2-L2 message from SE A to an un-addressable address	[Tags]	DMX-L2.FUT.006.AT	ct-negative			
+	[Setup]	register_expect_syslog	create_n_send_dmx_l2_msg_wqe	failed		
+	Config Unaddressable Log_addr					
+	${out}	Direct L2 Sending	${SE_A}	${INVAILD_LOG_ADDR_SE}	${DEFAULT_COS} 	${DEFAULT_LEN} 
+	Should Contain	${out}	failed			
+	[Teardown]	Check node env if case fail	@{NODE LIST}			
+						
+25.7 SE B send a l2-l2 message (no data) to SE A	[Tags]	DMX-L2.FUT.011.AT	ct-negative			
+	${out}	Direct L2 Sending	${SE_B}	${SE_A}	${DEFAULT_COS} 	0
+	Should Contain	${out}	failed			
+	[Teardown]	Check node env if case fail	@{NODE LIST}			
+						
+25.8 SE B send a l2-l2 message (>65535) to SE A	[Tags]	DMX-L2.FUT.012.AT	ct-negative			
+	${out}	Direct L2 Sending	${SE_B}	${SE_A}	${DEFAULT_COS} 	65536
+	Should Contain	${out}	failed			
+	[Teardown]	Check node env if case fail	@{NODE LIST}			
+						
+25.9 SE B Send a L2-L2 message To SE A with invalid priority	[Tags]	DMX-L2.FUT.013.AT	ct-negative	FRS_ID-PTT_320301_41_RAN2696		
+	[Setup]	register_expect_syslog	cos			
+	${out}	Direct L2 Sending	${SE_B}	${SE_A}	${INVAILD_COS} 	${DEFAULT_LEN} 
+	Should Contain	${out}	failed			
+	[Teardown]	Check node env if case fail	@{NODE LIST}			
+						
+25.10 Send L2-L2 message from SE B to an un-addressable address	[Tags]	DMX-L2.FUT.014.AT	ct-negative			
+	Config Unaddressable Log_addr					
+	${out}	Direct L2 Sending	${SE_B}	${INVAILD_LOG_ADDR_SE}	${DEFAULT_COS} 	${DEFAULT_LEN} 
+	Should Contain	${out}	failed			
+	[Teardown]	Check node env if case fail	@{NODE LIST}			
+						
+25.12  PRBs  on the same SE can communicate each other  by l2-l2 channel	[Tags]	25.12 DMX-L2.FUT.012.AT. I07683				
+	[Setup]	register_expect_syslog	cos			
+	${out}	Direct L2 Sending	${SE_A}	${SE_C}	${DEFAULT_COS} 	${DEFAULT_LEN} 
+	Should Contain	${out}	successful			
+	[Teardown]	Check node env if case fail	@{NODE LIST}			
+						
+25.13 SE A Send a L2-L2 message To SE B with notsupport priority	[Tags]	DMX-L2.FUT.005.AT	ct-negative	FRS_ID-PTT_320301_41_RAN2696		
+	[Setup]	register_expect_syslog	create_n_send_dmx_l2_msg_wqe	failed		
+	${out}	Direct L2 Sending	${SE_A}	${SE_B}	${NONSUPPORT_COS}	${DEFAULT_LEN} 
+	Should Contain	${out}	failed			
+	[Teardown]	Check node env if case fail	@{NODE LIST}			
+						
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	
+Set Test Env	Connect To SUT	${MAX TIME FOR CONNECT}				
+	Setup Connect To	${NODE_EIPU}				
+	${EITP0_SE_ADDR}	Evaluate	hex(%{EITP_0_LOG_ADDR}+${WO_ADDR})			
+	${USUP_SE_ADDR}	Evaluate	hex(%{USUP_0_LOG_ADDR}+${WO_ADDR})			
+	Set Suite Variable	\${SE_B}	${USUP_SE_ADDR}:${SE_BUF_FAMILY}:0			
+	Set Suite Variable	\${SE_A}	${EITP0_SE_ADDR}:${SE_WQE_FAMILY}:0			
+	Set Suite Variable	\${SE_C}	${EITP0_SE_ADDR}:${SE_BUF_FAMILY}:0			
+	Set Suite Variable	\${INVAILD_LOG_ADDR_SE}	${INVAILD_LOG_ADDR}:${SE_WQE_FAMILY}:0			
+	Set BCN Node List					
+	Check node env	@{NODE LIST}				
+	Replace_L2_handler	${SE_A}	${SE_B}			
+						
+						
+Restore Test Env	Remove Unaddressable Log_addr					
+	Restore_L2_handler	${SE_A}	${SE_B}			
+	Disconnect From SUT					
+Config Unaddressable Log_addr	execute cli	"dmxcli2 -C 127,${INVAILD_LOG_ADDR},1FFF,1FFF,1FFF"				
+Remove Unaddressable Log_addr	execute cli	"dmxcli2 -C 127,${INVAILD_LOG_ADDR},0,0,0"				
+Set BCN Node List	@{NODE LIST}	Set variable	EIPU-0	USPU-0		
+	Set Suite Variable	\@{NODE LIST}				

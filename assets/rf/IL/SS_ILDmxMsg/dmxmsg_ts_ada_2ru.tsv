@@ -1,0 +1,144 @@
+DMXMSG TRANSMISSION TEST FOR ADA3 2 RUS					
+					
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	resources/dmxmsg.tsv				
+Suite Setup	Set Test Env				
+Suite Teardown	Disconnect From SUT				
+Force Tags	Product_Backlog_ID-T88006	Iteration_ID-I07715	PRS_ID-IL_PRS_2582	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL
+...	exec_type-automatic	type-FUT	release-IL1_RIS5	reviewer-xiaoping.wang@nsn.com	rw-weekly
+...	hw_env-ADA	ct-positive			
+...	QL-1				
+					
+					
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+${MAX TIME FOR CONNECT}	50				
+${TIMEOUT}	50				
+${WO_ADDR}	0x1000				
+${SE_FRAG_FAMILY0}	44D				
+${SE_FRAG_FAMILY1}	44E				
+${SE_U8_FAMILY0}	45B				
+${SE_U8_FAMILY1}	45C				
+${SE_WQE_FAMILY0}	459				
+${SE_WQE_FAMILY1}	45A				
+${SE_U8_ALLOC_FAMILY}	457				
+${DAEMON_FAMILY}	AD9C				
+${GROUP_ALL_LINUX}	8FFE				
+${GROUP_ALL_SE}	8FFD				
+${GROUP_PART_SE}	8FFC				
+${GROUP_ALL_LINUX_PART_SE}	8FFB				
+${GROUP_PART_LINUX_ALL_SE}	8FFA				
+${MSG_LEN_SHORT}	100				
+${MSG_LEN_LARGE}	65519				
+${MSG_BURST}	10				
+					
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+					
+Send Short Message from Frag to WQE	[Tags]	ATC_ID-DMXMSG.FUT.1.AT	FRS_ID-PTT_320301_75_0000			
+	TestDmxmsgShortLen	${SE_CRUP_FRAG0}	${SE_EITP_WQE0}		
+	ExecuteCli	dmxtscli statistic show > statistic.log			
+	SE_A SEND TO SE_B SHOULD BE	10			
+	SE_B RECV FROM SE_A SHOULD BE	10			
+	[Teardown]	Clear Env			
+					
+					
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Set Test Env	Connect To SUT	${MAX TIME FOR CONNECT}			
+	${LOGADDR_RU0}	Evaluate	hex(%{OMU_0_LOG_ADDR}+${WO_ADDR})		
+	${LOGADDR_RU1}	Evaluate	hex(%{GFCP_0_LOG_ADDR}+${WO_ADDR})		
+	${LOGADDR_EITP}	Evaluate	hex(%{EITP_0_LOG_ADDR}+${WO_ADDR})		
+	${LOGADDR_CRUP}	Evaluate	hex(%{CRUP_0_LOG_ADDR}+${WO_ADDR})		
+	Set Suite Variable	\${DAEMON0}	${LOGADDR_RU0}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${DAEMON1}	${LOGADDR_RU1}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${SE_EITP_FRAG0}	${LOGADDR_EITP}:${SE_FRAG_FAMILY0}:0		
+	Set Suite Variable	\${SE_EITP_FRAG1}	${LOGADDR_EITP}:${SE_FRAG_FAMILY1}:0		
+	Set Suite Variable	\${SE_EITP_U80}	${LOGADDR_EITP}:${SE_U8_FAMILY0}:0		
+	Set Suite Variable	\${SE_EITP_U81}	${LOGADDR_EITP}:${SE_U8_FAMILY1}:0		
+	Set Suite Variable	\${SE_EITP_WQE0}	${LOGADDR_EITP}:${SE_WQE_FAMILY0}:0		
+	Set Suite Variable	\${SE_EITP_WQE1}	${LOGADDR_EITP}:${SE_WQE_FAMILY1}:0		
+	Set Suite Variable	\${SE_EITP_U8_ALLOC}	${LOGADDR_EITP}:${SE_U8_ALLOC_FAMILY}:0		
+	Set Suite Variable	\${SE_CRUP_FRAG0}	${LOGADDR_CRUP}:${SE_FRAG_FAMILY0}:0		
+	Set Suite Variable	\${SE_CRUP_FRAG1}	${LOGADDR_CRUP}:${SE_FRAG_FAMILY1}:0		
+	Set Suite Variable	\${SE_CRUP_U80}	${LOGADDR_CRUP}:${SE_U8_FAMILY0}:0		
+	Set Suite Variable	\${SE_CRUP_U81}	${LOGADDR_CRUP}:${SE_U8_FAMILY1}:0		
+	Set Suite Variable	\${SE_CRUP_WQE0}	${LOGADDR_CRUP}:${SE_WQE_FAMILY0}:0		
+	Set Suite Variable	\${SE_CRUP_WQE1}	${LOGADDR_CRUP}:${SE_WQE_FAMILY1}:0		
+	Set Suite Variable	\${SE_CRUP_U8_ALLOC}	${LOGADDR_CRUP}:${SE_U8_ALLOC_FAMILY}:0		
+	ConfigGroupAddress				
+	QueryRGStatus				
+	ExecuteCli	dmxtscli statistic clear			
+					
+QueryDmxmsgTables	ExecuteCli	cat /proc/dmxmsg/mac_addr_tbl 			
+	ExecuteCli	cat /proc/dmxmsg/comp_addr_tbl			
+	ExecuteCli	cat /proc/dmxmsg/clients			
+	ExecuteCli	cat /proc/dmxmsg/group_addr_tbl 			
+					
+QueryRGStatus	ExecuteCli	fshascli -s /CLA-0/*Server*			
+					
+ConfigGroupAddress	Change To RU Env	%{OMU_0_NAME}			
+	${PHYS_RU0} =	QueryPhysAddrByUnitType	%{OMU_TYPE}	%{OMU_0_INDEX}	
+	${PHYS_RU1}=	QueryPhysAddrByUnitType	%{GFCP_TYPE}	%{GFCP_0_INDEX}	
+	${PHYS_EITP}=	QueryPhysAddrByUnitType	%{EITP_TYPE}	%{EITP_0_INDEX}	
+	${PHYS_CRUP}=	QueryPhysAddrByUnitType	%{CRUP_TYPE}	%{CRUP_0_INDEX}	
+	Register Group Address	"${GROUP_ALL_LINUX},2,${PHYS_RU0},${PHYS_RU1}"			
+	Register Group Address	"${GROUP_ALL_SE},2,${PHYS_EITP},${PHYS_CRUP}"			
+	Register Group Address	"${GROUP_PART_SE},1,${PHYS_EITP}"			
+	Register Group Address	"${GROUP_ALL_LINUX_PART_SE},3,${PHYS_RU0},${PHYS_RU1},${PHYS_EITP}"			
+	Register Group Address	"${GROUP_PART_LINUX_ALL_SE},3,${PHYS_RU1},${PHYS_EITP},${PHYS_CRUP}"			
+					
+Register Group Address	[Arguments]	${para}			
+	${rst}	execute cli	dmxcli2 -G ${para}		
+	ShouldContain	${rst}	SUCCESS		
+					
+Clear Env	ExecuteCli	dmxtscli statistic show			
+	ExecuteCli	rm -f statistic.log			
+					
+SE_A SEND TO SE_B SHOULD BE	[Arguments]	${NUM}			
+	${count} =	execute cli	grep EITP-0 statistic.log | awk 'NR==2 {print $3}'		
+	Should Be Equal As Numbers	${count}	${NUM}		
+					
+SE_B RECV FROM SE_A SHOULD BE	[Arguments]	${NUM}			
+	${count} =	execute cli	grep CRUP-0 statistic.log | awk 'NR==3 {print $6}'		
+	Should Be Equal As Numbers	${count}	${NUM}		
+					
+					
+TestDmxmsgZeroLen	[Arguments]	${src}	${dst}		
+	QueryDmxmsgTables				
+	${out}	Use Dmxcli To Send Messages	${src}	${dst}	${MSG_BURST}
+	...	0	1	0	0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+					
+TestDmxmsgShortLen	[Arguments]	${src}	${dst}		
+	QueryDmxmsgTables				
+	${out}	Use Dmxcli To Send Messages	${src}	${dst}	${MSG_BURST}
+	...	0	1	${MSG_LEN_SHORT}	0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+					
+TestDmxmsgLargeLen	[Arguments]	${src}	${dst}		
+	QueryDmxmsgTables				
+	${out}	Use Dmxcli To Send Messages	${src}	${dst}	1
+	...	2	10	${MSG_LEN_LARGE}	0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+					
+TestDmxmsgZeroLenMulti	[Arguments]	${src}	${dst}		
+	QueryDmxmsgTables				
+	${out}	Use Dmxcli To Send Messages	${src}	${dst}	${MSG_BURST}
+	...	0	1	0	0-0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+					
+TestDmxmsgShortLenMulti	[Arguments]	${src}	${dst}		
+	QueryDmxmsgTables				
+	${out}	Use Dmxcli To Send Messages	${src}	${dst}	${MSG_BURST}
+	...	0	1	${MSG_LEN_SHORT}	0-0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+					
+TestDmxmsgLargeLenMulti	[Arguments]	${src}	${dst}		
+	QueryDmxmsgTables				
+	${out}	Use Dmxcli To Send Messages	${src}	${dst}	1
+	...	4	10	${MSG_LEN_LARGE}	0-0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		

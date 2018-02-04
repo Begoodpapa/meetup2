@@ -1,0 +1,456 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<!-- saved from url=(0084)https://cwiki.nokia.com/twiki/pub/RobotFramework/DownloadPage/testcase_template.html --><title>Timer</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> <style type="text/css">HTML {
+COLOR: black; FONT-FAMILY: Arial,Helvetica,sans-serif; BACKGROUND-COLOR: white
+}
+P {
+max-width: 60em
+}
+TABLE {
+BORDER-RIGHT: black 0.1em solid; BORDER-TOP: black 0.1em solid; MARGIN: 1em 0em; BORDER-LEFT: black 0.1em solid; BORDER-BOTTOM: black 0.1em solid; BORDER-COLLAPSE: collapse; empty-cells: show
+}
+TH {
+BORDER-RIGHT: black 0.1em solid; PADDING-RIGHT: 0.2em; BORDER-TOP: black 0.05em solid; PADDING-LEFT: 0.2em; PADDING-BOTTOM: 0.1em; BORDER-LEFT: black 0.1em solid; PADDING-TOP: 0.1em; BORDER-BOTTOM: black 0.05em solid; HEIGHT: 1.5em
+}
+TD {
+BORDER-RIGHT: black 0.1em solid; PADDING-RIGHT: 0.2em; BORDER-TOP: black 0.05em solid; PADDING-LEFT: 0.2em; PADDING-BOTTOM: 0.1em; BORDER-LEFT: black 0.1em solid; PADDING-TOP: 0.1em; BORDER-BOTTOM: black 0.05em solid; HEIGHT: 1.5em
+}
+TH {
+BORDER-TOP-WIDTH: 0.1em; FONT-WEIGHT: bold; BORDER-LEFT-WIDTH: 0.1em; BORDER-BOTTOM-WIDTH: 0.1em; TEXT-TRANSFORM: capitalize; COLOR: black; LETTER-SPACING: 0.1em; BACKGROUND-COLOR: rgb(192,192,192); TEXT-ALIGN: center; BORDER-RIGHT-WIDTH: 0.1em
+}
+COL.name {
+WIDTH: 10em
+}
+.action {
+WIDTH: 15em
+}
+.value {
+WIDTH: 15em
+}
+.arg {
+WIDTH: 15em
+}
+TD:unknown {
+TEXT-TRANSFORM: capitalize; LETTER-SPACING: 0.1em; BACKGROUND-COLOR: rgb(240,240,240)
+}
+COL.name {
+TEXT-TRANSFORM: capitalize; LETTER-SPACING: 0.1em; BACKGROUND-COLOR: rgb(240,240,240)
+}
+TH {
+FONT-STYLE: normal
+}
+</style><meta content="MSHTML 6.00.2900.3429" name="GENERATOR"></head><body><h1>Timer</h1>
+<table border="1"> <colgroup span="99"><col class="name"><col class="value" span="4"></colgroup><thead><tr><th>Setting</th>
+<th>Value</th>
+<th>Value</th> <th>value</th> <th>Value</th>
+</tr> </thead> <tbody> <tr> <td style="color: rgb(51, 102, 255);">Documentation</td>
+<td>TNSDL Timer services</td> <td><br>
+</td> <td><br>
+</td>
+<td><br>
+</td> </tr> <tr> <td style="color: rgb(51, 102, 255);">Resource</td>
+<td>resources/Timer_Resource.html</td> <td><br>
+</td>
+<td><br>
+</td><td><br>
+</td> </tr> <tr> <td style="color: rgb(51, 51, 255);">Force
+Tags</td>
+<td>Product_Backlog_ID-B00871<br></td> <td>Iteration_ID-I00324<br></td>
+<td>PRS_ID-IL_PRS_4464<br></td><td>Owner-<font style="font-family: Arial;" color="#0000ff" face="Courier New" size="-1"><span style="color: black;">I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</span> 
+      </font></td></tr>
+<tr><td>...</td><td>element-IL</td><td>exec_type-automatic</td><td>type-FUT</td><td>QL-1</td><td> release-IL1_RIS2</td></tr><tr><td style="color: rgb(51, 102, 255);">...</td><td>reviewer-yin.zhang@nsn.com</td><td>rw-review_meeting</td><td>hw_env-AB</td>
+<td><br></td></tr><tr>
+<td style="color: rgb(51, 102, 255);">Suite Setup</td> <td>Connect To SUT And&nbsp;Start &nbsp;Message Tester </td>
+<td><br>
+</td> <td><br>
+</td><td><br>
+</td> </tr><tr><td style="color: rgb(51, 102, 255);">Suite
+Teardown</td>
+<td>Stop Message Tester And Disconnect From SUT</td> <td><br>
+</td>
+<td><br>
+</td> <td><br>
+</td> </tr> </tbody></table><table border="1"> <colgroup span="99"><col class="name"><col class="value" span="4"></colgroup><thead><tr><th>Variable</th>
+<th>Value</th>
+<th>Value</th> <th>Value</th> <th>Value</th>
+</tr> </thead> <tbody>  <tr><td>${TIMER_ID}</td><td>1</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${INTERVAL}</td><td>2</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${INTERVAL_SLEEP}</td><td>3</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${INTERVAL_NEW}</td><td>4</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${NULL}</td><td>0</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${TIMER1}</td><td>1</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${TIMER2}</td><td>2</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${TIMER3}</td><td>3</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${ACK_SUCCESS}</td><td><span style="font-size: 11pt; font-family: Arial;">success</span></td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${READ_FAILED}</td><td>TIMER expired or unsetted</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${ACK_FAILURE}</td><td>failure</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${FAMILY_ID}</td><td>0x0457</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${PROCESS_ID}</td><td>0x0 </td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${C_TEST_MSG_S}</td><td>0x6034 </td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${DMX ATTR DEFAULT VALUE}</td><td>0xffff11 </td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${TIME_OUT}</td><td>expired</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${S_TO_HUNDREDS}</td><td>100</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr></tbody></table><table border="1"> <colgroup span="99"><col class="name"><col class="action"><col class="arg" span="3"></colgroup> <thead><tr><th>Test
+Case</th> <th>Action</th>
+<th>Argument</th> <th>Argument</th> <th>Argument</th>
+<th>Argument</th> </tr>
+</thead> <tbody> <tr> <td>Set TNSDL Timer Successful</td> <td>[Tags]</td> <td><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">ATC_ID-LIBGEN_TIMER.FUT.001.AT</span></td>
+<td><br>
+</td>
+<td><br>
+</td> <td><br>
+</td> </tr><tr><td><br>
+</td><td>ILLGTestCli Send Set TNSDL Timer To Testpro And Testpro Set TNSDL Timer Successful&nbsp;</td> <td>${TIMER_ID}</td>
+<td>${INTERVAL}</td> <td><br>
+</td> <td><br>
+</td>
+</tr> <!-- <tr> <td>Operator Set 20 TNSDL Timer Successful</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr> <tr> <td></td> <td>: FOR</td> <td>${var}</td> <td>IN&nbsp;RANGE</td> <td>1</td> <td>21</td> <td></td> </tr> <tr> <td></td> <td></td> <td>Set TNSDL Timer</td> <td>xb${var}</td> <td>xb${var}</td> <td></td> <td></td> </tr> <tr> <td></td> <td><br> </td> <td>Check Output</td> <td>SET TIMER(${var}) ${var}s successful</td> <td><br> </td> <td></td> <td></td> </tr>--><tr><td><br>
+</td><td>Sleep
+For Timer</td><td>${INTERVAL_SLEEP}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Check Timer Is Time Out</td><td>${TIMER_ID}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>[Teardown]</td><td>Clear TNSDL Timer</td><td>${TIMER_ID}</td><td>${INTERVAL}</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr>
+<td>Reset The Setted&nbsp;Timer Successful</td> <td>[Tags]</td><td><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">ATC_ID-</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">LIBGEN_</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">TIMER.FUT.002.AT</span></td>
+<td><br>
+</td> <td><br>
+</td> <td><br>
+</td></tr><tr><td><br>
+</td><td>ILLGTestCli Send Set TNSDL Timer To Testpro And Testpro Set TNSDL Timer Successful&nbsp;</td><td>${TIMER_ID}</td><td>${INTERVAL}</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>ILLGTestCli Send Reset TNSDL Timer To Testpro And Testpro Reset TNSDL Timer Successful&nbsp;</td><td>${TIMER_ID}</td><td>${INTERVAL}</td><td><br>
+</td><td><br>
+</td></tr> <tr><td><br>
+</td><td>[Teardown]</td><td>Clear TNSDL Timer</td><td>${TIMER_ID}</td><td>${INTERVAL}</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr>
+<td>Read Unsetted Timer Failed</td> <td>[Tags]</td><td><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">ATC_ID-</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">LIBGEN_</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">TIMER.FUT.003.AT</span></td>
+<td><br>
+</td> <td><br>
+</td> <td><br>
+</td> </tr><tr><td><br>
+</td><td>[Tags]</td><td>ct-negative</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>ILLGTestCli Send Read Timer To Testpro And Testpro Read Timer Failed</td>
+<td>${TIMER_ID}</td> <td><br>
+</td> <td><br>
+</td>
+<td><br>
+</td> </tr> <tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>Read
+Setted Timer Successful</td> <td>[Tags]</td><td><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">ATC_ID-</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">LIBGEN_</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">TIMER.FUT.004.AT</span></td>
+<td><br>
+</td> <td><br>
+</td> <td><br>
+</td></tr><tr><td><br>
+</td><td>ILLGTestCli Send Set Timer To Testpro And Testpro Set Timer Successful&nbsp;</td> <td>${TIMER_ID}</td><td>${INTERVAL}</td>
+<td><br>
+</td><td><br>
+</td> </tr><tr> <td><br>
+</td><td>ILLGTestCli Send Read Timer To Testpro And Testpro Read Timer Successful</td>
+<td>${TIMER_ID}</td> <td>${INTERVAL}</td>
+<td><br>
+</td> <td><br>
+</td> </tr><tr><td><br>
+</td><td>[Teardown]</td><td>Clear Timer</td><td>${TIMER_ID}</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr>
+<td>Read resetted Timer Failed</td> <td>[Tags]</td><td><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">ATC_ID-</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">LIBGEN_</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">TIMER.FUT.005.AT</span></td>
+<td><br>
+</td> <td><br>
+</td> <td><br>
+</td> </tr><tr><td><br>
+</td><td>[Tags]</td><td>ct-negative</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>ILLGTestCli Send Set Timer To Testpro And Testpro Set&nbsp;Timer Successful&nbsp;</td>
+<td>${TIMER_ID}</td><td>${INTERVAL}</td> <td><br>
+</td>
+<td><br>
+</td> </tr> <tr> <td><br>
+</td><td>ILLGTestCli Send Reset Timer To Testpro And Testpro Reset Timer Successful&nbsp;</td>
+<td>${TIMER_ID}</td> <td>${INTERVAL}</td>
+<td><br>
+</td> <td><br>
+</td> </tr><tr><td><br>
+</td><td>ILLGTestCli Send Read Timer To Testpro And Testpro Read Timer Failed</td>
+<td>${TIMER_ID}</td> <td><br></td> <td><br>
+</td>
+<td><br>
+</td> </tr> <tr><td><br>
+</td><td>[Teardown]</td><td>Clear Timer</td><td>${TIMER_ID}</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr>
+<td>Read Timer After Setting&nbsp;Setted Timer Successful</td>
+<td>[Tags]</td><td><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">ATC_ID-</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">LIBGEN_</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">TIMER.FUT.006.AT</span></td>
+<td><br>
+</td> <td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>ILLGTestCli Send Set Timer To Testpro And Testpro Set Timer Successful&nbsp;</td>
+<td>${TIMER_ID}</td><td>${INTERVAL}</td> <td><br>
+</td>
+<td><br>
+</td> </tr><tr><td><br>
+</td><td>ILLGTestCli Send Set Timer To Testpro And Testpro Set Timer Successful&nbsp;</td>
+<td>${TIMER_ID}</td><td>${INTERVAL_NEW}</td>
+<td><br>
+</td>
+<td><br>
+</td> </tr> <tr> <td><br>
+</td><td>ILLGTestCli Send Read Timer To Testpro And Testpro Read Timer Successful</td>
+<td>${TIMER_ID}</td> <td>${INTERVAL_NEW}</td>
+<td><br>
+</td> <td><br>
+</td> </tr><tr><td><br>
+</td><td>[Teardown]</td><td>Clear&nbsp;Timer</td><td>${TIMER_ID}</td><td><br></td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr>
+<td>Read Expired Timer Failed</td> <td>[Tags]</td><td><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">ATC_ID-</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">LIBGEN_</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">TIMER.FUT.007.AT</span></td>
+<td><br>
+</td> <td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>[Tags]</td><td>ct-negative</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>ILLGTestCli Send Set Timer To Testpro And Testpro Set Timer Successful&nbsp;</td> <td>${TIMER_ID}</td><td>${INTERVAL}</td>
+<td><br> </td> <td><br>
+</td> </tr><tr><td><br>
+</td><td>Sleep
+For
+Timer</td> <td>${INTERVAL_SLEEP}</td> <td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td> </tr> <tr> <td><br>
+</td><td>ILLGTestCli Send Read Timer To Testpro And Testpro Read Timer Failed</td> <td>${TIMER_ID}</td> <td><br>
+</td>
+<td><br>
+</td> <td><br>
+</td> </tr><tr><td><br>
+</td><td>[Teardown]</td><td>Clear Timer</td><td>${TIMER_ID}</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr>
+<td>Set 3 TNSDL Timers Successful</td> <td>[Tags]</td><td><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">ATC_ID-</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">LIBGEN_</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">TIMER.FUT.008.AT</span></td>
+<td><br>
+</td> <td><br>
+</td> <td><br>
+</td></tr>
+<tr> <td><br>
+</td> <td>ILLGTestCli Send Set TNSDL Timer To Testpro And Testpro Set TNSDL Timer Successful</td> <td>&nbsp;${TIMER1}</td> <td>${INTERVAL}</td> <td><br>
+</td>
+<td><br>
+</td> </tr> <tr><td><br>
+</td><td>ILLGTestCli Send Set TNSDL Timer To Testpro And Testpro Set TNSDL Timer Successful</td><td>${TIMER2}</td><td>${INTERVAL}</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>ILLGTestCli Send Set TNSDL Timer To Testpro And Testpro Set TNSDL Timer Successful&nbsp;</td><td>${TIMER3}</td><td>${INTERVAL}</td><td><br>
+</td><td><br>
+</td></tr>
+</tbody></table><table style="width: 1105px; height: 1416px;" border="1"> <colgroup span="99"><col class="name"><col class="action"><col class="arg" span="3"></colgroup><thead><tr><th>Keyword</th>
+<th>Action</th> <th>Argument</th>
+<th>Argument</th> <th>Argument</th></tr>
+</thead> <tbody> <tr><td>ILLGTestCli Send Set Timer To Testpro And Testpro Set Timer Successful&nbsp;</td><td>[Arguments]</td><td>${id}<br> </td><td>${time}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${result}</td><td>Send&nbsp;Msg To Target Process Set C Timer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr><tr><td><br>
+</td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr><tr><td><br>
+</td><td>...</td><td>${id}<br> </td><td>${time}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Should Be Equal&nbsp;</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br>
+</td></tr> <tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>ILLGTestCli Send Reset Timer To Testpro And Testpro Reset Timer Successful&nbsp;</td><td>[Arguments]</td><td>${id}<br> </td><td>${time}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${result}</td><td>Send&nbsp;Msg To Target Process Reset C Timer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr><tr><td><br>
+</td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr><tr><td><br>
+</td><td>...</td><td>${id}<br> </td><td>${time}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Should Be Equal&nbsp;</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br>
+</td></tr> <tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>Clear&nbsp;Timer</td><td>[Arguments]</td><td>${id}
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${result}</td><td>Send&nbsp;Msg To Target Process Reset C Timer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr><tr><td><br>
+</td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr><tr><td><br>
+</td><td>...</td><td>${id}</td><td>
+${NULL}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>ILLGTestCli Send Read Timer To Testpro And Testpro Read Timer Failed</td><td>[Arguments]</td><td>${id}<br> </td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${result}</td><td>Send&nbsp;Msg To Target Process Read C Timer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr><tr><td><br>
+</td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr><tr><td><br>
+</td><td>...</td><td>${id}<br> </td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Should Be Equal&nbsp;</td><td>${result}</td><td>${READ_FAILED}</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>ILLGTestCli Send Set TNSDL Timer To Testpro And Testpro Set TNSDL Timer Successful&nbsp;</td><td>[Arguments]</td><td>${id}<br> </td><td>${time}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${result}</td><td>Send&nbsp;Msg To Target Process Set TNSDL Timer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr><tr><td><br>
+</td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr><tr><td><br>
+</td><td>...</td><td>${id}</td><td>
+${time}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Should Be Equal&nbsp;</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br>
+</td></tr> <tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>ILLGTestCli Send Read Timer To Testpro And Testpro Read Timer Successful</td><td>[Arguments]</td><td>${id}<br> </td><td>${interval}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${result}</td><td>Send&nbsp;Msg To Target Process Read C Timer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr><tr><td><br>
+</td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr><tr><td><br>
+</td><td>...</td><td>${id}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${interval_to_hundreds} &nbsp; </td><td>Evaluate<br></td><td>${interval}*${S_TO_HUNDREDS}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Fail if</td><td>${result}&gt;${interval_to_hundreds} </td><td><br>&nbsp; </td><td><br>
+</td></tr><tr><td><br>
+</td><td>Fail if</td><td>${result}&lt;0</td><td><br></td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>Clear TNSDL Timer</td><td>[Arguments]</td><td>${id}
+</td><td>${time}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${result}</td><td>Send&nbsp;Msg To Target Process Reset TNSDL Timer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr><tr><td><br>
+</td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr><tr><td><br>
+</td><td>...</td><td>${id}</td><td>${time}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Should Be Equal&nbsp;</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>ILLGTestCli Send Reset TNSDL Timer To Testpro And Testpro Reset TNSDL Timer Successful&nbsp;</td><td>[Arguments]</td><td>${id}</td><td>${time}</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${result}</td><td>Send&nbsp;Msg To Target Process Reset TNSDL Timer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr><tr><td><br>
+</td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr><tr><td><br>
+</td><td>...</td><td>${id}</td><td>${time}</td></tr><tr><td><br>
+</td><td>Should Be Equal&nbsp;</td><td>${result}</td><td>${ACK_SUCCESS}</td></tr> <tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>Check Timer Is Time Out</td><td>[Arguments]</td><td>${id}</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${result}</td><td>Send&nbsp;Msg To Target Process Inquery Timer Out</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr><tr><td><br>
+</td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr><tr><td><br>
+</td><td>...</td><td>${id}</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Should Be Equal&nbsp;</td><td>${result}</td><td>${TIME_OUT}</td><td><br>
+</td></tr>      
+
+   </tbody></table></body></html>

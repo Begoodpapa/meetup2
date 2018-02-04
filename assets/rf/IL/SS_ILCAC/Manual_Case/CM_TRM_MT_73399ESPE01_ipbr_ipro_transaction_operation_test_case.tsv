@@ -1,0 +1,74 @@
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*
+Suite Setup	connect to target hardware						
+Suite Teardown	disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B01454	Iteration_ID-I00907	PRS_ID-PRS_4020	EFS_ID-RNC_EFS_1709_328	PRS_ID-PRS_4022	EFS_ID-RNC_EFS_1709_329	EFS_ID-RNC_EFS_1709_355
+...	hw_env-RNC	hw_env-ADA	hw_env-RNC_S0	hw_env-RNC_S1	type-FUT	exec_type-auto	element-IL
+...	ATC_ID-TRM_IPBR.FUT.001.MT.I00907	release-IL1	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	PR-73399ESPE01	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	HW_TYPE-ADA_FTLB
+...	QL-6	EFS_ID-XXX	PRS_ID-XXX	FRS_ID-XXX			
+Resource	il.html						
+Library	Collections						
+Resource	../resources/common_operation_resource.html						
+Resource	../resources/IPBR_basic_operation_resource.html
+Resource	../resources/CM_TRM_common_resource.tsv						
+							
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*
+${FILE_PATH}	/opt/nsn/testutils/CM_TRM_MT_73399ESPE01_ipbr_ipro_transaction_operation_test_case/						
+${FILE_NAME}	MT_73399ESPE01_ipbr_ipro_transaction_operation.scli						
+${FILE_NAME_ADA}	MT_73399ESPE01_ipbr_ipro_transaction_operation_for_ADA.scli						
+${FAIL}	List of failed commands						
+${IPBR_4030}	4030						
+${IPBR_4040}	4040						
+${IPRO_4040}	ipbr_id=4040 iface=lo owner=/QNUP-0 ip_address=123.123.123.123						
+${IPRO_4030}	ipbr_id=4030 iface=lo owner=/QNUP-0 ip_address=123.123.123.123						
+${IP_ADDR}	123.123.123.123						
+${IP_NOT_EXIST}	ip address infomation doesn't exist						
+							
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*
+IPBR and IPRO transaction operation	[Setup]	IPBR IPRO resource should not exist					
+	execute cli	cd ${FILE_PATH}					
+	${result}	execute cli	./${EXEC_FILE}				
+	Should not contain	${result}	${FAIL}				
+	[Teardown]	Clean IPBR IPRO resource					
+							
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*
+Clean IPBR IPRO resource	Check and delete IPRO	${IPBR_4030}	${IP_OWNER}	${IP_IFACE}	${IP_ADDR}		
+	Check and delete IPRO	${IPBR_4040}	${IP_OWNER}	${IP_IFACE}	${IP_ADDR}		
+	Check and delete IPBR	${IPBR_4030}					
+	Check and delete IPBR	${IPBR_4040}					
+	Delete test IP address successfully	${IP_OWNER}	${IP_IFACE}	${IP_ADDR}			
+	execute cli	rm -rf ${FILE_PATH}					
+							
+IPBR IPRO resource should not exist	run keyword if	'%{HW}' == 'ADA'	Set Suite Variable	${EXEC_FILE}	${FILE_NAME_ADA}		
+	run keyword if	'%{HW}' == 'ADA'	Set Suite Variable	${IP_OWNER}	/QNGFCP		
+	run keyword if	'%{HW}' == 'ADA'	Set Suite Variable	${IP_IFACE}	eth2		
+	run keyword if	'%{HW}' == 'RNC'	Set Suite Variable	${EXEC_FILE}	${FILE_NAME}		
+	run keyword if	'%{HW}' == 'RNC'	Set Suite Variable	${IP_OWNER}	/QNUP-0		
+	run keyword if	'%{HW}' == 'RNC'	Set Suite Variable	${IP_IFACE}	lo		
+	Check and delete IPRO	${IPBR_4030}	${IP_OWNER}	${IP_IFACE}	${IP_ADDR}		
+	Check and delete IPRO	${IPBR_4040}	${IP_OWNER}	${IP_IFACE}	${IP_ADDR}		
+	Check and delete IPBR	${IPBR_4030}					
+	Check and delete IPBR	${IPBR_4040}					
+	Delete test IP address successfully	${IP_OWNER}	${IP_IFACE}	${IP_ADDR}			
+	execute cli	mount -o rw,remount /mnt/sysimg/					
+	execute cli	mkdir ${FILE_PATH}
+	${local_path}	get locale cac test script folder					
+	put file	${local_path}/CM_TRM_MT_73399ESPE01_ipbr_ipro_transaction_operation_test_case/*.scli	${FILE_PATH}	0744			
+							
+Check and delete IPRO	[Arguments]	${ipbr_id}	${owner}	${iface}	${ip_address}		
+	${result}	Show IPRO	${ipbr_id}	${ip_address}	${owner}	${iface}	
+	${result}	run keyword if	'${result['result']}' == 'SUCCESS'	Delete IPRO successfully	${ipbr_id}	${ip_address}	${owner}
+	...	${iface}					
+							
+Check and delete IPBR	[Arguments]	${ipbr_id}					
+	${result}	Show IP based route	${ipbr_id}				
+	${result}	run keyword if	'${result['result']}' == 'SUCCESS'	Delete IPBR Successfully	${ipbr_id}		
+							
+Delete IPRO successfully	[Arguments]	${ipbr_id}	${ip_address}	${owner}	${iface}	${mode}=${DEL_MODE_NORMAL}	
+	${result}	delete ipro	${ipbr_id}	${ip_address}	${owner}	${iface}	${mode}
+	should be equal	"${result[""IPRO Delete""]}"	Success				
+							
+Delete IPBR Successfully	[Arguments]	"${ipbr_id}="""""	${ipbr_name}=				
+	${result}	del ip based route	${ipbr_id}	${ipbr_name}			
+	should be equal	"${result[""IPBR Delete""]}"	Success				
+	[Teardown]						
+							

@@ -1,0 +1,345 @@
+*Setting*							
+Documentation	This suite will test the data collection of IPBR measurement for CAC.						
+Suite Setup	Connect to HW and Prepare the Test Resources						
+Suite Teardown	Clear the Test Resources and Disconnect from HW						
+Force Tags	Product_Backlog_ID-B01313	Product_Backlog_ID-T99999	Iteration_ID-I00547	Iteration_ID-I01881	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	PRS_ID-IL_PRS_3459	EFS_ID-RNC_EFS_74_336
+...	EFS_ID-RNC_EFS_2089_12	element-il	exec_type-automatic	type-FUT	release-IL1	reviewer-min.ye@nsn.com	rw-mail
+...	hw_env-RNC	hw_env-RNC_S0	hw_env-RNC_S1	reason-One report file comes out each 15 minutes, this suite need to wait for 4 reports. CI can not run such case, team run it in local CI env.	exec_level-pre	exec_type-manual	QL-7
+...	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	EFS_ID-XXX	FRS_ID-XXX	not-ready		
+Resource	../../../TestCase/SS_ILStatistics/Resources/Statistics_Resources.tsv						
+Resource	../resources/common_operation_resource.html						
+Resource	../resources/cac_basic_operation_resource.html						
+Resource	../resources/IPBR_basic_operation_resource.html						
+							
+*Variable*							
+${TIME_FORMAT}	+%Y.%m.%d-%H:%M:%S						
+${JOB_M568_NAME}	MJ568						
+${PLAN_568}	568						
+${INTERVAL}	900						
+${JOB_ACTIVATED}	activated						
+${JOB_DISABLED}	disabled						
+${JOB_M568_STOP_TIME}	2015.12.31-23:59:59						
+${15_MINUTES}	15						
+${REPORT_PATH}	/opt/nsn/var/SS_PM9/storage/results						
+${ACTIVE_USCP}	USCP-0						
+${CAC_IPBR_ID_1}	3						
+${CAC_IPBR_ID_2}	4						
+${CAC_IPBR_ID_3}	5						
+${TEST_IPBR_ID}	2						
+${IPBR_DN_1}	3						
+${IPBR_DN_2}	4						
+${IPBR_DN_3}	5						
+${RESERVED_BW_100_KB}	100000						
+${RESERVED_BW_200_KB}	200000						
+${RESERVED_BW_300_KB}	300000						
+${PLAN_FILE_PATH}	/opt/nsn/var/SS_PM9/plans						
+${PLAN_FILE_NAME}	M568Plan.xml						
+@{EXPECTED_COUNTER_LIST_1}	1000	100	100	0	1	180	
+@{EXPECTED_COUNTER_LIST_2}	1000	300	300	0	2	180	
+@{EXPECTED_COUNTER_LIST_3}	1000	600	600	0	3	180	
+@{EXPECTED_COUNTER_LIST_4}	1000	900	900	0	4	180	
+@{EXPECTED_COUTER_LIST_4040}	800	100	100	1	1	180	
+${TEMP_REPORT_PATH}	/root/temp568						
+${NEW_IPBR_ID_4040_DEC}	4040						
+${NEW_IPBR_NAME}	ipbr4040						
+${RG_EITP}	/%{EITPUPTRM_TYPE_NAME}						
+${IFACE_ETHER1_1}	%{ETH1_1}						
+${TEST_IP_ADDR}	%{DSP0_IUCS_IP}						
+${DEL_MODE_FORCE}	forced						
+${30_MINUTES}	30						
+${route_bw}	1000						
+${commit_bw}	900						
+${commit_sig_bw}	50						
+${commit_dcn_bw}	50						
+${CAC_IPBR_ID_4}	6						
+${RES_TYPE}	OUT						
+${IPBR_DN_4}	6						
+${NEW_IPBR_ID_4094_DEC}	4094						
+${10G_BW}	10000000						
+@{EXPECT_COUTER_LIST_4094}	10000000	0	0	0	180		
+@{EXPECT_COUTER_LIST_4014}	0	900	900	0	4	180	
+${NEW_IPBR_ID_4014_DEC}	4014						
+							
+*Test Case*							
+Data Collection For M568 From CAC With Different IPBR	[Tags]	ATC_ID-IPBR_Measurement.FUT.001.AT.I00547	Product_Backlog_ID-B01313	Iteration_ID-I00547	ct-positive		
+	[Setup]	Create rtp leg and leg List for test					
+	Create Multi Legs with Different IPBR						
+	Wait for the Case Firest Report						
+	${counter_list_1}	Get Counter List from Report File	${REPORT_NAME_2}				
+	Check the Statistic Data From CAC With Different IPBR	${counter_list_1}					
+	[Teardown]	Release test resources					
+							
+The influence of dynamic IPBR to M568 report	[Tags]	ATC_ID-IPBR_Measurement.FUT.002.AT.I01881	Product_Backlog_ID-T99999	Iteration_ID-I01881	ct-positive		
+	[Setup]	Create Leg List and Get EITP RG Name					
+	Get Counter List and Object Length						
+	Create IPBR and IPRO for test						
+	Create a Leg with The New IPBR						
+	Wait for the second report						
+	Check the Statistic for the added IPBR						
+	Delete IPRO and IPBR for test						
+	Wait for the third report						
+	Check the Staisitic for the deleted IPBR						
+	[Teardown]	Release leg resources and Delete IPBR					
+							
+*Keyword*							
+Connect to HW and Prepare the Test Resources	# KW for setup and teardown						
+	connect to target hardware						
+	Delete the Existing Temp Folder						
+	Create a Measurement Job						
+	Create a Temp Folder For Storing Report Files						
+	Enable the Job and Wait for the First Report						
+	switch to active OMU						
+							
+Clear the Test Resources and Disconnect from HW	run keyword and ignore error	Disable Measurement Job Successfully					
+	run keyword and ignore error	Delete Measurement Job	${JOB_M568_ID}				
+	# run keyword and ignore error Delete File ${REPORT_PATH}/A*:${JOB_M568_ID}.xml*						
+	run keyword and ignore error	disconnect from target hardware					
+							
+Create rtp leg and leg List for test	Create Leg List						
+	${rtp_leg_info}	Create test rtp leg successfully					
+	Append To List	${OUT_LEG_LIST}	${rtp_leg_info}				
+	Set test variable	\${CALL_ID}	${rtp_leg_info.call_id}				
+							
+Release test resources	release legs created in test case						
+	run keyword and ignore error	Store the Report File	${REPORT_NAME_2}				
+							
+Store the Report File	[Arguments]	${filename}					
+	execute_cli	cp ${filename} ${TEMP_REPORT_PATH}_${JOB_M568_ID} -rf					
+							
+Create Leg List and Get EITP RG Name	Create Leg List						
+	run keyword if	'%{DETAIL_HW}' == 'BCN'	Set Test Variable	\${RG_EITP}	${RG_EITP}-0		
+	run keyword if	'%{DETAIL_HW}' == 'BCN_S1'	Set Test Variable	\${RG_EITP}	${RG_EITP}-0		
+							
+Release leg resources and Delete IPBR	release legs created in test case						
+	run keyword and ignore error	delete IPRO Successfully	${NEW_IPBR_ID_4040_DEC}	${TEST_IP_ADDR}	${RG_EITP}	${IFACE_ETHER1_1}	${DEL_MODE_FORCE}
+	run keyword and ignore error	Delete IPBR Successfully	${NEW_IPBR_ID_4040_DEC}	${NEW_IPBR_NAME}			
+	run keyword and ignore error	delete IPRO Successfully	${NEW_IPBR_ID_4094_DEC}	${TEST_IP_ADDR}	${RG_EITP}	${IFACE_ETHER1_1}	${DEL_MODE_FORCE}
+	run keyword and ignore error	Delete IPBR Successfully	${NEW_IPBR_ID_4094_DEC}	${NEW_IPBR_NAME}			
+	run keyword and ignore error	Store the Report File	${REPORT_NAME_2}				
+	run keyword and ignore error	Store the Report File	${REPORT_NAME_3}				
+							
+Enable the Job and Wait for the First Report	${START1}=	Statistics Get Period Start Time	${15_MINUTES}				
+	Set Suite Variable	\${START1}					
+	${STOP}=	Statistics Get Period Stop Time	${START1}	${30_MINUTES}			
+	Set Suite Variable	\${STOP}					
+	${STOP1}=	Statistics Get Period Stop Time	${STOP}	${15_MINUTES}			
+	Set Suite Variable	\${STOP1}					
+	${comp_report_name}=	Generate the Report File Name	${JOB_M568_ID}	${STOP}	${STOP1}		
+	Enable Measurement Job Successfully						
+	${REPORT_NAME_1}	Wait Until Measurement Report Come Out	${comp_report_name}				
+	Set Suite Variable	\${REPORT_NAME_1}					
+							
+Delete the Existing Temp Folder	Run Keyword And Ignore Error	execute_cli	rm ${TEMP_REPORT_PATH}_* -rf				
+							
+Create a Temp Folder For Storing Report Files	execute_cli	mkdir ${TEMP_REPORT_PATH}_${JOB_M568_ID}					
+	# KW for measurement job						
+							
+Create a Measurement Job	${current_time}	Statistics Get Real Time	${TIME_FORMAT}				
+	${JOB_M568_ID}=	Create a Continuous Measurement Job	${JOB_M568_NAME}	${PLAN_568}	${current_time}	${INTERVAL}	${JOB_M568_STOP_TIME}
+	Set Suite Variable	\${JOB_M568_ID}					
+							
+Create a Continuous Measurement Job	[Arguments]	${job_name}	${plan_id}	${start}	${granularity}	${stop}	
+	${job_id}=	statistics create cons job	${job_name}	${plan_id}	${start}	${granularity}	${stop}
+	Should Match Regexp	${job_id}	\\d+				
+	[Return]	${job_id}					
+							
+Enable Measurement Job	[Arguments]	${job_id}					
+	${ret}	Statistics Start Job	${job_id}				
+	[Return]	${ret}					
+							
+Disable Measurement Job	[Arguments]	${job_id}					
+	${ret}	Statistics Stop Job	${job_id}				
+	[Return]	${ret}					
+							
+Enable Measurement Job Successfully	Enable Measurement Job	${JOB_M568_ID}					
+	Check Measurement Job Status Successfully	${JOB_ACTIVATED}					
+							
+Disable Measurement Job Successfully	Disable Measurement Job	${JOB_M568_ID}					
+	Check Measurement Job Status Successfully	${JOB_DISABLED}					
+							
+Check Measurement Job Status	[Arguments]	${job_id}	${expected_status}				
+	${status}=	Statistics Job State	${job_id}				
+	Should Be Equal As Strings	${status}	${expected_status}				
+							
+Check Measurement Job Status Successfully	[Arguments]	${expected_status}					
+	Wait Until Keyword Succeeds	3sec	0.1sec	Check Measurement Job Status	${JOB_M568_ID}	${expected_status}	
+	# KW for report						
+							
+Generate the Report File Name	[Arguments]	${job_id}	${start}	${stop}			
+	${filename}=	Statistics File Name Gen	${job_id}	${start}	${stop}	A	BCN_%{HOST_INDEX}
+	log	${filename}					
+	[Return]	${filename}					
+							
+Wait Until Measurement Report Come Out	[Arguments]	${filename}					
+	Wait Until Keyword Succeeds	60min	60sec	Check the Report File	${filename}.gz		
+	Execute Cli	gunzip -d ${REPORT_PATH}/${filename}.gz					
+	${filename}	Set Variable	${REPORT_PATH}/${filename}				
+	[Return]	${filename}					
+							
+Check the Report File	[Arguments]	${filename}					
+	${ret}	Statistics File Is Exist	${REPORT_PATH}/${filename}				
+	Should Be Equal As Strings	${ret}	True				
+							
+Wait Sometime To Separate Different Legs	sleep	60sec					
+							
+Wait for the Second Report	${STOP2}=	Statistics Get Period Stop Time	${STOP1}	${15_MINUTES}			
+	${STOP3}=	Statistics Get Period Stop Time	${STOP2}	${15_MINUTES}			
+	${comp_report_name}	Generate the Report File Name	${JOB_M568_ID}	${STOP2}	${STOP3}		
+	${REPORT_NAME_2}	Wait Until Measurement Report Come Out	${comp_report_name}				
+	Set Suite Variable	\${REPORT_NAME_1}	${REPORT_NAME_2}				
+	Set Suite Variable	\${REPORT_NAME_2}					
+	Set Suite Variable	\${STOP1}	${STOP3}				
+	Set Suite Variable	\${STOP3}					
+							
+Wait for the third report	${STOP4}=	Statistics Get Period Stop Time	${STOP3}	${15_MINUTES}			
+	${comp_report_name}	Generate the Report File Name	${JOB_M568_ID}	${STOP3}	${STOP4}		
+	${REPORT_NAME_3}	Wait Until Measurement Report Come Out	${comp_report_name}				
+	Set Suite Variable	\${REPORT_NAME_3}					
+	Set Suite Variable	\${STOP4}					
+							
+Create a Leg with The New IPBR	${rtp_leg_info}	Create Rtp Leg	USCP-0	${NEW_IPBR_ID_4040_DEC}	QOS=0,FMBR=${RESERVED_BW_100_KB},FABR=${RESERVED_BW_100_KB},NCAC=0		
+	should be equal	${rtp_leg_info.result}	SUCCESSFUL				
+	Append To List	${OUT_LEG_LIST}	${rtp_leg_info}				
+	[Return]	${rtp_leg_info}					
+							
+Create test rtp leg successfully	${rtp_leg_info}	Create Rtp Leg	USCP-0	${TEST_IPBR_ID}	QOS=0,FMBR=200,FABR=200,NCAC=1		
+	should be equal	${rtp_leg_info.result}	SUCCESSFUL				
+	[Return]	${rtp_leg_info}					
+							
+Create Multi Legs with Different IPBR	Wait Sometime To Separate Different Legs						
+	${leg_info_1}=	Create IUB leg with specified BW successfully	${CAC_IPBR_ID_1}	${RESERVED_BW_100_KB}			
+	${leg_info_2}=	Create IUB leg with specified BW successfully	${CAC_IPBR_ID_2}	${RESERVED_BW_100_KB}			
+	${leg_info_3}=	Create IUB leg with specified BW successfully	${CAC_IPBR_ID_3}	${RESERVED_BW_100_KB}			
+	${leg_info_4}=	Create IUPS leg with specified BW successfully	${CAC_IPBR_ID_4}	${RESERVED_BW_100_KB}			
+	${leg_info_5}=	Create IUB leg with specified BW successfully	${NEW_IPBR_ID_4014_DEC}	${RESERVED_BW_100_KB}			
+	Wait Sometime To Separate Different Legs						
+	${leg_info_2}=	Create IUR leg with specified BW successfully	${CAC_IPBR_ID_2}	${RESERVED_BW_200_KB}			
+	${leg_info_3}=	Create IUR leg with specified BW successfully	${CAC_IPBR_ID_3}	${RESERVED_BW_200_KB}			
+	${leg_info_4}=	Create IUPS leg with specified BW successfully	${CAC_IPBR_ID_4}	${RESERVED_BW_200_KB}			
+	${leg_info_5}=	Create IUR leg with specified BW successfully	${NEW_IPBR_ID_4014_DEC}	${RESERVED_BW_200_KB}			
+	Wait Sometime To Separate Different Legs						
+	${leg_info_3}=	Create IUCS leg with specified BW successfully	${CAC_IPBR_ID_3}	${RESERVED_BW_300_KB}			
+	${leg_info_4}=	Create IUPS leg with specified BW successfully	${CAC_IPBR_ID_4}	${RESERVED_BW_300_KB}			
+	${leg_info_5}=	Create IUCS leg with specified BW successfully	${NEW_IPBR_ID_4014_DEC}	${RESERVED_BW_300_KB}			
+	Wait Sometime To Separate Different Legs						
+	${leg_info_4}=	Create IUPS leg with specified BW successfully	${CAC_IPBR_ID_4}	${RESERVED_BW_300_KB}			
+	${leg_info_4}=	Create IUPS leg with specified BW successfully	${NEW_IPBR_ID_4014_DEC}	${RESERVED_BW_300_KB}			
+							
+Create IUB leg with specified BW successfully	[Arguments]	${ipbr_id}	${expected_bw}				
+	${leg_info}	create iub leg	USCP-0	${ipbr_id}	${CALL_ID}	QOS=0,FMBR=${expected_bw},FABR=${expected_bw},NCAC=0,DSCP=E,IFC=0	
+	should be equal	${leg_info.result}	SUCCESSFUL				
+	Append To List	${IN_LEG_LIST}	${leg_info}				
+	[Return]	${leg_info}					
+							
+Create IUR leg with specified BW successfully	[Arguments]	${ipbr_id}	${expected_bw}				
+	${leg_info}	create udp leg	USCP-0	${ipbr_id}	${CALL_ID}	QOS=0,FMBR=${expected_bw},FABR=${expected_bw},NCAC=0,DSCP=E,IFC=0	
+	should be equal	${leg_info.result}	SUCCESSFUL				
+	Append To List	${IN_LEG_LIST}	${leg_info}				
+	[Return]	${leg_info}					
+							
+Create IUCS leg with specified BW successfully	[Arguments]	${ipbr_id}	${expected_bw}				
+	${leg_info}	create rtp leg	USCP-0	${ipbr_id}	QOS=0,FMBR=${expected_bw},FABR=${expected_bw},NCAC=0,DSCP=E,IFC=0		
+	should be equal	${leg_info.result}	SUCCESSFUL				
+	Append To List	${OUT_LEG_LIST}	${leg_info}				
+	[Return]	${leg_info}					
+							
+Get Counter List and Object Length	${COUNTER_LIST_1}	Get Counter List from Report File	${REPORT_NAME_1}				
+	${OBJECT_LENGTH_1}	Get Object Length from Counter List	${COUNTER_LIST_1}				
+	Set Test Variable	\${COUNTER_LIST_1}					
+	Set Test Variable	\${OBJECT_LENGTH_1}					
+							
+Create IPBR and IPRO for test	Add IPBR successfully	${NEW_IPBR_ID_4040_DEC}	${NEW_IPBR_NAME}	${route_bw}	${commit_bw}	${commit_sig_bw}	${commit_dcn_bw}
+	Set Test Variable	\${UP_BW}	${commit_bw}-${commit_sig_bw}-${commit_dcn_bw}				
+	Add IPRO successfully	${NEW_IPBR_ID_4040_DEC}	${TEST_IP_ADDR}	${RG_EITP}	${IFACE_ETHER1_1}		
+	Add IPBR successfully	${NEW_IPBR_ID_4094_DEC}	${NEW_IPBR_NAME}	${10G_BW}	${10G_BW}	0	0
+	Add IPRO successfully	${NEW_IPBR_ID_4094_DEC}	${TEST_IP_ADDR}	${RG_EITP}	${IFACE_ETHER1_1}		
+							
+Check the Statistic for the added IPBR	${COUNTER_LIST_2}	Get Counter List from Report File	${REPORT_NAME_2}				
+	${OBJECT_LENGTH_2}	Get Object Length from Counter List	${counter_list_2}				
+	Check the Object Length Should be Increased by 1	${OBJECT_LENGTH_1}	${OBJECT_LENGTH_2}				
+	Check the Statistic Data From CAC For The Added IPBR	${COUNTER_LIST_2}					
+	Set Test Variable	\${COUNTER_LIST_2}					
+	Set Test Variable	\${OBJECT_LENGTH_2}					
+							
+Delete IPRO and IPBR for test	delete IPRO successfully	${NEW_IPBR_ID_4040_DEC}	${TEST_IP_ADDR}	${RG_EITP}	${IFACE_ETHER1_1}	${DEL_MODE_FORCE}	
+	Delete IPBR Successfully	${NEW_IPBR_ID_4040_DEC}	${NEW_IPBR_NAME}				
+	delete IPRO successfully	${NEW_IPBR_ID_4094_DEC}	${TEST_IP_ADDR}	${RG_EITP}	${IFACE_ETHER1_1}	${DEL_MODE_FORCE}	
+	Delete IPBR Successfully	${NEW_IPBR_ID_4094_DEC}	${NEW_IPBR_NAME}				
+							
+Check the Staisitic for the deleted IPBR	${COUNTER_LIST_3}	Get Counter List from Report File	${REPORT_NAME_3}				
+	${OBJECT_LENGTH_3}	Get Object Length from Counter List	${COUNTER_LIST_3}				
+	Check the Object Length Should be Decreased by 1	${OBJECT_LENGTH_2}	${OBJECT_LENGTH_3}				
+	Check the Statistic Data From CAC For The Deleted IPBR	${NEW_IPBR_ID_4040_DEC}	${COUNTER_LIST_3}				
+	# KW for checking counter						
+							
+Check the Object Length Should be Increased by 1	[Arguments]	${old_object_length}	${new_object_length}				
+	${expected_length}	evaluate	${old_object_length}+2				
+	Should be equal	${new_object_length}	${expected_length}				
+							
+Check the Object Length Should be Decreased by 1	[Arguments]	${old_object_length}	${new_object_length}				
+	${expected_length}	evaluate	${old_object_length}-2				
+	Should be equal	${new_object_length}	${expected_length}				
+							
+Get Counter List from Report File	[Arguments]	${report_name}					
+	${counter_list}	get ipbr measurement result	${report_name}				
+	[Return]	${counter_list}					
+							
+Get Object Length from Counter List	[Arguments]	${counter_list}					
+	${object_length}	Get Length	${counter_list}				
+	[Return]	${object_length}					
+							
+Check the Statistic Data From CAC With Different IPBR	[Arguments]	${counter_list_1}					
+	Check counter value by IPBR ID	${IPBR_DN_1}	${counter_list_1}	@{EXPECTED_COUNTER_LIST_1}			
+	Check counter value by IPBR ID	${IPBR_DN_2}	${counter_list_1}	@{EXPECTED_COUNTER_LIST_2}			
+	Check counter value by IPBR ID	${IPBR_DN_3}	${counter_list_1}	@{EXPECTED_COUNTER_LIST_3}			
+	Check counter value by IPBR ID	${IPBR_DN_4}	${counter_list_1}	@{EXPECTED_COUNTER_LIST_4}			
+	Check counter value by IPBR ID	${NEW_IPBR_ID_4014_DEC}	${counter_list_1}	@{EXPECT_COUTER_LIST_4014}			
+							
+Check the statistic Data From CAC For the Added IPBR	[Arguments]	${counter_list}					
+	Check counter value by IPBR ID	${NEW_IPBR_ID_4040_DEC}	${counter_list}	@{EXPECTED_COUTER_LIST_4040}			
+	Check counter value by IPBR ID	${NEW_IPBR_ID_4094_DEC}	${counter_list}	@{EXPECT_COUTER_LIST_4094}			
+							
+Check the Statistic Data From CAC For The Deleted IPBR	[Arguments]	${ipbr_id}	${counter_list}				
+	Should not contain	${counter_list}	${ipbr_id}				
+							
+Check counter value by IPBR ID	[Arguments]	${ipbr_id}	${counter_list}	${comm_bit_rate}	${min_res_rate}	${max_res_rate}	${min_udp_conn}
+	...	${max_udp_conn}	${nbr_sample}				
+	${COMMITTED_BIT_RATE_IP_ROUTE}	set variable	${counter_list['${ipbr_id}']['M568C2']}				
+	${SUM_RESERVED_RATE_IP_ROUTE}	set variable	${counter_list['${ipbr_id}']['M568C3']}				
+	${MIN_RESERVED_RATE_IP_ROUTE}	set variable	${counter_list['${ipbr_id}']['M568C4']}				
+	${MAX_RESERVED_RATE_IP_ROUTE}	set variable	${counter_list['${ipbr_id}']['M568C5']}				
+	${SUM_IP_UDP_CONN_IP_ROUTE}	set variable	${counter_list['${ipbr_id}']['M568C6']}				
+	${MIN_IP_UDP_CONN_IP_ROUTE}	set variable	${counter_list['${ipbr_id}']['M568C7']}				
+	${MAX_IP_UDP_CONN_IP_ROUTE}	set variable	${counter_list['${ipbr_id}']['M568C8']}				
+	${NBR_SAMPLES_IP_ROUTE}	set variable	${counter_list['${ipbr_id}']['M568C9']}				
+	log	${COMMITTED_BIT_RATE_IP_ROUTE}					
+	log	${MIN_RESERVED_RATE_IP_ROUTE}					
+	log	${MAX_RESERVED_RATE_IP_ROUTE}					
+	log	${MIN_IP_UDP_CONN_IP_ROUTE}					
+	log	${MAX_IP_UDP_CONN_IP_ROUTE}					
+	Should Be Equal	${COMMITTED_BIT_RATE_IP_ROUTE}	${comm_bit_rate}				
+	Should Be Equal	${MIN_RESERVED_RATE_IP_ROUTE}	${min_res_rate}				
+	Should Be Equal	${MAX_RESERVED_RATE_IP_ROUTE}	${max_res_rate}				
+	Should Be Equal	${MIN_IP_UDP_CONN_IP_ROUTE}	${min_udp_conn}				
+	Should Be Equal	${MAX_IP_UDP_CONN_IP_ROUTE}	${max_udp_conn}				
+	Should Be True	${NBR_SAMPLES_IP_ROUTE} <= ${nbr_sample}					
+	Should Be True	${SUM_RESERVED_RATE_IP_ROUTE} >= ${MIN_RESERVED_RATE_IP_ROUTE}*${NBR_SAMPLES_IP_ROUTE}					
+	Should Be True	${SUM_RESERVED_RATE_IP_ROUTE} <= ${MAX_RESERVED_RATE_IP_ROUTE}*${NBR_SAMPLES_IP_ROUTE}					
+	Should Be True	${MIN_RESERVED_RATE_IP_ROUTE} <= ${MAX_RESERVED_RATE_IP_ROUTE}					
+	Should Be True	${SUM_IP_UDP_CONN_IP_ROUTE} >= ${MIN_IP_UDP_CONN_IP_ROUTE}*${NBR_SAMPLES_IP_ROUTE}					
+	Should Be True	${SUM_IP_UDP_CONN_IP_ROUTE} <= ${MAX_IP_UDP_CONN_IP_ROUTE}*${NBR_SAMPLES_IP_ROUTE}					
+	Should Be True	${MIN_IP_UDP_CONN_IP_ROUTE} <= ${MAX_IP_UDP_CONN_IP_ROUTE}					
+							
+Create IUPS leg with specified BW successfully	[Arguments]	${ipbr_id}	${expected_bw}				
+	${leg_info}	Create GTP Leg Direct	USCP-0	${ipbr_id}	QOS=0,FMBR=${expected_bw},FABR=${expected_bw},NCAC=0,DSCP=E,IFC=0		
+	should be equal	${leg_info.result}	SUCCESSFUL				
+	Append To List	${OUT_LEG_LIST}	${leg_info}				
+	[Return]	${leg_info}					
+							
+Wait for the Case Firest Report	${STOP2}=	Statistics Get Period Stop Time	${STOP1}	${15_MINUTES}			
+	${comp_report_name}	Generate the Report File Name	${JOB_M568_ID}	${STOP1}	${STOP2}		
+	${REPORT_NAME_2}	Wait Until Measurement Report Come Out	${comp_report_name}				
+	Set Suite Variable	\${REPORT_NAME_1}	${REPORT_NAME_2}				
+	Set Suite Variable	\${REPORT_NAME_2}					
+	Set Suite Variable	\${STOP1}	${STOP2}				
+	Set Suite Variable	\${STOP2}					

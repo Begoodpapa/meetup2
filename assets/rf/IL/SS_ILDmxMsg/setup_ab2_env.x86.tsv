@@ -1,0 +1,57 @@
+S E T U P   A B 2   E N V . X 8 6
+
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	resources/dmxmsg.tsv				
+Suite Setup	Connect To SUT Input Sync Env Setup				
+Suite Teardown	Disconnect From SUT				
+Force Tags	Product_Backlog_ID-	Iteration_ID-	PRS-	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL
+...	exec_type-automatic	type-FUT	release-IL1	reviewer-xiaoping.wang@nsn.com	rw-weekly
+...	hw_env-AB	ct-positive			
+
+
+
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*	
+${MAX TIME FOR CONNECT}	100					
+${PROCESSOR_ID_REGISTER}	dmxdaemon					
+${KERNEL_MODULE_INSEARTING_SCRIPT}	/opt/nsn/SS_ILCommon/etc/configModuleRG.sh					
+@{NODE_LIST}	CLA-0	CLA-1				
+@{NODE_PROCESSOR_ID_LIST}	5	3				
+						
+
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	
+Unload kernel module for every AS node	[Tags]	unload				
+	:for	${node}	in	@{NODE_LIST}		
+		execute cli	ssh ${node}			
+		Unload kernel module				
+						
+Load kernel module for every AS node	[Tags]	load				
+	:for	${node}	in	@{NODE_LIST}		
+		execute cli	ssh ${node}			
+		Load kernel module				
+						
+Register Processor ID for every node	[Tags]	reg_pid				
+	${list_len}	GetLength	${NODE_LIST}			
+	:for	${i}	in range	${list_len}		
+		execute cli	ssh ${NODE_LIST[${i}]}			
+		Register Processor ID	${NODE_PROCESSOR_ID_LIST[${i}]}			
+						
+
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	
+Connect To SUT Input Sync Env Setup	Connect To SUT	${MAX TIME FOR CONNECT}				
+	Kill all dmx users for every node					
+						
+Kill all dmx users for every node	:for	${node}	in	@{NODE_LIST}		
+		execute cli	ssh ${node}			
+		execute cli	awk 'NR>1 {print $5}' /proc/dmxmsg/clients |xargs kill -9 |tee			
+						
+Register Processor ID	[Arguments]	${pid}				
+	${rst}	execute cli	dmxcli2 -R ${pid}			
+	ShouldContain	${rst}	SUCCESS			
+						
+Load kernel module	${rst}	execute cli	${KERNEL_MODULE_INSEARTING_SCRIPT} start			
+	ShouldNotContain	${rst}	Invalid module format			
+						
+Unload kernel module	${rst}	execute cli	${KERNEL_MODULE_INSEARTING_SCRIPT} stop			
+	ShouldNotContain	${rst}	is in use			
+						
+

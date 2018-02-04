@@ -1,0 +1,429 @@
+DMXMSG TRANSMISSION TEST FOR ADA3 2 RUS					
+					
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	resources/dmxmsg.tsv				
+Suite Setup	Set Test Env				
+Suite Teardown	Disconnect From SUT				
+Force Tags	Product_Backlog_ID-T88006	Iteration_ID-I00924	PRS_ID-IL_PRS_2582	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL
+...	exec_type-automatic	type-FUT	release-IL1_RIS5	reviewer-xiaoping.wang@nsn.com	rw-weekly
+...	hw_env-ADA	ct-positive			
+...	QL-1				
+					
+					
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+${MAX TIME FOR CONNECT}	50				
+${TIMEOUT}	50				
+${WO_ADDR}	0x1000				
+${SE_FRAG_FAMILY0}	44D				
+${SE_FRAG_FAMILY1}	44E				
+${SE_U8_FAMILY0}	45B				
+${SE_U8_FAMILY1}	45C				
+${SE_WQE_FAMILY0}	459				
+${SE_WQE_FAMILY1}	45A				
+${SE_U8_ALLOC_FAMILY}	457				
+${DAEMON_FAMILY}	AD9C				
+${GROUP_ALL_LINUX}	8FFE				
+${GROUP_ALL_SE}	8FFD				
+${GROUP_PART_SE}	8FFC				
+${GROUP_ALL_LINUX_PART_SE}	8FFB				
+${GROUP_PART_LINUX_ALL_SE}	8FFA				
+${MSG_LEN_SHORT}	100				
+${MSG_LEN_LARGE}	65519				
+${MSG_BURST}	10				
+					
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+1. Send Zero Message from Linux to SE Frag	[Tags]	ATC_ID-DMXMSG.FUT.001.AT			
+	TestDmxmsgZeroLen	${DAEMON0}	${SE_CRUP_FRAG0}		
+					
+2. Send Zero Message from Linux to SE U8	[Tags]	ATC_ID-DMXMSG.FUT.002.AT			
+	TestDmxmsgZeroLen	${DAEMON0}	${SE_CRUP_U80}		
+					
+3. Send Zero Message from Linux to SE WQE	[Tags]	ATC_ID-DMXMSG.FUT.003.AT			
+	TestDmxmsgZeroLen	${DAEMON0}	${SE_CRUP_WQE0}		
+					
+4. Send Zero Message from Linux to SE U8 Alloc	[Tags]	ATC_ID-DMXMSG.FUT.004.AT			
+	TestDmxmsgZeroLen	${DAEMON0}	${SE_CRUP_U8_ALLOC}		
+					
+5. Send Short Message from Linux to SE Frag	[Tags]	ATC_ID-DMXMSG.FUT.005.AT			
+	TestDmxmsgShortLen	${DAEMON0}	${SE_EITP_FRAG0}		
+					
+6. Send Short Message from Linux to SE U8	[Tags]	ATC_ID-DMXMSG.FUT.006.AT			
+	TestDmxmsgShortLen	${DAEMON0}	${SE_EITP_U80}		
+					
+7. Send Short Message from Linux to SE WQE	[Tags]	ATC_ID-DMXMSG.FUT.007.AT			
+	TestDmxmsgShortLen	${DAEMON0}	${SE_EITP_WQE0}		
+					
+8. Send Short Message from Linux to SE U8 Alloc	[Tags]	ATC_ID-DMXMSG.FUT.008.AT			
+	TestDmxmsgShortLen	${DAEMON0}	${SE_EITP_U8_ALLOC}		
+					
+9. Send Large Message from Linux to SE Frag	[Tags]	ATC_ID-DMXMSG.FUT.009.AT			
+	TestDmxmsgLargeLen	${DAEMON0}	${SE_CRUP_FRAG0}		
+					
+10. Send Large Message from Linux to SE U8	[Tags]	ATC_ID-DMXMSG.FUT.010.AT			
+	TestDmxmsgLargeLen	${DAEMON0}	${SE_CRUP_U80}		
+					
+11. Send Large Message from Linux to SE WQE	[Tags]	ATC_ID-DMXMSG.FUT.011.AT			
+	TestDmxmsgLargeLen	${DAEMON0}	${SE_CRUP_WQE0}		
+					
+12. Send Large Message from Linux to SE U8 Alloc	[Tags]	ATC_ID-DMXMSG.FUT.012.AT			
+	TestDmxmsgLargeLen	${DAEMON0}	${SE_CRUP_U8_ALLOC}		
+					
+13. Send message from Linux to SE with different dest family	[Tags]	ATC_ID-DMXMSG.FUT.013.AT			
+	TestDmxmsgShortLenMulti	${DAEMON0}-${DAEMON0}	${SE_EITP_FRAG0}-${SE_CRUP_U80}		
+					
+14. Send message from Linux to SE with different src computer	[Tags]	ATC_ID-DMXMSG.FUT.014.AT			
+	TestDmxmsgShortLenMulti	${DAEMON0}-${DAEMON1}	${SE_EITP_U80}-${SE_CRUP_U80}		
+					
+15. Send Zero Message from SE Frag to Linux	[Tags]	ATC_ID-DMXMSG.FUT.015.AT			
+	TestDmxmsgZeroLen	${SE_CRUP_FRAG0}	${DAEMON0}		
+					
+16. Send Zero Message from SE U8 to Linux	[Tags]	ATC_ID-DMXMSG.FUT.016.AT			
+	TestDmxmsgZeroLen	${SE_CRUP_U80}	${DAEMON0}		
+					
+17. Send Zero Message from SE WQE to Linux	[Tags]	ATC_ID-DMXMSG.FUT.017.AT			
+	TestDmxmsgZeroLen	${SE_CRUP_WQE0}	${DAEMON0}		
+					
+18. Send Zero Message from SE U8 Alloc to Linux	[Tags]	ATC_ID-DMXMSG.FUT.018.AT			
+	TestDmxmsgZeroLen	${SE_CRUP_U8_ALLOC}	${DAEMON0}		
+					
+19. Send Short Message from SE Frag to Linux	[Tags]	ATC_ID-DMXMSG.FUT.019.AT			
+	TestDmxmsgShortLen	${SE_EITP_FRAG0}	${DAEMON0}		
+					
+20. Send Short Message from SE U8 to Linux	[Tags]	ATC_ID-DMXMSG.FUT.020.AT			
+	TestDmxmsgShortLen	${SE_EITP_U80}	${DAEMON0}		
+					
+21. Send Short Message from SE WQE to Linux	[Tags]	ATC_ID-DMXMSG.FUT.021.AT			
+	TestDmxmsgShortLen	${SE_EITP_WQE0}	${DAEMON0}		
+					
+22. Send Short Message from SE U8 Alloc to Linux	[Tags]	ATC_ID-DMXMSG.FUT.022.AT			
+	TestDmxmsgShortLen	${SE_EITP_U8_ALLOC}	${DAEMON0}		
+					
+23. Send Large Message from SE Frag to Linux	[Tags]	ATC_ID-DMXMSG.FUT.023.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_FRAG0}	${DAEMON0}		
+					
+24. Send Large Message from SE U8 to Linux	[Tags]	ATC_ID-DMXMSG.FUT.024.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_U80}	${DAEMON0}		
+					
+25. Send Large Message from SE WQE to Linux	[Tags]	ATC_ID-DMXMSG.FUT.025.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_WQE0}	${DAEMON0}		
+					
+26. Send Large Message from SE U8 Alloc to Linux	[Tags]	ATC_ID-DMXMSG.FUT.026.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_U8_ALLOC}	${DAEMON0}		
+					
+27. Send message from SE  to Linux with different dest computer	[Tags]	ATC_ID-DMXMSG.FUT.027.AT			
+	TestDmxmsgShortLenMulti	${SE_CRUP_FRAG0}-${SE_EITP_FRAG0}	${DAEMON0}-${DAEMON1}		
+					
+28. Send message from SE  to Linux with different src family	[Tags]	ATC_ID-DMXMSG.FUT.028.AT			
+	TestDmxmsgShortLenMulti	${SE_CRUP_FRAG0}-${SE_EITP_U80}	${DAEMON0}-${DAEMON0}		
+					
+29. Send Zero Message from Frag to Frag	[Tags]	ATC_ID-DMXMSG.FUT.029.AT			
+	TestDmxmsgZeroLen	${SE_EITP_FRAG0}	${SE_CRUP_FRAG0}		
+					
+30. Send Zero Message from Frag to U8	[Tags]	ATC_ID-DMXMSG.FUT.030.AT			
+	TestDmxmsgZeroLen	${SE_EITP_FRAG0}	${SE_CRUP_U80}		
+					
+31. Send Zero Message from Frag to WQE	[Tags]	ATC_ID-DMXMSG.FUT.031.AT			
+	TestDmxmsgZeroLen	${SE_EITP_FRAG0}	${SE_CRUP_WQE0}		
+					
+32. Send Zero Message from Frag to U8_Alloc	[Tags]	ATC_ID-DMXMSG.FUT.032.AT			
+	TestDmxmsgZeroLen	${SE_EITP_FRAG0}	${SE_CRUP_U8_ALLOC}		
+					
+33. Send Zero Message from Frag with Multi Dest Family	[Tags]	ATC_ID-DMXMSG.FUT.033.AT			
+	TestDmxmsgZeroLenMulti	${SE_EITP_FRAG0}-${SE_EITP_FRAG0}	${SE_CRUP_FRAG0}-${SE_CRUP_WQE0}		
+					
+34. Send Zero Message from Frag with Multi Src Family	[Tags]	ATC_ID-DMXMSG.FUT.034.AT			
+	TestDmxmsgZeroLenMulti	${SE_EITP_FRAG0}-${SE_EITP_U80}	${SE_CRUP_WQE0}-${SE_CRUP_WQE0}		
+					
+35. Send Short Message from Frag to Frag	[Tags]	ATC_ID-DMXMSG.FUT.035.AT			
+	TestDmxmsgShortLen	${SE_CRUP_FRAG0}	${SE_EITP_FRAG0}		
+					
+36. Send Short Message from Frag to U8	[Tags]	ATC_ID-DMXMSG.FUT.036.AT			
+	TestDmxmsgShortLen	${SE_CRUP_FRAG0}	${SE_EITP_U80}		
+					
+37. Send Short Message from Frag to WQE	[Tags]	ATC_ID-DMXMSG.FUT.037.AT			
+	TestDmxmsgShortLen	${SE_CRUP_FRAG0}	${SE_EITP_WQE0}		
+					
+38. Send Short Message from Frag to U8_Alloc	[Tags]	ATC_ID-DMXMSG.FUT.038.AT			
+	TestDmxmsgShortLen	${SE_CRUP_FRAG0}	${SE_EITP_U8_ALLOC}		
+					
+39. Send Short Message from Frag with Multi Dest Family	[Tags]	ATC_ID-DMXMSG.FUT.039.AT			
+	TestDmxmsgShortLenMulti	${SE_CRUP_FRAG0}-${SE_CRUP_FRAG0}	${SE_EITP_FRAG0}-${SE_EITP_WQE0}		
+					
+40. Send Short Message from Frag with Multi Src Family	[Tags]	ATC_ID-DMXMSG.FUT.040.AT			
+	TestDmxmsgShortLenMulti	${SE_CRUP_FRAG0}-${SE_CRUP_U80}	${SE_EITP_WQE0}-${SE_EITP_WQE0}		
+					
+41. Send Large Message from Frag to Frag	[Tags]	ATC_ID-DMXMSG.FUT.041.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_FRAG0}	${SE_EITP_FRAG0}		
+					
+42. Send Large Message from Frag to U8	[Tags]	ATC_ID-DMXMSG.FUT.042.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_FRAG0}	${SE_EITP_U80}		
+					
+43. Send Large Message from Frag to WQE	[Tags]	ATC_ID-DMXMSG.FUT.043.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_FRAG0}	${SE_EITP_WQE0}		
+					
+44. Send Large Message from Frag to U8_Alloc	[Tags]	ATC_ID-DMXMSG.FUT.044.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_FRAG0}	${SE_EITP_U8_ALLOC}		
+					
+45. Send Large Message from Frag with Multi Dest Family	[Tags]	ATC_ID-DMXMSG.FUT.045.AT			
+	TestDmxmsgLargeLenMulti	${SE_CRUP_FRAG0}-${SE_CRUP_FRAG0}	${SE_EITP_FRAG0}-${SE_EITP_WQE0}		
+					
+46. Send Large Message from Frag with Multi Src Family	[Tags]	ATC_ID-DMXMSG.FUT.046.AT			
+	TestDmxmsgLargeLenMulti	${SE_CRUP_FRAG0}-${SE_CRUP_U80}	${SE_EITP_WQE0}-${SE_EITP_WQE0}		
+					
+47. Send Zero Message from U8 to Frag	[Tags]	ATC_ID-DMXMSG.FUT.047.AT			
+	TestDmxmsgZeroLen	${SE_EITP_U80}	${SE_CRUP_FRAG0}		
+					
+48. Send Zero Message from U8 to U8	[Tags]	ATC_ID-DMXMSG.FUT.048.AT			
+	TestDmxmsgZeroLen	${SE_EITP_U80}	${SE_CRUP_U80}		
+					
+49. Send Zero Message from U8 to WQE	[Tags]	ATC_ID-DMXMSG.FUT.049.AT			
+	TestDmxmsgZeroLen	${SE_EITP_U80}	${SE_CRUP_WQE0}		
+					
+50. Send Zero Message from U8 to U8_Alloc	[Tags]	ATC_ID-DMXMSG.FUT.050.AT			
+	TestDmxmsgZeroLen	${SE_EITP_U80}	${SE_CRUP_U8_ALLOC}		
+					
+51. Send Zero Message from U8 with Multi Dest Family	[Tags]	ATC_ID-DMXMSG.FUT.051.AT			
+	TestDmxmsgZeroLenMulti	${SE_EITP_U80}-${SE_EITP_U80}	${SE_CRUP_FRAG0}-${SE_CRUP_WQE0}		
+					
+52. Send Zero Message from U8 with Multi Src Family	[Tags]	ATC_ID-DMXMSG.FUT.052.AT			
+	TestDmxmsgZeroLenMulti	${SE_EITP_U80}-${SE_EITP_WQE0}	${SE_CRUP_WQE0}-${SE_CRUP_WQE0}		
+					
+53. Send Short Message from U8 to Frag	[Tags]	ATC_ID-DMXMSG.FUT.053.AT			
+	TestDmxmsgShortLen	${SE_EITP_U80}	${SE_CRUP_FRAG0}		
+					
+54. Send Short Message from U8 to U8	[Tags]	ATC_ID-DMXMSG.FUT.054.AT			
+	TestDmxmsgShortLen	${SE_EITP_U80}	${SE_CRUP_U80}		
+					
+55. Send Short Message from U8 to WQE	[Tags]	ATC_ID- DMXMSG.FUT.055.AT			
+	TestDmxmsgShortLen	${SE_EITP_U80}	${SE_CRUP_WQE0}		
+					
+56. Send Short Message from U8 to U8_Alloc	[Tags]	ATC_ID-DMXMSG.FUT.056.AT			
+	TestDmxmsgShortLen	${SE_EITP_U80}	${SE_CRUP_U8_ALLOC}		
+					
+57. Send Short Message from U8 with Multi Dest Family	[Tags]	ATC_ID-DMXMSG.FUT.057.AT			
+	TestDmxmsgShortLenMulti	${SE_EITP_U80}-${SE_EITP_U80}	${SE_CRUP_FRAG0}-${SE_CRUP_WQE0}		
+					
+58. Send Short Message from U8 with Multi Src Family	[Tags]	ATC_ID-DMXMSG.FUT.058.AT			
+	TestDmxmsgShortLenMulti	${SE_EITP_U80}-${SE_EITP_WQE0}	${SE_CRUP_WQE0}-${SE_CRUP_WQE0}		
+					
+59. Send Large Message from U8 to Frag	[Tags]	ATC_ID-DMXMSG.FUT.059.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_U80}	${SE_EITP_FRAG0}		
+					
+60. Send Large Message from U8 to U8	[Tags]	ATC_ID-DMXMSG.FUT.060.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_U80}	${SE_EITP_U80}		
+					
+61. Send Large Message from U8 to WQE	[Tags]	ATC_ID-DMXMSG.FUT.061.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_U80}	${SE_EITP_WQE0}		
+					
+62. Send Large Message from U8 to U8_Alloc	[Tags]	ATC_ID-DMXMSG.FUT.062.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_U80}	${SE_EITP_U8_ALLOC}		
+					
+63. Send Large Message from U8 with Multi Dest Family	[Tags]	ATC_ID-DMXMSG.FUT.063.AT			
+	TestDmxmsgLargeLenMulti	${SE_CRUP_U80}-${SE_CRUP_U80}	${SE_EITP_FRAG0}-${SE_EITP_WQE0}		
+					
+64. Send Large Message from U8 with Multi Src Family	[Tags]	ATC_ID-DMXMSG.FUT.064.AT			
+	TestDmxmsgLargeLenMulti	${SE_CRUP_U80}-${SE_CRUP_WQE0}	${SE_EITP_WQE0}-${SE_EITP_WQE0}		
+					
+65. Send Zero Message from WQE to Frag	[Tags]	ATC_ID-DMXMSG.FUT.065.AT			
+	TestDmxmsgZeroLen	${SE_EITP_WQE0}	${SE_CRUP_FRAG0}		
+					
+66. Send Zero Message from WQE to U8	[Tags]	ATC_ID-DMXMSG.FUT.066.AT			
+	TestDmxmsgZeroLen	${SE_EITP_WQE0}	${SE_CRUP_U80}		
+					
+67. Send Zero Message from WQE to WQE	[Tags]	ATC_ID-DMXMSG.FUT.067.AT			
+	TestDmxmsgZeroLen	${SE_EITP_WQE0}	${SE_CRUP_WQE0}		
+					
+68. Send Zero Message from WQE to U8_Alloc	[Tags]	ATC_ID-DMXMSG.FUT.068.AT			
+	TestDmxmsgZeroLen	${SE_EITP_WQE0}	${SE_CRUP_U8_ALLOC}		
+					
+69. Send Zero Message from WQE with Multi Dest Family	[Tags]	ATC_ID-DMXMSG.FUT.069.AT			
+	TestDmxmsgZeroLenMulti	${SE_EITP_WQE0}-${SE_EITP_WQE0}	${SE_CRUP_FRAG0}-${SE_CRUP_WQE0}		
+					
+70. Send Zero Message from WQE with Multi Src Family	[Tags]	ATC_ID-DMXMSG.FUT.070.AT			
+	TestDmxmsgZeroLenMulti	${SE_EITP_WQE0}-${SE_EITP_FRAG0}	${SE_CRUP_WQE0}-${SE_CRUP_WQE0}		
+					
+71. Send Short Message from WQE to Frag	[Tags]	ATC_ID-DMXMSG.FUT.071.AT			
+	TestDmxmsgShortLen	${SE_CRUP_WQE0}	${SE_EITP_FRAG0}		
+					
+72. Send Short Message from WQE to U8	[Tags]	ATC_ID-DMXMSG.FUT.072.AT			
+	TestDmxmsgShortLen	${SE_CRUP_WQE0}	${SE_EITP_U80}		
+					
+73. Send Short Message from WQE to WQE	[Tags]	ATC_ID-DMXMSG.FUT.073.AT			
+	TestDmxmsgShortLen	${SE_CRUP_WQE0}	${SE_EITP_WQE0}		
+					
+74. Send Short Message from WQE to U8_Alloc	[Tags]	ATC_ID-DMXMSG.FUT.074.AT			
+	TestDmxmsgShortLen	${SE_CRUP_WQE0}	${SE_EITP_U8_ALLOC}		
+					
+75. Send Short Message from WQE with Multi Dest Family	[Tags]	ATC_ID-DMXMSG.FUT.075.AT			
+	TestDmxmsgShortLenMulti	${SE_CRUP_WQE0}-${SE_CRUP_WQE0}	${SE_EITP_FRAG0}-${SE_EITP_WQE0}		
+					
+76. Send Short Message from WQE with Multi Src Family	[Tags]	ATC_ID-DMXMSG.FUT.076.AT			
+	TestDmxmsgShortLenMulti	${SE_CRUP_WQE0}-${SE_CRUP_FRAG0}	${SE_EITP_WQE0}-${SE_EITP_WQE0}		
+					
+77. Send Large Message from WQE to Frag	[Tags]	ATC_ID-DMXMSG.FUT.077.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_WQE0}	${SE_EITP_FRAG0}		
+					
+78. Send Large Message from WQE to U8	[Tags]	ATC_ID-DMXMSG.FUT.078.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_WQE0}	${SE_EITP_U80}		
+					
+79. Send Large Message from WQE to WQE	[Tags]	ATC_ID-DMXMSG.FUT.079.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_WQE0}	${SE_EITP_WQE0}		
+					
+80. Send Large Message from WQE to U8_Alloc	[Tags]	ATC_ID-DMXMSG.FUT.080.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_WQE0}	${SE_EITP_U8_ALLOC}		
+					
+81. Send Large Message from WQE with Multi Dest Family	[Tags]	ATC_ID-DMXMSG.FUT.081.AT			
+	TestDmxmsgLargeLenMulti	${SE_CRUP_WQE0}-${SE_CRUP_WQE0}	${SE_EITP_FRAG0}-${SE_EITP_WQE0}		
+					
+82. Send Large Message from WQE with Multi Src Family	[Tags]	ATC_ID-DMXMSG.FUT.082.AT			
+	TestDmxmsgLargeLenMulti	${SE_CRUP_WQE0}-${SE_CRUP_FRAG0}	${SE_EITP_WQE0}-${SE_EITP_WQE0}		
+					
+83. Send Zero Message from U8 Alloc to Frag	[Tags]	ATC_ID-DMXMSG.FUT.083.AT			
+	TestDmxmsgZeroLen	${SE_EITP_U8_ALLOC}	${SE_CRUP_FRAG0}		
+					
+84. Send Zero Message from U8 Alloc to U8	[Tags]	ATC_ID-DMXMSG.FUT.084.AT			
+	TestDmxmsgZeroLen	${SE_EITP_U8_ALLOC}	${SE_CRUP_U80}		
+					
+85. Send Zero Message from U8 Alloc to WQE	[Tags]	ATC_ID-DMXMSG.FUT.085.AT			
+	TestDmxmsgZeroLen	${SE_EITP_U8_ALLOC}	${SE_CRUP_WQE0}		
+					
+86. Send Zero Message from U8 Alloc to U8_Alloc	[Tags]	ATC_ID-DMXMSG.FUT.086.AT			
+	TestDmxmsgZeroLen	${SE_EITP_U8_ALLOC}	${SE_CRUP_U8_ALLOC}		
+					
+87. Send Zero Message from U8 Alloc with Multi Dest Family	[Tags]	ATC_ID-DMXMSG.FUT.087.AT			
+	TestDmxmsgZeroLenMulti	${SE_EITP_U8_ALLOC}-${SE_EITP_U8_ALLOC}	${SE_CRUP_FRAG0}-${SE_CRUP_WQE0}		
+					
+88. Send Short Message from U8 Alloc to Frag	[Tags]	ATC_ID-DMXMSG.FUT.088.AT			
+	TestDmxmsgShortLen	${SE_CRUP_U8_ALLOC}	${SE_EITP_FRAG0}		
+					
+89. Send Short Message from U8 Alloc to U8	[Tags]	ATC_ID-DMXMSG.FUT.089.AT			
+	TestDmxmsgShortLen	${SE_CRUP_U8_ALLOC}	${SE_EITP_U80}		
+					
+90. Send Short Message from U8 Alloc to WQE	[Tags]	ATC_ID-DMXMSG.FUT.090.AT			
+	TestDmxmsgShortLen	${SE_CRUP_U8_ALLOC}	${SE_EITP_WQE0}		
+					
+91. Send Short Message from U8 Alloc to U8_Alloc	[Tags]	ATC_ID-DMXMSG.FUT.091.AT			
+	TestDmxmsgShortLen	${SE_CRUP_U8_ALLOC}	${SE_EITP_U8_ALLOC}		
+					
+92. Send Short Message from U8 Alloc with Multi Dest Family	[Tags]	ATC_ID-DMXMSG.FUT.092.AT			
+	TestDmxmsgShortLenMulti	${SE_CRUP_U8_ALLOC}-${SE_CRUP_U8_ALLOC}	${SE_EITP_FRAG0}-${SE_EITP_WQE0}		
+					
+93. Send Large Message from U8 Alloc to Frag	[Tags]	ATC_ID-DMXMSG.FUT.093.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_U8_ALLOC}	${SE_EITP_FRAG0}		
+					
+94. Send Large Message from U8 Alloc to U8	[Tags]	ATC_ID-DMXMSG.FUT.094.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_U8_ALLOC}	${SE_EITP_U80}		
+					
+95. Send Large Message from U8 Alloc to WQE	[Tags]	ATC_ID-DMXMSG.FUT.095.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_U8_ALLOC}	${SE_EITP_WQE0}		
+					
+96. Send Large Message from U8 Alloc to U8_Alloc	[Tags]	ATC_ID-DMXMSG.FUT.096.AT			
+	TestDmxmsgLargeLen	${SE_CRUP_U8_ALLOC}	${SE_EITP_U8_ALLOC}		
+					
+97. Send Large Message from U8 Alloc with Multi Dest Family	[Tags]	ATC_ID-DMXMSG.FUT.097.AT			
+	TestDmxmsgLargeLenMulti	${SE_CRUP_U8_ALLOC}-${SE_CRUP_U8_ALLOC}	${SE_EITP_FRAG0}-${SE_EITP_WQE0}		
+					
+98. Send Group Message from Linux to All SEs	[Tags]	ATC_ID-DMXMSG.FUT.098.AT			
+	TestDmxmsgShortLen	${DAEMON0}	${GROUP_ALL_SE}:${DAEMON_FAMILY}:0		
+					
+99. Send Group Message from Linux to All SEs and Daemons	[Tags]	ATC_ID-DMXMSG.FUT.099.AT			
+	TestDmxmsgShortLen	${DAEMON0}	${GROUP_PART_LINUX_ALL_SE}:${DAEMON_FAMILY}:0		
+					
+100. Send Group Message from SE to All Daemons	[Tags]	ATC_ID-DMXMSG.FUT.100.AT			
+	TestDmxmsgShortLen	${SE_EITP_FRAG0}	${GROUP_ALL_LINUX}:${DAEMON_FAMILY}:0		
+					
+101. Send Group Message from SE to All SEs	[Tags]	ATC_ID-DMXMSG.FUT.101.AT			
+	TestDmxmsgShortLen	${SE_CRUP_WQE0}	${GROUP_PART_SE}:${DAEMON_FAMILY}:0		
+					
+102. Send Group Message from SE to All SEs and Daemons	[Tags]	ATC_ID-DMXMSG.FUT.102.AT			
+	TestDmxmsgShortLen	${SE_CRUP_U80}	${GROUP_ALL_LINUX_PART_SE}:${DAEMON_FAMILY}:0		
+					
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Set Test Env	Connect To SUT	${MAX TIME FOR CONNECT}			
+	${LOGADDR_RU0}	Evaluate	hex(%{OMU_0_LOG_ADDR}+${WO_ADDR})		
+	${LOGADDR_RU1}	Evaluate	hex(%{GFCP_0_LOG_ADDR}+${WO_ADDR})		
+	${LOGADDR_EITP}	Evaluate	hex(%{EITP_0_LOG_ADDR}+${WO_ADDR})		
+	${LOGADDR_CRUP}	Evaluate	hex(%{CRUP_0_LOG_ADDR}+${WO_ADDR})		
+	Set Suite Variable	\${DAEMON0}	${LOGADDR_RU0}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${DAEMON1}	${LOGADDR_RU1}:${DAEMON_FAMILY}:0		
+	Set Suite Variable	\${SE_EITP_FRAG0}	${LOGADDR_EITP}:${SE_FRAG_FAMILY0}:0		
+	Set Suite Variable	\${SE_EITP_FRAG1}	${LOGADDR_EITP}:${SE_FRAG_FAMILY1}:0		
+	Set Suite Variable	\${SE_EITP_U80}	${LOGADDR_EITP}:${SE_U8_FAMILY0}:0		
+	Set Suite Variable	\${SE_EITP_U81}	${LOGADDR_EITP}:${SE_U8_FAMILY1}:0		
+	Set Suite Variable	\${SE_EITP_WQE0}	${LOGADDR_EITP}:${SE_WQE_FAMILY0}:0		
+	Set Suite Variable	\${SE_EITP_WQE1}	${LOGADDR_EITP}:${SE_WQE_FAMILY1}:0		
+	Set Suite Variable	\${SE_EITP_U8_ALLOC}	${LOGADDR_EITP}:${SE_U8_ALLOC_FAMILY}:0		
+	Set Suite Variable	\${SE_CRUP_FRAG0}	${LOGADDR_CRUP}:${SE_FRAG_FAMILY0}:0		
+	Set Suite Variable	\${SE_CRUP_FRAG1}	${LOGADDR_CRUP}:${SE_FRAG_FAMILY1}:0		
+	Set Suite Variable	\${SE_CRUP_U80}	${LOGADDR_CRUP}:${SE_U8_FAMILY0}:0		
+	Set Suite Variable	\${SE_CRUP_U81}	${LOGADDR_CRUP}:${SE_U8_FAMILY1}:0		
+	Set Suite Variable	\${SE_CRUP_WQE0}	${LOGADDR_CRUP}:${SE_WQE_FAMILY0}:0		
+	Set Suite Variable	\${SE_CRUP_WQE1}	${LOGADDR_CRUP}:${SE_WQE_FAMILY1}:0		
+	Set Suite Variable	\${SE_CRUP_U8_ALLOC}	${LOGADDR_CRUP}:${SE_U8_ALLOC_FAMILY}:0		
+	ConfigGroupAddress				
+	QueryRGStatus				
+					
+QueryDmxmsgTables	ExecuteCli	cat /proc/dmxmsg/mac_addr_tbl 			
+	ExecuteCli	cat /proc/dmxmsg/comp_addr_tbl			
+	ExecuteCli	cat /proc/dmxmsg/clients			
+	ExecuteCli	cat /proc/dmxmsg/group_addr_tbl 			
+					
+QueryRGStatus	ExecuteCli	fshascli -s /CLA-0/*Server*			
+					
+ConfigGroupAddress	Change To RU Env	%{OMU_0_NAME}			
+	${PHYS_RU0} =	QueryPhysAddrByUnitType	%{OMU_TYPE}	%{OMU_0_INDEX}	
+	${PHYS_RU1}=	QueryPhysAddrByUnitType	%{GFCP_TYPE}	%{GFCP_0_INDEX}	
+	${PHYS_EITP}=	QueryPhysAddrByUnitType	%{EITP_TYPE}	%{EITP_0_INDEX}	
+	${PHYS_CRUP}=	QueryPhysAddrByUnitType	%{CRUP_TYPE}	%{CRUP_0_INDEX}	
+	Register Group Address	"${GROUP_ALL_LINUX},2,${PHYS_RU0},${PHYS_RU1}"			
+	Register Group Address	"${GROUP_ALL_SE},2,${PHYS_EITP},${PHYS_CRUP}"			
+	Register Group Address	"${GROUP_PART_SE},1,${PHYS_EITP}"			
+	Register Group Address	"${GROUP_ALL_LINUX_PART_SE},3,${PHYS_RU0},${PHYS_RU1},${PHYS_EITP}"			
+	Register Group Address	"${GROUP_PART_LINUX_ALL_SE},3,${PHYS_RU1},${PHYS_EITP},${PHYS_CRUP}"			
+					
+Register Group Address	[Arguments]	${para}			
+	${rst}	execute cli	dmxcli2 -G ${para}		
+	ShouldContain	${rst}	SUCCESS		
+					
+					
+TestDmxmsgZeroLen	[Arguments]	${src}	${dst}		
+	QueryDmxmsgTables				
+	${out}	Use Dmxcli To Send Messages	${src}	${dst}	${MSG_BURST}
+	...	0	1	0	0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+					
+TestDmxmsgShortLen	[Arguments]	${src}	${dst}		
+	QueryDmxmsgTables				
+	${out}	Use Dmxcli To Send Messages	${src}	${dst}	${MSG_BURST}
+	...	0	1	${MSG_LEN_SHORT}	0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+					
+TestDmxmsgLargeLen	[Arguments]	${src}	${dst}		
+	QueryDmxmsgTables				
+	${out}	Use Dmxcli To Send Messages	${src}	${dst}	1
+	...	2	10	${MSG_LEN_LARGE}	0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+					
+TestDmxmsgZeroLenMulti	[Arguments]	${src}	${dst}		
+	QueryDmxmsgTables				
+	${out}	Use Dmxcli To Send Messages	${src}	${dst}	${MSG_BURST}
+	...	0	1	0	0-0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+					
+TestDmxmsgShortLenMulti	[Arguments]	${src}	${dst}		
+	QueryDmxmsgTables				
+	${out}	Use Dmxcli To Send Messages	${src}	${dst}	${MSG_BURST}
+	...	0	1	${MSG_LEN_SHORT}	0-0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+					
+TestDmxmsgLargeLenMulti	[Arguments]	${src}	${dst}		
+	QueryDmxmsgTables				
+	${out}	Use Dmxcli To Send Messages	${src}	${dst}	1
+	...	4	10	${MSG_LEN_LARGE}	0-0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		

@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Input Sync In Libgen</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Input Sync In Libgen</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B00878</td><td><font color=dark red>Iteration_ID-I00938</td><td><font color=dark red>PRS_ID-IL_PRS_4514</td><td><font color=dark red>owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>element-IL</td><td><font color=dark red>exec_type-automatic</td><td><font color=dark red>type-FUT</td><td>QL-6</td><td><font color=dark red>release-IL1_RIS4</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>reviewer-zhiyu.yang@nsn.com</td><td><font color=dark red>rw-formal</td><td><font color=dark red>hw_env-AB</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-RNC_EFS_2446_26</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>ct-negative</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>resources/Libgen_control_swo.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>suite setup</b></td><td>Setup Connection For WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>suite teardown</b></td><td>Clear TestEnv And Disconnect From SUT</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${MSG_ACK_ADDR_TYPE1}</td><td>0x1</td><td><br></td><td><font color=blue>#the variable is used for cli to tell prb ack message with different type address and destroy_msg_if_not_wo_state's value</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_ACK_ADDR_TYPE2}</td><td>0x2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_ACK_ADDR_TYPE3}</td><td>0x4</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_ACK_ADDR_TYPE4}</td><td>0x3</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_ACK_ADDR_TYPE5}</td><td>0x5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_ACK_ADDR_TYPE6}</td><td>0x6</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td><b>Process in SP can send message to other process success using physical address with default value of DESTROY_MSG_IF_NOT_WO_STATE</b></td><td>[Tags]</td><td>ATC_ID-InputSync.FUT.001.AT.I01733</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send A Msg To Testproc Success</td><td>${MSG_ACK_ADDR_TYPE1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Process in SP can send message to other process success using physical address setting the value of DESTROY_MSG_IF_NOT_WO_STATE To One</b></td><td>[Tags]</td><td>ATC_ID-InputSync.FUT.002.AT.I01733</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send A Msg To Testproc Success</td><td>${MSG_ACK_ADDR_TYPE2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>The message will be discarded from the process in SP using logical address with default value of DESTROY_MSG_IF_NOT_WO_STATE</b></td><td>[Tags]</td><td>ATC_ID-InputSync.FUT.003.AT.I01733</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send A Msg To Testproc Failure</td><td>${MSG_ACK_ADDR_TYPE3}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Process in SP can send message to other process success using logical address setting the value of DESTROY_MSG_IF_NOT_WO_STATE To Zero</b></td><td>[Tags]</td><td>ATC_ID-InputSync.FUT.004.AT.I01733</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send A Msg To Testproc Success</td><td>${MSG_ACK_ADDR_TYPE4}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Process in SP can send message to other process success using relative address with default value of DESTROY_MSG_IF_NOT_WO_STATE</b></td><td>[Tags]</td><td>ATC_ID-InputSync.FUT.005.AT.I01733</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send A Msg To Testproc Success</td><td>${MSG_ACK_ADDR_TYPE5}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Process in SP can send message to other process success using relative address setting the value of DESTROY_MSG_IF_NOT_WO_STATE To One</b></td><td>[Tags]</td><td>ATC_ID-InputSync.FUT.006.AT.I01733</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send A Msg To Testproc Success</td><td>${MSG_ACK_ADDR_TYPE6}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td><b>Send A Msg To Testproc Success</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${msg_ack_addr_type}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send A Msg To Target Process With Msg Ack Type</td><td>${OMU SP PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td><td>${MASTER_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td>${DMX ATTR VALUE ZERO}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td>${msg_ack_addr_type}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send A Msg To Testproc Failure</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${msg_ack_addr_type}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send A Msg To Target Process With Msg Ack Type</td><td>${OMU SP PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td><td>${MASTER_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td>${DMX ATTR VALUE ZERO}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td colspan=5>${msg_ack_addr_type}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=5>${ACK_FAILURE}</td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

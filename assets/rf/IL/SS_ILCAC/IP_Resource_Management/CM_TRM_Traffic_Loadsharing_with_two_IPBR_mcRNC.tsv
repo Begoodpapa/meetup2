@@ -1,0 +1,123 @@
+*Setting*							
+Suite Setup	connect to target hardware and add ipbr ipro						
+Suite Teardown	release test resource and disconnect from target hardware						
+Force Tags	release-RU50EP1	exec_type-automatic	type-FUT	hw_env-RNC_S0	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	QL-5	HW_TYPE-BCN_A1
+...	BCN_STEP-BCN_S0	EFS_ID-RNC_EFS_2897_171	EFS_ID-RNC_EFS_2897_174	EFS_ID-RNC_EFS_2897_168	FRS_ID-PCM_100201_48_R2897	FRS_ID-PCM_100201_48_R2897	Product_Backlog_ID-RAN2897_1R_M1
+...	PRS_ID-IL_PRS_4915						
+Resource	il.html						
+Resource	../resources/common_operation_resource.html						
+Resource	../resources/cac_basic_operation_resource.html						
+Resource	../resources/IPBR_basic_operation_resource.html						
+Resource	../../SS_ILCallMgmt/resources/cm_resource.tsv						
+Library	../resources/cacprb_test_resources.py						
+Library	Collections						
+							
+*Variable*							
+${IPBR_ID_4025}	4025						
+${IPBR_NAME_4025}	ipbr4025						
+${IPBR_ID_4026}	4026						
+${IPBR_NAME_4026}	ipbr4026						
+${IPBR_ID_4095}	4095						
+${IP_1}	%{BFD_TEST_IP_1}						
+${IP_1_OWNER}	/QNUP-2						
+${IP_1_IFACE}	%{ETH1_1}						
+${IP_2}	%{VRF_TEST_IP_1}						
+${IP_2_OWNER}	/QNUP-0						
+${IP_2_IFACE}	ethvrf						
+${VRF_11}	vrf11						
+${PHB_ALL}	ALL						
+${WITH_CAC_BW_0}	NCAC=0,FABR=0,FMBR=0						
+${WITH_CAC_BW_2k}	NCAC=0,FABR=2000,FMBR=2000						
+${WITH_CAC_BW_5k}	NCAC=0,FABR=5000,FMBR=5000						
+${WITH_CAC_BW_7k}	NCAC=0,FABR=7000,FMBR=6000						
+${WITH_CAC_BW_20k}	NCAC=0,FABR=20000,FMBR=20000						
+${ERR_CODE_450D}	0x450D						
+${BW_ENOUGH}	SUCCESSFUL						
+${BW_NOT_ENOUGH}	FAILED						
+${DSCP_MATCH}	SUCCESSFUL						
+${NO_NEED_CHECK_ERR_CODE}	${EMPTY}						
+${NO_NEED_CHECK_IP}	${EMPTY}						
+							
+*Test Case*							
+1 of 2 IPBR with zero UP committed BW and CAC needed for leg	[Tags]						
+	[Setup]	Create SRB call successfully and modify 1 ipbr BW to zero BW					
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4025},${IPBR_ID_4026}	${WITH_CAC_BW_2k}	${BW_ENOUGH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4025}
+	...	${IP_1}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4025},${IPBR_ID_4026}	${CALL_ID}	${WITH_CAC_BW_2k}	${BW_ENOUGH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4025}	${IP_1}	${OUT_LEG_LIST}			
+	# Create direct IuPS leg and check result ${IPBR_ID_4025},${IPBR_ID_4026} ${WITH_CAC_BW_2k} ${BW_ENOUGH} ${ERR_CODE_0} ${IPBR_ID_4025} ${IP_1}						
+	# Create indirct luPS leg successfully ${IPBR_ID_4025},${IPBR_ID_4026} ${WITH_CAC_BW_2k} ${IPBR_ID_4025} ${IP_1}						
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4025},${IPBR_ID_4026}	${WITH_CAC_BW_20k}	${BW_NOT_ENOUGH}	${ERR_CODE_450D}	${IPBR_ID_4025}
+	...	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4025},${IPBR_ID_4026}	${CALL_ID}	${WITH_CAC_BW_20k}	${BW_NOT_ENOUGH}	${ERR_CODE_450D}
+	...	${IPBR_ID_4025}	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}			
+	# Create direct IuPS leg and check result ${IPBR_ID_4025},${IPBR_ID_4026} ${WITH_CAC_BW_20k} ${BW_NOT_ENOUGH} ${ERR_CODE_0} ${IPBR_ID_4025} ${IP_1}						
+	# Create indirct luPS leg failed with overload BW ${IPBR_ID_4025},${IPBR_ID_4026} ${WITH_CAC_BW_20k} ${IPBR_ID_4025} ${IP_1}						
+	[Teardown]	release legs created in test case					
+							
+2 IPBR with non-zero UP committed BW and CAC needed for leg	[Tags]						
+	[Setup]	Create SRB call successfully and modify 2 ipbr BW to non-zero BW					
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4025},${IPBR_ID_4026}	${WITH_CAC_BW_7k}	${BW_ENOUGH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4026}
+	...	${IP_2}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4025},${IPBR_ID_4026}	${CALL_ID}	${WITH_CAC_BW_5k}	${BW_ENOUGH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4025}	${IP_1}	${OUT_LEG_LIST}			
+	# Create direct IuPS leg and check result ${IPBR_ID_4025},${IPBR_ID_4026} ${WITH_CAC_BW_2k} ${BW_ENOUGH} ${ERR_CODE_0} ${IPBR_ID_4025} ${IP_1}						
+	# Create indirct luPS leg successfully ${IPBR_ID_4025},${IPBR_ID_4026} ${WITH_CAC_BW_2k} ${IPBR_ID_4025} ${IP_1}						
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4025},${IPBR_ID_4026}	${WITH_CAC_BW_20k}	${BW_NOT_ENOUGH}	${ERR_CODE_450D}	${IPBR_ID_4025}
+	...	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4025},${IPBR_ID_4026}	${CALL_ID}	${WITH_CAC_BW_20k}	${BW_NOT_ENOUGH}	${ERR_CODE_450D}
+	...	${IPBR_ID_4025}	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}			
+	# Create direct IuPS leg and check result ${IPBR_ID_4025},${IPBR_ID_4026} ${WITH_CAC_BW_20k} ${BW_NOT_ENOUGH} ${ERR_CODE_450D} ${IPBR_ID_4025} ${IP_1}						
+	# Create indirct luPS leg failed with overload BW ${IPBR_ID_4025},${IPBR_ID_4026} ${WITH_CAC_BW_20k} ${IPBR_ID_4025} ${IP_1}						
+	[Teardown]	release legs created in test case					
+							
+2 IPBR with zero UP committed BW and CAC needed for leg	[Tags]						
+	[Setup]	Create SRB call successfully and modify 2 ipbr BW to zero BW					
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4025},${IPBR_ID_4026}	${WITH_CAC_BW_7k}	${BW_ENOUGH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4026}
+	...	${IP_2}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4025},${IPBR_ID_4026}	${CALL_ID}	${WITH_CAC_BW_5k}	${BW_ENOUGH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4025}	${IP_1}	${OUT_LEG_LIST}			
+	# Create direct IuPS leg and check result ${IPBR_ID_4025},${IPBR_ID_4026} ${WITH_CAC_BW_6k} ${BW_ENOUGH} ${ERR_CODE_0} ${IPBR_ID_4025} ${IP_1}						
+	Create indirect IuPS leg and check result	${USCP}	${IPBR_ID_4025},${IPBR_ID_4026}	${WITH_CAC_BW_2k}	${INDIRECT_GTP_SUCCESS}	${BW_ENOUGH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4026}	${IP_2}	${OUT_LEG_LIST}			
+	[Teardown]	release legs created in test case					
+							
+*Keyword*							
+Create SRB call successfully	${srb_leg}	reserve srb call	${USCP}	${IPBR_ID_4095}	${WITH_CAC_BW_0}		
+	set test variable	\${CALL_ID}	${srb_leg.call_id}				
+	Set To Object	${srb_leg}	computer	${USCP}			
+	Set To Object	${srb_leg}	leg_id	IN			
+	should be equal	${srb_leg.result}	SUCCESSFUL				
+	run keyword if	'${srb_leg.result}' == 'SUCCESSFUL'	append to list	${IN_LEG_LIST}	${srb_leg}		
+							
+Create SRB call successfully and modify 1 ipbr BW to zero BW	create leg list						
+	register expect syslog	450D	No enough bandwidth when reserve UDP leg				
+	Modify IPBR successfully	${IPBR_ID_4025}		10	10	0	0
+	Modify IPBR successfully	${IPBR_ID_4026}		0	0	0	0
+	Create SRB call successfully						
+							
+Create SRB call successfully and modify 2 ipbr BW to non-zero BW	create leg list						
+	register expect syslog	450D	No enough bandwidth when reserve UDP leg				
+	Modify IPBR successfully	${IPBR_ID_4025}		10	10	0	0
+	Modify IPBR successfully	${IPBR_ID_4026}		11	10	0	0
+	Create SRB call successfully						
+							
+Create SRB call successfully and modify 2 ipbr BW to zero BW	create leg list						
+	Modify IPBR successfully	${IPBR_ID_4025}		0	0	0	0
+	Modify IPBR successfully	${IPBR_ID_4026}		0	0	0	0
+	Create SRB call successfully						
+							
+connect to target hardware and add ipbr ipro	connect to target hardware						
+	switch to active OMU						
+	Get Active CP Units						
+	Get Random USCP Unit						
+	Add IPBR successfully	${IPBR_ID_4025}	${IPBR_NAME_4025}				
+	Add IPBR successfully	${IPBR_ID_4026}	${IPBR_NAME_4026}				
+	Add IPRO successfully	${IPBR_ID_4025}	${IP_1}	${IP_1_OWNER}	${IP_1_IFACE}	${PHB_ALL}	
+	Add IPRO successfully	${IPBR_ID_4026}	${IP_2}	${IP_2_OWNER}	${IP_2_IFACE}	${PHB_ALL}	${VRF_11}
+							
+release test resource and disconnect from target hardware	release ipro with specified ipbr id	${IPBR_ID_4025}					
+	release ipro with specified ipbr id	${IPBR_ID_4026}					
+	delete IPBR successfully	${IPBR_ID_4025}					
+	delete IPBR successfully	${IPBR_ID_4026}					
+	Disconnect From Target Hardware						

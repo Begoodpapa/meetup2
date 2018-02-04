@@ -1,0 +1,745 @@
+#!/opt/nsn/bin/fsclish -f
+
+set cli built-in echo-cmd on
+
+start transaction
+add networking ipbr ipbr-id 100 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-100
+add networking ipro ipbr-id 100 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 101 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-101
+add networking ipro ipbr-id 101 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 102 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-102
+add networking ipro ipbr-id 102 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 103 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-103
+add networking ipro ipbr-id 103 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 104 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-104
+add networking ipro ipbr-id 104 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 105 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-105
+add networking ipro ipbr-id 105 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 106 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-106
+add networking ipro ipbr-id 106 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 107 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-107
+add networking ipro ipbr-id 107 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 108 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-108
+add networking ipro ipbr-id 108 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 109 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-109
+add networking ipro ipbr-id 109 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 110 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-110
+add networking ipro ipbr-id 110 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 111 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-110
+add networking ipro ipbr-id 111 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 100  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 100  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 101  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 101  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 102  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 102  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 103  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 103  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 104  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 104  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 105  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 105  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 106  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 106  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 107  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 107  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 108  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 108  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 109  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 109  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 110  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 110  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 111  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 111  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+
+add networking ipbr ipbr-id 112 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-112
+add networking ipro ipbr-id 112 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 112  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 112  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+add networking ipbr ipbr-id 113 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-113
+add networking ipro ipbr-id 113 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 113  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 113  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+add networking ipbr ipbr-id 114 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-114
+add networking ipro ipbr-id 114 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 114  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 114  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+add networking ipbr ipbr-id 115 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-115
+add networking ipro ipbr-id 115 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 115  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 115  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+add networking ipbr ipbr-id 116 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-116
+add networking ipro ipbr-id 116 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 116  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 116  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+add networking ipbr ipbr-id 117 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-117
+add networking ipro ipbr-id 117 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 117  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 117  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+add networking ipbr ipbr-id 118 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-118
+add networking ipro ipbr-id 118 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 118  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 118  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+add networking ipbr ipbr-id 119 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-119
+add networking ipro ipbr-id 119 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 119  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 119  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+add networking ipbr ipbr-id 120 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-120
+add networking ipro ipbr-id 120 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 120  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 120  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+add networking ipbr ipbr-id 121 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-121
+add networking ipro ipbr-id 121 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 121  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 121  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+add networking ipbr ipbr-id 122 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-122
+add networking ipro ipbr-id 122 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 122  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 122  ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+
+add networking ipbr ipbr-id 123 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-123
+add networking ipro ipbr-id 123 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 123  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 123 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 123 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 123
+add networking ipbr ipbr-id 124 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-124
+add networking ipro ipbr-id 124 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 124  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 124 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 124 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 124
+add networking ipbr ipbr-id 125 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-125
+add networking ipro ipbr-id 125 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 125  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 125 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 125 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 125
+add networking ipbr ipbr-id 126 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-126
+add networking ipro ipbr-id 126 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 126  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 126 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 126 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 126
+add networking ipbr ipbr-id 127 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-127
+add networking ipro ipbr-id 127 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 127  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 127 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 127 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 127
+add networking ipbr ipbr-id 128 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-128
+add networking ipro ipbr-id 128 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 128  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 128 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 128 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 128
+add networking ipbr ipbr-id 129 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-129
+add networking ipro ipbr-id 129 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 129  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 129 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 129 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 129
+add networking ipbr ipbr-id 130 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-130
+add networking ipro ipbr-id 130 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 130  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 130 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 130 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 130
+add networking ipbr ipbr-id 131 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-131
+add networking ipro ipbr-id 131 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 131  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 131 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 131 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 131
+add networking ipbr ipbr-id 132 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-132
+add networking ipro ipbr-id 132 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 132  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 132 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 132 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 132
+add networking ipbr ipbr-id 133 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-133
+add networking ipro ipbr-id 133 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 133  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 133 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 133 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 133
+add networking ipbr ipbr-id 134 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-133
+add networking ipro ipbr-id 134 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 134 dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 134 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 134 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 134
+
+add networking ipbr ipbr-id 135 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-135
+add networking ipro ipbr-id 135 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 135 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 135
+add networking ipbr ipbr-id 136 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-136
+add networking ipro ipbr-id 136 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 136 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 136
+add networking ipbr ipbr-id 137 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-137
+add networking ipro ipbr-id 137 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 137 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 137
+add networking ipbr ipbr-id 138 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-138
+add networking ipro ipbr-id 138 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 138 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 138
+add networking ipbr ipbr-id 139 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-139
+add networking ipro ipbr-id 139 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 139 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 139
+add networking ipbr ipbr-id 140 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-140
+add networking ipro ipbr-id 140 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 140 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 140
+add networking ipbr ipbr-id 141 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-141
+add networking ipro ipbr-id 141 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 141 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 141
+add networking ipbr ipbr-id 142 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-142
+add networking ipro ipbr-id 142 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 142 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 142
+add networking ipbr ipbr-id 143 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-143
+add networking ipro ipbr-id 143 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 143 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 143
+add networking ipbr ipbr-id 144 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-144
+add networking ipro ipbr-id 144 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 144 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 144
+add networking ipbr ipbr-id 145 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-144
+add networking ipro ipbr-id 145 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 145 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 145
+add networking ipbr ipbr-id 146 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-144
+add networking ipro ipbr-id 146 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 146 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 146
+
+set networking ipbr ipbr-id 147  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 147 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 147  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 147 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 148  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 148 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 148  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 148 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 149  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 149 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 149  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 149 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 150  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 150 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 150  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 150 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 151  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 151 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 151  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 151 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 152  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 152 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 152  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 152 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 153  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 153 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 153  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 153 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 154  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 154 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 154  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 154 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 155  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 155 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 155  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 155 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 156  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 156 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 156  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 156 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 157  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 157 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 157  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 157 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 158  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 158 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 158  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 158 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+
+set networking ipbr ipbr-id 159  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 159 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 159  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 159 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 159  dspm-profile-id 0 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49162 max-mux-packets 22 mux-dscp 2 phb-profile-id 2 mux-enable enable remote-mux-port 50002
+set networking ipro ipbr-id 159 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3
+set networking ipbr ipbr-id 160  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 160 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 160  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 160 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 160  dspm-profile-id 0 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49162 max-mux-packets 22 mux-dscp 2 phb-profile-id 2 mux-enable enable remote-mux-port 50002
+set networking ipro ipbr-id 160 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3
+set networking ipbr ipbr-id 161  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 161 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 161  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 161 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 161  dspm-profile-id 0 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49162 max-mux-packets 22 mux-dscp 2 phb-profile-id 2 mux-enable enable remote-mux-port 50002
+set networking ipro ipbr-id 161 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3
+set networking ipbr ipbr-id 162  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 162 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 162  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 162 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 162  dspm-profile-id 0 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49162 max-mux-packets 22 mux-dscp 2 phb-profile-id 2 mux-enable enable remote-mux-port 50002
+set networking ipro ipbr-id 162 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3
+set networking ipbr ipbr-id 163  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 163 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 163  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 163 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 163  dspm-profile-id 0 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49162 max-mux-packets 22 mux-dscp 2 phb-profile-id 2 mux-enable enable remote-mux-port 50002
+set networking ipro ipbr-id 163 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3
+set networking ipbr ipbr-id 164  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 164 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 164  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 164 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 164  dspm-profile-id 0 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49162 max-mux-packets 22 mux-dscp 2 phb-profile-id 2 mux-enable enable remote-mux-port 50002
+set networking ipro ipbr-id 164 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3
+set networking ipbr ipbr-id 165  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 165 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 165  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 165 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 165  dspm-profile-id 0 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49162 max-mux-packets 22 mux-dscp 2 phb-profile-id 2 mux-enable enable remote-mux-port 50002
+set networking ipro ipbr-id 165 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3
+set networking ipbr ipbr-id 166  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 166 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 166  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 166 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 166  dspm-profile-id 0 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49162 max-mux-packets 22 mux-dscp 2 phb-profile-id 2 mux-enable enable remote-mux-port 50002
+set networking ipro ipbr-id 166 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3
+set networking ipbr ipbr-id 167  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 167 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 167  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 167 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 167  dspm-profile-id 0 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49162 max-mux-packets 22 mux-dscp 2 phb-profile-id 2 mux-enable enable remote-mux-port 50002
+set networking ipro ipbr-id 167 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 168  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 168 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 168  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 168 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 168  dspm-profile-id 0 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49162 max-mux-packets 22 mux-dscp 2 phb-profile-id 2 mux-enable enable remote-mux-port 50002
+set networking ipro ipbr-id 168 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3
+set networking ipbr ipbr-id 169  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 169 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 169  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 169 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 169  dspm-profile-id 0 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49162 max-mux-packets 22 mux-dscp 2 phb-profile-id 2 mux-enable enable remote-mux-port 50002
+set networking ipro ipbr-id 169 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3
+set networking ipbr ipbr-id 170  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 170 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 170  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 170 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+set networking ipbr ipbr-id 170  dspm-profile-id 0 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49162 max-mux-packets 22 mux-dscp 2 phb-profile-id 2 mux-enable enable remote-mux-port 50002
+set networking ipro ipbr-id 170 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3
+
+set networking ipbr ipbr-id 171  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 171 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 171  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 171 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+delete networking ipro ipbr-id 171 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 171
+set networking ipbr ipbr-id 172  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 172 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 172  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 172 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+delete networking ipro ipbr-id 172 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 172
+set networking ipbr ipbr-id 173  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 173 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 173  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 173 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+delete networking ipro ipbr-id 173 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 173
+set networking ipbr ipbr-id 174  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 174 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 174  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 174 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+delete networking ipro ipbr-id 174 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 174
+set networking ipbr ipbr-id 175  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 175 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 175  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 175 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+delete networking ipro ipbr-id 175 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 175
+set networking ipbr ipbr-id 176  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 176 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 176  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 176 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+delete networking ipro ipbr-id 176 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 176
+set networking ipbr ipbr-id 177  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 177 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 177  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 177 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+delete networking ipro ipbr-id 177 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 177
+set networking ipbr ipbr-id 178  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 178 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 178  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 178 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+delete networking ipro ipbr-id 178 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 178
+set networking ipbr ipbr-id 179  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 179 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 179  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 179 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+delete networking ipro ipbr-id 179 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 179
+set networking ipbr ipbr-id 180  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 180 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 180  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 180 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+delete networking ipro ipbr-id 180 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 180
+set networking ipbr ipbr-id 181  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 181 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 181  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 181 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+delete networking ipro ipbr-id 181 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 181
+set networking ipbr ipbr-id 182  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 182 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 182  dspm-profile-id 2 ifc-nrtdch E-RED ifc-nrthsdpa E-RED scheduler-type none local-mux-port 49161 max-mux-packets 21 mux-dscp 1 phb-profile-id 1 mux-enable enable remote-mux-port 50001
+set networking ipro ipbr-id 182 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4
+delete networking ipro ipbr-id 182 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 182
+
+set networking ipbr ipbr-id 183  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 183 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 183 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 183
+set networking ipbr ipbr-id 184  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 184 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 184 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 184
+set networking ipbr ipbr-id 185  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 185 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 185 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 185
+set networking ipbr ipbr-id 186  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 186 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 186 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 186
+set networking ipbr ipbr-id 187  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 187 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 187 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 187
+set networking ipbr ipbr-id 188  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 188 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 188 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 188
+set networking ipbr ipbr-id 189  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 189 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 189 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 189
+set networking ipbr ipbr-id 190  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 190 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 190 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 190
+set networking ipbr ipbr-id 191  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 191 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 191 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 191
+set networking ipbr ipbr-id 192  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 192 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 192 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 192
+set networking ipbr ipbr-id 193 dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 193 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 193 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 193
+set networking ipbr ipbr-id 194  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 194 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 194 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 194
+
+set networking ipbr ipbr-id 195  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 195 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 195 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 195
+add networking ipbr ipbr-id 195 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-195
+add networking ipro ipbr-id 195 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 196  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 196 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 196 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 196
+add networking ipbr ipbr-id 196 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-196
+add networking ipro ipbr-id 196 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 197  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 197 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 197 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 197
+add networking ipbr ipbr-id 197 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-197
+add networking ipro ipbr-id 197 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 198  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 198 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 198 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 198
+add networking ipbr ipbr-id 198 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-198
+add networking ipro ipbr-id 198 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 199  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 199 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 199 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 199
+add networking ipbr ipbr-id 199 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-199
+add networking ipro ipbr-id 199 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 200  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 200 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 200 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 200
+add networking ipbr ipbr-id 200 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-200
+add networking ipro ipbr-id 200 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 201  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 201 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 201 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 201
+add networking ipbr ipbr-id 201 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-201
+add networking ipro ipbr-id 201 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 202  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 202 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 202 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 202
+add networking ipbr ipbr-id 202 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-202
+add networking ipro ipbr-id 202 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 203  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 203 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 203 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 203
+add networking ipbr ipbr-id 203 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-192
+add networking ipro ipbr-id 203 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 204  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 204 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 204 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 204
+add networking ipbr ipbr-id 204 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-193
+add networking ipro ipbr-id 204 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 205  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 205 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 205 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 205
+add networking ipbr ipbr-id 205 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-194
+add networking ipro ipbr-id 205 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 206  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 206 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 206 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 206
+add networking ipbr ipbr-id 206 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-194
+add networking ipro ipbr-id 206 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+
+delete networking ipro ipbr-id 207 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 207
+add networking ipbr ipbr-id 207 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-207
+add networking ipro ipbr-id 207 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 208 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 208
+add networking ipbr ipbr-id 208 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-208
+add networking ipro ipbr-id 208 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 209 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 209
+add networking ipbr ipbr-id 209 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-209
+add networking ipro ipbr-id 209 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 210 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 210
+add networking ipbr ipbr-id 210 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-210
+add networking ipro ipbr-id 210 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 211 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 211
+add networking ipbr ipbr-id 211 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-211
+add networking ipro ipbr-id 211 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 212 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 212
+add networking ipbr ipbr-id 212 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-212
+add networking ipro ipbr-id 212 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 213 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 213
+add networking ipbr ipbr-id 213 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-213
+add networking ipro ipbr-id 213 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 214 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 214
+add networking ipbr ipbr-id 214 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-213
+add networking ipro ipbr-id 214 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 215 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 215
+add networking ipbr ipbr-id 215 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-203
+add networking ipro ipbr-id 215 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 216 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 216
+add networking ipbr ipbr-id 216 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-204
+add networking ipro ipbr-id 216 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 217 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 217
+add networking ipbr ipbr-id 217 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-205
+add networking ipro ipbr-id 217 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 218 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 218
+add networking ipbr ipbr-id 218 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-206
+add networking ipro ipbr-id 218 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+
+delete networking ipro ipbr-id 219 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 219
+add networking ipbr ipbr-id 219 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-220
+add networking ipro ipbr-id 219 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 219  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 219 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 220 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 220
+add networking ipbr ipbr-id 220 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-220
+add networking ipro ipbr-id 220 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 220  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 220 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 221 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 221
+add networking ipbr ipbr-id 221 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-221
+add networking ipro ipbr-id 221 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 221  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 221 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 222 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 222
+add networking ipbr ipbr-id 222 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-222
+add networking ipro ipbr-id 222 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 222  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 222 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 223 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 223
+add networking ipbr ipbr-id 223 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-223
+add networking ipro ipbr-id 223 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 223  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 223 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 224 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 224
+add networking ipbr ipbr-id 224 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-224
+add networking ipro ipbr-id 224 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 224  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 224 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 225 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 225
+add networking ipbr ipbr-id 225 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-225
+add networking ipro ipbr-id 225 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 225  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 225 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 226 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 226
+add networking ipbr ipbr-id 226 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-226
+add networking ipro ipbr-id 226 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 226  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 226 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 227 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 227
+add networking ipbr ipbr-id 227 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-215
+add networking ipro ipbr-id 227 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 227  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 227 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 228 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 228
+add networking ipbr ipbr-id 228 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-216
+add networking ipro ipbr-id 228 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 228  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 228 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 229 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 229
+add networking ipbr ipbr-id 229 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-217
+add networking ipro ipbr-id 229 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 229  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 229 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+delete networking ipro ipbr-id 230 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 230
+add networking ipbr ipbr-id 230 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-218
+add networking ipro ipbr-id 230 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+set networking ipbr ipbr-id 230  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 230 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+
+delete networking ipro ipbr-id 231 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 231
+add networking ipbr ipbr-id 231 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-231
+add networking ipro ipbr-id 231 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 231 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 231
+delete networking ipro ipbr-id 232 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 232
+add networking ipbr ipbr-id 232 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-232
+add networking ipro ipbr-id 232 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 232 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 232
+delete networking ipro ipbr-id 233 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 233
+add networking ipbr ipbr-id 233 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-233
+add networking ipro ipbr-id 233 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 233 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 233
+delete networking ipro ipbr-id 234 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 234
+add networking ipbr ipbr-id 234 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-234
+add networking ipro ipbr-id 234 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 234 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 234
+delete networking ipro ipbr-id 235 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 235
+add networking ipbr ipbr-id 235 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-235
+add networking ipro ipbr-id 235 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 235 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 235
+delete networking ipro ipbr-id 236 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 236
+add networking ipbr ipbr-id 236 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-236
+add networking ipro ipbr-id 236 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 236 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 236
+delete networking ipro ipbr-id 237 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 237
+add networking ipbr ipbr-id 237 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-237
+add networking ipro ipbr-id 237 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 237 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 237
+delete networking ipro ipbr-id 238 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 238
+add networking ipbr ipbr-id 238 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-227
+add networking ipro ipbr-id 238 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 238 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 238
+delete networking ipro ipbr-id 239 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 239
+add networking ipbr ipbr-id 239 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-228
+add networking ipro ipbr-id 239 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 239 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 239
+delete networking ipro ipbr-id 240 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 240
+add networking ipbr ipbr-id 240 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-229
+add networking ipro ipbr-id 240 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 240 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 240
+delete networking ipro ipbr-id 241 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 241
+add networking ipbr ipbr-id 241 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-230
+add networking ipro ipbr-id 241 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipro ipbr-id 241 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 241
+
+delete networking ipro ipbr-id 242 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 242
+delete networking ipro ipbr-id 243 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+delete networking ipbr ipbr-id 243
+
+set networking ipbr ipbr-id 244  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 244 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+set networking ipbr ipbr-id 245  dspm-profile-id 1 ifc-nrtdch IFC ifc-nrthsdpa IFC scheduler-type virtualQueue local-mux-port 49160 max-mux-packets 20 mux-dscp 1 phb-profile-id 10 mux-enable disable remote-mux-port 50000
+set networking ipro ipbr-id 245 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20 phb-set EF,AF4,AF3,AF2,AF1
+
+add networking ipbr ipbr-id 247 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-218
+add networking ipro ipbr-id 247 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 248 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-218
+add networking ipro ipbr-id 248 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+commit transaction
+
+
+quit

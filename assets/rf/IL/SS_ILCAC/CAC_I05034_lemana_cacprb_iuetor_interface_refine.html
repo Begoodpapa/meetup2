@@ -1,0 +1,675 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>CAC I05034 lemana cacprb iuetor interface refine</title>
+</head>
+<body>
+<h1>CAC I05034 lemana cacprb iuetor interface refine</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Setting</th>
+</tr>
+<tr>
+<td class="name">Suite Setup</td>
+<td>Connect to Target Hardware and switch to active OMU</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Suite Teardown</td>
+<td>Disconnect From Target Hardware</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Force Tags</td>
+<td>Product_Backlog_ID-B01180</td>
+<td>Iteration_ID-I05034</td>
+<td>owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com</td>
+<td>element-il</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>exec_level-pre</td>
+<td>exec_type-automatic</td>
+<td>type-FUT</td>
+<td>hw_env-RNC</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>hw_env-RNC_S0</td>
+<td>hw_env-RNC_S1</td>
+<td>hw_env-ADA</td>
+<td>release-IL5</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>ct-positive</td>
+<td>QL-4</td>
+<td>HW_TYPE-ADA_FTLB</td>
+<td>HW_TYPE-BCN_A1</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>BCN_STEP-BCN_S0</td>
+<td>PRS_ID-XXX</td>
+<td>FRS_ID-XXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>./resources/IPBR_basic_operation_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>./resources/cac_basic_operation_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>./resources/common_operation_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../SS_ILCallMgmt/resources/cm_resource.tsv</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>il.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>Collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variable</th>
+</tr>
+<tr>
+<td class="name">${BITRATE_300KB}</td>
+<td>300000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${BITRATE_200KB}</td>
+<td>200000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IPBR_ID_4020}</td>
+<td>4020</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${BITRATE_100KB}</td>
+<td>100000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${BITRATE_50KB}</td>
+<td>50000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${RES_TYPE}</td>
+<td>OUT</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IPBR_ID_9}</td>
+<td>9</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Case</th>
+</tr>
+<tr>
+<td class="name"><a name="test_Reserve and release GTP tunnel and leg with direct mode">Reserve and release GTP tunnel and leg with direct mode</a></td>
+<td>[Tags]</td>
+<td>TRM_CAC.FUT.002.AT.I05034</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>create leg list</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>Directly Create GTP Leg Succcessfully</td>
+<td>${IPBR_ID}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Directly Release GTP Leg Successfully</td>
+<td>${leg_info.call_id}</td>
+<td>${IPBR_ID}</td>
+<td>${BITRATE_300KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>run keyword if test failed</td>
+<td>release legs created in test case</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Reserve and release GTP tunnel and leg with indirect mode">Reserve and release GTP tunnel and leg with indirect mode</a></td>
+<td>[Tags]</td>
+<td>TRM_CAC.FUT.001.AT.I05034</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>create leg list</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>cac_basic_operation_resource.Create GTP Tunnel</td>
+<td>${USCP}</td>
+<td>${IPBR_ID}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>NCAC=0,FMBR=${BITRATE_100KB},FABR=${BITRATE_50KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Append to List</td>
+<td>${OUT_LEG_LIST}</td>
+<td>${leg_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>create GTP leg successfully</td>
+<td>${USCP}</td>
+<td>${IPBR_ID}</td>
+<td>${leg_info.call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_300KB}</td>
+<td>${BITRATE_200KB}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>release GTP leg keep tunnel</td>
+<td>${USCP}</td>
+<td>${leg_info.call_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>create GTP leg successfully</td>
+<td>${USCP}</td>
+<td>${IPBR_ID}</td>
+<td>${leg_info.call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_100KB}</td>
+<td>${BITRATE_50KB}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Directly Release GTP Leg Successfully</td>
+<td>${leg_info.call_id}</td>
+<td>${IPBR_ID}</td>
+<td>${BITRATE_100KB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BITRATE_50KB}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>run keyword if test failed</td>
+<td>release legs created in test case</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keyword</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Connect to Target Hardware and switch to active OMU">Connect to Target Hardware and switch to active OMU</a></td>
+<td>connect to target hardware</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>switch to active OMU</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${IPBR_ID}</td>
+<td>Set Variable If</td>
+<td>'%{HW}' == 'ADA'</td>
+<td>${IPBR_ID_9}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${IPBR_ID_4020}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Suite Variable</td>
+<td>\${IPBR_ID}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Get Active CP Units</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Get Random USCP Unit</td>
+<td>${FLASH_PRE_INDEX}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Directly Create GTP Leg Succcessfully">Directly Create GTP Leg Succcessfully</a></td>
+<td>[Arguments]</td>
+<td>${ipbr_id}</td>
+<td>${max_bitrate}</td>
+<td>${avg_bitrate}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_org_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>create GTP leg direct</td>
+<td>${USCP}</td>
+<td>${ipbr_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>NCAC=0,FMBR=${max_bitrate},FABR=${avg_bitrate}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Append to List</td>
+<td>${OUT_LEG_LIST}</td>
+<td>${leg_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_new_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${increase_bitrate}</td>
+<td>evaluate</td>
+<td>${ipbr_new_info.res_bw}-${ipbr_org_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${expect_bitrate}</td>
+<td>evaluate</td>
+<td>${max_bitrate}*0.2 + ${avg_bitrate}*0.8</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal as integers</td>
+<td>${increase_bitrate}</td>
+<td>${expect_bitrate}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${leg_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Directly Release GTP Leg Successfully">Directly Release GTP Leg Successfully</a></td>
+<td>[Arguments]</td>
+<td>${leg_info}</td>
+<td>${ipbr_id}</td>
+<td>${max_bitrate}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${avg_bitrate}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_org_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>release GTP leg</td>
+<td>${USCP}</td>
+<td>${leg_info}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should contain</td>
+<td>${result}</td>
+<td>RELEASING SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_new_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${decrease_bitrate}</td>
+<td>evaluate</td>
+<td>${ipbr_org_info.res_bw}-${ipbr_new_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${expect_bitrate}</td>
+<td>evaluate</td>
+<td>${max_bitrate}*0.2 + ${avg_bitrate}*0.8</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal as integers</td>
+<td>${decrease_bitrate}</td>
+<td>${expect_bitrate}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_create GTP leg successfully">create GTP leg successfully</a></td>
+<td>[Arguments]</td>
+<td>${USCP}</td>
+<td>${ipbr_id}</td>
+<td>${call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${max_bitrate}</td>
+<td>${avg_bitrate}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_org_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${leg_info}</td>
+<td>create GTP leg</td>
+<td>${USCP}</td>
+<td>${call_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${ipbr_id}</td>
+<td>NCAC=0,FMBR=${max_bitrate},FABR=${avg_bitrate}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${leg_info.result}</td>
+<td>SUCCESSFUL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Append to List</td>
+<td>${OUT_LEG_LIST}</td>
+<td>${leg_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ipbr_new_info}</td>
+<td>get ipbr resource info</td>
+<td>${ipbr_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${increase_bitrate}</td>
+<td>evaluate</td>
+<td>${ipbr_new_info.res_bw}-${ipbr_org_info.res_bw}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${expect_bitrate}</td>
+<td>evaluate</td>
+<td>${max_bitrate}*0.2 +${avg_bitrate}*0.8</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal as integers</td>
+<td>${increase_bitrate}</td>
+<td>${expect_bitrate}</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

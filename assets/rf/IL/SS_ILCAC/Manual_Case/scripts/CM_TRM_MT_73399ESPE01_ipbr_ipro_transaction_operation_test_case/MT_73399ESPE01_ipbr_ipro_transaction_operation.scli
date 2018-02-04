@@ -1,0 +1,41 @@
+#!/opt/nsn/bin/fsclish -f
+
+set cli built-in echo-cmd on
+
+start transaction
+
+add networking ipbr ipbr-id 4030 committed-bandwidth 100000 committed-dcn-bandwidth 0 committed-sig-bandwidth 0 ipbr-name WBTS-1 route-bandwidth 300000
+add networking ipbr ipbr-id 4040 committed-bandwidth 100000 committed-dcn-bandwidth 0 committed-sig-bandwidth 0 ipbr-name WBTS-1 route-bandwidth 300000
+
+show networking ipbr ipbr-id 4030
+show networking ipbr ipbr-id 4040
+
+add networking address dedicated /QNUP-0 iface lo ip-address 123.123.123.123/32
+
+add networking ipro ipbr-id 4030 ip-address 123.123.123.123 iface lo owner /QNUP-0
+add networking ipro ipbr-id 4040 ip-address 123.123.123.123 iface lo owner /QNUP-0
+
+show networking ipro ipbr-id 4030
+show networking ipro ipbr-id 4040
+
+set networking ipbr ipbr-id 4030 committed-bandwidth 200000
+set networking ipro ipbr-id 4040 ip-address 123.123.123.123 iface lo owner /QNUP-0 phb-set EF,AF4,AF3
+
+commit transaction
+
+start transaction
+
+delete networking ipro ipbr-id 4030 ip-address 123.123.123.123 iface lo owner /QNUP-0
+delete networking ipro ipbr-id 4040 ip-address 123.123.123.123 iface lo owner /QNUP-0
+
+delete networking ipbr ipbr-id 4030
+delete networking ipbr ipbr-id 4040
+
+delete networking address dedicated /QNUP-0 iface lo ip-address 123.123.123.123/32
+
+commit transaction
+
+quit
+
+# Run following command to test, if no print out, it is OK
+# ./MT_73399ESPE01_ipbr_ipro_transaction_operation.scli | grep -i fail

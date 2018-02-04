@@ -1,0 +1,154 @@
+*Setting*							
+Documentation	the dscp value used in all test cases is based on the default dscp profile 0						
+Suite Setup	connect to target hardware and reserve test resources						
+Suite Teardown	release test resources and disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B01454	Iteration_ID-I00907	PRS_ID-PRS_4020	EFS_ID-RNC_EFS_1709_328	PRS_ID-PRS_4022	EFS_ID-RNC_EFS_1709_329	EFS_ID-RNC_EFS_1709_355
+...	hw_env-RNC	hw_env-ADA	hw_env-RNC_S0	hw_env-RNC_S1	type-FUT	exec_type-automatic	element-IL
+...	release-IL1	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	exec_level-pre	QL-6	HW_TYPE-BCN_A1	HW_TYPE-ADA_FTLB	BCN_STEP-BCN_S0
+...	FRS_ID-XXX	PRS_ID-XXX					
+Resource	il.html						
+Resource	./resources/common_operation_resource.html						
+Resource	./resources/IPBR_basic_operation_resource.html						
+Resource	./resources/cac_basic_operation_resource.html						
+Library	Collections						
+							
+*Variable*							
+${IPBR_ID_4012}	4012						
+${IPBR_ID_4013}	4013						
+${IPBR_ID_4095}	4095						
+${DSP_VALUE_BE}	37						
+${DSP_VALUE_EF}	2E						
+${DSP_VALUE_AF1}	A						
+${DSP_VALUE_AF2}	12						
+${DSP_VALUE_AF3}	1A						
+${DSP_VALUE_AF4}	26						
+${TWO_GROUP}	2						
+${ACTIVE_USCP}	USCP-0						
+${IPBR_ID_4003}	4003						
+${IPBR_ID_4004}	4004						
+${IPBR_ID_1}	1						
+							
+*Test Case*							
+Reserve IuB leg with two IP based routes with PHB differentiation	[Tags]	CAC_VLAN.FUT.001.AT.I00907	ct-positive				
+	[Setup]	reserve IPROs with different IPBR IDs and Iu Leg for the test					
+	create Iub Leg with PHB Class setting AF4 based on 2 IPBR						
+	create Iub Leg with PHB Class setting AF2 based on 2 IPBR						
+	[Teardown]	release test IPRO and all legs reserved for the case					
+							
+Reserve IuB leg with one IP based route, two different logical interfaces with PHB differentiation	[Tags]	CAC_VLAN.FUT.002.AT.I00907	ct-positive				
+	[Setup]	reserve IPROs with same IPBR ID and Iu Leg for the test					
+	create Iub Leg with PHB Class setting AF4 based on one IPBR						
+	create Iub Leg with PHB Class setting AF2 based on one IPBR						
+	[Teardown]	release test IPRO with same IPBR and all legs reserved for the case					
+							
+Reserve IuB leg with IPRO's PHB class setting not match the requirement	[Tags]	CAC_VLAN.FUT.003.AT.I00907	ct-negative				
+	[Setup]	reserve IPRO which has the PHB setting not full configuration and Iu Leg for the test					
+	register expect error syslog						
+	create Iub Leg with PHB Class setting AF3 based on one IPBR should be failed						
+	[Teardown]	release test IPRO which has the PHB setting not full configuration and all legs reserved for the case					
+							
+Reserve IuB leg with one IP based route, two different logical interfaces with PHB class setting ALL	[Tags]	CAC_VLAN.FUT.004.AT.I00907	ct-positive				
+	[Setup]	reserve IPROs with PHB Class all enabled based on one IPBR ID and Iu leg for the test					
+	reserve four IuB legs and the IP address should be not same to the last one						
+	[Teardown]	release IPROs with PHB Class all enabled based on one IPBR ID and all legs for the test					
+							
+*Keyword*							
+reserve IPROs with PHB Class all enabled based on one IPBR ID and Iu leg for the test	Add IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}		
+	Add IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}		
+	create leg list						
+	create RTP Leg for the test						
+							
+reserve four IuB legs and the IP address should be not same to the last one	set test variable	\${PRE_IP}	0.0.0.0				
+	: FOR	${index}	IN RANGE	4			
+		${iub_leg}	create iub leg	USCP-0	${IPBR_ID_TEST_1}	${CALL_ID}	NCAC=1,DSCP=${DSP_VALUE_AF2}
+		should be equal	${iub_leg.result}	SUCCESSFUL			
+		Append to List	${IN_LEG_LIST}	${iub_leg}			
+		should not be equal	${iub_leg.legs['${iub_leg.leg_id}'].local_ip}	${PRE_IP}			
+		set test variable	\${PRE_IP}	${iub_leg.legs['${iub_leg.leg_id}'].local_ip}			
+							
+release IPROs with PHB Class all enabled based on one IPBR ID and all legs for the test	release legs created in test case						
+	delete IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	${DEL_MODE_FORCE}	
+	delete IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}	${DEL_MODE_FORCE}	
+							
+reserve IPRO which has the PHB setting not full configuration and Iu Leg for the test	Add IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	EF,AF4	
+	Add IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}	AF2,AF1,BE	
+	create leg list						
+	create RTP Leg for the test						
+							
+create Iub Leg with PHB Class setting AF3 based on one IPBR should be failed	${iub_leg_info}	create iub leg	${ACTIVE_USCP}	${IPBR_ID_TEST_1}	${CALL_ID}	NCAC=1,DSCP=${DSP_VALUE_AF3}	
+	run keyword if	'${iub_leg_info.result}'=='SUCCESSFUL'	Append to List	${IN_LEG_LIST}	${iub_leg_info}		
+	should be equal	${iub_leg_info.result}	FAILED				
+							
+release test IPRO which has the PHB setting not full configuration and all legs reserved for the case	release legs created in test case						
+	delete IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	${DEL_MODE_FORCE}	
+	delete IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}	${DEL_MODE_FORCE}	
+							
+reserve IPROs with same IPBR ID and Iu Leg for the test	Add IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	EF,AF4,AF3	
+	Add IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}	AF2,AF1,BE	
+	create leg list						
+	create RTP Leg for the test						
+							
+create Iub Leg with PHB Class setting AF4 based on one IPBR	${iub_leg_info}	create iub leg	${ACTIVE_USCP}	${IPBR_ID_TEST_1}	${CALL_ID}	NCAC=1,DSCP=${DSP_VALUE_AF4}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	assigned IP address by CACPRB should be equal to expect IP address	${iub_leg_info}	${IP_GROUP_1.ip_addr}				
+							
+create Iub Leg with PHB Class setting AF2 based on one IPBR	${iub_leg_info}	create iub leg	${ACTIVE_USCP}	${IPBR_ID_TEST_1}	${CALL_ID}	NCAC=1,DSCP=${DSP_VALUE_AF2}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	assigned IP address by CACPRB should be equal to expect IP address	${iub_leg_info}	${IP_GROUP_2.ip_addr}				
+							
+release test IPRO with same IPBR and all legs reserved for the case	release legs created in test case						
+	delete IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	${DEL_MODE_FORCE}	
+	delete IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}	${DEL_MODE_FORCE}	
+							
+assigned IP address by CACPRB should be equal to expect IP address	[Arguments]	${leg_info}	${target_ip}				
+	should be equal	${leg_info.legs['${leg_info.leg_id}'].local_ip}	${target_ip}				
+							
+reserve IPROs with different IPBR IDs and Iu Leg for the test	Add IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	EF,AF4,AF3	
+	Add IPRO successfully	${IPBR_ID_TEST_2}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}	AF2,AF1,BE	
+	create leg list						
+	create RTP Leg for the test						
+							
+create Iub Leg with PHB Class setting AF4 based on 2 IPBR	${iub_leg_info}	create iub leg	${ACTIVE_USCP}	${IPBR_ID_TEST_1},${IPBR_ID_TEST_2}	${CALL_ID}	NCAC=1,DSCP=${DSP_VALUE_AF4}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	assigned IP address by CACPRB should be equal to expect IP address	${iub_leg_info}	${IP_GROUP_1.ip_addr}				
+							
+create Iub Leg with PHB Class setting AF2 based on 2 IPBR	${iub_leg_info}	create iub leg	${ACTIVE_USCP}	${IPBR_ID_TEST_1},${IPBR_ID_TEST_2}	${CALL_ID}	NCAC=1,DSCP=${DSP_VALUE_AF2}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	assigned IP address by CACPRB should be equal to expect IP address	${iub_leg_info}	${IP_GROUP_2.ip_addr}				
+							
+release test IPRO and all legs reserved for the case	release legs created in test case						
+	delete IPRO successfully	${IPBR_ID_TEST_1}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	${DEL_MODE_FORCE}	
+	delete IPRO successfully	${IPBR_ID_TEST_2}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}	${DEL_MODE_FORCE}	
+							
+create RTP Leg for the test	${result}	create rtp leg	${ACTIVE_USCP}	${IPBR_ID_TEST_3}			
+	should be equal	${result.result}	SUCCESSFUL				
+	set test variable	\${CALL_ID}	${result.call_id}				
+	Append to List	${OUT_LEG_LIST}	${result}				
+							
+connect to target hardware and reserve test resources	connect to target hardware						
+	switch to active OMU						
+	run keyword if	'%{HW}' == 'ADA'	Set Test Resource for ADA				
+	run keyword if	'%{HW}' == 'RNC'	Set Test Resource for RNC				
+							
+release test resources and disconnect from target hardware	disconnect from target hardware						
+							
+Set Test Resource for RNC	${IP_GROUP}	select random IP address and recovery group	${TWO_GROUP}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+	Set Suite Variable	\${IP_GROUP_2}	${IP_GROUP[1]}				
+	Set Suite Variable	\${IPBR_ID_TEST_1}	${IPBR_ID_4012}				
+	Set Suite Variable	\${IPBR_ID_TEST_2}	${IPBR_ID_4013}				
+	Set Suite Variable	\${IPBR_ID_TEST_3}	${IPBR_ID_4095}				
+							
+Set Test Resource for ADA	${IP_GROUP}	select random IP address and recovery group ADA	${TWO_GROUP}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+	Set Suite Variable	\${IP_GROUP_2}	${IP_GROUP[1]}				
+	Set Suite Variable	\${IPBR_ID_TEST_1}	${IPBR_ID_4003}				
+	Set Suite Variable	\${IPBR_ID_TEST_2}	${IPBR_ID_4004}				
+	Set Suite Variable	\${IPBR_ID_TEST_3}	${IPBR_ID_1}				
+							
+register expect error syslog	register expect syslog	ail to get IPRO, no IPRO available, IPBR ID = 4012, 65535	cac_res_reserve_ack_s error(0x450e). ipbr_list=0xfac/0xffff.	fail to get interface unit, status = 0x450e.	alloc_logi_tt_cac_res: cac_res_reserve_req__r error(0x450e)	leg_create_proc: error(0x450e)	work_rm_ip_res_req_proc: error(0x450E)
+	...	RMUH02: Create call failed. error_code is 17678 (0x450E)					

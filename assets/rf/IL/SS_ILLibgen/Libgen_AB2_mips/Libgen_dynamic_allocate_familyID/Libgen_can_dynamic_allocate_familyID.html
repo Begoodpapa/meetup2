@@ -1,0 +1,440 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+
+
+<style type="text/css">
+html {
+font-family: Arial,Helvetica,sans-serif;
+background-color: white;
+color: black;
+}
+p {
+max-width: 60em;
+}
+table {
+border-collapse: collapse;
+empty-cells: show;
+margin: 1em 0em;
+border: 0.1em solid black;
+}
+th, td {
+border-style: solid;
+border-width: 0.05em 0.1em;
+border-color: black;
+padding: 0.1em 0.2em;
+height: 1.5em;
+}
+th {
+background-color: rgb(192, 192, 192);
+color: black;
+border-width: 0.1em;
+font-weight: bold;
+text-align: center;
+text-transform: capitalize;
+letter-spacing: 0.1em;
+}
+/* Widths of named columns */
+col.name {
+width: 10em;
+}
+.action, .value, .arg {
+width: 15em;
+}
+/* Properties for the name column - td:first-child should work in CSS 2.1 avare browsers (tested in Firefox)
+- col.name is against specs but works in IE
+*/
+td:first-child, col.name {
+background-color: rgb(240, 240, 240);
+text-transform: capitalize;
+letter-spacing: 0.1em;
+}
+/* required for IE */
+th {
+font-style: normal;
+}
+</style><title>Libgen Can Dynamic Allocate FamilyID</title></head><body>
+<h1>Libgen Can Dynamic Allocate FamilyID</h1>
+<table style="height: 286px; width: 1184.2px;" border="1">
+<colgroup span="99"><col class="name"><col class="value" span="4"></colgroup><thead><tr>
+<th style="height: 38px;">Setting</th>
+<th style="height: 38px;">Value</th>
+<th style="height: 38px;">Value</th>
+<th style="height: 38px;">value</th>
+<th style="width: 229px; height: 38px;">Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="height: 55px;">Force
+Tags</td>
+<td style="height: 55px;">Product_Backlog_ID-B01277</td>
+<td style="height: 55px;">Iteration_ID-I00680</td>
+<td style="height: 55px;">PRS_ID-IL_PRS_2582</td>
+<td style="width: 229px; height: 55px;">Owner-<font style="font-family: Arial;" color="#0000ff" face="Courier New" size="-1"><span style="color: black;">I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</span> 
+      </font></td>
+</tr>
+<tr>
+<td style="height: 45px;">...</td>
+<td style="height: 45px;">element-IL</td>
+<td style="height: 45px;">exec_type-automatic</td>
+<td style="height: 45px;">type-FUT</td>
+<td style="height: 45px;">QL-1</td>
+<td style="width: 229px; height: 45px;">release-IL1_RIS2</td>
+</tr>
+<tr>
+<td style="height: 49px;">...</td>
+<td style="height: 49px;">reviewer-zhiyu.yang@nsn.com</td>
+<td style="height: 49px;">rw-formal&nbsp;</td>
+<td style="height: 49px;">hw_env-AB</td>
+<td style="height: 49px;">
+      <br>
+</td>
+</tr>
+<tr>
+<td style="height: 35px;">Resource</td>
+<td style="height: 35px;">resources/Libgen.html</td>
+<td style="height: 35px;"><br>
+</td>
+<td style="height: 35px;"><br>
+</td>
+<td style="width: 229px; height: 35px;"><br>
+</td>
+</tr>
+<tr>
+<td>suite setup</td>
+<td>Connect To SUT </td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>suite teardown</td>
+<td>Disconnect From SUT</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td style="width: 229px;"><br>
+</td>
+</tr>
+</tbody>
+</table>
+<table style="width: 1180.8px;" border="1">
+<colgroup span="99"><col class="name"><col class="value" span="4"></colgroup><thead><tr>
+<th style="width: 331px;">Variable</th>
+<th style="width: 107px;">Value</th>
+<th style="width: 98px;">Value</th>
+<th>Value</th>
+<th style="width: 215px;">Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>${FAMILYID MAX VAULE}</td>
+<td>0xffff</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr><tr><td>${FAMILYID COMMON VAULE}</td><td>0x1770</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${PRB NAME}</td><td>ilglovar</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${PRB COUNT ONE}</td><td>1</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${PRB COUNT TWO}</td><td>2</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr>
+</tbody>
+</table>
+<table style="width: 1223.4px;" border="1">
+<colgroup span="99"><col class="name"><col class="action"><col class="arg" span="3"></colgroup><thead><tr>
+<th style="width: 218px;">Test Case</th>
+<th style="width: 235px;">Action</th>
+<th style="width: 230px;">Argument</th>
+<th style="width: 189px;">Argument</th>
+<th style="width: 166px;">Argument</th>
+<td style="width: 130px;">Argument</td>
+</tr>
+</thead><tbody>
+<tr>
+<td style="font-family: Arial;" class="name"><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;; color: black;" lang="EN-GB">Libgen Can Dynamic Allocate FamilyID Which FamilyID is 0xffff</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;; color: rgb(153, 153, 153);" lang="EN-GB"><span style="color: black;"></span><br>
+</span></td>
+<td>[Tags]</td>
+<td><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;"></span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;"></span>ATC_ID-Libgen<span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">.FUT.001.AT.I00680</span></td>
+<td><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;"></span><br>
+<span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;"></span></td>
+<td><br>
+<span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;"></span></td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>A prb which familyID is 0xffff run success with dynamic allocate familyID in libgen&nbsp;</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>The same prb run success with dynamic allocate familyID in libgen&nbsp;<span style="text-decoration: underline;"></span></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr><tr><td><br>
+</td><td>The count of running prb should be equal to &nbsp;two</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Stop Testprb</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>Normal Prb Excuted Failure Due To The FamilyID Is Already Exist</td><td>[Tags]</td><td><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;"></span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;"></span>ATC_ID-Libgen<span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;;">.FUT.002.AT.I00680</span></td><td>ct-negative</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>A prb which familyID is common run success&nbsp;</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>The&nbsp;prb run failure with same familyID </td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>The count of running prb should be equal to one &nbsp;</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Stop&nbsp;Testprb</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr>
+</tbody>
+</table>
+<table style="height: 452px; width: 1097px;" border="1">
+<colgroup span="99"><col class="name"><col class="action"><col class="arg" span="3"></colgroup><thead><tr>
+<th style="width: 220px;">Keyword</th>
+<th style="width: 198px;">Action</th>
+<th style="width: 271px;">Argument</th>
+<th style="width: 219px;">Argument</th>
+<td style="text-align: center; background-color: silver;"><span style="font-weight: bold;">Argument</span></td>
+<td style="text-align: center; background-color: silver;"><span style="font-weight: bold;">Argument</span></td>
+<td style="text-align: center; font-weight: bold; background-color: rgb(192, 192, 192); width: 185px;">Argument</td>
+<td style="font-weight: bold; text-align: center; background-color: rgb(192, 192, 192); width: 209px;">Argument</td>
+</tr>
+</thead><tbody>
+<tr>
+<td style="width: 238px;">A prb which familyID is 0xffff run success with dynamic allocate familyID in libgen&nbsp;&nbsp;</td>
+<td style="width: 140px;"><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td style="width: 239px;"><br>
+</td>
+<td><br>
+</td>
+</tr>
+
+
+<tr><td><br>
+</td><td>Excute Prb With FamilyID 0xffff</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr>
+<tr><td>A prb which familyID is common run success&nbsp;</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Excute Prb With Common FamilyID</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>The&nbsp;prb run failure with same familyID </td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Excute Prb With Common FamilyID</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr>
+<td>The same prb run success with dynamic allocate familyID in libgen&nbsp;</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Excute Prb With FamilyID 0xffff</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr><td>The count of running prb should be equal to &nbsp;two</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${result}</td><td>Count Running Process Num Of Prb</td><td>${PRB NAME}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>should be &nbsp;equal as integers&nbsp;</td><td>${result}</td><td>${PRB COUNT TWO}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr>
+
+
+
+<tr><td>The count of running prb should be equal to one &nbsp;</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${result}</td><td>Count Running Process Num Of Prb</td><td>${PRB NAME}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>should be &nbsp;equal as integers</td><td>${result}</td><td>${PRB COUNT ONE}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr>
+<td>Stop Testprb</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Kill Process</td>
+<td>ilglovar</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr><td>Excute Prb With Common FamilyID</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Execute&nbsp;mml without check</td><td><font size="-1">ilglovar -f &nbsp;</font>${FAMILYID COMMON VAULE}<font size="-1"> &amp;</font></td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>Excute Prb With FamilyID 0xffff</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Execute&nbsp;mml without check</td><td><font size="-1">ilglovar -f &nbsp;</font>${FAMILYID MAX VAULE}<font size="-1"> &amp;</font></td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr>
+</tbody>
+</table>
+</body></html>

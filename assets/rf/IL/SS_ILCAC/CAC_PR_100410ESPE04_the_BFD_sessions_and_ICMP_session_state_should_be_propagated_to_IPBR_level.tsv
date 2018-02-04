@@ -1,0 +1,224 @@
+*Setting*							
+Documentation	"""1. pronto ID:100410ESPE04"						
+...	2. configured:						
+...	BCN_TYPE IP address OWNER						
+...	BCN_S1 LOCAL_IP1 /QNUP-0						
+...	REMOTE_IP2 /QNUP-2						
+...	REMOTE_IP3 /QNUP-3						
+...	LOCAL_IP4 /QNUP-0						
+...	ADA LOCAL_IP1 /CLA-0						
+...	REMOTE_IP2 /GFCPRG						
+...	REMOTE_IP3 / GFCPRG						
+...	LOCAL_IP4 / CLA-0						
+...	BFD configure						
+...	BCN_TYPE SRCADDR DSTADDR NODE Reference ID						
+...	BCN_S1 LOCAL_IP1 REMOTE_IP2 EIPU-0 IPBR1						
+...	LOCAL_IP1 REMOTE_IP2 EIPU-1 IPBR1						
+...	REMOTE_IP2 LOCAL_IP1 EIPU-2 0/NA						
+...	REMOTE_IP2 LOCAL_IP1 EIPU-3 0/NA						
+...	LOCAL_IP4 REMOTE_IP3 EIPU-0 IPBR1						
+...	LOCAL_IP4 REMOTE_IP3 EIPU-1 IPBR1						
+...	REMOTE_IP3 LOCAL_IP4 EIPU-2 0/NA						
+...	REMOTE_IP3 LOCAL_IP4 EIPU-3 0/NA						
+...	ADA LOCAL_IP1 REMOTE_IP2 CLA-0 IPBR1						
+...	REMOTE_IP2 LOCAL_IP1 CLA-0 0/NA						
+...	LOCAL_IP1 REMOTE_IP2 CLA-0 IPBR1						
+...	"REMOTE_IP2 LOCAL_IP1 CLA-0 0/NA"""						
+Suite Setup	Prepare Test Environment and Resource						
+Suite Teardown	clear test resource and disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B02142	PRS_ID-IL_PRS_4490	EFS_ID-RNC_EFS_2117_317	hw_env-RNC_S1	exec_type-automatic	element-IL	release-IL5
+...	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	exec_level-pre	FP_version-COUGAR	reason-add and delete ip spend much time	Iteration_ID-I05518	ct-negative	QL-6
+...	HW_TYPE-BCN_A1	BCN_STEP-BCN_S1	FRS_ID-XXX	PRS_ID-XXX	type-FUT		
+Resource	il.html						
+Resource	./resources/common_operation_resource.html						
+Resource	./resources/cac_basic_operation_resource.html						
+Resource	./resources/IPBR_basic_operation_resource.html						
+Library	Collections						
+							
+*Variable*							
+${LOCAL_IP1}	%{BFD_TEST_IP_0}						
+${LOCAL_IP2}	%{BFD_TEST_IP_3}						
+${REMOTE_IP1}	%{BFD_TEST_IP_1}						
+${REMOTE_IP2}	%{BFD_TEST_IP_2}						
+${ACTIVE_USCP}	USCP-0						
+${CONN_DOWN_EC}	0x267						
+${IPBR_4022}	4022						
+${CHECK_TIMEOUT}	6s						
+${CHECK_INTERVAL}	0.5s						
+${IFACE-BCN}	ethtest20						
+${IFACE-ADA}	eth3						
+${IPBR_STATUS_AVALIB}	Usable						
+${IPBR_STATUS_UNAVALIB}	Unusable						
+${BFD_MON}	Yes						
+${BFD_NO_MON}	No						
+${BFD_SESS_NAME_1}	Flash-RG0						
+${BFD_SESS_NAME_2}	Flash-RG1						
+${TWO_GROUP}	2						
+${IPBR_1}	1						
+${BFD_STATUS_CONN_DOWN}	CONN_DOWN						
+${BFD_STATUS_WORK}	WORK						
+${BFD_RG0}	/QNUP-0						
+${BFD_RG1}	/QNUP-1						
+${IP3_ADDR}	%{DSP0_IUR_IP}						
+${IP4_ADDR}	%{DSP0_IUB_IP}						
+${BFD_ALARM}	70348						
+							
+*Test Case*							
+Check the IPRO's status when other related IPRO's status change between CONN_UP and CONN_DOWN	[Tags]	ATC-TRM_CAC.FUT.001					
+	[Setup]	Create leg list and reserve test RTP leg					
+	register expect error syslog and alarm						
+	check the IPBR and IPRO's status	${IPBR_4022}	${IPBR_STATUS_AVALIB}	[ip_addr=${LOCAL_IP1},monitor=${BFD_MON},status=${BFD_STATUS_WORK},vrf_id=0, ip_addr=${LOCAL_IP2},monitor=${BFD_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0]			
+	add IPRO3 and check the IPBR and IPROs status	${IPBR_STATUS_AVALIB}	[ip_addr=${LOCAL_IP1},monitor=${BFD_MON},status=${BFD_STATUS_WORK},vrf_id=0, ip_addr=${LOCAL_IP2},monitor=${BFD_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0, ip_addr=${IP3_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_WORK},vrf_id=0]				
+	create iub leg many time	${1,2,3}	${LOCAL_IP2}				
+	Release In Legs						
+	set IPRO1 related BFD session down						
+	add IPRO4 and check the IPBR and IPROs status	${IPBR_STATUS_UNAVALIB}	[ip_addr=${LOCAL_IP1},monitor=${BFD_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0, ip_addr=${LOCAL_IP2},monitor=${BFD_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0, ip_addr=${IP3_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0, ip_addr=${IP4_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0]				
+	create IUB leg failed and check error code after BFD sessiom down	${IPBR_4022}	${CONN_DOWN_EC}				
+	set IPRO2 related BFD session up						
+	check the IPBR and IPRO's status	${IPBR_4022}	${IPBR_STATUS_AVALIB}	[ip_addr=${LOCAL_IP1},monitor=${BFD_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0, ip_addr=${LOCAL_IP2},monitor=${BFD_MON},status=${BFD_STATUS_WORK},vrf_id=0, ip_addr=${IP3_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_WORK},vrf_id=0, ip_addr=${IP4_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_WORK},vrf_id=0]			
+	set IPRO1 related BFD session up						
+	check the IPBR and IPRO's status	${IPBR_4022}	${IPBR_STATUS_AVALIB}	[ip_addr=${LOCAL_IP1},monitor=${BFD_MON},status=${BFD_STATUS_WORK},vrf_id=0, ip_addr=${LOCAL_IP2},monitor=${BFD_MON},status=${BFD_STATUS_WORK},vrf_id=0, ip_addr=${IP3_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_WORK},vrf_id=0, ip_addr=${IP4_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_WORK},vrf_id=0]			
+	create iub leg many time	${1,2,3,4}					
+	[Teardown]	release legs created in test case and recoved testresource					
+							
+Check the IPRO's status when other related IPRO's BFD session between deleting and adding	[Tags]	ATC-TRM_CAC.FUT.002					
+	[Setup]	Create leg list and reserve test RTP leg					
+	register expect error syslog and alarm						
+	check the IPBR and IPRO's status	${IPBR_4022}	${IPBR_STATUS_AVALIB}	[ip_addr=${LOCAL_IP1},monitor=${BFD_MON},status=${BFD_STATUS_WORK},vrf_id=0, ip_addr=${LOCAL_IP2},monitor=${BFD_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0]			
+	Delete BFD session1 and check the IPBR and IPRO's status						
+	add IPRO3 and check the IPBR and IPROs status	${IPBR_STATUS_UNAVALIB}	[ip_addr=${LOCAL_IP1},monitor=${BFD_NO_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0, ip_addr=${LOCAL_IP2},monitor=${BFD_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0, ip_addr=${IP3_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0]				
+	create IUB leg failed and check error code after BFD sessiom down	${IPBR_4022}	${CONN_DOWN_EC}				
+	Delete BFD session2 and check the IPBR and IPRO's status						
+	create iub leg many time	${1,2,3}					
+	Release In Legs						
+	add BFD session	${BFD_RG1}	${LOCAL_IP2}	${REMOTE_IP2}	${BFD_SESS_NAME_2}	${IPBR_4022}	
+	sleep	8s					
+	add IPRO4 and check the IPBR and IPROs status	${IPBR_STATUS_UNAVALIB}	[ip_addr=${LOCAL_IP1},monitor=${BFD_NO_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0, ip_addr=${LOCAL_IP2},monitor=${BFD_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0, ip_addr=${IP3_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0, ip_addr=${IP4_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0]				
+	create IUB leg failed and check error code after BFD sessiom down	${IPBR_4022}	${CONN_DOWN_EC}				
+	delete IPRO successfully	${IPBR_4022}	${IP4_ADDR}	${OWNER}	${IFACE}		
+	add BFD session	${BFD_RG0}	${LOCAL_IP1}	${REMOTE_IP1}	${BFD_SESS_NAME_1}	${IPBR_4022}	
+	sleep	6s					
+	add IPRO4 and check the IPBR and IPROs status	${IPBR_STATUS_AVALIB}	[ip_addr=${LOCAL_IP1},monitor=${BFD_MON},status=${BFD_STATUS_WORK},vrf_id=0, ip_addr=${LOCAL_IP2},monitor=${BFD_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0, ip_addr=${IP3_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_WORK},vrf_id=0, ip_addr=${IP4_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_WORK},vrf_id=0]				
+	create iub leg many time	${1,2,3,4}	${LOCAL_IP2}				
+	[Teardown]	recover test resource and recoverd BFD session					
+							
+*Keyword*							
+Prepare Test Environment and Resource	Connect to Target Hardware						
+	switch to active OMU						
+	run keyword if	'%{HW}' == 'ADA'	Set Test Resource for ADA				
+	run keyword if	'%{HW}' == 'RNC'	Set Test Resource for BCN				
+	Add IPRO successfully	${IPBR_4022}	${LOCAL_IP2}	${IP1_OWNER}	${IFACE_IP_LOCAL}		
+	run keyword and ignore error	Delete Ip Address	${IP3_OWNER}	${IFACE_IP_LOCAL}	${REMOTE_IP2}		
+	sleep	3s					
+							
+Set Test Resource for ADA	Set Suite Variable	\${IP_MASK}	32				
+	Set Suite Variable	\${IFACE}	${IFACE-ADA}				
+	Set Suite Variable	\${IP2_OWNER}	/%{IPPLAN_RG_IPRO}				
+	Set Suite Variable	\${IP3_OWNER}	/%{IPPLAN_RG_IPRO}				
+	Set Suite Variable	\${OWNER}	/CLA-0				
+	Set Suite Variable	\${IFACE_IP_LOCAL}	eth3				
+							
+Set Test Resource for BCN	Set Suite Variable	\${IP_MASK}	24				
+	Set Suite Variable	\${IFACE}	${IFACE-BCN}				
+	Set Suite Variable	\${IP1_OWNER}	/%{EITPUPTRM_TYPE_NAME}-1				
+	Set Suite Variable	\${IP2_OWNER}	/%{EITPUPTRM_TYPE_NAME}-2				
+	Set Suite Variable	\${IP3_OWNER}	/%{EITPUPTRM_TYPE_NAME}-3				
+	Set Suite Variable	\${IFACE_IP_LOCAL}	${IFACE-BCN}				
+	Set Suite Variable	\${OWNER}	/%{EITPUPTRM_TYPE_NAME}-0				
+							
+check the IPBR and IPRO's status	[Arguments]	${ipbr_id}	${ipbr_status}	${ipro_status_list}			
+	${ipbr_info}=	get_ipbr_resource_info	${ipbr_id}				
+	should be equal	${ipbr_info.status}	${ipbr_status}				
+	Should Be Equal As Strings	${ipbr_info.ip_list}	${ipro_status_list}				
+							
+create iub leg many time	[Arguments]	${time}	"${no_exit_ip}="""""				
+	@{time_list}	set variable	${time}				
+	: FOR	${time_info}	IN	@{time_list}			
+		${IUB_leg_info}	create iub leg	${ACTIVE_USCP}	${IPBR_4022}	${call_id}	
+		run keyword if	"'${no_exit_ip}' != """""	Should Not Be Equal	${IUB_leg_info.local_ip}	${no_exit_ip}	
+		run keyword if	'${IUB_leg_info.result}'=='SUCCESSFUL'	Append to List	${IN_LEG_LIST}	${IUB_leg_info}	
+							
+Create leg list and reserve test RTP leg	create leg list						
+	${IUCS_LEG}	create rtp leg	${ACTIVE_USCP}	${IPBR_1}			
+	set test variable	\${CALL_ID}	${IUCS_LEG.call_id}				
+	append to list	${OUT_LEG_LIST}	${IUCS_LEG}				
+							
+create IUB leg failed and check error code after BFD sessiom down	[Arguments]	${ipbr_id}	${error_code}				
+	${IUB_leg_info}	create iub leg	${ACTIVE_USCP}	${ipbr_id}	${CALL_ID}		
+	run keyword if	'${IUB_leg_info.result}'=='SUCCESSFUL'	Append to List	${IN_LEG_LIST}	${IUB_leg_info}		
+	should be equal	${IUB_leg_info.result}	FAILED				
+	should be equal	${IUB_leg_info.error_code}	${error_code}				
+							
+check Iub legs information	[Arguments]	${exist_ip}	${no_exist_ip}				
+	@{exist_ip_list}	set variable	${exist_ip}				
+	: FOR	${ip_list}	IN	@{exist_ip_list}			
+		should contain	${IUB_leg_info}	${ip_list}			
+	@{no_exist_ip_list}	set variable	${no_exist_ip}				
+	: FOR	${no_exist_ip_info}	IN	@{no_exist_ip_list}			
+		should not contain	${IUB_leg_info}	${no_exist_ip_info}			
+							
+add IPRO3 and check the IPBR and IPROs status	[Arguments]	${ipbr_status}	${ipro_status}				
+	Add IPRO successfully	${IPBR_4022}	${IP3_ADDR}	${OWNER}	${IFACE}		
+	check the IPBR and IPRO's status	${IPBR_4022}	${ipbr_status}	${ipro_status}			
+							
+add IPRO4 and check the IPBR and IPROs status	[Arguments]	${ipbr_status}	${ipro_status}				
+	Add IPRO successfully	${IPBR_4022}	${IP4_ADDR}	${OWNER}	${IFACE}		
+	check the IPBR and IPRO's status	${IPBR_4022}	${ipbr_status}	${ipro_status}			
+							
+set BFD status down	[Arguments]	${delete_ip}	${owner}	${iface}	${check_ip_addr}		
+	Delete test IP address successfully	${owner}	${iface}	${delete_ip}			
+	Wait Until Keyword Succeeds	${CHECK_TIMEOUT}	${CHECK_INTERVAL}	check IP's status should be as expected	${IPBR_4022}	${check_ip_addr}	0
+	...	CONN_DOWN					
+							
+set BFD status up	[Arguments]	${delete_ip}	${owner}	${iface}	${check_ip_addr}		
+	add test IP address successfully	${owner}	${iface}	${delete_ip}/${IP_MASK}			
+	Wait Until Keyword Succeeds	${CHECK_TIMEOUT}	${CHECK_INTERVAL}	check IP's status should be as expected	${IPBR_4022}	${check_ip_addr}	0
+	...	WORK					
+							
+check IP's status should be as expected	[Arguments]	${ipbr_id}	${ip_addr}	${vrf_id}	${state}		
+	${ipbr_info}=	get_ipbr_resource_info	${ipbr_id}				
+	${ip_exist}	set variable	0				
+	@{ip_list}	set variable	${ipbr_info.ip_list}				
+	: FOR	${ip_info}	IN	@{ip_list}			
+		${ip_exist}	set variable if	'${ip_info.ip_addr}'=='${ip_addr}'and '${ip_info.status}'=='${state}'	1	${ip_exist}	
+	should be true	${ip_exist}>=1					
+							
+set IPRO1 related BFD session down	set BFD status down	${REMOTE_IP1}	${IP2_OWNER}	${IFACE_IP_LOCAL}	${LOCAL_IP1}		
+							
+set IPRO2 related BFD session down	set BFD status down	${REMOTE_IP2}	${IP3_OWNER}	${IFACE_IP_LOCAL}	${LOCAL_IP2}		
+							
+set IPRO2 related BFD session up	set BFD status up	${REMOTE_IP2}	${IP3_OWNER}	${IFACE_IP_LOCAL}	${LOCAL_IP2}		
+							
+set IPRO1 related BFD session up	set BFD status up	${REMOTE_IP1}	${IP2_OWNER}	${IFACE_IP_LOCAL}	${LOCAL_IP1}		
+							
+Delete BFD session1 and check the IPBR and IPRO's status	delete_mon_bfds_with_scli	${BFD_RG0}	${BFD_SESS_NAME_1}				
+	check the IPBR and IPRO's status	${IPBR_4022}	${IPBR_STATUS_UNAVALIB}	[ip_addr=${LOCAL_IP1},monitor=${BFD_NO_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0, ip_addr=${LOCAL_IP2},monitor=${BFD_MON},status=${BFD_STATUS_CONN_DOWN},vrf_id=0]			
+							
+Delete BFD session2 and check the IPBR and IPRO's status	delete_mon_bfds_with_scli	${BFD_RG1}	${BFD_SESS_NAME_2}				
+	check the IPBR and IPRO's status	${IPBR_4022}	${IPBR_STATUS_AVALIB}	[ip_addr=${LOCAL_IP1},monitor=${BFD_NO_MON},status=${BFD_STATUS_WORK},vrf_id=0, ip_addr=${LOCAL_IP2},monitor=${BFD_NO_MON},status=${BFD_STATUS_WORK},vrf_id=0, ip_addr=${IP3_ADDR},monitor=${BFD_NO_MON},status=${BFD_STATUS_WORK},vrf_id=0]			
+							
+add BFD session	[Arguments]	${owner}	${src_add}	${dst_add}	${session_name}	${reference_id}	
+	add_mon_bfds_with_scli	${owner}	${src_add}	${dst_add}	${session_name}		${EMPTY}
+	...			${reference_id}			
+							
+release legs created in test case and recoved testresource	release legs created in test case						
+	recover test resource						
+	run keyword if test failed	set IPRO2 related BFD session down					
+	run keyword if test failed	set IPRO1 related BFD session up					
+							
+recover test resource	run keyword and ignore error	set IPRO2 related BFD session down					
+	run keyword and ignore error	delete IPRO successfully	${IPBR_4022}	${IP3_ADDR}	${OWNER}	${IFACE}	
+	run keyword and ignore error	delete IPRO successfully	${IPBR_4022}	${IP4_ADDR}	${OWNER}	${IFACE}	
+	run keyword and ignore error	add test IP address successfully	${OWNER}	${IFACE}	${REMOTE_IP1}		
+							
+clear test resource and disconnect from target hardware	run keyword and ignore error	delete IPRO successfully	${IPBR_4022}	${LOCAL_IP2}	${IP1_OWNER}	${IFACE_IP_LOCAL}	
+	disconnect from target hardware						
+							
+recover test resource and recoverd BFD session	release legs created in test case						
+	recover test resource						
+	run keyword if test failed	add BFD session	${BFD_RG0}	${LOCAL_IP1}	${REMOTE_IP1}	${BFD_SESS_NAME_1}	${IPBR_4022}
+	run keyword if test failed	add BFD session	${BFD_RG1}	${LOCAL_IP2}	${REMOTE_IP2}	${BFD_SESS_NAME_2}	${IPBR_4022}
+							
+register expect error syslog and alarm	register expect syslog	fail to get IPRO, no working IPRO, IPBR ID = 4022, 65535.	fail to get interface unit, status = 0x267.	cac_res_reserve_ack_s error(0x267). ipbr_list=0xfb6/0xffff.	alloc_logi_tt_cac_res: cac_res_reserve_req__r error(0x267)	leg_create_proc: error(0x267),	work_rm_ip_res_req_proc: error(0x267),
+	...	RMUH02: Create call failed. error_code is 615 (0x267)					
+	register expect alarm	${BFD_ALARM}					

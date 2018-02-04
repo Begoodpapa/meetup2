@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<!-- saved from url=(0084)https://cwiki.nokia.com/twiki/pub/RobotFramework/DownloadPage/resource_template.html --><title>Timer_Resource</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> <style type="text/css">HTML {
+COLOR: black; FONT-FAMILY: Arial,Helvetica,sans-serif; BACKGROUND-COLOR: white
+}
+P {
+max-width: 60em
+}
+TABLE {
+BORDER-RIGHT: black 0.1em solid; BORDER-TOP: black 0.1em solid; MARGIN: 1em 0em; BORDER-LEFT: black 0.1em solid; BORDER-BOTTOM: black 0.1em solid; BORDER-COLLAPSE: collapse; empty-cells: show
+}
+TH {
+BORDER-RIGHT: black 0.1em solid; PADDING-RIGHT: 0.2em; BORDER-TOP: black 0.05em solid; PADDING-LEFT: 0.2em; PADDING-BOTTOM: 0.1em; BORDER-LEFT: black 0.1em solid; PADDING-TOP: 0.1em; BORDER-BOTTOM: black 0.05em solid; HEIGHT: 1.5em
+}
+TD {
+BORDER-RIGHT: black 0.1em solid; PADDING-RIGHT: 0.2em; BORDER-TOP: black 0.05em solid; PADDING-LEFT: 0.2em; PADDING-BOTTOM: 0.1em; BORDER-LEFT: black 0.1em solid; PADDING-TOP: 0.1em; BORDER-BOTTOM: black 0.05em solid; HEIGHT: 1.5em
+}
+TH {
+BORDER-TOP-WIDTH: 0.1em; FONT-WEIGHT: bold; BORDER-LEFT-WIDTH: 0.1em; BORDER-BOTTOM-WIDTH: 0.1em; TEXT-TRANSFORM: capitalize; COLOR: black; LETTER-SPACING: 0.1em; BACKGROUND-COLOR: rgb(192,192,192); TEXT-ALIGN: center; BORDER-RIGHT-WIDTH: 0.1em
+}
+COL.name {
+WIDTH: 10em
+}
+.action {
+WIDTH: 15em
+}
+.value {
+WIDTH: 15em
+}
+.arg {
+WIDTH: 15em
+}
+TD:unknown {
+TEXT-TRANSFORM: capitalize; LETTER-SPACING: 0.1em; BACKGROUND-COLOR: rgb(240,240,240)
+}
+COL.name {
+TEXT-TRANSFORM: capitalize; LETTER-SPACING: 0.1em; BACKGROUND-COLOR: rgb(240,240,240)
+}
+TH {
+FONT-STYLE: normal
+}
+</style>
+<meta content="MSHTML 6.00.2900.3429" name="GENERATOR"></head><body><h1>Timer_Resource</h1>
+<table border="1"> <colgroup span="99"><col class="name"><col class="value" span="4"></colgroup><thead><tr>
+<th>Setting</th> <th>Value</th> <th>Value</th>
+<th>value</th> <th>Value</th> </tr> </thead>
+<tbody> <tr> <td>Resource</td> <td>il.html</td>
+<td><br>
+</td> <td><br>
+</td> <td><br>
+</td> </tr>
+<tr> <td><br>
+</td> <td><br>
+</td> <td><br>
+</td>
+<td><br>
+</td> <td><br>
+</td> </tr> </tbody>
+</table><table border="1"> <colgroup span="99"><col class="name"><col class="value" span="4"></colgroup><thead><tr>
+<th>Variable</th> <th>Value</th> <th>Value</th>
+<th>Value</th> <th>Value</th> </tr> </thead>
+<tbody> 
+
+
+
+<tr><td>${Timer_TESTING_PROCESS}</td><td>cmmtst</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${DSPM}</td><td>%{DSPM_0_NAME}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${UNIT_INDEX}</td><td>0</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${DSPM_UNIT_TYPE}</td><td>%{DSPM_TYPE}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr>
+</tbody>
+</table><table border="1"> <colgroup span="99"><col class="name"><col class="action"><col class="arg" span="3"></colgroup> <thead><tr>
+<th style="width: 153px;">Keyword</th> <th style="width: 124px;">Action</th> <th style="width: 283px;">Argument</th> <th>Argument</th>
+<th>Argument</th> <td><br>
+</td> </tr> </thead>
+<tbody> <tr> <td>Connect To SUT And&nbsp;Start &nbsp;Message Tester</td> <td style="width: 124px;"><br>
+</td> <td style="width: 283px;"><br>
+</td> <td><br>
+</td> <td><br>
+</td>
+<td><br>
+</td> </tr> <tr> <td><br>
+</td> <td style="width: 124px;">${index}=</td> <td style="width: 283px;">Connect
+To Il</td> <td>%{HOSTIP}</td> <td>%{PORT}</td>
+<td>10sec</td> </tr> <tr> <td><br>
+</td>
+<td style="width: 124px;">...</td> <td style="width: 283px;">%{USERNAME}</td> <td>%{PASSWD}</td>
+<td><br>
+</td> <td><br>
+</td> </tr>  
+
+<tr><td><br>
+</td><td>Change Node Env</td><td>TCU-0</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Execute CLI</td><td>ilcliru.sh&nbsp;${DSPM}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Set Variable Of Libgen Use Phys Addr</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Run
+Timer Process</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr>
+<td><br>
+</td> <td style="width: 124px;">[return]</td>
+<td style="width: 283px;">${index}</td> <td><br>
+</td>
+<td><br>
+</td> <td><br>
+</td> </tr> <tr> <td>Run
+Timer Process </td> <td style="width: 124px;"><br>
+</td>
+<td style="width: 283px;"><br>
+</td> <td><br>
+</td>
+<td><br>
+</td> <td><br>
+</td> </tr> 
+<tr><td><br>
+</td><td>Execute Cmd With Check Expected</td><td>${Timer_TESTING_PROCESS}&amp;</td><td>Timer testing process, starts
+</td><td>10</td><td><br>
+</td><td><br>
+</td></tr>
+
+<!-- <tr> <td>Set Timer Till Time Out</td> <td>[Arguments]</td> <td>${TIMER_ID}</td> <td>${TIMER_INTERVAL}</td> <td>${EXPECTED}<br> </td> <td>${TIME_LIMIT}</td> </tr> <tr> <td></td> <td>Execute Cmd With Check Expected</td> <td>./dmxsend -V -- -h 92,*,0457,0000,00,04,00,6034 -b&nbsp;${ACTION_TYPE_SET_C},${TIMER_ID},${TIMER_INTERVAL} 2&gt;/dev/null</td> <td>${EXPECTED}</td> <td>${TIME_LIMIT}</td> <td></td> </tr> --> <tr>
+<td>Sleep For Timer&nbsp;</td> <td>[Arguments]</td><td>${time}</td> 
+<td><br>
+</td> <td><br>
+</td> <td><br>
+</td> </tr>
+
+<tr> <td><br>
+</td> <td>Sleep</td> <td>${time}</td>
+<td><br>
+</td> <td><br>
+</td> <td><br>
+</td> </tr>
+<tr>
+<td>Stop Message Tester And Disconnect From SUT</td> <td style="width: 124px;"><br>
+</td>
+<td style="width: 283px;"><br>
+</td> <td><br>
+</td>
+<td><br>
+</td> <td><br>
+</td> </tr> <tr><td><br>
+</td><td>Kill Process</td><td>${Timer_TESTING_PROCESS}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr>
+<td><br>
+</td> <td style="width: 124px;">Disconnect&nbsp;All
+Ils</td> <td style="width: 283px;"><br>
+</td> <td><br>
+</td>
+<td><br>
+</td> <td><br>
+</td> </tr><tr><td>Set Variable Of Libgen Use Phys Addr</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>Get Libgen Use Phys Addr</td><td>${DSPM_UNIT_TYPE}</td><td>${UNIT_INDEX}</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Set Suite Variable</td><td>\${OMU_PHYSICAL_ADDRESS}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr> </tbody>
+</table></body></html>

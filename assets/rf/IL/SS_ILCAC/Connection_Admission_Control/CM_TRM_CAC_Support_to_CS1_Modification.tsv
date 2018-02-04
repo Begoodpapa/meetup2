@@ -1,0 +1,212 @@
+*Setting*							
+Suite Setup	Select active UP and set test resource						
+Suite Teardown	common_operation_resource.Disconnect From Target Hardware						
+Force Tags	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	element-il	exec_type-automatic	release-IL1	hw_env-RNC_S0	exec_level-pre	type-FUT
+...	QL-6	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	EFS_ID-RNC_EFS_2575_158	EFS_ID-RNC_EFS_1644_97	EFS_ID-RNC_EFS_1644_342	EFS_ID-RNC_EFS_1644_339
+...	CR#S1290	CR#S1328	PRS_ID-PRS_4107	PRS_ID-PRS_4108	PRS_ID-PRS_4107	PRS_ID-PRS_4108	PRS_ID-PRS_4109
+...	Product_Backlog_ID-	FRS_ID-PCM_100201_72_2575	FRS_ID-PCM_100201_78_R1644				
+Resource	il.html						
+Library	Collections						
+Resource	../resources/cac_basic_operation_resource.html						
+Resource	../resources/common_operation_resource.html						
+Library	../resources/cacprb_test_resources.py						
+							
+*Variable*							
+${IPBR_ID_4020}	4020						
+${IPBR_ID_4095}	4095						
+${DOWN_GRADE_AVE_BW}	1000						
+${DOWN_GRADE_MAX_BW}	2000						
+${NORMAL_MAX_BW}	3000						
+${NORMAL_AVE_BW}	2000						
+${UP_GRADE_AVE_BW}	3000						
+${UP_GRADE_MAX_BW}	4000						
+${BIGGER_THAN_CMMIT_BW}	2000001						
+${NORMAL_0_BW}	0						
+${NO_FREE_BANDWIDTH_EC}	0x450D						
+${CREATE_ORIG_LEG_WITH_COMMON_PARA}	NCAC=0,FABR=${NORMAL_AVE_BW},FMBR=${NORMAL_MAX_BW}						
+${CREATE_ORIG_LEG_WITH_0_BW}	NCAC=0,FABR=${NORMAL_0_BW},FMBR=${NORMAL_0_BW}						
+${CREATE_ORIG_LEG_WITH_CMMIT_BW}	NCAC=0,FABR=${NORMAL_MAX_BW},FMBR=${NORMAL_MAX_BW}						
+${CS1_MODIFY_WITH_BW_UPGRADE}	UPGR=1,NCAC=0,FABR=${UP_GRADE_AVE_BW},FMBR=${UP_GRADE_MAX_BW}						
+${CS1_MODIFY_WITH_BW_DOWNGRADE}	UPGR=0,NCAC=0,FABR=${DOWN_GRADE_AVE_BW},FMBR=${DOWN_GRADE_MAX_BW}						
+${CS1_MODIFY_WITH_NO_ENOUGH_BW_UPGRADE}	UPGR=1,NCAC=0,FABR=${BIGGER_THAN_CMMIT_BW},FMBR=${BIGGER_THAN_CMMIT_BW}						
+${CS1_MODIFY_WITH_BW_UPGRADE_TO_CMMIT_BW}	UPGR=1,NCAC=0,FABR=${NORMAL_MAX_BW},FMBR=${NORMAL_MAX_BW}						
+${CS1_MODIFY_WITH_BW_DOWNGRADE_TO_0}	UPGR=0,NCAC=0,FABR=${NORMAL_0_BW},FMBR=${NORMAL_0_BW}						
+${IUB_CS1_PARA}	REPL=IN-01,						
+${IUCS_CS1_PARA}	REPL=OUT-01,						
+${IUCS_ORIG_PARA}	BRA=T,DSCP=E,PHB=FF,QOS=2,LTUL=49,LTDL=FF,DSP=4,7,0,						
+${EME_CS1_MODIFY_WITH_BW_UPGRADE}	UPGR=1,NCAC=0,FABR=${UP_GRADE_AVE_BW},FMBR=${UP_GRADE_MAX_BW},QPRI=255 						
+							
+*Test Case*							
+Validate CAC support CS1 modify Iub leg	[Tags]	CM.TRM.CAC.FUT.016	CM.TRM.CAC.FUT.014	CM.TRM.CAC.FUT.015			
+	[Setup]	create leg list					
+	[Template]	Create CS1 modify and release Iub leg					
+	${CS1_MODIFY_WITH_BW_UPGRADE}	${RES_SUCCESS}	${EXPECT_UPGRADE_BW}	${CREATE_ORIG_LEG_WITH_COMMON_PARA}	${EXPECT_UPGRADE_BW}	${EXPECT_NORMAL_BW}	
+	${EME_CS1_MODIFY_WITH_BW_UPGRADE}	${RES_SUCCESS}	${EXPECT_UPGRADE_BW}	${CREATE_ORIG_LEG_WITH_COMMON_PARA}	${EXPECT_UPGRADE_BW}	${EXPECT_NORMAL_BW}	
+	${CS1_MODIFY_WITH_BW_UPGRADE_TO_CMMIT_BW}	${RES_SUCCESS}	${NORMAL_MAX_BW}	${CREATE_ORIG_LEG_WITH_0_BW}	${NORMAL_MAX_BW}	${NORMAL_0_BW}	
+	${CS1_MODIFY_WITH_BW_DOWNGRADE}	${RES_SUCCESS}	${EXPECT_DOWNGRADE_BW}	${CREATE_ORIG_LEG_WITH_COMMON_PARA}	${EXPECT_NORMAL_BW}	${EXPECT_NORMAL_BW}	
+	${CS1_MODIFY_WITH_BW_DOWNGRADE_TO_0}	${RES_SUCCESS}	${NORMAL_0_BW}	${CREATE_ORIG_LEG_WITH_CMMIT_BW}	${NORMAL_MAX_BW}	${NORMAL_MAX_BW}	
+	${CS1_MODIFY_WITH_NO_ENOUGH_BW_UPGRADE}	${RES_FAILED}	${NORMAL_0_BW}	${CREATE_ORIG_LEG_WITH_COMMON_PARA}	${EXPECT_NORMAL_BW}	${EXPECT_NORMAL_BW}	${NO_FREE_BANDWIDTH_EC}
+	[Teardown]	run keyword if test failed	release legs created in test case				
+							
+Validate CAC supports CS1 modify Iur leg	[Tags]	CM.TRM.CAC.FUT.019	CM.TRM.CAC.FUT.017	CM.TRM.CAC.FUT.018			
+	[Setup]	Create leg list and test rtp leg					
+	[Template]	Create CS1 modify and release Iur leg					
+	${CS1_MODIFY_WITH_BW_UPGRADE}	${RES_SUCCESS}	${EXPECT_UPGRADE_BW}	${EXPECT_UPGRADE_BW}	${EXPECT_NORMAL_BW}		
+	${CS1_MODIFY_WITH_BW_DOWNGRADE}	${RES_SUCCESS}	${EXPECT_DOWNGRADE_BW}	${EXPECT_NORMAL_BW}	${EXPECT_NORMAL_BW}		
+	${CS1_MODIFY_WITH_NO_ENOUGH_BW_UPGRADE}	${RES_FAILED}	${NORMAL_0_BW}	${EXPECT_NORMAL_BW}	${EXPECT_NORMAL_BW}	${NO_FREE_BANDWIDTH_EC}	
+	[Teardown]	Release test resources created in the test case					
+							
+Validate CAC supports CS1 modify Iu-CS leg	[Tags]	CM.TRM.CAC.FUT.020	TRM.CAC.FUT.021	TRM.CAC.FUT.022			
+	[Setup]	create leg list					
+	[Template]	Create CS1 modify and release IuCS leg					
+	${CS1_MODIFY_WITH_BW_UPGRADE}	${RES_SUCCESS}	${EXPECT_UPGRADE_BW}	${EXPECT_UPGRADE_BW}	${EXPECT_NORMAL_BW}		
+	${CS1_MODIFY_WITH_BW_DOWNGRADE}	${RES_SUCCESS}	${EXPECT_DOWNGRADE_BW}	${EXPECT_NORMAL_BW}	${EXPECT_NORMAL_BW}		
+	${CS1_MODIFY_WITH_NO_ENOUGH_BW_UPGRADE}	${RES_FAILED}	${NORMAL_0_BW}	${EXPECT_NORMAL_BW}	${EXPECT_NORMAL_BW}	${NO_FREE_BANDWIDTH_EC}	
+	[Teardown]	run keyword if test failed	release legs created in test case				
+							
+*Keyword*							
+Select active UP and set test resource	connect to target hardware						
+	switch to active OMU						
+	Get active USCP						
+	${normal_increase_BW}	Evaluate	${NORMAL_MAX_BW}*0.2 + ${NORMAL_AVE_BW}*0.8				
+	set Suite Variable	\${EXPECT_NORMAL_BW}	${normal_increase_BW}				
+	${upgrade_increase_BW}	Evaluate	${UP_GRADE_MAX_BW}*0.2 + ${UP_GRADE_AVE_BW}*0.8				
+	set Suite Variable	\${EXPECT_UPGRADE_BW}	${upgrade_increase_BW}				
+	${downgrade_descrease_BW}	Evaluate	${DOWN_GRADE_MAX_BW}*0.2 + ${DOWN_GRADE_AVE_BW}*0.8				
+	set Suite Variable	\${EXPECT_DOWNGRADE_BW}	${downgrade_descrease_BW}				
+							
+Create CS1 modify and release Iub leg	[Arguments]	${cs1_modify_para}	${operate_result}	${expect_bitrate_3}	${orig_para}	${expect_bitrate_2}	${expect_bitrate_1}
+	...	${error_code}=					
+	${ipbr_orig_info}	get ipbr resource info	${IPBR_ID_4020}				
+	${orig_leg_result}	Create test srb call	${orig_para}	${RES_SUCCESS}			
+	Check CPC and reserve BW	${ipbr_orig_info.res_bw}	${orig_leg_result}	${expect_bitrate_1}			
+	${new_leg_result}	CS1 modify test srb call	${cs1_modify_para}	${operate_result}	${orig_leg_result.call_id}		
+	run keyword if	'${new_leg_result.result}'=='FAILED'	Check error code and release leg	${new_leg_result}	${IN_LEG}	${error_code}	${orig_leg_result}
+	...	${ipbr_orig_info.res_bw}	${expect_bitrate_2}				
+	run keyword if	'${new_leg_result.result}'=='SUCCESSFUL'	Check port and release leg	${new_leg_result}	${IN_LEG}	${orig_leg_result}	${ipbr_orig_info.res_bw}
+	...	${expect_bitrate_2}	${expect_bitrate_3}				
+							
+Create CS1 modify and release Iur leg	[Arguments]	${cs1_modify_para}	${operate_result}	${expect_bitrate_3}	${expect_bitrate_2}	${expect_bitrate_1}	${error_code}=
+	${ipbr_orig_info}	get ipbr resource info	${IPBR_ID_4020}				
+	${orig_leg_result}	Create test Iur leg	${CREATE_ORIG_LEG_WITH_COMMON_PARA}	${RES_SUCCESS}			
+	Check CPC and reserve BW	${ipbr_orig_info.res_bw}	${orig_leg_result}	${expect_bitrate_1}			
+	${new_leg_result}	CS1 modify test Iur leg	${cs1_modify_para}	${operate_result}			
+	run keyword if	'${new_leg_result.result}'=='FAILED'	Check error code and release leg	${new_leg_result}	${IN_LEG}	${error_code}	${orig_leg_result}
+	...	${ipbr_orig_info.res_bw}	${expect_bitrate_2}				
+	run keyword if	'${new_leg_result.result}'=='SUCCESSFUL'	Check port and release leg	${new_leg_result}	${IN_LEG}	${orig_leg_result}	${ipbr_orig_info.res_bw}
+	...	${expect_bitrate_2}	${expect_bitrate_3}				
+							
+Create CS1 modify and release IuCS leg	[Arguments]	${cs1_modify_para}	${operate_result}	${expect_bitrate_3}	${expect_bitrate_2}	${expect_bitrate_1}	${error_code}=
+	${ipbr_orig_info}	get ipbr resource info	${IPBR_ID_4020}				
+	${orig_leg_result}	Create test Iu-CS leg	${CREATE_ORIG_LEG_WITH_COMMON_PARA}	${RES_SUCCESS}			
+	Check CPC and reserve BW	${ipbr_orig_info.res_bw}	${orig_leg_result}	${expect_bitrate_1}			
+	${new_leg_result}	CS1 modify test Iu-CS leg	${cs1_modify_para}	${operate_result}	${orig_leg_result.call_id}		
+	run keyword if	'${new_leg_result.result}'=='FAILED'	Check error code and release leg	${new_leg_result}	${OUT_LEG}	${error_code}	${orig_leg_result}
+	...	${ipbr_orig_info.res_bw}	${expect_bitrate_2}				
+	run keyword if	'${new_leg_result.result}'=='SUCCESSFUL'	Check port and release leg	${new_leg_result}	${OUT_LEG}	${orig_leg_result}	${ipbr_orig_info.res_bw}
+	...	${expect_bitrate_2}	${expect_bitrate_3}				
+							
+Create leg list and test rtp leg	create leg list						
+	${IUCS_LEG}	create rtp leg	${ACTIVE_USCP}	${IPBR_ID_4095}			
+	Should Be Equal	${IUCS_LEG.result}	SUCCESSFUL				
+	append to list	${OUT_LEG_LIST}	${IUCS_LEG}				
+	Set Test Variable	\${CALL_ID}	${IUCS_LEG.call_id}				
+							
+Release test resources created in the test case	release legs created in test case						
+	run keyword if test failed	release legs created in test case					
+							
+Rigester leg into list	[Arguments]	${leg_info}	${direction}	${current_call_id}	${leg_type}		
+	Set To Object	${leg_info}	computer	${ACTIVE_USCP}			
+	run keyword if	'${current_call_id}' != ''	Set To Object	${leg_info}	call_id	${current_call_id}	
+	append to list	${${direction}_LEG_LIST}	${leg_result}				
+							
+Release current leg	[Arguments]	${leg_info}	${direction}	${leg_index}			
+	${release_result}	release_resource	${leg_info.computer}	${leg_info.call_id}	${leg_info.leg_id}		
+	run keyword if	'${release_result.result}'=='SUCCESSFUL'	Remove leg from list	${direction}	${leg_index}		
+							
+Remove leg from list	[Arguments]	${direction}	${leg_index}				
+	Set To Object	${leg_info}	computer	${ACTIVE_USCP}			
+	Set To Object	${leg_info}	call_id	${CALL_ID}			
+	Remove From List	${${direction}_LEG_LIST}	${leg_index}				
+							
+Check error code and release leg	[Arguments]	${leg_info}	${leg_direction}	${error_code}	${orig_leg_info}	${orig_bw}	${expect_bw}
+	should be equal	${leg_info.error_code}	${error_code}				
+	${ipbr_new_info}	get ipbr resource info	${IPBR_ID_4020}				
+	Check reserve BW	${orig_bw}	${ipbr_new_info.res_bw}	${expect_bw}			
+	Release current leg	${orig_leg_info}	${leg_direction}	-1			
+	${ipbr_new_info}	get ipbr resource info	${IPBR_ID_4020}				
+	Check reserve BW	${orig_bw}	${ipbr_new_info.res_bw}	${NORMAL_0_BW}			
+							
+Check port and release leg	[Arguments]	${leg_info}	${leg_direction}	${orig_leg_info}	${orig_bw}	${expect_bitrate_1}	${expect_bitrate_2}
+	should not be equal	'${leg_info.local_ip}:${leg_info.local_port}'	'${orig_leg_info.local_ip}:${orig_leg_info.local_port}'				
+	${ipbr_new_info}	get ipbr resource info	${IPBR_ID_4020}				
+	Check CPC and reserve BW	${orig_bw}	${leg_info}	${expect_bitrate_1}			
+	${leg_index}	evaluate	${orig_leg_info.branch_number}-1				
+	Release current leg	${orig_leg_info}	${leg_direction}	${leg_index}			
+	${ipbr_new_info}	get ipbr resource info	${IPBR_ID_4020}				
+	Check reserve BW	${orig_bw}	${ipbr_new_info.res_bw}	${expect_bitrate_2}			
+	${leg_index}	evaluate	${leg_info.branch_number}-2				
+	Release srb call	${leg_info}	${leg_direction}	${leg_index}			
+	${ipbr_new_info_1}	get ipbr resource info	${IPBR_ID_4020}				
+	Check reserve BW	${ipbr_new_info.res_bw}	${ipbr_new_info_1.res_bw}	${expect_bitrate_2}			
+							
+Create srb call and check CPC	[Arguments]	${other_parameter}	${expect_result}				
+	${orig_leg_result}	create srb call	${IPBR_ID_4020}	${other_parameter}			
+	${ipbr_new_info}	get ipbr resource info	${IPBR_ID_4020}				
+	check CPC value	${orig_leg_result.committed_up_bandwidth}	${orig_leg_result.used_bandwidth}	${ipbr_new_info.cmmt_bw}	${ipbr_new_info.res_bw}		
+	Check reserve BW	${ipbr_orig_info.res_bw}	${ipbr_new_info.res_bw}	${expect_bw}			
+	[Return]	${orig_leg_result}					
+							
+Get active USCP	${USCP_LIST}	get_usable_recovery_groups					
+	set Suite Variable	\${ACTIVE_USCP}	${USCP_LIST[0][0]}				
+							
+Create test srb call	[Arguments]	${other_param}	${operate_result}				
+	${new_leg_result}	reserve_srb_call	${ACTIVE_USCP}	${IPBR_ID_4020}	${other_param}		
+	Set To Object	${new_leg_result}	computer	${ACTIVE_USCP}			
+	Set Test Variable	\${CALL_ID}	${new_leg_result.call_id}				
+	run keyword if	'${new_leg_result.result}' == 'SUCCESSFUL'	append to list	${IN_LEG_LIST}	${new_leg_result}		
+	should be equal	${new_leg_result.result}	${operate_result}				
+	[Return]	${new_leg_result}					
+							
+Check CPC and reserve BW	[Arguments]	${ipbr_orig_bw}	${orig_leg_result}	${expect_bitrate}			
+	${ipbr_new_info}	get ipbr resource info	${IPBR_ID_4020}				
+	check CPC value	${orig_leg_result.committed_up_bandwidth}	${orig_leg_result.used_bandwidth}	${ipbr_new_info.cmmt_bw}	${ipbr_new_info.res_bw}		
+	# ${new_res_bw} evaluate ${ipbr_new_info.res_bw}						
+	Check reserve BW	${ipbr_orig_bw}	${ipbr_new_info.res_bw}	${expect_bitrate}			
+							
+CS1 modify test srb call	[Arguments]	${other_param}	${operate_result}	${call_id}			
+	${new_leg_result}	modify_srb_call	${ACTIVE_USCP}	${IPBR_ID_4020}	${IUB_CS1_PARA}${other_param}	${call_id}	
+	Set To Object	${new_leg_result}	computer	${ACTIVE_USCP}			
+	Set To Object	${new_leg_result}	call_id	${call_id}			
+	run keyword if	'${new_leg_result.result}' == 'SUCCESSFUL'	append to list	${IN_LEG_LIST}	${new_leg_result}		
+	should be equal	${new_leg_result.result}	${operate_result}				
+	[Return]	${new_leg_result}					
+							
+Create test iur leg	[Arguments]	${other_param}	${operate_result}				
+	${new_leg_result}	create Iur leg	${ACTIVE_USCP}	${IPBR_ID_4020}	${CALL_ID}	${other_param}	
+	Set To Object	${new_leg_result}	computer	${ACTIVE_USCP}			
+	run keyword if	'${new_leg_result.result}' == 'SUCCESSFUL'	append to list	${IN_LEG_LIST}	${new_leg_result}		
+	should be equal	${new_leg_result.result}	${operate_result}				
+	[Return]	${new_leg_result}					
+							
+CS1 modify test Iur leg	[Arguments]	${other_param}	${operate_result}				
+	${new_leg_result}	Create test Iur leg	${IUB_CS1_PARA}${other_param}	${operate_result}			
+	[Return]	${new_leg_result}					
+							
+Create test Iu-CS leg	[Arguments]	${other_param}	${operate_result}	${call_id}=			
+	${new_leg_result}	create rtp leg	${ACTIVE_USCP}	${IPBR_ID_4020}	${IUCS_ORIG_PARA}${other_param}	${call_id}	
+	Set To Object	${new_leg_result}	computer	${ACTIVE_USCP}			
+	run keyword if	'${call_id}' != ''	Set To Object	${new_leg_result}	call_id	${call_id}	
+	Set Test Variable	\${CALL_ID}	${new_leg_result.call_id}				
+	run keyword if	'${new_leg_result.result}' == 'SUCCESSFUL'	append to list	${OUT_LEG_LIST}	${new_leg_result}		
+	should be equal	${new_leg_result.result}	${operate_result}				
+	[Return]	${new_leg_result}					
+							
+CS1 modify test Iu-CS leg	[Arguments]	${other_param}	${operate_result}	${call_id}			
+	${new_leg_result}	Create test Iu-CS leg	${IUCS_CS1_PARA}${other_param}	${operate_result}	${call_id}		
+	[Return]	${new_leg_result}					
+							
+Release srb call	[Arguments]	${leg_info}	${direction}	${leg_index}			
+	${release_result}	release_resource	${leg_info.computer}	${leg_info.call_id}	${direction}		
+	run keyword if	'${release_result.result}'=='SUCCESSFUL'	Remove leg from list	${direction}	${leg_index}		
+							

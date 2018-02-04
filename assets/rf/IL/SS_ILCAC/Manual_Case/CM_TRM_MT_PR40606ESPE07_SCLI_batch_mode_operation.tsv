@@ -1,0 +1,32 @@
+*Setting*							
+Suite Setup	connect to target hardware						
+Suite Teardown	disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B01454	PRS_ID-PRS_XXX	EFS_ID-XXX	hw_env-RNC	type-FUT	exec_type-automatic	element-IL
+...	release-RU50	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	PR-40606ESPE07	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	HW_TYPE-ADA_FTLB	QL-6
+...	FRS_ID-XXX						
+Resource	il.html						
+Resource	../resources/common_operation_resource.html
+Resource	../resources/CM_TRM_common_resource.tsv  						
+							
+*Variable*							
+${FILE_PATH}	/opt/nsn/testutils/						
+${EXEC_FILE}	PR40606ESPE07_SCLI_batch_mode_operation_RU50.sh						
+${ADD_SCRIPT}	PR40606ESPE07_add_IPBR_failure.conf						
+${DELETE_SCRIPT}	PR40606ESPE07_delete_IPRO_failure.conf						
+${SHOW_SCRIPT}	PR40606ESPE07_show.conf						
+${FAIL}	Case fail						
+							
+*Test Case*							
+IPBR and IPRO transaction operation	[Setup]	prepare script					
+	execute cli	cd ${FILE_PATH}					
+	execute cli	mount -o rw,remount /mnt/sysimg/					
+	${result}	execute cli	./${EXEC_FILE}				
+	Should not contain	${result}	${FAIL}				
+	[Teardown]	remove script					
+							
+*Keyword*							
+prepare script	execute cli	mount -o rw,remount /mnt/sysimg/
+	${local_path}	get locale cac test script folder
+	put file	${local_path}/CM_TRM_MT_PR40606ESPE07_SCLI_batch_mode_operation/*.*	${FILE_PATH}	0744			
+							
+remove script	execute cli	rm -rf ${EXEC_FILE} ${ADD_SCRIPT} ${DELETE_SCRIPT} ${SHOW_SCRIPT}					

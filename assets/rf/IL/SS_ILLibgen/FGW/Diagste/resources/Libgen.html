@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><b>Library</b></td><td>Collections</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>il.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${OMU TYPE NAME}</td><td>%{OMU_TYPE_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU TYPE}</td><td>%{OMU_TYPE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU0}</td><td>%{OMU_0_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CSCP0}</td><td>%{CSCPA_0_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CSCP1}</td><td>%{CSCPB_0_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CSCP TYPE}</td><td>%{CSCP_TYPE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MAX TIME FOR CONNECT}</td><td>20</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK TIMEOUT}</td><td>10</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK INTERVAL}</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WO_ADDR}</td><td>0x1000</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=5><b>Connect To SUT And Setup TestEnv</b></td></tr>
+<tr><td><br></td><td>${SSH_CSCP0}</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td></tr>
+<tr><td><br></td><td>...</td><td>${MAX TIME FOR CONNECT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>%{USERNAME}</td><td>%{PASSWD}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td colspan=3>\${SSH_CSCP0}</td></tr>
+<tr><td><br></td><td>Get WO CSCP0 index</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${WO CSCP0 NAME}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get The Physical Address of WO CSCP0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get The SE Node Physical Address In Same Node With WO CSCP0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${SSH_CSCP1}</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td></tr>
+<tr><td><br></td><td>...</td><td>${MAX TIME FOR CONNECT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>%{USERNAME}</td><td>%{PASSWD}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td colspan=3>\${SSH_CSCP1}</td></tr>
+<tr><td><br></td><td>Get WO CSCP1 index</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${WO CSCP1 NAME}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get The Physical Address of WO CSCP1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get The SE Node Physical Address In Same Node With WO CSCP1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Disconnect From SUT</b></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get WO CSCP0 Index</b></td><td>${rg_name}</td><td>Get RG Name By MOName</td><td>${CSCP0}</td><td><br></td></tr>
+<tr><td><br></td><td>${wo_names}</td><td>Get WO Units</td><td>${rg_name}</td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${wo_names[0]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${wo info}</td><td>Get Unit Type And Index</td><td>${wo_names[0]}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO CSCP0 INDEX}</td><td>${wo info.index}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO CSCP0 NAME}</td><td>${wo_names[0]}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get WO CSCP1 Index</b></td><td>${rg_name}</td><td>Get RG Name By MOName</td><td>${CSCP1}</td><td><br></td></tr>
+<tr><td><br></td><td>${wo_names}</td><td>Get WO Units</td><td>${rg_name}</td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${wo_names[0]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${wo info}</td><td>Get Unit Type And Index</td><td>${wo_names[0]}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO CSCP1 INDEX}</td><td>${wo info.index}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO CSCP1 NAME}</td><td>${wo_names[0]}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Get The Physical Address Of WO CSCP0</b></td></tr>
+<tr><td><br></td><td>${WO_CSCP0_ADDR}</td><td>Get Libgen Use Phys Addr</td><td>${CSCP TYPE}</td><td>0x${WO CSCP0 INDEX}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td colspan=3>\${WO_CSCP0_ADDR}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Get The SE Node Physical Address In Same Node With WO CSCP0</b></td></tr>
+<tr><td><br></td><td>${CSCP0_NODE}</td><td>Get Node From Unit</td><td colspan=2>${WO CSCP0 NAME}</td></tr>
+<tr><td><br></td><td>${SE_NODE}</td><td>Execute CLI</td><td colspan=2>echo ${CSCP0_NODE}|sed -s 's/PU/UP/'</td></tr>
+<tr><td><br></td><td>${CSUP_0_LOG_ADDR}</td><td>Execute CLI</td><td colspan=2>ilclifunit -u|grep ${SE_NODE.strip()}|awk '{print $2}'</td></tr>
+<tr><td><br></td><td>${CSPU_0_SE_ADDR}</td><td>Evaluate</td><td colspan=2>hex(${CSUP_0_LOG_ADDR.strip()}+${WO_ADDR})</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SE_ADDR_CSCP0}</td><td colspan=2>${CSPU_0_SE_ADDR}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get SE Physical With CSCP0</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${cpu}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${tmp}</td><td>Execute CLI</td><td>echo -n $((16#${cpu}))</td><td><br></td></tr>
+<tr><td><br></td><td>${SE_ADDR_CSCP}</td><td>Execute CLI</td><td colspan=2>cat /proc/dmxmsg/mac_addr_tbl |grep "0${tmp.strip()}" | grep SE | awk '{print $4}'</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SE_ADDR_CSCP0}</td><td>${SE_ADDR_CSCP.strip()}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get SE Physical With CSCP1</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${cpu}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${tmp}</td><td>Execute CLI</td><td>echo -n $((16#${cpu}))</td><td><br></td></tr>
+<tr><td><br></td><td>${SE_ADDR_CSCP}</td><td>Execute CLI</td><td colspan=2>cat /proc/dmxmsg/mac_addr_tbl |grep "0${tmp.strip()}" | grep SE | awk '{print $4}'</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SE_ADDR_CSCP1}</td><td>${SE_ADDR_CSCP.strip()}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Get The Physical Address Of WO CSCP1</b></td></tr>
+<tr><td><br></td><td>${WO_CSCP1_ADDR}</td><td>Get Libgen Use Phys Addr</td><td>${CSCP TYPE}</td><td>0x${WO CSCP1 INDEX}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td colspan=3>\${WO_CSCP1_ADDR}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Get The SE Node Physical Address In Same Node With WO CSCP1</b></td></tr>
+<tr><td><br></td><td>${CSCP1_NODE}</td><td>Get Node From Unit</td><td colspan=2>${WO CSCP1 NAME}</td></tr>
+<tr><td><br></td><td>${SE_NODE}</td><td>Execute CLI</td><td colspan=2>echo ${CSCP1_NODE}|sed -s 's/PU/UP/'</td></tr>
+<tr><td><br></td><td>${CSUP_1_LOG_ADDR}</td><td>Execute CLI</td><td colspan=2>ilclifunit -u|grep ${SE_NODE.strip()}|awk '{print $2}'</td></tr>
+<tr><td><br></td><td>${CSPU_1_SE_ADDR}</td><td>Evaluate</td><td colspan=2>hex(${CSUP_1_LOG_ADDR.strip()}+${WO_ADDR})</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SE_ADDR_CSCP1}</td><td colspan=2>${CSPU_1_SE_ADDR}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CSCP0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>mempoolproc -f 0xffff &amp;</td><td>mempool hand started.</td></tr>
+<tr><td><br></td><td>...</td><td>10s</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${family_id}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=family_id:\ \ )0x....</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${FAMILY_ID}</td><td colspan=2>${family_id}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Restart Test PRB</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Stop Test Prb</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CSCP0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td></tr>
+<tr><td><br></td><td>...</td><td>failure</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_prb</td><td>${WO_CSCP0_ADDR}</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Clear Test Env And Disconnect</b></td></tr>
+<tr><td><br></td><td colspan=4>Stop Test Prb</td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%"></table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

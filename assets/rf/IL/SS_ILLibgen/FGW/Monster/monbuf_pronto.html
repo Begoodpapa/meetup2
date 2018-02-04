@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Monbuf Pronto</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Monbuf Pronto</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test pronto:57809ESPE01: monster call libgen libgen_mon_get_frames() aborted at ring buffer mode.\n</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT And Setup Env</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Env And Dissconnect From SUT</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Iteration_ID-</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_2583</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>element-IL</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>exec_type-automatic</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>type-FUT</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>QL-7</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>release-IL1_RIS4</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>reviewer-@nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>rw-formal</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-all</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC_S0</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-AB</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>bcn_step-BCN_S1</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>resources/monster_resource.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${MAX TIME FOR CONNECT}</td><td>120s</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU_0}</td><td>%{OMU_0_NAME}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU TYPE}</td><td>%{OMU_TYPE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU_0_INDEX}</td><td colspan=3>%{OMU_0_INDEX}</td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MEMPOOL_FAMILY_ID}</td><td>0xC385</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OUT_FILE}</td><td>monbuf.bin</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=3><b>Monster At Ring Buffer Mode Should Monitor Msg Successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster To Monitor.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Start Send Msg.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Monitoring buffer Should Be Written Successfully While Stop The Monster Process.\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Monitoring buffer Should Be Written While Stop The Monbuf Monitor Process.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.AT.57809ESPE01</td></tr>
+<tr><td><br></td><td>Start Monster To Monitor</td><td><br></td></tr>
+<tr><td><br></td><td>Start Send Msg</td><td><br></td></tr>
+<tr><td><br></td><td colspan=2>Monitoring buffer Should Be Written Successfully While Stop The Monster Process</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Monster</td></tr>
+<tr bgcolor=#99CCFF><td colspan=3><b>Monster Should Unlink Share Memory When SIGBUS Happen</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Actually SIGBUS and SIGSEGV are not allowed for users\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Here kill with these signals to check share memory will be unlinked successfully when they happened\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster To Monitor.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Kill Monster With Signal SIGBUS.\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Monster Should Unlink Share Memory when SIGBUS Happen.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.100353ESPE01</td></tr>
+<tr><td><br></td><td>...</td><td>ct-negative</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Get ShmMem Size</td></tr>
+<tr><td><br></td><td>Start One Monster</td><td><br></td></tr>
+<tr><td><br></td><td>Kill Monster With Signal</td><td>10</td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CHECK INTERVAL}</td></tr>
+<tr><td><br></td><td>...</td><td>Check Coredump Happened</td></tr>
+<tr><td><br></td><td colspan=2>Check Monster Unlink Share Memory</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Coredump</td></tr>
+<tr bgcolor=#99CCFF><td colspan=3><b>Monster Should Unlink Share Memory When SIGSEGV Happen</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster To Monitor.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Kill Monster With Signal SIGSEGV.\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Monster Should Unlink Share Memory when SIGSEGV Happen.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.002.AT.95558ESPE04</td></tr>
+<tr><td><br></td><td>...</td><td>ct-negative</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Get ShmMem Size</td></tr>
+<tr><td><br></td><td>Start One Monster</td><td><br></td></tr>
+<tr><td><br></td><td>Kill Monster With Signal</td><td>11</td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CHECK INTERVAL}</td></tr>
+<tr><td><br></td><td>...</td><td>Check Coredump Happened</td></tr>
+<tr><td><br></td><td colspan=2>Check Monster Unlink Share Memory</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Coredump</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Start Monster To Monitor</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_MON}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>monster -z 1024 -R -c ":NUM=8000" -o ${OUT_FILE} &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Send Msg</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>Finish monster ring buffer testing steps</td><td>1</td><td>FAILED</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>sh tstmonring.sh</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Monitoring buffer Should Be Written Successfully While Stop The Monster Process</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_MON}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>ps aux|grep ${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>execute_cmd_with_check_expected</td><td>kill -2 ${pid}</td><td>Total output</td><td>60s</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>Total output</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>OMU Should Be Ready</b></td></tr>
+<tr><td><br></td><td>Managed Object Should Be Ready</td><td>${OMU_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Managed Object Should Be Ready</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${moname}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Check Managed Object State</td><td>${moname}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${True}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Connect To SUT And Setup Env</b></td></tr>
+<tr><td><br></td><td>${SSH_MON}</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td>${MAX TIME FOR CONNECT}</td></tr>
+<tr><td><br></td><td>...</td><td>%{USERNAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td colspan=4>%{PASSWD}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SSH_MON}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>OMU Should Be Ready</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${OMU_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Get The Physical Address Of OMU</td></tr>
+<tr><td><br></td><td>Switch To Active Log Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ulimit -c unlimited</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${SSH_CLI}=</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td>${MAX TIME FOR CONNECT}</td></tr>
+<tr><td><br></td><td>...</td><td>%{USERNAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td colspan=4>%{PASSWD}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${OMU_ON_ACTIVE_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>df -H /srv/Log/crash/</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>mempoolproc &amp;</td><td>mempool hand started.</td><td>10s</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get The Physical Address Of OMU</b></td></tr>
+<tr><td><br></td><td>${OMU0_COMP_ADDR}</td><td>Get Libgen Use Phys Addr</td><td>${OMU TYPE}</td><td colspan=2>${OMU_0_INDEX}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU_COMP_ADDR}</td><td colspan=3>${OMU0_COMP_ADDR}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get The Physical Address Of OMU1</b></td></tr>
+<tr><td><br></td><td>${OMU1_COMP_ADDR}</td><td>Get Libgen Use Phys Addr</td><td>${OMU TYPE}</td><td colspan=2>%{OMU_1_INDEX}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU_COMP_ADDR}</td><td colspan=3>${OMU1_COMP_ADDR}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test Prb</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_prb</td><td>${OMU__COMP_ADDR}</td><td>${MEMPOOL_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Monster</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Execute CLI</td><td>kill ${pid}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Coredump</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_MON}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>ll /srv/Log/crash/*${pid}*</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f /srv/Log/crash/*${pid}*</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Env And Dissconnect From SUT</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_MON}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute MML Without Check</td><td>ps aux |grep monster</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute MML Without Check</td><td>rm -f mon ${OUT_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>ll /srv/Log/crash/*monster*</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute MML Without Check</td><td>rm -f /srv/Log/crash/*monster*</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Stop Test Prb</td></tr>
+<tr><td><br></td><td colspan=5>Disconnect From SUT</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get ShmMem Size</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_MON}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>df /dev/shm/|grep shm|awk '{print $3}'</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${SIZE}</td><td colspan=3>${result.strip()}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start One Monster</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_MON}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>monster -f 100 -z 10240 -o ${OUT_FILE} &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>0.5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Kill Monster With Signal</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${SIGNAL}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_MON}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>kill -${SIGNAL} ${pid}</td><td>catch signal:\ ${SIGNAL}</td><td>2s</td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Coredump Happened</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_MON}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>ls /srv/Log/crash/*${pid}*SEGV*</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>SEGV</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Monster Coredump And Unlink Share Memory</b></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td colspan=2>Check The Core Dump Generated</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>df /dev/shm/|grep shm|awk '{print $3}'</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${status}</td><td>Evaluate</td><td>${result.strip()}&lt;${SIZE}+5120</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be True</td><td>${status}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Monster Unlink Share Memory</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>df /dev/shm/</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>free</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>df /dev/shm/|grep shm|awk '{print $3}'</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${status}</td><td>Evaluate</td><td>${result.strip()}&lt;${SIZE}+5120</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be True</td><td>${status}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Switch To Active Log Env</b></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU_ON_ACTIVE_LOG}</td><td>%{OMU_0_NAME}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${OMU_ON_ACTIVE_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>get_wo_units</td><td>/Log</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${ACTIVE_CLA0}</td><td>${result}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>uname -n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${node}</td><td>${result.strip()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If Else</td><td>${ACTIVE_CLA0} != ['/${node}/FSLogServer']</td><td>Set OMU In Node Of Active Log</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Set OMU In Node Of Active Log</b></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU_ON_ACTIVE_LOG}</td><td>%{OMU_1_NAME}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${OMU_ON_ACTIVE_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Get The Physical Address Of OMU1</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check The Core Dump Generated</b></td></tr>
+<tr><td><br></td><td>Count Core Dump</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${num_1}</td><td>Evaluate</td><td>int(1)</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${COUNT}</td><td>${num_1}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Count Core Dump</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_MON}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ls /srv/Log/crash/</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>ls /srv/Log/crash/ |grep monster.*core.gz|grep ${pid}|wc -l</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${COUNT}</td><td>Convert To Integer</td><td colspan=3>${result}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${COUNT}</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

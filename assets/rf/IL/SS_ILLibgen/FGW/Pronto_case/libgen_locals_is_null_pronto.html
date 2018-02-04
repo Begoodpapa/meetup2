@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen Lib User Alloc Msg Pronto</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen Lib User Alloc Msg Pronto</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test pronto: 96509ESPE04: Family will crash in monitoring if user sent wrong message to the hand which is under creation.\n</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Setup Connection For WO And SP</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Env and Disconnect From SUT</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Iteration_ID-</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>EFS_ID-RNC_EFS_</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>element-IL</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>exec_type-automatic</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>type-FUT</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>QL-1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>release-IL1_RIS4</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>reviewer-@nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>rw-formal</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-AB</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>resources/Libgen.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${OMU_0}</td><td>%{OMU_0_NAME}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FAMILY_ID}</td><td>0xA474</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU_LOG_ADDR}</td><td>%{OMU_LOG_GROUP_ADDR}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${LET_TSTPROC_STATEFUL}</td><td>let_tstproc_stateful</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${QUIT_STATEFUL}</td><td>quit_stateful</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NULL_LOCALS_CREATE_HAND}</td><td>null_locals_create_hand</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_STOP_HAND}</td><td>master_stop_hand</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${STOP_PROCESS}</td><td>stop_prb</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK_ALIVE}</td><td>still_alive</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WAIT_TIME_5S}</td><td>1000</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MON_PID}</td><td>None</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=3><b>Family Will Not Crash In Monitoring If User Sent Message To Hand Which Is Under Creation</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;CFCP is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster To Monitor The PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Test CLI Send Msg To SP PRB To Let It Into Stateful\n<br>&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;after into Stateful, Test CLI Send Msg To SP PRB To Create Hand\n<br>&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;And Send Msg To This Hand Which Is Under Creation At The Same TIme\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Check Hand Creation Successfully On WO.\\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.AT.96509ESPE04</td></tr>
+<tr><td><br></td><td>Start Monster To Monitor The PRB</td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Msg To SP PRB To Let It Into Stateful</td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Msg To SP PRB To Create Hand And Send Msg To This Hand Which Is Under Creation</td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Creation Successfully On WO</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Test Env</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Start Monster To Monitor The PRB</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Mml Without Check</td><td colspan=3>monster -u ${OMU WO PHYSICAL ADDRESS} -f ${FAMILY_ID} &gt; mon &amp;</td></tr>
+<tr><td><br></td><td>${MON_PID}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${MON_PID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Monster</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${MON_PID}'!='None'</td><td>Execute CLI</td><td>kill ${MON_PID}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Msg To SP PRB To Let It Into Stateful</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "${OMU SP PHYSICAL ADDRESS} ${FAMILY_ID} ${MASTER_PROCESS_ID}" -v ${LET_TSTPROC_STATEFUL}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Msg To SP PRB To Quit Stateful</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "${OMU SP PHYSICAL ADDRESS} ${FAMILY_ID} ${MASTER_PROCESS_ID}" -v ${QUIT_STATEFUL}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Msg To SP PRB To Create Hand And Send Msg To This Hand Which Is Under Creation</b></td></tr>
+<tr><td><br></td><td>Set Specific Hand Id</td><td>9</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "${OMU_LOG_ADDR} ${FAMILY_ID} ${MASTER_PROCESS_ID}" -v ${NULL_LOCALS_CREATE_HAND} -t 9 -a ${SPECIFIC_HAND_PROCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td colspan=4>\${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Hand Creation Successfully On WO</b></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>Created hand process id:</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Created Hand</b></td></tr>
+<tr><td><br></td><td>Set Specific Hand Id</td><td>9</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "${OMU_LOG_ADDR} ${FAMILY_ID} ${MASTER_PROCESS_ID}" -v ${MASTER_STOP_HAND} -t ${SPECIFIC_HAND_PROCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Process Still Alive</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_process_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -t %s</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${TEST_PRB_FAMILY_ID}</td><td>${in_process_id}</td><td>${CHECK_ALIVE}</td><td>${WAIT_TIME_5S}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Still Alive</b></td></tr>
+<tr><td><br></td><td>Check PRB Process Still Alive</td><td>${HAND_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Process Still Alive</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>OMU Should Be Ready</b></td></tr>
+<tr><td><br></td><td>Managed Object Should Be Ready</td><td>${OMU_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Managed Object Should Be Ready</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${moname}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Check Managed Object State</td><td>${moname}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${True}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Connect To SUT And Setup Env</b></td></tr>
+<tr><td><br></td><td>Connect To SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>OMU Should Be Ready</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Env and Disconnect From SUT</b></td></tr>
+<tr><td><br></td><td>Disconnect From SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Test Env</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f mon</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Test CLI Send Msg To SP PRB To Quit Stateful</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Created Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Monster</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

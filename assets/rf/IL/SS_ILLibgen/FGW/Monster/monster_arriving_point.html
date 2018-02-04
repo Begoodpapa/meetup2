@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Monster Arriving Point Test Case</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Monster Arriving Point</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td colspan=4><font color=green>This test suite will test monster arriving point monitoring.</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B02943</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I05172</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-IL</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-7</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-mail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC</td><td><font color=dark red>hw_env-AB</td><td><font color=dark red>hw_env-RNC_S0</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-ADA</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Env Setup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clean Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/monster_resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${TEST_CLI}</td><td>mempoolproc</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_PRB}</td><td>mempoolproc</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${STOP_SELF}</td><td>stop_prb -W</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CLI_FAMILY}</td><td>0xffff</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_FAMILY}</td><td>0xC385</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSGCNT_0}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSGCNT_2}</td><td>2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSGCNT_4}</td><td>4</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSGCNT_314}</td><td>314</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSGCNT_628}</td><td>628</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TMOUT}</td><td>3</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DELAY}</td><td>100</td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>Message From Kernel Should Be Monitored Correctly At Arriving And Receiving Point</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster to Monitor AR Point With Condition String\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Get The Monitored Output\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. AR Point Msg Count Should Be Same And Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. A Point Msg Time Should Be Less Than R Point Msg Time\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. A Point Msg Count And Time Should Be Correct.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.I05172</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Let Test Process Send Message</td><td>-u ${OMU PHYSICAL ADDRESS} -f 1773 -c "AR:"</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>ILWMTestCli -- -r ${OMU PHYSICAL ADDRESS} 0x1773 0 -msg 0x6034 0 ${MSGCNT_2} -s</td><td>${TMOUT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check AR Point Msg Count Should Be Same And Correct</td><td>${MSGCNT_2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check A Point Msg Time Should Be Less Than R Point Msg Time</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Message From Kernel Should Be Monitored Correctly At Arriving Point</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster to Monitor A Point With Condition String\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Get The Monitored Output\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. A Point Msg Count Should Be Correct\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. A Point Msg Count And Time Should Be Correct.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.002.AT.I05172</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Let Test Process Send Message</td><td>-u ${OMU PHYSICAL ADDRESS} -f 1773 -c "A:"</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>ILWMTestCli -- -r ${OMU PHYSICAL ADDRESS} 0x1773 0 -msg 0x6034 0 ${MSGCNT_2} -s</td><td>${TMOUT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check A Point Msg Count Should Be Correct</td><td>${MSGCNT_2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check R Point Msg Count Should Be Correct</td><td>${MSGCNT_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Message From Kernel Should Be Monitored Correctly At Arriving And Receiving Point While Libgen Execute Msg With Delay</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster to Monitor AR Point With Condition String\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to Let Test Stub Recv Msg With Delay 1s\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Get The Monitored Output\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. AR Point Msg Count Should Be Same And Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. A Point Msg Time Should Be Less Than R Point Msg Time(more than 1s)\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. A Point Msg Count And Time Should Be Correct.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.003.AT.I05172</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Let Test Process Send Message</td><td>-u ${OMU PHYSICAL ADDRESS} -f C385 -c 'AR:(DATB0=9)'</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p '${OMU PHYSICAL ADDRESS} 0xc385 0' -v kernel_msg_queue_length -t ${DELAY}</td><td>${TMOUT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check AR Point Msg Count Should Be Same And Correct</td><td>${MSGCNT_2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check A Point Msg Time Should Be Less Than R Point Msg Time</td><td>${DELAY}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Message From Internal Queue Should Not Be Monitored At Arriving Point</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster to Monitor AR Point\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Get The Monitored Output\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. A Point Msg Count Should Be Zero\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. A Point Msg Count Should Be Zero.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.004.AT.I05172</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Let Test Process Send Message</td><td>-u ${OMU PHYSICAL ADDRESS} -f C385 -c 'AR:(NUM=6037)' -H</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p '${OMU PHYSICAL ADDRESS} 0xC385 0x0' -v msg_to_master -c ${MSGCNT_2}</td><td>${TMOUT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check A Point Msg Count Should Be Correct</td><td>${MSGCNT_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check R Point Msg Count Should Be Correct</td><td>${MSGCNT_2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Message From Kernel Should Be Monitored At Arriving Point And Should Not Be Monitored After Msgs In Save Queue</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster to Monitor AR Point\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to Let Test Stub Save Msg\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Use test CLI to Let Test Stub Process Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Get The Monitored Output\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. AR Point Msg Count Should Be Same And Correct For Not Saved Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. A Point Msg Count Should Be Zero For Saved Msgs\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. A Point Msg Count Should Be Correct.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.005.AT.I05172</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Let Test Process Send Message</td><td>-u ${OMU PHYSICAL ADDRESS} -f C385 -c 'AR:(NUM=6037)' -H</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p '${OMU PHYSICAL ADDRESS} 0xc385 1' -v arriving_point_hand_save -a ${MSGCNT_2}</td><td>${TMOUT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check A Point Msg Count Should Be Correct</td><td>${MSGCNT_2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check R Point Msg Count Should Be Correct</td><td>${MSGCNT_4}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Message From Kernel Should Be Monitored At Arriving Point And Should Not Be Monitored After Msgs In Save Chain</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster to Monitor AR Point\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to Let Test Stub Into Stateful\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Use test CLI to Let Test Stub Process Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Get The Monitored Output\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. AR Point Msg Count Should Be Same And Correct For Not Saved Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. A Point Msg Count Should Be Zero For Saved Msgs\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. A Point Msg Count Should Be Correct.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.006.AT.I05172</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Let Test Process Send Message</td><td>-u ${OMU PHYSICAL ADDRESS} -f C385 -c 'AR:(NUM=6037)' -H</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p '${OMU PHYSICAL ADDRESS} 0xC385 0x1' -v msg_to_hand -c ${MSGCNT_314}</td><td>${TMOUT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check A Point Msg Count Should Be Correct</td><td>${MSGCNT_314}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check R Point Msg Count Should Be Correct</td><td>${MSGCNT_628}</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Check And Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Run Keyword Unless</td><td>'${MULTI_THREAD}'=='No'</td><td>Start Test PRB</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>${TEST_PRB} -- -s &amp;</td><td>mempool hand started</td><td>10</td><td><br></td></tr>
+<tr><td><br></td><td>${MULTI_THREAD}</td><td>Set Variable</td><td>No</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MULTI_THREAD}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Multi Thread Test PRB</b></td></tr>
+<tr><td><br></td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>${TEST_PRB} -t 2 -- -s &amp;</td><td>mempool hand started</td><td>10</td><td><br></td></tr>
+<tr><td><br></td><td>${MULTI_THREAD}</td><td>Set Variable</td><td>Yes</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MULTI_THREAD}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check And Start Multi Thread Test PRB</b></td></tr>
+<tr><td><br></td><td>Run Keyword Unless</td><td>'${MULTI_THREAD}'=='Yes'</td><td>Start Multi Thread Test PRB</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test Prb</b></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>${TEST_CLI} -f ${CLI_FAMILY} -- -p "${OMU PHYSICAL ADDRESS} ${TEST_FAMILY} ${MASTER_PROCESS}" -v ${STOP_SELF}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Env Setup</b></td></tr>
+<tr><td><br></td><td>Connect To SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clean Env</b></td></tr>
+<tr><td><br></td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect From SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Let Test Process Send Message</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${mon_command}</td><td><font color=#FF6600>${command}</td><td><font color=#FF6600>${delay}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process And Monitor</td><td>${mon_command}</td><td>${command}</td><td>${delay}</td></tr>
+<tr><td><br></td><td>Should Not Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf}</td><td>${result.strip()}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check AR Point Msg Count Should Be Same And Correct</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=4><font color=#FF6600>${cnt}</td></tr>
+<tr><td><br></td><td>Check Equal Msg In Both Monitoring Point</td><td>${cnt}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check A Point Msg Count Should Be Correct</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=4><font color=#FF6600>${cnt}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Get Length</td><td>${arrv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${result}</td><td>${cnt}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check R Point Msg Count Should Be Correct</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=4><font color=#FF6600>${cnt}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Get Length</td><td>${recv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${result}</td><td>${cnt}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Equal Msg In Both Monitoring Point</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${cnt}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check A Point Msg Count Should Be Correct</td><td colspan=4>${cnt}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Check Equal Msg In Both List</td><td>${arrv_list}</td><td>${recv_list}</td><td>${cnt}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get Each Type Msg From Monitoring Result</b></td></tr>
+<tr><td><br></td><td>${msg_list}</td><td>Get Msg From Monitoring Result</td><td>${msg_buf}</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td>@{recv_list}</td><td>Get Msgs By Type</td><td>${msg_list}</td><td>recv</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td colspan=4>\@{recv_list}</td></tr>
+<tr><td><br></td><td>@{arrv_list}</td><td>Get Msgs By Type</td><td>${msg_list}</td><td>arrv</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td colspan=4>\@{arrv_list}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check A Point Msg Time Should Be Less Than R Point Msg Time</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${delay}=0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check Each Msg Time Less Than</td><td>${arrv_list}</td><td>${recv_list}</td><td>${delay}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

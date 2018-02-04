@@ -1,0 +1,178 @@
+*Setting*							
+Suite Setup	Prepare_Test_ENV						
+Suite Teardown	Clear_Test_ENV						
+Force Tags	Product_Backlog_ID-B03109	Iteration_ID-I08568	type-FUT	exec_type-manual	element-IL	release-IL5	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com
+...	exec_level-pre	hw_env-ADA	hw_env-RNC_S0	HW_TYPE-ADA_FTLB	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	QL-7
+...	PRS_ID-PRS_4020	EFS_ID-XXX	FRS_ID-XXX				
+Resource	../resources/common_operation_resource.html						
+Resource	../resources/cac_basic_operation_resource.html						
+Resource	../resources/IPBR_basic_operation_resource.html						
+Library	Collections						
+Resource	il.html						
+							
+*Variable*							
+${IPBR_NAME_1}	TEST-IPBR-1						
+${IPBR_NAME_2}	TEST-IPBR-2						
+${ONE_GROUP}	1						
+${IDSP_ID_1}	1						
+${IDSP_ID_2}	2						
+${IDSP_ID_3}	3						
+${IDSP_ID_4}	4						
+${IDSP_ID_5}	5						
+${IDSP_ID_7}	7						
+${IDSP_ID_8}	8						
+${IPHB_ID_1}	1						
+${IPHB_ID_2}	2						
+${IPHB_ID_3}	3						
+${IPHB_ID_4}	4						
+${IPHB_ID_5}	5						
+${IPHB_ID_7}	7						
+${IPHB_ID_8}	8						
+${IPBR_ID_4031}	4031						
+${IPBR_ID_4032}	4032						
+${IPBR_ID_4033}	4033						
+${IPBR_ID_4034}	4034						
+${IPBR_ID_4035}	4035						
+${IPBR_ID_4037}	4037						
+${IPBR_ID_4038}	4038						
+${CONF_NAME}	TEST_ORIG						
+${SYSLOG_FILE_NAME}	test-log						
+${INTERAL_TIME}	40 sec						
+${TIME_OUT}	6 min						
+							
+*Test Case*							
+Check some MOs when MOs exist in LDAP and CAC memory without difference	[Tags]	ATC_ID-TRM_IPBR.FUT.001.FT					
+	${result}	check_all_MO_between_LDAP_and_CAC					
+	Should Be Equal	${result['IPBR']}	No Difference				
+	Should Be Equal	${result['IPRO']}	No Difference				
+	Should Be Equal	${result['IPHB']}	No Difference				
+	Should Be Equal	${result['IDSP']}	No Difference				
+							
+Check some MOs between LDAP and CACPRB memory	[Tags]	ATC_ID-TRM_IPBR.FUT.002.FT.I08658					
+	[Setup]						
+	Delete_Some_MOs						
+	Modify_Some_MOs						
+	Add_Some_MOs						
+	Restored the BCN Configrured	${CONF_NAME}					
+	Check the MOs between LDAP and CAC memory						
+	[Teardown]						
+							
+*Keyword*							
+Prepare_Test_ENV	Connect to Target Hardware						
+	switch to active OMU						
+	run keyword if	'%{HW}' == 'ADA'	Select_IP_for_ADA				
+	run keyword if	'%{HW}' == 'RNC'	Select_IP_for_BCN				
+	Create_Test_Resource						
+							
+Clear_Test_ENV	Clear_Test_Resource						
+	disconnect from target hardware						
+							
+Create_Test_Resource	: FOR	${index}	IN	${IDSP_ID_1}	${IDSP_ID_2}	${IDSP_ID_3}	${IDSP_ID_4}
+	...	${IDSP_ID_5}					
+		Add IPHB Profile	${index}	Test-${index}			
+		Add IDSP Profile	${index}	Test-${index}			
+	: FOR	${index}	IN	${IPBR_ID_4031}	${IPBR_ID_4032}	${IPBR_ID_4033}	${IPBR_ID_4034}
+	...	${IPBR_ID_4035}					
+		Add IPBR successfully	${index}	${IPBR_NAME_1}			
+		Add IPRO successfully	${index}	${IP_GROUP[0].ip_addr}	${IP_GROUP[0].rg_name}	${IP_GROUP[0].iface}	
+	execute cli	cd /srv/Log/					
+	execute cli	tail -f /srv/Log/log/syslog>${SYSLOG_FILE_NAME}&					
+	Run Keyword And Ignore Error	execute cli	fsconfigure --save ${CONF_NAME} &				
+	Wait Until Keyword Succeeds	${TIME_OUT}	${INTERAL_TIME}	check_log_for_config	Successfully saved configuration volume: ${CONF_NAME}		
+							
+Clear_Test_Resource	: FOR	${index}	IN	${IPBR_ID_4033}	${IPBR_ID_4034}	${IPBR_ID_4035}	${IPBR_ID_4031}
+	...	${IPBR_ID_4032}	${IPBR_ID_4037}	${IPBR_ID_4038}			
+		run keyword and ignore error	Delete IPRO successfully	${index}	${IP_GROUP[0].ip_addr}	${IP_GROUP[0].rg_name}	${IP_GROUP[0].iface}
+		run keyword and ignore error	Delete Ip Based Route Resource With Ipbr Id	${index}			
+	: FOR	${index}	IN	${IDSP_ID_1}	${IDSP_ID_2}	${IDSP_ID_3}	${IDSP_ID_4}
+	...	${IDSP_ID_5}	${IDSP_ID_7}	${IDSP_ID_8}			
+		run keyword and ignore error	Delete IPHB Profile	${index}			
+		run keyword and ignore error	Delete IDSP Profile	${index}			
+	delete_configured_version						
+	run keyword if	'%{HW}' == 'ADA'	execute cli	fshascli -rnEF /CLA-0/GFCPTestServer-0/IL_Cacprb			
+	run keyword if	'%{HW}' == 'RNC'	execute cli	fshascli -rnEF /CFPU-*/QNCFCPServer-*/IL_Cacprb			
+	execute cli	pkill tail					
+	execute cli	rm -rf ${SYSLOG_FILE_NAME}					
+							
+Delete_Some_MOs	: FOR	${index}	IN	${IPBR_ID_4031}	${IPBR_ID_4032}		
+		Delete IPRO successfully	${index}	${IP_GROUP[0].ip_addr}	${IP_GROUP[0].rg_name}	${IP_GROUP[0].iface}	
+		Delete Ip Based Route Resource With Ipbr Id	${index}				
+	: FOR	${index}	IN	${IDSP_ID_1}	${IDSP_ID_2}		
+		delete IPHB Profile	${index}				
+		Delete IDSP Profile	${index}				
+							
+Modify_Some_MOs	: FOR	${index}	IN	${IPBR_ID_4033}	${IPBR_ID_4034}		
+		modify IPRO successfully	${index}	${IP_GROUP[0].ip_addr}	${IP_GROUP[0].rg_name}	${IP_GROUP[0].iface}	EF,AF4,AF3
+		Modify IPBR Successfully	${index}	${IPBR_NAME_2}			
+	: FOR	${index}	IN	${IDSP_ID_3}	${IDSP_ID_4}		
+		${result}	Modify The IPHB Of Queue	${index}	${index}-IPHB		
+		should contain	${result}	successfully			
+		${result}	Modify The Dscp Of Queue	${index}	${index}-IDSP		
+		should contain	${result}	successfully			
+							
+Add_Some_MOs	: FOR	${index}	IN	${IPBR_ID_4037}	${IPBR_ID_4038}		
+		Add IPBR successfully	${index}	${IPBR_NAME_1}			
+		Add IPRO successfully	${index}	${IP_GROUP[0].ip_addr}	${IP_GROUP[0].rg_name}	${IP_GROUP[0].iface}	
+	: FOR	${index}	IN	${IDSP_ID_7}	${IDSP_ID_8}		
+		Add IPHB Profile	${index}	Test-${index}			
+		Add IDSP Profile	${index}	Test-${index}			
+							
+Restored the BCN Configrured	[Arguments]	${VERSION}					
+	Run Keyword And Ignore Error	execute cli	fsconfigure --restore ${VERSION} --force&				
+	Wait Until Keyword Succeeds	${TIME_OUT}	${INTERAL_TIME}	check_log_for_config	Restore configuration		
+							
+Check the MOs between LDAP and CAC memory	${MOs_diff_info}	check_all_MO_between_LDAP_and_CAC					
+	Check_IDSP_Difference	${MOs_diff_info['IDSP']}					
+	Check_IPHB_Difference	${MOs_diff_info['IPHB']}					
+	Check_IPBR_Difference	${MOs_diff_info['IPBR']}					
+	Check_IPRO_Difference	${MOs_diff_info['IPRO']}					
+	should be equal	${MOs_diff_info['SUMMARY']['different']['IDSP']}	6				
+	should be equal	${MOs_diff_info['SUMMARY']['different']['IPHB']}	6				
+	should be equal	${MOs_diff_info['SUMMARY']['different']['IPBR']}	6				
+	should be equal	${MOs_diff_info['SUMMARY']['different']['IPRO']}	6				
+							
+Check_IDSP_Difference	[Arguments]	${IDSP_diff_info}					
+	should be equal	${IDSP_diff_info['${IDSP_ID_3}']['LDAP']['id']}	${IDSP_diff_info['${IDSP_ID_3}']['Memory']['id']}				
+	should be equal	${IDSP_diff_info['${IDSP_ID_4}']['LDAP']['id']}	${IDSP_diff_info['${IDSP_ID_4}']['Memory']['id']}				
+	should be equal	${IDSP_diff_info['${IDSP_ID_1}']['Only in LDAP']['id']}	${IDSP_ID_1}				
+	should be equal	${IDSP_diff_info['${IDSP_ID_2}']['Only in LDAP']['id']}	${IDSP_ID_2}				
+	should be equal	${IDSP_diff_info['${IDSP_ID_7}']['Only in Memory']['id']}	${IDSP_ID_7}				
+	should be equal	${IDSP_diff_info['${IDSP_ID_8}']['Only in Memory']['id']}	${IDSP_ID_8}				
+							
+Check_IPHB_Difference	[Arguments]	${IPHB_diff_info}					
+	should be equal	${IPHB_diff_info['${IPHB_ID_3}']['LDAP']['id']}	${IPHB_diff_info['${IPHB_ID_3}']['Memory']['id']}				
+	should be equal	${IPHB_diff_info['${IPHB_ID_4}']['LDAP']['id']}	${IPHB_diff_info['${IPHB_ID_4}']['Memory']['id']}				
+	should be equal	${IPHB_diff_info['${IPHB_ID_1}']['Only in LDAP']['id']}	${IPHB_ID_1}				
+	should be equal	${IPHB_diff_info['${IPHB_ID_2}']['Only in LDAP']['id']}	${IPHB_ID_2}				
+	should be equal	${IPHB_diff_info['${IPHB_ID_7}']['Only in Memory']['id']}	${IPHB_ID_7}				
+	should be equal	${IPHB_diff_info['${IPHB_ID_8}']['Only in Memory']['id']}	${IPHB_ID_8}				
+							
+Check_IPBR_Difference	[Arguments]	${IPBR_diff_info}					
+	should be equal	${IPBR_diff_info['${IPBR_ID_4033}']['LDAP']['id']}	${IPBR_diff_info['${IPBR_ID_4033}']['Memory']['id']}				
+	should be equal	${IPBR_diff_info['${IPBR_ID_4034}']['LDAP']['id']}	${IPBR_diff_info['${IPBR_ID_4034}']['Memory']['id']}				
+	should be equal	${IPBR_diff_info['${IPBR_ID_4031}']['Only in LDAP']['id']}	${IPBR_ID_4031}				
+	should be equal	${IPBR_diff_info['${IPBR_ID_4032}']['Only in LDAP']['id']}	${IPBR_ID_4032}				
+	should be equal	${IPBR_diff_info['${IPBR_ID_4037}']['Only in Memory']['id']}	${IPBR_ID_4037}				
+	should be equal	${IPBR_diff_info['${IPBR_ID_4038}']['Only in Memory']['id']}	${IPBR_ID_4038}				
+							
+Check_IPRO_Difference	[Arguments]	${IPRO_diff_info}					
+	should be equal	${IPRO_diff_info['${IPBR_ID_4033}:${IP_GROUP[0].ip_addr}:${IP_GROUP[0].rg_name}:${IP_GROUP[0].iface}']['LDAP']['id']}	${IPRO_diff_info['${IPBR_ID_4033}:${IP_GROUP[0].ip_addr}:${IP_GROUP[0].rg_name}:${IP_GROUP[0].iface}']['Memory']['id']}				
+	should be equal	${IPRO_diff_info['${IPBR_ID_4034}:${IP_GROUP[0].ip_addr}:${IP_GROUP[0].rg_name}:${IP_GROUP[0].iface}']['LDAP']['id']}	${IPRO_diff_info['${IPBR_ID_4034}:${IP_GROUP[0].ip_addr}:${IP_GROUP[0].rg_name}:${IP_GROUP[0].iface}']['Memory']['id']}				
+	should be equal	${IPRO_diff_info['${IPBR_ID_4031}:${IP_GROUP[0].ip_addr}:${IP_GROUP[0].rg_name}:${IP_GROUP[0].iface}']['Only in LDAP']['phb_set']}	ALL				
+	should be equal	${IPRO_diff_info['${IPBR_ID_4032}:${IP_GROUP[0].ip_addr}:${IP_GROUP[0].rg_name}:${IP_GROUP[0].iface}']['Only in LDAP']['phb_set']}	ALL				
+	should be equal	${IPRO_diff_info['${IPBR_ID_4037}:${IP_GROUP[0].ip_addr}:${IP_GROUP[0].rg_name}:${IP_GROUP[0].iface}']['Only in Memory']['phb_set']}	ALL				
+	should be equal	${IPRO_diff_info['${IPBR_ID_4038}:${IP_GROUP[0].ip_addr}:${IP_GROUP[0].rg_name}:${IP_GROUP[0].iface}']['Only in Memory']['phb_set']}	ALL				
+							
+check_log_for_config	[Arguments]	${check-message-info}					
+	execute cli	"grep ""${check-message-info}"" /srv/Log/${SYSLOG_FILE_NAME}"					
+							
+Select_IP_for_BCN	${IP_GROUP}	select random IP address and recovery group	${ONE_GROUP}				
+	Set Suite Variable	\${IP_GROUP}					
+							
+Select_IP_for_ADA	${IP_GROUP}	select_random_IP_address_and_recovery_group_ADA	${ONE_GROUP}				
+	Set Suite Variable	\${IP_GROUP}					
+							
+delete some MOs if test failed							
+							
+delete_configured_version	Run Keyword And Ignore Error	execute cli	fsconfigure --delete ${CONF_NAME} --force&				
+	Wait Until Keyword Succeeds	${TIME_OUT}	${INTERAL_TIME}	check_log_for_config	Delete configuration		

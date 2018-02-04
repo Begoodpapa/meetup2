@@ -1,0 +1,98 @@
+*Setting*							
+Suite Setup	connect to target hardware and prepare test environment						
+Suite Teardown	clear test resource and disconnect from hardware						
+Force Tags	element-il exec_type-automatic release-IL1 type-FUT	HW_TYPE-BCN_A1 BCN_STEP-BCN_S0 hw_env-RNC_S0	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	Product_Backlog_ID-xxx	QL-6	Product_Backlog_ID-XXX	EFS_ID-XXX
+...	PRS_ID-XXX						
+Resource	il.html						
+Resource	../resources/common_operation_resource.html						
+Library	../resources/IP_based_route_resource.py						
+Library	../resources/cacprb_test_resources.py						
+							
+*Variable*							
+${TEST_IP_ADDRESS}	128.0.1.3						
+${TEST_IFACE}	lo						
+${QNUP_RG1}	/QNUP-1						
+${IPBR_ID_4080}	4080						
+${EXPECT_BW}	10000						
+${CALL_PARM}	FMBR=${EXPECT_BW},FABR=${EXPECT_BW},NCAC=0,DSCP=F						
+${ORIGINAL_IPBR_ATTRS}	ipbr_id=${IPBR_ID_4080} route_bw=10000 commit_bw=9000 commit_sig_bw=0 commit_dcn_bw=0 mux_flag=enable mux_udp_dscp=15						
+${IPBR_MULTIPLEXING_DISABLED}	ipbr_id=${IPBR_ID_4080} mux_flag=disable mux_udp_dscp=16						
+${IPBR_MULTIPLEXING_ENABLED}	ipbr_id=${IPBR_ID_4080} mux_flag=enable mux_udp_dscp=15						
+${IPRO_ATTRS}	ipbr_id=${IPBR_ID_4080} iface=${TEST_IFACE} ip_address=${TEST_IP_ADDRESS} owner=${QNUP_RG1}						
+							
+*Test Case*							
+Multiplexing effect on CAC shall work successfully even disable multiplexing license after enabling multiplexing	[Tags]	FRS_ID-PCM_100201_13_R1886					
+	Set multiplexing license disable						
+	Reserve SRB call based on multiplexing enabled IPBR successfully						
+	Get the reserved bandwidth, and the bandwidth should be assigned as 70 percent of the expect bandwidth						
+	[Teardown]	Release old SRB call, rollback IPBR update and enable multiplexing feature					
+							
+Multiplexing effect on CAC shall not be applied to already created leg	[Tags]	FRS_ID-PCM_100201_14_R1886					
+	[Setup]	Set IPBR multiplexing disabled					
+	Reserve SRB call based on multiplexing enabled IPBR successfully						
+	Get orignal SRB call bandwidth info						
+	Set IPBR multiplexing enabled						
+	Get updated SRB call bandwidth info and compare with the orignal bandwidth info						
+	[Teardown]	Release old SRB call, rollback IPBR update and enable multiplexing feature					
+							
+*keyword*							
+Get the reserved bandwidth, and the bandwidth should be assigned as 70 percent of the expect bandwidth	${expect_assigned_bandwidth}	evaluate	${EXPECT_BW} * 0.7				
+	${cac_info}	inquiry udp conn resource info	${SRB_ADDRESS}	${SRB_PORT}			
+	should be equal as numbers	${expect_assigned_bandwidth}	"${cac_info[""${SRB_ADDRESS}:${SRB_PORT}""][""reserve_bw""]}"				
+							
+set IPBR multiplexing disabled	update IPBR parameter successfully	${IPBR_MULTIPLEXING_DISABLED}					
+							
+set IPBR multiplexing enabled	update IPBR parameter successfully	${IPBR_MULTIPLEXING_ENABLED}					
+							
+set multiplexing license enable	set feature license with feature code	${LICENSE_INFO.feature_code_list}	on				
+							
+set multiplexing license disable	set feature license with feature code	${LICENSE_INFO.feature_code_list}	off				
+							
+Reserve SRB call based on multiplexing enabled IPBR successfully	${RESERVED_CALL}	reserve SRB call successfully	${USCP}	${IPBR_ID_4080}	${CALL_PARM}		
+	set test variable	\${RESERVED_CALL}					
+	set test variable	\${SRB_ADDRESS}	${RESERVED_CALL.legs['${RESERVED_CALL.leg_id}'].local_ip}				
+	set test variable	\${SRB_PORT}	${RESERVED_CALL.legs['${RESERVED_CALL.leg_id}'].local_port}				
+							
+get orignal SRB call bandwidth info	${ORIGNAL_CAC_INFO}	inquiry udp conn resource info	${SRB_ADDRESS}	${SRB_PORT}			
+	set test variable	\${ORIGNAL_CAC_INFO}					
+							
+get updated SRB call bandwidth info and compare with the orignal bandwidth info	${new_cac_info}	inquiry udp conn resource info	${SRB_ADDRESS}	${SRB_PORT}			
+	should be equal	${ORIGNAL_CAC_INFO}	${new_cac_info}				
+							
+Release old SRB call, rollback IPBR update and enable multiplexing feature	set multiplexing license enable						
+	release leg resource successfully	${RESERVED_CALL.owner}	${RESERVED_CALL.call_id}	${RESERVED_CALL.leg_id}			
+	rollback IPBR attributes update with default attribute						
+							
+connect to target hardware and prepare test environment	connect to target hardware						
+	switch to active OMU						
+	select random QNUP and QNUSCP on target hardware						
+	${LICENSE_INFO}	get feature license	Multiplexing				
+	set suite variable	\${LICENSE_INFO}					
+	set multiplexing license enable						
+	reserve IPBR and IPRO successfully						
+							
+clear test resource and disconnect from hardware	${result}	delete ipro with attributes	ipbr_id=${IPBR_ID_4080} iface=${TEST_IFACE} ip_address=${TEST_IP_ADDRESS} owner=${QNUP_RG1} mode=forced				
+	should be equal	${result['result'].upper()}	SUCCESS				
+	${result}	delete IP based route with attributes	ipbr_id=${IPBR_ID_4080}				
+	should be equal	${result['result'].upper()}	SUCCESS				
+	${result}	scli delete networking address	${QNUP_RG1}	${TEST_IFACE}	${TEST_IP_ADDRESS}		
+	should be empty	${result.strip()}					
+	disconnect all ils						
+							
+select random QNUP and QNUSCP on target hardware	${QNUP_RG1}	select random QNUP from hardware					
+	set suite variable	\${QNUP_RG1}					
+	set suite variable	\${USCP}	USCP-0				
+							
+reserve IPBR and IPRO successfully	${result}	scli add networking address	${QNUP_RG1}	${TEST_IFACE}	${TEST_IP_ADDRESS}/32		
+	should be empty	${result.strip()}					
+	${result}	add IP based route with attributes	${ORIGINAL_IPBR_ATTRS}				
+	should be equal	${result['result'].upper()}	SUCCESS				
+	${result}	add IPRO with attributes	ipbr_id=${IPBR_ID_4080} iface=${TEST_IFACE} ip_address=${TEST_IP_ADDRESS} owner=${QNUP_RG1}				
+	should be equal	${result['result'].upper()}	SUCCESS				
+							
+rollback IPBR attributes update with default attribute	${result}	update IP based route with attributes	${ORIGINAL_IPBR_ATTRS}				
+	should be equal	${result['result'].upper()}	SUCCESS				
+							
+update IPBR parameter successfully	[Arguments]	${ipbr_params}					
+	${result}	update IP based route with attributes	${ipbr_params}				
+	should be equal	${result['result'].upper()}	SUCCESS				

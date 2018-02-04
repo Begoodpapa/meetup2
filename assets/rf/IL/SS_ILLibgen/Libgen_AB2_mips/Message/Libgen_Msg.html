@@ -1,0 +1,1494 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+
+
+<meta content="HTML Tidy, see www.w3.org" name="generator">
+<style type="text/css">
+html {
+font-family: Arial,Helvetica,sans-serif;
+background-color: white;
+color: black;
+}
+p {
+max-width: 60em;
+}
+table {
+border-collapse: collapse;
+empty-cells: show;
+margin: 1em 0em;
+border: 0.1em solid black;
+}
+th, td {
+border-style: solid;
+border-width: 0.05em 0.1em;
+border-color: black;
+padding: 0.1em 0.2em;
+height: 1.5em;
+}
+th {
+background-color: rgb(192, 192, 192);
+color: black;
+border-width: 0.1em;
+font-weight: bold;
+text-align: center;
+text-transform: capitalize;
+letter-spacing: 0.1em;
+}
+/* Widths of named columns */
+col.name {
+width: 10em;
+}
+.action, .value, .arg {
+width: 15em;
+}
+/* Properties for the name column - td:first-child should work in CSS 2.1 avare browsers (tested in Firefox)
+- col.name is against specs but works in IE
+*/
+td:first-child, col.name {
+background-color: rgb(240, 240, 240);
+text-transform: capitalize;
+letter-spacing: 0.1em;
+}
+}
+/* required for IE */
+th {
+font-style: normal;
+}
+</style><title>Libgen_Msg</title></head><body>
+<span style="font-weight: bold;">Libgen_Msg</span><br>
+<table border="1">
+<colgroup span="99"><col class="name"><col class="value" span="4"></colgroup> <thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+<th>Value</th>
+<th>value</th>
+<th>Value</th>
+</tr>
+</thead> <tbody>
+<tr>
+<td>Documentation</td>
+<td colspan="4" rowspan="1"><span style="font-weight: bold;"></span>IL1 libgen dmxmsg
+subsystem ,including Interface for testing</td>
+</tr>
+<tr>
+<td>Force Tags</td>
+<td>Product_Backlog_ID-B00866</td>
+<td>Iteration_ID-I00277</td>
+<td>PRS_ID-IL_PRS_2582</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>...<br>
+</td>
+<td>Owner-<font style="font-family: Arial;" color="#0000ff" face="Courier New" size="-1"><span style="color: black;">I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</span> 
+      </font></td>
+<td><font size="-1">element-IL</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>...</td>
+<td>exec_type-automatic</td>
+<td>type-FUT</td>
+<td>QL-1</td>
+<td>release-IL1_RIS2</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>...</td>
+<td>reviewer-yi.xu@nsn.com</td>
+<td>rw-meeting</td>
+<td>hw_env-AB</td>
+<td><br></td>
+</tr>
+<tr>
+<td>Resource</td>
+<td>./resources/Libgen_Msg_Resource.html</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>library</td>
+<td>OperatingSystem</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>suite Setup</td>
+<td><font size="-1">Connect To FP and start MessageTester</font> </td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>suite Teardown</td>
+<td><font size="-1">Stop Message Tester and
+Disconnect All Connections
+From FGW11</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+</tbody>
+</table>
+<table style="width: 970px; height: 189px;" border="1">
+<colgroup span="99"><col class="name"><col class="value" span="4"></colgroup> <thead>
+<tr>
+<th>Variable</th>
+<th>Value</th>
+<th>Value</th>
+<th>Value</th>
+<th>Value</th>
+</tr>
+</thead> <tbody>
+<tr>
+<td><font size="-1">${PROCESS1_PID}</font></td>
+<td>49152,20001,0,0</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><font size="-1">${</font><font size="-1">PROCESS</font><font size="-1">2_PID}</font></td>
+<td>49152,20002,0,0</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>${HAND1_OF_<font size="-1">PROCESS</font>1_PID}</td>
+<td>49152,20001,1,0</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>${HAND1_OF_<font size="-1">PROCESS</font>2_PID}</td>
+<td>49152,20002,1,0</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><font size="-1">${TYPE_OF_SEND_</font><font size="-1">OUTPUT</font><font size="-1">}</font></td>
+<td>ouput</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><font size="-1">${</font><font size="-1">TYPE_OF_SEND</font><font size="-1">_SENDBUFFER</font><font size="-1">}</font></td>
+<td>sendbuffer</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td>10</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><font size="-1">${SEQUENCE_TEST_</font><font size="-1">MESSAGE_COUNT</font><font size="-1">}</font></td>
+<td>1000</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><font size="-1">${ONE_MESSAGE}</font></td>
+<td>1</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><font size="-1">${MAX_</font><font size="-1">MESSAGE_</font><font size="-1">SIZE}</font></td>
+<td>40000</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>${ZERO}</td>
+<td>0</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="1">
+<colgroup span="99"><col class="name"><col class="action"><col class="arg" span="5"></colgroup>
+<thead> <tr>
+<th>Test Case</th>
+<th>Action</th>
+<th>Argument</th>
+<th>Argument</th>
+<th>Argument</th>
+<th>Argument</th>
+<th>Argument</th>
+</tr>
+</thead> <tbody>
+<tr>
+<td><font size="-1">Send message and receive
+message via output and input between different processes(family),<br>
+and check receive number and content</font></td>
+<td>
+<p><font face="Times New Roman, serif">[Tags] </font></p>
+</td>
+<td><font face="Times New Roman, serif">ATC_ID-</font><font face="Times New Roman, serif">LBGMessage</font><font face="Times New Roman, serif">.FUT.001.AT</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Start Send Master Of MessageTo
+Process2 via output</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><font size="-1"><br>
+</font></td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Receive Echo Message content Is
+correct and count equals&nbsp;</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><font size="-1">Send message and receive
+message via send_buffer_r and input between different processes</font><font size="-1">(family)</font><font size="-1">,<br>
+and check receive number and content</font></td>
+<td><font face="Times New Roman, serif">[Tags]</font></td>
+<td><font face="Times New Roman, serif">ATC_ID-</font><font face="Times New Roman, serif">LBGMessage</font><font face="Times New Roman, serif">.FUT.002.AT</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master of Process1 Start Send message to Hand1 of
+Process1 via send_buffer_r</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Receive Echo Message content Is
+correct and count equals&nbsp;</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><font size="-1">Send message and receive
+message via output and input in one process</font><font size="-1">(family)</font><font size="-1">,and
+check receive number
+and content</font></td>
+<td><font face="Times New Roman, serif">[Tags]</font>
+</td>
+<td><font face="Times New Roman, serif">ATC_ID-</font><font face="Times New Roman, serif">LBGMessage</font><font face="Times New Roman, serif">.FUT.003.AT</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master of Process1 Start Send message to Hand1 of
+Process1 via Output</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Receive Echo Message content Is
+correct and count equals</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><font size="-1">Send message with big size
+and receive
+message via output and input in one process</font><font size="-1">(family)</font></td>
+<td><font face="Times New Roman, serif">[Tags]</font></td>
+<td><font size="-1">&nbsp;</font><font face="Times New Roman, serif">ATC_ID-</font><font face="Times New Roman, serif">LBGMessage</font><font face="Times New Roman, serif">.FUT.004.AT</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Start Send Master Of MessageTo
+Process2 via output</td>
+<td><font size="-1">${ONE_MESSAGE}</font></td>
+<td><font size="-1">${MAX_</font><font size="-1">MESSAGE_</font><font size="-1">SIZE}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Receive Echo Message content Is
+correct and count equals</td>
+<td><font size="-1">${ONE_MESSAGE}</font></td>
+<td><font size="-1"><br>
+</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Save message and count message num</td>
+<td><font face="Times New Roman, serif">[Tags]</font></td>
+<td><font face="Times New Roman, serif">ATC_ID-</font><font face="Times New Roman, serif">LBGMessage</font><font face="Times New Roman, serif">.FUT.005.AT</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master of Process2 start save message</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Start Send Master Of MessageTo
+Process2 via output</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master of Process1 Wait send over</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process2 Stop Save Message and count message</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master of Process2 save Message count equals</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><font size="-1">Send message and receive
+message via output and input between Process</font><font size="-1">(family)</font><font size="-1">,<br>
+and check sequence</font></td>
+<td><font face="Times New Roman, serif">[Tags]</font></td>
+<td><font face="Times New Roman, serif">ATC_ID-</font><font face="Times New Roman, serif">LBGMessage</font><font face="Times New Roman, serif">.FUT.006.AT</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Start Send Master Of MessageTo
+Process2 via output</td>
+<td><font size="-1">${</font><font size="-1">SEQUENCE_TEST_</font><font size="-1">MESSAGE_COUNT</font><font size="-1">}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Sequence of echo messgages of process1 are correct</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Send Message And receive Message beteen process<font size="-1">(family)</font>,then
+restart sender and try again</td>
+<td><font face="Times New Roman, serif">[Tags]</font></td>
+<td><font face="Times New Roman, serif">ATC_ID-</font><font face="Times New Roman, serif">LBGMessage</font><font face="Times New Roman, serif">.FUT.007.AT</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Start Send Master Of MessageTo
+Process2 via output</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Receive Echo Message content Is
+correct and count equals&nbsp;</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Process1 Restart</td>
+<td><font size="-1"><br>
+</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Start Send Master Of MessageTo
+Process2 via output</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Receive Echo Message content Is
+correct and count equals&nbsp;</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><font size="-1"><br>
+</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Send Message And receive Message in one process<font size="-1">(family)</font>,then
+restart Receiver and try again</td>
+<td><font face="Times New Roman, serif">[Tags]</font></td>
+<td><font face="Times New Roman, serif">ATC_ID-</font><font face="Times New Roman, serif">LBGMessage</font><font face="Times New Roman, serif">.FUT.008.AT</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master of Process1 Start Send message to Hand1 of
+Process1 via output</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Receive Echo Message content Is
+correct and count equals&nbsp;</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><font size="-1"><br>
+</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Handle 1 of Process1 Restart</td>
+<td><font size="-1"><br>
+</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master of Process1 Start Send message to Hand1 of
+Process1 via output</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Master Of Process1 Receive Echo Message content Is
+correct and count equals&nbsp;</td>
+<td><font size="-1">${MESSAGE_COUNT}</font></td>
+<td><font size="-1"><br>
+</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+</tbody>
+</table>
+<table style="width: 1200px; height: 146px;" border="1">
+<colgroup span="99"><col class="name"><col class="action"><col class="arg" span="4"></colgroup>
+<thead> <tr>
+<th>Keyword</th>
+<th>Action</th>
+<th>Argument</th>
+<th>Argument</th>
+<th>Argument</th>
+<th>Argument</th>
+</tr>
+<tr>
+<td>Process1 Restart</td>
+<td><br>
+</td>
+<td>&nbsp;</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Stop Libgen Msg Tester Sender</td>
+<td><font size="-1"><br>
+</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Start Msg Tester &nbsp;Sender<br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Handle 1 of Process1 Restart</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>restart Libgen msg tester</td>
+<td>${HAND1_OF_<font size="-1">PROCESS</font>1_PID}</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Master Of Process1 Start Send Master Of MessageTo
+Process2 via output</td>
+<td>[Arguments]</td>
+<td><font size="-1">${count}</font></td>
+<td>${size}=100</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><font size="-1">Start Send Message To</font></td>
+<td><font size="-1">${PROCESS1_PID}</font></td>
+<td><font size="-1">${PROCESS2_PID}</font></td>
+<td><font size="-1">${TYPE_OF_SEND_OUTPUT</font><font size="-1">}</font></td>
+<td><font size="-1">${count}</font></td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>...</td>
+<td>${size}</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Master Of Process1 Receive Echo Message content Is
+correct and count equals&nbsp;</td>
+<td>[Arguments]</td>
+<td><font size="-1">${count}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Check receive message content and&nbsp;number</td>
+<td><font size="-1">${PROCESS1_PID}</font></td>
+<td><font size="-1">${count}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Master of Process1 Start Send message to Hand1 of
+Process1 via send_buffer_r</td>
+<td>[Arguments]</td>
+<td><font size="-1">${count}</font></td>
+<td>${size}=100</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><font size="-1">Start Send Message To</font></td>
+<td><font size="-1">${PROCESS1_PID}</font></td>
+<td>${HAND1_OF_PROCESS1_PID}</td>
+<td><font size="-1">${</font><font size="-1">TYPE_OF_SEND</font><font size="-1">_SENDBUFFER</font><font size="-1">}</font></td>
+<td><font size="-1">${count}</font></td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>...</td>
+<td>${size}</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Master of Process1 send message to Hand1 of Process2</td>
+<td>[Arguments]</td>
+<td><font size="-1">${count}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><font size="-1">Start Send Message To</font></td>
+<td><font size="-1">${PROCESS1_PID}</font></td>
+<td>${HAND1_OF_PROCESS1_PID}</td>
+<td><font size="-1">${TYPE_OF_SEND_OUTPUT}</font></td>
+<td><font size="-1">${count}</font></td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Master of Process1 Start Send message to Hand1 of
+Process1 via output</td>
+<td>[Arguments]</td>
+<td><font size="-1">${count}</font></td>
+<td>${size}=100</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><font size="-1">Start Send Message To</font></td>
+<td><font size="-1">${PROCESS1_PID}</font></td>
+<td>${HAND1_OF_PROCESS1_PID}</td>
+<td><font size="-1">${TYPE_OF_SEND_OUTPUT}</font></td>
+<td><font size="-1">${count}</font></td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>...</td>
+<td>${size}</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Master of Process2 start save message</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Start Save Message</td>
+<td>${PROCESS2_PID}</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Sequence of echo messgages of process1 are correct</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Check receive message sequence</td>
+<td><font size="-1">${PROCESS1_PID}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Master of Process1 Wait send over</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>wait send message over</td>
+<td><font size="-1">${PROCESS1_PID}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Master Of Process2 Stop Save Message and count message</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Stop Save Message and count message</td>
+<td>${PROCESS2_PID}</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Hand1 of Process 1 Stop</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Stop Libgen Msg Tester</td>
+<td>${HAND1_OF_PROCESS1_PID}</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Hand1 of Process 2 Stop</td>
+<td>Stop Libgen Msg Tester</td>
+<td>${HAND1_OF_PROCESS2_PID}</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>sell</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Master of Process2 save Message count equals</td>
+<td>[Arguments]</td>
+<td><font size="-1">${count}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Check Save message number</td>
+<td>${PROCESS2_PID}</td>
+<td><font size="-1">${count}</font></td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+</thead> <tbody>
+</tbody>
+</table>
+</body></html>

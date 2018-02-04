@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<!-- saved from url=(0106)file://C:\Documents and Settings\zhisxu\Local Settings\Temporary Internet Files\OLKC3\memory_resource.html --><title>memory_resource</title><!-- saved from url=(0084)https://cwiki.nokia.com/twiki/pub/RobotFramework/DownloadPage/resource_template.html -->
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">HTML {
+COLOR: black; FONT-FAMILY: Arial,Helvetica,sans-serif; BACKGROUND-COLOR: white
+}
+P {
+max-width: 60em
+}
+TABLE {
+BORDER-RIGHT: black 0.1em solid; BORDER-TOP: black 0.1em solid; MARGIN: 1em 0em; BORDER-LEFT: black 0.1em solid; BORDER-BOTTOM: black 0.1em solid; BORDER-COLLAPSE: collapse; empty-cells: show
+}
+TH {
+BORDER-RIGHT: black 0.1em solid; PADDING-RIGHT: 0.2em; BORDER-TOP: black 0.05em solid; PADDING-LEFT: 0.2em; PADDING-BOTTOM: 0.1em; BORDER-LEFT: black 0.1em solid; PADDING-TOP: 0.1em; BORDER-BOTTOM: black 0.05em solid; HEIGHT: 1.5em
+}
+TD {
+BORDER-RIGHT: black 0.1em solid; PADDING-RIGHT: 0.2em; BORDER-TOP: black 0.05em solid; PADDING-LEFT: 0.2em; PADDING-BOTTOM: 0.1em; BORDER-LEFT: black 0.1em solid; PADDING-TOP: 0.1em; BORDER-BOTTOM: black 0.05em solid; HEIGHT: 1.5em
+}
+TH {
+BORDER-TOP-WIDTH: 0.1em; FONT-WEIGHT: bold; BORDER-LEFT-WIDTH: 0.1em; BORDER-BOTTOM-WIDTH: 0.1em; TEXT-TRANSFORM: capitalize; COLOR: black; LETTER-SPACING: 0.1em; BACKGROUND-COLOR: rgb(192,192,192); TEXT-ALIGN: center; BORDER-RIGHT-WIDTH: 0.1em
+}
+COL.name {
+WIDTH: 10em
+}
+.action {
+WIDTH: 15em
+}
+.value {
+WIDTH: 15em
+}
+.arg {
+WIDTH: 15em
+}
+TD:unknown {
+TEXT-TRANSFORM: capitalize; LETTER-SPACING: 0.1em; BACKGROUND-COLOR: rgb(240,240,240)
+}
+COL.name {
+TEXT-TRANSFORM: capitalize; LETTER-SPACING: 0.1em; BACKGROUND-COLOR: rgb(240,240,240)
+}
+TH {
+FONT-STYLE: normal
+}
+</style>
+<meta content="MSHTML 6.00.2900.3429" name="GENERATOR"></head><body>
+<h1>memory_resource</h1>
+<table border="1">
+<colgroup span="99"><col class="name"><col class="value" span="4"></colgroup> <thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+<th>Value</th>
+<th>value</th>
+<th>Value</th>
+</tr>
+</thead> <tbody>
+<tr>
+<td>Resource</td>
+<td>il.html</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="1">
+<colgroup span="99"><col class="name"><col class="value" span="4"></colgroup> <thead>
+<tr>
+<th>Variable</th>
+<th>Value</th>
+<th>Value</th>
+<th>Value</th>
+<th>Value</th>
+</tr>
+</thead> <tbody>
+<tr>
+<td>${MEMORY_TESTING_PROCESS}</td>
+<td>mem_test_pro</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+
+
+<tr><td>${DSPM}</td><td>%{DSPM_0_NAME}</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${UNIT_INDEX}</td><td>0</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td>${DSPM_UNIT_TYPE}</td><td>%{DSPM_TYPE}<br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr>
+</tbody>
+</table>
+<table border="1">
+<colgroup span="99"><col class="name"><col class="action"><col class="arg" span="3"></colgroup>
+<thead> <tr>
+<th>Keyword</th>
+<th>Action</th>
+<th>Argument</th>
+<th>Argument</th>
+<th>Argument</th>
+</tr>
+</thead> <tbody>
+<tr>
+<td>Connect to FGW For Memory Testing</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>${index}=</td>
+<td>Connect To Il</td>
+<td>%{HOSTIP}</td>
+<td>%{PORT}</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>...</td>
+<td>120sec</td>
+<td>%{USERNAME}</td>
+<td>%{PASSWD}</td>
+</tr>
+
+<tr><td><br>
+</td><td>Change Node Env</td><td>TCU-0</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Execute CLI</td><td>ilcliru.sh&nbsp;${DSPM}</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>Set Variable Of Libgen Use Phys Addr</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr>
+<td><br>
+</td>
+<td>Run Memory Testing Process</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>[return]</td>
+<td>${index}</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Disconnect from FGW For Memory Testing</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td>Kill Memory Testing Process</td>
+<td><br></td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+
+<tr>
+<td><br>
+</td>
+<td><a class="kwlink" title="Closes all existing telnet or ssh connections to il systems" href="file:///C:/Documents%20and%20Settings/zhisxu/Local%20Settings/NameService/resources/NameService_resource.html#Disconnect_All_Ils">Disconnect&nbsp;All&nbsp;Ils</a></td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>Run Memory Testing Process</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+
+<tr>
+<td><br>
+</td>
+<td>Execute Cmd With Check Expected</td>
+<td>${MEMORY_TESTING_PROCESS}&nbsp; &amp;</td>
+<td>Memory testing process, starts
+</td><td>10</td>
+
+</tr>
+<tr>
+<td>Kill Memory Testing Process</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr><td><br>
+</td><td>${MEMORY_TESTING_PROCESS_ID}</td><td>Get The Self Pid Of Process</td><td>${MEMORY_TESTING_PROCESS}</td><td><br>
+</td></tr><tr>
+<td><br>
+</td>
+<td>Kill Process By Pid<br></td>
+<td>${MEMORY_TESTING_PROCESS_ID}</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+<td><br>
+</td>
+</tr><tr><td>Set Variable Of Libgen Use Phys Addr</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>Get Libgen Use Phys Addr</td><td>${DSPM_UNIT_TYPE}</td><td>${UNIT_INDEX}</td></tr><tr><td><br>
+</td><td>Set Suite Variable</td><td>\${OMU_PHYSICAL_ADDRESS}</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr><tr><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td><td><br>
+</td></tr>
+
+
+
+
+
+</tbody>
+</table>
+</body></html>

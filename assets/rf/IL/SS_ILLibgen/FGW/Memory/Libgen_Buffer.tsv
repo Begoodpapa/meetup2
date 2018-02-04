@@ -1,0 +1,31 @@
+L I B G E N   B U F F E R								
+								
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	
+Resource	./resources/memory_resource.html							
+Documentation	This test suite is used to test Libgen I00768: Increase number of buffer handles to 256k.\n							
+Suite Setup	Connect to FGW For Buffer Testing							
+Suite Teardown	Disconnect from FGW For Buffer Testing							
+Force Tags	Product_Backlog_ID-B01277	Iteration_ID-I00768	element-IL	Release- IL1_RIS4	exec_type-automatic	type-FUT	Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com	QL-1
+...	RW-review_meeting	PRS_ID-IL_PRS_2582	EFS_ID-RNC_EFS_2152_93	hw_env-RNC	hw_env-AB	hw_env-ADA	hw_env-RNC_S0	hw_env-RNC_S1
+								
+								
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	
+${ACK_SUCCESS}	success							
+								
+								
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	
+Allocate Maximum Number of Buffers Successfully	[Documentation]	"Precondition\n . Test CLI is available\n\n  Execution description\n 1. Test CLI calls allocate_buffer_r to allocate buffer.\n 2. Test CLI set values to the allocated buffer.\n 3. Test CLI check the values in the buffer.\n 4. Test CLI repeat steps 1-3 Maximum (262143, i.e., 256K) times successfully.\n\n Expected result\n . Test CLI succeeded to allocate Maximum number of buffers.\n\n"						
+	[Tags]	ATC_ID-Libgen.FUT.001.AT.I00768						
+	Test Allocate Maximum Number Of Buffers Successfully							
+								
+Allocate Maximum+1 Number of Buffers Failed	[Documentation]	"Precondition\n . Test CLI is available\n\n  Execution description\n 1. Test CLI calls allocate_buffer_r to allocate buffer.\n 2. Test CLI set values to the allocated buffer.\n 3. Test CLI check the values in the buffer.\n 4. Test CLI repeat steps 1-3 Maximum (262143, i.e., 256K) times successfully.\n 5. Test CLI try to allocate 1 more buffer by allocate_buffer_r.\n\n Expected result\n . Test CLI succeeded to allocate Maximum number of buffers.\n . Test CLI failed to allocate the (Maximum+1)th buffer by allocate_buffer_r.\n\n"						
+	[Tags]	ATC_ID-Libgen.FUT.002.AT.I00768	ct-negative					
+	Test Allocate Maximum+1 Number Of Buffers Failed							
+								
+								
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	
+Test Allocate Maximum Number Of Buffers Successfully	${result}=	Libgen Test Allocate Maximum Buffers Success						
+	Should Be Equal	${result}	${ACK_SUCCESS}					
+								
+Test Allocate Maximum+1 Number Of Buffers Failed	${result}=	Libgen Test Allocate One More After Maximum Buffers Failed						
+	Should Be Equal	${result}	${ACK_SUCCESS}					

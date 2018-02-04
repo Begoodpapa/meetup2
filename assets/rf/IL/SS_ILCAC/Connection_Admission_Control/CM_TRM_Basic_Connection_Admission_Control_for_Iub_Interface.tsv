@@ -1,0 +1,130 @@
+*Setting*							
+Suite Setup	Select active UP and set test resource						
+Suite Teardown	common_operation_resource.Disconnect From Target Hardware						
+Force Tags	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	element-il	exec_type-automatic	release-IL1	hw_env-RNC_S0	exec_level-pre	type-FUT
+...	QL-6	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	EFS_ID-RNC_EFS_2222_307	EFS_ID-RNC_EFS_2222_325	EFS_ID-RNC_EFS_2222_326	EFS_ID-RNC_EFS_2222_327
+...	EFS_ID-RNC_EFS_74_115	EFS_ID-RNC_EFS_74_121	EFS_ID-RNC_EFS_74_147	EFS_ID-RNC_EFS_1225_107	EFS_ID-RNC_EFS_1225_329	EFS_ID-RNC_EFS_74_146	EFS_ID-RNC_EFS_1225_119
+...	EFS_ID-RNC_EFS_74_145	EFS_ID-RNC_EFS_74_379	EFS_ID-RNC_EFS_1644_97	EFS_ID-RNC_EFS_1644_342	CR#S1350	CR#S1290	PRS_ID-IL_PRS_4225
+...	PRS_ID-IL_PRS_4247	PRS_ID-IL_PRS_4246	PRS_ID-PRS_614	PRS_ID-PRS_3622	PRS_ID-PRS_3619	PRS_ID-PRS_3347	PRS_ID-PRS_3284
+...	EFS_ID-RNC_EFS_1644_339	CR#S1328	CR#S1326	Product_Backlog_ID-B01178	FRS_ID-PCM_100201_78_R1644		
+Resource	il.html						
+Library	Collections						
+Library	../resources/cacprb_test_resources.py						
+Library	../resources/IP_based_route_resource.py						
+Resource	../resources/common_operation_resource.html						
+Resource	../resources/cac_basic_operation_resource.html						
+							
+*Variable*							
+${IPBR_WITH_COMMITTED_BW}	4020						
+${IPBR_WITH_COMMITTED_BW_0}	4014						
+${BIG_AVE_BW}	2000000						
+${BIG_MAX_BW}	2000001						
+${IPBR_ID_4095}	4095						
+${NORMAL_MAX_BW}	3000						
+${NORMAL_AVE_BW}	2000						
+${NO_FREE_BANDWIDTH_EC}	0x450D						
+${CREATE_LEG_WITH_NO_ENOUGH_BW}	NCAC=0,FABR=${BIG_AVE_BW},FMBR=${BIG_MAX_BW}						
+${CREATE_LEG_WITHOUT_CAC}	NCAC=1						
+${CREATE_LEG_WITH_COMMIT_BW_0}	NCAC=0,FABR=${NORMAL_AVE_BW},FMBR=${NORMAL_MAX_BW}						
+${CREATE_LEG_WITH_CAC}	NCAC=0,FABR=${NORMAL_AVE_BW},FMBR=${NORMAL_MAX_BW}						
+${CREATE_LEG_ON_10G_IPBR}	NCAC=0,FABR=${NORMAL_AVE_BW},FMBR=${NORMAL_MAX_BW}						
+${DELTA_BW_0}	0						
+${CCH_PARA_SET_TYPE}	2,T						
+${CCH_RES_TYPE}	TERM						
+${COMMON_CHANNEL_CRT_PMR_FACH}	USERID=3200,ENC=52,BRA=F,DSP=00,01,00,CELL=3200,DEST=2000010,						
+${IPBR_10G}	${IPBR_ID_4095}						
+${IPBR_10G_BW_ATTR}	ipbr_id=4095 route_bw=10000000 commit_bw=10000000						
+							
+*Test Case*							
+Validate CAC supports srb call	[Tags]	CM.TRM.CAC.FUT.001	CM.TRM.CAC.FUT.002	CM.TRM.CAC.FUT.003	CM.TRM.CAC.FUT.004	FRS_ID-PCM_100201_2_R2222	FRS_ID-PCM_100201_10_R1253
+	[Setup]	Create leg list and setup IPBR					
+	[Template]	Create and release srb call					
+	${CREATE_LEG_WITHOUT_CAC}	${RES_SUCCESS}	${IPBR_WITH_COMMITTED_BW}	${DELTA_BW_0}			
+	${CREATE_LEG_WITH_NO_ENOUGH_BW}	${RES_FAILED}	${IPBR_WITH_COMMITTED_BW}	${DELTA_BW_0}	${NO_FREE_BANDWIDTH_EC}		
+	${CREATE_LEG_WITH_CAC}	${RES_SUCCESS}	${IPBR_WITH_COMMITTED_BW}	${EXPECT_RESERVE_BW}			
+	${CREATE_LEG_WITH_COMMIT_BW_0}	${RES_SUCCESS}	${IPBR_WITH_COMMITTED_BW_0}	${EXPECT_RESERVE_BW}			
+	${CREATE_LEG_ON_10G_IPBR}	${RES_SUCCESS}	${IPBR_10G}	${EXPECT_RESERVE_BW}			
+	[Teardown]	Release leg and rollback IPBR					
+							
+CAC for common channel with IP CAC flag disable	[Tags]	PRS_ID-IL_PRS_4039	PRS_ID-IL_PRS_4250	CM.TRM.CAC.FUT.005	FRS_ID-PCM_100201_59_R2222		
+	${ipbr_orig_info}	get ipbr resource info	${IPBR_WITH_COMMITTED_BW}				
+	${leg_info}	Create cell and CCH					
+	${ipbr_new_info}	get ipbr resource info	${IPBR_WITH_COMMITTED_BW}				
+	check CPC value	${leg_info.committed_up_bandwidth}	${leg_info.used_bandwidth}	${ipbr_new_info.cmmt_bw}	${ipbr_new_info.res_bw}		
+	Check reserve BW	${ipbr_orig_info.res_bw}	${ipbr_new_info.res_bw}	${DELTA_BW_0}			
+	Release cch and cell						
+	${ipbr_new_info_1}	get ipbr resource info	${IPBR_WITH_COMMITTED_BW}				
+	Check reserve BW	${ipbr_new_info.res_bw}	${ipbr_new_info_1.res_bw}	${DELTA_BW_0}			
+	[Teardown]	run keyword if test failed	Release cch and cell				
+							
+*Keyword*							
+Select active UP and set test resource	connect to target hardware						
+	switch to active OMU						
+	Get active USCP and CSCP						
+	${increase_BW}	Evaluate	${NORMAL_MAX_BW}*0.2 + ${NORMAL_AVE_BW}*0.8				
+	set Suite Variable	\${EXPECT_RESERVE_BW}	${increase_BW}				
+							
+Get active USCP and CSCP	${USCP_LIST}	${CSCP_LIST}	get_usable_recovery_groups				
+	set Suite Variable	\${ACTIVE_USCP}	${USCP_LIST[0]}				
+	set Suite Variable	\${ACTIVE_CSCP}	${CSCP_LIST[0][0]}				
+							
+Create and release srb call	[Arguments]	${leg_para}	${expect_result}	${ipbr_id}	${expect_bw}	${error_code}=	
+	${ipbr_orig_info}	get ipbr resource info	${ipbr_id}				
+	${srb_info}	Create srb call	${ipbr_id}	${leg_para}			
+	${ipbr_new_info}	get ipbr resource info	${ipbr_id}				
+	Check the result and failed info	${srb_info}	${expect_result}	${error_code}			
+	Check reserve BW	${ipbr_orig_info.res_bw}	${ipbr_new_info.res_bw}	${expect_bw}			
+	run keyword if	'${srb_info.result}' == 'SUCCESSFUL'	Check the reserve BW CPC and release leg when success	${srb_info}	${ipbr_new_info}	${expect_bw}	
+	[Teardown]						
+							
+Check the reserve BW CPC and release leg when success	[Arguments]	${leg_info}	${ipbr_new_info}	${expect_bw}			
+	check CPC value	${leg_info.committed_up_bandwidth}	${leg_info.used_bandwidth}	${ipbr_new_info.cmmt_bw}	${ipbr_new_info.res_bw}		
+	Release Iub leg and check BW	${leg_info}	${ipbr_new_info}	${expect_bw}			
+							
+Create srb call	[Arguments]	${ipbr_id}	${leg_para}				
+	${srb_info}	reserve_srb_call	${ACTIVE_USCP}	${ipbr_id}	${leg_para}		
+	set test variable	\${CALL_ID}	${srb_info.call_id}				
+	Set To Object	${srb_info}	computer	${ACTIVE_USCP}			
+	run keyword if	'${srb_info.result}' == 'SUCCESSFUL'	append to list	${IN_LEG_LIST}	${srb_info}		
+	[Return]	${srb_info}					
+							
+Release Iub leg and check BW	[Arguments]	${leg_info}	${ipbr_new_info}	${expect_bw}			
+	${result}	release iub leg	${ACTIVE_USCP}	${leg_info.call_id}			
+	should contain	${result}	SUCCESSFUL				
+	${leg_index}	evaluate	${leg_info.branch_number}-1				
+	remove from list	${IN_LEG_LIST}	${leg_index}				
+	${ipbr_new_info_1}	get ipbr resource info	${ipbr_new_info.ipbr_id}				
+	check reserve BW	${ipbr_new_info.res_bw}	${ipbr_new_info_1.res_bw}	${expect_bw}			
+							
+Check the result and failed info	[Arguments]	${srb_info}	${expect_result}	${error_code}			
+	should be equal	${srb_info.result}	${expect_result}				
+	run keyword if	'${srb_info.result}' == 'FAILED'	should be equal	${srb_info.error_code}	${error_code}		
+							
+Create cell and CCH	Create cell						
+	${cch_info}	Create common channel					
+	[Return]	${cch_info}					
+							
+Create cell	${cell_servinfo}	Allocate Service	${ACTIVE_CSCP}	${EMPTY}	CELL:2F:3200:2		
+	Should Contain	${cell_servinfo.result}	${RES_SUCCESS}				
+	Set test Variable	\${DEST}	DEST=${cell_servinfo.serv_id}				
+	Set test Variable	\${CALL_ID}	${cell_servinfo.call_id}				
+							
+Create common channel	${leg_info}	Allocate Resource	${ACTIVE_CSCP}	${CALL_ID}	${CCH_RES_TYPE}		,,,${IPBR_WITH_COMMITTED_BW}
+	...	${CCH_PARA_SET_TYPE}		${COMMON_CHANNEL_CRT_PMR_FACH}NCAC=1,FABR=${NORMAL_AVE_BW},FMBR=${NORMAL_MAX_BW}			
+	Should Be Equal	${leg_info.result}	${RES_SUCCESS}				
+	[Return]	${leg_info}					
+							
+Release cch and cell	${release_info}	Release Resource	${ACTIVE_CSCP}	${CALL_ID}	TERM-00		
+	Should Be Equal	${release_info.result}	${RES_SUCCESS}				
+	${cell_servinfo}	Release Service	${ACTIVE_CSCP}	${CALL_ID}	CELL		
+	Should Be Equal	${cell_servinfo.result}	${RES_SUCCESS}				
+							
+Create leg list and setup IPBR	Create leg list						
+	${result}	Show IP based route	${IPBR_10G}				
+	set Suite Variable	\${IPBR_10G_OLD_BW_ATTR}	ipbr_id=${IPBR_10G} route_bw=${result['Route bandwidth']} commit_bw=${result['Committed bandwidth']}				
+	${result}	update IP based route with attributes	${IPBR_10G_BW_ATTR}				
+	should be equal	${result['result']}	Success				
+							
+Release leg and rollback IPBR	Run Keyword If Test Failed	release legs created in test case					
+	${result}	update IP based route with attributes	${IPBR_10G_OLD_BW_ATTR}				
+	should be equal	${result['result']}	Success				

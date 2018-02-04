@@ -1,0 +1,261 @@
+*Settings*							
+Suite Setup	Select active UP and stop owner ID change						
+Suite Teardown	Delete resource and start owner ID change						
+Force Tags	EFS_ID-RNC_EFS_XXX	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	element-il	exec_type-automatic	release-RU50	hw_env-RNC_S0	exec_level-pre
+...	type-FUT	QL-7	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	FRS_ID-XXX	PRS_ID-XXX	Product_Backlog_ID-C00621_R_M9_TT_4
+Resource	il.html						
+Library	Collections						
+Resource	./resources/common_operation_resource.html						
+Resource	./resources/cac_basic_operation_resource.html						
+Library	./resources/cacprb_test_resources.py						
+Resource	./resources/IPBR_basic_operation_resource.html						
+Resource	../SS_ILCallMgmt/resources/cm_resource.tsv						
+							
+*Variables*							
+${BFD_SESSION_IPBR}	4022						
+${COMMIT_BW_0_IPBR}	4006						
+${NEW_IPBR_4094}	4094						
+${NEW_IPBR_4094_NAME}	Test4094						
+${NORMAL_AVE_BW}	20000						
+${NORMAL_MAX_BW}	30000						
+${WITH_CAC_PARA}	NCAC=0,FABR=${NORMAL_AVE_BW},FMBR=${NORMAL_MAX_BW}						
+${WITHOUT_CAC_PARA}	NCAC=1						
+${VRF_IP1}	%{VRF_TEST_IP_1}						
+${BFD_IP1}	%{BFD_TEST_IP_0}						
+${BFD_IP2}	%{BFD_TEST_IP_3}						
+${IFACE_ETHTEST20}	ethtest20						
+${VRF_NAME}	vrf11						
+${VRF_IFACE}	ethvrf						
+${VRF_ID}	11						
+${DEFAULT_VRF_ID}	0						
+${IP2_OWNER}	/QNUP-1						
+${IP1_OWNER}	/QNUP-0						
+${RES_TYPE}	OUT						
+${ROUTE_BW}	10000						
+${COMMIT_BW}	10000						
+${COMMIT_SIG_BW}	50						
+${COMMIT_DCN_BW}	50						
+${MODE_FORCED}	forced						
+${IP_NO_EXIST_INFO}	No IP address bound with the IPBR.						
+${NO_OWNER_ID_INFO}	No owner ID exists.						
+							
+*Test Cases*							
+Validate specific IPBR IP and IPRO resource in CAC by troubleshooting	${orig_ip_resource}	get ip resource in cac					
+	${orig_ipro_list}	get ipro info in cac					
+	${orig_specific_ipbr1_info}	get specific ipbr info in cac	${BFD_SESSION_IPBR}				
+	Check orig ipro bind ipbr1	${orig_specific_ipbr1_info}					
+	${orig_specific_ipbr2_info}	get specific ipbr info in cac	${COMMIT_BW_0_IPBR}				
+	Check orig ipro bind ipbr2	${orig_specific_ipbr2_info.ip_list}					
+	Add new IPRO with down BFD session with BFD_SESSION_IPBR						
+	Add new IPROs with new ip and defferent VRF with COMMIT_BW_0_IPBR						
+	${new_ip_resource}	get ip resource in cac					
+	${new_ipro_list}	get ipro info in cac					
+	${new_specific_ipbr1_info}	get specific ipbr info in cac	${BFD_SESSION_IPBR}				
+	${new_specific_ipbr2_info}	get specific ipbr info in cac	${COMMIT_BW_0_IPBR}				
+	Check the IP changed	${orig_ip_resource}	${new_ip_resource}				
+	Check the IPRO changed	${orig_ipro_list}	${new_ipro_list}				
+	Check the specific IPBR1 change	${new_specific_ipbr1_info}					
+	Check the specific IPBR2 change	${new_specific_ipbr2_info}					
+							
+Validate leg counter and owner ID resource in CAC by troubleshooting	[Setup]	create leg list					
+	${orig_ip_resource}	get ip resource in cac					
+	${orig_owner_list}	get owner id in cac					
+	${orig_leg_list}	get counters in cac					
+	${orig_specific_ipbr1_info}	get specific ipbr info in cac	${BFD_SESSION_IPBR}				
+	${orig_specific_ipbr2_info}	get specific ipbr info in cac	${COMMIT_BW_0_IPBR}				
+	Create legs of different interface with bandwidth request and BFD_SESSION_IPBR						
+	Create legs of different interface without bandwidth request and BFD_SESSION_IPBR						
+	Create legs of different interface with bandwidth request and COMMIT_BW_0_IPBR						
+	Create legs of different interface without bandwidth request and COMMIT_BW_0_IPBR						
+	${new_ip_resource}	get ip resource in cac					
+	${new_owner_list}	get owner id in cac					
+	${new_leg_list}	get counters in cac					
+	${new_specific_ipbr1_info}	get specific ipbr info in cac	${BFD_SESSION_IPBR}				
+	${new_specific_ipbr2_info}	get specific ipbr info in cac	${COMMIT_BW_0_IPBR}				
+	Check the leg number	${orig_leg_list}	${new_leg_list}				
+	Check the port reserve	${orig_ip_resource}	${new_ip_resource}				
+	Check the owner ID	${orig_owner_list}	${new_owner_list}				
+	Check the specific IPBR BW	${orig_specific_ipbr1_info}	${new_specific_ipbr1_info}				
+	Check the specific IPBR BW	${orig_specific_ipbr2_info}	${new_specific_ipbr2_info}				
+	[Teardown]	release legs created in test case					
+							
+Validate IPBR list resource in CAC by troubleshooting	${orig_ipbr_list}	get ipbr list info in cac					
+	Add IPBR successfully	${NEW_IPBR_4094}	${NEW_IPBR_4094_NAME}	${ROUTE_BW}	${COMMIT_BW}	${COMMIT_SIG_BW}	${COMMIT_DCN_BW}
+	...	E-RED	IFC	virtualQueue			
+	${specific_ipbr_info}	get specific ipbr info in cac	${NEW_IPBR_4094}				
+	${new_ipbr_list}	get ipbr list info in cac					
+	${new_total_ipbr_num}	evaluate	${orig_ipbr_list['Total IPBR number']}+1				
+	should be equal as integers	${new_ipbr_list['Total IPBR number']}	${new_total_ipbr_num}				
+	should be equal	${specific_ipbr_info.ipbr_name}	${NEW_IPBR_4094_NAME}				
+	should be equal	${specific_ipbr_info.route_bw}	${ROUTE_BW}				
+	should be equal	${specific_ipbr_info.cmmt_bw}	${COMMIT_BW}				
+	should be equal	${specific_ipbr_info.cmmt_sig_bw}	${COMMIT_SIG_BW}				
+	should be equal	${specific_ipbr_info.cmmt_dcn_bw}	${COMMIT_DCN_BW}				
+	${up_bw}	evaluate	${COMMIT_BW} - ${COMMIT_SIG_BW} - ${COMMIT_DCN_BW}				
+	should be equal as integers	${specific_ipbr_info.up_bw}	${up_bw}				
+	should be equal	${specific_ipbr_info.ifc_nrtdch}	E-RED				
+	should be equal	${specific_ipbr_info.ifc_nrthsdpa}	IFC				
+	should be equal	${specific_ipbr_info.scheduler_type}	virtualQueue				
+	[Teardown]	run keyword if test failed	show ip based route	${NEW_IPBR_4094}			
+							
+*Keywords*							
+Add new IPROs with new ip and defferent VRF with COMMIT_BW_0_IPBR	Add IPRO successfully	${COMMIT_BW_0_IPBR}	${VRF_IP1}	${IP1_OWNER}	${IFACE_ETHTEST20}		
+	add ipro with specified parameters	${COMMIT_BW_0_IPBR}	${VRF_IP1}	${IP1_OWNER}	${VRF_IFACE}	vrf=${VRF_NAME}	
+							
+Add new IPRO with down BFD session with BFD_SESSION_IPBR	Add IPRO successfully	${BFD_SESSION_IPBR}	${BFD_IP2}	${IP2_OWNER}	${IFACE_ETHTEST20}		
+							
+Create legs of different interface with bandwidth request and BFD_SESSION_IPBR	Create UDP leg successfully	${BFD_SESSION_IPBR}	${WITH_CAC_PARA}				
+	Create RTP leg successfully	${BFD_SESSION_IPBR}	${WITH_CAC_PARA}				
+	Create GTP leg successfully	${BFD_SESSION_IPBR}	${WITH_CAC_PARA}				
+							
+Create legs of different interface without bandwidth request and BFD_SESSION_IPBR	Create UDP leg successfully	${BFD_SESSION_IPBR}	${WITHOUT_CAC_PARA}				
+	Create RTP leg successfully	${BFD_SESSION_IPBR}	${WITHOUT_CAC_PARA}				
+	Create GTP leg successfully	${BFD_SESSION_IPBR}	${WITHOUT_CAC_PARA}				
+							
+Create legs of different interface with bandwidth request and COMMIT_BW_0_IPBR	Create UDP leg successfully	${COMMIT_BW_0_IPBR}	${WITH_CAC_PARA}				
+	Create RTP leg successfully	${COMMIT_BW_0_IPBR}	${WITH_CAC_PARA}				
+	Create GTP leg successfully	${COMMIT_BW_0_IPBR}	${WITH_CAC_PARA}				
+							
+Create legs of different interface without bandwidth request and COMMIT_BW_0_IPBR	Create UDP leg successfully	${COMMIT_BW_0_IPBR}	${WITHOUT_CAC_PARA}				
+	Create RTP leg successfully	${COMMIT_BW_0_IPBR}	${WITHOUT_CAC_PARA}				
+	Create GTP leg successfully	${COMMIT_BW_0_IPBR}	${WITHOUT_CAC_PARA}				
+							
+Create UDP leg successfully	[Arguments]	${ipbr_id}	${leg_para}				
+	${srb_info}	reserve_srb_call	${USCP}	${ipbr_id}	${leg_para}		
+	should be equal	${srb_info.result}	SUCCESSFUL				
+	set test variable	\${CALL_ID}	${srb_info.call_id}				
+	${service_id_info}	get service id info	all	servid	${srb_info.serv_id}		
+	set test variable	\${OWNER_ID}	${service_id_info['${srb_info.serv_id}'.upper()].owner_id}				
+	Set To Object	${srb_info}	computer	${USCP}			
+	Set To Object	${srb_info}	leg_id	IN			
+	append to list	${IN_LEG_LIST}	${srb_info}				
+							
+Create RTP leg successfully	[Arguments]	${ipbr_id}	${leg_para}				
+	${IuCS_info}	Create RTP leg	${USCP}	${ipbr_id}	${leg_para}		
+	should be equal	${IuCS_info.result}	SUCCESSFUL				
+	set test variable	\${CALL_ID}	${IuCS_info.call_id}				
+	${service_id_info}	get service id info	all	servid	${IuCS_info.serv_id}		
+	log	${service_id_info}					
+	Set To Object	${IuCS_info}	computer	${USCP}			
+	append to list	${OUT_LEG_LIST}	${IuCS_info}				
+							
+Create GTP leg successfully	[Arguments]	${ipbr_id}	${leg_para}				
+	${leg_info}	Create GTP Leg Direct	${USCP}	${ipbr_id}	${leg_para}		
+	should be equal	${leg_info.result}	SUCCESSFUL				
+	${service_id_info}	get service id info	all	servid	${leg_info.serv_id}		
+	log	${service_id_info}					
+	Set To Object	${leg_info}	computer	${USCP}			
+	append to list	${OUT_LEG_LIST}	${leg_info}				
+							
+Select active UP and stop owner ID change	connect to target hardware						
+	switch to active OMU						
+	Get Active CP Units						
+	Get Random USCP Unit						
+	${calculate_res_bw}	evaluate	${NORMAL_AVE_BW}*0.8+${NORMAL_MAX_BW}*0.2				
+	set suite variable	\${CAL_RES_BW}	${calculate_res_bw}				
+	stop_ownerid_change						
+							
+Add new IPRO with down BFD session	Add IPRO successfully	${BFD_SESSION_IPBR}	${BFD_IP2}	${IP2_OWNER}	${IFACE_ETHTEST20}		
+							
+Delete test resource	delete IPRO successfully	${BFD_SESSION_IPBR}	${BFD_IP2}	${IP2_OWNER}	${IFACE_ETHTEST20}	${MODE_FORCED}	
+	delete IPRO successfully	${COMMIT_BW_0_IPBR}	${VRF_IP1}	${IP1_OWNER}	${IFACE_ETHTEST20}	${MODE_FORCED}	
+	delete IPRO successfully	${COMMIT_BW_0_IPBR}	${VRF_IP1}	${IP1_OWNER}	${VRF_IFACE}	${MODE_FORCED}	
+	Delete IPBR Successfully	${NEW_IPBR_4094}					
+							
+Delete resource and start owner ID change	Delete test resource						
+	start_ownerid_change						
+	disconnect all ils						
+							
+Check the IP changed	[Arguments]	${orig_ip_resource}	${new_ip_resource}				
+	${new_total_ip_num}	evaluate	${orig_ip_resource['Total IP number']}+3				
+	should be equal as integers	${new_ip_resource['Total IP number']}	${new_total_ip_num}				
+	should be equal	${new_ip_resource['${BFD_IP2}@0']['ip_add']}	${BFD_IP2}				
+	should be equal	${new_ip_resource['${VRF_IP1}@0']['ip_add']}	${VRF_IP1}				
+	should be equal	${new_ip_resource['${VRF_IP1}@0']['vrf_id']}	${DEFAULT_VRF_ID}				
+	should be equal	${new_ip_resource['${VRF_IP1}@${VRF_ID}']['ip_add']}	${VRF_IP1}				
+	should be equal	${new_ip_resource['${VRF_IP1}@${VRF_ID}']['vrf_id']}	${VRF_ID}				
+							
+Check the IPRO changed	[Arguments]	${orig_ipro_list}	${new_ipro_list}				
+	${new_total_ipro_num}	evaluate	${orig_ipro_list['Total IPRO number']}+3				
+	should be equal as integers	${new_ipro_list['Total IPRO number']}	${new_total_ipro_num}				
+	should be equal	${new_ipro_list['${BFD_SESSION_IPBR}@${BFD_IP2}@${IP2_OWNER}@${DEFAULT_VRF_ID}']['status']}	${IPRO_STATUS_CONN_DOWN}				
+	should be equal	${new_ipro_list['${BFD_SESSION_IPBR}@${BFD_IP2}@${IP2_OWNER}@${DEFAULT_VRF_ID}']['monitor']}	${MONITOR_YES}				
+	should be equal	${new_ipro_list['${BFD_SESSION_IPBR}@${BFD_IP2}@${IP2_OWNER}@${DEFAULT_VRF_ID}']['phb_set']}	ALL				
+	should be equal	${new_ipro_list['${COMMIT_BW_0_IPBR}@${VRF_IP1}@${IP1_OWNER}@${DEFAULT_VRF_ID}']['status']}	${IPRO_STATUS_WORK}				
+	should be equal	${new_ipro_list['${COMMIT_BW_0_IPBR}@${VRF_IP1}@${IP1_OWNER}@${DEFAULT_VRF_ID}']['monitor']}	${MONITOR_NO}				
+	should be equal	${new_ipro_list['${COMMIT_BW_0_IPBR}@${VRF_IP1}@${IP1_OWNER}@${DEFAULT_VRF_ID}']['phb_set']}	ALL				
+	should be equal	${new_ipro_list['${COMMIT_BW_0_IPBR}@${VRF_IP1}@${IP1_OWNER}@${VRF_ID}']['status']}	${IPRO_STATUS_WORK}				
+	should be equal	${new_ipro_list['${COMMIT_BW_0_IPBR}@${VRF_IP1}@${IP1_OWNER}@${VRF_ID}']['monitor']}	${MONITOR_NO}				
+	should be equal	${new_ipro_list['${COMMIT_BW_0_IPBR}@${VRF_IP1}@${IP1_OWNER}@${VRF_ID}']['phb_set']}	ALL				
+							
+Check the specific IPBR1 change	[Arguments]	${new_specific_ipbr1_info}					
+	should be equal	${new_specific_ipbr1_info.ip_list[1].ip_addr}	${BFD_IP2}				
+	should be equal	${new_specific_ipbr1_info.ip_list[1].monitor}	${MONITOR_YES}				
+	should be equal	${new_specific_ipbr1_info.ip_list[1].status}	${IPRO_STATUS_CONN_DOWN}				
+							
+Check the specific IPBR2 change	[Arguments]	${new_specific_ipbr2_info}					
+	should be equal	${new_specific_ipbr2_info.ip_list[1].vrf_id}	${VRF_ID}				
+	should be equal	${new_specific_ipbr2_info.ip_list[1].ip_addr}	${VRF_IP1}				
+	should be equal	${new_specific_ipbr2_info.ip_list[1].monitor}	${MONITOR_NO}				
+	should be equal	${new_specific_ipbr2_info.ip_list[1].status}	${IPRO_STATUS_WORK}				
+	should be equal	${new_specific_ipbr2_info.ip_list[0].vrf_id}	${DEFAULT_VRF_ID}				
+	should be equal	${new_specific_ipbr2_info.ip_list[0].ip_addr}	${VRF_IP1}				
+	should be equal	${new_specific_ipbr2_info.ip_list[0].monitor}	${MONITOR_NO}				
+	should be equal	${new_specific_ipbr2_info.ip_list[0].status}	${IPRO_STATUS_WORK}				
+							
+Check the leg number	[Arguments]	${orig_leg_list}	${new_owner_list}				
+	${increase_rtp}	evaluate	${new_leg_list.rtp_num}-${orig_leg_list.rtp_num}				
+	${increase_gtp}	evaluate	${new_leg_list.gtp_num}-${orig_leg_list.gtp_num}				
+	${increase_udp}	evaluate	${new_leg_list.udp_num}-${orig_leg_list.udp_num}				
+	should be equal as integers	${increase_rtp}	4				
+	should be equal as integers	${increase_gtp}	4				
+	should be equal as integers	${increase_udp}	4				
+							
+Check the owner ID	[Arguments]	${orig_owner_list}	${new_owner_list}				
+	run keyword if	'${orig_owner_list}' == '${NO_OWNER_ID_INFO}'	Check the new owner ID information	${new_owner_list}			
+	run keyword if	'${orig_owner_list}' != '${NO_OWNER_ID_INFO}'	Judge orig owner ID whether exist	${orig_owner_list}	${new_owner_list}		
+							
+Check the specific IPBR BW	[Arguments]	${orig_specific_ipbr_info}	${new_specific_ipbr_info}				
+	${res_bw}	evaluate	${CAL_RES_BW}*3				
+	${ipbr_increase_bw}	evaluate	(${new_specific_ipbr_info.res_bw}-${orig_specific_ipbr1_info.res_bw})				
+	should be equal as integers	${ipbr_increase_bw}	${res_bw}				
+							
+Check the port reserve	[Arguments]	${orig_ip_resource}	${new_ip_resource}				
+	${increase_port_in_BFD_IP1}	evaluate	${new_ip_resource['${BFD_IP1}@0']['reserve_port_num']} - ${orig_ip_resource['${BFD_IP1}@0']['reserve_port_num']}				
+	${increase_port_in_BFD_IP2}	evaluate	${new_ip_resource['${BFD_IP2}@0']['reserve_port_num']} - ${orig_ip_resource['${BFD_IP2}@0']['reserve_port_num']}				
+	${increase_port_in_vrf_0}	evaluate	${new_ip_resource['${VRF_IP1}@0']['reserve_port_num']} - ${orig_ip_resource['${VRF_IP1}@0']['reserve_port_num']}				
+	${increase_port_in_vrf_11}	evaluate	${new_ip_resource['${VRF_IP1}@11']['reserve_port_num']} - ${orig_ip_resource['${VRF_IP1}@11']['reserve_port_num']}				
+	should be equal as integers	${increase_port_in_BFD_IP1}	6				
+	should be equal as integers	${increase_port_in_BFD_IP2}	0				
+	should be equal as integers	${increase_port_in_vrf_0}	3				
+	should be equal as integers	${increase_port_in_vrf_11}	3				
+							
+Check orig ipro bind ipbr1	[Arguments]	${ipbr_info}					
+	should be equal	${ipbr_info.ip_list[0].ip_addr}	${BFD_IP1}				
+	should be equal	${ipbr_info.ip_list[0].monitor}	${MONITOR_YES}				
+	should be equal	${ipbr_info.ip_list[0].status}	${IPRO_STATUS_WORK}				
+							
+Check orig ipro bind ipbr2	[Arguments]	${ipbr_info}					
+	should be equal	${ipbr_info}	${IP_NO_EXIST_INFO}				
+							
+Judge orig owner ID whether exist	[Arguments]	${orig_owner_list}	${new_owner_list}				
+	run keyword if	${orig_owner_list['0x${OWNER_ID}']} != 0	Compare owner ID information between orig and new	${orig_owner_list}	${new_owner_list}		
+	run keyword if else	${orig_owner_list['0x${OWNER_ID}']} != 0	Check the new owner ID information				
+							
+Check the new owner ID information	[Arguments]	${new_owner_list}					
+	${res_bw}	evaluate	${CAL_RES_BW}*6				
+	should be equal as integers	${new_owner_list['0x${OWNER_ID}']['reserve_bw']}	${res_bw}				
+	should be equal as integers	${new_owner_list['0x${OWNER_ID}']['rtp_num']}	4				
+	should be equal as integers	${new_owner_list['0x${OWNER_ID}']['gtp_num']}	4				
+	should be equal as integers	${new_owner_list['0x${OWNER_ID}']['udp_num']}	4				
+							
+Compare owner ID information between orig and new	[Arguments]	${orig_owner_list}	${new_owner_list}				
+	${increase_res_bw}	evaluate	${new_owner_list['0x${OWNER_ID}']['reserve_bw']} - ${orig_owner_list['0x${OWNER_ID}']['reserve_bw']}				
+	${exp_increase_res_bw}	evaluate	${CAL_RES_BW}*6				
+	#should be equal	${increase_res_bw}	${exp_increase_res_bw}				
+	${increase_rtp}	evaluate	${new_owner_list['0x${OWNER_ID}']['rtp_num']}-${orig_owner_list['rtp_num']}				
+	${increase_gtp}	evaluate	${new_owner_list['0x${OWNER_ID}']['gtp_num']}-${orig_owner_list['gtp_num']}				
+	${increase_udp}	evaluate	${new_owner_list['0x${OWNER_ID}']['udp_num']}-${orig_owner_list['udp_num']}				
+	should be equal as integers	${increase_rtp}	4				
+	should be equal as integers	${increase_gtp}	4				
+	should be equal as integers	${increase_udp}	4				

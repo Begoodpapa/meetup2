@@ -1,0 +1,845 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>CAC upgrade MT case</title>
+</head>
+<body>
+<h1>CAC upgrade MT case</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Setting</th>
+</tr>
+<tr>
+<td class="name">Force Tags</td>
+<td>Iteration_ID-I09461</td>
+<td>Iteration_ID-I09605</td>
+<td>Iteration_ID-I09462</td>
+<td>owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>element-IL</td>
+<td>release-IL5</td>
+<td>type-FUT</td>
+<td>QL-7</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>HW_TYPE-BCN_A1</td>
+<td>Product_Backlog_ID-B</td>
+<td>release-RU40</td>
+<td>hw_env-RNC_S3</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>hw_env-RNC_S5</td>
+<td>Product_Backlog_ID-B04064</td>
+<td>BCN_STEP-BCN_S5</td>
+<td>PRS_ID-4683</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>EFS_ID-RNC_EFS_2874_232</td>
+<td>exec_type-manual</td>
+<td>PRS_ID-XXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Default Tags</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Case</th>
+</tr>
+<tr>
+<td class="name"><a name="test_RAN2874 BCNS1 upgrade to BCNS3">RAN2874 BCNS1 upgrade to BCNS3</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">1. CAC CAPACITY LIST:\n<br>
+Number of IPBR: 4095;\n<br>
+Number of IPRO: 23965; \n<br>
+Number of IPHB: 10;\n<br>
+Number of IDSP: 10;\n<br>
+Number of Vrf: 4.\n<br>
+\n<br>
+2.the step of upgrade\n<br>
+<a href="https://twiki.inside.nsnnetworks.com/bin/view/IPALightWiki/RAN2874_Expansion_Guide">https://twiki.inside.nsnnetworks.com/bin/view/IPALightWiki/RAN2874_Expansion_Guide</a></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>RNC_EFS_2874</td>
+<td>ATC_ID-UPGRADE_CAC.FT.001.MT.I09462</td>
+<td>hw_env-BCNS3</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>IL_PRS_4683</td>
+<td>BCN_STEP-BCN_S3</td>
+<td>Product_Backlog_ID-AN2874_1R_M2</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Product_Backlog_ID-RAN2874_1R_M3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td># Prepare test resource before upgrade</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the syslog</td>
+<td>tail -f /srv/Log/log/syslog|grep cacprb</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create directory for storing test file</td>
+<td>mkdir flash_test</td>
+<td>login BCNS1 and create test directory suceessful</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Copy test script to target BCN</td>
+<td>scp ../TestCase/SS_ILCAC/test_script/configured-2-4box-upgrade.xml add-ipro-4box.scli root@$target-BCN-IP :/root/flash_test/</td>
+<td>copy test script successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Backup the original IP_PLAN file</td>
+<td>cp /opt/nsn/testutils/sko_test_xml/origin_bcns1_common_configuration.xml /opt/nsn/testutils/sko_test_xml/origin_bcns1_common_configuration-bak.xml</td>
+<td>Copy test script successfully, Please use "mount -o rw,remount /mnt/sysing if fail to copy the file</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Replace the IP_PLAN file</td>
+<td>cp /root/flash_test/configured-2-4box-upgrade.xml /opt/nsn/testutils/sko_test_xml/origin_bcns1_common_configuration.xml</td>
+<td>as above</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Modify the common_configuration.sh file</td>
+<td>vi /opt/nsn/testutils/sko_test_xml/common_configuration.sh</td>
+<td>modify successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>a. start validate xml file while [ "$i" -le 10 ]----&gt;while [ "$i" -le 1000 ] if [ $i -gt 10 ]; then----&gt;if [ $i -gt 1000 ]; then</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>b. start activate xml file while [ "$i" -le 20 ]----&gt;while [ "$i" -le 2000 ] if [ $i -gt 2000 ]; then</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute the IP_PLAN</td>
+<td>sh /opt/nsn/testutils/sko_test_xml/common_configuration.sh BCNS1 add</td>
+<td>It will take more than two hours</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Add measurement about MJ568</td>
+<td>fsclish -c " add stats m-job granularity 900 name MJ568 omes 568 continuous "</td>
+<td>Add m-job 568 successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enable the measurement about MJ568</td>
+<td>fsclish -c "set stats m-job name MJ568 enabled "</td>
+<td>Enable m-job 568 successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the measurement of MJ568</td>
+<td>fsclish -c "show stats m-job name MJ568"</td>
+<td>Job Admin State: enabled Job Operational State: activated</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the measurement created</td>
+<td>ll -lt /opt/nsn/var/SS_PM9/storage/results</td>
+<td>Waiting for measurement report created in 15 minutes</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td># Pre-work start <a href="https://twiki.inside.nsnnetworks.com/bin/view/IPALightWiki/RAN2874_Expansion_Guide#Pre_work">https://twiki.inside.nsnnetworks.com/bin/view/IPALightWiki/RAN2874_Expansion_Guide#Pre_work</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create FB build of running build(save the configured build)</td>
+<td>fsconfigure --save-as-startup 2box_config</td>
+<td>Save the configuration successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check CAC resource between the CAC memory and LDAP</td>
+<td>iltrmcli -C -m</td>
+<td>No difference about some MO between LDAP and CAC memory</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPBR status</td>
+<td>iltrmcli -S -i|grep UNAVAILABLE</td>
+<td>The search result is none</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPRO status</td>
+<td>iltrmcli -S -o|grep RG_DOWN;iltrmcli -S -o|grep CONN_DOWN|iltrmcli -S -o|grep BOTH_DOWN</td>
+<td>The all search result is none</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Expanding LDAP</td>
+<td>date; fsclish -f add2box_bmpp2_mcRNC30.txt; date;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td># Expanding LDAP ongoing</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the measurement report</td>
+<td>ll -lt /opt/nsn/var/SS_PM9/storage/results</td>
+<td>Waiting for measurement report created in 15 minutes</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the syslog</td>
+<td>tail -f /srv/Log/log/syslog|grep cacprb</td>
+<td>No error sys log about CAC</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td># After expending LDAP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPBR status</td>
+<td>iltrmcli -S -i|grep UNAVAILABLE</td>
+<td>The search result is none</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPRO status</td>
+<td>iltrmcli -S -o|grep RG_DOWN;iltrmcli -S -o|grep CONN_DOWN|iltrmcli -S -o|grep BOTH_DOWN</td>
+<td>The all search result is none</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check CAC resource between the CAC memory and LDAP</td>
+<td>iltrmcli -C -m</td>
+<td>No difference about some MO between LDAP and CAC memory</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the node level activator execution</td>
+<td>/bin/sh ./check_cache.txt</td>
+<td>The size of file is the same.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Config internal IP, VLAN &amp; VRF for new added EIPU node &amp; RG</td>
+<td>/opt/nsn/configure/sh/SS_ILDeployment_internalnet_postconfig.sh</td>
+<td>Add internet and route successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Save configured and startup as 4box-config</td>
+<td>fsconfigure --save-as-startup 4box_config</td>
+<td>Internal IP and route successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>IL upgrade command (refresh funlib table &amp; address table)</td>
+<td>ilsetsclienv.sh ilDynConfigCli</td>
+<td>Refresh FUNLIB table successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Add some interface, IP, IPRO on new QNUP.</td>
+<td>./root/flash_test/add-ipro-4box.scli</td>
+<td>Add new interface, IP, IPRO on new node and QNUP successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPBR status</td>
+<td>iltrmcli -S -i|grep UNAVAILABLE</td>
+<td>The new IPBR state is UNAVAILABLE.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPRO status</td>
+<td>iltrmcli -S -o|grep RG_DOWN;iltrmcli -S -o|grep CONN_DOWN|iltrmcli -S -o|grep BOTH_DOWN</td>
+<td>The new IPRO status is RG_DOWN</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check CAC resource between the CAC memory and LDAP</td>
+<td>iltrmcli -C -m</td>
+<td>No difference about some MO between LDAP and CAC memory</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the measurement report</td>
+<td>ll -lt /opt/nsn/var/SS_PM9/storage/results</td>
+<td>Waiting for measurement report created in 15 minutes</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td># Main work</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Unlock all nodes of new added modules</td>
+<td>fsetupcli post config --unlock --force</td>
+<td>All new RG active.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the syslog</td>
+<td>tail -f /srv/Log/log/syslog|grep cacprb</td>
+<td>A warning syslog about CAC.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create leg with one IPBR which blind IP on QNUP0-7 8 times</td>
+<td>lgutilgx RRI:USCP-0:0:OUT,12.23.34.45:1234,,,4022:34::NCAC=0,FABR=20000,FMBR=30000</td>
+<td>All the IP address for each QNUP would be selected</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_RAN2843 BCNS1 upgrade to BCNS5">RAN2843 BCNS1 upgrade to BCNS5</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">1. the step of upgrade\n<br>
+<a href="https://twiki.inside.nsnnetworks.com/bin/view/IPALightWiki/BCN2To6BoxUpgradeGuide">https://twiki.inside.nsnnetworks.com/bin/view/IPALightWiki/BCN2To6BoxUpgradeGuide</a></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>RNC_EFS_2843_157</td>
+<td>ATC_ID-UPGRADE_CAC.FT.001.MT.I09605</td>
+<td>hw_env-BCNS5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>BCN_STEP-BCN_S5</td>
+<td>Product_Backlog_ID-RAN2874_1R_M3</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td># Prepare test resource before upgrade</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create directory for storing test file</td>
+<td>mkdir flash_test</td>
+<td>Login BCNS1 and create test directory suceessful</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the syslog</td>
+<td>tail -f /srv/Log/log/syslog|grep cacprb</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Copy test script to target BCN</td>
+<td>scp ../TestCase/SS_ILCAC/test_script/2-6-add-CAC-resource-prepare.scli 2-6-add-CAC-resource-after-LDAP.scli add-ipro-4box.scli root@$target-BCN-IP :/root/flash_test/</td>
+<td>Copy test script successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>add CAC test resource</td>
+<td>./2-6-add-CAC-resource-prepare.scli</td>
+<td>Add CAC test resource successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Add measurement about MJ568</td>
+<td>fsclish -c " add stats m-job granularity 900 name MJ568 omes 568 continuous "</td>
+<td>Add m-job 568 successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enable the measurement about MJ568</td>
+<td>fsclish -c "set stats m-job id $ measurement-id enabled "</td>
+<td>Enable m-job 568 successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the measurement of MJ568</td>
+<td>fsclish -c "show stats m-job id $measurement-id"</td>
+<td>Job Admin State: enabled Job Operational State: activated</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the measurement created</td>
+<td>ll -lt /opt/nsn/var/SS_PM9/storage/results</td>
+<td>Waiting for measurement report created in 15 minutes</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td># Pre-work</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Save 2box config (for restore environment) before start upgrade</td>
+<td>fsconfigure --save-as-startup 2box_config</td>
+<td>Save and startup building seccussfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check CAC Resource between LDAP and CAC memory</td>
+<td>iltrmcli -C -m</td>
+<td>No difference between CAC memory and LDAP</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPBR status</td>
+<td>iltrmcli -S -i|grep UNAVAILABLE</td>
+<td>The search result is none</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPRO status</td>
+<td>iltrmcli -S -o|grep RG_DOWN;iltrmcli -S -o|grep CONN_DOWN|iltrmcli -S -o|grep BOTH_DOWN</td>
+<td>The all search result is none</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the measurement created</td>
+<td>ll -lt /opt/nsn/var/SS_PM9/storage/results</td>
+<td>Waiting for measurement report created in 15 minutes</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Make sure FTP is locked so it will not affect zchassis_ex. We don't use FTP in the test.</td>
+<td>fshascli -lnE /FTP</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Expanding LDAP to 6box</td>
+<td>date; fsclish -f add4box_mcRNC30.txt; date;</td>
+<td>It will take 1hours</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td># Expanding LDAP ongoing</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the syslog</td>
+<td>tail -f /srv/Log/log/syslog|grep cacprb</td>
+<td>No error and warning sys log about CAC</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the measurement created</td>
+<td>ll -lt /opt/nsn/var/SS_PM9/storage/results</td>
+<td>Waiting for measurement report created in 15 minutes</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td># After expending LDAP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check CAC Resource between LDAP and CAC memory</td>
+<td>iltrmcli -C -m</td>
+<td>No difference between CAC memory and LDAP</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the node level activator execution</td>
+<td>/bin/sh ./check_cache.txt ; hascli -C</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Config internal IP VLAN &amp; VRF for new added EIPU nodes &amp; RG</td>
+<td>/opt/nsn/configure/sh/SS_ILDeployment_internalnet_postconfig.sh</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Save the configuration as 6boxes</td>
+<td>fsconfigure --save-as-startup 6box_config</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check CAC Resource between LDAP and CAC memory</td>
+<td>iltrmcli -C -m</td>
+<td>No difference between CAC memory and LDAP</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the syslog</td>
+<td>tail -f /srv/Log/log/syslog|grep cacprb</td>
+<td>No error and warning sys log about CAC</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>IL upgrade command (refresh funlib table &amp; address table)</td>
+<td>ilsetsclienv.sh ilDynConfigCli</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPBR status</td>
+<td>iltrmcli -S -i|grep UNAVAILABLE</td>
+<td>The search result is none</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPRO status</td>
+<td>iltrmcli -S -o|grep RG_DOWN;iltrmcli -S -o|grep CONN_DOWN|iltrmcli -S -o|grep BOTH_DOWN</td>
+<td>The all search result is none</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check CAC Resource between LDAP and CAC memory</td>
+<td>iltrmcli -C -m</td>
+<td>No difference between CAC memory and LDAP</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the measurement created</td>
+<td>ll -lt /opt/nsn/var/SS_PM9/storage/results</td>
+<td>Waiting for measurement report created in 15 minutes</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart /SGWNetMgr</td>
+<td>fshascli -rn /SGWNetMgr</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Power on all nodes:</td>
+<td>sh poweron.sh</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td># Finalization</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Shutdown and Unlock box2 (using zchassis_ex)</td>
+<td>zchassis_ex</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPBR status</td>
+<td>iltrmcli -S -i|grep UNAVAILABLE</td>
+<td>The search result is none</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPRO status</td>
+<td>iltrmcli -S -o|grep RG_DOWN;iltrmcli -S -o|grep CONN_DOWN|iltrmcli -S -o|grep BOTH_DOWN</td>
+<td>The all search result is none</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check CAC Resource between LDAP and CAC memory</td>
+<td>iltrmcli -C -m</td>
+<td>No difference between CAC memory and LDAP</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the measurement created</td>
+<td>ll -lt /opt/nsn/var/SS_PM9/storage/results</td>
+<td>Waiting for measurement report created in 15 minutes</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Shutdown and Unlock box1(using zchassis_ex)</td>
+<td>zchassis_ex</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPBR status</td>
+<td>iltrmcli -S -i|grep UNAVAILABLE</td>
+<td>The search result is none</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPRO status</td>
+<td>iltrmcli -S -o|grep RG_DOWN;iltrmcli -S -o|grep CONN_DOWN|iltrmcli -S -o|grep BOTH_DOWN</td>
+<td>The all search result is none</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check CAC Resource between LDAP and CAC memory</td>
+<td>iltrmcli -C -m</td>
+<td>No difference between CAC memory and LDAP</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the measurement created</td>
+<td>ll -lt /opt/nsn/var/SS_PM9/storage/results</td>
+<td>Waiting for measurement report created in 15 minutes</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Add CAC test resource on new node and RG</td>
+<td>./2-6-add-CAC-resource-after-LDAP.scli</td>
+<td>Add CAC test resource successfully.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPBR status</td>
+<td>iltrmcli -S -i|grep UNAVAILABLE</td>
+<td>The new IPBR state is UNAVAILABLE.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPRO status</td>
+<td>iltrmcli -S -o|grep RG_DOWN;iltrmcli -S -o|grep CONN_DOWN|iltrmcli -S -o|grep BOTH_DOWN</td>
+<td>The new IPRO status is RG_DOWN</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the measurement created</td>
+<td>ll -lt /opt/nsn/var/SS_PM9/storage/results</td>
+<td>Waiting for measurement report created in 15 minutes</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Unlock the new nodes/RG for box 3, 4, 5 and 6</td>
+<td>fsetupcli post config --unlock --force</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the syslog</td>
+<td>tail -f /srv/Log/log/syslog|grep cacprb</td>
+<td>A warning syslog about CAC.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPBR resource</td>
+<td>iltrmcli -S -i</td>
+<td>The all IPBR state is AVAILABLE</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check IPRO resource</td>
+<td>iltrmcli -S -o</td>
+<td>The all IPRO state is WORK</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check CAC Resource between LDAP and CAC memory</td>
+<td>iltrmcli -C -m</td>
+<td>No difference between CAC memory and LDAP</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check the measurement created</td>
+<td>ll -lt /opt/nsn/var/SS_PM9/storage/results</td>
+<td>Create measurement will drop 1 or 2 time. waiting for measurement report created in next 15 minutes</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create leg with one IPBR which blind IP on QNUP0-23 25 times</td>
+<td>lgutilgx RRI:USCP-0:0:OUT,12.23.34.45:1234,,,4022:34::NCAC=0,FABR=20000,FMBR=30000</td>
+<td>All the IP address for each QNUP would be selected</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

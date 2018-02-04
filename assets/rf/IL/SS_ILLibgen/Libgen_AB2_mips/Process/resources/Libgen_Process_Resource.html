@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen_Process_Resource</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen_Process_Resource</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>il.html</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${TESTING_PROCESS}</td><td>lbgprtst</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIME_QUOTA}</td><td>3</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIME_DURATION}</td><td colspan=3>2</td></tr>
+<tr bgcolor=#FFFFFF><td>${LIBGENTST_FAMILY_ID}</td><td>0x0400</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${PROCESS_ID}</td><td>0x0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${C_TEST_MSG_S}</td><td>0x6034</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${START_UP_TIME}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>0xffff11</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IPNIU}</td><td>%{IPNIU_0_NAME}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${UNIT_INDEX}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IPNIU_UNIT_TYPE}</td><td>0x12a</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Libgen Clear All Hands</b></td></tr>
+<tr><td><br></td><td>Send Msg To Target Process Clear All Hands</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${LIBGENTST_FAMILY_ID}</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td></tr>
+<tr><td><br></td><td>...</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Libgen Stop Hand And Return Success</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_process_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Stop Hand</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${LIBGENTST_FAMILY_ID}</td><td>${PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${hand_process_id}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Libgen Next Reserved</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_group}</td><td><font color=#FF6600>${hand_process_id}</td><td><font color=#FF6600>${expected_reserved}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Get Next Reserved</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${LIBGENTST_FAMILY_ID}</td><td>${PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${hand_group}</td><td>${hand_process_id}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${expected_reserved}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Libgen Find Focus</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${target_family_id}</td><td><font color=#FF6600>${hand_process_id}</td><td><font color=#FF6600>${expected_focus}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Find Focus</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${LIBGENTST_FAMILY_ID}</td><td>${PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${target_family_id}</td><td>${hand_process_id}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${expected_focus}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Libgen Hand Process Count</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${target_family_id}</td><td><font color=#FF6600>${hand_group}</td><td><font color=#FF6600>${expected_count}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Count Hand</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${LIBGENTST_FAMILY_ID}</td><td>${PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${target_family_id}</td><td>${hand_group}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${expected_count}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Libgen Hand Alive</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_process_id}</td><td><font color=#FF6600>${log_info}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Alive Check</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${LIBGENTST_FAMILY_ID}</td><td>${PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td>${hand_process_id}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${log_info}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Libgen Disconnect from SUT</b></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Libgen kill Testing Process</b></td></tr>
+<tr><td><br></td><td>Kill Process</td><td>${TESTING_PROCESS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Libgen Restart Testing Process</b></td></tr>
+<tr><td><br></td><td>execute_mml_without_check</td><td>killall ${TESTING_PROCESS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>sleep</td><td>${START_UP_TIME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>execute_mml_without_check</td><td>${TESTING_PROCESS}&amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>sleep</td><td>${START_UP_TIME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Libgen Connect To SUT</b></td></tr>
+<tr><td><br></td><td>${index}=</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td>120sec</td></tr>
+<tr><td><br></td><td>...</td><td>%{USERNAME}</td><td>%{PASSWD}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[return]</td><td><font color=#FF6600>${index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change Node Env By RU</td><td>${IPNIU}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ilcliru.sh ${IPNIU}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Variable Of Libgen Use Phys Addr</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Set Variable Of Libgen Use Phys Addr</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${OMU_PHYSICAL_ADDRESS}</td><td>Get Libgen Use Phys Addr</td><td>${IPNIU_UNIT_TYPE}</td><td>${UNIT_INDEX}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU_PHYSICAL_ADDRESS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%"></table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

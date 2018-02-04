@@ -1,0 +1,59 @@
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*
+Suite Setup	connect to target hardware and prepare test environment						
+Suite Teardown	disconnect from target hardware						
+Force Tags	Iteration_ID-I09653	PRS_ID-	EFS_ID-RNC_EFS_3000_1	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	QL-6	type-FUT	HW_TYPE-BCN_A1
+...	exec_type-automatic	Product_Backlog_ID-RAN3000_1R_M3_TT	hw_env-RNC_S0	BCN_STEP-BCN_S0	release-RU50	FRS_ID-	
+Resource	il.html						
+Resource	./resources/common_operation_resource.html						
+Library	./resources/cacprb_test_resources.py						
+							
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*	*Value*
+${IPBR_RR_4060}	4060						
+${IPBR_QNUP_NOT_AVAILABLE}	4061						
+							
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*
+CAC basic function verification on multi boxes	[Setup]	get available recovery group and reserve transport resources					
+	reserve and release SRB AMR PS-NRT calls on each USCP						
+	reserve and release CELL and CCH on each CSCP						
+	reserve SRB calls with IP address assigned round robin						
+	reserve SRB call with QNUP Disabled						
+	[Teardown]	release transport resources					
+							
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*	*Argument*
+reserve SRB call with QNUP Disabled	reserve SRB call and the disabled QNUP should not assigned	${IPBR_QNUP_NOT_AVAILABLE}	${USCP_LIST}	${QNUP_LIST}	${IP_POOL}		
+							
+reserve and release SRB AMR PS-NRT calls on each USCP	${orig_owner_info}	get_owner_id_in_cac					
+	${call_list}	reserve SRB AMR PSNRT calls on each USCP	${IPBR_RR_4060}	${USCP_LIST}			
+	release calls with list	${call_list}					
+	${new_owner_info}	get_owner_id_in_cac					
+	should be equal	${orig_owner_info}	${new_owner_info}				
+							
+reserve and release CELL and CCH on each CSCP	${orig_owner_info}	get_owner_id_in_cac					
+	${call_list}	reserve_rach_on_each_cscp	${IPBR_RR_4060}	${CSCP_LIST}			
+	release_cell_service_with_list	${call_list}					
+	${new_owner_info}	get_owner_id_in_cac					
+	should be equal	${orig_owner_info}	${new_owner_info}				
+							
+reserve SRB calls with IP address assigned round robin	${orig_owner_info}	get_owner_id_in_cac					
+	${reserve_times}	evaluate	${QNUP_LIST.__len__()} * 2				
+	${call_list}	reserve SRB calls with same IPBR ID	${IPBR_RR_4060}	${reserve_times}	${USCP_LIST}		
+	All the SRB call should assigned with expect IP address averagely	${call_list}	${IP_POOL}				
+	release calls with list	${call_list}					
+	${new_owner_info}	get_owner_id_in_cac					
+	should be equal	${orig_owner_info}	${new_owner_info}				
+							
+get available recovery group and reserve transport resources	${USCP_LIST}	${CSCP_LIST}	${QNUP_LIST}	get usable recovery groups			
+	${IP_POOL}	${IPRO_POOL}	reserve test IP based route resource	${IPBR_RR_4060}	${QNUP_LIST}		
+	set test variable	\${QNUP_LIST}					
+	set test variable	\${CSCP_LIST}					
+	set test variable	\${USCP_LIST}					
+	set test variable	\${IP_POOL}					
+	set test variable	\${IPRO_POOL}					
+							
+release transport resources	release IPRO with list	${IPRO_POOL}					
+	release IP address with list	${IP_POOL}					
+	del IP based route	${IPBR_RR_4060}					
+							
+connect to target hardware and prepare test environment	connect to target hardware						
+	switch to active OMU						
+							

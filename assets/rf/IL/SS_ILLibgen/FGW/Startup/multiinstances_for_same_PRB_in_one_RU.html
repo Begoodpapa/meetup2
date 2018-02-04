@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Multi Instances For Same PRB Family In One RU</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Multi Instances For Same PRB Family In One RU</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B03248</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-il</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-6</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-mail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC_S1</td><td><font color=dark red>hw_env-AB</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT and Get Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Env And Disconnect From SUT</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Setup</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Teardown</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td colspan=4>../../resources/libgen_resource.html</td></tr>
+<tr><td><font color=blue>#Resource</td><td><font color=blue>./resources/startup_Resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${INTERVAL_SLEEP}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${THERMO_STUB1_FAM_ID}</td><td>0xA474</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${THERMO_STUB2_FAM_ID}</td><td>0xA476</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WARM_STUB_FAM_ID}</td><td>0x1773</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_GROUP_9}</td><td>9</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_GROUP_11}</td><td>11</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WARM_STUB_HAND_GROUP_11_SIZE}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${THERMO_STUB1_HAND_GROUP_11_SIZE}</td><td>2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${THERMO_STUB2_HAND_GROUP_11_SIZE}</td><td>2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_GROUP_9_STATIC_POOL_SIZE}</td><td>2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${PRB_FILTER}</td><td>TestWarmStub|TestThermoStub</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${STATIC_POOL_SIZE}</td><td>static pool size</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${STUB_START_SEQUENCE}</td><td>0x1773(IL_TestWarmStub)0xa474(IL_TestThermoStub1)0xa476(IL_TestThermoStub2)</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MEMPOOL_STUB_FAM_ID}</td><td>0xC385</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DIFF_FAMILY_ID}</td><td>0xD903</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEMP_INI_FILE}</td><td>__temp_config.ini</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_NAME_WITH_POOL}</td><td>[default]\nmax_threads=1\nstack_size=500000\ntimer_heap_size=10000\nuse_focus=0\nuse_fatal_handler=0\ncntx_pool_free_thrd=20\nmsg_conversion_enable=0\npool_128=128\npool_512=64\npool_2k=32\npool_8k=8\npool_64k=2\n\n[mempoolmas]\nfamily_number=50053\nhandgroup_1_size=20\nhandgroup_2_size=100\nhandgroup_3_size=2\nhandgroup_4_size=100\n</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_NAME_WITHOUT_POOL}</td><td>[default]\nmax_threads=1\nstack_size=500000\ntimer_heap_size=10000\nuse_focus=0\nuse_fatal_handler=0\ncntx_pool_free_thrd=20\nmsg_conversion_enable=0\n\n[mempoolmas]\nfamily_number=50053\nhandgroup_1_size=20\nhandgroup_2_size=100\nhandgroup_3_size=2\nhandgroup_4_size=100\n</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEMP_LOG_FILE}</td><td>/var/log/__tmp_syslog</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${PRB_LINUX_PID}</td><td>0</td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>PRB configured multi instances with different configuration in LDAP should be started as the setting sequence</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multi instances is configured in RU\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check RU Status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. CLI will get family's starting sequence in RU\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check multi instances started as the setting sequence\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check multi instances started as the setting sequence\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_STARTUP.FUT.001.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>All OMU Should Be Ready</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check OMU Startup Sequence Of WarmStub and ThermoStub Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB only with mastername as index in the Ini config file should be startup successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process Or CLI only mastername in the Ini config file\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Start CLI to run\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check CLI can startup and get the result\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check CLI can startup and get the result\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_STARTUP.FUT.002.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Export Temporarily Ini With Master Name Only</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Can Startup</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Change Env Back</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB with multi-instances should be started with his own configuration successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multi instances is configured in RU\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check RU Status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. CLI will get each instances current runtime informations: handgroup size and max threads\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check runtime information should be as his own configuration\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check runtime information should be as his own configuration\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_STARTUP.FUT.003.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRBs Hand Group Parameters Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB with inconsistent family_num and family_id in LDAP can be started with the family_id</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multi instances is configured in RU\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One instance with inconsistent family_num and family_id\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check RU Status is OK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check PRB started successfully\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check PRB started successfully\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_STARTUP.FUT.004.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Can Startup With Different Family Id</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop PRB If Still Alive</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Connect To SUT and Get Env</b></td></tr>
+<tr><td><br></td><td>Setup Connection For Adaptive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail Syslog</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Tail Syslog</b></td></tr>
+<tr><td><br></td><td>${SSH_LOG}=</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MAX TIME FOR CONNECT}</td><td>%{USERNAME}</td><td>%{PASSWD}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SSH_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To Active Log Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>tail -f /srv/Log/log/syslog &gt;${TEMP_LOG_FILE} &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Tail Syslog</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>pkill tail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${out}</td><td>Execute CLI</td><td>cat ${TEMP_LOG_FILE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>rm -f ${TEMP_LOG_FILE}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Env And Disconnect From SUT</b></td></tr>
+<tr><td><br></td><td>Stop Tail Syslog</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check OMU Startup Sequence Of WarmStub and ThermoStub Should Be Correct</b></td></tr>
+<tr><td><br></td><td>Check Ru PRB Startup Sequnence Should Be</td><td>${OMU_TYPE}</td><td>${WO_OMU_INDEX}</td><td>${WO_OMU_NAME}</td><td>${STUB_START_SEQUENCE}</td></tr>
+<tr><td><br></td><td>Run Keyword Unless</td><td>"%{HW}" == "ADA"</td><td>Check Ru PRB Startup Sequnence Should Be</td><td>${OMU_TYPE}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${SP_OMU_INDEX}</td><td>${SP_OMU_NAME}</td><td>${STUB_START_SEQUENCE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Ru PRB Startup Sequnence Should Be</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_ru_type}</td><td><font color=#FF6600>${in_ru_index}</td><td><font color=#FF6600>${in_ru_mo}</td><td><font color=#FF6600>${in_expect_sequence}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Get Ru Startup Sequence</td><td>${in_ru_type}</td><td>${in_ru_index}</td><td>${in_ru_mo}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${in_expect_sequence}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Export Temporarily Ini With Master Name Only</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f `pwd`/${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"%{HW}" == "ADA"</td><td>Execute CLI</td><td>echo -e "${DEFAULT_NAME_WITHOUT_POOL}\n" &gt;`pwd`/${TEMP_INI_FILE}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>Else</td><td>Execute CLI</td><td>echo -e "${DEFAULT_NAME_WITH_POOL}\n" &gt;`pwd`/${TEMP_INI_FILE}</td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>cat `pwd`/${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>echo $GET_CONFIG</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OLD_GET_CONFIG}</td><td>${result.strip()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=`pwd`/${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Can Startup</b></td></tr>
+<tr><td><br></td><td>${ret}</td><td>Start Cli At Background And Return Linux Pid</td><td>mempoolproc -- -s &gt; /dev/null &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${PRB_LINUX_PID}</td><td>${ret}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>mempoolproc -f 0xffff -- -p "${WO_COMP_ADDR} ${MEMPOOL_STUB_FAM_ID} 0x0" -v stop_prb</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${result}</td><td>successfully</td><td>2</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${PRB_LINUX_PID}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Change Env Back</b></td></tr>
+<tr><td><br></td><td>Stop PRB If Still Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>echo $GET_CONFIG</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=${OLD_GET_CONFIG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>echo $GET_CONFIG</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRBs Hand Group Parameters Should Be Correct</b></td></tr>
+<tr><td><br></td><td>PRB Hand Group Size Should Be</td><td>${WARM_STUB_FAM_ID}</td><td>${HAND_GROUP_11}</td><td>${WARM_STUB_HAND_GROUP_11_SIZE}</td><td><br></td></tr>
+<tr><td><br></td><td>PRB Hand Group Size Should Be</td><td>${THERMO_STUB1_FAM_ID}</td><td>${HAND_GROUP_11}</td><td>${THERMO_STUB1_HAND_GROUP_11_SIZE}</td><td><br></td></tr>
+<tr><td><br></td><td>PRB Hand Group Size Should Be</td><td>${THERMO_STUB2_FAM_ID}</td><td>${HAND_GROUP_11}</td><td>${THERMO_STUB2_HAND_GROUP_11_SIZE}</td><td><br></td></tr>
+<tr><td><br></td><td>PRB Hand Group Static Pool Size Should Be</td><td>${WARM_STUB_FAM_ID}</td><td>${HAND_GROUP_9}</td><td>${HAND_GROUP_9_STATIC_POOL_SIZE}</td><td><br></td></tr>
+<tr><td><br></td><td>PRB Hand Group Static Pool Size Should Be</td><td>${THERMO_STUB1_FAM_ID}</td><td>${HAND_GROUP_9}</td><td>${HAND_GROUP_9_STATIC_POOL_SIZE}</td><td><br></td></tr>
+<tr><td><br></td><td>PRB Hand Group Static Pool Size Should Be</td><td>${THERMO_STUB2_FAM_ID}</td><td>${HAND_GROUP_9}</td><td>${HAND_GROUP_9_STATIC_POOL_SIZE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>PRB Hand Group Size Should Be</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_family_id}</td><td><font color=#FF6600>${in_hand_group_id}</td><td><font color=#FF6600>${in_hand_group_size}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Get Hand Group Parameter By Diagste</td><td>${WO_COMP_ADDR}</td><td>${in_family_id}</td><td>${in_hand_group_id}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${in_hand_group_size}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>PRB Hand Group Static Pool Size Should Be</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_family_id}</td><td><font color=#FF6600>${in_hand_group_id}</td><td><font color=#FF6600>${in_hand_group_static_pool_size}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Get Hand Group Parameter By Diagste</td><td>${WO_COMP_ADDR}</td><td>${in_family_id}</td><td>${in_hand_group_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${STATIC_POOL_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${in_hand_group_static_pool_size}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Can Startup With Different Family Id</b></td></tr>
+<tr><td><br></td><td>${ret}</td><td>Start Cli At Background And Return Linux Pid</td><td>warmtstproc -f ${DIFF_FAMILY_ID} &gt; /dev/null &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${PRB_LINUX_PID}</td><td>${ret}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>mempoolproc -f 0xffff -- -p "${WO_COMP_ADDR} ${DIFF_FAMILY_ID} 0x0" -v stop_prb</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Libgen Should Contain X Times</td><td>${result}</td><td>successfully</td><td>2</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${PRB_LINUX_PID}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop PRB If Still Alive</b></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${PRB_LINUX_PID}" != "0"</td><td>Execute CLI</td><td>kill -9 ${PRB_LINUX_PID}</td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

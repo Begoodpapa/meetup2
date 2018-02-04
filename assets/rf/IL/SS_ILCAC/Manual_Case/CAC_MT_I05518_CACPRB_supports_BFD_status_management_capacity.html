@@ -1,0 +1,566 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>CAC MT I05518 CACPRB supports BFD status management capacity</title>
+</head>
+<body>
+<h1>CAC MT I05518 CACPRB supports BFD status management capacity</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Setting</th>
+</tr>
+<tr>
+<td class="name">Force Tags</td>
+<td>Product_Backlog_ID-B02142</td>
+<td>Iteration_ID-I05518/I07544</td>
+<td>PRS_ID-IL_PRS_4490</td>
+<td>EFS_ID-RNC_EFS_2117_317</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>ATC_ID-TRM_BFD.FUT.001.MT.I05518</td>
+<td>hw_env-RNC_S1</td>
+<td>type-FUT</td>
+<td>exec_type-manual</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>element-IL</td>
+<td>release-IL5</td>
+<td>owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com</td>
+<td>exec_level-pre</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>FP_version-COUGAR</td>
+<td>QL-8</td>
+<td>HW_TYPE-BCN_A1</td>
+<td>BCN_STEP-BCN_S1</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>EFS_ID-XXX</td>
+<td>PRS_ID-XXX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Case</th>
+</tr>
+<tr>
+<td class="name"><a name="test_CACPRB IPRO’s Capacity test when add/delete IP address make BFD up/down">CACPRB IPRO’s Capacity test when add/delete IP address make BFD up/down</a></td>
+<td>[Tags]</td>
+<td>TRM_CAC.CAP.001.MT.I05518</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>copy scritp to HW</td>
+<td>scp -r scripts\CAC_MT_I05518_CACPRB_supports_BFD_status_management_capacity root@10.68.157.109:/opt/nsn/testutils/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log on HW and modify file attribute</td>
+<td>cd /opt/nsn/testutils/ chmod +x ./CAC_MT_I08567_I08659_notification_message_contain_multi_mo</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>add ten local_IPs by script</td>
+<td>sh Local_IP_address_add.sh</td>
+<td>add local_IPs successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>add 100 IPROs with 100 IPBRs and 10 local IP addresses, and create 100 BFD sessiones</td>
+<td>sh IPBRs_IPROs_BFDs_add.sh</td>
+<td>the BFD relation IPROs 's status should be CONN_DOWN, the Remote_IPs does not config.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -o |grep "CONN_DOWN"</td>
+<td>check every the BFD related IPROs' state are CONN_DOWN</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>add ten remote IP addresses by script</td>
+<td>sh Remote_IP_address_add.sh</td>
+<td>add remote IPs.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -o |grep "WORK"</td>
+<td>check the BFD related IPRO'state are WORK</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>delete remote IP addresses</td>
+<td>sh Remote_IP_address_delete.sh</td>
+<td>check the IPRO status when delete the remote IP</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart CFCPRG</td>
+<td>fshascli -rnF /QNCFCP</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the QNCFCP status</td>
+<td>fshascli -s /QNCFCP</td>
+<td>check the CFCPRG active</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the BFD related IPRO</td>
+<td>iltrmcli -S -o |grep "191.251.10.5"</td>
+<td>check the BFD relation IPROs 's status are "CONN_DOWN"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>lock the QNUP-0</td>
+<td>fshascli -lnF /QNUP-0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -o |grep "191.251.10.5"</td>
+<td>check the BFD relation IPROs 's status are "BOTH_DOWN"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Add remote IP address</td>
+<td>sh Remote_IP_address_add.sh</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -o |grep "RG_DOWN" |wc -l</td>
+<td>check every the BFD relation IPROs 's status are RG_DOWN</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>unlock the QNUP-0</td>
+<td>fshascli -unF /QNUP-0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the QNUP-0 status</td>
+<td>fshascli -s /QNUP-0</td>
+<td>check the QNUP active</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -o |grep "WORK" |wc -l</td>
+<td>check every the BFD relation IPROs 's status are WORK</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart CFCPRG</td>
+<td>fshascli -rnF /QNCFCP</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the QNUP-0 statues</td>
+<td>fshascli -s /QNCFCP</td>
+<td>check the CFCPRG active</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -o |grep "WORK" |wc -l</td>
+<td>check the BFD relation IPROs 's status are WORK</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>locked CFCPRG</td>
+<td>fshascli -lnF /QNCFCP</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Delete remote IP address</td>
+<td>sh Remote_IP_address_delete.sh</td>
+<td>check the syslog and find warning log about \ CACPRB BFD session down</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>unlocked CFCPRG</td>
+<td>fshascli -un /QNCFCP</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>fshascli -s /QNCFCP</td>
+<td>waiting for the CFCP active</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -o |grep "191.251.10.5"</td>
+<td>check the BFD relation IPROs 's status are "CONN_DOWN"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Add remote IP address</td>
+<td>sh Remote_IP_address_add.sh</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>locked CFCPRG</td>
+<td>fshascli -lnF /QNCFCP</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>unlocked CFCPRG</td>
+<td>fshascli -un /QNCFCP</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -o |grep "WORK" |wc -l</td>
+<td>check the BFD relation IPROs 's status are WORK</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>delete remote IP address</td>
+<td>sh Remote_IP_address_delete.sh</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Power off the CFPU node which the SP CFCP RU based on</td>
+<td>fsclish -c “set has lock force managed-object ${CFPU_SP}””</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>fsclish -c “set has power off power-off-cause debugging config-check no-check managed-object ${CFPU_SP}””</td>
+<td>${CFPU_SP} is spare CFCPRG based on</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -o |grep "191.251.10.5"</td>
+<td>check the BFD relation IPROs 's status are "CONN_DOWN"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Power on the CFPU node which the SP CFCP RU based on</td>
+<td>set has power on managed-object ${CFPU_SP}</td>
+<td>${CFPU_SP} is spare CFCPRG based on</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -o |grep "191.251.10.5"</td>
+<td>check the BFD relation IPROs 's status are "CONN_DOWN"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>lock the CFPU node which the WO CFCP RU based on</td>
+<td>fsclish -c “set has lock force managed-object ${CFPU_ACTIVE}””</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -o |grep "191.251.10.5"</td>
+<td>check the BFD relation IPROs 's status are "CONN_DOWN"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>unlock the CFPU node which</td>
+<td>fsclish -c “set has unlock force managed-object ${CFPU_ACTIVE}””</td>
+<td>${CFPU_ACTIVE} is active CFCPRG based on</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -o |grep "191.251.10.5"</td>
+<td>check the BFD relation IPROs 's status are "CONN_DOWN"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>delete IPRO/IPBR/BFD session</td>
+<td>sh IPBRs_IPROs_BFDs_delete.sh</td>
+<td>clear test resource successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>delete remote IP addresses</td>
+<td>sh Remote_IP_address_delete.sh</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>delete local IP addresses</td>
+<td>sh Local_IP_address_delete.sh</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Create call with VRF when making the related BFD session up/down">Create call with VRF when making the related BFD session up/down</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">the message fomat \n<br>
+dmxsend -- -h *,744C,6dd,00,00,01,00,1DE9 -b xb00,19,(seq_id) 00,01,(num) 00,01,(ipbr_id) 00,0B,(vrf_id) 00,(IPV4) BF,FB,0A,0A,(IP) 00,00,00,00,00,00,00,00,00,00,00,00, 00(status 0-down, 1-up)</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>TRM_CAC.CAP.002.MT.I05518</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>add VRF</td>
+<td>fsclish -c "add networking vrf id 11 name vrf11"</td>
+<td>PLZ ignore the operation if the vrf exist</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>add one local IP address</td>
+<td>fsclish -c " add networking address dedicated /QNUP-0 iface ethtest20 ip-address 191.251.10.50/24"</td>
+<td>PLZ ignore the operation if the IP exist</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>delete origin IPRO</td>
+<td>fsclish -c "delete ipro ipbr-id 4022 iface ethtest20 ip-address 191.251.10.50 owner /QNUP-0 mode normal"</td>
+<td>should be successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>add IPRO1 with VRF and vrf_IP address</td>
+<td>fsclish -c "add ipro ipbr-id 4022 iface ethvrf ip-address 191.251.10.16 owner /QNUP-0 vrf-id 11"</td>
+<td>should be successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>add IPRO2 without VRF and use vrf_IP address</td>
+<td>fsclish -c "add ipro ipbr-id 4022 iface ethtest20 ip-address 191.251.10.16 owner /QNUP-0 "</td>
+<td>should be successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>switch active OMU</td>
+<td>ilcliru.sh omu</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>use DMXSEND send BFD down message</td>
+<td>dmxsend -- -h *,744C,6dd,00,00,01,00,1DE9 -b xb00,19,00,01,0F,B6,00,0B,00,BF,FB,0A,10,00,00,00,00,00,00,00,00,00,00,00,00,00</td>
+<td>make 191.251.10.16 down</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -i4022</td>
+<td>the IPRO with VRF11 shoule be CONN_DOWN</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>create GTP leg directly</td>
+<td>lgutilgx RRI:USCP-0::OUT,191.205.102.1:868,,,4022:5::ENC=11,DSP=4,F,0,TEID=8,NCAC=1</td>
+<td>create successfully and use IPRO should be IPRO2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>create GTP leg directly agina</td>
+<td>lgutilgx RRI:USCP-0::OUT,191.205.102.1:868,,,4022:5::ENC=11,DSP=4,F,0,TEID=8,NCAC=1</td>
+<td>create successfully and use IPRO should be IPRO2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>use DMXSEND send BFD up message</td>
+<td>dmxsend -- -h *,744C,6dd,00,00,01,00,1DE9 -b xb00,19,00,01,0F,B6,00,0B,00,BF,FB,0A,10,00,00,00,00,00,00,00,00,00,00,00,00,01</td>
+<td>make 191.251.10.16 up</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check the IPRO's status</td>
+<td>iltrmcli -S -i4022</td>
+<td>the IPRO with VRF11 shoule be WORK</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>create GTP leg directly</td>
+<td>lgutilgx RRI:USCP-0::OUT,191.205.102.1:868,,,4022:5::ENC=11,DSP=4,F,0,TEID=8,NCAC=1</td>
+<td>create successfully and use IPRO should be IPRO1,if not ,Plz create GTP leg again.next time should IPRO1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>create GTP leg directly</td>
+<td>lgutilgx RRI:USCP-0::OUT,191.205.102.1:868,,,4022:5::ENC=11,DSP=4,F,0,TEID=8,NCAC=1</td>
+<td>create successfully and use IPRO should be IPRO1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>release GTP legs</td>
+<td>lgutilgx RV:USCP-0:${call_id}:OUT</td>
+<td>release GTP leg successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>delete IPRO2</td>
+<td>fsclish -c "delete ipro ipbr-id 4022 iface ethtest20 ip-address 191.251.10.16 owner /QNUP-0 "</td>
+<td>should be successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>delete IPRO1 with VRF and vrf_IP address</td>
+<td>fsclish -c "delete ipro ipbr-id 4022 iface ethvrf ip-address 191.251.10.16 owner /QNUP-0"</td>
+<td>should be successfully</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>recoved IPRO</td>
+<td>fsclish -c "add ipro ipbr-id 4022 iface ethtest20 ip-address 191.251.10.50 owner /QNUP-0"</td>
+<td>should be successfully</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

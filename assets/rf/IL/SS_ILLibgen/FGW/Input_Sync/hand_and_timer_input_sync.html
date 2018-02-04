@@ -1,0 +1,737 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Hand And Timer Input Sync</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Hand And Timer Input Sync</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=35%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B00878</td><td><font color=dark red>Iteration_ID-I00953</td><td><font color=dark red>Release-IL1_RIS4</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Type-FUT</td><td><font color=dark red>QL-1</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Element-IL</td><td><br></td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_4514</td><td><font color=dark red>Reviewer-zhiyu.yang@nsn.com</td><td><font color=dark red>RW-weekly</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-RNC_EFS_2446_26</td><td><br></td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-AB</td><td><font color=dark red>Exec_Type-automatic</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-MGW_AB3</td><td><font color=dark red>bcn_step-S1</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/Libgen.html</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>../../resources/input_sync.html</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Setup Connection And Env For WO And SP</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Restart Environment And Disconnect From SUT</td><td>${WARMING_PROCESS}</td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=12%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${SPECIFIC_HAND_PROCESS}</td><td>0x33</td><td colspan=7><font color=blue>#hand id in handgroup6</td></tr>
+<tr bgcolor=#FFFFFF><td>${LITTLE_TIMER}</td><td>20</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SMALL_TIMER}</td><td>100</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SMALL_TIMER_S}</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ZERO_TIMER}</td><td>0</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${LARGE_TIMER}</td><td>1000</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SMALL_TIME_QUOTA}</td><td>20</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${LARGE_TIME_QUOTA}</td><td>1000</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${BIG_TIME_QUOTA}</td><td>2000</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIMER_PROCESS}</td><td>0x15</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_HAND_GROUP}</td><td>6</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${STATE_NO}</td><td>NO</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SET_WARMING_TIMER}</td><td>7</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIMER_EXIST_1}</td><td>active timers 1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIMER_NUM}</td><td>num 9915</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIMER_SEQ_NUM}</td><td>stat 00 seq_num 02</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ALARM_SP}</td><td>70186</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_ERROR_TIMER_TYPE10}</td><td>No timer found in standby unit</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_ERROR_TIMER_TYPE11}</td><td>Standby timer expired</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_ERROR_HAND}</td><td>Incorrect state of reserved or released hand</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_ERROR_DIFFERENT}</td><td>Different reserve message received inspontanous reserve</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=5><b>Timer needing warming synchronization success</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.002.AT.I00953</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Ask Testproc Restart To Report Sync Error</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${system_time}=</td><td>Get Current Datetime</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In WO Set A Small Timer Needing Warming In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In SP Set A Big Timer Needing Warming In Master And Receive Sync Time Quota</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Should Not Be Exist In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Should Not Be Exist In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Set A Timer Success With Time Quota As Zero</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Should Not Be Exist In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Should Not Be Exist In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Timer needing warming synchronization failure due to the timer is not exist in SP</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.003.AT.I00953</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Ask Testproc Restart To Report Sync Error</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In WO Set A Small Timer Needing Warming And Receive Sync Error From Testproc In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Timer needing warming synchronization failure due to timer has been handled in SP</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.004.AT.I00953</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Ask Testproc Restart To Report Sync Error</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In WO Set A Large Timer Needing Warming</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In SP Set A Small Timer Needing Warming And Receive Sync Error From Testproc In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Testproc In WO Stop Timer Needing Warming</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Timer needless warming synchronization</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.005.AT.I00953</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Ask Testproc Restart To Report Sync Error</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In WO Set A Timer Needless Warming In Master And Receive Time Quota</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In SP Set A Timer Needless Warming In Master And Receive Time Quota</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Should Not Be Exist In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In WO Set A Small Timer Needless Warming In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In SP Set A Large Timer Needless Warming In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Some Time For Check</td><td>${SMALL_TIMER_S}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Should Not Be Exist In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Should Be Exist In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Testproc In SP Stop Timer Needless Warming</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Create hand time synchronization success</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.006.AT.I00953</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Ask Testproc Restart To Report Sync Error</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In WO Create Hand With Small Time Quota While Testproc In SP Create Hand With Big Time Quota</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Hand Time Quota Should Not Be Exist In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Testproc Stop All Hand Processes</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Create hand time synchronization failure</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.007.AT.I00953</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Ask Testproc Restart To Report Sync Error</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In WO Create Hand With Big Time Quota While Testproc In SP Create Hand With Small Time Quota And Doesn't Receive Sync Error</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Testproc Stop All Hand Processes</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Hand time needn't sync when create hand in needless hand group</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.008.AT.I00953</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand Needless Hand Group In WO And Receive Time Quota</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand Needless Hand Group In SP And Receive Time Quota</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Hand creating synchronization success</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.001.AT.I00238</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In Both WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Testproc Stop Created Hand Process</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Hand creating success in both WO and SP in case of needless hand creating synchronization</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.003.AT.I00238</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand Needless Hand Group In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand Needless Hand Group In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Hand creating synchronization failure due to WO doesn't send hand creating sync message to SP</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.005.AT.I00238</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Ask Testproc Restart To Report Sync Error</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In SP And Receive Sync Error</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Sync Error Should Be Equal</td><td><font color=blue>0xd</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In Both WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Testproc Stop Created Hand Process</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Hand creating synchronization failure due to SP hand reservation failure</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.006.AT.I00238</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Ask Testproc Restart To Report Sync Error</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Specific Hand In Both WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Specific Hand Again In Both WO And SP Then Receive Sync Error</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In Both WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Testproc Stop All Hand Processes</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Hand creating synchronization is ignored due to no free process id slots in WO</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.007.AT.I00238</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hands In Both WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In Both WO And SP And Return Failure</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Testproc Stop All Hand Processes</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Hand creating synchronization is ignored due to warming state of master is unset</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.008.AT.I00238</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Master State To Unwarming In Both WO and SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In SP Failure</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In Both WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Can't Handle Common Message With Created Failure Hand In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td colspan=3><font color=dark red>Set Testproc To Warming State And Stop All Hand</td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td colspan=5><font color=blue>#Hand stopping synchronization failure due to hand process not exists in SP</td></tr>
+<tr><td><font color=blue>#[Tags]</td><td><font color=blue>ATC_ID-Warming.FUT.010.AT.I00960</td><td><font color=blue>reason-should be implement in future</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Testproc on WO shouldn't enter stateful when no free slot on wo and no response from sp</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.011.AT.I00238</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create All Hands Only In WO With Physical Address</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In WO And Return Failure</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Should Not Enter Stateful Procedure</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Restart Process In WO</td><td><font color=dark red>${WARMING_PROCESS}</td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming Timer Should Be Successful When Warming Triggered By Wutili</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Iteration_ID-I02588</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.WARMING.FUT.001.AT.I02588</td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>date</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=4>Connect To WO Env</td></tr>
+<tr><td><br></td><td>Testproc In WO Set A Timer In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In WO Set A Timer In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warm A Test Process By Wutili Successfully</td><td>${FAMILY_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Timer Should Be Warmed Successfully</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Restart Testing Process In WO And SP</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming Timer Should Be Successful When SP Family Restart</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Iteration_ID-I02588</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.WARMING.FUT.002.AT.I02588</td><td>ct-negative</td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=4>Testproc In WO Set A Timer In Hand</td></tr>
+<tr><td><br></td><td colspan=4>Testproc In WO Set A Timer In Hand</td></tr>
+<tr><td><br></td><td>Restart Process In SP</td><td>${WARMING_PROCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Timer Should Be Warmed Successfully</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Restart Testing Process In WO And SP</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Hand Count Should Be Correct After Warming Via lib_reserved_hand_count_r</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>1. Send Msg To Created Hand In WO Successfully\n<br>2. Warm This Famil\n<br>3. Send Msg To Test Process To Get Hand Count Via lib_reserved_hand_count_r\n<br>4. Check Hand Count Is Correct In WO And SP\n<br>5. Send Msg To Stop The Created Hand\n<br>6. Send Msg To Test Process To Get Hand Count Via lib_reserved_hand_count_r\n<br>7. Check Hand Count Is Correct In WO And SP\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Check Hand Count Is Correct In WO And SP\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.AT.53482ESPE03</td><td>hw_env-RNC_S1</td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warm A Test Process By Wutili Successfully</td><td>${FAMILY_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Hand Count Got Via lib_reserved_hand_count_r Should Be Correct</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Hand Count Got Via lib_reserved_hand_count_r Should Be Correct</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Hand Sync Creation Will Be Always Successful If WO Quicker Than SP</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.002.I05226</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td>Let SP Testproc Into Stateful</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create N Hands With Handgroup_9 In Both WO And SP</td><td>3</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=3>diagste -u ${SP_COMP_ADDR} -f ${FAMILY_ID} -r han -t idata -m hum</td></tr>
+<tr><td><br></td><td>Let SP Testproc Exit Stateful</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create N Hands With Handgroup_9 In Both WO And SP</td><td>2</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Hand Count Got Via lib_reserved_hand_count_r Should Be Correct</td><td>5</td><td>9</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Testproc Stop All Hand Processes In Handgroup_9</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>SP Hand Should Be Stopped During Warming If Corresponding WO Hand Not Created</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.38931ESPE05</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In Both WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warm A Test Process By Wutili Successfully</td><td>${FAMILY_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Not Exist In SP</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In Both WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warm A Hand By Wutili Successfully</td><td>${FAMILY_ID}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Not Exist In SP</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>SP Hand Should Be Stopped During Warming This Hand If Corresponding Warming WO Hand Not Created</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.47458ESPE05</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In Both WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warm A Hand By Wutili Successfully</td><td>${FAMILY_ID}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warm A Hand By Wutili Successfully</td><td>${FAMILY_ID}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Hand Not Exist In SP</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=11><b>Setup Connection And Env For WO And SP</b></td></tr>
+<tr><td><br></td><td>Setup Connection For WO And SP</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Ask Testproc Restart To Report Sync Error</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Hand Related Data Should Be Equal Between WO And SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Hand Related Data Equal</td><td>${WO_COMP_ADDR}</td><td>${SP_COMP_ADDR}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In WO Set A Small Timer Needing Warming In Master</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needing Warming</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIMER}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In WO Set A Timer Needless Warming In Master And Receive Time Quota</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needless Warming And Receive Time Quota</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIMER}</td><td>${SMALL_TIMER}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In WO Set A Small Timer Needless Warming In Master</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needless Warming</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIMER}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In SP Set A Big Timer Needing Warming In Master And Receive Sync Time Quota</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needing Warming And Receive Time Quota</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${LARGE_TIMER}</td><td>${SMALL_TIMER}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In SP Set A Timer Needless Warming In Master And Receive Time Quota</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needless Warming And Receive Time Quota</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIMER}</td><td>${SMALL_TIMER}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In SP Set A Large Timer Needless Warming In Master</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needless Warming</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${LARGE_TIMER}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In SP Set A Timer In Hand</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needing Warming</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${TIMER_PROCESS}</td><td>${SMALL_TIMER}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Timer Value Should Be Equal Between WO And SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Timer Value Equal</td><td>${WO_COMP_ADDR}</td><td>${SP_COMP_ADDR}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Timer Should Not Be Exist In SP</b></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Timer Exist</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Timer Should Be Exist In SP</b></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Timer Exist</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Timer Should Not Be Exist In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Timer Exist</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In WO Create Hand With Small Time Quota While Testproc In SP Create Hand With Big Time Quota</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand With Different Time Quota</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td>${LARGE_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${result[1]}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In WO Create Hand With Big Time Quota While Testproc In SP Create Hand With Small Time Quota And Doesn't Receive Sync Error</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand With Different Time Quota And Receive Sync Error</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${LARGE_TIME_QUOTA}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Sync Error Is Recorded In Thermo For Family</td><td>Total of 0 error(s)</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Hand Time Quota Should Not Be Exist In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Time Quota Exist</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand In Both WO And SP</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand With Same Time Quota</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${result[1]}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Ask Testproc Restart To Report Sync Error</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>start_monitoring_family_by_wutili</td><td>OMU</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In WO Set A Small Timer Needing Warming And Receive Sync Error From Testproc In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set A Timer And Receive Sync Error</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${LITTLE_TIMER}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Recorded In Thermo For Family</td><td>${SYNC_ERROR_TIMER_TYPE10}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In WO Set A Large Timer Needing Warming</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needing Warming</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${LARGE_TIMER}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In SP Set A Small Timer Needing Warming And Receive Sync Error From Testproc In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set A Timer And Receive Sync Error</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${LITTLE_TIMER}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Recorded In Thermo For Family</td><td>${SYNC_ERROR_TIMER_TYPE11}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand In WO And Receive Sync Error</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand With Different Time Quota And Receive Sync Error</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Recorded In Thermo For Family</td><td colspan=6>${SYNC_ERROR_HAND}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Sync Status Of Hand Process Should Be Failure</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Hand Sync Status Check</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${STATE_NO}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Stop Created Hand Process</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Hand Process Without Sync</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Stop All Hand Processes</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop All Hand Processes Without Sync</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SYNC_HAND_GROUP}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>diagste -u ${WO_COMP_ADDR} -f ${FAMILY_ID} -r han -t idata</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Set Testproc To Warming State And Stop All Hand</b></td></tr>
+<tr><td><br></td><td colspan=10>Set Master State To Warming In Both WO and SP</td></tr>
+<tr><td><br></td><td>Testproc Stop All Hand Processes</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand Needless Hand Group In WO And Receive Time Quota</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand In Needless Hand Group</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td>4</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${result[1]}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand Needless Hand Group In SP And Receive Time Quota</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand In Needless Hand Group</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td>4</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${result[1]}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand Needless Hand Group In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand In Needless Hand Group</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${result[1]}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand Needless Hand Group In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand In Needless Hand Group</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${result[1]}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Stop Created Hand Process In WO</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Hand Process Without Sync</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Stop Created Hand Process In SP</b></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Hand Process Without Sync</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand With Handgroup_9 With Incorrect Cookie In Both WO And SP Then Receive Sync Error</b></td></tr>
+<tr><td><br></td><td colspan=10>Connect To WO Env</td></tr>
+<tr><td><br></td><td>Create Hand With Incorrect Cookie</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Sync Error By Wutili</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Should Be Equal</td><td><font color=blue>${result}</td><td><font color=blue>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand With Handgroup_9 In Both WO And SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>2</td><td>failure</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "0x7002 %s 0" -v warmtst_create_hand -t 9</td><td>${Family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${ret}</td><td>${hand_id}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>\.*Created hand process id: (0x\\w*\)\.</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Testproc Create N Hands With Handgroup_9 In Both WO And SP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_count}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${count}</td><td>Evaluate</td><td colspan=8>${hand_count}+1</td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>In Range</td><td>1</td><td>${count}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td colspan=9>Connect To WO Env</td></tr>
+<tr><td><br></td><td><br></td><td colspan=9>Testproc Create Hand With Handgroup_9 In Both WO And SP</td></tr>
+<tr><td><br></td><td><br></td><td colspan=9>Connect To SP Env</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Let SP Testproc Into Stateful</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=10>Connect To WO Env</td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v let_tstproc_stateful</td><td>${SP_COMP_ADDR}</td><td>${Family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Let SP Testproc Exit Stateful</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=10>Connect To WO Env</td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v quit_stateful</td><td>${SP_COMP_ADDR}</td><td>${Family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Create Hand With Incorrect Cookie</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${Family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>2</td><td>failure</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "0x4002 %s 0" -v warm_sync_create_hand -t 9</td><td>${Family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${ret}</td><td>${hand_id}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>\.*Created hand process id: (0x\\w*\)\.</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand In SP And Receive Sync Error</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand With Different Time Quota And Receive Sync Error</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${LARGE_TIME_QUOTA}</td><td>${LARGE_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Recorded In Thermo For Family</td><td colspan=6>${SYNC_ERROR_DIFFERENT}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Specific Hand In Both WO And SP</b></td></tr>
+<tr><td><br></td><td>Set Specific Hand Id</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Set Test Need Variables</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Specific Hand With Sync</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${LARGE_TIME_QUOTA}</td><td>${LARGE_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${SPECIFIC_HAND_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${result[1]}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Specific Hand Again In Both WO And SP Then Receive Sync Error</b></td></tr>
+<tr><td><br></td><td>Set Specific Hand Id</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Set Test Need Variables</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Specific Hand And Receive Sync Error</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${LARGE_TIME_QUOTA}</td><td>${LARGE_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${SPECIFIC_HAND_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Recorded In Thermo For Family</td><td colspan=6>${SYNC_ERROR_HAND}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hands In Both WO And SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create All Hand In A Hand Group</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SYNC_HAND_GROUP}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create All Hands Only In WO With Physical Address</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create All Hand In A Hand Group</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SYNC_HAND_GROUP}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Should Not Enter Stateful Procedure</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Hand Stateful Status Check</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand In Both WO And SP And Return Failure</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand With Same Time Quota</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand In WO And Return Failure</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand With Same Time Quota</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Time Quota Of Hand Should Be Exist</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Time Quota Exist</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Handle Common Message In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${WO_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td colspan=7>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=9>${MSG_COUNT}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Handle Common Message In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${SP_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td colspan=7>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=9>${MSG_COUNT}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Handle Common Message In WO With Appointed Time Quota</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td colspan=9><font color=#FF6600>${appoint_time_value}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle With Time Quota</td><td>${WO_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td colspan=7>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td colspan=8>${appoint_time_value}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Handle Common Message In SP With Appointed Time Quota</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td colspan=9><font color=#FF6600>${appoint_time_value}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle With Time Quota</td><td>${SP_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td colspan=7>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td colspan=8>${appoint_time_value}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Handle Common Message With Created Hand In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${WO_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td colspan=7>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=9>${MSG_COUNT}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Handle Common Message With Created Hand In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${SP_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td colspan=7>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=9>${MSG_COUNT}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Handle Message With Created Hand In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v get_msg_count</td><td>${WO_COMP_ADDR}</td><td>${Family_id}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Handle Message With Created Hand In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v get_msg_count</td><td>${WO_COMP_ADDR}</td><td>${Family_id}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Wait Some Time For Check</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td colspan=9><font color=#FF6600>${time_for_sleep}</td></tr>
+<tr><td><br></td><td>sleep</td><td colspan=9>${time_for_sleep}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Set A Timer Success With Time Quota As Zero</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needing Warming With Time Quota Zero</td><td>${OMU LOGICAL ADDRESS}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td colspan=8>${ZERO_TIMER}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand With Same Time Quota</td><td>${WO_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td colspan=8>${SMALL_TIME_QUOTA}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${result[1]}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In WO Stop Timer Needing Warming</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needing Warming</td><td>${WO_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td colspan=8>${ZERO_TIMER}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In SP Stop Timer Needless Warming</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needless Warming</td><td>${SP_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${ZERO_TIMER}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Can't Handle Common Message With Created Failure Hand In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${SP_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td colspan=7>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=9>${MSG_COUNT}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_FAILURE}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Can't Handle Common Message With Created Failure Hand In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${WO_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td colspan=7>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=9>${MSG_COUNT}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_FAILURE}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Set Master State To Unwarming In Both WO and SP</b></td></tr>
+<tr><td><br></td><td colspan=10>Connect To SP Env</td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Configuration Of Warming State To Unwarming</td><td>${SP_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td colspan=8>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr><td><br></td><td colspan=10>Connect To WO Env</td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Configuration Of Warming State To Unwarming</td><td>${WO_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td colspan=8>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Set Master State To Warming In Both WO and SP</b></td></tr>
+<tr><td><br></td><td colspan=10>Connect To SP Env</td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Configuration Of Warming State</td><td>${SP_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td colspan=8>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr><td><br></td><td colspan=10>Connect To WO Env</td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Configuration Of Warming State</td><td>${WO_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td colspan=8>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand In SP Failure</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand With Same Time Quota</td><td>${SP_COMP_ADDR}</td><td colspan=7>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td colspan=8>${SMALL_TIME_QUOTA}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=8>${ACK_FAILURE}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc In WO Set A Timer In Hand</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>ILWMTestCli -- -r ${WO_COMP_ADDR} ${FAMILY_ID} ${MASTER_PROCESS_ID} -tr ${LARGE_TIME_QUOTA} ${SET_WARMING_TIMER}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Warm A Test Process By Wutili Successfully</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Warm A Family By Wutili</td><td>${OMU_UNIT_NAME}</td><td>${SP_OMU_INDEX}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${family id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Warm A Hand By Wutili Successfully</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family id}</td><td colspan=8><font color=#FF6600>${hand_id}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Warm A Process By Wutili</td><td>${OMU_UNIT_NAME}</td><td>${SP_OMU_INDEX}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${family id}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Restart Testing Process In WO And SP</b></td></tr>
+<tr><td><br></td><td>Restart Process In WO</td><td>${WARMING_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Process In SP</td><td>${WARMING_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Warming Timer Should Be Warmed Successfully</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${wo_result}</td><td>Execute CLI</td><td colspan=8>diagste -u ${WO_COMP_ADDR} -f ${FAMILY_ID} -r tim -t idata -m hum</td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${sp_result}</td><td>Execute CLI</td><td colspan=8>diagste -u ${SP_COMP_ADDR} -f ${FAMILY_ID} -r tim -t idata -m hum</td></tr>
+<tr><td><br></td><td>Warming Timer Should Be Equal Between WO And SP</td><td>${wo_result}</td><td colspan=8>${sp_result}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Warming Timer Should Be Equal Between WO And SP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${wo_result}</td><td><font color=#FF6600>${sp_result}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${wo_result}</td><td>${TIMER_EXIST_1}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${sp_result}</td><td>${TIMER_EXIST_1}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${wo_result}</td><td>${TIMER_NUM}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${sp_result}</td><td>${TIMER_NUM}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${wo_result}</td><td>${TIMER_SEQ_NUM}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${sp_result}</td><td>${TIMER_SEQ_NUM}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Hand Count Got Via lib_reserved_hand_count_r Should Be Correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_count}</td><td><font color=#FF6600>${hand_group}=6</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>ILWMTestCli -- -r ${WO_COMP_ADDR} ${FAMILY_ID} ${MASTER_PROCESS_ID} -ih ${hand_group}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${wo_hand}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>.*hand group reserved count: (\\d)</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${wo_hand[1]}</td><td>${hand_count}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>ILWMTestCli -- -r ${SP_COMP_ADDR} ${FAMILY_ID} ${MASTER_PROCESS_ID} -ih ${hand_group}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${sp_hand}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>.*hand group reserved count: (\\d+)</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${sp_hand[1]}</td><td>${hand_count}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Testproc Stop All Hand Processes In Handgroup_9</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${return}</td><td>Execute CLI</td><td>diagste -u ${WO_COMP_ADDR} -f ${FAMILY_ID} -r han -t idata -m hum|grep 'hg 09'|awk '{print $4}'</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{List}</td><td>Set Variable</td><td colspan=8>${return.strip().splitlines()}</td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>In</td><td colspan=7>@{List}</td></tr>
+<tr><td><br></td><td><br></td><td>Stop Hand In Both WO And SP For Testproc Successfully</td><td>0x${Index}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Hand In Both WO And SP For Testproc Successfully</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${HAND_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v stop_prb</td><td>${OMU LOGICAL ADDRESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${HAND_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hand Exist In WO</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=9>diagste -u ${WO_COMP_ADDR} -f ${FAMILY_ID} -r han -t idata</td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Hand Exist</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>exist</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hand Not Exist In SP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=10>Connect To SP Env</td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Hand Exist</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>not-exist</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Hand Exist In SP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=10>Connect To SP Env</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=9>diagste -u ${SP_COMP_ADDR} -f ${FAMILY_ID} -r han -t idata</td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Hand Exist</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td><td>${hand_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>exist</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>The Sync Error Is Recorded In Thermo For Family</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=9><font color=#FF6600>${err}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Query And Return Sync Error By Wutili</td><td>${OMU_UNIT_NAME}</td><td>${WO_OMU_INDEX}</td><td colspan=6>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Query And Return Sync Error By Wutili</td><td>${OMU_UNIT_NAME}</td><td>${SP_OMU_INDEX}</td><td colspan=6>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td colspan=8>${err}</td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

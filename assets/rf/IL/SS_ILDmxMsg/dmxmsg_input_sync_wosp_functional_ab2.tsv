@@ -1,0 +1,107 @@
+D M X M S G   I N P U T   S Y N C   W O S P   F U N C T I O N A L   A B 2					
+					
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	resources/dmxmsg.tsv				
+Suite Setup	Connect_And_Config	${MAX_TIME_FOR_CONNECT}			
+Suite Teardown	Disconnect_And_Restore				
+Force Tags	Product_Backlog_ID-B01249	Iteration_ID-I00454	Product_Backlog_ID-B01248	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL
+...	exec_type-automatic	type-FUT	release-IL1_RIS3	reviewer-xiaoping.wang@nsn.com	rw-weekly
+...	hw_env-AB	ct-positive	PRS_ID-IL_PRS_2582		
+					
+					
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+#${SSH_AS0}	ssh IPNIU-0				
+#${SSH_AS1}	ssh IPNIU-1				
+${IPNIU_UTYPE}	12A				
+${DMXCLI2_UINDEX}	F00				
+${CONFIG_LOGA}	4FF0				
+${CONFIG_LOGB}	4FF1				
+${GROUP_A}	8FF7				
+${GROUP_B}	8FF8				
+${INVALID_PHYS}	1FFF				
+${TEST_UTYPE_A}	1F0				
+${TEST_UTYPE_B}	1F1				
+${UNIT_STATE_WO}	0F				
+${UNIT_STATE_SP}	2F				
+${CHECK_WOSP}	-w 7FF0				
+${CHECK_LAST_MSG}	-m 7FF1				
+${MAX_TIME_FOR_CONNECT}	80				
+${TIMEOUT}	80				
+					
+					
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Receive WOSP Message In Normal Sequence(WO And SP Unit Receive Message In Same Order)	[Tags]	ATC_ID-DMXMSG.FUT.012.AT			
+	${AS1_PHYS_ADDR} =	dmxcli2_Query_Phys_Addr	${IPNIU_UTYPE}	1	
+	execute cli	${SSH_AS0}	yes		
+	Change To RU Env	%{IPNIU_0_NAME}			
+	${OWN_PHYS} =	Query Own Phys Addr			
+	${OWN_STATUS} =	Query Unit Status	${OWN_PHYS}		
+	${out} =	Config Computer Table	${TEST_UTYPE_A}	${CONFIG_LOGA}	${GROUP_A}
+	...	${OWN_PHYS}	${AS1_PHYS_ADDR}		
+	Should Contain	${out}	**SUCCESS**		
+	${out} =	Config Group Addr 2S	${GROUP_A}	${AS1_PHYS_ADDR}	${OWN_PHYS}
+	...	0			
+	Should Contain	${out}	**SUCCESS**		
+	${out} =	Update Unit State	${OWN_PHYS}	${UNIT_STATE_WO}	
+	Should Contain	${out}	**SUCCESS**		
+	execute cli	${SSH_AS1}	yes		
+	Change To RU Env	%{IPNIU_1_NAME}			
+	${AS1_STATUS} =	Query Unit Status	${AS1_PHYS_ADDR}		
+	${out} =	Config Computer Table	${TEST_UTYPE_A}	${CONFIG_LOGA}	${GROUP_A}
+	...	${OWN_PHYS}	${AS1_PHYS_ADDR}		
+	Should Contain	${out}	**SUCCESS**		
+	${out} =	Config Group Addr 2S	${GROUP_A}	${AS1_PHYS_ADDR}	${OWN_PHYS}
+	...	0			
+	Should Contain	${out}	**SUCCESS**		
+	${out} =	Update Unit State	${AS1_PHYS_ADDR}	${UNIT_STATE_SP}	
+	Should Contain	${out}	**SUCCESS**		
+	${out} =	Update Unit Co-Unit	${AS1_PHYS_ADDR}	${OWN_PHYS}	0
+	Should Contain	${out}	**SUCCESS**		
+	execute cli	${SSH_AS0}	yes		
+	${out} =	Update Unit Co-Unit	${OWN_PHYS}	${AS1_PHYS_ADDR}	0
+	Should Contain	${out}	**SUCCESS**		
+	${out} =	Use Dmxcli2 To Test	${CHECK_WOSP}		
+	Should Contain	${out}	**SUCCESS**		
+	Update Unit Status	${OWN_STATUS}			
+	execute cli	${SSH_AS1}			
+	Update Unit Status	${AS1_STATUS}			
+	[Teardown]	Check dmxmsg state if case fail 			
+					
+Get Last De-queued WOSP Message Info	[Tags]	ATC_ID-DMXMSG.FUT.013.AT			
+	Change To Ru Env	%{IPNIU_1_NAME}			
+	${AS1_PHYS_ADDR} =	dmxcli2_Query_Phys_Addr	${IPNIU_UTYPE}	1	
+	${OWN_PHYS} =	Query Own Phys Addr			
+	${OWN_STATUS} =	Query Unit Status	${OWN_PHYS}		
+	${out} =	Config Computer Table	${TEST_UTYPE_B}	${CONFIG_LOGB}	${GROUP_B}
+	...	${OWN_PHYS}	${AS1_PHYS_ADDR}		
+	Should Contain	${out}	**SUCCESS**		
+	${out} =	Config Group Addr 2S	${GROUP_B}	${OWN_PHYS}	${AS1_PHYS_ADDR}
+	...	0			
+	Should Contain	${out}	**SUCCESS**		
+	${out} =	Update Unit State	${OWN_PHYS}	${UNIT_STATE_WO}	
+	Should Contain	${out}	**SUCCESS**		
+	${out} =	Update Unit Co-Unit	${OWN_PHYS}	${INVALID_PHYS}	0
+	Should Contain	${out}	**SUCCESS**		
+	${out} =	Use Dmxcli2 To Test	${CHECK_LAST_MSG}		
+	Should Contain	${out}	**SUCCESS**		
+	Update Unit Status	${OWN_STATUS}			
+	[Teardown]	Check dmxmsg state if case fail 			
+					
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Connect_And_Config	[Arguments]	${max_time_for_connect}			
+	Connect To SUT	${max_time_for_connect}			
+	${NODE_0}	Get MGW MIPS Node0 Name			
+	${NODE_1}	Get MGW MIPS Node1 Name			
+	Set Suite Variable	\${SSH_AS0}	ssh ${NODE_0}		
+	Set Suite Variable	\${SSH_AS1}	ssh ${NODE_1}		
+	Change To RU Env	omu			
+	Cat dmxmsg table 				
+					
+Disconnect_And_Restore	Disconnect From SUT				
+					
+					
+					
+					
+					
+					
+					

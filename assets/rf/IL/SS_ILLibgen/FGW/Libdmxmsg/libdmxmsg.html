@@ -1,0 +1,567 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libdmxmsg</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libdmxmsg</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-T99999</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I01270</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-IL_PRS_2582</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-RNC_EFS_2152_93</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-il</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-6</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-mail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-BCN_A2</td><td><font color=dark red>hw_type-BCN_B2</td><td><font color=dark red>hw_type-MGW_AB3</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red><font color=dark red>hw_type-MGW_AB4</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC</td><td><font color=dark red>hw_env-AB</td><td><font color=dark red>hw_env-RNC_S0</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>bcn_step-BCN_S1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Setup Connections For OMU And CFCP And Get Related Address</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Test Environment And Disconnect From SUT</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td colspan=4>./resources/libdmxmsg.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${TEST_PROCESS}</td><td>0x193B</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DMX_TEST_PROCESS}</td><td>0x1941</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DMX_TEST_PROCESS_2}</td><td>0x1942</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ECHO_MSG_TO_SELF}</td><td>true</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NOT_ECHO_MSG}</td><td>false</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SEND_MSG_NUMBER_1}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONDITION_1}</td><td>"R:"</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONDITION_2}</td><td>":NUM=FF01"</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_NUM}</td><td>ff01</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_NUM_2}</td><td>ff02</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NCOUNT}</td><td>10</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DALAY}</td><td>3</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RETRY}</td><td>3</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DATA}</td><td>'01 34 56 ff 01 21'</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>Test process send message internally</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libgenmsg.FUT.001.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test Process Send Message Internally</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct For Internally Sent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Two test processes send message between different families with physical address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libgenmsg.FUT.002.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send Message To Process In Same Unit With Physical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Sequence Number Should Be Consistent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Address For Same Unit Should Be Physical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Bufbottom Should Be Correctly</td><td>0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Two test processes send message between different families with logical address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libgenmsg.FUT.003.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send Message To Process In Same Unit With Logical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Sequence Number Should Be Consistent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Address For Same Unit Should Be Logical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Bufbottom Should Be Correctly</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Two test processes send message between different families with Group address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libgenmsg.FUT.004.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send Message To Process In Same Unit With Group Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Sequence Number Should Be Consistent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Address For Same Unit Should Be Group Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Bufbottom Should Be Correctly</td><td>0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Two test processes send message between different units with physical address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libgenmsg.FUT.005.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send Message To Process In Different Unit With Physical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Sequence Number Should Be Consistent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Address For Different Unit Should Be Physical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Two test processes send message between different units with logical address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libgenmsg.FUT.006.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send Message To Process In Different Unit With Logical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Sequence Number Should Be Consistent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Address For Different Unit Should Be Logical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Two test processes send message between different units with group address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libgenmsg.FUT.007.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send Message To Process In Different Unit With Group Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Sequence Number Should Be Consistent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Address For Different Unit Should Be Group Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Test process send message to others with group address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libgenmsg.FUT.008.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Send Message To Other Processes With Group Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct For The Two Process</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Test process send DMX message internally</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libdmxmsg.FUT.001.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test Process Send Message Internally By Libdmxmsg</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct For Internally Sent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Two test processes send DMX message between different families with physical address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libdmxmsg.FUT.002.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send DMX Message To Process In Same Unit With Physical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Sequence Number Should Be Consistent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Address For Same Unit Should Be Physical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Two test processes send DMX message between different families with logical address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libdmxmsg.FUT.003.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send DMX Message To Process In Same Unit With Logical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Sequence Number Should Be Consistent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Address For Same Unit Should Be Logical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Two test processes send DMX message between different families with Group address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libdmxmsg.FUT.004.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send DMX Message To Process In Same Unit With Group Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Sequence Number Should Be Consistent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Address For Same Unit Should Be Group Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Two test processes send DMX message between different units with physical address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libdmxmsg.FUT.005.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send DMX Message To Process In Different Unit With Physical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Sequence Number Should Be Consistent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Address For Different Unit Should Be Physical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Two test processes send DMX message between different units with logical address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libdmxmsg.FUT.006.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send DMX Message To Process In Different Unit With Logical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Sequence Number Should Be Consistent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Address For Different Unit Should Be Logical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Two test processes send DMX message between different units with group address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libdmxmsg.FUT.007.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send DMX Message To Process In Different Unit With Group Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Sequence Number Should Be Consistent</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Address For Different Unit Should Be Group Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Test process send DMX message to others with group address</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libdmxmsg.FUT.008.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Send DMX message To Other Processes With Group Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct For The Two Process</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Send message between Libgen And Dmxmsg PRBs Should Be Successful</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libdmxmsg.FUT.009.AT.I01270</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Send DMX Message To Libgen Process With Physical Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Libdmxmsg Process With Physcial Address</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Monitor more families started up by one process</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libdmxmsg.FUT.012.AT.I01270</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send DMX Message To Two Families Started Up By One Process</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct For The Two Process</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Monitor one family with more than one monster</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libdmxmsg.FUT.011.AT.I01270</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send DMX Message To Two Families With Different Conditions Started Up By One Process</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Message Count Should Be Correct For The Two Process</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Monster can monitor dmxmsg correctly when it's started before PRB up</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>Libdmxmsg.FUT.010.AT.I01270</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>20</td><td>1</td><td>Test Monster can monitor dmxmsg correctly when it's started before PRB up</td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Monster Can Monitor Dmxmsg Correctly When PRB register multi family IDs with libdmxmsg</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libdmxmsg.FUT.001.AT.21056ESPE06</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>20</td><td>1</td><td>Test Monster Can Monitor Dmxmsg Correctly When PRB Register Multi Family IDs With Libdmxmsg</td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Monster Can Monitor Dmxmsg Correctly When Receiving Msg by dmxmsg_receive_whole_msg_ctx_r</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libdmxmsg.FUT.002.AT.21056ESPE06</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Test PRB On OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB And Send Msg TO PRB And Receive Msg by dmxmsg_receive_whole_msg_ctx_r</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Received Messages Number Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Start Monster Monitoring For Special Message Number</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${Conn_Id} =</td><td>Execute Command On Cloned Conn</td><td>monster -f 1941,1942 -c "SR:(NUM=ff01)"</td><td>${OMU_NODE}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${Conn_Id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>0.5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Monster Monitoring For Special Receiving Message Number</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Succeeds Start Monster To Monitor</td><td>${RETRY}</td><td>${OMU_NODE}</td><td>-f 1941 -c "R:(NUM=ff02)"</td><td>1941</td></tr>
+<tr><td><br></td><td><font color=blue>#${Conn_Id} =</td><td><font color=blue>Execute Command On Cloned Conn</td><td><font color=blue>monster -f 1941 -c "R:(NUM=ff02)"</td><td><font color=blue>${OMU_NODE}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${Conn_id}</td><td colspan=3>${monster_conn}</td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Monster Monitoring For Special Family</b></td></tr>
+<tr><td><br></td><td>Switch To CFCP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${id} =</td><td>Start Monster Monitoring On Special Node</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${TEST_PROCESS}</td><td>${CFCP_NODE}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test PRB On OMU And CFCP</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Kill Process By Pid With Option</td><td>${OMU_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Kill Process By Pid With Option</td><td>${CFCP_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test PRB On OMU</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Kill Process By Pid With Option</td><td>${OMU_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB And Send Msg TO PRB</b></td></tr>
+<tr><td><br></td><td>Switch To CFCP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ulimit -c unlimited</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${CFCP_PROCESS_ID}</td><td>Start Libdmxmsg Process</td><td>msgmonstub</td><td>1</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${CFCP_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ulimit -c unlimited</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${OMU_PROCESS_ID}</td><td>Start Libdmxmsg Process</td><td>msgmonstub</td><td>1</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Testcli Send Message To Test Process</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${TEST_PROCESS}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB With Multi Family ID Registered And Send Msg TO PRB</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ulimit -c unlimited</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${OMU_PROCESS_ID}</td><td>Start Libdmxmsg Process</td><td>msgmonstub</td><td>2</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>sleep 1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>libgen_execute_command_and_check_result</td><td>success</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>msgmonstub -u %s -f %s</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB And Send Msg TO PRB And Receive Msg by dmxmsg_receive_whole_msg_ctx_r</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ulimit -c unlimited</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${OMU_PROCESS_ID}</td><td>Start Libdmxmsg Process</td><td>msgmonstub</td><td>1</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>sleep 1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster Monitoring For Special Receiving Message Number</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>sleep 0.5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>libgen_execute_command_and_check_result</td><td>success</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>msgmonstub -u %s -f %s -r whole</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check The Monitored Messages Number Should Be Correct</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>sleep 1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_buf}</td><td>Stop Monster And Get Result</td><td>${Conn_Id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>message_count_should_be_correct_with_condition</td><td>${msg_buf}</td><td>1</td><td>${MSG_NUM}</td></tr>
+<tr><td><br></td><td>...</td><td>recv</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>message_count_should_be_correct_with_condition</td><td>${msg_buf}</td><td>1</td><td>${MSG_NUM}</td></tr>
+<tr><td><br></td><td>...</td><td>sent</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check The Received Messages Number Should Be Correct</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>sleep 1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_buf}</td><td>Stop Monster And Get Result</td><td>${Conn_Id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>message_count_should_be_correct_with_condition</td><td>${msg_buf}</td><td>1</td><td>${MSG_NUM_2}</td></tr>
+<tr><td><br></td><td>...</td><td>recv</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check The Monitored Message Should Be Correct</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>sleep 1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_buf}</td><td>Stop Monster And Get Result</td><td>${id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Message Count Should Be Correct</td><td>${msg_buf}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Process Send Message Internally</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU PHYSICAL ADDRESS}</td><td>${TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${ECHO_MSG_TO_SELF}</td><td>${SEND_MSG_NUMBER_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Process Send Message Internally By Libdmxmsg</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process By Libdmxmsg</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${ECHO_MSG_TO_SELF}</td><td>${SEND_MSG_NUMBER_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check The Received Message Count Should Be Correct For Internally Sent</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Message Count Should Be Correct</td><td>${msg_buf}</td><td>${ECHO_MSG_TO_SELF}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check The Received Message Count Should Be Correct</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Message Count Should Be Correct</td><td>${msg_buf}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check The Received Message Count Should Be Correct For The Two Process</b></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>0.2</td><td>Message Count Should Be Correct</td><td>${msg_buf_1}</td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>0.2</td><td>Message Count Should Be Correct</td><td>${msg_buf_2}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check The Bufbottom Should Be Correctly</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=4><font color=#FF6600>${bufbot_index}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Message Bufbottom Should Be Correct</td><td>${msg_buf}</td><td colspan=2>${bufbot_index}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send DMX Message To Libgen Process With Physical Address</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Message To Libdmxmsg Process With Physcial Address</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process By Libdmxmsg</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU PHYSICAL ADDRESS}</td><td>${TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Message To Process In Same Unit With Physical Address</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU PHYSICAL ADDRESS}</td><td>${TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send DMX Message To Process In Same Unit With Physical Address</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process By Libdmxmsg</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send DMX Message To Two Families Started Up By One Process</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process By Libdmxmsg</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf_1}</td><td colspan=3>${result}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process By Libdmxmsg</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS_2}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf_2}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Message To Process In Same Unit With Logical Address</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU LOGICAL ADDRESS}</td><td>${TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send DMX Message To Process In Same Unit With Logical Address</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process By Libdmxmsg</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU LOGICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Message To Other Processes With Group Address</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU CFCP Group ADDRESS}</td><td>${TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf_1}</td><td colspan=3>${result}</td></tr>
+<tr><td><br></td><td>Switch To CFCP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${OMU CFCP Group ADDRESS}</td><td>${TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf_2}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send DMX Message To Other Processes With Group Address</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process By Libdmxmsg</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU CFCP Group ADDRESS}</td><td>${DMX_TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf_1}</td><td colspan=3>${result}</td></tr>
+<tr><td><br></td><td>Switch To CFCP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process By Libdmxmsg</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${OMU CFCP Group ADDRESS}</td><td>${DMX_TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf_2}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Message To Process In Same Unit With Group Address</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU Group ADDRESS}</td><td>${TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send DMX Message To Process In Same Unit With Group Address</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process By Libdmxmsg</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU Group ADDRESS}</td><td>${DMX_TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${NOT_ECHO_MSG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Monster Testprocess</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${RU}</td><td><font color=#FF6600>${ADDRESS}</td><td><font color=#FF6600>${FAMILY_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${node}</td><td>Get Node From Unit</td><td>${RU}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Succeeds Start Monster To Monitor</td><td>${RETRY}</td><td>${node}</td><td>-u ${ADDRESS} -f ${FAMILY_ID}</td><td>${FAMILY_ID.strip('0x')}</td></tr>
+<tr><td><br></td><td><font color=blue>#${result}=</td><td><font color=blue>Execute Mml Without Check</td><td><font color=blue>monster -u ${ADDRESS} -f ${FAMILY_ID} &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#${result_list}=</td><td><font color=blue>Set Variable</td><td><font color=blue>${result.split()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Set Test Variable</td><td><font color=blue>\${MONSTER_PID}</td><td><font color=blue>${result_list[1]}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get Monster Timeout Message Output on WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Monster And Get Result</td><td>${monster_conn}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${monster_conn}</td><td>None</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf}</td><td>${result}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Monster</b></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${monster_conn}'!= 'None'</td><td>Get Monster Timeout Message Output on WO</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Message To Process By CLI</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${ADDRESS}</td><td><font color=#FF6600>${FAMILY_ID}</td><td><font color=#FF6600>${PROCESS_ID}</td><td><font color=#FF6600>${FLAG}</td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>Next working</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>montest -f 0xffff -- -u %s -f %s -p %s -d %s -n %s</td><td>${ADDRESS}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${PROCESS_ID}</td><td>${DATA}</td><td>${NCOUNT}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Message To Process By Libdmxmsg</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${ADDRESS}</td><td><font color=#FF6600>${FAMILY_ID}</td><td><font color=#FF6600>${PROCESS_ID}</td><td><font color=#FF6600>${FLAG}</td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>success</td><td>10</td><td>time out</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>msgmonstub -u %s -f %s -p %s -d %s -n %s</td><td>${ADDRESS}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${PROCESS_ID}</td><td>${DATA}</td><td>${NCOUNT}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Message To Process In Different Unit With Physical Address</b></td></tr>
+<tr><td><br></td><td>Monster Testprocess</td><td>${WO_CFCP_NAME}</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${TEST_PROCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Process By CLI</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${TEST_PROCESS}</td><td>${MASTER_PROCESS_ID}</td><td>${NOT_ECHO_MSG}</td></tr>
+<tr><td><br></td><td colspan=5>Get Monster Timeout Message Output on WO</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send DMX Message To Process In Different Unit With Physical Address</b></td></tr>
+<tr><td><br></td><td>Monster Testprocess</td><td>${WO_CFCP_NAME}</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Process By Libdmxmsg</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>${MASTER_PROCESS_ID}</td><td>${NOT_ECHO_MSG}</td></tr>
+<tr><td><br></td><td colspan=5>Get Monster Timeout Message Output on WO</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Message To Process In Different Unit With Logical Address</b></td></tr>
+<tr><td><br></td><td>Monster Testprocess</td><td>${WO_CFCP_NAME}</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${TEST_PROCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Process By CLI</td><td>${CFCP LOGICAL ADDRESS}</td><td>${TEST_PROCESS}</td><td>${MASTER_PROCESS_ID}</td><td>${NOT_ECHO_MSG}</td></tr>
+<tr><td><br></td><td colspan=5>Get Monster Timeout Message Output on WO</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send DMX Message To Process In Different Unit With Logical Address</b></td></tr>
+<tr><td><br></td><td>Monster Testprocess</td><td>${WO_CFCP_NAME}</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Process By Libdmxmsg</td><td>${CFCP LOGICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>${MASTER_PROCESS_ID}</td><td>${NOT_ECHO_MSG}</td></tr>
+<tr><td><br></td><td colspan=5>Get Monster Timeout Message Output on WO</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Message To Process In Different Unit With Group Address</b></td></tr>
+<tr><td><br></td><td>Monster Testprocess</td><td>${WO_CFCP_NAME}</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${TEST_PROCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Process By CLI</td><td>${CFCP Group ADDRESS}</td><td>${TEST_PROCESS}</td><td>${MASTER_PROCESS_ID}</td><td>${NOT_ECHO_MSG}</td></tr>
+<tr><td><br></td><td colspan=5>Get Monster Timeout Message Output on WO</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send DMX Message To Process In Different Unit With Group Address</b></td></tr>
+<tr><td><br></td><td>Monster Testprocess</td><td>${WO_CFCP_NAME}</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Process By Libdmxmsg</td><td>${CFCP Group ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>${MASTER_PROCESS_ID}</td><td>${NOT_ECHO_MSG}</td></tr>
+<tr><td><br></td><td colspan=5>Get Monster Timeout Message Output on WO</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check The Sequence Number Should Be Consistent</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Received Message Order Should Be Consistent With Send</td><td>${msg_buf}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>The Address For Same Unit Should Be Physical Address</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Address For Received Message Should Be Correct</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU PHYSICAL ADDRESS}</td><td>${msg_buf}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>The Address For Same Unit Should Be Logical Address</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Address For Received Message Should Be Correct</td><td>${OMU LOGICAL ADDRESS}</td><td>${OMU LOGICAL ADDRESS}</td><td>${msg_buf}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>The Address For Same Unit Should Be Group Address</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Address For Received Message Should Be Correct</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU GROUP ADDRESS}</td><td>${msg_buf}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>The Address For Different Unit Should Be Physical Address</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Address For Received Message Should Be Correct</td><td>${OMU PHYSICAL ADDRESS}</td><td>${CFCP PHYSICAL ADDRESS}</td><td>${msg_buf}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>The Address For Different Unit Should Be Logical Address</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Address For Received Message Should Be Correct</td><td>${OMU LOGICAL ADDRESS}</td><td>${CFCP LOGICAL ADDRESS}</td><td>${msg_buf}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>The Address For Different Unit Should Be Group Address</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Address For Received Message Should Be Correct</td><td>${OMU PHYSICAL ADDRESS}</td><td>${CFCP GROUP ADDRESS}</td><td>${msg_buf}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send DMX Message To Two Families With Different Conditions Started Up By One Process</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process With Condition By Libdmxmsg</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${CONDITION_1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf_1}</td><td colspan=3>${result}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Message To Test Process With Condition By Libdmxmsg</td><td>${OMU PHYSICAL ADDRESS}</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS_2}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${CONDITION_2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf_2}</td><td colspan=3>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Monster can monitor dmxmsg correctly when it's started before PRB up</b></td></tr>
+<tr><td><br></td><td>Start Monster Monitoring For Special Family</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Test PRB On OMU And CFCP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB And Send Msg TO PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Monitored Message Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Test PRB On OMU And CFCP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster Monitoring For Special Family</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB And Send Msg TO PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Monitored Message Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Monster Can Monitor Dmxmsg Correctly When PRB Register Multi Family IDs With Libdmxmsg</b></td></tr>
+<tr><td><br></td><td>Start Monster Monitoring For Special Message Number</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Test PRB On OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB With Multi Family ID Registered And Send Msg TO PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Monitored Messages Number Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

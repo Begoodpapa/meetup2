@@ -1,0 +1,116 @@
+*Setting*							
+Documentation	For same implementation for Iu and Iur leg, Agreed with PO, the cases can only forcus on Iu leg						
+Suite Setup	connect to target hardware and switch to active OMU						
+Suite Teardown	release test resource and disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B01701	Iteration_ID-I01466	PRS_ID-IL_PRS_4229	EFS_ID-RNC_EFS_2222_159	release-IL1	element-IL	exec_type-automatic
+...	type-FUT	hw_env-rnc_s0	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	exec_level-pre	QL-4	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0
+Resource	il.html						
+Resource	./resources/common_operation_resource.html						
+Resource	./resources/cac_basic_operation_resource.html						
+Resource	./resources/IPBR_basic_operation_resource.html						
+Library	Collections						
+							
+*Variable*							
+${TWO_GROUPS}	2						
+${THREE_GROUPS}	3						
+${IPBR_ID_4007}	4007						
+${IPBR_ID_4008}	4008						
+${IPBR_ID_4009}	4009						
+${ACTIVE_USCP}	USCP-0						
+${2_LEGS}	2						
+${4_LEGS}	4						
+							
+*Test Case*							
+CACPRB Select IP Address For Iu Leg With IPBR ID Which Bind With Two IP Address In Same EITPUPTRMRG	[Tags]	ATC_ID-TT_IPBR_CAC.FUT.001.AT.I01466	ct-positive				
+	[Setup]	Create IPRO with IP Addresses from Same EITPUPTRMRG and Reserve Leg List for the test					
+	create multi Iu legs successfully	${IPBR_ID_4007}	${4_LEGS}				
+	Legs' Quantity Should Be Same In Different IP Address						
+	[Teardown]	Release IPRO with IP Address from Same EITPUPTRMRG and Legs create in the test					
+							
+CACPRB Select IP Address For Iu Leg With IPBR ID Which Bind With Two IP Address In Different EITPUPTRMRG	[Tags]	ATC_ID-TT_IPBR_CAC.FUT.002.AT.I01466	hw_env-RNC_S0	not-on-fgw	ct-positive		
+	[Setup]	Create IPRO with IP Addresses from Different EITPUPTRMRG and Reserve Leg List for the test					
+	create multi Iu legs successfully	${IPBR_ID_4008}	${4_LEGS}				
+	Legs' Quantity Should Be Same In Different IP Address						
+	[Teardown]	Release IPRO with IP Address from Different EITPUPTRMRG and Legs create in the test					
+							
+CACPRB Select IP Address For Iu Leg With IPRO Dynamic Update	[Tags]	ATC_ID-TT_IPBR_CAC.FUT.003.AT.I01466	ct-negative				
+	[Setup]	Select three IP Address and create 2 IPRO					
+	create multi Iu legs successfully	${IPBR_ID_4009}	${2_LEGS}				
+	Legs' Quantity Should Be Same In Different IP Address						
+	Unbind IPRO and Create new IPRO for the test						
+	create multi Iu legs successfully	${IPBR_ID_4009}	${4_LEGS}				
+	Legs' Quantity Should Be Same In Different IP Address						
+	[Teardown]	Release IPROs and Legs created in the test case					
+							
+*Keyword*							
+Unbind IPRO and Create new IPRO for the test	delete IPRO successfully	${IPBR_ID_4009}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	${DEL_MODE_FORCE}	
+	Remove From Dictionary	${IP_DICT}	${IP_GROUP_1.ip_addr}				
+	Add IPRO successfully	${IPBR_ID_4009}	${IP_GROUP_3.ip_addr}	${IP_GROUP_3.rg_name}	${IP_GROUP_3.iface}		
+	Set To Dictionary	${IP_DICT}	${IP_GROUP_3.ip_addr}	0			
+	Set To Dictionary	${IP_DICT}	${IP_GROUP_2.ip_addr}	0			
+							
+Select three IP Address and create 2 IPRO	${IP_GROUP}	select random IP address and recovery group	${THREE_GROUPS}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+	Set Suite Variable	\${IP_GROUP_2}	${IP_GROUP[1]}				
+	Set Suite Variable	\${IP_GROUP_3}	${IP_GROUP[2]}				
+	Add IPRO successfully	${IPBR_ID_4009}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}		
+	Add IPRO successfully	${IPBR_ID_4009}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}		
+	create leg list						
+	${IP_DICT}	Create Dictionary	${IP_GROUP_1.ip_addr}	0	${IP_GROUP_2.ip_addr}	0	
+	Set Test Variable	\${IP_DICT}					
+							
+Release IPROs and Legs created in the test case	release legs created in test case						
+	release ipro with specified ipbr id	${IPBR_ID_4009}					
+							
+Legs' Quantity Should Be Same In Different IP Address	${keys}	Get Dictionary Keys	${IP_DICT}				
+	Should Be Equal	"${IP_DICT[""${keys[1]}""]}"	"${IP_DICT[""${keys[0]}""]}"				
+							
+create multi Iu legs successfully	[Arguments]	${ipbr_id}	${leg_number}				
+	: FOR	${index}	IN RANGE	${leg_number}			
+		${result}	Create RTP Leg	${ACTIVE_USCP}	${ipbr_id}		
+		should be equal	${result.result}	SUCCESSFUL			
+		Append To List	${OUT_LEG_LIST}	${result}			
+		${ip_addr}	set variable	"${result.legs[""${result.leg_id}""].local_ip}"			
+		${ip_num}	Evaluate	"${IP_DICT[""${ip_addr}""]} + 1"			
+		Set To Dictionary	${IP_DICT}	${ip_addr}	${ip_num}		
+							
+connect to target hardware and switch to active OMU	connect to target hardware						
+	switch to active OMU						
+	release_ipro_with_specified_ipbr_id	${IPBR_ID_4007}					
+	release_ipro_with_specified_ipbr_id	${IPBR_ID_4008}					
+	release_ipro_with_specified_ipbr_id	${IPBR_ID_4009}					
+							
+Create IPRO with IP Addresses from Same EITPUPTRMRG and Reserve Leg List for the test	Get IP EITPUPTRMRG Groups from Same EITPUPTRMRG						
+	create leg list						
+	Add IPRO successfully	${IPBR_ID_4007}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}		
+	Add IPRO successfully	${IPBR_ID_4007}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}		
+	${IP_DICT}	Create Dictionary	${IP_GROUP_1.ip_addr}	0	${IP_GROUP_2.ip_addr}	0	
+	Set Test Variable	\${IP_DICT}					
+							
+Release IPRO with IP Address from Same EITPUPTRMRG and Legs create in the test	release legs created in test case						
+	delete IPRO successfully	${IPBR_ID_4007}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	${DEL_MODE_FORCE}	
+	delete IPRO successfully	${IPBR_ID_4007}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}	${DEL_MODE_FORCE}	
+							
+Get IP EITPUPTRMRG Groups from Same EITPUPTRMRG	${temp_groups}	select_different_IP_address_in_same_recovery_group	${TWO_GROUPS}				
+	Set Test Variable	\${IP_GROUP_1}	${temp_groups[0]}				
+	Set Test Variable	\${IP_GROUP_2}	${temp_groups[1]}				
+							
+Get IP EITPUPTRMRG Groups from Different EITPUPTRMRG	${temp_groups}	select_different_IP_address_in_different_recovery_group	${TWO_GROUPS}				
+	Set Test Variable	\${IP_GROUP_1}	${temp_groups[0]}				
+	Set Test Variable	\${IP_GROUP_2}	${temp_groups[1]}				
+							
+Release IPRO with IP Address from Different EITPUPTRMRG and Legs create in the test	release legs created in test case						
+	delete IPRO successfully	${IPBR_ID_4008}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	${DEL_MODE_FORCE}	
+	delete IPRO successfully	${IPBR_ID_4008}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}	${DEL_MODE_FORCE}	
+							
+Create IPRO with IP Addresses from Different EITPUPTRMRG and Reserve Leg List for the test	Get IP EITPUPTRMRG Groups from Different EITPUPTRMRG						
+	create leg list						
+	Add IPRO successfully	${IPBR_ID_4008}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}		
+	Add IPRO successfully	${IPBR_ID_4008}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}		
+	${IP_DICT}	Create Dictionary	${IP_GROUP_1.ip_addr}	0	${IP_GROUP_2.ip_addr}	0	
+	Set Test Variable	\${IP_DICT}					
+							
+release test resource and disconnect from target hardware	release_ipro_with_specified_ipbr_id	${IPBR_ID_4007}					
+	release_ipro_with_specified_ipbr_id	${IPBR_ID_4008}					
+	release_ipro_with_specified_ipbr_id	${IPBR_ID_4009}					
+	Disconnect From Target Hardware						

@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Socket Dmxmsg Scheduler</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Socket Dmxmsg Scheduler</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=35%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B01272</td><td><font color=dark red>Iteration_ID-I01018</td><td><font color=dark red>Release-IL1_RIS4</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Type-FUT</td><td><font color=dark red>QL-1</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red><font color=dark red>Element-IL</td><td><br></td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_2582</td><td><font color=dark red>Reviewer-zhiyu.yang@nsn.com</td><td><font color=dark red>RW-weekly</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>EFS_ID-RNC_EFS_2152_93</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>bcn_step-BCN_S1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-BCN_A2</td><td><font color=dark red>hw_type-BCN_B2</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red><font color=dark red>hw_type-MGW_AB3</td><td><br></td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-MGW_AB4</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC_S1</td><td><font color=dark red>hw_env-AB</td><td><font color=dark red>hw_env-ADA</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Exec_Type-automatic</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/Resource.html</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To FGW and Setup TestEnv</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear TestEnv and Disconnect From FGW</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=12%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${POX_FAMILY_ID}</td><td>0x1B59</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FREQUENCY_FOR_CHECK}</td><td>0.5</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MAX_TIME_FOR_CHECK}</td><td>3</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${PROCESS_NAME}</td><td>poxbecome</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SOCKET_PORT}</td><td>33334</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK TIMEOUT}</td><td>10</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK INTERVAL}</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=5><b>Libgen Process Can Handle Socket Event And Dmx Msg Continuously Normally When Max Thread Is One</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.002.AT.I01018</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start TestProcess Using Default Max Thread Configuration</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process initialize the socket</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send socket events to test process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process register given linux file descriptor with receiving socket continuously</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process receive correct event number</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process free the socket</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process initialize the socket</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process register given linux file descriptor with receiving socket continuously</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send socket events to test process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process receive correct event number</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Test process free the socket and testprocess</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Libgen Process Can Handle Socket Event And Dmx Msg Continuously Normally When Max Thread Is Three And Socket Thread Is Two</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.003.AT.I01018</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start TestProcess Using Max Thread Three</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process initialize the socket</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send socket events to test process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process register given linux file descriptor with receiving socket continuously</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process receive correct event number</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process free the socket</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process initialize the socket</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process register given linux file descriptor with receiving socket continuously</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send socket events to test process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test process receive correct event number</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Test process free the socket and testprocess</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=13><b>Test process initialize the socket</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Initialize Socket Used By Libgen</td><td>${OMU_PHYSICAL_ADDRESS}</td><td colspan=9>${POX_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=11>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=10>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Send socket events to test process</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Socket Events To Process</td><td>${OMU_PHYSICAL_ADDRESS}</td><td colspan=9>${POX_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SOCKET_PORT1}</td><td>${SOCKET_PORT2}</td><td>${SOCKET_PORT3}</td><td>${SOCKET_PORT4}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${SOCKET_PORT5}</td><td>${SOCKET_PORT6}</td><td>${SOCKET_PORT7}</td><td>${SOCKET_PORT8}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${SOCKET_PORT9}</td><td>${SOCKET_PORT10}</td><td>${SOCKET_PORT11}</td><td>${SOCKET_PORT12}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${SOCKET_PORT13}</td><td>${SOCKET_PORT14}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=10>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Test process register given linux file descriptor with receiving socket one by one</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Register Given Linux File Descriptor To Libgen With Type1</td><td>${OMU_PHYSICAL_ADDRESS}</td><td colspan=9>${POX_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=11>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=10>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Test process receive correct event number</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check Correct Event Number Received</td><td>${OMU_PHYSICAL_ADDRESS}</td><td colspan=9>${POX_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=11>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=10>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Test process free the socket</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Free Socket Used By Libgen</td><td>${OMU_PHYSICAL_ADDRESS}</td><td colspan=9>${POX_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=11>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=10>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Test process register given linux file descriptor with receiving socket continuously</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Register Given Linux File Descriptor To Libgen With Type2</td><td>${OMU_PHYSICAL_ADDRESS}</td><td colspan=9>${POX_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=11>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=10>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Start TestProcess Using Default Max Thread Configuration</b></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>${PROCESS_NAME} &amp;</td><td>poxbecome master start</td><td>30</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Setports With Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Free TestProcess</b></td></tr>
+<tr><td><br></td><td>Kill Process</td><td colspan=11>${PROCESS_NAME}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Start TestProcess Using Max Thread Three</b></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAX_TIME_FOR_CHECK}</td><td>${FREQUENCY_FOR_CHECK}</td><td colspan=9>Process Should Not Be Running In Pate</td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>${PROCESS_NAME} -t 3 &amp;</td><td>poxbecome master start</td><td>30</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Setports With Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Test process free the socket and testprocess</b></td></tr>
+<tr><td><br></td><td colspan=12>Test process free the socket</td></tr>
+<tr><td><br></td><td colspan=12>Free testprocess</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Process Should Not Be Running In Pate</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Process Should Not Be Running</td><td colspan=10>${PROCESS_NAME}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=10>${ACK_SUCCESS}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Get Muiti Usable Socket Port</b></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT1}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT2}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT3}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT4}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT5}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT6}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT7}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT8}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT9}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT10}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT11}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT12}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT13}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get One Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT14}</td><td>${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Get One Usable Socket Port</b></td></tr>
+<tr><td><br></td><td>${socket_port}=</td><td>Evaluate</td><td>${SOCKET_PORT}+1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SOCKET_PORT}</td><td>${socket_port}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Execute Mml Without Check</td><td>netstat -anp |grep udp | grep ${SOCKET_PORT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Empty</td><td>${result.replace('\r\n','')}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=13><b>Setports With Usable Socket Port</b></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Get Muiti Usable Socket Port</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>success</td><td>1</td><td>failure</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>ILPoxTestCli -- -r %s %s 0 -precv %s %s %s %s %s %s %s -psend %s %s %s %s %s %s %s -setports</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${POX_FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${SOCKET_PORT1}</td><td>${SOCKET_PORT2}</td><td>${SOCKET_PORT3}</td><td>${SOCKET_PORT4}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${SOCKET_PORT5}</td><td>${SOCKET_PORT6}</td><td>${SOCKET_PORT7}</td><td>${SOCKET_PORT8}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${SOCKET_PORT9}</td><td>${SOCKET_PORT10}</td><td>${SOCKET_PORT11}</td><td>${SOCKET_PORT12}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${SOCKET_PORT13}</td><td>${SOCKET_PORT14}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=10>${ACK_SUCCESS}</td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

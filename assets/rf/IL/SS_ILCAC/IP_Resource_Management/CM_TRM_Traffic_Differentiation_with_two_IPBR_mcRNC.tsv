@@ -1,0 +1,122 @@
+*Setting*							
+Suite Setup	connect to target hardware and add ipro						
+Suite Teardown	release test resource and disconnect from target hardware						
+Force Tags	release-RU50EP1	exec_type-automatic	type-FUT	hw_env-RNC_S0	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	QL-5	HW_TYPE-BCN_A1
+...	BCN_STEP-BCN_S0	EFS_ID-RNC_EFS_2897_171	EFS_ID-RNC_EFS_2897_174	EFS_ID-RNC_EFS_2897_167	EFS_ID-RNC_EFS_2897_161	FRS_ID-PCM_100201_64_R2897	RNC_EFS_2897_166
+...	Product_Backlog_ID-RAN2897_1R_M1	PRS_ID-IL_PRS_4915					
+Default Tags							
+Resource	il.html						
+Resource	../resources/common_operation_resource.html						
+Resource	../resources/cac_basic_operation_resource.html						
+Resource	../resources/IPBR_basic_operation_resource.html						
+Resource	../../SS_ILCallMgmt/resources/cm_resource.tsv						
+Library	../resources/cacprb_test_resources.py						
+Library	Collections						
+							
+*Variable*							
+${IPBR_ID_4002}	4002						
+${IPBR_ID_4003}	4003						
+${IPBR_ID_4095}	4095						
+${IPBR_WITH_NO_IPRO}	4004						
+${IPBR_NOT_EXIST}	4028						
+${IP_1}	%{BFD_TEST_IP_1}						
+${IP_1_OWNER}	/%{EITPUPTRM_TYPE_NAME}-2						
+${IP_1_IFACE}	%{ETH1_1}						
+${IP_2}	%{VRF_TEST_IP_1}						
+${IP_2_OWNER}	/%{EITPUPTRM_TYPE_NAME}-0						
+${IP_2_IFACE}	ethvrf						
+${VRF_11}	vrf11						
+${PHB_AF3_AF2_AF1_BE}	AF3,AF2,AF1,BE						
+${PHB_EF_AF4}	EF,AF4						
+${PHB_ALL}	ALL						
+${IP_AF3_AF2_AF1_BE}	${IP_1}						
+${IP_EF_AF4}	${IP_2}						
+${IP_ALL}	${IP_2}						
+${WITH_CAC_DSCP_EF}	NCAC=0,FABR=2000,FMBR=3000,DSCP=2E						
+${WITH_CAC_DSCP_BE}	NCAC=0,FABR=2000,FMBR=3000,DSCP=37						
+${WITH_CAC_DSCP_AF3}	NCAC=0,FABR=2000,FMBR=3000,DSCP=1C						
+${WITH_CAC_DSCP_AF4}	NCAC=0,FABR=2000,FMBR=3000,DSCP=24						
+${ERR_CODE_450E}	0x450E						
+${DSCP_MATCH}	SUCCESSFUL						
+${DSCP_DISMATCH}	FAILED						
+${BW_ENOUGH}	SUCCESSFUL						
+${NO_NEED_CHECK_ERR_CODE}	${EMPTY}						
+${NO_NEED_CHECK_IP}	${EMPTY}						
+							
+*Test Case*							
+Select IP Address with matching DSCP in two IPBR two IPRO differential mode	[Setup]	Create SRB call successfully for prepare					
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4002},${IPBR_ID_4003}	${WITH_CAC_DSCP_BE}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4002}
+	...	${IP_AF3_AF2_AF1_BE}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4002},${IPBR_ID_4003}	${CALL_ID}	${WITH_CAC_DSCP_BE}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4002}	${IP_AF3_AF2_AF1_BE}	${OUT_LEG_LIST}			
+	#Create direct IuPS leg and check result	${USCP}	${IPBR_ID_4002},${IPBR_ID_4003}	${WITH_CAC_DSCP_BE}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4002}
+	...	#${IP_AF3_AF2_AF1_BE}	${OUT_LEG_LIST}				
+	Create indirect IuPS leg and check result	${USCP}	${IPBR_ID_4002},${IPBR_ID_4003}	${WITH_CAC_DSCP_EF}	${INDIRECT_GTP_SUCCESS}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4003}	${IP_EF_AF4}	${OUT_LEG_LIST}			
+	[Teardown]	release legs created in test case					
+							
+Select IP Address with matching DSCP for one non-existent IPBR of IPBR list with PHB set as non-all	[Tags]						
+	[Setup]	Register log and Create SRB call successfully					
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4002},${IPBR_NOT_EXIST}	${WITH_CAC_DSCP_EF}	${DSCP_DISMATCH}	${ERR_CODE_450E}	${IPBR_ID_4002}
+	...	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4002},${IPBR_NOT_EXIST}	${CALL_ID}	${WITH_CAC_DSCP_EF}	${DSCP_DISMATCH}	${ERR_CODE_450E}
+	...	${IPBR_ID_4002}	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}			
+	Create direct IuPS leg and check result	${USCP}	${IPBR_ID_4002},${IPBR_NOT_EXIST}	${WITH_CAC_DSCP_EF}	${DSCP_DISMATCH}	${ERR_CODE_450E}	${IPBR_ID_4002}
+	...	${NO_NEED_CHECK_IP}	${OUT_LEG_LIST}				
+	Create indirect IuPS leg and check result	${USCP}	${IPBR_ID_4002},${IPBR_NOT_EXIST}	${WITH_CAC_DSCP_BE}	${INDIRECT_GTP_SUCCESS}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4002}	${IP_AF3_AF2_AF1_BE}	${OUT_LEG_LIST}			
+	#Create direct IuPS leg and check result	${USCP}	${IPBR_ID_4002},${IPBR_NOT_EXIST}	${WITH_CAC_DSCP_EF}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4002}
+	...	#${IP_AF3_AF2_AF1_BE}	${OUT_LEG_LIST}				
+	[Teardown]	release legs created in test case					
+							
+Select IP Address with matching DSCP for one non-existent IPBR of IPBR list with PHB set as all	[Setup]	Modify IPRO and Create SRB call successfully					
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4003},${IPBR_NOT_EXIST}	${WITH_CAC_DSCP_EF}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4003}
+	...	${IP_ALL}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4003},${IPBR_NOT_EXIST}	${CALL_ID}	${WITH_CAC_DSCP_AF3}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4003}	${IP_ALL}	${OUT_LEG_LIST}			
+	#Create direct IuPS leg and check result	${USCP}	${IPBR_ID_4003},${IPBR_NOT_EXIST}	${WITH_CAC_DSCP_AF2}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4003}
+	...	#${IP_ALL}	${OUT_LEG_LIST}				
+	Create indirect IuPS leg and check result	${USCP}	${IPBR_ID_4003},${IPBR_NOT_EXIST}	${WITH_CAC_DSCP_BE}	${INDIRECT_GTP_SUCCESS}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4003}	${IP_ALL}	${OUT_LEG_LIST}			
+	[Teardown]	release legs created in test case					
+							
+Select IP Address with matching DSCP in two IPBR one IPRO loadsharing mode	[Setup]	Modify IPRO and Create SRB call successfully					
+	Create IuCS leg and check result	${USCP}	${IPBR_ID_4003},${IPBR_WITH_NO_IPRO}	${WITH_CAC_DSCP_EF}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4003}
+	...	${IP_ALL}	${OUT_LEG_LIST}				
+	Create Iur leg and check result	${USCP}	${IPBR_ID_4003},${IPBR_WITH_NO_IPRO}	${CALL_ID}	${WITH_CAC_DSCP_AF3}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4003}	${IP_ALL}	${OUT_LEG_LIST}			
+	#Create direct IuPS leg and check result	${USCP}	${IPBR_ID_4003},${IPBR_WITH_NO_IPRO}	${WITH_CAC_DSCP_AF4}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}	${IPBR_ID_4003}
+	...	#${IP_ALL}	${OUT_LEG_LIST}				
+	Create indirect IuPS leg and check result	${USCP}	${IPBR_ID_4003},${IPBR_WITH_NO_IPRO}	${WITH_CAC_DSCP_BE}	${INDIRECT_GTP_SUCCESS}	${DSCP_MATCH}	${NO_NEED_CHECK_ERR_CODE}
+	...	${IPBR_ID_4003}	${IP_ALL}	${OUT_LEG_LIST}			
+	[Teardown]	release legs created in test case					
+							
+*Keyword*							
+Create SRB call successfully	${srb_leg}	reserve srb call	${USCP}	${IPBR_ID_4002}	${WITH_CAC_DSCP_BE}		
+	set test variable	\${CALL_ID}	${srb_leg.call_id}				
+	Set To Object	${srb_leg}	computer	${USCP}			
+	Set To Object	${srb_leg}	leg_id	IN			
+	should be equal	${srb_leg.result}	SUCCESSFUL				
+	run keyword if	'${srb_leg.result}' == 'SUCCESSFUL'	append to list	${IN_LEG_LIST}	${srb_leg}		
+							
+Register log and Create SRB call successfully	register expect syslog	450E	Fail to get IPRO, no IPRO available				
+	create leg list						
+	Create SRB call successfully						
+							
+Create SRB call successfully for prepare	create leg list						
+	Create SRB call successfully						
+							
+Modify IPRO and Create SRB call successfully	modify IPRO successfully	${IPBR_ID_4003}	${IP_2}	${IP_2_OWNER}	${IP_2_IFACE}	${PHB_ALL}	
+	create leg list						
+	Create SRB call successfully						
+							
+connect to target hardware and add ipro	connect to target hardware						
+	switch to active OMU						
+	Get Active CP Units						
+	Get Random USCP Unit						
+	Add IPRO successfully	${IPBR_ID_4002}	${IP_1}	${IP_1_OWNER}	${IP_1_IFACE}	${PHB_AF3_AF2_AF1_BE}	
+	Add IPRO successfully	${IPBR_ID_4003}	${IP_2}	${IP_2_OWNER}	${IP_2_IFACE}	${PHB_EF_AF4}	${VRF_11}
+							
+release test resource and disconnect from target hardware	release ipro with specified ipbr id	${IPBR_ID_4002}					
+	release ipro with specified ipbr id	${IPBR_ID_4003}					
+	Disconnect From Target Hardware						

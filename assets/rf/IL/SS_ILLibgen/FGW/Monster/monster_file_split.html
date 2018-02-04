@@ -1,0 +1,1500 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252"><title>Monster Arriving Point Test Case</title>
+
+<meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head><body style="direction: ltr;" lang="en-US">
+<h1 class="western">Monster compression<br>
+</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#ffff33" width="22%">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#ffff33" width="45%">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#ffff33" width="11%">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#ffff33" width="11%">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#ffff33" width="11%">
+<p class="western">Value</p>
+</th></tr><tr bgcolor="#ffffff"><td><font color="green"><b>Documentation</b></font></td><td colspan="4"><font color="green">This test suite will test monster with file splitting option(RAN2906). It will cover three types output format(-o, -g, -e)<br>
+      </font></td></tr>
+<tr bgcolor="#ffffff"><td><font red="" color="#da0000"><b>Force Tags</b></font></td><td><font red="" color="#da0000">Product_Backlog_ID-</font><font red="" color="#da0000">B03566</font></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td><font red="" color="#da0000"><b>Force Tags</b></font></td><td><font red="" color="#da0000">Iteration_ID-I07871</font></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td><font red="" color="#da0000"><b>Force Tags</b></font></td><td><font red="" color="#da0000">Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</font></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td><font red="" color="#da0000"><b>Force Tags</b></font></td><td><font red="" color="#da0000">element-IL</font></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td><font red="" color="#da0000"><b>Force Tags</b></font></td><td><font red="" color="#da0000">exec_type-automatic</font></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td><font red="" color="#da0000"><b>Force Tags</b></font></td><td><font red="" color="#da0000">type-FUT</font></td><td>QL-7</td><td><br></td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td><font red="" color="#da0000"><b>Force Tags</b></font></td><td><font red="" color="#da0000">release-IL3</font></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td><font red="" color="#da0000"><b>Force Tags</b></font></td><td><font red="" color="#da0000">rw-review_meeting<br>
+</font></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td><font red="" color="#da0000"><b>Force Tags</b></font></td><td><font red="" color="#da0000">hw_env-ADA</font></td><td><font red="" color="#da0000">hw_env-RNC</font>
+</td><td><font red="" color="#da0000">hw_env-RNC_S0</font>
+</td><td><font red="" color="#da0000">hw_env-RNC_S1</font>
+</td></tr>
+
+
+<tr bgcolor="#ffffff"><td><b>Suite Setup</b></td><td>Env Setup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td><b>Suite Teardown</b></td><td>Clean Env</td><td><br></td><td><br></td><td><br></td></tr>
+    <tr>
+      <td style="vertical-align: top;">Test Setup<br>
+      </td>
+      <td style="vertical-align: top;">Case Env Setup<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Test Teardown<br>
+      </td>
+      <td style="vertical-align: top;">Case Env Teardown<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr bgcolor="#ffffff"><td><b>Resource</b></td><td>./resources/monster_resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+</tbody></table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#ffff33" width="22%">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#ffff33" width="29%">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#ffff33" width="49%">
+<p class="western">Value</p>
+</th></tr><tr bgcolor="#ffffff"><td>${TEST_CLI}</td><td>mempoolproc</td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td>${TEST_PRB}</td><td>mempoolproc</td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td>${MASTER_PROCESS}</td><td>0</td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td>${STOP_SELF}</td><td>stop_prb -W</td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td>${CLI_FAMILY}</td><td>0xffff</td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td>${TEST_FAMILY}</td><td>0xC385</td><td><br></td></tr>
+
+
+
+
+
+
+
+<tr bgcolor="#ffffff"><td>${TMOUT}</td><td>3</td><td><br></td></tr>
+<tr bgcolor="#ffffff"><td>${DELAY}</td><td>100</td><td><br></td></tr><tr>
+      <td style="vertical-align: top;">${LIBGEN FORMAT WITHOUT COMPRESSION}<br>
+      </td>
+      <td style="vertical-align: top;">-o<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="vertical-align: top;">${GIVAXI FORMAT COMPRESSION}<br>
+      </td>
+      <td style="vertical-align: top;">-e<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;">${MONSTER_PROCESS_COUNT}</td>
+      <td style="vertical-align: top;">2<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;">${TEST_MESSAGE_NUMBER}<br>
+      </td>
+      <td style="vertical-align: top;">8000<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${NO_ZIP_MESSAGE_COUNT}<br>
+      </td>
+      <td style="vertical-align: top;">350<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;">${ZIP_MESSAGE_COUNT}<br>
+      </td>
+      <td style="vertical-align: top;">100<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${ZIP_MESSAGE_TOTAL_COUNT}<br>
+      </td>
+      <td style="vertical-align: top;">100<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;">${MESSAGE_SIZE}<br>
+      </td>
+      <td style="vertical-align: top;">F00<br>
+      </td>
+      <td style="vertical-align: top;">#0xF00 = 3840 * 50 = 192000 = 187 k<br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;">${GIVAXI_MESSAGE_COUNT}<br>
+      </td>
+      <td style="vertical-align: top;">10<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${GIVAXI_MESSAGE_SIZE}</td>
+      <td style="vertical-align: top;">100<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${GIVAXI_BIG_MESSAGE_COUNT}</td>
+      <td style="vertical-align: top;">38<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${GIVAXI_BIG_MESSAGE_SIZE}</td>
+      <td style="vertical-align: top;">F00<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${MULTI_SESSION_MSG_COUNT}<br>
+      </td>
+      <td style="vertical-align: top;">25<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${MULTI_SESSION_MSG_SIZE}<br>
+      </td>
+      <td style="vertical-align: top;">14B0<br>
+      </td>
+      <td style="vertical-align: top;">#0x14B0=5296*25=132400=129k<br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;">${MONSTER_DIR}<br>
+      </td>
+      <td style="vertical-align: top;">monster_test<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${MONSTER_FILE}</td>
+      <td style="vertical-align: top;">test1.bin<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${MONSTER_FILES_LIBGEN}</td>
+      <td style="vertical-align: top;">test1.bin<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;">${MONSTER_FILES_GIVAXI}</td>
+      <td style="vertical-align: top;">test1.mgi<br>
+      </td>
+      <td style="vertical-align: top;">
+      <br>
+</td>
+    </tr>
+    
+    
+    
+    
+<tr>
+      <td style="vertical-align: top;">${HEADER_T_MESSAGE_TYPE}</td>
+      <td style="vertical-align: top;">0200<br>
+      </td>
+      <td style="vertical-align: top;">
+      <br>
+</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${HEADER_T_VERSION}</td>
+      <td style="vertical-align: top;">000a<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${MONHEADER_T_AGENTTYPE}</td>
+      <td style="vertical-align: top;">01<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${MONHEADER_T_MONTYPE}</td>
+      <td style="vertical-align: top;">81<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${MONHEADER_T_SPARE}</td>
+      <td style="vertical-align: top;">0000<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr><tr>
+      <td style="vertical-align: top;">${MONSTER_MULTI_PROCESS_COUNT}</td>
+      <td style="vertical-align: top;">10<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr><tr>
+      <td style="vertical-align: top;">${MONSTER_MULTI_PROCESS_MSG_COUNT}</td>
+      <td style="vertical-align: top;">250<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr><tr>
+      <td style="vertical-align: top;">${MONSTER_SPLIT_FILE_NAME}<br>
+      </td>
+      <td style="vertical-align: top;">ccc01.mgi<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr><tr>
+      <td style="vertical-align: top;">${MONSTER_SPLIT_MSG_COUNT}<br>
+      </td>
+      <td style="vertical-align: top;">10<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${MONSTER_SPLIT_MSG_SIZE}</td>
+      <td style="vertical-align: top;">F00<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr><tr>
+      <td style="vertical-align: top;">${SPLIT_SIZE}</td>
+      <td style="vertical-align: top;">1<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">${SPLIT_SEQUENCE}</td>
+      <td style="vertical-align: top;">5<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+
+
+
+
+
+
+
+
+</tbody></table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#ffff33" width="8%">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#ffff33" width="31%">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#ffff33" width="25%">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#ffff33" width="15%">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#ffff33" width="10%">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#ffff33" width="10%">
+<p class="western">Action</p>
+</th></tr><tr>
+      <td colspan="6" rowspan="1" style="vertical-align: top; background-color: rgb(204, 204, 255);"><span style="font-weight: bold;">Monster monitored data are stored into multi files in Linux LIBGEN format</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><font color="green">[Documentation]</font></td>
+      <td style="vertical-align: top;"><font color="green">Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</font></td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><font color="green">[Documentation]</font></td>
+      <td style="vertical-align: top;"><font color="green">Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start one monster with split file option to save in Linux LIBGEN format\n<br>
+&nbsp;&nbsp;&nbsp; 2. Send messages to test prb\n<br>&nbsp;&nbsp;&nbsp;
+3. Stop the monster process and check the stored files can be read by
+readste, and the header format is correct\n</font></td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><font color="green">[Documentation]</font></td>
+      <td style="vertical-align: top;"><font color="green">Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp; Stored files can be read by readste and the header format is correct\n</font></td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">[tags]<br>
+      </td>
+      <td style="vertical-align: top;">ATC_ID-Libgen.FUT.001.AT.I07871
+      </td>
+      <td style="vertical-align: top;">EFS_ID-<span style="font-size: 11pt; line-height: 115%; font-family: &quot;Calibri&quot;,&quot;sans-serif&quot;;">RNC_EFS_2906_272</span>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Start one monster monitoring with split file mode<br>
+      </td>
+      <td style="vertical-align: top;">${LIBGEN FORMAT WITHOUT COMPRESSION}
+      </td>
+      <td style="vertical-align: top;">
+      ${MONSTER_FILES_LIBGEN}</td>
+      <td style="vertical-align: top;"><br>
+</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Send messages to test prb<br>
+      </td>
+      <td style="vertical-align: top;">${TEST_MESSAGE_NUMBER}
+      </td>
+      <td style="vertical-align: top;">${MESSAGE_SIZE}
+      </td>
+      <td style="vertical-align: top;">${NO_ZIP_MESSAGE_COUNT}
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Stop monsters<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Check messages can be read from split files<br>
+      </td>
+      <td style="vertical-align: top;">${MONSTER_DIR}</td>
+      <td style="vertical-align: top;">${MONSTER_FILES_LIBGEN}</td>
+      <td style="vertical-align: top;">${TEST_MESSAGE_NUMBER}
+      </td>
+      <td style="vertical-align: top;">${NO_ZIP_MESSAGE_COUNT}
+      </td>
+    </tr>
+    
+
+
+
+
+    
+
+    
+
+    
+
+
+
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="6" rowspan="1" style="vertical-align: top; background-color: rgb(204, 204, 255);"><span style="font-weight: bold;">Monster monitored data are stored into multi files which follows GIVAXI interface<br>
+      </span></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><font color="green">[Documentation]</font></td>
+      <td style="vertical-align: top;"><font color="green">Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state. \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started.\n\n</font></td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><font color="green">[Documentation]</font></td>
+      <td style="vertical-align: top;"><font color="green">Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start one monster with split file option to save which follows GIVAXI interfacet\n<br>
+&nbsp;&nbsp;&nbsp; 2. Send messages to test prb\n<br>
+&nbsp;&nbsp;&nbsp; 3. Stop the monster process, remove the GIVAXI header and check the stored files can be read by readste\n</font></td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><font color="green">[Documentation]</font></td>
+      <td style="vertical-align: top;"><font color="green">Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp; File is saved and data is compressed with givaxi interface format<br>
+      </font></td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">[tags]<br>
+      </td>
+      <td style="vertical-align: top;">ATC_ID-Libgen.FUT.003.AT.I07871</td>
+      <td style="vertical-align: top;">EFS_ID-<span style="font-size: 11pt; line-height: 115%; font-family: &quot;Calibri&quot;,&quot;sans-serif&quot;;">RNC_EFS_2906_272</span>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Start one monster monitoring with split file mode</td>
+      <td style="vertical-align: top;">${GIVAXI FORMAT COMPRESSION}
+      </td>
+      <td style="vertical-align: top;">${MONSTER_FILES_GIVAXI}
+      </td>
+      <td style="vertical-align: top;">
+      <br>
+</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Send messages to test prb
+      </td>
+      <td style="vertical-align: top;">${TEST_MESSAGE_NUMBER}
+      </td>
+      <td style="vertical-align: top;">${MESSAGE_SIZE}
+      </td>
+      <td style="vertical-align: top;">${ZIP_MESSAGE_COUNT}
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Stop monsters</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Check file is saved correctly and data is compressed as givaxi interface format
+</td>
+      <td style="vertical-align: top;">${ZIP_MESSAGE_COUNT}
+</td>
+      <td style="vertical-align: top;">${MONSTER_FILES_GIVAXI}
+      </td>
+      <td style="vertical-align: top;"><br>
+</td>
+      <td style="vertical-align: top;"><br>
+</td>
+    </tr><tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</tbody></table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#ffff33" width="17%">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#ffff33" width="17%">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#ffff33" width="17%">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#ffff33" width="17%">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#ffff33" width="17%">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#ffff33" width="15%">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor="#a9a9f5"><td colspan="6"><b>Check And Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Run Keyword Unless</td><td>'${MULTI_THREAD}'=='No'</td><td>Start Test PRB</td><td><br></td><td><br></td></tr>
+<tr bgcolor="#a9a9f5"><td colspan="6"><b>Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>${TEST_PRB} -- -s &amp;</td><td>mempool hand started</td><td>10</td><td><br></td></tr>
+<tr><td><br></td><td>${MULTI_THREAD}</td><td>Set Variable</td><td>No</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MULTI_THREAD}</td><td><br></td><td><br></td><td><br></td></tr>
+
+
+
+
+
+
+
+<tr bgcolor="#a9a9f5"><td colspan="6"><b>Stop Test Prb</b></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>${TEST_CLI} -f ${CLI_FAMILY} -- -p "${OMU PHYSICAL ADDRESS} ${TEST_FAMILY} ${MASTER_PROCESS}" -v ${STOP_SELF}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor="#a9a9f5"><td colspan="6"><b>Env Setup</b></td></tr>
+<tr><td><br></td><td>Connect To SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">create monster workdir</td>
+      <td style="vertical-align: top;">${MONSTER_DIR}</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor="#a9a9f5"><td colspan="6"><b>Clean Env</b></td></tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">remove monster workdir</td>
+      <td style="vertical-align: top;">${MONSTER_DIR}</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr><td><br></td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><font face="Times New Roman, serif"><span lang="en-US">Disconnect
+				All ILs</span></font>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255); font-weight: bold;">Case Env Setup</td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><span class="name">${MONSTER_STARTUP}</span></td>
+      <td style="vertical-align: top;">Set Variable<br>
+      </td>
+      <td style="vertical-align: top;">No<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Set Test Variable<br>
+      </td>
+      <td style="vertical-align: top;"><span class="name">\${MONSTER_STARTUP}</span>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255); font-weight: bold;">Case Env Teardown</td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255); font-weight: bold;"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255); font-weight: bold;"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255); font-weight: bold;"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255); font-weight: bold;"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255); font-weight: bold;"><br>
+      </td>
+    </tr>
+    
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Run Keyword If</td>
+      <td style="vertical-align: top;"><span class="name">'${MONSTER_STARTUP}' == 'Yes'<br>
+      </span></td>
+      <td style="vertical-align: top;">Stop monsters<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">clear monster workdir<br>
+      </td>
+      <td style="vertical-align: top;">${MONSTER_DIR}</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Log<br>
+      </td>
+      <td style="vertical-align: top;">Test<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255); font-weight: bold;">Start one monster monitoring with split file mode</td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">[Arguments]<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${COMPRESS_MODE}
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${MONSTER_FILE}<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">${MONSTER_PROCESS_IDS}</td>
+      <td style="vertical-align: top;">Create List</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><span class="name">${MONSTER_PROCESS_ID}</span></td>
+      <td style="vertical-align: top;">start monster at background with compress mode</td>
+      <td style="vertical-align: top;"><span class="arg">${OMU PHYSICAL ADDRESS}</span></td>
+      <td style="vertical-align: top;">${TEST_FAMILY}</td>
+      <td style="vertical-align: top;">${MONSTER_DIR}</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">...<br>
+      </td>
+      <td style="vertical-align: top;">${MONSTER_FILE}</td>
+      <td style="vertical-align: top;">${TEST_MESSAGE_NUMBER}</td>
+      <td style="vertical-align: top;">${COMPRESS_MODE}</td>
+      <td style="vertical-align: top;">${SPLIT_SIZE}<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">...<br>
+      </td>
+      <td style="vertical-align: top;">${SPLIT_SEQUENCE}<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+
+    
+    
+
+    
+    
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Append to List</td>
+      <td style="vertical-align: top;">${MONSTER_PROCESS_IDS}</td>
+      <td style="vertical-align: top;"><span class="name">${MONSTER_PROCESS_ID}</span></td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Set Test Variable</td>
+      <td style="vertical-align: top;"><span class="name">\</span><span class="name">${MONSTER_PROCESS_IDS}</span></td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><span class="name">${MONSTER_STARTUP}</span></td>
+      <td style="vertical-align: top;">Set Variable</td>
+      <td style="vertical-align: top;">Yes<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Set Suite Variable</td>
+      <td style="vertical-align: top;">\<span class="name">${MONSTER_STARTUP}</span></td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+<tr>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255); font-weight: bold;">Send messages to test prb<br>
+</td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">[Arguments]<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${MESSAGE_NUMBER}<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${MESSAGE_SIZE}<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${MESSAGE_COUNT}
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">start message sending for monster compress test<br>
+      </td>
+      <td style="vertical-align: top;">${MESSAGE_NUMBER}
+      </td>
+      <td style="vertical-align: top;">${MESSAGE_SIZE}</td>
+      <td style="vertical-align: top;">${MESSAGE_COUNT}</td>
+      <td style="vertical-align: top;"><br>
+
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255); font-weight: bold;">Send messages to test prb which total size is bigger than 128k</td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">start message sending for monster compress test</td>
+      <td style="vertical-align: top;">${TEST_MESSAGE_NUMBER}</td>
+      <td style="vertical-align: top;">${GIVAXI_BIG_MESSAGE_SIZE}</td>
+      <td style="vertical-align: top;">${GIVAXI_BIG_MESSAGE_COUNT}</td>
+      <td style="vertical-align: top;"><br>
+
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Execute Cli<br>
+      </td>
+      <td style="vertical-align: top;">sleep 0.2<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<tr>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><span style="font-weight: bold;">Stop monsters</span><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">stop monsters and wait for exit</td>
+      <td style="vertical-align: top;">${MONSTER_PROCESS_IDS}</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">${MONSTER_STARTUP}<br>
+      </td>
+      <td style="vertical-align: top;">Set Variable<br>
+      </td>
+      <td style="vertical-align: top;">No<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Set Suite Variable<br>
+      </td>
+      <td style="vertical-align: top;">\${MONSTER_STARTUP}<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold; background-color: rgb(153, 153, 255);">Check files can be unzipped successfully and messages can be read from unzipped file</td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">[Arguments]<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${DIR}<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${FILES_NAME}<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${MESSAGE_NUMBER}<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${MESSAGE_SIZE}
+      </td>
+    </tr>
+    
+    
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">...<br>
+      </td>
+      <td style="vertical-align: top;">${MESSAGE_COUNT}<br>
+      </td>
+      <td style="vertical-align: top;">${HEADER_ONLY}=1<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">${NEW_FILES_NAME}</td>
+      <td style="vertical-align: top;">compressed files can be unzipped successfully</td>
+      <td style="vertical-align: top;">${DIR}</td>
+      <td style="vertical-align: top;">${FILES_NAME}</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">messages can be read successfully from file<br>
+      </td>
+      <td style="vertical-align: top;">${DIR}</td>
+      <td style="vertical-align: top;">${NEW_FILESNAME}</td>
+      <td style="vertical-align: top;">${TEST_FAMILY}</td>
+      <td style="vertical-align: top;">${MESSAGE_NUMBER}</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">...<br>
+      </td>
+      <td style="vertical-align: top;">${MESSAGE_COUNT}</td>
+      <td style="vertical-align: top;">${HEADER_ONLY}
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255); font-weight: bold;">Check file is saved correctly and data is compressed as givaxi interface format</td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">[Arguments]<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${MESSAGE_COUNT}<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${FILE_NAME}<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);"><br>
+      </td>
+    </tr>
+    
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">${FILES_NAME}</td>
+      <td style="vertical-align: top;">Convert File Names For Split File Mode</td>
+      <td style="vertical-align: top;">${FILE_NAME}</td>
+      <td style="vertical-align: top;">1<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">${givaxi_header}</td>
+      <td style="vertical-align: top;">get headers from monster output file</td>
+      <td style="vertical-align: top;">${MONSTER_DIR}</td>
+      <td style="vertical-align: top;">${FILES_NAME[0]}</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+
+    
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">#output files headers should be correct according to givaxi interface format</td>
+      <td style="vertical-align: top;">${givaxi_header}</td>
+      <td style="vertical-align: top;">${C6C6_COUNT}
+      </td>
+      <td style="vertical-align: top;">${HEADER_T_MESSAGE_TYPE}</td>
+      <td style="vertical-align: top;">${HEADER_T_VERSION}</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">#...<br>
+      </td>
+      <td style="vertical-align: top;"><span class="arg">0xffff</span><br>
+</td>
+      <td style="vertical-align: top;">0xffff<br>
+</td>
+      <td style="vertical-align: top;">${MONHEADER_T_AGENTTYPE}</td>
+      <td style="vertical-align: top;">${MONHEADER_T_MONTYPE}</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">#...<br>
+      </td>
+      <td style="vertical-align: top;">${MONHEADER_T_SPARE}</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">#${ZIP_FILES_NAME} =<br>
+      </td>
+      <td style="vertical-align: top;">get the zip file from c6c6_file<br>
+      </td>
+      <td style="vertical-align: top;">${givaxi_header}</td>
+      <td style="vertical-align: top;">${MONSTER_DIR}</td>
+      <td style="vertical-align: top;">${FILE_NAME}</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">#Check files can be unzipped successfully and messages can be read from unzipped file</td>
+      <td style="vertical-align: top;">${MONSTER_DIR}</td>
+      <td style="vertical-align: top;">${ZIP_FILES_NAME}</td>
+      <td style="vertical-align: top;">${TEST_MESSAGE_NUMBER}</td>
+      <td style="vertical-align: top;">${MESSAGE_SIZE}
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">#...<br>
+      </td>
+      <td style="vertical-align: top;">${MESSAGE_COUNT}</td>
+      <td style="vertical-align: top;">1<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+
+
+    
+<tr>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">Check messages can be read from split files
+</td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">[Arguments]
+</td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${DIR}
+</td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${FILE_NAME}
+</td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${MESSAGE_NUMBER}
+</td>
+      <td style="vertical-align: top; background-color: rgb(153, 153, 255);">${MESSAGE_COUNT}
+</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">${FILES_NAME}<br>
+      </td>
+      <td style="vertical-align: top;">Convert File Names For Split File Mode<br>
+      </td>
+      <td style="vertical-align: top;">${FILE_NAME}</td>
+      <td style="vertical-align: top;">2<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Check Bin Header is Correct<br>
+      </td>
+      <td style="vertical-align: top;">${DIR}<br>
+      </td>
+      <td style="vertical-align: top;">${FILES_NAME}<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">messages can be read successfully from file
+      </td>
+      <td style="vertical-align: top;">${DIR}
+      </td>
+      <td style="vertical-align: top;">${FILES_NAME}
+      </td>
+      <td style="vertical-align: top;">${TEST_FAMILY}
+      </td>
+      <td style="vertical-align: top;">${MESSAGE_NUMBER}
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;"><br>
+</td>
+      <td style="vertical-align: top;">...<br>
+</td>
+      <td style="vertical-align: top;">${MESSAGE_COUNT}
+</td>
+      <td style="vertical-align: top;">1<br>
+</td>
+      <td style="vertical-align: top;"><br>
+</td>
+      <td style="vertical-align: top;"><br>
+</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+</td>
+      <td style="vertical-align: top;"><br>
+</td>
+      <td style="vertical-align: top;"><br>
+</td>
+      <td style="vertical-align: top;"><br>
+</td>
+      <td style="vertical-align: top;"><br>
+</td>
+      <td style="vertical-align: top;"><br>
+</td>
+    </tr><tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+
+
+
+</tbody></table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+
+</body></html>

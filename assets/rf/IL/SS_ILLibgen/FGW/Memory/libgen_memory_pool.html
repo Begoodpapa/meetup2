@@ -1,0 +1,446 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen Memory Pool Usage Test</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen Memory Pool Usage Test</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test Libgen Memory Pool Usage. After memory pool exhausted, Libgen should not abort but continue to use malloc to store messages. \n When the malloc limit is reached, libgen should be able to receive executable message and send inter-family message.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B01858,</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I01815,I06184</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-IL_PRS_4465</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-il</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-mail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>bcn_step-BCN_S1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-BCN_A2</td><td><font color=dark red>hw_type-BCN_B2</td><td><font color=dark red>hw_type-MGW_AB3</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-MGW_AB4</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC_S1</td><td><font color=dark red>hw_env-AB</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>ct-negative</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/memory_resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Env Setup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clean Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Setup</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Teardown</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${HW}</td><td>%{HW}</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEMP_INI_FILE}</td><td>LibgenConfig_OMU.ini</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MEMPOOL_FAMILY_ID}</td><td>0xC385</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0x0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_PROCESS_ID}</td><td>0x1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${INTERNAL_QUEUE}</td><td>msg_to_master</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SAVE_CHAIN}</td><td>msg_to_hand</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SAVE_QUEUE}</td><td>hand_save_msg</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK_ALIVE}</td><td>still_alive</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_CORE_DUMP}</td><td>core_dump_case</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SET_CURRENT_MSG_LEAK}</td><td>set_current_msg_leak</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MAX_MSG_COUNT}</td><td>318</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SEND_MSG_COUNT}</td><td>319</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MULTI_THREAD_MAX_MSG_COUNT}</td><td>321</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_COUNT}</td><td>1900</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WAIT_TIME_5S}</td><td>1000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MULTI_THREAD}</td><td>NO</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_GET_BUF_STAT}</td><td>get_buf_stat</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IN_SAVE_CHAIN}</td><td>c</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IN_SAVE_QUEUE}</td><td>s</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IN_KERNEL_QUEUE}</td><td>k</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${IN_INTERNAL_QUEUE}</td><td>q</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ADA_DEFAULT_LIMIT}</td><td>21176320</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ADA_MIN_LIMIT}</td><td>1253376</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ADA_PRE}</td><td>0</td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>Libgen Should Not Abort When Memory Pool Is Used Up In Internal Queue</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.<br>&nbsp;&nbsp;&nbsp;&nbsp;.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB to send test message to itself\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. After enough numbers of message sent, use diagste to query test PRB state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Use Test CLI to send msg to Test PRB and ack will be received\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test PRB will not abort when memory pool is used up in internal queue.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMemoryPool.FUT.001.AT.I01815</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Let Test PRB Send Msg To Self</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Master Received Msg</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Message Pool Usage Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Should Not Abort When Memory Pool Is Used Up In Save Queue</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.<br>&nbsp;&nbsp;&nbsp;&nbsp;.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB to send test messages to its hand and hand save the messages\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. After enough numbers of message sent, use diagste to query test PRB state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Use Test CLI to send msg to Test PRB and ack will be received\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test PRB will not abort when memory pool is used up in save queue.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMemoryPool.FUT.002.AT.I01815</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Let Test PRB Hand Save Msg</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Hand Received Msg</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Should Not Abort When Memory Pool Is Used Up In Save Chain</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.<br>&nbsp;&nbsp;&nbsp;&nbsp;.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Test CLI ask Test PRB to enter stateful procedure\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test CLI send test messages to Test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. After enough numbers of message sent, use diagste to query test PRB state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Use Test CLI to send msg to Test PRB and ack will be received\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test PRB will not abort when memory pool is used up in save chain.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMemoryPool.FUT.003.AT.I01815</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Get Max Stack Count</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Let Test CLI Send Msg To Hand And Check Test PRB Hand Received Msg</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Current Max Stack Count And Compare Success</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Should Not Core Dump When Sending Msg to Stopped Hand After Memory Pool Is Used Up</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.<br>&nbsp;&nbsp;&nbsp;&nbsp;.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB with multi-thread\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Test CLI ask Test PRB to enter stateful procedure\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test CLI send test messages to Test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. After enough numbers of message sent, use diagste to query test PRB state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Use Test CLI to send msg to Test PRB and ack will be received\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test PRB will not abort when memory pool is used up in save chain.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMemoryPool.FUT.001.AT.55588ESPE01</td><td colspan=3>exec_level-pre</td></tr>
+<tr><td><br></td><td>Let Test CLI Do Core_Dump Test To Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Multi-thread Libgen Should Not Abort When Memory Pool Is Used Up In Internal Queue</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.<br>&nbsp;&nbsp;&nbsp;&nbsp;.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB with multi-thread\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB to send test message to itself\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. After enough numbers of message sent, use diagste to query test PRB state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Use Test CLI to send msg to Test PRB and ack will be received\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test PRB will not abort when memory pool is used up in internal queue.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMemoryPool.FUT.004.AT.I01815</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Multi-thread Env Setup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Let Test PRB Send Msg To Self</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Master Received Msg</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Message Pool Usage Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Run Keyword If Test Failed</td><td><font color=dark red>Multi-thread Teardown</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Multi-thread Libgen Should Not Abort When Memory Pool Is Used Up In Save Queue</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.<br>&nbsp;&nbsp;&nbsp;&nbsp;.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB with multi-thread\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB to send test messages to its hand and hand save the messages\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. After enough numbers of message sent, use diagste to query test PRB state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Use Test CLI to send msg to Test PRB and ack will be received\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test PRB will not abort when memory pool is used up in save queue.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMemoryPool.FUT.005.AT.I01815</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Multi-thread Env Setup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Let Test PRB Hand Save Msg</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Multi-thread Test PRB Hand Received Msg</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Queue</td><td>${IN_SAVE_QUEUE}</td><td>${SEND_MSG_COUNT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Hand Received Msg By Message Buffer Info</td><td>${IN_INTERNAL_QUEUE}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Run Keyword If Test Failed</td><td><font color=dark red>Multi-thread Teardown</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Multi-thread Libgen Should Not Abort When Memory Pool Is Used Up In Save Chain</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.<br>&nbsp;&nbsp;&nbsp;&nbsp;.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB with multi-thread\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Test CLI ask Test PRB to enter stateful procedure\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test CLI send test messages to Test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. After enough numbers of message sent, use diagste to query test PRB state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Use Test CLI to send msg to Test PRB and ack will be received\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test PRB will not abort when memory pool is used up in save chain.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMemoryPool.FUT.006.AT.I01815</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Multi-thread Env Setup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Let Test CLI Send Msg To Hand And Check Multi-thread Test PRB Hand Received Msg</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Max Stack Count</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Hand And Msg Into Save Chain</td><td>${IN_SAVE_CHAIN}</td><td>${SEND_MSG_COUNT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Hand Received Msg By Message Buffer Info</td><td>${IN_INTERNAL_QUEUE}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Current Max Stack Count And Compare Success</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Run Keyword If Test Failed</td><td><font color=dark red>Multi-thread Teardown</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Message Malloc Size Default Limit Should Be Correct For Different Architecture</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.<br>&nbsp;&nbsp;&nbsp;&nbsp;.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB with multi-thread\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check Memory Pool Limit Should Be As Default\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check Memory Pool Limit Should Be 200k+20M on ADA.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check Memory Pool Limit Should Be 10M+10M on other Architecture Env.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMemoryPool.FUT.001.I06184</td><td>hw_env-ada</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Stop Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Multi-thread Env Setup</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${HW}" == "ADA"</td><td>Check Default Memory Pool Usage</td><td>${ADA_DEFAULT_LIMIT}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>Else</td><td>Check Default Memory Pool Usage</td><td>20971520</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Message Malloc Size Configured Limit Should Be Set Correctly</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.<br>&nbsp;&nbsp;&nbsp;&nbsp;.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB with multi-thread\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check Memory Pool Should Be As Configured\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check Memory Pool Limit Should Be As Configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMemoryPool.FUT.002.I06184</td><td>hw_env-ada</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Export Temporarily Ini With Memory Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Memory Pool Usage</td><td>7000000</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Test PRB And Clear Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Message Malloc Size Minimum Limit Should Be Checked And Use 1M When Less Than It</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.<br>&nbsp;&nbsp;&nbsp;&nbsp;.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB with msg_pool_size(200k for ada, 1M for others) and msg_malloc_size(1M for all) less than Minimum\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check Memory Pool Should Use The Minimum Limit(1M)\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check Memory Pool Limit Should Use The Minimum Limit.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMemoryPool.FUT.003.I06184</td><td>hw_env-ada</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td>Export Temporarily Ini With Negative Memory Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${HW}" == "ADA"</td><td>Check Memory Pool Usage</td><td>${ADA_MIN_LIMIT}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>Else</td><td>Check Memory Pool Usage</td><td>2097152</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Test PRB And Clear Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Diagste Should Get Correct Memory Info From Malloc When Malloc Some Memory Pool</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.<br>&nbsp;&nbsp;&nbsp;&nbsp;.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB Send Msg To Self To Malloc Some Msgpool\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. After enough numbers of message sent, use diagste to query memory state from malloc\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Use Test CLI to send msg to Test PRB and ack will be received\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. After enough numbers of message sent, diagste should get correct memory state from malloc.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMemoryPool.FUT.001.AT.112208ESPE04</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Let Test PRB Send Msg To Self To Malloc Some Msgpool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Message Pool Usage Statistic Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>mempoolproc &amp;</td><td>mempool hand started.</td><td>10s</td><td><br></td></tr>
+<tr><td><br></td><td>Change Suite Value</td><td>NO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Restart Test PRB</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Multi-thread Test PRB</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>mempoolproc -t 2 &amp;</td><td>mempool hand started.</td><td>10s</td><td><br></td></tr>
+<tr><td><br></td><td>Change Suite Value</td><td>YES</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test Prb</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_prb</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${MULTI_THREAD}"=="YES"</td><td>Change Suite Value</td><td>NO</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Change Suite Value</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_value}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${MULTI_THREAD}=</td><td>Set Variable</td><td>${in_value}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MULTI_THREAD}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Let Test PRB Send Msg To Self</b></td></tr>
+<tr><td><br></td><td>Test Memory Pool Usage</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${INTERNAL_QUEUE}</td><td>${SEND_MSG_COUNT}</td></tr>
+<tr><td><br></td><td>...</td><td>${WAIT_TIME_5S}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Let Test PRB Hand Save Msg</b></td></tr>
+<tr><td><br></td><td>Test Memory Pool Usage</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${SAVE_QUEUE}</td><td>${SEND_MSG_COUNT}</td></tr>
+<tr><td><br></td><td>...</td><td>${WAIT_TIME_5S}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Let Test CLI Send Msg To Hand</b></td></tr>
+<tr><td><br></td><td>Test Memory Pool Usage</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${SAVE_CHAIN}</td><td>${SEND_MSG_COUNT}</td></tr>
+<tr><td><br></td><td>...</td><td>${WAIT_TIME_5S}</td><td>${HAND_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Let Test CLI Send Msg To Hand And Check Test PRB Hand Received Msg</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>4</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -c %s -t %s</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td>${HAND_PROCESS_ID}</td><td>${SAVE_CHAIN}</td><td>${SEND_MSG_COUNT}</td></tr>
+<tr><td><br></td><td>...</td><td>${WAIT_TIME_5S}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${res} =</td><td>Libgen String Should Contain Substrings</td><td>${result}</td><td>314</td><td>${MULTI_THREAD_MAX_MSG_COUNT}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${res}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Let Test CLI Send Msg To Hand And Check Multi-thread Test PRB Hand Received Msg</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>4</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -M -v %s -c %s -t %s</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td>${HAND_PROCESS_ID}</td><td>${SAVE_CHAIN}</td><td>${SEND_MSG_COUNT}</td></tr>
+<tr><td><br></td><td>...</td><td>${WAIT_TIME_5S}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${res} =</td><td>Libgen String Should Contain Substrings</td><td>${result}</td><td>${MAX_MSG_COUNT}</td><td>${MULTI_THREAD_MAX_MSG_COUNT}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${res}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Let Test CLI Do Core_Dump Test To Test PRB</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -t %s</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${TEST_CORE_DUMP}</td><td>${WAIT_TIME_5S}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Let Test PRB Send Msg To Self To Malloc Some Msgpool</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failed</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -S 0 -t %s</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${SET_CURRENT_MSG_LEAK}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Memory Pool Usage</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_phys_addr}</td><td><font color=#FF6600>${in_family_id}</td><td><font color=#FF6600>${in_action}</td><td><font color=#FF6600>${in_count}</td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_wait_time}</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -c %s -t %s</td><td>${in_phys_addr}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_family_id}</td><td>${in_process}</td><td>${in_action}</td><td>${in_count}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_wait_time}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Test PRB Master Received Msg</b></td></tr>
+<tr><td><br></td><td>PRB Received Msg Count Should Be</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${MAX_MSG_COUNT}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Test PRB Hand Received Msg</b></td></tr>
+<tr><td><br></td><td>PRB Received Msg Count Should Be</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${HAND_PROCESS_ID}</td><td>${MAX_MSG_COUNT}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Multi-thread Test PRB Hand Received Msg</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>3</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v get_msg_count -t %s</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td>${HAND_PROCESS_ID}</td><td>${WAIT_TIME_5S}</td><td><br></td></tr>
+<tr><td><br></td><td>${res} =</td><td>Libgen String Should Contain Substrings</td><td>${result}</td><td>${MAX_MSG_COUNT}</td><td>${MULTI_THREAD_MAX_MSG_COUNT}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${res}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>PRB Received Msg Count Should Be</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_phys_addr}</td><td><font color=#FF6600>${in_family_id}</td><td><font color=#FF6600>${in_process_id}</td><td><font color=#FF6600>${in_count}</td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_wait_time}=100</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>3</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v get_msg_count -t %s</td><td>${in_phys_addr}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_family_id}</td><td>${in_process_id}</td><td>${in_wait_time}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${in_count}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Still Alive</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -t %s</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${CHECK_ALIVE}</td><td>${WAIT_TIME_5S}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Multi-thread Teardown</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Check PRB Hand Status</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Hand Status</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>active hands 3</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>diagste -u %s -f %s -r han -t idata -m hum</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Env Setup</b></td></tr>
+<tr><td><br></td><td>${index}=</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td>${MAX TIME FOR CONNECT}</td></tr>
+<tr><td><br></td><td>...</td><td>%{USERNAME}</td><td>%{PASSWD}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get WO OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${OMU}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ulimit -c unlimited</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Variable Of Libgen Use Phys Addr</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Multi-thread Env Setup</b></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${MULTI_THREAD}"=="NO"</td><td colspan=3>Start Multi-thread Test PRB</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clean Env</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Msg To Hand And Msg Into Save Queue</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_queue}</td><td><font color=#FF6600>${in_count}</td><td><font color=#FF6600>${in_wait_time}=200</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Test Message Buffer Interface Usage For Save Queue</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${TEST_GET_BUF_STAT}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_queue}</td><td>${in_count}</td><td>${in_wait_time}</td><td>${in_process}</td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Message Buffer Interface Usage For Save Queue</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_phys_addr}</td><td><font color=#FF6600>${in_family_id}</td><td><font color=#FF6600>${in_action}</td><td><font color=#FF6600>${in_queue}</td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_wait_time}=200</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -q %s -c %s -t %s</td><td>${in_phys_addr}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_family_id}</td><td>${in_process}</td><td>${in_action}</td><td>${in_queue}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_wait_time}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Msg To Hand And Msg Into Save Chain</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_queue}</td><td><font color=#FF6600>${in_count}</td><td><font color=#FF6600>${in_wait_time}=200</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Test Message Buffer Interface Usage For Save Chain</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${TEST_GET_BUF_STAT}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_queue}</td><td>${in_count}</td><td>${in_wait_time}</td><td>${in_process}</td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Message Buffer Interface Usage For Save Chain</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_phys_addr}</td><td><font color=#FF6600>${in_family_id}</td><td><font color=#FF6600>${in_action}</td><td><font color=#FF6600>${in_queue}</td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_wait_time}</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -q %s -c %s -t %s</td><td>${in_phys_addr}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_family_id}</td><td>${in_process}</td><td>${in_action}</td><td>${in_queue}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_wait_time}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Test PRB Hand Received Msg By Message Buffer Info</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_queue}</td><td><font color=#FF6600>${in_count}</td><td><font color=#FF6600>${in_wait_time}=${WAIT_TIME_5S}</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Test Message Buffer Interface Usage</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${TEST_GET_BUF_STAT}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_queue}</td><td>${in_count}</td><td>${in_wait_time}</td><td>${in_process}</td></tr>
+<tr><td><br></td><td>${res} =</td><td>Libgen Count Range Should Be</td><td>${result}</td><td>${MAX_MSG_COUNT}</td><td>${MULTI_THREAD_MAX_MSG_COUNT}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${res}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Message Buffer Interface Usage</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_phys_addr}</td><td><font color=#FF6600>${in_family_id}</td><td><font color=#FF6600>${in_action}</td><td><font color=#FF6600>${in_queue}</td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=#FF6600><br></td><td><font color=#FF6600>...</td><td><font color=#FF6600>${in_wait_time}</td><td><font color=#FF6600>${in_process}=${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -q %s -c %s -t %s</td><td>${in_phys_addr}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_family_id}</td><td>${in_process}</td><td>${in_action}</td><td>${in_queue}</td></tr>
+<tr><td><br></td><td>...</td><td>${in_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${in_wait_time}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get Max Stack Count</b></td></tr>
+<tr><td><br></td><td>${previous_stack}=</td><td>Get Current Max Stack Count</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${previous_stack}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get Current Max Stack Count And Compare Success</b></td></tr>
+<tr><td><br></td><td>${current_stack}=</td><td>Get Current Max Stack Count</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Evaluate</td><td>${current_stack}&gt;${previous_stack}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>The Message Pool Usage Should Be Correct</b></td></tr>
+<tr><td><br></td><td>${max_pool_used_size}</td><td>Get Current Max Message Pool Used Size</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${max_pool_used_size}</td><td>10248576</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>The Message Pool Usage Statistic Should Be Correct</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result1}</td><td>Execute CLI</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate|sed -e 's/ //g' |grep memoryfrommalloc -A 1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result2}</td><td>Execute CLI</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgpool |sed -e 's/ //g' |sed -e 's/byte(s)//g' |grep memoryfrommalloc</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result1.replace('\r\n','').replace('\r','').strip()}</td><td>${result2.strip()}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test PRB and Clear Env</b></td></tr>
+<tr><td><br></td><td>Clear Temporarily Ini</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Temporarily Ini</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=/etc/LibgenConfig_OMU.ini</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Default Memory Pool Usage</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${lib_size}</td><td><font color=#FF6600>${ker_size}=0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate|sed -e 's/ //g'</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>libgentotalmessagememorylimit(includingpoolandmalloc):${lib_size}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${HW}" == "ADA"</td><td>Should Contain</td><td>${result}</td><td>sizelevel65696:currentusedsize:0,maxusedsize:${ADA_PRE}</td></tr>
+<tr><td><br></td><td>...</td><td>Else</td><td>Should Contain</td><td>${result}</td><td>sizelevel65696:currentusedsize:0,maxusedsize:131392</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Memory Pool Usage</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${lib_size}</td><td><font color=#FF6600>${ker_size}=0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate|sed -e 's/ //g'</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>libgentotalmessagememorylimit(includingpoolandmalloc):${lib_size}</td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

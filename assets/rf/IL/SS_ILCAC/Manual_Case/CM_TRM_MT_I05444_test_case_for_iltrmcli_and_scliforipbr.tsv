@@ -1,0 +1,148 @@
+*Settings*							
+Suite Setup	connect to target hardware						
+Suite Teardown	Disconnect BCN and clear test resource						
+Force Tags	Product_Backlog_ID-B03158	Iteration_ID-I05444	Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	element-il	PRS_ID-PRS_4020	release-RU40
+...	type-FUT	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0	exec_type-automatic	ATC_ID-TRM_IPBR.FUT.001.MT.I05444	hw_env-RNC_S0	EFS_ID-XXX
+...	PRS_ID-XXX						
+Resource	il.html						
+Library	Collections						
+Resource	../resources/common_operation_resource.html						
+Library	../resources/cacprb_test_resources.py	
+							
+*Variables*							
+${TEST_IPBR_4094}	4094						
+${IPBR_NAME}	test4094						
+${ROUTE_BW}	1000000						
+${COMMITED_BW}	1000						
+${COMMITED_SIG_BW}	100						
+${COMMITED_DCN_BW}	100						
+${TEST_IP_ADDR}	%{BFD_TEST_IP_1}						
+${TEST_OWNER}	/%{EITPUPTRM_TYPE_NAME}-2						
+${TEST_IFACE}	ethtest20						
+${SCLIRU_0}	/CFPU-0/QNSCLIUServer-0						
+${SCLIRG_ERROR}	NO WORKING SCLIU UNIT EXIST						
+${RU_ERROR}	${EMPTY}						
+							
+*Test Cases*							
+Validate iltrmcli on SCLIRG status is lock unlock and shutdown	[Tags]	ATC_ID-TRM_IPBR.FUT.001.MT.I05444	QL-7				
+	[Setup]	Lock the SCLIRU					
+	Validate iltrmcli command on lock SCLIRG						
+	Validate iltrmcli command on SCLIRG stutes change form \ lock to unlock						
+	Validate iltrmcli command on unlock SCLIRG						
+	Validate iltrmcli command on CSPU-0						
+	Validate iltrmcli command on SCLIRG shutdown						
+	Validate iltrmcli command on SCLIRG stutes change form \ shutdown to unlock						
+	[Teardown]	run keyword if test failed	Unlock the SCLIRU				
+							
+Validate scliforipbr on SCLIRG lock or shutdown	[Tags]	ATC_ID-TRM_IPBR.FUT.001.MT.I05444	QL-6				
+	[Setup]	Lock the SCLIRU					
+	Validate scliforipbr command on lock SCLIRG						
+	Validate scliforipbr command on SCLIRG stutes change form lock to unlock						
+	Validate scliforipbr command on unlock SCLIRG						
+	Validate scliforipbr command on SCLIRG shutdown						
+	Validate scliforipbr command on SCLIRG stutes change form shutdown to unlock						
+	[Teardown]	run keyword if test failed	Unlock the SCLIRU				
+							
+*Keywords*							
+Validate iltrmcli command on lock SCLIRG	execute cli	ssh CFPU-0					
+	Execute iltrmcli on abnormal SCLIRG						
+							
+Validate iltrmcli command on unlock SCLIRG	execute cli	ssh CFPU-1					
+	Execute iltrmcli on normal SCLIRG						
+	execute cli	exit					
+							
+Validate iltrmcli command on CSPU-0	execute cli	ssh CSPU-0					
+	${result}	list_all_conn_resource_info					
+	should contain	${result}	${RU_ERROR}				
+	${result}	CLI_about_iltrmcli_help_info					
+	should contain	${result}	${RU_ERROR}				
+							
+Validate iltrmcli command on SCLIRG stutes change form \ lock to unlock	Unlock the SCLIRU						
+	Execute iltrmcli on normal SCLIRG						
+							
+Validate iltrmcli command on SCLIRG shutdown	execute cli	ssh CFPU-0					
+	Shutdown the SCLIRU						
+	Execute iltrmcli on abnormal SCLIRG						
+							
+Validate iltrmcli command on SCLIRG stutes change form \ shutdown to unlock	Unlock the SCLIRU						
+	Execute iltrmcli on normal SCLIRG						
+							
+Validate scliforipbr command on lock SCLIRG	execute cli	ssh CFPU-0					
+	Execute scliforipbr on abnormal SCLIRG						
+	Execute troubleshooting on abnormal SCLIRG						
+							
+Validate scliforipbr command on unlock SCLIRG	execute cli	ssh CFPU-1					
+	Execute scliforipbr on normal SCLIRG						
+	Execute troubleshooting on normal SCLIRG						
+	execute cli	exit					
+							
+Validate scliforipbr command on SCLIRG stutes change form lock to unlock	Unlock the SCLIRU						
+	Execute scliforipbr on normal SCLIRG						
+	Execute troubleshooting on normal SCLIRG						
+							
+Validate scliforipbr command on SCLIRG shutdown	execute cli	ssh CFPU-0					
+	Shutdown the SCLIRU						
+	Execute scliforipbr on abnormal SCLIRG						
+	Execute troubleshooting on abnormal SCLIRG						
+							
+Validate scliforipbr command on SCLIRG stutes change form shutdown to unlock	Unlock the SCLIRU						
+	Execute scliforipbr on normal SCLIRG						
+	Execute troubleshooting on normal SCLIRG						
+							
+Disconnect BCN and clear test resource	Run Keyword If Any Tests Failed	delete_ipro	${TEST_IPBR_4094}	${TEST_IP_ADDR}	${TEST_OWNER}	${TEST_IFACE}	forced
+	Run Keyword If Any Tests Failed	del_ip_based_route	${TEST_IPBR_4094}				
+	common_operation_resource.Disconnect From Target Hardware						
+							
+Lock the SCLIRU	${result}	set_managed_object_lock	${SCLIRU_0}	force			
+	should contain	${result}	successfully				
+							
+Unlock the SCLIRU	${result}	set_managed_object_unlock	${SCLIRU_0}				
+	should contain	${result}	successfully				
+	sleep	2 sec					
+							
+Shutdown the SCLIRU	${result}	set_managed_object_shutdown	${SCLIRU_0}	force			
+	should contain	${result}	successfully				
+							
+Execute iltrmcli on normal SCLIRG	${result}	list_all_conn_resource_info					
+	should not contain	${result}	${SCLIRG_ERROR}				
+	${result}	CLI_about_iltrmcli_help_info					
+	should not contain	${result}	${SCLIRG_ERROR}				
+							
+Execute iltrmcli on abnormal SCLIRG	${result}	list_all_conn_resource_info					
+	should contain	${result}	${SCLIRG_ERROR}				
+	${result}	CLI_about_iltrmcli_help_info					
+	should contain	${result}	${SCLIRG_ERROR}				
+							
+Execute scliforipbr on normal SCLIRG	${result}	show_ip_based_route					
+	should not contain	${result}	${SCLIRG_ERROR}				
+	${result}	show_ipro					
+	should not contain	${result}	${SCLIRG_ERROR}				
+	${result}	add_ip_based_route	${TEST_IPBR_4094}	${IPBR_NAME}	${ROUTE_BW}	${COMMITED_BW}	${COMMITED_SIG_BW}
+	...	${COMMITED_DCN_BW}					
+	should be equal	"${result[""IPBR Add""]}"	Success				
+	${result}	add ipro	${TEST_IPBR_4094}	${TEST_IP_ADDR}	${TEST_OWNER}	${TEST_IFACE}	
+	should be equal	"${result[""IPRO Add""]}"	Success				
+	${resut}	show_ip_based_route	${TEST_IPBR_4094}				
+	${result}	show_ipro	${TEST_IPBR_4094}	${TEST_IP_ADDR}	${TEST_OWNER}	${TEST_IFACE}	
+	${result}	delete_ipro	${TEST_IPBR_4094}	${TEST_IP_ADDR}	${TEST_OWNER}	${TEST_IFACE}	
+	should be equal	"${result[""IPRO Delete""]}"	Success				
+	${result}	del_ip_based_route	${TEST_IPBR_4094}				
+	should be equal	"${result[""IPBR Delete""]}"	Success				
+							
+Execute scliforipbr on abnormal SCLIRG	${result}	show_ip_based_route					
+	should contain	${result}	${SCLIRG_ERROR}				
+	${result}	show_ipro					
+	should contain	${result['error_info']}	${SCLIRG_ERROR}				
+	${result}	add_ip_based_route	${TEST_IPBR_4094}	${IPBR_NAME}	${ROUTE_BW}	${COMMITED_BW}	${COMMITED_SIG_BW}
+	...	${COMMITED_DCN_BW}					
+	should contain	${result['error_info']}	${SCLIRG_ERROR}				
+							
+Execute troubleshooting on normal SCLIRG	${result}	get_ipro_info_in_cac					
+	should not contain	${result}	${SCLIRG_ERROR}				
+	${result}	get_specific_ipbr_info_in_cac	${TEST_IPBR_4094}				
+	should not contain	${result}	${SCLIRG_ERROR}				
+							
+Execute troubleshooting on abnormal SCLIRG	${result}	get_ipro_info_in_cac					
+	should contain	${result}	${SCLIRG_ERROR}				
+	${result}	get_specific_ipbr_info_in_cac	${TEST_IPBR_4094}				
+	should contain	${result}	${SCLIRG_ERROR}				

@@ -1,0 +1,825 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen Warming Transfer</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen Warming Transfer</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=35%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B00878</td><td><font color=dark red>Iteration_ID-I00597,I00596,I00682,I00598,I01048</td><td><font color=dark red>Release-IL1_RIS3</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Type-FUT</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><font color=dark red>Element-IL</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_2596</td><td><font color=dark red>Reviewer-zhiyu.yang@nsn.com</td><td><font color=dark red>RW-weekly</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>HW_ENV-RNC</td><td><font color=dark red>Exec_Type-automatic</td><td><font color=dark red>hw_env-RNC_S0</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC_S1</td><td>QL-6</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-RNC_EFS_2152_93</td><td><font color=dark red>EFS_ID-RNC_EFS_2152_144</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/Libgen.html</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To FGW And Setup TestEnv</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear TestEnv And Disconnect From FGW</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test teardown</b></td><td>Restart Testing Process In WO And SP</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=12%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${INQUIRE_HAND}</td><td>0x1773</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SEQUENCE_NUMBER_ONE}</td><td>0x1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MAXTIME_FOR_WARMING_COMPLETE}</td><td>10</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK_INTERVAL}</td><td>2</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK_INTERVAL_SP}</td><td>20</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK_INTERVAL_WO}</td><td>300</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIMER1}</td><td>800</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SMALL_TIME_QUOTA}</td><td>800</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SMALL_TIME_QUOTA_S}</td><td>6</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${BIG_TIME_QUOTA}</td><td>2000</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_COMP_ADDR}</td><td>0x1fff</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SUB_ID_1}</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SUB_ID_2}</td><td>2</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MAX_PROCESS_ID}</td><td>0xffff</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NEEDLESS_WARMING_HAND_GROUP}</td><td>7</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_HAND_GROUP1}</td><td>6</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_HAND_GROUP2}</td><td>4</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MAX_HAND_GROUP}</td><td>0xfff</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FAMILY_ID}</td><td>0x1773</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ALARM_SP}</td><td>70186</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=5><b>Warming Plain Warm Variables Of A Family Success</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.001.AT.I00597</td><td>exec_level-pre</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Change the With-warm Variable In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Not Be Equal Between WO And SP</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Be Equal Between WO And SP</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Change the With-warm Variable In Hand In Handgroup_2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Not Be Equal Between WO And SP</td><td>${PROCESS_WITH_VARIABLE_TEST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Be Equal Between WO And SP</td><td>${PROCESS_WITH_VARIABLE_TEST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming Needless Warm Variables Are Not Warmed</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.002.AT.I00597</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Change Variable With Needless Warm In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With Needless Warm Variable Should Not Be Equal Between WO And SP</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With Needless Warm Variable Should Not Be Equal Between WO And SP</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Change Variable With Needless Warm In Hand In Handgroup_2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With Needless Warm Variable Should Not Be Equal Between WO And SP</td><td>${PROCESS_WITH_VARIABLE_TEST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With Needless Warm Variable Should Not Be Equal Between WO And SP</td><td>${PROCESS_WITH_VARIABLE_TEST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming Libgen Process Hand Related Data Success</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.001.AT.I00596</td><td>reason-this case need restart the test process in sp</td><td>exec_level-pre</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create A Hand With Big Time Quota In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Testing Process In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Hand Related Data Should Be Equal Between WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming Timer Of Family Success</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.001.AT.I00682</td><td>reason-this case include several subcases</td><td>exec_level-pre</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In WO Set A Timer Needing Warming In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Value Should Be Equal Between WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO With Appointed Time Quota</td><td>${CHECK_INTERVAL_WO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP With Appointed Time Quota</td><td>${CHECK_INTERVAL_SP}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Testing Process In WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In WO Set A Timer In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Value Should Be Equal Between WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Testing Process In WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In SP Set A Timer In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Should Not Be Exist In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In SP Set A Timer In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Testing Process In WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In WO Set A Timer Needless Warming In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Should Not Be Exist In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO With Appointed Time Quota</td><td>${CHECK_INTERVAL_WO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Testing Process In WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In SP Set A Timer Needless Warming In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Should Be Exist In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Should Not Be Exist In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Testing Process In WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In SP Set A Timer Needing Warming In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Should Not Be Exist In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Create Hand Timer Warming Success</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.002.AT.I00682</td><td>reason-warming case still need to check</td><td>exec_level-pre</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create A Hand With Small Time Quota In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create A Hand With Big Time Quota In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Time Quota Of Hand Should Be Equal Between WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Refresh Hand Timer Warming Success</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.003.AT.I00682</td><td>reason-during the warming procedure we add some time to check if threads go into sleep</td><td>exec_level-pre</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create A Hand With Big Time Quota In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create A Hand With Big Time Quota In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Refresh Hand With Small Time Quota In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Time Quota Of Hand Should Be Equal Between WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Testing Process In WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create A Hand With Big Time Quota In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create A Hand With Big Time Quota In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Refresh Hand With Small Time Quota In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success And Check Refresh Hand Thread In Stop State</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming buffer of a family in condition master process has buffer in WO when the process hasn't in SP</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.001.AT.I00598</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Set A Buffer Needing Warming In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Be Equal Between WO And SP</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Free Buffer In Master</td><td>${SUB_ID_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Free Buffer In Master</td><td>${SUB_ID_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Set A Needless Warming Buffer In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Not Be Equal Between WO And SP</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Free Buffer In Master</td><td>${SUB_ID_2}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming buffer of a family in condition master process has buffer in SP when process hasn't in WO</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.002.AT.I00598</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Set A Buffer Needing Warming In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Not Be Exist In SP</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Set A Needless Warming Buffer In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Be Exist In SP</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Free Buffer In Master</td><td>${SUB_ID_2}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming buffer of a family in condition the buffer with different content in master between WO and SP</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.003.AT.I00598</td><td>exec_level-pre</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Set A Buffer Needing Warming In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Set A Buffer Needing Warming In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Change Buffer Needing Warming In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Be Equal Between WO And SP</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Free Buffer In Master</td><td>${SUB_ID_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Free Buffer In Master</td><td>${SUB_ID_1}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming buffer of a family in condition hand process has buffer in WO when the process hasn't in SP</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.004.AT.I00598</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Set A Buffer Needing Warming In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Be Equal Between WO And SP</td><td>${BUFFER_PROCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Free Buffer In Hand</td><td>${SUB_ID_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Free Buffer In Hand</td><td>${SUB_ID_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Set A Needless Warming Buffer In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Not Be Equal Between WO And SP</td><td>${BUFFER_PROCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Free Buffer In Hand</td><td>${SUB_ID_2}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming buffer of a family in condition hand process has buffer in SP when process hasn't in WO</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.005.AT.I00598</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Set A Buffer Needing Warming In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Not Be Exist In SP</td><td>${BUFFER_PROCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Set A Needless Warming Buffer In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Be Exist In SP</td><td>${BUFFER_PROCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Free Buffer In Hand</td><td>${SUB_ID_2}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming buffer of a family in condition the buffer with different content in hand between WO and SP</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.006.AT.I00598</td><td>exec_level-pre</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Set A Buffer Needing Warming In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Set A Buffer Needing Warming In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Change Buffer Needing Warming In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Be Equal Between WO And SP</td><td>${BUFFER_PROCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Free Buffer In Hand</td><td>${SUB_ID_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Free Buffer In Hand</td><td>${SUB_ID_1}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming one hand success</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.001.AT.I01048</td><td>reason-this case include several subcases</td><td>exec_level-pre</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Change the With-warm Variable In Master</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Not Be Equal Between WO And SP</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warmimg One Process Success</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Be Equal Between WO And SP</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Change the With-warm Variable In Hand In Handgroup_2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Not Be Equal Between WO And SP</td><td>${PROCESS_WITH_VARIABLE_TEST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warmimg One Process Success</td><td>${PROCESS_WITH_VARIABLE_TEST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Be Equal Between WO And SP</td><td>${PROCESS_WITH_VARIABLE_TEST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Warmed Hand In WO</td><td>${PROCESS_WITH_VARIABLE_TEST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Warmed Hand In SP</td><td>${PROCESS_WITH_VARIABLE_TEST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand Again In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warmimg One Process Success</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Warmed Hand In SP</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Warmed Hand In WO</td><td>${HAND_PRPCESS2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Can't Handle Common Message With Warmed Hand In SP</td><td>${HAND_PRPCESS2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Hand Process Both In WO And SP</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In WO</td><td>${HAND_PRPCESS2}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming one hand failure due to process ID illegal</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.002.AT.I01048</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Warmimg One Illegal Process Failure</td><td>${MAX_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming one hand failure due to process ID is not in needing warming hand group</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.003.AT.I01048</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand Needless Hand Group In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming One Needless Warming Process Failure</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In WO</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming one hand group success</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.004.AT.I01048</td><td>exec_level-pre</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Set A Buffer Needing Warming In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create One Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand Again In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warmimg One Hand Group Success</td><td>${SYNC_HAND_GROUP1}</td><td>${SYNC_HAND_GROUP2}</td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Be Equal Between WO And SP</td><td>${BUFFER_PROCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of WO Free Buffer In Hand</td><td>${SUB_ID_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Of SP Free Buffer In Hand</td><td>${SUB_ID_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Warmed Hand In WO</td><td>${HAND_PRPCESS1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Warmed Hand In SP</td><td>${HAND_PRPCESS1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Warmed Hand In WO</td><td>${HAND_PRPCESS2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Warmed Hand In SP</td><td>${HAND_PRPCESS2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop All Hand Processes</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming one hand group failure due to hand group ID illegal</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.005.AT.I01048</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Warmimg One Illegal Hand Group Failure</td><td>${MAX_HAND_GROUP}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming one hand group with needless warm failure</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.006.AT.I01048</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand Needless Hand Group In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warmimg One Needless Warming Hand Group Failure</td><td>${NEEDLESS_WARMING_HAND_GROUP}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In WO</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming Timer Of Family Success When Date Updated</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Warming.FUT.AT.89659ESPE02</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>register_expect_alarm</td><td><font color=dark red>${ALARM_SP}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Update Date</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Testing Process In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc In WO Set A Timer In Hand</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warming Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Timer Value Should Be Equal Between WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Restart Testing Process In WO And SP</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Change the With-warm Variable In Master</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Change With Warm Variable Message</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Change the With-warm Variable In Hand In Handgroup_2</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Change With Warm Variable Message</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${PROCESS_WITH_VARIABLE_TEST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Change Variable With Needless Warm In Master</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Change Variable With Needless Warm Message</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Change Variable With Needless Warm In Hand In Handgroup_2</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Change Variable With Needless Warm Message</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${PROCESS_WITH_VARIABLE_TEST}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>With-warm Variable Should Be Equal Between WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If With Warm Variable Equal</td><td>${WO_COMP_ADDR}</td><td>${SP_COMP_ADDR}</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${process_id}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Hand Related Data Should Be Equal Between WO And SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Hand Related Data Equal</td><td>${WO_COMP_ADDR}</td><td>${SP_COMP_ADDR}</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc In WO Set A Timer Needing Warming In Master</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needing Warming</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${TIMER1}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc In WO Set A Timer Needless Warming In Master</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needless Warming</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${TIMER1}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc In SP Set A Timer Needing Warming In Master</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needing Warming</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${TIMER1}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc In SP Set A Timer Needless Warming In Master</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needless Warming</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${TIMER1}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc In SP Set A Timer In Hand</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needing Warming</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${TIMER_PROCESS}</td><td>${TIMER1}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc In WO Set A Timer In Hand</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needing Warming</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${TIMER_PROCESS}</td><td>${TIMER1}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Timer Value Should Be Equal Between WO And SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Timer Value Equal</td><td>${WO_COMP_ADDR}</td><td>${SP_COMP_ADDR}</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Timer Should Not Be Exist In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Timer Exist</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Timer Should Be Exist In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Timer Exist</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Timer Should Not Be Exist In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Timer Exist</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Create A Hand With Small Time Quota In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand Used By Warming</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>${hand_id}</td><td>Evaluate</td><td colspan=2>hex(${result[1]})</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${hand_id}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Create A Hand With Big Time Quota In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand Used By Warming</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${BIG_TIME_QUOTA}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>${hand_id}</td><td>Evaluate</td><td colspan=2>hex(${result[1]})</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${hand_id}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Time Quota Of Hand Should Be Equal Between WO And SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Time Quota Of Hand Equal</td><td>${WO_COMP_ADDR}</td><td>${SP_COMP_ADDR}</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Create A Hand With Big Time Quota In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand Used By Warming</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${BIG_TIME_QUOTA}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>${hand_id}</td><td>Evaluate</td><td colspan=2>hex(${result[1]})</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${hand_id}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Refresh Hand With Small Time Quota In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Refresh Hand Used By Warming</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${REFRESH_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Time Quota Of Hand Should Be Exist</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Time Quota Exist</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>With-warm Variable Should Not Be Equal Between WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If With Warm Variable Equal</td><td>${WO_COMP_ADDR}</td><td>${SP_COMP_ADDR}</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${process_id}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Variables Should Be Changed in WO</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Needless Warm Variable Changed</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Variables Should Not Be Changed in SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Needless Warm Variable Changed</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Handle Common Message In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Handle Common Message In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Handle Common Message In WO With Appointed Time Quota</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${appoint_time_value}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle With Time Quota</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td>${appoint_time_value}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Handle Common Message In SP With Appointed Time Quota</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${appoint_time_value}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle With Time Quota</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td>${appoint_time_value}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Handle Common Message With Created Hand In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Handle Common Message With Created Hand In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH_PROCESS_ID}</td><td>${MSG_NUMBER}</td><td>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Warming Complete In SP Unit</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Inquire Warming Complete In SP</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Inquire Periodically If Warming Complete In SP</b></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_WARMING_COMPLETE}</td><td>${CHECK_INTERVAL}</td><td>Warming Complete In SP Unit</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Send Warming Wake Up To Testproc And Return Success</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Wake Up Message</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Send Warming Wake Up To Testproc And Return Success In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Wake Up Message</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Check Refresh Hand Thread In Stop State</b></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>10sec</td><td>${CHECK_INTERVAL}</td><td>Time Quota Of Hand Should Be Exist</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Warming Success And Check Refresh Hand Thread In Stop State</b></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Request To Testproc In WO And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Request To Testproc In SP And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Refresh Hand Thread In Stop State</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Connection Request To Testproc In SP And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Data Transfer Message To Testproc In WO And Wait Until Warming Data Transfer Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Complete Message To Process In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Complete Message To Process In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Wait Some Time For Check</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${time_for_sleep}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>sleep</td><td>${time_for_sleep}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Set A Buffer Needing Warming</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${computer_addr}</td><td><font color=#FF6600>${process_id}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set A Buffer Needing Warming</td><td>${computer_addr}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Buffer Should Be Equal Between WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If With Warm Buffer Equal</td><td>${WO_COMP_ADDR}</td><td>${SP_COMP_ADDR}</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID}</td><td>${process_id}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Set A Needless Warming Buffer</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${computer_addr}</td><td><font color=#FF6600>${process_id}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set A Buffer Needless Warming</td><td>${computer_addr}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Free Buffer</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${computer_addr}</td><td><font color=#FF6600>${process_id}</td><td><font color=#FF6600>${sub_id}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Free Allocated Buffer</td><td>${computer_addr}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td>${sub_id}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Buffer Should Not Be Exist In SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If With Warm Buffer Exist</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Change Buffer Needing Warming</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${computer_addr}</td><td><font color=#FF6600>${process_id}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Change Buffer Needing Warming</td><td>${computer_addr}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of WO Set A Buffer Needing Warming In Master</b></td></tr>
+<tr><td><br></td><td>Test Process Set A Buffer Needing Warming</td><td>${WO_COMP_ADDR}</td><td>${MASTER_PROCESS_ID}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of WO Set A Needless Warming Buffer In Master</b></td></tr>
+<tr><td><br></td><td>Test Process Set A Needless Warming Buffer</td><td>${WO_COMP_ADDR}</td><td>${MASTER_PROCESS_ID}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of WO Free Buffer In Master</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${sub_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Free Buffer</td><td>${WO_COMP_ADDR}</td><td>${MASTER_PROCESS_ID}</td><td>${sub_id}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of SP Free Buffer In Master</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${sub_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Free Buffer</td><td>${SP_COMP_ADDR}</td><td>${MASTER_PROCESS_ID}</td><td>${sub_id}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of SP Set A Buffer Needing Warming In Master</b></td></tr>
+<tr><td><br></td><td>Test Process Set A Buffer Needing Warming</td><td>${SP_COMP_ADDR}</td><td>${MASTER_PROCESS_ID}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of SP Set A Needless Warming Buffer In Master</b></td></tr>
+<tr><td><br></td><td>Test Process Set A Needless Warming Buffer</td><td>${SP_COMP_ADDR}</td><td>${MASTER_PROCESS_ID}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of SP Free Buffer In Hand</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${sub_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Free Buffer</td><td>${SP_COMP_ADDR}</td><td>${BUFFER_PROCESS}</td><td>${sub_id}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of WO Change Buffer Needing Warming In Master</b></td></tr>
+<tr><td><br></td><td>Test Process Change Buffer Needing Warming</td><td>${WO_COMP_ADDR}</td><td>${MASTER_PROCESS_ID}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of WO Set A Buffer Needing Warming In Hand</b></td></tr>
+<tr><td><br></td><td>Test Process Set A Buffer Needing Warming</td><td>${WO_COMP_ADDR}</td><td>${BUFFER_PROCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of WO Set A Needless Warming Buffer In Hand</b></td></tr>
+<tr><td><br></td><td>Test Process Set A Needless Warming Buffer</td><td>${WO_COMP_ADDR}</td><td>${BUFFER_PROCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of WO Free Buffer In Hand</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${sub_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Free Buffer</td><td>${WO_COMP_ADDR}</td><td>${BUFFER_PROCESS}</td><td>${sub_id}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of SP Set A Buffer Needing Warming In Hand</b></td></tr>
+<tr><td><br></td><td>Test Process Set A Buffer Needing Warming</td><td>${SP_COMP_ADDR}</td><td>${BUFFER_PROCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of SP Set A Needless Warming Buffer In Hand</b></td></tr>
+<tr><td><br></td><td>Test Process Set A Needless Warming Buffer</td><td>${SP_COMP_ADDR}</td><td>${BUFFER_PROCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Test Process Of WO Change Buffer Needing Warming In Hand</b></td></tr>
+<tr><td><br></td><td>Test Process Change Buffer Needing Warming</td><td>${WO_COMP_ADDR}</td><td>${BUFFER_PROCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>With Needless Warm Variable Should Not Be Equal Between WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Variables Should Be Changed in WO</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Variables Should Not Be Changed in SP</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Buffer Should Be Changed in WO</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Needless Warm Buffer Changed</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Buffer Should Not Be Changed in SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Needless Warm Buffer Changed</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Buffer Should Be Exist In SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If Needless Warm Buffer Changed</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Buffer Should Not Be Equal Between WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Be Changed in WO</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Buffer Should Not Be Changed in SP</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Warmimg One Process Success</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Request To Testproc In WO And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Request To Testproc In SP And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Connection Request To Testproc In SP And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Data Transfer Message Of One Process To Testproc In WO And Wait Until Warming Data Transfer Success</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Complete Message To Process In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Complete Message To Process In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Send Warming Data Transfer Message Of One Process To Testproc In WO And Wait Until Warming Data Transfer Success</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Warming One Process</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${WARMING_IP}</td><td>${SP_PORT}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Handle Common Message With Warmed Hand In WO</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td>${MSG_NUMBER}</td><td>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Handle Common Message With Warmed Hand In SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td>${MSG_NUMBER}</td><td>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Can't Handle Common Message With Warmed Hand In SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td>${MSG_NUMBER}</td><td>${DELIVERY_RANGE}</td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_COUNT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Create Hand In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand With Same Time Quota</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td colspan=2>${ACK_SUCCESS}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td colspan=2>${result[1]}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Stop Hand Process Both In WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In WO</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In SP</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Stop Created Hand Process In WO</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Hand Process Without Sync</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Stop Created Hand Process In SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Hand Process Without Sync</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Warmimg One Process Failure</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Request To Testproc In WO And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Request To Testproc In SP And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Connection Request To Testproc In SP And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Data Transfer Message Of One Process To Testproc In WO And Return Failure</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Cancel To Testproc And Return Success In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Cancel To Testproc And Return Success In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Send Warming Cancel To Testproc And Return Success In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Cancel Message</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Send Warming Cancel To Testproc And Return Success In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Cancel Message</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Send Warming Data Transfer Message Of One Process To Testproc In WO And Return Failure</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Warming One Process</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${WARMING_IP}</td><td>${SP_PORT}</td></tr>
+<tr><td><br></td><td>...</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Create Hand Needless Hand Group In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand In Needless Hand Group</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>${hand_id}</td><td>Evaluate</td><td colspan=2>hex(${result[1]})</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${hand_id}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Warmimg One Illegal Process Failure</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warmimg One Process Failure</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Warming One Needless Warming Process Failure</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${process_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warmimg One Process Failure</td><td>${process_id}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Create One Hand In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand With Same Time Quota</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>${hand_id}</td><td>Evaluate</td><td colspan=2>hex(${result[1]})</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${HAND_PRPCESS1}</td><td>${hand_id}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Create Hand Again In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand With Same Time Quota</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>${hand_id}</td><td>Evaluate</td><td colspan=2>hex(${result[1]})</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${HAND_PRPCESS2}</td><td>${hand_id}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Warmimg One Hand Group Success</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_group1}</td><td><font color=#FF6600>${hand_group2}</td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Request To Testproc In WO And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Request To Testproc In SP And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Connection Request To Testproc In SP And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Data Transfer Message Of One hand group To Testproc In WO And Return Success</td><td>${hand_group1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Data Transfer Message Of One hand group To Testproc In WO And Return Success</td><td>${hand_group2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Complete Message To Process In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Complete Message To Process In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Warmimg One Hand Group Failure</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_group}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Request To Testproc In WO And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Request To Testproc In SP And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Connection Request To Testproc In SP And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Data Transfer Message Of One hand group To Testproc In WO And Return Failure</td><td>${hand_group}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To CFCP Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Cancel To Testproc And Return Success In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Warming Cancel To Testproc And Return Success In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Send Warming Data Transfer Message Of One hand group To Testproc In WO And Return Success</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_group}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Warming One Hand Group</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${WARMING_IP}</td><td>${SP_PORT}</td></tr>
+<tr><td><br></td><td>...</td><td>${hand_group}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Send Warming Data Transfer Message Of One hand group To Testproc In WO And Return Failure</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_group}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Warming One Hand Group</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${WARMING_IP}</td><td>${SP_PORT}</td></tr>
+<tr><td><br></td><td>...</td><td>${hand_group}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Testproc Stop All Hand Processes</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop All Hand Processes Without Sync</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SYNC_HAND_GROUP1}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop All Hand Processes Without Sync</td><td>${SP_COMP_ADDR}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SYNC_HAND_GROUP1}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Warmimg One Illegal Hand Group Failure</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_group}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warmimg One Hand Group Failure</td><td>${hand_group}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Warmimg One Needless Warming Hand Group Failure</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand_group}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Warmimg One Hand Group Failure</td><td>${hand_group}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Update Date</b></td></tr>
+<tr><td><br></td><td>${DATE}</td><td>Execute CLI</td><td>date '+%H:%M:%S %Y-%m-%d'</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${DATE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>date -s '10:00:00 2011-01-01'</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Recover Date And Restart Testing Process In WO And SP</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>date -s "${DATE.strip()}"</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Testing Process In WO And SP</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

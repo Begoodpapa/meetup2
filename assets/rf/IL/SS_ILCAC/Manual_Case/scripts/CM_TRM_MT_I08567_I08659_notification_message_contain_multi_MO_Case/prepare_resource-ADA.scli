@@ -1,0 +1,309 @@
+#!/opt/nsn/bin/fsclish -f
+
+set cli built-in echo-cmd on
+
+start transaction
+add networking address /QNUP-0 iface ethtest20 ip-address 191.251.10.10/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.100/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.101/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.102/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.103/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.104/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.105/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.106/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.107/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.108/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.109/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.110/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.113/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.114/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.115/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.116/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.117/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.118/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.119/28
+add networking address /QNUP-3 iface ethtest20 ip-address 191.251.10.120/28
+add networking qos-profile idsp idsp-id 1 idsp-name test1
+add networking qos-profile idsp idsp-id 2 idsp-name test2
+add networking qos-profile idsp idsp-id 10 idsp-name test10
+add networking qos-profile iphb iphb-id 1 iphb-name test1
+add networking qos-profile iphb iphb-id 2 iphb-name test2
+add networking qos-profile iphb iphb-id 10 iphb-name test10
+
+add networking ipbr ipbr-id 147 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-147
+add networking ipro ipbr-id 147 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 148 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-148
+add networking ipro ipbr-id 148 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 149 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-149
+add networking ipro ipbr-id 149 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 150 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-150
+add networking ipro ipbr-id 150 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 151 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-151
+add networking ipro ipbr-id 151 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 152 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-152
+add networking ipro ipbr-id 152 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 153 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-153
+add networking ipro ipbr-id 153 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 154 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-154
+add networking ipro ipbr-id 154 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 155 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-155
+add networking ipro ipbr-id 155 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 156 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-156
+add networking ipro ipbr-id 156 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 157 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-157
+add networking ipro ipbr-id 157 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 158 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-158
+add networking ipro ipbr-id 158 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 159 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-159
+add networking ipro ipbr-id 159 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 160 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-160
+add networking ipro ipbr-id 160 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 161 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-161
+add networking ipro ipbr-id 161 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 162 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-162
+add networking ipro ipbr-id 162 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 163 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-163
+add networking ipro ipbr-id 163 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 164 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-164
+add networking ipro ipbr-id 164 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 165 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-165
+add networking ipro ipbr-id 165 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 166 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-166
+add networking ipro ipbr-id 166 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 167 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-167
+add networking ipro ipbr-id 167 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 168 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-168
+add networking ipro ipbr-id 168 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 169 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-169
+add networking ipro ipbr-id 169 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 170 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-170
+add networking ipro ipbr-id 170 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 171 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-171
+add networking ipro ipbr-id 171 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 172 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-172
+add networking ipro ipbr-id 172 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 173 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-173
+add networking ipro ipbr-id 173 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 174 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-174
+add networking ipro ipbr-id 174 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 175 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-175
+add networking ipro ipbr-id 175 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 176 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-176
+add networking ipro ipbr-id 176 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 177 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-177
+add networking ipro ipbr-id 177 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 178 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-178
+add networking ipro ipbr-id 178 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 179 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-179
+add networking ipro ipbr-id 179 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 180 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-180
+add networking ipro ipbr-id 180 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 181 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-181
+add networking ipro ipbr-id 181 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 182 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-182
+add networking ipro ipbr-id 182 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 183 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-183
+add networking ipro ipbr-id 183 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 184 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-184
+add networking ipro ipbr-id 184 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 185 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-185
+add networking ipro ipbr-id 185 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 186 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-186
+add networking ipro ipbr-id 186 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 187 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-187
+add networking ipro ipbr-id 187 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 188 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-188
+add networking ipro ipbr-id 188 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 189 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-189
+add networking ipro ipbr-id 189 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 190 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-190
+add networking ipro ipbr-id 190 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 191 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-191
+add networking ipro ipbr-id 191 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 192 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-192
+add networking ipro ipbr-id 192 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 193 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-193
+add networking ipro ipbr-id 193 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 194 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-194
+add networking ipro ipbr-id 194 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 195 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-195
+add networking ipro ipbr-id 195 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 196 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-196
+add networking ipro ipbr-id 196 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 197 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-197
+add networking ipro ipbr-id 197 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 198 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-198
+add networking ipro ipbr-id 198 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 199 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-199
+add networking ipro ipbr-id 199 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 200 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-200
+add networking ipro ipbr-id 200 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 201 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-201
+add networking ipro ipbr-id 201 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 202 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-202
+add networking ipro ipbr-id 202 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 203 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-203
+add networking ipro ipbr-id 203 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 204 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-204
+add networking ipro ipbr-id 204 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 205 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-205
+add networking ipro ipbr-id 205 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 206 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-206
+add networking ipro ipbr-id 206 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 207 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-207
+add networking ipro ipbr-id 207 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 208 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-208
+add networking ipro ipbr-id 208 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 209 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-209
+add networking ipro ipbr-id 209 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 210 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-210
+add networking ipro ipbr-id 210 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 211 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-211
+add networking ipro ipbr-id 211 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 212 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-212
+add networking ipro ipbr-id 212 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 213 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-213
+add networking ipro ipbr-id 213 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 214 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-214
+add networking ipro ipbr-id 214 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 215 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-215
+add networking ipro ipbr-id 215 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 216 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-216
+add networking ipro ipbr-id 216 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 217 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-217
+add networking ipro ipbr-id 217 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 218 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-218
+add networking ipro ipbr-id 218 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 219 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-219
+add networking ipro ipbr-id 219 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 220 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-220
+add networking ipro ipbr-id 220 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 221 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-221
+add networking ipro ipbr-id 221 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 222 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-222
+add networking ipro ipbr-id 222 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 223 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-223
+add networking ipro ipbr-id 223 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 224 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-224
+add networking ipro ipbr-id 224 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 225 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-225
+add networking ipro ipbr-id 225 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 226 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-226
+add networking ipro ipbr-id 226 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 227 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-227
+add networking ipro ipbr-id 227 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 228 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-228
+add networking ipro ipbr-id 228 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 229 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-229
+add networking ipro ipbr-id 229 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 230 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-230
+add networking ipro ipbr-id 230 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 231 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-231
+add networking ipro ipbr-id 231 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 232 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-232
+add networking ipro ipbr-id 232 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 233 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-233
+add networking ipro ipbr-id 233 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 234 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-234
+add networking ipro ipbr-id 234 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 235 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-235
+add networking ipro ipbr-id 235 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 236 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-236
+add networking ipro ipbr-id 236 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 237 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-237
+add networking ipro ipbr-id 237 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 238 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-238
+add networking ipro ipbr-id 238 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 239 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-239
+add networking ipro ipbr-id 239 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 240 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-240
+add networking ipro ipbr-id 240 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 241 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-241
+add networking ipro ipbr-id 241 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 242 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-242
+add networking ipro ipbr-id 242 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 243 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-243
+add networking ipro ipbr-id 243 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 244 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-244
+add networking ipro ipbr-id 244 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+add networking ipbr ipbr-id 245 committed-bandwidth 1000 committed-dcn-bandwidth 1 committed-sig-bandwidth 1 route-bandwidth 1100 ipbr-name test-245
+add networking ipro ipbr-id 245 ip-address 191.251.10.10 owner /QNUP-0 iface ethtest20
+
+add networking monitoring bfd session /EIPU-0 name 1000 dstaddr 191.251.10.10 srcaddr 191.251.10.100 reference-id 130
+add networking monitoring bfd session /EIPU-1 name 1001 dstaddr 191.251.10.10 srcaddr 191.251.10.100 reference-id 130
+add networking monitoring bfd session /EIPU-2 name 1002 dstaddr 191.251.10.100 srcaddr 191.251.10.10
+add networking monitoring bfd session /EIPU-3 name 1003 dstaddr 191.251.10.100 srcaddr 191.251.10.10
+add networking monitoring bfd session /EIPU-0 name 1004 dstaddr 191.251.10.10 srcaddr 191.251.10.101 reference-id 131
+add networking monitoring bfd session /EIPU-1 name 1005 dstaddr 191.251.10.10 srcaddr 191.251.10.101 reference-id 131
+add networking monitoring bfd session /EIPU-2 name 1006 dstaddr 191.251.10.101 srcaddr 191.251.10.10
+add networking monitoring bfd session /EIPU-3 name 1007 dstaddr 191.251.10.101 srcaddr 191.251.10.10
+add networking monitoring bfd session /EIPU-0 name 1008 dstaddr 191.251.10.10 srcaddr 191.251.10.102 reference-id 132
+add networking monitoring bfd session /EIPU-1 name 1009 dstaddr 191.251.10.10 srcaddr 191.251.10.102 reference-id 132
+add networking monitoring bfd session /EIPU-2 name 1010 dstaddr 191.251.10.102 srcaddr 191.251.10.10
+add networking monitoring bfd session /EIPU-3 name 1011 dstaddr 191.251.10.102 srcaddr 191.251.10.10
+add networking monitoring bfd session /EIPU-0 name 1012 dstaddr 191.251.10.103 srcaddr 191.251.10.10 reference-id 133
+add networking monitoring bfd session /EIPU-1 name 1013 dstaddr 191.251.10.103 srcaddr 191.251.10.10 reference-id 133
+add networking monitoring bfd session /EIPU-2 name 1014 dstaddr 191.251.10.10 srcaddr 191.251.10.103
+add networking monitoring bfd session /EIPU-3 name 1015 dstaddr 191.251.10.10 srcaddr 191.251.10.103
+add networking monitoring bfd session /EIPU-0 name 1016 dstaddr 191.251.10.104 srcaddr 191.251.10.10 reference-id 134
+add networking monitoring bfd session /EIPU-1 name 1017 dstaddr 191.251.10.104 srcaddr 191.251.10.10 reference-id 134
+add networking monitoring bfd session /EIPU-2 name 1018 dstaddr 191.251.10.10 srcaddr 191.251.10.104
+add networking monitoring bfd session /EIPU-3 name 1019 dstaddr 191.251.10.10 srcaddr 191.251.10.104
+add networking monitoring bfd session /EIPU-0 name 1020 dstaddr 191.251.10.105 srcaddr 191.251.10.10 reference-id 135
+add networking monitoring bfd session /EIPU-1 name 1021 dstaddr 191.251.10.105 srcaddr 191.251.10.10 reference-id 135
+add networking monitoring bfd session /EIPU-2 name 1022 dstaddr 191.251.10.10 srcaddr 191.251.10.105
+add networking monitoring bfd session /EIPU-3 name 1023 dstaddr 191.251.10.10 srcaddr 191.251.10.105
+add networking monitoring bfd session /EIPU-0 name 1024 dstaddr 191.251.10.106 srcaddr 191.251.10.10 reference-id 136
+add networking monitoring bfd session /EIPU-1 name 1025 dstaddr 191.251.10.106 srcaddr 191.251.10.10 reference-id 136
+add networking monitoring bfd session /EIPU-2 name 1026 dstaddr 191.251.10.10 srcaddr 191.251.10.106
+add networking monitoring bfd session /EIPU-3 name 1027 dstaddr 191.251.10.10 srcaddr 191.251.10.106
+add networking monitoring bfd session /EIPU-0 name 1028 dstaddr 191.251.10.107 srcaddr 191.251.10.10 reference-id 137
+add networking monitoring bfd session /EIPU-1 name 1029 dstaddr 191.251.10.107 srcaddr 191.251.10.10 reference-id 137
+add networking monitoring bfd session /EIPU-2 name 1030 dstaddr 191.251.10.10 srcaddr 191.251.10.107
+add networking monitoring bfd session /EIPU-3 name 1031 dstaddr 191.251.10.10 srcaddr 191.251.10.107
+add networking monitoring bfd session /EIPU-0 name 1032 dstaddr 191.251.10.108 srcaddr 191.251.10.10 reference-id 138
+add networking monitoring bfd session /EIPU-1 name 1033 dstaddr 191.251.10.108 srcaddr 191.251.10.10 reference-id 138
+add networking monitoring bfd session /EIPU-2 name 1034 dstaddr 191.251.10.10 srcaddr 191.251.10.108
+add networking monitoring bfd session /EIPU-3 name 1035 dstaddr 191.251.10.10 srcaddr 191.251.10.108
+add networking monitoring bfd session /EIPU-0 name 1036 dstaddr 191.251.10.109 srcaddr 191.251.10.10 reference-id 139
+add networking monitoring bfd session /EIPU-1 name 1037 dstaddr 191.251.10.109 srcaddr 191.251.10.10 reference-id 139
+add networking monitoring bfd session /EIPU-2 name 1038 dstaddr 191.251.10.10 srcaddr 191.251.10.109
+add networking monitoring bfd session /EIPU-3 name 1039 dstaddr 191.251.10.10 srcaddr 191.251.10.109
+add networking monitoring bfd session /EIPU-0 name 1040 dstaddr 191.251.10.110 srcaddr 191.251.10.10 reference-id 140
+add networking monitoring bfd session /EIPU-1 name 1041 dstaddr 191.251.10.110 srcaddr 191.251.10.10 reference-id 140
+add networking monitoring bfd session /EIPU-2 name 1042 dstaddr 191.251.10.10 srcaddr 191.251.10.110
+add networking monitoring bfd session /EIPU-3 name 1043 dstaddr 191.251.10.10 srcaddr 191.251.10.110
+add networking monitoring bfd session /EIPU-0 name 1052 dstaddr 191.251.10.113 srcaddr 191.251.10.10 reference-id 143
+add networking monitoring bfd session /EIPU-1 name 1053 dstaddr 191.251.10.113 srcaddr 191.251.10.10 reference-id 143
+add networking monitoring bfd session /EIPU-2 name 1054 dstaddr 191.251.10.10 srcaddr 191.251.10.113
+add networking monitoring bfd session /EIPU-3 name 1055 dstaddr 191.251.10.10 srcaddr 191.251.10.113
+add networking monitoring bfd session /EIPU-0 name 1056 dstaddr 191.251.10.114 srcaddr 191.251.10.10 reference-id 144
+add networking monitoring bfd session /EIPU-1 name 1057 dstaddr 191.251.10.114 srcaddr 191.251.10.10 reference-id 144
+add networking monitoring bfd session /EIPU-2 name 1058 dstaddr 191.251.10.10 srcaddr 191.251.10.114
+add networking monitoring bfd session /EIPU-3 name 1059 dstaddr 191.251.10.10 srcaddr 191.251.10.114
+add networking monitoring bfd session /EIPU-0 name 1060 dstaddr 191.251.10.115 srcaddr 191.251.10.10 reference-id 145
+add networking monitoring bfd session /EIPU-1 name 1061 dstaddr 191.251.10.115 srcaddr 191.251.10.10 reference-id 145
+add networking monitoring bfd session /EIPU-2 name 1062 dstaddr 191.251.10.10 srcaddr 191.251.10.115
+add networking monitoring bfd session /EIPU-3 name 1063 dstaddr 191.251.10.10 srcaddr 191.251.10.115
+add networking monitoring bfd session /EIPU-0 name 1064 dstaddr 191.251.10.116 srcaddr 191.251.10.10 reference-id 146
+add networking monitoring bfd session /EIPU-1 name 1065 dstaddr 191.251.10.116 srcaddr 191.251.10.10 reference-id 146
+add networking monitoring bfd session /EIPU-2 name 1066 dstaddr 191.251.10.10 srcaddr 191.251.10.116
+add networking monitoring bfd session /EIPU-3 name 1067 dstaddr 191.251.10.10 srcaddr 191.251.10.116
+add networking monitoring bfd session /EIPU-0 name 1068 dstaddr 191.251.10.117 srcaddr 191.251.10.10 reference-id 147
+add networking monitoring bfd session /EIPU-1 name 1069 dstaddr 191.251.10.117 srcaddr 191.251.10.10 reference-id 147
+add networking monitoring bfd session /EIPU-2 name 1070 dstaddr 191.251.10.10 srcaddr 191.251.10.117
+add networking monitoring bfd session /EIPU-3 name 1071 dstaddr 191.251.10.10 srcaddr 191.251.10.117
+add networking monitoring bfd session /EIPU-0 name 1072 dstaddr 191.251.10.118 srcaddr 191.251.10.10 reference-id 148
+add networking monitoring bfd session /EIPU-1 name 1073 dstaddr 191.251.10.118 srcaddr 191.251.10.10 reference-id 148
+add networking monitoring bfd session /EIPU-2 name 1074 dstaddr 191.251.10.10 srcaddr 191.251.10.118
+add networking monitoring bfd session /EIPU-3 name 1075 dstaddr 191.251.10.10 srcaddr 191.251.10.118
+add networking monitoring bfd session /EIPU-0 name 1076 dstaddr 191.251.10.119 srcaddr 191.251.10.10 reference-id 149
+add networking monitoring bfd session /EIPU-1 name 1077 dstaddr 191.251.10.119 srcaddr 191.251.10.10 reference-id 149
+add networking monitoring bfd session /EIPU-2 name 1078 dstaddr 191.251.10.10 srcaddr 191.251.10.119
+add networking monitoring bfd session /EIPU-3 name 1079 dstaddr 191.251.10.10 srcaddr 191.251.10.119
+
+
+commit transaction
+
+
+quit

@@ -1,0 +1,135 @@
+D M X M S G					
+
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	il.html				
+Library	Collections				
+
+
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+${UNIT_TYPE_SE_EITP}	0x127	# Init definitions			
+${UNIT_TYPE_SE_USUP}	0x126	# Init definitions			
+${UNIT_TYPE_SE_CSUP}	0x124	# Init definitions			
+${UNIT_TYPE_OMU}	0x2	# Init definitions			
+${UNIT_TYPE_CFCP}	0x147	# Init definitions			
+${UNIT_TYPE_CSCP}	0x149	# Init definitions			
+${UNIT_TYPE_USCP}	0x125	# Init definitions			
+${UNIT_TYPE_EITPProxy}	0x128	# Init definitions			
+${UNIT_TYPE_CSUPProxy}	0x129	# Init definitions			
+${UNIT_TYPE_USUPProxy}	0x12A	# Init definitions			
+${UNIT_TYPE_CM}	0x4	# Init definitions			
+${UNIT_TYPE_IPNIU}	0x12A	# Init definitions			
+${UNIT_TYPE_DSPM}	0x5E0	# Init definitions			
+${UNIT_TYPE_TDMMGU}	0x5E1	# Init definitions			
+					
+@{ALL NODES List}	CFPU-0				
+					
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Get Phys Addr By UnitType	[Arguments]	${ut}	${index}		
+	${out} =	dmxcli2_Query_Phys_Addr	${ut}	${index}	
+	[Return]	${out}			
+
+Fetch All Physical Addr	Change To RU Env	omu			
+	Fetch All Unit Type				
+	${PHYS_ADDR_SE_EITP} =	Create Physical Addr List	${UNIT_TYPE_SE_EITP}	4
+	${PHYS_ADDR_SE_CSUP} =	Create Physical Addr List	${UNIT_TYPE_SE_CSUP}	4
+	${PHYS_ADDR_SE_USUP} =	Create Physical Addr List	${UNIT_TYPE_SE_USUP}	6
+	${PHYS_ADDR_OMU} =	Create Physical Addr List	${UNIT_TYPE_OMU}	2
+	${PHYS_ADDR_CFCP} =	Create Physical Addr List	${UNIT_TYPE_CFCP}	2
+	${PHYS_ADDR_CSCP} =	Create Physical Addr List	${UNIT_TYPE_CSCP}	4
+	${PHYS_ADDR_USCP} =	Create Physical Addr List	${UNIT_TYPE_USCP}	6
+	${PHYS_ADDR_EITPProxy} =	Create Physical Addr List	${UNIT_TYPE_EITPProxy}	4
+	${PHYS_ADDR_CSUPProxy} =	Create Physical Addr List	${UNIT_TYPE_CSUPProxy}	4
+	${PHYS_ADDR_USUPProxy} =	Create Physical Addr List	${UNIT_TYPE_USUPProxy}	6
+	${PHYS_ADDR_CM} =	Create Physical Addr List	${UNIT_TYPE_CM}	2
+	${PHYS_ADDR_IPNIU} =	Create Physical Addr List	${UNIT_TYPE_IPNIU}	2
+	${PHYS_ADDR_DSPM} =	Create Physical Addr List	${UNIT_TYPE_DSPM}	2
+	${PHYS_ADDR_TDMMGU} =	Create Physical Addr List	${UNIT_TYPE_TDMMGU}	2
+	Set Suite Variable	\${PHYS_ADDR_SE_EITP}		
+	Set Suite Variable	\${PHYS_ADDR_SE_CSUP}		
+	Set Suite Variable	\${PHYS_ADDR_SE_USUP}		
+	Set Suite Variable	\${PHYS_ADDR_OMU}		
+	Set Suite Variable	\${PHYS_ADDR_CFCP}		
+	Set Suite Variable	\${PHYS_ADDR_CSCP}		
+	Set Suite Variable	\${PHYS_ADDR_USCP}		
+	Set Suite Variable	\${PHYS_ADDR_EITPProxy}		
+	Set Suite Variable	\${PHYS_ADDR_CSUPProxy}		
+	Set Suite Variable	\${PHYS_ADDR_USUPProxy}		
+	Set Suite Variable	\${PHYS_ADDR_CM}		
+	Set Suite Variable	\${PHYS_ADDR_IPNIU}		
+	Set Suite Variable	\${PHYS_ADDR_DSPM}		
+	Set Suite Variable	\${PHYS_ADDR_TDMMGU}		
+
+Create Physical Addr List	[Arguments]	${Ru Type}	${Ru Num}	
+	${Phys List}=	CreateList		
+	:FOR	${i}	IN RANGE	${Ru Num}
+		${phys addr}=	Get Phys Addr By UnitType	${Ru Type}	0x${i}
+		Append To List	${Phys List}	${phys addr}	
+	[Return]	${Phys List}			
+
+Set All Node List					
+	Run Keyword If	'%{HW}'=='MGW'	Set Node List on AB3		
+	Run Keyword If	'%{DETAIL_HW}'=='BCN'	Set Node List on BCN		
+	Run Keyword If	'%{DETAIL_HW}'=='BCN_S1'	Set Node List on BCN8+8		
+
+Set Node List on AB3					
+	@{ALL NODES List}	Set variable	CLA-0	CLA-1	IPNIU-0
+	...	IPNIU-1	TCU-0	TCU-1	
+	Set Suite Variable	\@{ALL NODES List}			
+
+Set Node List on BCN					
+	@{ALL NODES List}	Set variable	CFPU-0	CSPU-0	CSPU-1
+	...	USPU-0	USPU-1	USPU-2	EIPU-0
+	...	EIPU-1			
+	Set Suite Variable	\@{ALL NODES List}			
+
+Set Node List on BCN8+8					
+	@{ALL NODES List}	Set variable	CFPU-0	CFPU-1	CSPU-0
+	...	CSPU-1	CSPU-2	CSPU-3	USPU-0
+	...	USPU-1	USPU-2	USPU-3	USPU-4
+	...	USPU-5	EIPU-0	EIPU-1	EIPU-2
+	...	EIPU-3			
+	Set Suite Variable	\@{ALL NODES List}			
+
+Fetch All Unit Type					
+	Run Keyword If	'%{HW}'=='MGW'	Fetch MGW Unit Type		
+	Run Keyword If	'%{HW}'=='RNC'	Fetch RNC Unit Type		
+
+Fetch MGW Unit Type			
+	${UNIT_TYPE_OMU}	Set variable	%{OMU_TYPE}
+	${UNIT_TYPE_CFCP}	Set variable	%{CFCP_TYPE}
+	${UNIT_TYPE_CSCP}	Set variable	%{CSCP_TYPE}
+	${UNIT_TYPE_USCP}	Set variable	%{USCP_TYPE}
+	${UNIT_TYPE_CM}	Set variable	%{CM_TYPE}
+	${UNIT_TYPE_IPNIU}	Set variable	%{IPNIU_TYPE}
+	${UNIT_TYPE_DSPM}	Set variable	%{DSPM_TYPE}
+	${UNIT_TYPE_TDMMGU}	Set variable	%{TDMMGU_TYPE}
+	Set Suite Variable	\${UNIT_TYPE_OMU}	
+	Set Suite Variable	\${UNIT_TYPE_CFCP}	
+	Set Suite Variable	\${UNIT_TYPE_CSCP}	
+	Set Suite Variable	\${UNIT_TYPE_USCP}	
+	Set Suite Variable	\${UNIT_TYPE_CM}	
+	Set Suite Variable	\${UNIT_TYPE_IPNIU}	
+	Set Suite Variable	\${UNIT_TYPE_DSPM}	
+	Set Suite Variable	\${UNIT_TYPE_TDMMGU}	
+
+Fetch RNC Unit Type			
+	${UNIT_TYPE_SE_EITP}	Set variable	%{EITP_TYPE}
+	${UNIT_TYPE_SE_USUP}	Set variable	%{USUP_TYPE}
+	${UNIT_TYPE_SE_CSUP}	Set variable	%{CSUP_TYPE}
+	${UNIT_TYPE_OMU}	Set variable	%{OMU_TYPE}
+	${UNIT_TYPE_CFCP}	Set variable	%{CFCP_TYPE}
+	${UNIT_TYPE_CSCP}	Set variable	%{CSCP_TYPE}
+	${UNIT_TYPE_USCP}	Set variable	%{USCP_TYPE}
+	${UNIT_TYPE_EITPProxy}	Set variable	%{EITPProxy_TYPE}
+	${UNIT_TYPE_CSUPProxy}	Set variable	%{CSUPProxy_TYPE}
+	${UNIT_TYPE_USUPProxy}	Set variable	%{USUPProxy_TYPE}
+	Set Suite Variable	\${UNIT_TYPE_SE_EITP}	
+	Set Suite Variable	\${UNIT_TYPE_SE_USUP}	
+	Set Suite Variable	\${UNIT_TYPE_SE_CSUP}	
+	Set Suite Variable	\${UNIT_TYPE_OMU}
+	Set Suite Variable	\${UNIT_TYPE_CFCP}
+	Set Suite Variable	\${UNIT_TYPE_CSCP}
+	Set Suite Variable	\${UNIT_TYPE_USCP}
+	Set Suite Variable	\${UNIT_TYPE_EITPProxy}
+	Set Suite Variable	\${UNIT_TYPE_CSUPProxy}
+	Set Suite Variable	\${UNIT_TYPE_USUPProxy}

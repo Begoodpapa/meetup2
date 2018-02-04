@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen Timer Improvement Into External Queue</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen Timer Improvement Into External Queue</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B03248</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-4464</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-il</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-6</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-mail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC_S1</td><td><font color=dark red>hw_env-AB</td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-MGW_AB3</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red><font color=dark red>bcn_step-S1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT and Get Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Cleanup and Disconnect From SUT</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Setup</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Teardown</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/new_timer_Resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${INTERVAL_SLEEP}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${INTERVAL_MONSTER}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${READ_FAILED}</td><td>TIMER expired or unsetted</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIME_OUT}</td><td>expired</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_PROCESS_ID}</td><td>0xA476</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_STUB}</td><td>IL_TestThermoStub2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${EXTERNAL_QUEUE_SINGLETHREAD}</td><td>warmprocmas:42100</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIME_OUT_INFO}</td><td>Received timer time out message with number:</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NO_TIME_OUT_INFO}</td><td>Received timer time out message with number: 0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ONE_TIME_OUT_INFO}</td><td>Received timer time out message with number: 1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${EMPTY}</td><td>${None}</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIMER_MSG_HEAD}</td><td>${EMPTY} 0051 ${EMPTY}</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WARMING_TIMER_MSG_NUMBER}</td><td colspan=2>9915</td></tr>
+<tr bgcolor=#FFFFFF><td>${SINGLE_TIMER_MSG_NUMBER_9905}</td><td colspan=2>9905</td></tr>
+<tr bgcolor=#FFFFFF><td>${SINGLE_TIMER_MSG_NUMBER}</td><td colspan=2>9906</td></tr>
+<tr bgcolor=#FFFFFF><td>${STATEFUL_SINGLE_TIMER_MSG_NUMBER}</td><td colspan=2>9907</td></tr>
+<tr bgcolor=#FFFFFF><td>${SINGLE_WARMING}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WARMING_SINGLE}</td><td>2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SINGLE_EXTMSG}</td><td>3</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${EXTMSG_WARMING}</td><td>4</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONFIG_FILE}</td><td colspan=2>/etc/LibgenConfig_OMU.ini</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>With Default Single Timer Option, On WO Side, Single Timer Timeout Msg Should Into External Queue And The Counterpart Should Not Recv This Timer Msg</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test CLI is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monster test process with arrive point at background \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start CLI \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLI will do set timer on wo \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Timer time out \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time out message is handled on wo \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query timer on test process \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check Monster Result Timer Into External\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time out message is monitored on wo \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time out message is not monitored on sp \n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Should recieve time out message on wo\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.FUT.001.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.FUT.002.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster timer and timeout With Arrive Point at WO and SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set single timer</td><td>${OMU WO PHYSICAL ADDRESS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep For Timer</td><td colspan=4>${INTERVAL_SLEEP}</td></tr>
+<tr><td><br></td><td><font color=blue>#Should Recieve one Time Out Message through Cli on WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Should Recieve TimeOut Message through Monster for Single Timer</td><td>WO</td></tr>
+<tr><td><br></td><td>...</td><td>2</td><td>${SINGLE_TIMER_MSG_NUMBER_9905}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Should Recieve TimeOut Message through Monster for Single Timer</td><td>SP</td></tr>
+<tr><td><br></td><td>...</td><td>0</td><td>${SINGLE_TIMER_MSG_NUMBER_9905}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[TearDown]</td><td><font color=dark red>Kill All Monster Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>With Timer Into External Queue Option, On SP Side, Single Timer Timeout Msg Should Into External Queue And The Counterpart Should Not Recv This Timer Msg</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test CLI is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monster test process with arrive point at background \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start CLI \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLI will do set timer on sp \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Timer time out \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time out message is handled on sp \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query timer on test process \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check Monster Result Timer Into External\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time out message is monitored on sp \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time out message is not monitored on wo \n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Should recieve time out message on sp\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.FUT.003.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster timer and timeout With Arrive Point at WO and SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set single timer</td><td>${OMU SP PHYSICAL ADDRESS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep For Timer</td><td colspan=4>${INTERVAL_SLEEP}</td></tr>
+<tr><td><br></td><td><font color=blue>#Should Recieve one Time Out Message through Cli on WO and SP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Should Recieve TimeOut Message through Monster for Single Timer</td><td>SP</td></tr>
+<tr><td><br></td><td>...</td><td>2</td><td>${SINGLE_TIMER_MSG_NUMBER_9905}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Should Recieve TimeOut Message through Monster for Single Timer</td><td>WO</td></tr>
+<tr><td><br></td><td>...</td><td>0</td><td>${SINGLE_TIMER_MSG_NUMBER_9905}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[TearDown]</td><td><font color=dark red>Kill All Monster Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>With Timer Into Internal Queue Option, Warming Timer And Single Timer Timeout At Same Time, First Set Timer Timeout Msg Should Be Gotten First</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test CLI is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monster test process at background \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start CLI \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLI will do set warming timer both on wo and sp \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLI will do set single timer on wo \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Two timer time out together \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First setted warming timer time out message is handled first \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Single timer time out message is handled \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query timer on test process \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check Monster Result \n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Should recieve two timers time out message as sequence\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note: it is related to current libgen scheduler not official support this timeout msg order\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and only can keep this timeout msg order in single thread.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.FUT.004.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td colspan=4><font color=dark red>With Timer Into Internal Queue Option</td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster timer and timeout With Arrive Point at WO and SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Start CLI For set warming and single timer</td></tr>
+<tr><td><br></td><td>Sleep For Timer</td><td colspan=4>${INTERVAL_SLEEP}</td></tr>
+<tr><td><br></td><td>Should Recieve One Time Out Message through Cli on WO And SP</td><td>2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Should Recieve TimeOut Message through Monster on WO and SP, And Two Timeout Message Keep Order</td><td>1</td></tr>
+<tr><td><br></td><td>...</td><td>2</td><td>${WARMING_SINGLE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[TearDown]</td><td><font color=dark red>Kill All Monster Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>With Timer Into External Queue Option, Warming Timer And Single Timer Timeout At Same Time, First Set Timer Timeout Msg Should Be Gotten First</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test CLI is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monster test process at background \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start CLI \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLI will do set warming timer both on wo and sp \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLI will do set single timer on wo \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Two timer time out together \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First setted warming timer time out message is handled first \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Single timer time out message is handled \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query timer on test process \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check Monster Result \n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Should recieve two timers time out message as sequence\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.FUT.005.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster timer and timeout With Arrive Point at WO and SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Start CLI For set warming and single timer</td></tr>
+<tr><td><br></td><td>Sleep For Timer</td><td colspan=4>${INTERVAL_SLEEP}</td></tr>
+<tr><td><br></td><td>Should Recieve One Time Out Message through Cli on WO And SP</td><td>2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Should Recieve TimeOut Message through Monster on WO and SP, And Two Timeout Message Keep Order</td><td>2</td></tr>
+<tr><td><br></td><td>...</td><td>2</td><td>${WARMING_SINGLE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[TearDown]</td><td><font color=dark red>Kill All Monster Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>With timer into external queue option, Reset setted single timer</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test CLI is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monster test process with arrive point at background \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start CLI \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLI will do set warming timer both on wo and sp \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Timer time out \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reset timer before time out message is handled \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query timer on test process \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check Monster Result \n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Should not recieve time out message\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.FUT.006.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster timer and timeout at WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start CLI For reset setted single timer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep For Timer</td><td colspan=4>${INTERVAL_SLEEP}</td></tr>
+<tr><td><br></td><td>Should not recieve Time Out Message through Cli on WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Should not Recieve TimeOut Message through Monster on WO for Single Timer</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[TearDown]</td><td><font color=dark red>Kill All Monster Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>With timer into external queue option, Set setted single timer</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test CLI is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monster test process with arrive point at background \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start CLI \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query timer on test process \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check Monster Result Timer Into External \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Should only recieve one time out message\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.FUT.007.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>ADD_DATE_IN_DEBUG</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster timer and timeout at WO Env</td><td>monitor_a</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start CLI For set setted single timer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep For Timer</td><td colspan=4>${INTERVAL_SLEEP}</td></tr>
+<tr><td><br></td><td>Should Recieve one Time Out Message through Cli on WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Should Recieve TimeOut Message through Monster for Single Timer</td><td>WO</td></tr>
+<tr><td><br></td><td>...</td><td>4</td><td>${SINGLE_TIMER_MSG_NUMBER}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Seq Num should equal two in Timer on WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[TearDown]</td><td><font color=dark red>Kill All Monster Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>With timer into external queue option, Set Reset Set single timer</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test CLI is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monster test process with arrive point at background \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start CLI \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query timer on test process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check Monster Result Timer Into External\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Should only recieve one time out message\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.FUT.008.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster timer and timeout at WO Env</td><td>monitor_a</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start CLI For Set Reset Set single timer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep For Timer</td><td colspan=4>${INTERVAL_SLEEP}</td></tr>
+<tr><td><br></td><td>Should Recieve one Time Out Message through Cli on WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Should Recieve TimeOut Message through Monster for Single Timer</td><td>WO</td></tr>
+<tr><td><br></td><td>...</td><td>4</td><td>${SINGLE_TIMER_MSG_NUMBER}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Seq Num should equal two in Timer on WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[TearDown]</td><td><font color=dark red>Kill All Monster Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>With timer into external queue option, Reset Set single timer</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test CLI is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reset timer with CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Should not have any timer info<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set timer \n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Should only recieve one time out message\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.FUT.009.AT.I08307</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster timer and timeout at WO Env</td><td>monitor_a</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start CLI for Reset Single Timer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Have Any Timer Info on WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start CLI For Set single timer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep For Timer</td><td colspan=4>${INTERVAL_SLEEP}</td></tr>
+<tr><td><br></td><td>Should Recieve one Time Out Message through Cli on WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Should Recieve TimeOut Message through Monster for Single Timer</td><td>WO</td></tr>
+<tr><td><br></td><td>...</td><td>2</td><td>${SINGLE_TIMER_MSG_NUMBER}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[TearDown]</td><td><font color=dark red>Kill All Monster Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Warming Timer Timeout Msg With Default Sync hand creation optimization behavior Disabled</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test CLI is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monster test process at background \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start CLI \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. CLI will start a command to ask family set a timer, meanwhile deliver a new external message to family \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Timer time out \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check Monster Result: the external message got first, then the warming timeout got \n\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query timer on test process \n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check the warming timeout got fitst, then external message got \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.FUT.010.AT.I08307</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster Testprocess TimeOut Message on WO Env</td><td>monster -u ${OMU WO PHYSICAL ADDRESS} -f ${TEST_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster Testprocess TimeOut Message on SP Env</td><td>monster -u ${OMU SP PHYSICAL ADDRESS} -f ${TEST_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start CLI For Set Warming Timer And Send A External Msg</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Should Recieve TimeOut Message through Monster on WO and SP, And Two Timeout Message Keep Order</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>0</td><td>1</td><td>${EXTMSG_WARMING}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Recieve One Time Out Message through Cli on WO And SP</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[TearDown]</td><td><font color=dark red>Kill All Monster Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>With timer into external queue option, Single Timer Timeout Msg With Sync hand creation optimization behavior Enabled</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test CLI is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monster test process at background \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start CLI \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLI will start a command to ask family set a timer, meanwhile deliver a new external message to family \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Timer time out \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query timer on test process \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check Monster Result: the single timeout got first, then external msg got \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check the external message got first, then warming timeout got first \n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note: only can keep these msgs order in single thread.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LIBGEN_TIMER_IMPROVEMENT.FUT.011.AT.I08307</td><td>not-ready</td><td>reason-this_options_will_be_removed</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td colspan=4><font color=dark red>Update Ini Configuration On WO And Restart Testprocess</td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster Testprocess TimeOut Message on WO Env</td><td>monster -u ${OMU WO PHYSICAL ADDRESS} -f ${TEST_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Monster Testprocess TimeOut Message on SP Env</td><td>monster -u ${OMU SP PHYSICAL ADDRESS} -f ${TEST_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start CLI For Set Single Timer And Send A External Msg</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Should Recieve TimeOut Message through Monster on WO and SP, And Two Timeout Message Keep Order</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>0</td><td>${SINGLE_EXTMSG}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[TearDown]</td><td colspan=4><font color=dark red>Recover Ini On WO and Kill All Monster Process</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Update Ini Configuration On WO And Restart Testprocess</b></td></tr>
+<tr><td><br></td><td>Register_expect_alarm</td><td>70186</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Switch To WO Env</td></tr>
+<tr><td><br></td><td>${BACKUP_FILE}</td><td>update_ini_configuration</td><td>${CONFIG_FILE}</td><td>add</td><td>${EXTERNAL_QUEUE_SINGLETHREAD}</td></tr>
+<tr><td><br></td><td>...</td><td>null</td><td>sync_hand_creation_optimize=1</td><td>SAVE</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td colspan=4>\${BACKUP_FILE}</td></tr>
+<tr><td><br></td><td>Restart Process In WO</td><td colspan=4>${TEST_STUB}</td></tr>
+<tr><td><br></td><td>Restart Process In SP</td><td colspan=4>${TEST_STUB}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Recover Ini On WO and Kill All Monster Process</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td colspan=4>Kill All Monster Process</td></tr>
+<tr><td><br></td><td colspan=5>Switch To WO Env</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>cp -rLf ${BACKUP_FILE} ${CONFIG_FILE}</td><td>yes</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>rm -rf ${BACKUP_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Process In WO</td><td colspan=4>${TEST_STUB}</td></tr>
+<tr><td><br></td><td>Restart Process In SP</td><td colspan=4>${TEST_STUB}</td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

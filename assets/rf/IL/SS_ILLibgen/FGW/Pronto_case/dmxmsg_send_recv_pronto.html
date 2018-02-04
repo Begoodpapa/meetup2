@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Family startup and big resource allocation</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen DMXMSG send and receive pronto cases</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B01277</td><td><font color=dark red>Iteration_ID-N/A</td><td><font color=dark red>PRS_ID-IL_PRS_2582</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td colspan=4><font color=dark red>EFS_ID-RNC_EFS_2152_93</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>element-IL</td><td><font color=dark red>exec_type-automatic</td><td><font color=dark red>type-FUT</td><td>QL-1</td><td><font color=dark red>release-IL1_RIS3</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>reviewer-nenggui.zhang@nsn.com</td><td><font color=dark red>rw-formal</td><td><font color=dark red>hw_env-RNC</td><td><font color=dark red>hw_env-AB</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-ADA</td><td><font color=dark red>hw_env-RNC_S0</td><td><font color=dark red>hw_env-RNC_S1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>resources/Libgen.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>suite setup</b></td><td>Connect To SUT And Start Test Process</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>suite teardown</b></td><td>Stop Test Process And Disconnect From SUT</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${PROCESS TYPE}</td><td>0x0001</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${C_TEST_MSG SN}</td><td>0x6034</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FAMILY ID}</td><td>0x1771</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SENDER_PID}</td><td>c000/509/2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ILLEGAL_PROCESS_ID}</td><td>0xfffe</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIME_QUOTA}</td><td>0x10</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TASK_DURATION}</td><td>0x1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${PROCESS ID}</td><td>0x0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MEMPOOL_FAMILY_ID}</td><td>0xC385</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td><b>SENDER PID in message header is correct in case of absolute_send by filling receiver as itself</b></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.40796ESPE01</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli asks Testproc to invoke absolute_send message success</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX ATTR VALUE ZERO}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Libgen is not supposed to be crashed in case of send msg to illegal process of family itself</b></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.15215ESPE07</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ct-negative</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli asks master of Testproc to send msg to its illegal hand process</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX ATTR VALUE ZERO}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Libgen is not supposed to be crashed in case of send msg to illegal process of other family</b></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.002.AT.40413ESPE01</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ct-negative</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send A Msg To illegal hand process of Testproc</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX ATTR VALUE ZERO}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>send  message through dmxmsgste command after using e2k</b></td><td>[Tags]</td><td>pronto_25893ESPE06</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Env Setup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>send mesage to stub</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clean Env</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=10><b>Env Setup</b></td></tr>
+<tr><td><br></td><td>Get WO OMU</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${WO_OMU}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Variable Of Libgen Use Phys Addr</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=10><b>Stop Test Prb</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_prb</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=10><b>Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>mempoolproc &amp;</td><td>mempool hand started.</td><td>10s</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=10><b>send mesage to stub</b></td></tr>
+<tr><td><br></td><td>${OMU_PHY_ADDR}=</td><td>set variable</td><td colspan=7>${OMU PHYSICAL ADDRESS}</td></tr>
+<tr><td><br></td><td>${OMU_PHY_ADDR}=</td><td>set variable</td><td>${OMU_PHY_ADDR.replace('0X','0')}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${MEMPOOL_FAMILY_ID}=</td><td>set variable</td><td>${MEMPOOL_FAMILY_ID.replace('0x','')}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Execute Mml Without Check</td><td>dmxmsgste -S *,${OMU_PHY_ADDR},${MEMPOOL_FAMILY_ID},0,0,0,0,6035 -b xbA0,xb0,xd0,xd0</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>Sent message header</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=10><b>Clean Env</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli asks Testproc to invoke absolute_send message success</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${computer_id}</td><td><font color=#FF6600>${dmx_attr}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Absolute Send A Msg To Target Process</td><td>${computer_id}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td><td>${C_TEST_MSG_SN}</td><td>${dmx_attr}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${SENDER_PID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli asks master of Testproc to send msg to its illegal hand process</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${computer_id}</td><td><font color=#FF6600>${dmx_attr}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Master Send A Msg To Hand Process</td><td>${computer_id}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td><td>${C_TEST_MSG_SN}</td><td>${dmx_attr}</td><td>${C_TEST_MSG_SN}</td><td>${ILLEGAL_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Create Hand</td><td>${OMU PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_SN}</td><td>${DMX ATTR DEFAULT VALUE}</td><td>${PROCESS TYPE}</td><td>${TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${TASK_DURATION}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send A Msg To illegal hand process of Testproc</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${computer_id}</td><td><font color=#FF6600>${dmx_attr}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send A Msg To Target Process</td><td>${computer_id}</td><td>${FAMILY ID}</td><td>${ILLEGAL_PROCESS_ID}</td><td>${C_TEST_MSG_SN}</td><td>${dmx_attr}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Create Hand</td><td>${OMU PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_SN}</td><td>${DMX ATTR DEFAULT VALUE}</td><td>${PROCESS TYPE}</td><td>${TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${task_duration}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Connect To SUT And Start Test Process</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SUT</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Rhtestproc</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Rhtestproc</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start Rhtestproc</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>rhtestproc &amp;</td><td>MASTER RECV...</td><td>10</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Test Process And Disconnect From SUT</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Rhtestproc</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect From SUT</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Rhtestproc</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Kill Process</td><td>rhtestproc</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

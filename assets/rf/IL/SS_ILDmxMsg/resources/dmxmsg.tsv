@@ -1,0 +1,368 @@
+D M X M S G					
+					
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	il.html				
+Library	dmx_mit_setup.py				
+Library	dmx_ex.py				
+Library	dmx_comm.py				
+Library	Collections				
+Library	library/ildmxmsg_subsystem_lib/__init__.py				
+					
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+${MAIN_NODE}	CFPU-0				
+${OMU}	/CFPU-0/QNOMUServer-0				
+@{RU_LIST}	${OMU}				
+${AS0}	AS-0				
+${AS1}	AS-1				
+${AS2}	AS-2				
+${AS3}	AS-3				
+${DSP0}	DSP-0				
+${DSP1}	DSP-1				
+${MAX TIME FOR CONNECT}	80				
+${WO_ADDR}	0x1000				
+${SP_ADDR}	0x2000				
+${SE_FAMILY}	D903				
+${FLOW NUM DEFAULT}	1				
+${FLOW NUM MULTI}	10	#10			
+${FLOW OFFSET DEFAULT}	0				
+${BURST DEFAULT}	1				
+${BURST MIN}	10				
+${INTERVAL DEFAULT}	0				
+${NUMBER DEFAULT}	1				
+${LEN MIN}	0				
+${LEN SHORT}	100	#100			
+${WORK MODE NORMAL}	0				
+${WORK MODE ECHO}	1				
+${FD BACKOUT FILE}	/tmp/FaStDistoutput.txt				
+${FD BACKOUT FILE 2}	/tmp/FaStDistoutput2.txt				
+${FD BACKOUT FILE 3}	/tmp/FaStDistoutput3.txt				
+${TABLE STATE WO}	WO				
+${TABLE STATE SP}	SP				
+${TABLE ID 0}	0				
+${TABLE ID 1}	1				
+${TABLE ID DEFAULT}	0				
+${WOKE MODE DE}	\1-1				
+${WOKE MODE EN}	\1-0				
+${TIMEOUT DEFAULT}	10				
+${REBOOT_CHECK_TIMEOUT}	19min				
+${REBOOT_CHECK_INTERVAL}	10s				
+@{RNC_MIT_NODE_LIST}	CFPU-0	EIPU-0	EIPU-1	USPU-0	# Declare the nodes that MIT cases will use
+					
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Connect To SUT	[Arguments]	${max_time_for_connect}			
+	${conn} =	Connect To Il	%{HOSTIP}	\	${max_time_for_connect}
+	...	%{USERNAME}	%{PASSWD}		
+	[Return]	${conn}			
+					
+Connect To IP	[Arguments]	${host_ip}	${max_time_for_connect}		
+	${conn} =	Connect To Il	${host_ip}	\	${max_time_for_connect}
+	...	%{USERNAME}	%{PASSWD}		
+	[Return]	${conn}			
+					
+Disconnect From SUT	Disconnect All Ils				
+					
+Connect To SUT And RUs Should Be Ready	Connect To SUT				
+	RUs Should Be Ready	@{RU_LIST}			
+					
+Get Active Management Node Connect	${conn} =	Connect To SUT	${MAX TIME FOR CONNECT}		
+	[Return]	${conn}			
+					
+RUs Should Be Ready	[Arguments]	@{ru list}			
+	:FOR	${ru}	IN	@{ru list}	
+		Managed Object Should Be Ready	${ru}		
+					
+Wait Until Managed Object Ready	[Arguments]	${mo name}	${total time}	${interval time}	
+	Wait Until Keyword Succeeds	${total time}	${interval time}	Managed Object Should Be Ready	${mo name}
+					
+Managed Object Should Be Ready	[Arguments]	${moname}			
+	${result} =	Check Managed Object State	${moname}		
+	Should Be Equal	${result}	${True}		
+					
+Cat RG RU state 	execute cli	fshascli -s /*-*/*Server*			
+					
+Lock BCN all RG	execute_mml_without_check	fshascli -lnEF /*-*/qn* /StartRG			
+					
+Unlock BCN all RG	execute_mml_without_check	fshascli -unEF /*-*/qn* /*RG*			
+	sleep	5s			
+					
+Cat dmxmsg table	execute cli	cat /proc/dmxmsg/comp_addr_tbl			
+	execute cli	cat /proc/dmxmsg/group_addr_tbl			
+	execute cli	cat /proc/dmxmsg/mac_addr_tbl			
+	execute cli	cat /proc/dmxmsg/clients			
+	execute cli	cat /proc/dmxmsg/ru_tbl			
+	execute cli	cat /proc/dmxmsg/statistics			
+	execute cli	cat /proc/dmxmsg/processor_index			
+	Cat RG RU state 				
+					
+Cat dmxmsg rds table	execute cli	cat /proc/dmxmsg/rds_link_tbl			
+	execute cli	cat /proc/dmxmsg/rds_tx_win_size			
+	execute cli	cat /proc/dmxmsg/rds_tx_queue_limit			
+	execute cli	cat /proc/dmxmsg/rds_tx_queue_extra_limit			
+	execute cli	cat /proc/dmxmsg/rds_max_retrans			
+	Cat dmxmsg table 				
+					
+Reinsert kernel module	execute cli	configModuleRG.sh stop			
+	execute cli	configModuleRG.sh start			
+					
+Check dmxmsg state if case fail	Run Keyword If Test Failed	Cat dmxmsg table 			
+					
+Check node env if case fail	[Arguments]	@{Node list}			
+	Run Keyword If Test Failed	Check node env	@{Node list}		
+					
+Check node env	[Arguments]	@{Node list}			
+	Check All RU State				
+	:FOR	${Node}	IN	@{Node list}	
+		ExecuteCli	ssh ${Node}	yes	
+		Check RU State On Node	${Node}		
+		Cat dmxmsg table 			
+		ExecuteCli	exit		
+					
+Init Own Processor	[Arguments]	${processor_index}			
+	execute cli	dmxcli2 -R ${processor_index}			
+					
+Config Unit WO	[Arguments]	${unit_addr}			
+	dmxcli2 Update unit state	${unit_addr}	0		
+					
+Config Unit SP	[Arguments]	${unit_addr}			
+	dmxcli2 Update unit state	${unit_addr}	2f		
+					
+Config CoUnit	[Arguments]	${unit_addr}	${co_unit_addr}		
+	dmxcli2_Update_unit_co	${unit_addr}	${co_unit_addr}	0	
+					
+Setup Connect To	[Arguments]	${node_name}			
+	${SSH_NODE} =	Connect To Il	%{HOSTIP}	\	${MAX TIME FOR CONNECT}
+	...	%{USERNAME}	%{PASSWD}		
+	execute cli	ssh ${node_name}	yes		
+	[Return]	${SSH_NODE}			
+					
+Swtich To	[Arguments]	${il_connection}			
+	Switch Il Connection	${il_connection}			
+					
+Check env RU state	Run Keyword Unless	\'%{DETAIL_HW}'=='BCN_S1'	Set CSPU name		
+	Run Keyword If	\'%{DETAIL_HW}'=='BCN_S1'	Set 2box BCN CSPU name		
+	Wait Until Managed Object Ready	%{EITPProxy_0_NAME}	20sec	4sec	
+	Wait Until Managed Object Ready	${CSPU_0_NAME}	20sec	4sec	
+	Wait Until Managed Object Ready	%{USUPProxy_0_NAME}	20sec	4sec	
+	Wait Until Managed Object Ready	%{OMU_0_NAME}	20sec	4sec	
+					
+Set CSPU name	Set Suite Variable	\${CSPU_0_NAME}	%{CSUPProxy_0_NAME}		
+					
+Set 2box BCN CSPU name	Set Suite Variable	\${CSPU_0_NAME}	%{CSUPProxy_0_NAME}		
+					
+Node Mac Should Available	[Arguments]	${phy}			
+	${result}	Check_Node_mac_State	${phy}	available	
+	ResultShouldContain	${result}	sucessful		
+					
+Node Mac Should Not Available	[Arguments]	${phy}			
+	${result}	Check_Node_mac_State	${phy}	available	
+	ResultShouldContain	${result}	fail		
+					
+Node Mac Should Unavailable	[Arguments]	${phy}			
+	${result}	Check_Node_mac_State	${phy}	unavailable	
+	ResultShouldContain	${result}	sucessful		
+					
+					
+Node restart should successfully	[Arguments]	${node_name}			
+	${result}	check node state normal	${node_name}		
+	ResultShouldContain	${result}	sucessful		
+					
+Wait node restart successful	[Arguments]	${wait_timeout}	${check_interval}	${node_name}	
+	Wait Until Keyword Succeeds	${wait_timeout}	${check_interval}	Node restart should successfully	${node_name}
+					
+					
+					
+					
+Use Dmxcli To Send Messages	[Arguments]	${sender}	${receiver}	${burst}	${interval}
+	...	${number}	${length}	${workmode}	${timeout}
+	${out} =	Make Dmx Sending	${sender}	${receiver}	${burst}
+	...	${interval}	${number}	${length}	${workmode}
+	...	${timeout}			
+	[Return]	${out}			
+					
+					
+					
+Killall Process Without Check	[Arguments]	${pro name}			
+	execute cli	killall ${pro name}|tee			
+					
+ResultShouldContain	[Arguments]	${result file}	${expect string}		
+	Should contain	${result file}	${expect string}		
+					
+ResultShouldNotContain	[Arguments]	${result file}	${unexpect string}		
+	ShouldNotContain	${result file}	${unexpect string}		
+					
+Check Expect Result From File	[Arguments]	${check timeout}	${check interval}	${Checked File}	${Expect Result}
+	Wait Until Keyword Succeeds	${check timeout}	${check interval}	FileShouldContain	${Checked File}
+	...	${Expect Result}			
+					
+Use Dmxsemonitor To Monitor Message	[Arguments]	${target_phy}	${target_fam}	${condition_str}	${monitored_msg_num}
+	start se monitor	${target_phy}	${target_fam}	${condition_str}	${monitored_msg_num}
+					
+Get Number Of Monitored Msg	${out} =	Get se monitored msg num			
+	[Return]	${out}			
+					
+Kill Monitor Daemon And Remove Log File	Remove monitor and log file				
+					
+Use Dmxcli2 To Test	[Arguments]	${options}			
+	${out} =	dmxcli2_sending	${options}		
+	[Return]	${out}			
+					
+Query Unit Status	[Arguments]	${unit_addr}			
+	${out} =	dmxcli2_Query_unit_status	${unit_addr}		
+	[Return]	${out}			
+					
+Query Own Phys Addr	${out} =	dmxcli2_Query_own_phys_addr			
+	[Return]	${out}			
+					
+Update Unit Status	[Arguments]	${unit_status}			
+	${out} =	dmxcli2_Update_unit_status	${unit_status}		
+	[Return]	${out}			
+					
+Update Unit State	[Arguments]	${unit_addr}	${unit_state}		
+	${out} =	dmxcli2_Update_unit_state	${unit_addr}	${unit_state}	
+	[Return]	${out}			
+					
+Update Unit Co-Unit	[Arguments]	${unit_addr}	${processor_index}	${uindex_offset}	
+	${out} =	dmxcli2_Update_unit_co	${unit_addr}	${processor_index}	${uindex_offset}
+	[Return]	${out}			
+					
+Query All RU Status from RUTable	[Arguments]				
+	ExecuteCli	pwd			
+	${ru_state_list}=	CreateList			
+	${own_phys}=	Query Own Phys Addr			
+	${own_phys}	Set variable	0x${own_phys}		
+	${processor_index}=	Evaluate	hex(${own_phys})		
+	${processor_index}=	Evaluate	${processor_index}&0xFF		
+	:FOR	${i}	IN RANGE	16	
+		${unit_addr}=	Evaluate	hex(${processor_index}+${i}*0x100)	
+		Set Suite Variable	\${unit_addr_str}	${unit_addr}	
+		${unit_status}=	Query Unit Status	${unit_addr_str}	
+		Append To List	${ru_state_list}	${unit_status}	
+	[Return]	${ru_state_list}			
+					
+Update All RU Status to RUTable	[Arguments]	${status_list}			
+	ExecuteCli	pwd			
+	${list_num} =	GetLength	${status_list}		
+	:FOR	${i}	IN RANGE	${list_num}	
+		${st}=	Set variable	${status_list[${i}]}	
+		Update Unit Status	${st}		
+					
+Query All RU Status from Node RUTable	[Arguments]	${node}			
+	ExecuteCli	ssh ${node}	yes		
+	${ru_state_list}=	Query All RU Status from RUTable			
+	ExecuteCli	exit			
+	ExecuteCli	pwd			
+	[Return]	${ru_state_list}			
+					
+Update All RU Status to Node RUTable	[Arguments]	${node}	${status_list}		
+	ExecuteCli	ssh ${node}	yes		
+	Update All RU Status to RUTable	${status_list}			
+	ExecuteCli	exit			
+	ExecuteCli	pwd			
+					
+Query Computer Table	[Arguments]	${unit_type}	${query_num}		
+	${out} =	dmxcli2_Query_comp_table	${unit_type}	${query_num}	
+	[Return]	${out}			
+					
+QueryPhysAddrByUnitType	[Arguments]	${ut}	${index}		
+	${out} =	dmxcli2_Query_Phys_Addr	${ut}	${index}	
+	[Return]	${out}			
+					
+Query And Fill Pid	[Arguments]	${pid}			
+	${out} =	dmxcli2_Query_and_Fill	${pid}		
+	[Return]	${out}			
+					
+Dmxcli2 Send A Message	[Arguments]	${pid_to}			
+	${out} =	dmxcli2_send_msg	${pid_to}		
+	[Return]	${out}			
+					
+Dmxcli2 Recv A Message	[Arguments]	${pid_from}			
+	${out} =	dmxcli2_recv_msg	${pid_from}		
+	[Return]	${out}			
+					
+Dmxcli2 Launch A Command	[Arguments]	${cmd}	${param}		
+	${out} =	dmxcli2_launch_command	${cmd}	${param}	
+	[Return]	${out}			
+					
+Config Computer Table	[Arguments]	${utype}	${logaddr}	${wospaddr}	${woaddr}
+	...	${spaddr}			
+	${out} =	dmxcli2_Config_comp_table	${utype}	${logaddr}	${wospaddr}
+	...	${woaddr}	${spaddr}		
+	[Return]	${out}			
+					
+Config Group Addr 1S	[Arguments]	${grp_addr}	${processor_index}	${uindex_offset}	
+	${out} =	dmxcli2_Config_grp_addr_1	${grp_addr}	${processor_index}	${uindex_offset}
+	[Return]	${out}			
+					
+Config Group Addr 2S	[Arguments]	${grp_addr}	${phys_addr1}	${processor_index}	${uindex_offset}
+	${out} =	dmxcli2_Config_grp_addr_2	${grp_addr}	${phys_addr1}	${processor_index}
+	...	${uindex_offset}			
+	[Return]	${out}			
+					
+FileShouldContain	[Arguments]	${target file}	${wanted string}		
+	${result} =	get file content	${target file}		
+	Should contain	${result}	${wanted string}		
+					
+FileShouldNotContain	[Arguments]	${target file}	${wanted string}		
+	${result} =	get file content	${target file}		
+	ShouldNotContain	${result}	${wanted string}		
+					
+ConnectToAb2Nodes	[Arguments]	${NodeList}			
+	${ConnDict} =	CreateDictionary			
+	:FOR	${node}	IN	@{NodeList}	
+		${conn} =	ConnectToIl	%{HOSTIP}	\
+		...	${MAX TIME FOR CONNECT}	%{USERNAME}	%{PASSWD}
+		ExecuteCli	ssh ${node}	yes	
+		SetToDictionary	${ConnDict}	${node}	${conn}
+	[Return]	${ConnDict}			
+					
+SwitchIlConnectionByTag	[Arguments]	${ConnDict}	${tag}		
+	${conn} =	GetFromDictionary	${ConnDict}	${tag}	
+	SwitchIlConnection	${conn}			
+					
+FileShouldHaveNLinesContainStr	[Arguments]	${file}	${instrest}	${expected_lines}	
+	${num} =	CountLinesContainStr	${instrest}	${file}	
+	ShouldBeEqualAsIntegers	${num}	${expected_lines}		
+					
+FileShouldNotContainCaseInsensitive	[Arguments]	${target file}	${wanted}		
+	${result} =	GetFileContent	${target file}		
+	${lines} =	CountLinesContainStr	${wanted}	${target file}	
+	ShouldBeEqual	${lines}	0		
+					
+Get MGW MIPS Node0 Name	${node_name}	Get Node From Unit	%{IPNIU_0_NAME}		
+	[Return]	${node_name}			
+					
+Get MGW MIPS Node1 Name	${node_name}	Get Node From Unit	%{IPNIU_1_NAME}		
+	[Return]	${node_name}			
+					
+Other Nodes restart should successfully					
+	${result}	check_other_nodes_up	${RNC_MIT_NODE_LIST}		
+	ResultShouldContain	${result}	yes		
+					
+Wait other nodes restart successful	[Arguments]	${wait_timeout}	${check_interval}		
+	Wait Until Keyword Succeeds	${wait_timeout}	${check_interval}	Other Nodes restart should successfully	
+					
+					
+					
+Setup MIT Case Env	[Document] 	Setup the BCN env for MIT cases. Replace current dmxmsg module with MIT verison.			
+	${SSH_NODE_A} =	Setup Connect To	${MAIN_NODE}		
+	${result}=	setup_mit_env			
+	lock_rg_and_ru				
+	Sleep 	20s			
+	${total_wait_time}=	Set Variable if			
+	...	\'%{DETAIL_HW}'=='BCN_S0'	${REBOOT_CHECK_TIMEOUT}		
+	...	\'%{DETAIL_HW}'=='BCN_S1'	30min		
+	Wait other nodes restart successful	${total_wait_time}	${REBOOT_CHECK_INTERVAL}		
+					
+					
+					
+Cleanup MIT Case Env	[Document] 	Cleanup the BCN MIT env. Replace current MIT dmxmsg module with official verison.			
+	${SSH_NODE_A} =	Setup Connect To	${MAIN_NODE}		
+	${result}=	recover_mit_env			
+	reload_nodes_dmxmsg_module	${RNC_MIT_NODE_LIST}	#make processor_index configurable		
+	reboot_other_nodes				
+	unlock_rg_and_ru				
+	Sleep 	20s			
+	${total_wait_time}=	Set Variable if			
+	...	\'%{DETAIL_HW}'=='BCN_S0'	${REBOOT_CHECK_TIMEOUT}		
+	...	\'%{DETAIL_HW}'=='BCN_S1'	30min		
+	Wait other nodes restart successful	${REBOOT_CHECK_TIMEOUT}	${REBOOT_CHECK_INTERVAL}		

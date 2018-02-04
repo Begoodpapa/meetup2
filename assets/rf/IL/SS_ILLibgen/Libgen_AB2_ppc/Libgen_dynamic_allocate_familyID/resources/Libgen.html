@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<style type="text/css">
+html {
+font-family: Arial,Helvetica,sans-serif;
+background-color: white;
+color: black;
+}
+p {
+max-width: 60em;
+}
+table {
+border-collapse: collapse;
+empty-cells: show;
+margin: 1em 0em;
+border: 0.1em solid black;
+}
+th, td {
+border-style: solid;
+border-width: 0.05em 0.1em;
+border-color: black;
+padding: 0.1em 0.2em;
+height: 1.5em;
+}
+th {
+background-color: rgb(192, 192, 192);
+color: black;
+border-width: 0.1em;
+font-weight: bold;
+text-align: center;
+text-transform: capitalize;
+letter-spacing: 0.1em;
+}
+/* Widths of named columns */
+col.name {
+width: 10em;
+}
+.action, .value, .arg {
+width: 15em;
+}
+/* Properties for the name column - td:first-child should work in CSS 2.1 avare browsers (tested in Firefox)
+- col.name is against specs but works in IE
+*/
+td:first-child, col.name {
+background-color: rgb(240, 240, 240);
+text-transform: capitalize;
+letter-spacing: 0.1em;
+}
+/* required for IE */
+th {
+font-style: normal;
+}
+</style><title>Libgen</title></head>
+<body>
+<h1>Libgen</h1>
+<table border="1">
+<colgroup span="99"><col class="name"><col class="value" span="4"></colgroup> <thead><tr>
+<th>Setting</th>
+<th>Value</th>
+<th>Value</th>
+<th>value</th>
+<th>Value</th>
+</tr>
+</thead> <tbody>
+<tr>
+<td>library</td>
+<td>Collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Resource</td>
+<td>il.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table border="1">
+<colgroup span="99"><col class="name"><col class="value" span="4"></colgroup> <thead><tr>
+
+<th style="width: 228px;">Variable</th>
+<th>Value</th>
+<th>Value</th>
+<th>Value</th>
+</tr>
+</thead> <tbody>
+<tr>
+
+<td style="width: 228px;">${MAX TIME FOR CONNECT}</td>
+<td>120</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+
+<td>${ACK_SUCCESS}</td>
+<td><span style="font-size: 11pt; font-family: Arial;">success</span></td>
+<td></td>
+<td></td>
+</tr><tr><td>${ACK_FAILURE}</td><td>failure</td><td></td><td></td><td></td></tr><tr><td>${DSPM}</td><td>%{DSPM_0_NAME}</td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+<table border="1">
+<colgroup span="99"><col class="name"><col class="action"><col class="arg" span="3"></colgroup><thead>
+<tr>
+<th>Keyword</th>
+<th>Action</th>
+<th>Argument</th>
+<th>Argument</th>
+<th>Argument</th>
+<td style="background-color: rgb(192, 192, 192); font-weight: bold;">Argument</td>
+<td style="background-color: rgb(192, 192, 192); font-weight: bold;">Argument</td>
+</tr>
+</thead> <tbody>
+<tr>
+<td>Connect To SUT</td>
+<td>Connect
+To Il&nbsp;</td>
+<td>%{HOSTIP}</td>
+<td></td>
+<td>${MAX TIME FOR CONNECT}</td>
+<td>%{USERNAME}</td>
+<td>%{PASSWD}</td>
+</tr>
+<tr><td></td><td>Change Node Env</td><td>TCU-0</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>Execute CLI</td><td>ilcliru.sh&nbsp;${DSPM}</td><td></td><td></td><td></td><td></td></tr><tr>
+<td>Disconnect From SUT</td>
+<td>Disconnect
+All Ils</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+<td></td>
+<td style="width: 238px;"></td>
+<td style="width: 111px;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td style="color: rgb(0, 0, 0);"></td>
+<td style="color: rgb(0, 0, 0);"></td>
+<td style="color: rgb(0, 0, 0);"></td>
+<td style="color: rgb(0, 0, 0);"></td>
+<td style="color: rgb(0, 0, 0);"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</body></html>

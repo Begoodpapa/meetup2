@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen Hand Coredump</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen Hand Coredump</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>Avoid whole process family restart by catching segmentation faults.\n</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT And Setup Env</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Env and Disconnect From SUT</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-T99999</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Iteration_ID-I02217</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Iteration_ID-I02218</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Iteration_ID-I02219</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_4465</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>element-IL</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>exec_type-automatic</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>type-FUT</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>QL-7</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>release-IL3</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>reviewer-@nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>rw-formal</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-AB</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>ct-negative</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>bcn_step-BCN_S1</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_type-BCN_A1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-BCN_A2</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-BCN_B2</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-MGW_AB3</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-MGW_AB4</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>resources/Libgen_Process_Resource.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${OMU_0}</td><td>%{OMU_0_NAME}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU TYPE}</td><td>%{OMU_TYPE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU}</td><td>${OMU_0}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_PRB_FAMILY_ID}</td><td>0xC385</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_PROCESS_ID}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CATCH_FATAL_SIG}</td><td>catch_fatal_sig</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CATCH_FATAL_SIG_START}</td><td>catch_fatal_sig_start</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CATCH_FATAL_SIG_USER_THREAD}</td><td>fatal_sig_in_user_thread</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${STOP_PROCESS}</td><td>stop_prb</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK_ALIVE}</td><td>still_alive</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WAIT_TIME_5S}</td><td>1000</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK TIMEOUT}</td><td>50</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK INTERVAL}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEMP_INI_FILE}</td><td>LibgenConfig_OMU.ini</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_WITHOUT_POOL}</td><td>[default]\nmax_threads=1\nstack_size=500000\ntimer_heap_size=10000\nuse_focus=0\nuse_fatal_handler=0\ncntx_pool_free_thrd=20\nmsg_conversion_enable=0\n\n[ILWMTestCli]\nfamily_number=6004\ncatch_fatal_sig=1\n</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=3><b>PRB Not Crash After One Hand Crash Three Times Under Tolerance</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Test CLI Send Message To Trigger Hand Core Dump.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check PRB Still Alive.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Core Dump Generated\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Test CLI Send Message To Trigger Hand Core Dump For Several Times Under Tolerance.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Check PRB Still Alive.\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Check PRB Still Alive And Coredump Generated.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.I02219</td></tr>
+<tr><td><br></td><td>...</td><td>ATC_ID-Libgen.FUT.002.AT.I02219</td></tr>
+<tr><td><br></td><td>...</td><td>ATC_ID-Libgen.FUT.001.AT.I02217</td></tr>
+<tr><td><br></td><td>...</td><td>ATC_ID-Libgen.FUT.AT.34367ESPE05</td></tr>
+<tr><td><br></td><td>...</td><td>exec_level-pre</td></tr>
+<tr><td><br></td><td>Test CLI Send Message To Trigger Hand Core Dump</td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Still Alive</td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CHECK INTERVAL}</td></tr>
+<tr><td><br></td><td>...</td><td>Check The Core Dump Generated</td></tr>
+<tr><td><br></td><td>Sleep</td><td>60s</td></tr>
+<tr><td><br></td><td>Repeat Keyword</td><td>3</td></tr>
+<tr><td><br></td><td>...</td><td>Test CLI Send Message To Trigger Hand Core Dump</td></tr>
+<tr><td><br></td><td>Check PRB Still Alive</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Run Keyword If Test Passed</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>Clear Core Dump Files</td></tr>
+<tr bgcolor=#99CCFF><td colspan=3><b>PRB Crash After One Hand Crash Three Times Exceed Tolerance</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Test CLI Send Message To Trigger Core Dump.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Core Dump Generated.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check PRB Still Alive.\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Check PRB Still Alive And Coredump Generated.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.I02219</td></tr>
+<tr><td><br></td><td>Repeat Keyword</td><td>3</td></tr>
+<tr><td><br></td><td>...</td><td>Test CLI Send Message To Trigger Hand Core Dump</td></tr>
+<tr><td><br></td><td>Test CLI Send Message To Trigger PRB Core Dump</td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Not Alive</td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CHECK INTERVAL}</td></tr>
+<tr><td><br></td><td>...</td><td>Check Several Core Dump Generated</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Run Keyword If Test Passed</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>Clear Core Dump Files</td></tr>
+<tr bgcolor=#99CCFF><td colspan=3><b>PRB Crash When One Hand Crash In Start Code</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Test CLI Send Message To Trigger Hand Core Dump In Start Code.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check PRB Not Alive.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Core Dump Generated\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Check PRB Not Alive And Coredump Generated.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.AT.88911ESPE04</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Test CLI Send Message To Trigger Hand Core Dump In Start Code.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check PRB Not Alive.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check One Core Dump Generated\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Check PRB Still Alive And Coredump Generated.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.AT.88911ESPE04</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Restart Test PRB</td></tr>
+<tr><td><br></td><td>Test CLI Send Message To Trigger Hand Core Dump In Start Code</td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Not Alive</td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CHECK INTERVAL}</td></tr>
+<tr><td><br></td><td>...</td><td>Check The Core Dump Generated</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Run Keyword If Test Passed</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>Clear Core Dump Files</td></tr>
+<tr bgcolor=#99CCFF><td colspan=3><b>Non-libgen Thread Should Not Enable Catch Fatal Signal</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Test CLI Send Message To Trigger A Non-libgen Thread Core Dump.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check PRB Not Alive.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check One Core Dump Generate And Not At Catch Fatal Signal Point\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Check PRB Not Alive And Coredump Generated.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.AT.35736ESPE05</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Restart Test PRB</td></tr>
+<tr><td><br></td><td>Test CLI Send Message To Trigger A Non-libgen Thread Core Dump</td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Not Alive</td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CHECK INTERVAL}</td></tr>
+<tr><td><br></td><td>...</td><td>Check The Core Dump Generated</td></tr>
+<tr><td><br></td><td>Check Coredump Should Not Crash At Catch Fatal Signal Point</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Run Keyword If Test Passed</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>Clear Core Dump Files</td></tr>
+<tr bgcolor=#99CCFF><td colspan=3><b>System Routine Can Be Called Successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Pronto Desc: if user need to wait the child return after fork process, then it will meet failure, for example: system routine.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Test CLI Call The Date Command Via System Routine\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Check Test CLI Result Should Be Successfully\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.AT.38803ESPE05</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Export Temporarily Ini</td></tr>
+<tr><td><br></td><td>${year}</td><td>Execute CLI</td></tr>
+<tr><td><br></td><td>...</td><td>date +%Y</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td></tr>
+<tr><td><br></td><td>...</td><td>ILWMTestCli -f 0xffff -- -e</td></tr>
+<tr><td><br></td><td><font color=blue>#Should Contain</td><td><font color=blue>${result}</td></tr>
+<tr><td><font color=blue><br></td><td><font color=blue># ...</td><td><font color=blue><font color=blue>the\ system\ routine\ return\ value:\ 0</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td></tr>
+<tr><td><br></td><td>...</td><td>${year.strip()}</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Temporarily Ini</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>mempoolproc &amp;</td><td>mempool hand started.</td><td>10s</td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test Prb</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_prb</td><td>${OMU PHYSICAL ADDRESS}</td><td>${TEST_PRB_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Restart Test PRB</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>mempoolproc &amp;</td><td>mempool hand started.</td><td>10s</td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Message To Trigger Hand Core Dump</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>RECEIVE stop hand message, action catch_fatal_sig</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "${OMU PHYSICAL ADDRESS} ${TEST_PRB_FAMILY_ID} ${MASTER_PROCESS_ID}" -v ${CATCH_FATAL_SIG} -t ${WAIT_TIME_5S}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Message To Trigger Hand Core Dump In Start Code</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>action catch_fatal_sig_start</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "${OMU PHYSICAL ADDRESS} ${TEST_PRB_FAMILY_ID} ${MASTER_PROCESS_ID}" -v ${CATCH_FATAL_SIG_START} -t ${WAIT_TIME_5S}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Message To Trigger A Non-libgen Thread Core Dump</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>action fatal_sig_in_user_thread</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "${OMU PHYSICAL ADDRESS} ${TEST_PRB_FAMILY_ID} ${MASTER_PROCESS_ID}" -v ${CATCH_FATAL_SIG_USER_THREAD} -t ${WAIT_TIME_5S}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Message To Trigger PRB Core Dump</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>catch_fatal_sig</td><td>2</td><td>RECEIVE stop hand message</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "${OMU PHYSICAL ADDRESS} ${TEST_PRB_FAMILY_ID} ${MASTER_PROCESS_ID}" -v ${CATCH_FATAL_SIG} -t ${WAIT_TIME_5S}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Count Core Dump</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ls /srv/Log/crash/</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>ls /srv/Log/crash/ |grep mempoolproc-SEGV.core.gz |wc -l</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${COUNT}</td><td>Convert To Integer</td><td colspan=3>${result}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${COUNT}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Backup Core Dump</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>ls /srv/Log/crash/ |grep mempoolproc |wc -l</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${Coredumps}</td><td>Convert To Integer</td><td colspan=3>${result}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${Coredumps}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>${Coredumps} &gt; 0</td><td>Backup Core Dump Files</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Backup Core Dump Files</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>cd /srv/Log/crash</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>mkdir mempool_backup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>mv *mempoolproc* mempool_backup/</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Restore Core Dump</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>${Coredumps} &gt; 0</td><td>Restore Core Dump Files</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Restore Core Dump Files</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>cd /srv/Log/crash</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>mv mempool_backup/*mempoolproc* .</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -rf mempool_backup/</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check The Core Dump Generated</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ls /srv/Log/crash/</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>ls /srv/Log/crash/ |grep mempoolproc-SEGV|wc -l</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${count}</td><td>Convert To Integer</td><td colspan=3>${result.strip()}</td></tr>
+<tr><td><br></td><td>Should Be True</td><td>${count}&gt;=1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Check No Zombie Process Exist</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Several Core Dump Generated</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ls /srv/Log/crash/</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>ls /srv/Log/crash/ |grep mempoolproc-SEGV.blackbox|wc -l</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${count}</td><td>Convert To Integer</td><td colspan=3>${result.strip()}</td></tr>
+<tr><td><br></td><td>Should Be True</td><td>${count}&gt;=4</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check No Zombie Process Exist</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>ps aux|grep mempoolproc|grep defunct|grep -v grep|wc -l</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result.strip()}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Process Still Alive</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_process_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -t %s</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${TEST_PRB_FAMILY_ID}</td><td>${in_process_id}</td><td>${CHECK_ALIVE}</td><td>${WAIT_TIME_5S}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Still Alive</b></td></tr>
+<tr><td><br></td><td>Check PRB Process Still Alive</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Not Alive</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>mempoolproc CLI waiting ack from test PRB time out, action still_alive</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -t %s</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${TEST_PRB_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${CHECK_ALIVE}</td><td>${WAIT_TIME_5S}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>OMU Should Be Ready</b></td></tr>
+<tr><td><br></td><td>Managed Object Should Be Ready</td><td>${OMU}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Managed Object Should Be Ready</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${moname}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Check Managed Object State</td><td>${moname}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${True}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Connect To SUT And Setup Env</b></td></tr>
+<tr><td><br></td><td>${SSH_LOG}</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td>120s</td></tr>
+<tr><td><br></td><td>...</td><td>%{USERNAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td colspan=4>%{PASSWD}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SSH_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>OMU Should Be Ready</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To Active Log Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Backup Core Dump</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${SSH_PRB}</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td>120s</td></tr>
+<tr><td><br></td><td>...</td><td>%{USERNAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td colspan=4>%{PASSWD}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get WO OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td colspan=4>${OMU}</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ulimit -c unlimited</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Variable Of Libgen Use Phys Addr</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test Prb</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>df -H /srv/Log/crash</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Switch To Active Log Env</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>get_wo_units</td><td>/Log</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${ACTIVE_CLA0}</td><td>${result}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>uname -n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${node}</td><td>${result.strip()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If Else</td><td>${ACTIVE_CLA0} != ['/${node}/FSLogServer']</td><td>Set OMU In Node Of Active Log</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Set OMU In Node Of Active Log</b></td></tr>
+<tr><td><br></td><td>Change RU</td><td>%{OMU_1_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Setup Test Env</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Count Core Dump</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Set Variable Of Libgen Use Phys Addr</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${OMU PHYSICAL ADDRESS}</td><td>Get Libgen Use Phys Addr</td><td>${OMU TYPE}</td><td colspan=2>${WO_OMU_INDEX}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU PHYSICAL ADDRESS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Env and Disconnect From SUT</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Core Dump Files</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restore Core Dump</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Core Dump Files</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>20</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>List Core Dump Files</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f /srv/Log/crash/*mempoolproc*</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>List Core Dump Files</b></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>ll /srv/Log/crash/*mempoolproc*</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Coredump Should Not Crash At Catch Fatal Signal Point</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_LOG}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>echo /srv/Log/crash/*mempoolproc-SEGV.core.gz</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>gzip -d ${result.strip()}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>echo /srv/Log/crash/*mempoolproc-SEGV.core</td></tr>
+<tr><td><br></td><td>${gdb_result}</td><td>Execute CLI</td><td>gdb mempoolproc ${result.strip()} -batch -x bt</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${gdb_result}</td><td>fatal_sig_handler</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Export Temporarily Ini</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_PRB}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>echo -e "${DEFAULT_WITHOUT_POOL}" &gt;./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>cat ./${TEMP_INI_FILE}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Temporarily Ini</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=/etc/LibgenConfig_OMU.ini</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

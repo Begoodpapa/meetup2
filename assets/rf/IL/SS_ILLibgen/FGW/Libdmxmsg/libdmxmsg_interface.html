@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libdmxmsg Interface</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libdmxmsg Interface</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B01277</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I01581</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-IL_PRS_2582</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-RNC_EFS_2152_93</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-il</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td>QL-6</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-mail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC</td><td><font color=dark red>hw_env-AB</td><td><font color=dark red>hw_env-RNC_S0</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Setup Connections For Interface Testing And Get Physical Address</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Test Environment For Interface Testing</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Setup</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Teardown</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td colspan=4>./resources/libdmxmsg.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${DMX_TEST_PROCESS}</td><td>0x1941</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DMX_TEST_PROCESS_1}</td><td>0x1942</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DMX_TEST_PROCESS_2}</td><td>0x1949</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${PRB_NAME}</td><td>msgmonstub</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>PRB can catch signal after initialized libdmxmsg lib</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. Test process has called dmxmsg_lib_init_r.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Test process call dmxmsg_lib_init_r() to catch signal\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Script try to kill the process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test process catch the signal and don't exit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Check the process still there after killed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process can catch signal after call dmxmsg_lib_init_r.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>SSU.FUT.001.AT.I01581</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>pkill msgmonstub</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check The Process Can Catch The Signal</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB can not receive msg after force close libdmxmsg interface</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Test process set c-&gt;refcount &gt; 0\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Close the context by dmxmsg_close_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Send msg to process and it still can receive msg\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Close the context by dmxmsg_force_close_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Send msg to process and it can't receive msg anymore\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Context can be closed forcely by dmxmsg_force_close_r.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>SSU.FUT.002.AT.I01581</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process can still receive msg correctly after closed normally</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Process can't receive msg after closed forcelly</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Restart Test Process To Make It Work</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB can receive msg from specified condition</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Send Msg To Test Process And Receive ACK With receive_msg_from_ctx_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Process ACK CLI With Three Incorrect Format Msg\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Process ACK CLI With Correct Format Msg\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. CLI Receive The Correct ACK\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. CLI Receive The Three Msg From Save Chain\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Process Can Receive Wanted Msg With Interface receive_msg_from_ctx_r.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>SSU.FUT.003.AT.I01581</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Test Process And Receive Wanted ACK</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB can receive whole msg including bottom info</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Send Msg To Test Process And Receive ACK With receive_whole_msg_ctx_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Process Can Receive The Msg Including Bottom Info\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Process Can Receive Whole Msg(with bottom) With receive_whole_msg_ctx_r.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>SSU.FUT.004.AT.I01581</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Test Process And Receive ACK Including Bottom</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Multi-thread PRB can send and receive msg correctly with libdmxmsg</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start two thread to send recive msg\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. It can work successfully\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. PRB can send and receive msg correctly with multi-thread.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>SSU.FUT.005.AT.I01581</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send And Receive Msg Can Work Correctly With Multi-thread</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB failed to register family when limit reaches</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Run test prb as multi-family mode\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Test prb register with 512 different family id to libdmxmsg lib to the same context\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test prb failed to register with 1 more different family id to the same context\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. PRB failed to register family when limit (512) reaches.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>SSU.FUT.006.AT.I01581</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Setup Test PRB For Multi Register</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Teardown For Multi Register</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>PRB Failed To Register Family To One Context When Limit Reaches</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB can force register family successfully even it has already registered</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;PRB register pid to libdmxmsg. \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. PRB failed to register to libdmxmsg again with same pid and force flag not set\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. PRB succeeded to register to libdmxmsg again with same pid and force flag set\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. PRB can register family successfully with force flag even it has already registered.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>SSU.FUT.007.AT.I01581</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test PRB force register</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB can use temp context to send and receive msgs correctly</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. PRB call dmxmsg_get_work_context_r() to use temp context\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. PRB can send and receive msg successfully\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Process can use temp context to send and receive msg successfully.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>SSU.FUT.008.AT.I01581</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test PRB Can Use Temp Context To Send And Receive Msgs</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB can save and get saved message successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Test CLI send msg to PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Test PRB will ack 3 msgs with MSG_NUM2 firstly\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test PRB ack 1 msg with MSG_NUM1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Test CLI call dmxmsg_receive_msg_from_r to receive MSG_NUM1 successfully\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Test CLI can receive other three msgs\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. PRB can save and get saved message successfully.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>SSU.FUT.009.AT.I01581</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test PRB Can Save And Get Saved Msgs Successfully</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB can receive message with defined time slot</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Test CLI send msg to PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Test CLI with receive the ack with defined time slot.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Test Process will not response it and CLI will be time out.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The time out time should be correct.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>SSU.FUT.010.AT.I01581</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Will Be Timeout When Process Not Response</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB can receive msg from specified context</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. \n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Test CLI send msg to create one context for the PRB.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Test CLI send msg to process and can receive ACK from default context.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Send msg to change the default context.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Test CLI send msg to process and can receive ACK from changed context.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Multiple context can work correctly in one thread for a PRB.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>SSU.FUT.011.AT.I01581</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Msg To Open One Context</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Msg And Receive ACK From Default Context</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Msg To Change Context</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Msg And Receive ACK From Changed Context</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Test CLI Send Msg To Close One Context</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB can send msg from specified context</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. PRB has been registered two context.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Test CLI send msg to PRB,it will firstly send msg by default context(0x1940), then send msg by send_from interface.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check the first msg should be send by default context, the send one should be sent by 0x1949.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. PRB can specifiy context by send_from interface.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>SSU.FUT.012.AT.I01581</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Msg To Send Msg By Specified Context</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Check The Process Can Catch The Signal</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check Whether Process Is Exist Or Not</td><td>${PRB_NAME}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Process can still receive msg correctly after closed normally</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Dmxmsg Command</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>refer</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Process can't receive msg after closed forcelly</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Dmxmsg Command</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>close</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Restart Test Process To Make It Work</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Execute CLI</td><td><font color=blue>pkill -2 msgmonstub</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Libgen Execute Command And Check Result</td><td>Exit 2</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>failure</td><td>1</td><td>pkill -2 msgmonstub</td></tr>
+<tr><td><br></td><td>${OMU_PROCESS_ID}</td><td>Start Libdmxmsg Process</td><td>msgmonstub</td><td>2</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Msg To Test Process And Receive Wanted ACK</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Process Receive Wanted ACK</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>save</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Msg To Test Process And Receive ACK Including Bottom</b></td></tr>
+<tr><td><br></td><td>Switch to OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Process Receive ACK Including Bottom</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>whole</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send And Receive Msg Can Work Correctly With Multi-thread</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Dmxmsg Command</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>mthread</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Setup Test PRB For Multi Register</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Execute CLI</td><td><font color=blue>pkill -2 msgmonstub</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Libgen Execute Command And Check Result</td><td>Exit 2</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>failure</td><td>1</td><td>pkill -2 msgmonstub</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Teardown For Multi Register</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${OMU_PROCESS_ID}</td><td>Start Libdmxmsg Process</td><td>msgmonstub</td><td>2</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>PRB Failed To Register Family To One Context When Limit Reaches</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Test Libdmxmsg Family Register Limit</td><td>msgmonstub</td><td>555</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test PRB force register</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Dmxmsg Command And Check Result</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>register</td></tr>
+<tr><td><br></td><td>...</td><td>success</td><td>2</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test PRB Can Use Temp Context To Send And Receive Msgs</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Execute Dmxmsg Command</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>work</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test PRB Can Save And Get Saved Msgs Successfully</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Process Receive Wanted ACK</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>usersave</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test CLI Will Be Timeout When Process Not Response</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Dmxmsg Command</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>time</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test CLI Send Msg To Open One Context</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Dmxmsg Command</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>openctx</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test CLI Send Msg To Close One Context</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Dmxmsg Command</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS_2}</td><td>closectx</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test CLI Send Msg And Receive ACK From Default Context</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Process Receive ACK With Correct Context</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>${DMX_TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test CLI Send Msg To Change Context</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Dmxmsg Command</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>switch</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test CLI Send Msg And Receive ACK From Changed Context</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Process Receive ACK With Correct Context</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS_2}</td><td>${DMX_TEST_PROCESS_2}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Process Receive ACK With Correct Context</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS}</td><td>${DMX_TEST_PROCESS}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Msg To Send Msg By Specified Context</b></td></tr>
+<tr><td><br></td><td>Switch To OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg From Specified Context</td><td>${OMU PHYSICAL ADDRESS}</td><td>${DMX_TEST_PROCESS_1}</td><td>from</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

@@ -1,0 +1,269 @@
+D M X M S G   T R A N S M I S S O N   B E T W E E N   M I P S   A N D   X 8 6   F U N C T I O N A L					
+
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	resources/dmxmsg.tsv				
+Suite Setup	Connect_And_Init	${MAX_TIME_FOR_CONNECT}			
+Suite Teardown	Disconnect From SUT				
+Force Tags	Product_Backlog_ID-B01053	Iteration_ID-I00634	Product_Backlog_ID-B01248	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL
+...	exec_type-automatic	type-FUT	release-IL1_RIS3	reviewer-xiaoping.wang@nsn.com	rw-weekly
+...	hw_env-AB	PRS_ID-IL_PRS_2582			
+
+
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+${NOT_EXISTED_PHY_ADDR}	AAA:AD9C:0				
+${NOT_EXISTED_COMP_ADDR}	0AA:AD9C:0				
+${INVALID_LOG_ADDR}	4444:AD9C:0				
+${DAEMON_GROUP}	8FFA:AD9D:0				
+${DAEMON_LOGWOA}	5AC9:AD9C:0				
+${DAEMON_LOGWOB}	5002:AD9C:0				
+${DAEMON_LOGSP}	6002:AD9C:0				
+${DAEMON_LOGWOSP}	7002:AD9D:0				
+${OMU_TYPE}	2				
+${CM_UTYPE}	4				
+${SISU_UTYPE}	128				
+${IPNIU_UTYPE}	12A				
+${DSPM_UTYPE}	0x5E0				
+${MAX_TIME_FOR_CONNECT}	80				
+${TIMEOUT}	80				
+#@{NODE LIST}	CLA-0	IPNIU-0			
+					
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Send No-data Message From Linux Daemon In COMPUTER_A To Linux Daemon In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.001.AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A}	${DAEMON_B}	10
+	...	0	1	0	1
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Short Message From Linux Daemon In COMPUTER_A To Linux Daemon In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.002.AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A}	${DAEMON_B}	10
+	...	0	1	100	1
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Largest Message From Linux Daemon In COMPUTER_A To Linux Daemon In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.003.AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A}	${DAEMON_B}	1
+	...	0	10	65000	1
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send No-Data Message From One Linux Daemon In COMPUTER_A To Two Linux Daemons With Different Family ID In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.004AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A_A}	${DAEMON_B_C}	10
+	...	0	1	0	${WOKE MODE EN}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Short Message From One Linux Daemon In COMPUTER_A To Two Linux Daemons With Different Family ID In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.005AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A_A}	${DAEMON_B_C}	10
+	...	0	1	100	${WOKE MODE EN}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Largest Message From One Linux Daemon In COMPUTER_A To Two Linux Daemons With Different Family ID In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.006AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A_A}	${DAEMON_B_C}	1
+	...	0	10	65000	${WOKE MODE EN}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send No-Data Message From Two Linux Daemons With Different Family ID In COMPUTER_A To One Linux Daemon In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.07AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A_D}	${DAEMON_B_B}	10
+	...	0	1	0	${WOKE MODE EN}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Short Message From Two Linux Daemons With Different Family ID In COMPUTER_A To One Linux Daemon In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.08AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A_D}	${DAEMON_B_B}	10
+	...	0	1	100	${WOKE MODE EN}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Largest Message From Two Linux Daemons With Different Family ID In COMPUTER_A To One Linux Daemon In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.09AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A_D}	${DAEMON_B_B}	1
+	...	0	10	65000	${WOKE MODE EN}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send No-Data Message From Linux Daemons With Different Family ID In COMPUTER_A To Linux Daemons With Different Family ID In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.010AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A_D}	${DAEMON_B_C}	10
+	...	0	1	0	${WOKE MODE EN}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Short Message From Linux Daemons With Different Family ID In COMPUTER_A To Linux Daemons With Different Family ID In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.011AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A_D}	${DAEMON_B_C}	10
+	...	0	1	100	${WOKE MODE EN}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Largest Message From Linux Daemons With Different Family ID In COMPUTER_A To Linux Daemons With Different Family ID In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.012AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A_D}	${DAEMON_B_C}	1
+	...	0	10	65000	${WOKE MODE EN}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send No-Data Message From Linux Daemons With Different Physical Addr In COMPUTER_A To Linux Daemons With Different Physical Addr In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.013AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A_E}	${DAEMON_B_F}	10
+	...	0	1	0	${WOKE MODE EN}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Short Message From Linux Daemons With Different Physical Addr In COMPUTER_A To Linux Daemons With Different Physical Addr In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.014AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A_E}	${DAEMON_B_F}	10
+	...	0	1	100	${WOKE MODE EN}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Largest Message From Linux Daemons With Different Physical Addr In COMPUTER_A To Linux Daemons With Different Physical Addr In COMPUTER_B	[Tags]	ATC_ID-DMXMSG.FUT.015AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A_E}	${DAEMON_B_F}	1
+	...	0	10	65000	${WOKE MODE EN}
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send No-Data Message From Linux Daemon In COMPUTER_A To A Specific Group Address With Daemons In All Computers	[Tags]	ATC_ID-DMXMSG.FUT.016AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A}	${DAEMON_GROUP}	10
+	...	0	1	0	1
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Short Message From Linux Daemon In COMPUTER_A To A Specific Group Address With Daemons In All Computers	[Tags]	ATC_ID-DMXMSG.FUT.017AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A}	${DAEMON_GROUP}	10
+	...	0	1	100	1
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Largest Message From Linux Daemon In COMPUTER_A To A Specific Group Address With Daemons In All Computers	[Tags]	ATC_ID-DMXMSG.FUT.018AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A}	${DAEMON_GROUP}	1
+	...	0	10	65000	1
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Message From Linux Daemon In COMPUTER_A To Linux Daemon In COMPUTER_B With Logical Address (WO)	[Tags]	ATC_ID-DMXMSG.FUT.019AT			
+	Cat dmxmsg table 				
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_LOGWOA}	${DAEMON_LOGWOB}	10
+	...	0	1	100	1
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Message From Linux Daemon In COMPUTER_A To Linux Daemon In COMPUTER_B With Logical Address (SP)	[Tags]	ATC_ID-DMXMSG.FUT.020AT			
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_LOGWOA}	${DAEMON_LOGSP}	10
+	...	0	1	100	0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Message From Linux Daemon In COMPUTER_A To Linux Daemons In COMPUTER_B And COMPUTER_D With Logical Address (WOSP)	[Tags]	ATC_ID-DMXMSG.FUT.021AT			
+	Cat dmxmsg table 				
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_LOGWOA}	${DAEMON_LOGWOSP}	10
+	...	0	1	100	0
+	...	${TIMEOUT}			
+	Should Contain	${out}	successful		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Message From Linux Daemon In COMPUTER_A To A Not Existed Physical Address	[Tags]	ATC_ID-DMXMSG.FUT.022AT	ct-negative		
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A}	${NOT_EXISTED_PHY_ADDR}	10
+	...	0	1	100	0
+	...	${TIMEOUT}			
+	Should Contain	${out}	setup connect failed		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Message From Linux Daemon In COMPUTER_A To An Invalid Logical Address	[Tags]	ATC_ID-DMXMSG.FUT.023AT	ct-negative		
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A}	${INVALID_LOG_ADDR}	10
+	...	0	1	100	0
+	...	${TIMEOUT}			
+	Should Contain	${out}	setup connect failed		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Message From Linux Daemon In COMPUTER_A To A Valid But Not Existed Physical/computer Address	[Tags]	ATC_ID-DMXMSG.FUT.024AT	ct-negative		
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A}	${NOT_EXISTED_COMP_ADDR}	10
+	...	0	1	100	0
+	...	${TIMEOUT}			
+	Should Contain	${out}	setup connect failed		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+Send Message From Linux Daemon In COMPUTER_A To A Not Registered Family ID In COMPUTER_A	[Tags]	ATC_ID-DMXMSG.FUT.025AT	ct-negative		
+	${out} =	Use Dmxcli To Send Messages	${DAEMON_A}	${NOT_REGISTERED_FAMILY}	10
+	...	0	1	100	0
+	...	${TIMEOUT}			
+	Should Contain	${out}	setup connect failed		
+	[Teardown]	Check node env if case fail 	@{NODE LIST}		
+
+
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Connect_And_Init	[Arguments]	${max_time_for_connect}			
+	Connect To SUT	${max_time_for_connect}			
+	Change To RU Env	%{OMU_0_NAME}			
+	${DAEMON_A} =	Query And Fill Pid	"[${IPNIU_UTYPE},0]:AD9C:0"		
+	Set Suite Variable	\${DAEMON_A}			
+	${DAEMON_B} =	Query And Fill Pid	"[${OMU_TYPE},0]:AD9C:0"		
+	Set Suite Variable	\${DAEMON_B}			
+	${DAEMON_A_A} =	Query And Fill Pid	"[${IPNIU_UTYPE},0]:AD9C:0-[${IPNIU_UTYPE},0]:AD9C:0"		
+	Set Suite Variable	\${DAEMON_A_A}			
+	${DAEMON_B_C} =	Query And Fill Pid	"[${OMU_TYPE},0]:AD9C:0-[${OMU_TYPE},0]:AD9D:0"		
+	Set Suite Variable	\${DAEMON_B_C}			
+	${DAEMON_A_D} =	Query And Fill Pid	"[${IPNIU_UTYPE},0]:AD9C:0-[${IPNIU_UTYPE},0]:AD9D:0"		
+	Set Suite Variable	\${DAEMON_A_D}			
+	${DAEMON_B_B} =	Query And Fill Pid	"[${OMU_TYPE},0]:AD9C:0-[${OMU_TYPE},0]:AD9C:0"		
+	Set Suite Variable	\${DAEMON_B_B}			
+	${DAEMON_A_E} =	Query And Fill Pid	"[${IPNIU_UTYPE},0]:AD9C:0-[${IPNIU_UTYPE},1]:AD9C:0"	
+	Set Suite Variable	\${DAEMON_A_E}		
+	${DAEMON_B_F} =	Query And Fill Pid	"[${OMU_TYPE},0]:AD9C:0-[${CM_UTYPE},0]:AD9C:0"	
+	Set Suite Variable	\${DAEMON_B_F}		
+	${NOT_REGISTERED_FAMILY} =	Query And Fill Pid	"[${IPNIU_UTYPE},0]:AAAA:0"	
+	Set Suite Variable	\${NOT_REGISTERED_FAMILY}		
+	${OMU0_Phys} = 	QueryPhysAddrByUnitType	${OMU_TYPE}	0
+	Set Suite Variable	\${OMU0_Phys}		
+	${OMU1_Phys} = 	QueryPhysAddrByUnitType	${OMU_TYPE}	1
+	Set Suite Variable	\${OMU1_Phys}		
+	${CM0_Phys} = 	QueryPhysAddrByUnitType	${CM_UTYPE}	0
+	Set Suite Variable	\${CM0_Phys}		
+	${CM1_Phys} = 	QueryPhysAddrByUnitType	${CM_UTYPE}	1
+	Set Suite Variable	\${CM1_Phys}		
+	${SISU0_Phys} = 	QueryPhysAddrByUnitType	${SISU_UTYPE}	0
+	Set Suite Variable	\${SISU0_Phys}		
+	${SISU1_Phys} = 	QueryPhysAddrByUnitType	${SISU_UTYPE}	1
+	Set Suite Variable	\${SISU1_Phys}		
+	${IPNIU0_Phys} = 	QueryPhysAddrByUnitType	${IPNIU_UTYPE}	0
+	Set Suite Variable	\${IPNIU0_Phys}		
+	${IPNIU1_Phys} = 	QueryPhysAddrByUnitType	${IPNIU_UTYPE}	1
+	Set Suite Variable	\${IPNIU1_Phys}		
+	${DSPM0_Phys} = 	QueryPhysAddrByUnitType	${DSPM_UTYPE}	0
+	Set Suite Variable	\${DSPM0_Phys}		
+	${DSPM1_Phys} = 	QueryPhysAddrByUnitType	${DSPM_UTYPE}	1
+	Set Suite Variable	\${DSPM1_Phys}		
+	${mips_node0}	Get MGW MIPS Node0 Name			
+	${mips_node1}	Get MGW MIPS Node1 Name			
+	@{NODE LIST}	Set variable	${mips_node0}	${mips_node1}	
+	Set Suite Variable	\@{NODE LIST}			
+	execute cli	ssh ${mips_node0}			
+	ConfigGroupAddr			
+	Cat dmxmsg table 			
+
+
+
+
+
+ConfigGroupAddr	execute cli	"dmxcli2 -G 8FFF,4,${OMU0_Phys},${OMU1_Phys},${CM0_Phys},${SISU1_Phys}"
+	execute cli	"dmxcli2 -G 8FFE,2,${IPNIU0_Phys},${IPNIU1_Phys}"
+	execute cli	"dmxcli2 -G 8FFD,2,${DSPM0_Phys},${DSPM1_Phys}"
+	execute cli	"dmxcli2 -G 8FFC,3,${OMU0_Phys},${CM0_Phys},${DSPM0_Phys}"
+	execute cli	"dmxcli2 -G 8FFB,2,${DSPM0_Phys},${IPNIU0_Phys}"
+	execute cli	"dmxcli2 -G 8FFA,3,${OMU0_Phys},${CM0_Phys},${IPNIU0_Phys}"
+	execute cli	"dmxcli2 -G 8FF9,4,${OMU0_Phys},${CM0_Phys},${IPNIU0_Phys},${DSPM0_Phys}"

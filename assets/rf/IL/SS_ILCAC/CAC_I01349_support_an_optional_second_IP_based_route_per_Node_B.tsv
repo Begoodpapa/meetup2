@@ -1,0 +1,129 @@
+*Setting*							
+Suite Setup	connect to target hardware and create test resource						
+Suite Teardown	remove test resource and disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B01701	Iteration_ID-I01349	PRS_ID-IL_PRS_4229	EFS_ID-RNC_EFS_2222_163	release-IL1	element-IL	exec_type-automatic
+...	type-FUT	hw_env-RNC	hw_env-RNC_S0	hw_env-RNC_S1	hw_env-ADA	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	exec_level-pre
+...	QL-4	HW_TYPE-ADA_FTLB	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0			
+Resource	il.html						
+Resource	./resources/common_operation_resource.html						
+Resource	./resources/cac_basic_operation_resource.html						
+Resource	./resources/IPBR_basic_operation_resource.html						
+Library	Collections						
+Resource	../SS_ILCallMgmt/resources/cm_resource.tsv						
+							
+*Variable*							
+${THREE_GROUP}	3						
+${IPBR_ID_4003}	4003						
+${IPBR_ID_4004}	4004						
+${IPBR_ID_4006}	4006						
+${REQ_BW_900KB}	900000						
+${REQ_BW_800KB}	800000						
+${REQ_BW_200KB}	200000						
+${REQ_BW_110KB}	210000						
+${REQ_BW_100KB}	100000						
+${EC_IPRO_NOT_EXIST}	0x450D						
+${IPBR_NAME_TEST_4003}	test-4003						
+${IPBR_NAME_TEST_4004}	test-4004						
+${ROUTE_BW_DEFAULT}	10000						
+${COMMIT_BW_DEFAULT}	1000						
+${IPBR_ID_9}	9						
+${IPBR_ID_4095}	4095						
+${IPBR_NAME_TEST_4006}	test-4006						
+${IPBR_ID_4005}	4005						
+							
+*Test Case*							
+CACPRB Choose IPBR from IPBR list with Least Load Successfully	[Tags]	ATC_ID-TT_IPBR_CAC.FUT.001.AT.I01349	ct-positive				
+	[Setup]	Reserve RTP Leg and Leg list for the test					
+	${iub_leg}	Create Iub Leg with Specified IPBR and Request Bandwidth Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4004}	${REQ_BW_200KB}	${IP_GROUP_1.ip_addr}	
+	Create Iub Leg with Specified IPBR and Request Bandwidth Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4004}	${REQ_BW_110KB}	${IP_GROUP_2.ip_addr}		
+	Release Iub Leg successfully	${iub_leg}					
+	Create Iub Leg with Specified IPBR and Request Bandwidth Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4004}	${REQ_BW_100KB}	${IP_GROUP_1.ip_addr}		
+	Create Iub Leg with Specified IPBR and Request Bandwidth Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4004}	${REQ_BW_100KB}	${IP_GROUP_1.ip_addr}		
+	[Teardown]	release legs created in test case					
+							
+CACPRB Reserve Resource With Right IPBR When IPBR List Contains One IPBR Without IP Address Binding	[Tags]	ATC_ID-TT_IPBR_CAC.FUT.002.AT.I01349	ct-positive				
+	[Setup]	Reserve RTP Leg and Leg list for the test					
+	Create Iub Leg with Specified IPBR and Request Bandwidth Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4005}	${REQ_BW_200KB}	${IP_GROUP_1.ip_addr}		
+	Create Iub Leg with Specified IPBR without CAC request Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4005}	${IP_GROUP_1.ip_addr}			
+	[Teardown]	release legs created in test case					
+							
+CACPRB Reserve Resource Failed when Both IPBRs in IPBR List do not Have Enough Bandwidth to Meet Requirement	[Tags]	ATC_ID-TT_IPBR_CAC.FUT.003.AT.I01349	ct-negative				
+	[Setup]	Reserve RTP Leg and Leg list for the test					
+	Create Iub Leg with Specified IPBR and Request Bandwidth Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4004}	${REQ_BW_900KB}	${IP_GROUP_1.ip_addr}		
+	Create Iub Leg with Specified IPBR and Request Bandwidth Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4004}	${REQ_BW_800KB}	${IP_GROUP_2.ip_addr}		
+	Create Iub Leg with Specified IPBR and Request Bandwidth Failed and check the error code	${IPBR_ID_4003}	${IPBR_ID_4004}	${REQ_BW_110KB}	${EC_IPRO_NOT_EXIST}		
+	Create Iub Leg with Specified IPBR and Request Bandwidth Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4004}	${REQ_BW_100KB}	${IP_GROUP_2.ip_addr}		
+	Create Iub Leg with Specified IPBR and Request Bandwidth Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4004}	${REQ_BW_100KB}	${IP_GROUP_1.ip_addr}		
+	[Teardown]	release legs created in test case					
+							
+CACPRB Reserve Resource with Right IPBR when IPBR List Contains One IPBR which configured as no CAC needed	[Tags]	ATC_ID-TT_IPBR_CAC.FUT.004.AT.I01349	ct-negative				
+	[Setup]	Reserve RTP Leg and Leg list for the test					
+	${iub_leg}	Create Iub Leg with Specified IPBR and Request Bandwidth Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4006}	${REQ_BW_900KB}	${IP_GROUP_1.ip_addr}	
+	Create Iub Leg with Specified IPBR and Request Bandwidth Failed and check the error code	${IPBR_ID_4003}	${IPBR_ID_4006}	${REQ_BW_110KB}	${EC_IPRO_NOT_EXIST}		
+	Create Iub Leg with Specified IPBR without CAC request Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4006}	${IP_GROUP_3.ip_addr}			
+	Create Iub Leg with Specified IPBR and Request Bandwidth Successfully, Check the Assigned IP address	${IPBR_ID_4003}	${IPBR_ID_4006}	${REQ_BW_100KB}	${IP_GROUP_1.ip_addr}		
+	[Teardown]	release legs created in test case					
+							
+*Keyword*							
+Release Iub Leg successfully	[Arguments]	${iub_leg_info}					
+	${result}	execute cli	lgutilgx RV:${iub_leg_info.computer}:${iub_leg_info.call_id}:${iub_leg_info.leg_id}				
+	should contain	${result}	RELEASING SUCCESSFUL				
+							
+Reserve RTP Leg and Leg list for the test	${result}	create rtp leg	${USCP}	${IPBR_TEST_ID}			
+	should be equal	${result.result}	SUCCESSFUL				
+	set test variable	\${CALL_ID}	${result.call_id}				
+	create leg list						
+	Append to list	${OUT_LEG_LIST}	${result}				
+							
+Create Iub Leg with Specified IPBR and Request Bandwidth Failed and check the error code	[Arguments]	${ipbrId_1}	${ipbrId_2}	${request_bandwidth}	${expect_errorcode}		
+	${result}	create iub leg	${USCP}	${ipbrId_1},${ipbrId_2}	${CALL_ID}	NCAC=0,FMBR=${request_bandwidth},FABR=${request_bandwidth}	
+	run keyword if	'${result.result}'=='SUCCESSFUL'	Append to list	${IN_LEG_LIST}	${result}		
+	should be equal	${result.result}	FAILED				
+	should be equal	${result.error_code}	${expect_errorcode}				
+							
+Create Iub Leg with Specified IPBR and Request Bandwidth Successfully, Check the Assigned IP address	[Arguments]	${ipbrId_1}	${ipbrId_2}	${request_bandwidth}	${expect_ip}		
+	${result}	create iub leg	${USCP}	${ipbrId_1},${ipbrId_2}	${CALL_ID}	NCAC=0,FMBR=${request_bandwidth},FABR=${request_bandwidth}	
+	should be equal	${result.result}	SUCCESSFUL				
+	Append to list	${IN_LEG_LIST}	${result}				
+	should be equal	${result.local_ip}	${expect_ip}				
+	[Return]	${result}					
+							
+Create Iub Leg with Specified IPBR without CAC request Successfully, Check the Assigned IP address	[Arguments]	${ipbrId_1}	${ipbrId_2}	${expect_ip}			
+	${result}	create iub leg	${USCP}	${ipbrId_1},${ipbrId_2}	${CALL_ID}		
+	should be equal	${result.result}	SUCCESSFUL				
+	Append to list	${IN_LEG_LIST}	${result}				
+	should be equal	${result.local_ip}	${expect_ip}				
+	[Return]	${result}					
+							
+connect to target hardware and create test resource	connect to target hardware						
+	switch to active OMU						
+	Create Test Resource						
+	Get Active CP Units						
+	Get Random USCP Unit	${FLASH_PRE_INDEX}					
+							
+Create Test Resource	run keyword if	'%{HW}' == 'ADA'	Set Test Resource for ADA				
+	run keyword if	'%{HW}' == 'RNC'	Set Test Resource for RNC				
+	Add IPRO successfully	${IPBR_ID_4003}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}		
+	Add IPRO successfully	${IPBR_ID_4004}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}		
+	Add IPRO successfully	${IPBR_ID_4006}	${IP_GROUP_3.ip_addr}	${IP_GROUP_3.rg_name}	${IP_GROUP_3.iface}		
+							
+Release Test Rsource	run keyword and ignore error	delete IPRO successfully	${IPBR_ID_4003}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	${DEL_MODE_FORCE}
+	run keyword and ignore error	delete IPRO successfully	${IPBR_ID_4004}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}	${DEL_MODE_FORCE}
+	run keyword and ignore error	delete IPRO successfully	${IPBR_ID_4006}	${IP_GROUP_3.ip_addr}	${IP_GROUP_3.rg_name}	${IP_GROUP_3.iface}	${DEL_MODE_FORCE}
+							
+remove test resource and disconnect from target hardware	Release Test Rsource						
+	disconnect from target hardware						
+							
+Set Test Resource for ADA	${IP_GROUP}	select_random_IP_address_and_recovery_group_ADA	${THREE_GROUP}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+	Set Suite Variable	\${IP_GROUP_2}	${IP_GROUP[1]}				
+	Set Suite Variable	\${IP_GROUP_3}	${IP_GROUP[2]}				
+	set Suite Variable	\${IPBR_TEST_ID}	${IPBR_ID_9}				
+							
+Set Test Resource for RNC	${IP_GROUP}	select_random_IP_address_and_recovery_group	${THREE_GROUP}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+	Set Suite Variable	\${IP_GROUP_2}	${IP_GROUP[1]}				
+	Set Suite Variable	\${IP_GROUP_3}	${IP_GROUP[2]}				
+	set Suite Variable	\${IPBR_TEST_ID}	${IPBR_ID_4095}				
+							
+register expect error syslog							

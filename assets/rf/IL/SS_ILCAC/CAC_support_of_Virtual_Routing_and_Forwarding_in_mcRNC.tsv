@@ -1,0 +1,252 @@
+*Setting*							
+Suite Setup	connect to target hardware and create test resource						
+Suite Teardown	remove test resource and disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B01834	Iteration_ID-I02243	PRS_ID-PRS_ID-IL_PRS_4370	release-IL3	element-IL	exec_type-automatic	type-FUT
+...	hw_env-RNC_S1	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	HW_TYPE-BCN_A1	BCN_STEP-BCN_S1	QL-6	EFS_ID-RNC_EFS_2257_2218_1	EFS_ID-RNC_EFS_2257_2218_33
+...	EFS_ID-RNC_EFS_2257_2218_25	FRS_ID-XXX	PRS_ID-XXX				
+Resource	./resources/common_operation_resource.html						
+Resource	./resources/cac_basic_operation_resource.html						
+Resource	./resources/IPBR_basic_operation_resource.html						
+Resource	il.html						
+Library	Collections						
+							
+*Variable*							
+${IPBR_ID_4021}	4021						
+${TEST_IP_ADDRESS}	%{VRF_TEST_IP_1}						
+${TEST_IP_ADDRESS_2}	%{VRF_TEST_IP_2}						
+${EITPUPTRMRG}	/%{EITPUPTRM_TYPE_NAME}-0						
+${IFACE_VRF11}	ethvrf						
+${IFACE_DEFAULT_VRF}	%{ETH1_1}						
+${VRF_11}	vrf11						
+${VRF_DEFAULT}	default						
+${IPBR_ID_4095}	4095						
+${ACTIVE_USCP}	USCP-0						
+${UDP_PORT_20005}	20005						
+${UDP_PORT_20060}	20060						
+${UDP_PORT_20062}	20062						
+${BW_10_B}	10						
+${BANDWIDTH_10KB}	10000						
+${BANDWIDTH_15KB}	15000						
+${BANDWIDTH_20KB}	20000						
+${RES_TYPE}	OUT						
+${VRF_11_CLI}	11						
+${VRF_DEFAULT_CLI}	0						
+${EME_PARA}	QPRI=255						
+${BANDWIDTH_30KB}	30000						
+							
+*Test Case*							
+Add IPRO with IP address based on non-default VRF	[Tags]	ATC_ID-TRM_IPBR.FUT.001.AT.I02243	ct-negative	EFS_ID-RNC_EFS_2257_2218_37	CR_ID-CRE0901		
+	Create IPRO with IP address based on the non-default VRF						
+	[Teardown]	Release IPROs created in the test case					
+							
+Add IPRO with the same parameter successfully	[Tags]	ATC_ID-TRM_IPBR.FUT.001.AT.I02243					
+	Create IPRO with IP address based on the same VRF						
+	[Teardown]	Release IPROs created in the test case					
+							
+Add IPRO with IP address and VRF not matched	[Tags]	ATC_ID-TRM_IPBR.FUT.002.AT.I02243					
+	Create IPRO with IP address and VRF not matched						
+	[Teardown]	run keyword if test failed	Release IPROs created in the test case				
+							
+Add IPRO with same IP address based on different VRF	[Tags]	ATC_ID-TRM_IPBR.FUT.003.AT.I02243	ct-positive	FRS_ID-PCM_100201_22_R2257	FRS_ID-PCM_100201_23_R2257	EFS_ID-RNC_EFS_2257_2218_91	
+	Create IPRO with IP address based on the non-default VRF						
+	Create IPRO with IP address based on the default VRF						
+	Check IPBR information with sepecified IPBR						
+	Check IPBR inforamtion with sepecified VRF						
+	[Teardown]	Release IPROs created in the test case					
+							
+Add IPRO with different IP address based on the same non-default VRF	[Tags]	ATC_ID-TRM_IPBR.FUT.004.AT.I02243	ct-positive				
+	Create IPRO with IP address based on the non-default VRF						
+	Create IPRO with second IP address based on the same VRF						
+	[Teardown]	Release IPROs created in the test case					
+							
+Reserve IuB or IuCS Legs with Same IP, Same Port, Based on Different VRF	[Tags]	ATC_ID-TRM_CAC.FUT.001.AT.I02059	ct-positive				
+	[Setup]	Reserve two RTP legs and IPRO with IP address based on different VRF					
+	Reserve IuB Leg with sepcified Port twice						
+	Reserve RTP/RTCP Leg with specified Port twice						
+	[Teardown]	Release legs and IPRO created in the test case					
+							
+Reserve IuPS Legs between IPROs with Same IP, Same IPBR, and Different VRF	[Tags]	ATC_ID-TRM_CAC.FUT.002.AT.I02059	ct-positive				
+	[Setup]	create Leg list and IPRO with IP address based on different VRF					
+	create GTP Tunnel twice and check the GTP tunnels' VRF						
+	[Teardown]	Release legs and IPRO created in the test case					
+							
+CS2 modification with non-default VRF	[Tags]	ATC_ID-TRM_CAC.FUT.003.AT.I02059	ct-positive				
+	[Setup]	Reserve two RTP legs and IPRO with IP address based on different VRF					
+	Reserve IuB Leg with sepcified Port twice						
+	Update IuB leg's bandwidth which based on non-default VRF						
+	Update emergency IuB leg's bandwidth which based on non-default VRF						
+	[Teardown]	Release legs and IPRO created in the test case					
+							
+CS1 modification with non-default VRF	[Tags]	ATC_ID-TRM_CAC.FUT.004.AT.I02059	ct-positive				
+	[Setup]	Reserve one RTP leg and IPRO with IP address based on different VRF					
+	Reserve IuB leg with sepcified bandwidth and udp port	${BANDWIDTH_10KB}					
+	Reserve IuB leg with sepcified bandwidth and udp port	${BANDWIDTH_15KB}					
+	Reserve CS1 Leg based on the leg use non-default VRF and check the bandwidth upgrade						
+	Reserve emergency CS1 Leg based on the leg use non-default VRF and check the bandwidth upgrade						
+	[Teardown]	Release legs and IPRO created in the test case					
+							
+*Keyword*							
+get VRF of gtp tunnel info from CACPRB	[Arguments]	${ip_address}	${teid}				
+	execute cli	iltrmcli -S -g all					
+	${gtp_info_1}	inquiry_gtp_conn_resource_info	${ip_address}	${teid}	${VRF_DEFAULT_CLI}		
+	run keyword if	${gtp_info_1} != {}	set test variable	\${RETURN_VRF}	${gtp_info_1['${teid}']['vrf_id']}		
+	${gtp_info_2}	inquiry_gtp_conn_resource_info	${ip_address}	${teid}	${VRF_11_CLI}		
+	run keyword if	${gtp_info_2} != {}	set test variable	\${RETURN_VRF}	${gtp_info_2['${teid}']['vrf_id']}		
+	[Return]	${RETURN_VRF}					
+							
+create Leg list and IPRO with IP address based on different VRF	create leg list						
+	Create IPRO with IP address based on the non-default VRF						
+	Create IPRO with IP address based on the default VRF						
+							
+Reserve CS1 Leg based on the leg use non-default VRF and check the bandwidth upgrade	${ipbr_info_org}	get_ipbr_resource_info	${IPBR_ID_4021}				
+	${iub_leg_info}	create iub leg	${ACTIVE_USCP}	${IPBR_ID_4021}	${RTP_INFO.call_id}	REPL=${VRF_LEG_ID},UPGR=1,NCAC=0,FMBR=${BANDWIDTH_20KB},FABR=${BANDWIDTH_20KB}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	set test variable	\${NEW_LEG_ID}	${iub_leg_info.leg_id}				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	${ipbr_info_new}	get_ipbr_resource_info	${IPBR_ID_4021}				
+	${bandwidth_increased}	evaluate	${ipbr_info_new.res_bw}-${ipbr_info_org.res_bw}				
+	${expect_increased}	evaluate	${BANDWIDTH_20KB}-${VRF_LEG_BW}				
+	should be equal as integers	${bandwidth_increased}	${expect_increased}				
+	Release orig leg	${RTP_INFO}	${VRF_LEG_ID}				
+							
+Reserve one RTP leg and IPRO with IP address based on different VRF	create leg list						
+	Create IPRO with IP address based on the non-default VRF						
+	Create IPRO with IP address based on the default VRF						
+	${rtp_leg_info}	Create RTP leg	${ACTIVE_USCP}	${IPBR_ID_4095}			
+	should be equal	${rtp_leg_info.result}	SUCCESSFUL				
+	Append to List	${OUT_LEG_LIST}	${rtp_leg_info}				
+	set test variable	\${RTP_INFO}	${rtp_leg_info}				
+							
+Reserve IuB leg with sepcified bandwidth and udp port	[Arguments]	${bandwidth}					
+	${iub_leg_info}	create iub leg	${ACTIVE_USCP}	${IPBR_ID_4021}	${RTP_INFO.call_id}	NCAC=0,FMBR=${bandwidth},FABR=${bandwidth},UDP=${UDP_PORT_20005},MUDP=${UDP_PORT_20005}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	should be equal	${iub_leg_info.legs['${iub_leg_info.leg_id}'].local_port}	${UDP_PORT_20005}				
+	${iub_detail_info}	SCLI_show_call_resource	${ACTIVE_USCP}	${rtp_info.hand_id}	${rtp_info.hand_focus}		
+	run keyword if	'${iub_detail_info.leg_attr['${iub_leg_info.leg_id}'].local_vrf_id}'=='${VRF_11_CLI}'	set test variable	\${VRF_LEG_ID}	${iub_leg_info.leg_id}		
+	run keyword if	'${iub_detail_info.leg_attr['${iub_leg_info.leg_id}'].local_vrf_id}'=='${VRF_11_CLI}'	set test variable	\${VRF_LEG_BW}	${bandwidth}		
+							
+Update IuB leg's bandwidth which based on non-default VRF	${res_info_0_org}	inquiry_udp_conn_resource_info	${TEST_IP_ADDRESS}	${UDP_PORT_20005}	${VRF_DEFAULT_CLI}		
+	${res_info_11_org}	inquiry_udp_conn_resource_info	${TEST_IP_ADDRESS}	${UDP_PORT_20005}	${VRF_11_CLI}		
+	${modify_result}	Modify Leg Traffic Parameter	${ACTIVE_USCP}	${VRF_LEG.call_id}	IN-01	10,T::FMBR=${BW_10_B},FABR=${BW_10_B},NCAC=0	
+	should be equal	${modify_result.result}	SUCCESSFUL				
+	${res_info_0_new}	inquiry_udp_conn_resource_info	${TEST_IP_ADDRESS}	${UDP_PORT_20005}	${VRF_DEFAULT_CLI}		
+	${res_info_11_new}	inquiry_udp_conn_resource_info	${TEST_IP_ADDRESS}	${UDP_PORT_20005}	${VRF_11_CLI}		
+	should be equal	${res_info_0_org['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['reserve_bw']}	${res_info_0_new['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['reserve_bw']}				
+	should be equal	${res_info_0_org['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['vrf_id']}	${res_info_0_new['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['vrf_id']}				
+	should be equal	${res_info_0_org['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['ipbr_id']}	${res_info_0_new['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['ipbr_id']}				
+	should be equal	${res_info_0_org['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['type']}	${res_info_0_new['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['type']}				
+	${increased_bw}	evaluate	${res_info_11_new['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['reserve_bw']} - ${res_info_11_org['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['reserve_bw']}				
+	Should Be Equal As Integers	${increased_bw}	${BW_10_B}				
+							
+Reserve RTP/RTCP Leg with specified Port twice	create RTP/RTCP leg with specified udp port range successfully (start_port = 20060, max_port = 20062)						
+	create RTP/RTCP leg with specified udp port range successfully (start_port = 20060, max_port = 20062)						
+							
+create RTP/RTCP leg with specified udp port range successfully (start_port = 20060, max_port = 20062)	${rtp_leg_info}	create RTP leg	${ACTIVE_USCP}	${IPBR_ID_4021}	NCAC=1,UDP=${UDP_PORT_20060},MUDP=${UDP_PORT_20062}		
+	should be equal	${rtp_leg_info.result}	SUCCESSFUL				
+	Append to List	${OUT_LEG_LIST}	${rtp_leg_info}				
+	should be equal	${rtp_leg_info.legs['${rtp_leg_info.leg_id}'].local_port}	${UDP_PORT_20060}				
+							
+Reserve IuB Leg with sepcified Port twice	${IUB_LEG_INFO_1}	create Iub Leg with specified udp port (start_port = max_port = 20005)	${RTP_INFO_1}				
+	${IUB_LEG_INFO_2}	create Iub Leg with specified udp port (start_port = max_port = 20005)	${RTP_INFO_2}				
+	set test variable	\${IUB_LEG_INFO_1}					
+	set test variable	\${IUB_LEG_INFO_2}					
+							
+Release legs and IPRO created in the test case	Release legs created in test case						
+	Release IPROs created in the test case						
+							
+create Iub Leg with specified udp port (start_port = max_port = 20005)	[Arguments]	${rtp_info}					
+	${iub_leg_info}	create iub leg	${ACTIVE_USCP}	${IPBR_ID_4021}	${rtp_info.call_id}	NCAC=1,UDP=${UDP_PORT_20005},MUDP=${UDP_PORT_20005}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	should be equal	${iub_leg_info.legs['${iub_leg_info.leg_id}'].local_port}	${UDP_PORT_20005}				
+	${iub_detail_info}	SCLI_show_call_resource	${ACTIVE_USCP}	${rtp_info.hand_id}	${rtp_info.hand_focus}		
+	run keyword if	'${iub_detail_info.leg_attr['${iub_leg_info.leg_id}'].local_vrf_id}'=='${VRF_11_CLI}'	set test variable	\${VRF_LEG}	${rtp_info}		
+	[Return]	${iub_leg_info}					
+							
+Reserve two RTP legs and IPRO with IP address based on different VRF	create leg list						
+	Create IPRO with IP address based on the non-default VRF						
+	Create IPRO with IP address based on the default VRF						
+	${rtp_leg_info}	Create RTP leg	${ACTIVE_USCP}	${IPBR_ID_4095}			
+	should be equal	${rtp_leg_info.result}	SUCCESSFUL				
+	Append to List	${OUT_LEG_LIST}	${rtp_leg_info}				
+	set test variable	\${CALL_ID_1}	${rtp_leg_info.call_id}				
+	set test variable	\${RTP_INFO_1}	${rtp_leg_info}				
+	${rtp_leg_info}	Create RTP leg	${ACTIVE_USCP}	${IPBR_ID_4095}			
+	should be equal	${rtp_leg_info.result}	SUCCESSFUL				
+	Append to List	${OUT_LEG_LIST}	${rtp_leg_info}				
+	set test variable	\${CALL_ID_2}	${rtp_leg_info.call_id}				
+	set test variable	\${RTP_INFO_2}	${rtp_leg_info}				
+							
+Create IPRO with second IP address based on the same VRF	${result}	add ipro with specified parameters	${IPBR_ID_4021}	${TEST_IP_ADDRESS_2}	${EITPUPTRMRG}	${IFACE_VRF11}	vrf=${VRF_11}
+	should be equal	"${result[""IPRO Add""]}"	Success				
+							
+Check IPBR information with sepecified IPBR	${ipro_list}	List IPRO with filter	ipbr-id=${IPBR_ID_4021}				
+	Dictionary Should Contain Key	${ipro_list}	${IPBR_ID_4021}@${TEST_IP_ADDRESS}@${IFACE_DEFAULT_VRF}@${EITPUPTRMRG}				
+	Dictionary Should Contain Key	${ipro_list}	${IPBR_ID_4021}@${TEST_IP_ADDRESS}@${IFACE_VRF11}@${EITPUPTRMRG}				
+							
+Check IPBR inforamtion with sepecified VRF	${ipro_list}	List IPRO with filter	vrf=${VRF_11}				
+	Dictionary Should Not Contain Key	${ipro_list}	${IPBR_ID_4021}@${TEST_IP_ADDRESS}@${IFACE_DEFAULT_VRF}@${EITPUPTRMRG}				
+	Dictionary Should Contain Key	${ipro_list}	${IPBR_ID_4021}@${TEST_IP_ADDRESS}@${IFACE_VRF11}@${EITPUPTRMRG}				
+							
+Create IPRO with IP address based on the default VRF	${result}	add ipro with specified parameters	${IPBR_ID_4021}	${TEST_IP_ADDRESS}	${EITPUPTRMRG}	${IFACE_DEFAULT_VRF}	
+	should be equal	"${result[""IPRO Add""]}"	Success				
+	${ipro_list}	List IPRO with filter	ipbr-id=${IPBR_ID_4021}				
+	should be equal	${ipro_list['${IPBR_ID_4021}@${TEST_IP_ADDRESS}@${IFACE_DEFAULT_VRF}@${EITPUPTRMRG}'].vrf}	${VRF_DEFAULT}				
+							
+Create IPRO with IP address and VRF not matched	${result}	add ipro with specified parameters	${IPBR_ID_4021}	${TEST_IP_ADDRESS}	${EITPUPTRMRG}	${IFACE_VRF11}	vrf=${VRF_DEFAULT}
+	should be equal	"${result[""IPRO Add""]}"	Fail				
+							
+Create IPRO with IP address based on the non-default VRF	${result}	add ipro with specified parameters	${IPBR_ID_4021}	${TEST_IP_ADDRESS}	${EITPUPTRMRG}	${IFACE_VRF11}	vrf=${VRF_11}
+	should be equal	"${result[""IPRO Add""]}"	Success				
+	${ipro_list}	show_ipro	${IPBR_ID_4021}				
+	should be equal	${ipro_list['${IPBR_ID_4021}@${TEST_IP_ADDRESS}@${IFACE_VRF11}@${EITPUPTRMRG}'].vrf}	${VRF_11}				
+							
+Create IPRO with IP address based on the same VRF	${result}	add ipro with specified parameters	${IPBR_ID_4021}	${TEST_IP_ADDRESS}	${EITPUPTRMRG}	${IFACE_VRF11}	vrf=${VRF_11}
+	should be equal	"${result[""IPRO Add""]}"	Success				
+	${ipro_list}	show_ipro	${IPBR_ID_4021}				
+	should be equal	${ipro_list['${IPBR_ID_4021}@${TEST_IP_ADDRESS}@${IFACE_VRF11}@${EITPUPTRMRG}'].vrf}	${VRF_11}				
+							
+Release IPROs created in the test case	release_ipro_with_specified_ipbr_id	${IPBR_ID_4021}					
+							
+connect to target hardware and create test resource	connect to target hardware						
+	switch to active OMU						
+							
+remove test resource and disconnect from target hardware	disconnect from target hardware						
+							
+create GTP Tunnel twice and check the GTP tunnels' VRF	${gtp_tunnel_info_1}	Create GTP Leg Direct	${ACTIVE_USCP}	${IPBR_ID_4021}			
+	should be equal	${gtp_tunnel_info_1.result}	SUCCESSFUL				
+	append to list	${OUT_LEG_LIST}	${gtp_tunnel_info_1}				
+	${vrf_1}	get VRF of gtp tunnel info from CACPRB	${gtp_tunnel_info_1.local_ip}	${gtp_tunnel_info_1.local_teid}			
+	should be equal	${vrf_1}	N/A				
+	${gtp_tunnel_info_2}	Create GTP Leg Direct	${ACTIVE_USCP}	${IPBR_ID_4021}			
+	should be equal	${gtp_tunnel_info_2.result}	SUCCESSFUL				
+	append to list	${OUT_LEG_LIST}	${gtp_tunnel_info_1}				
+	${vrf_2}	get VRF of gtp tunnel info from CACPRB	${gtp_tunnel_info_2.local_ip}	${gtp_tunnel_info_2.local_teid}			
+	should be equal	${vrf_2}	N/A				
+							
+Update emergency IuB leg's bandwidth which based on non-default VRF	${res_info_0_org}	inquiry_udp_conn_resource_info	${TEST_IP_ADDRESS}	${UDP_PORT_20005}	${VRF_DEFAULT_CLI}		
+	${res_info_11_org}	inquiry_udp_conn_resource_info	${TEST_IP_ADDRESS}	${UDP_PORT_20005}	${VRF_11_CLI}		
+	${modify_result}	Modify Leg Traffic Parameter	${ACTIVE_USCP}	${VRF_LEG.call_id}	IN-01	10,T::FMBR=${BANDWIDTH_15KB},FABR=${BANDWIDTH_15KB},NCAC=0,${EME_PARA}	
+	should be equal	${modify_result.result}	SUCCESSFUL				
+	${res_info_0_new}	inquiry_udp_conn_resource_info	${TEST_IP_ADDRESS}	${UDP_PORT_20005}	${VRF_DEFAULT_CLI}		
+	${res_info_11_new}	inquiry_udp_conn_resource_info	${TEST_IP_ADDRESS}	${UDP_PORT_20005}	${VRF_11_CLI}		
+	should be equal	${res_info_0_org['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['reserve_bw']}	${res_info_0_new['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['reserve_bw']}				
+	should be equal	${res_info_0_org['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['vrf_id']}	${res_info_0_new['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['vrf_id']}				
+	should be equal	${res_info_0_org['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['ipbr_id']}	${res_info_0_new['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['ipbr_id']}				
+	should be equal	${res_info_0_org['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['type']}	${res_info_0_new['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['type']}				
+	#${increased_bw}	evaluate	${res_info_11_new['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['reserve_bw']} - ${res_info_11_org['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['reserve_bw']}				
+	Should Be Equal As Integers	${res_info_11_new['${TEST_IP_ADDRESS}:${UDP_PORT_20005}']['reserve_bw']}	${BANDWIDTH_15KB}				
+							
+Reserve emergency CS1 Leg based on the leg use non-default VRF and check the bandwidth upgrade	${ipbr_info_org}	get_ipbr_resource_info	${IPBR_ID_4021}				
+	${iub_leg_info}	create iub leg	${ACTIVE_USCP}	${IPBR_ID_4021}	${RTP_INFO.call_id}	REPL=${NEW_LEG_ID},UPGR=1,NCAC=0,FMBR=${BANDWIDTH_15KB},FABR=${BANDWIDTH_15KB}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	Release orig leg	${RTP_INFO}	${NEW_LEG_ID}				
+	${ipbr_info_new}	get_ipbr_resource_info	${IPBR_ID_4021}				
+	${bandwidth_increased}	evaluate	${ipbr_info_new.res_bw}-${ipbr_info_org.res_bw}				
+	should be equal as integers	${ipbr_info_new.res_bw}	${BANDWIDTH_30KB}				
+							
+Release orig leg	[Arguments]	${leg_info}	${leg_id}				
+	${release_result}	release_resource	${leg_info.computer}	${leg_info.call_id}	${leg_id}		
+	should be equal	${release_result.result}	SUCCESSFUL				

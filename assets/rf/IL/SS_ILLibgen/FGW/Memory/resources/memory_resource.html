@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Memory Resource</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Memory Resource</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>il.html</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${MAX TIME FOR CONNECT}</td><td>600</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MEMORY_TESTING_PROCESS}</td><td>mem_test_pro</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU-0}</td><td>%{OMU_0_NAME}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${UNIT_INDEX}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU_UNIT_TYPE}</td><td>0x2</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK TIMEOUT}</td><td>10</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK INTERVAL}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_WITH_POOL}</td><td colspan=3>[default]\nmax_threads=1\nstack_size=500000\ntimer_heap_size=10000\nuse_focus=0\nuse_fatal_handler=0\ncntx_pool_free_thrd=20\nmsg_conversion_enable=0\npool_128=128\npool_512=64\npool_2k=32\npool_8k=8\npool_64k=2\n\n[mempoolmas]\nfamily_number=50053\nhandgroup_1_size=20\nhandgroup_2_size=100\nhandgroup_3_size=2\nhandgroup_4_size=100\nhandgroup_5_size=10\nhandgroup_6_size=10\nhandgroup_7_size=10\n</td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_WITHOUT_POOL}</td><td colspan=3>[default]\nmax_threads=1\nstack_size=500000\ntimer_heap_size=10000\nuse_focus=0\nuse_fatal_handler=0\ncntx_pool_free_thrd=20\nmsg_conversion_enable=0\n\n[mempoolmas]\nfamily_number=50053\nhandgroup_1_size=20\nhandgroup_2_size=100\nhandgroup_3_size=2\nhandgroup_4_size=100\nhandgroup_5_size=10\nhandgroup_6_size=10\nhandgroup_7_size=10\n\n</td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td><b>Connect to FGW For Memory Testing</b></td><td>${index}=</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td>120sec</td></tr>
+<tr><td><br></td><td>...</td><td>%{USERNAME}</td><td>%{PASSWD}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get WO OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${OMU}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ulimit -c unlimited</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Variable Of Libgen Use Phys Addr</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Memory Testing Process</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Disconnect from FGW For Memory Testing</b></td><td>Kill Memory Testing Process</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Run Memory Testing Process</b></td><td>Execute Cmd With Check Expected</td><td>${MEMORY_TESTING_PROCESS} &amp;</td><td>Memory testing process, starts</td><td>10</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Kill Memory Testing Process</b></td><td>${MEMORY_TESTING_PROCESS_ID}</td><td>Get The Self Pid Of Process</td><td>${MEMORY_TESTING_PROCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Kill Process By Pid</td><td>${MEMORY_TESTING_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Set Variable Of Libgen Use Phys Addr</b></td><td>${OMU_PHYSICAL_ADDRESS}</td><td>Get Libgen Use Phys Addr</td><td>${OMU_UNIT_TYPE}</td><td>${WO_OMU_INDEX}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU_PHYSICAL_ADDRESS}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Connect to FGW For Buffer Testing</b></td><td>${index}=</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td>120sec</td></tr>
+<tr><td><br></td><td>...</td><td>%{USERNAME}</td><td>%{PASSWD}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get WO OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${OMU}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ulimit -c unlimited</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Variable Of Libgen Use Phys Addr</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${index}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Disconnect from FGW For Buffer Testing</b></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get WO OMU</b></td></tr>
+<tr><td><br></td><td>${OMURG} =</td><td>Get RG Name</td><td colspan=3>${OMU-0}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td colspan=4>\${OMURG}</td></tr>
+<tr><td><br></td><td>${wo_units} =</td><td>Get WO Units</td><td colspan=3>${OMURG}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU}</td><td colspan=3>${wo_units[0]}</td></tr>
+<tr><td><br></td><td>${wo info}</td><td>Get Unit Type And Index By MO Name</td><td colspan=3>${wo_units[0]}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO_OMU_INDEX}</td><td colspan=3>${wo info.index}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get SP OMU</b></td></tr>
+<tr><td><br></td><td>${OMURG} =</td><td>Get RG Name</td><td colspan=3>${OMU-0}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td colspan=4>\${OMURG}</td></tr>
+<tr><td><br></td><td>${sp_units} =</td><td>Get SP Units</td><td colspan=3>${OMURG}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SPOMU}</td><td colspan=3>${sp_units[0]}</td></tr>
+<tr><td><br></td><td>${sp info}</td><td>Get Unit Type And Index By MO Name</td><td colspan=3>${sp_units[0]}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SP_OMU_INDEX}</td><td colspan=3>${sp info.index}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Export Temporarily Ini Without Malloc Pool</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>echo -e "${DEFAULT_WITH_POOL}" &gt;./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>cat ./${TEMP_INI_FILE}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Export Temporarily Ini With Malloc Pool</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>echo -e "${DEFAULT_WITH_POOL}\nmalloc_block_size=102400\nmalloc_block_count=10\n" &gt;./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>cat ./${TEMP_INI_FILE}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Export Temporarily Ini Without Memory Pool</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${HW}" == "ADA"</td><td>Execute CLI</td><td colspan=2>echo -e "${DEFAULT_WITHOUT_POOL}" &gt;./${TEMP_INI_FILE}</td></tr>
+<tr><td><br></td><td>...</td><td>Else</td><td>Execute CLI</td><td>echo -e "${DEFAULT_WITH_POOL}" &gt;./${TEMP_INI_FILE}</td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>cat ./${TEMP_INI_FILE}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Export Temporarily Ini With Memory Pool</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${HW}" == "ADA"</td><td>Execute CLI</td><td colspan=2>echo -e "${DEFAULT_WITHOUT_POOL}\nmsg_pool_size=2000000\nmsg_malloc_size=5000000\n" &gt;./${TEMP_INI_FILE}</td></tr>
+<tr><td><br></td><td>...</td><td>Else</td><td>Execute CLI</td><td>echo -e "${DEFAULT_WITH_POOL}\nmsg_pool_size=2000000\nmsg_malloc_size=5000000\n" &gt;./${TEMP_INI_FILE}</td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>cat ./${TEMP_INI_FILE}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Export Temporarily Ini With Negative Memory Pool</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${HW}" == "ADA"</td><td>Execute CLI</td><td colspan=2>echo -e "${DEFAULT_WITHOUT_POOL}\nmsg_pool_size=20000\nmsg_malloc_size=1000000\n" &gt;./${TEMP_INI_FILE}</td></tr>
+<tr><td><br></td><td>...</td><td>Else</td><td>Execute CLI</td><td>echo -e "${DEFAULT_WITH_POOL}\nmsg_pool_size=20000\nmsg_malloc_size=1000000\n" &gt;./${TEMP_INI_FILE}</td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>cat ./${TEMP_INI_FILE}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Export Temporarily Ini With Negative Hand Group Static Pool Size</b></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${CONFIG_WITH_POOL}</td><td colspan=3>${DEFAULT_WITH_POOL}\nhandgroup_1_static_pool_size=120\nhandgroup_4_static_pool_size=50\n</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>echo -e "${CONFIG_WITH_POOL}" &gt;./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>cat ./${TEMP_INI_FILE}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Export Temporarily Ini Without Hand Group Static Pool Size</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>echo -e "${DEFAULT_WITH_POOL}" &gt;./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>cat ./${TEMP_INI_FILE}</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%"></table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

@@ -1,0 +1,771 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Thermo</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Thermo</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=35%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B00878</td><td><font color=dark red>Iteration_ID-I00736</td><td><font color=dark red>Release-IL1_RIS4</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Product_Backlog_ID-IL0009</td><td><font color=dark red>Iteration_ID-I02976</td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Type-FUT</td><td><font color=dark red>QL-6</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Element-IL</td><td><br></td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_4514</td><td><font color=dark red>Reviewer-</td><td><font color=dark red>RW-weekly</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-RNC_EFS_2446_26</td><td><br></td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-AB</td><td><font color=dark red>Exec_Type-automatic</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-MGW_AB3</td><td><font color=dark red>bcn_step-S1</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/Libgen.html</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Setup Connection Used By Thermo For WO And SP</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Thermo Env And Disconnect From SUT</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=12%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${FAMILY_A}</td><td>0xA474</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FAMILY_B}</td><td>0xA476</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FAMILY_D}</td><td>0xA477</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td colspan=9><font color=blue>#hand id in handgroup6</td></tr>
+<tr bgcolor=#FFFFFF><td>${SPECIFIC_HAND_PROCESS}</td><td>0x0033</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WRITE_WARN_LOG}</td><td>32</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TRIGGER_WARMING}</td><td>64</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${LOG_AND_WARM}</td><td>96</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DO_NOTHING}</td><td>0</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SMALL_TIME_QUOTA}</td><td>20</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${LARGE_TIME_QUOTA}</td><td>1000</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_NOT_MONITOR}</td><td>0</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIMER_PROCESS_GROUP}</td><td>3</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIMER1}</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_ERROR_1}</td><td>0x03</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_ERROR_WEIGHT}</td><td>20</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_ERROR_NUM_0}</td><td>0</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_ERROR_NUM_1}</td><td>1</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_ERROR_NUM_2}</td><td>2</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNC_HAND_GROUP}</td><td>6</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FAMILY_LIMIT}</td><td>200</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_GROUP_WEIGHT}</td><td>180</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_NOT_EXIST}</td><td>not-exist</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_NO}</td><td>NO</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_YES}</td><td>YES</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${BASE_ADDRESS}</td><td>4002</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYSTEM_LOG}</td><td>/var/log/syslog</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TAIL_SYSLOG}</td><td>/var/log/thermo_log.txt</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MAX_TIME_FOR_CHECK}</td><td>10s</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FREQUENCY_FOR_CHECK}</td><td>1s</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NOTHING}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RET_FAILURE}</td><td>failure</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNCERR_11}</td><td>No reserve message arrived in the spontaneous reserve</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SYNCERR_12}</td><td>Different reserve message received inspontanous reserve</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=5><b>The family requested from WUPMAN can be monitored by THERMO successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU RUs are up\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Get monitored family list by WUTILI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check the monitored families should contain the test stub\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The family requested from WUPMAN can be monitored by THERMO successfully\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.001.AT.I00736</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{family_list}=</td><td>Wutili Get Familly List From Wupman</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Families Should Be Monitored By Thermo</td><td>@{family_list}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>The family configured in param file can be monitored by THERMO successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU RUs are up\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Make test stub create 1 hand in SP\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Check the thermo sync error by wutili, it should contain such test stub's sync error\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The family configured in param file can be monitored by THERMO successfully\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.002.AT.I00736</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand For Family B In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Recorded In Thermo For Family B By Checking SyncErrInfo</td></tr>
+<tr><td><br></td><td>...</td><td>${SYNCERR_12}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>The family stopped by WUTILI can't be monitored by THERMO</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU RUs are up\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. stop thermo monitoring for test Stub by wutili.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Make test stub create 1 hand in SP\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check the thermo sync error by wutili, it should not contain such test stub's sync error\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The monitoring stopped by WUTILI can't be monitored by THERMO\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.003.AT.I00736</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monitoring Family A By WUTILI</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand For Family A In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Not Recorded In Thermo For Family A</td></tr>
+<tr><td><br></td><td>Stop Monitoring Family B By WUTILI</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand For Family B In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Not Recorded In Thermo For Family B</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Start Monitoring Family A And B By WUTILI</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>The family started by WUTILI can be monitored by THERMO</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. OMU RUs are up\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. start thermo monitoring for test Stub by wutili.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Make test stub create 1 hand in SP\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check the thermo sync error by wutili, it should contain such test stub's sync error\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The monitoring started by WUTILI can be monitored by THERMO\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.004.AT.I00736</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Stop Monitoring Family A And B By WUTILI</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monitoring Family A By WUTILI</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand For Family A In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Recorded In Thermo For Family A</td></tr>
+<tr><td><br></td><td>...</td><td>${SYNC_ERROR_NUM_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monitoring Family B By WUTILI</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand For Family B In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Recorded In Thermo For Family B</td></tr>
+<tr><td><br></td><td>...</td><td>${SYNC_ERROR_NUM_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Run Keyword And Ignore Error</td><td><font color=dark red>Clear All Hands And Stop Monitoring</td><td><font color=dark red>${FAMILY_B}</td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=dark red>${FAMILY_A}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Out of synchronization for hand will be monitored by THERMO and trigger warming when error exceeds limit</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. test cli is available\n<br>&nbsp;&nbsp;&nbsp;. test process is available\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. start THERMO monitoring test stub by WUTILI with sync err action set to 0x60\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. CLI ask test stub to set a timer only in WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. The sync error will cross the hand group limit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Check hand process warming is triggered and warning log is written\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Out of synchronization for hand will be monitored by THERMO and trigger warming when error exceeds limit\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.005.AT.I00736</td><td>reason- compare data will consume long time on WO And SP</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Monitoring Family B By WUTILI</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Warming Information</td><td>${OMU_UNIT_NAME}</td><td colspan=2>${WO_OMU_INDEX}</td></tr>
+<tr><td><br></td><td>Create Timer Process And Set Warming State In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change With-warm Variable In WO And It should Not Be Equal Between WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Set A Timer Need Warming For Family B In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>Use WUTILI To Check Warming Occurence For A Process</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_B}</td><td>${CHECKED_TIMER_PROCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error For Family B Should Be Zero</td></tr>
+<tr><td><br></td><td>With-warm Variable Should Be Equal Between WO And SP After Warming</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Sync Status Of Timer Process Should Be Sync In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Tail Log And Check Log</td><td>Hand process ${FAMILY_B}/${CHECKED_TIMER_PROCESS} is out of sync</td><td>1</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Monitoring Family B By WUTILI</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Out of synchronization for multiple hands will be monitored by THERMO and trigger warming when error exceeds limit</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test cli is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test process is available\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. start THERMO monitoring test stub by WUTILI with sync err action set to 0x60\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. CLI ask test stub to set a timer only in WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. The sync error will cross the hand group limit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Check hand process warming is triggered and warning log is written\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. CLI ask test stub to create a hand in WO only (failed to create in SP)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. The sync error will cross the hand group limit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Check hand process warming is triggered and warning log is written\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Out of synchronization for multiple hands will be monitored by THERMO and trigger warming when error exceeds limit\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.006.AT.I00736</td><td>reason- compare data will consume long time on WO And SP</td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.001.96639ESPE04</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Monitoring Family B By WUTILI With Sync Error Weight Change</td><td><font color=blue>#Modify create hand sync error weight from 10 to 20</td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Warming Information</td><td>${OMU_UNIT_NAME}</td><td colspan=2>${WO_OMU_INDEX}</td></tr>
+<tr><td><br></td><td>Change With-warm Variable In WO And It should Not Be Equal Between WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Set A Timer Need Warming For Family B In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>Use WUTILI To Check Warming Occurence For A Process</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_B}</td><td>${CHECKED_TIMER_PROCESS}</td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Be Equal Between WO And SP After Warming</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Sync Status Of Timer Process Should Be Sync In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Warming Information</td><td>${OMU_UNIT_NAME}</td><td colspan=2>${WO_OMU_INDEX}</td></tr>
+<tr><td><br></td><td>Create Specific Hand And It Will Failed To Reserve Hand In SP For Family B</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>Use WUTILI To Check Warming Occurence For A Process</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_B}</td><td>${CHECKED_PROCESS_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error For Family B Should Be Zero</td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Sync Status Of Specific Hand Should Be Sync In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Tail Log And Check 2 Items In Log</td><td>Hand process ${FAMILY_B}/${CHECKED_TIMER_PROCESS} is out of sync</td><td>1</td><td>Hand process ${FAMILY_B}/${CHECKED_PROCESS_ID} is out of sync</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear All Hands And Stop Monitoring</td><td><font color=dark red>${FAMILY_B}</td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Out of synchronization for non critical family will be monitored by THERMO and trigger warming the family when error exceeds limit</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test cli is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test process is available\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. start THERMO monitoring test stub by WUTILI with sync err action set to 0x60\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. CLI ask test stub to set a timer only in WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. CLI ask test stub to create a hand in WO only (failed to create in SP)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Hand group 3 will report sync error:0x0A, Hand group 6 will report sync error:0x02,<br>It will all under group limit, but cross family limit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Check family warming is triggered and warning log is written\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Out of synchronization for non critical family will be monitored by THERMO and trigger warming the family when error exceeds limit\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.007.AT.I00736</td><td>reason- compare data will consume long time on WO And SP</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Monitoring Family B By WUTILI With Family Limit And Handgroup 3 Limit Change</td><td><font color=blue>#Modify family limit from 1000 to 200<br>#Modify hand group 0 limit from 150 to 180</td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Warming Information</td><td>${OMU_UNIT_NAME}</td><td colspan=2>${WO_OMU_INDEX}</td></tr>
+<tr><td><br></td><td>Create Timer Process And Set Warming State In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change With-warm Variable In WO And It should Not Be Equal Between WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Set A Timer Need Warming For Family B In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Specific Hand And It Will Failed To Reserve Hand In SP For Family B</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>Use WUTILI To Check Warming Occurence For A Family</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue># The Sync Status Of Whole Family Should Be Sync In WO And SP</td><td><font color=blue>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Be Equal Between WO And SP After Warming</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Tail Log And Check Log</td><td>Family ${FAMILY_B} is out of sync</td><td>1</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear All Hands And Stop Monitoring</td><td><font color=dark red>${FAMILY_B}</td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Out of synchronization for master/hand will be monitored by THERMO and will not trigger warming when error under limit</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test cli is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test process is available\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. start THERMO monitoring test stub by WUTILI with sync err action set to 0x60\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. CLI ask test stub to create a hand in WO only (failed to create in SP)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. The sync error is under group limit.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Check warning log is not written\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Out of synchronization for master/hand will be monitored by THERMO and will not trigger warming when error under limit\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.008.AT.I00736</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Monitoring Family B By WUTILI</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Specific Hand And It Will Failed To Reserve Hand In SP For Family B</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Recorded In Thermo For Family B</td></tr>
+<tr><td><br></td><td>...</td><td>${SYNC_ERROR_NUM_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Tail Log And Check Log</td><td>is out of sync</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear All Hands And Stop Monitoring</td><td><font color=dark red>${FAMILY_B}</td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Out of synchronization for family will be monitored by THERMO and will not trigger warming when error under limit</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test cli is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test process is available\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. start THERMO monitoring test stub by WUTILI with sync err action set to 0x60\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. CLI ask test stub to create a hand in WO only (failed to create in SP)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. CLI ask test stub to set a timer in WO only\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. The sync error sum does not exceed family error limit.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Check sync errors are recorded but warning log is not written\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Out of synchronization for family will be monitored by THERMO and will not trigger warming when error under limit\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.009.AT.I00736</td><td>reason- sync status should be checked on WO And SP</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Monitoring Family B By WUTILI With Handgroup 3 Limit Change</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Specific Hand And It Will Failed To Reserve Hand In SP For Family B</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Warming State For Timer Process</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Set A Timer Need Warming For Family B In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Recorded In Thermo For Family B</td></tr>
+<tr><td><br></td><td>...</td><td>${SYNC_ERROR_NUM_2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Tail Log And Check Log</td><td>is out of sync</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear All Hands And Stop Monitoring</td><td><font color=dark red>${FAMILY_B}</td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Family not existed could not be monitored by THERMO</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. OMU RUs are up\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. start THERMO monitoring for non-existed test stub by WUTILI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. error return by wutili\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Family not existed could not be monitored by THERMO\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.010.AT.I00736</td><td>ct-negative</td><td><br></td></tr>
+<tr><td><br></td><td>Start Monitoring Not Existed Family And Will Receive Error By WUTILI</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Warming family parameters could be modified by WUTILI and take effect during monitoring session</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test cli is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test process is available\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. start THERMO monitoring test stub by WUTILI with sync err action set to 0x60\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. CLI ask test stub to create a hand in WO only (failed to create in SP)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Check sync errors are recorded but not exceed group limit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Stop monitoring for test stub\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. start THERMO monitoring test stub by WUTILI with sync err weight change\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. CLI ask test stub to create a hand in WO only (failed to create in SP)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Check sync errors are recorded and exceed group limit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. Check hand process warming is triggered and warning log written\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Warming family parameters could be modified by WUTILI and take effect during monitoring session\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.011.AT.I00736</td><td>reason- it contains many steps</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Monitoring Family B By WUTILI</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Specific Hand And It Will Failed To Reserve Hand In SP For Family B</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Recorded In Thermo For Family B</td></tr>
+<tr><td><br></td><td>...</td><td>${SYNC_ERROR_NUM_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop All Hand Processes</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monitoring Family B By WUTILI</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monitoring Family B By WUTILI With Sync Error Weight Change</td><td>${TRIGGER_WARMING}</td><td><font color=blue>#Modify Create Hand sync error weight from 10 to 20.</td><td><br></td></tr>
+<tr><td><br></td><td>Create Specific Hand And It Will Failed To Reserve Hand In SP For Family B</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>Use WUTILI To Check Warming Occurence For A Process</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_B}</td><td>${CHECKED_PROCESS_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error For Family B Should Be Zero</td></tr>
+<tr><td><br></td><td>Testproc Stop All Hand Processes</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monitoring Family B By WUTILI</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monitoring Family B By WUTILI</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Specific Hand And It Will Failed To Reserve Hand In SP For Family B</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Is Recorded In Thermo For Family B</td></tr>
+<tr><td><br></td><td>...</td><td>${SYNC_ERROR_NUM_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Tail Log And Check Log</td><td>is out of sync</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear All Hands And Stop Monitoring</td><td><font color=dark red>${FAMILY_B}</td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>WUTILI Could Monitor The Sync Error Info In Real Time</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. test cli is available\n<br>&nbsp;&nbsp;&nbsp;. test process is available\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Apply THERMO to monitor the family by WUTILI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. CLI ask test process to create hand need warming in WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. CLI ask test process to generate sync error under family limit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. WUTILI could monitor the sync error info in real time\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. The sync error info should be printed on screen\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.013.AT.I00736</td><td>ATC_ID-Thermo.FUT.014.AT.I00736</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Monitoring Family A By WUTILI</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Realtime Monitoring Family A On SP By WUTILI</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Hand For Family A In SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Realtime Monitor Result And Stop Tail The Log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error Can Be Found In Thermo's Log</td></tr>
+<tr><td><br></td><td><font color=blue>#The Sync Error Can Be Monitored In Real Monitoring</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear TestEnv</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Hand Out of synchronization Will Be Monitored and Warning Log Will Be Written without trigger warming when sync error action is set to 0x20</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. test cli is available\n<br>&nbsp;&nbsp;&nbsp;. test process is available\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. start THERMO monitoring test stub by WUTILI with sync err action set to 0x20\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. CLI ask test stub to set a timer only in WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. The sync error will cross the hand group limit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Check hand process warming is not triggered but warning log is written\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Hand Out of synchronization Will Be Monitored and Warning Log Will Be Written without trigger warming when sync error action is set to 0x20\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.001.AT.I02976</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Monitoring Family B By WUTILI</td><td><font color=dark red>${WRITE_WARN_LOG}</td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Warming Information</td><td>${OMU_UNIT_NAME}</td><td colspan=2>${WO_OMU_INDEX}</td></tr>
+<tr><td><br></td><td>Create Timer Process And Set Warming State In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change With-warm Variable In WO And It should Not Be Equal Between WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Set A Timer Need Warming For Family B In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error For Family B Should Not Be Zero</td></tr>
+<tr><td><br></td><td>With-warm Variable Should Not Be Equal Between WO And SP After Warming</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Sync Status Of Timer Process Should Be Sync In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Tail Log And Check Log</td><td>Hand process ${FAMILY_B}/${CHECKED_TIMER_PROCESS} is out of sync</td><td>1</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Monitoring Family B By WUTILI</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Family Out of sync will be monitored by THERMO and Warning Log Will Be Written without trigger warming when sync error action is set to 0x20</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test cli is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test process is available\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. start THERMO monitoring test stub by WUTILI with sync err action set to 0x20\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. CLI ask test stub to set a timer only in WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. CLI ask test stub to create a hand in WO only (failed to create in SP)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Hand group 3 will report sync error:0x0A, Hand group 6 will report sync error:0x02,<br>It will all under group limit, but cross family limit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Check family warming is not triggered but warning log is written\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Family Out of sync will be monitored by THERMO and Warning Log Will Be Written without trigger warming when sync error action is set to 0x20\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.002.AT.I02976</td><td>reason- compare data will consume long time on WO And SP</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Monitoring Family B By WUTILI With Family Limit And Handgroup 3 Limit Change</td><td><font color=dark red>${WRITE_WARN_LOG}</td><td><br></td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=blue>#Modify family limit from 1000 to 200</td><td><font color=blue>#Modify hand group 0 limit from 150 to 180</td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Warming Information</td><td>${OMU_UNIT_NAME}</td><td colspan=2>${WO_OMU_INDEX}</td></tr>
+<tr><td><br></td><td>Create Timer Process And Set Warming State In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change With-warm Variable In WO And It should Not Be Equal Between WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Set A Timer Need Warming For Family B In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Specific Hand And It Will Failed To Reserve Hand In SP For Family B</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Not Be Equal Between WO And SP After Warming</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Tail Log And Check Log</td><td>Family ${FAMILY_B} is out of sync</td><td>1</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear All Hands And Stop Monitoring</td><td><font color=dark red>${FAMILY_B}</td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Hand Out of synchronization Will Be Monitored and No Log Written Nor Warming triggered when sync error action is set to 0x00</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;. test cli is available\n<br>&nbsp;&nbsp;&nbsp;. test process is available\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. start THERMO monitoring test stub by WUTILI with sync err action set to 0x00\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. CLI ask test stub to set a timer only in WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. The sync error will cross the hand group limit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Check hand process warming is not triggered nor warning log is written\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Hand Out of synchronization Will Be Monitored and No Log Written Nor Warming triggered when sync error action is set to 0x00\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.003.AT.I02976</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Monitoring Family B By WUTILI</td><td><font color=dark red>${DO_NOTHING}</td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Warming Information</td><td>${OMU_UNIT_NAME}</td><td colspan=2>${WO_OMU_INDEX}</td></tr>
+<tr><td><br></td><td>Create Timer Process And Set Warming State In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change With-warm Variable In WO And It should Not Be Equal Between WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Set A Timer Need Warming For Family B In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_RU_REDAY}</td><td>${CHECK FREQUENCY}</td><td>The Sync Error For Family B Should Not Be Zero</td></tr>
+<tr><td><br></td><td>With-warm Variable Should Not Be Equal Between WO And SP After Warming</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Sync Status Of Timer Process Should Be Sync In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Tail Log And Check Log</td><td>Hand process ${FAMILY_B}/${CHECKED_TIMER_PROCESS} is out of sync</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Monitoring Family B By WUTILI</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=5><b>Family Out of sync will be monitored by THERMO and No Warning Log Written Nor Warming Triggered when sync error action is set to 0x00</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test cli is available\n<br>&nbsp;&nbsp;&nbsp;&nbsp;. test process is available\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. start THERMO monitoring test stub by WUTILI with sync err action set to 0x00\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. CLI ask test stub to set a timer only in WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. CLI ask test stub to create a hand in WO only (failed to create in SP)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Hand group 3 will report sync error:0x0A, Hand group 6 will report sync error:0x02,<br>It will all under group limit, but cross family limit\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Check family warming is not triggered nor warning log is written\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Family Out of sync will be monitored by THERMO and No Warning Log Written Nor Warming Triggered when sync error action is set to 0x00\n\n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Thermo.FUT.004.AT.I02976</td><td>reason- compare data will consume long time on WO And SP</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Monitoring Family B By WUTILI With Family Limit And Handgroup 3 Limit Change</td><td><font color=dark red>${DO_NOTHING}</td><td><br></td></tr>
+<tr><td><font color=dark red><br></td><td><font color=dark red>...</td><td><font color=blue>#Modify family limit from 1000 to 200</td><td><font color=blue>#Modify hand group 0 limit from 150 to 180</td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail The Log</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Warming Information</td><td>${OMU_UNIT_NAME}</td><td colspan=2>${WO_OMU_INDEX}</td></tr>
+<tr><td><br></td><td>Create Timer Process And Set Warming State In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change With-warm Variable In WO And It should Not Be Equal Between WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Set A Timer Need Warming For Family B In WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Specific Hand And It Will Failed To Reserve Hand In SP For Family B</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Not Be Equal Between WO And SP After Warming</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Handle Common Message With Created Hand In WO And SP</td><td>${FAMILY_B}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Tail Log And Check Log</td><td>Family ${FAMILY_B} is out of sync</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear All Hands And Stop Monitoring</td><td><font color=dark red>${FAMILY_B}</td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand For Family A In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand Used By Warming</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${FAMILY_A}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand For Family A In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand Used By Warming</td><td>${OMU SP PHYSICAL ADDRESS}</td><td>${FAMILY_A}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Error Is Not Recorded In Thermo For Family A</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Query Sync Error By WUTILI</td><td>${OMU_UNIT_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_A}</td><td>${ACK_NOT_MONITOR}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand For Family B In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand Used By Warming</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${FAMILY_B}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Hand For Family B In SP</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Hand Used By Warming</td><td>${OMU SP PHYSICAL ADDRESS}</td><td>${FAMILY_B}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS_ID}</td><td>${SMALL_TIME_QUOTA}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Error Is Recorded In Thermo For Family B</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${sync_error}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Query Sync Error By WUTILI</td><td>${OMU_UNIT_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_B}</td><td>${sync_error}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Monitoring Family A And B By WUTILI</b></td></tr>
+<tr><td><br></td><td>Start Monitoring Family A By WUTILI</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monitoring Family B By WUTILI</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Monitoring Family A By WUTILI</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Start Monitoring Family By WUTILI</td><td>${OMU_UNIT_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_A}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Monitoring Not Existed Family And Will Receive Error By WUTILI</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Start Monitoring Family By WUTILI</td><td>${OMU_UNIT_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_D}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_NOT_EXIST}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Error Is Recorded In Thermo For Family A</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${sync_error}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Query Sync Error By WUTILI</td><td>${OMU_UNIT_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_A}</td><td>${sync_error}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Error Is Recorded In Thermo For Family B By Checking SyncErrInfo</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${sync_error}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Query And Return Sync Error By WUTILI</td><td>${OMU_UNIT_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${SP_OMU_INDEX}</td><td>${FAMILY_B}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${sync_error}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Error For Family B Should Be Zero</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Query Sync Error By WUTILI</td><td>${OMU_UNIT_NAME}</td><td>${FAMILY_B}</td><td>${SYNC_ERROR_NUM_0}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Error For Family B Should Not Be Zero</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Query Sync Error By WUTILI</td><td>${OMU_UNIT_NAME}</td><td>${FAMILY_B}</td><td>${SYNC_ERROR_NUM_0}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${RET_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Stop Monitoring Family A And B By WUTILI</b></td></tr>
+<tr><td><br></td><td>Stop Monitoring Family A By WUTILI</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monitoring Family B By WUTILI</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Stop Monitoring Family A By WUTILI</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Monitoring Family By WUTILI</td><td>${OMU_UNIT_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_A}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Monitoring Family B By WUTILI</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${sync_err_action}=96</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Start Monitoring Family By WUTILI</td><td>${OMU_UNIT_NAME}</td><td>${FAMILY_B}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${sync_err_action}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Set A Timer Need Warming For Family B In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needing Warming</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${FAMILY_B}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${TIMER_PROCESS}</td><td>${TIMER1}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Set A Timer Need Warming For Family A In WO</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Timer Needing Warming</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${FAMILY_A}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${TIMER_PROCESS}</td><td>${TIMER1}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Monitoring Family B By WUTILI With Sync Error Weight Change</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${sync_err_action}=96</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Start Monitoring Family With Sync Error Change</td><td>${OMU_UNIT_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_B}</td><td>${SYNC_ERROR_1}</td><td>${SYNC_ERROR_WEIGHT}</td><td>${sync_err_action}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Error Is Not Recorded In Thermo For Family B</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Query Sync Error By WUTILI</td><td>${OMU_UNIT_NAME}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_B}</td><td>${ACK_NOT_MONITOR}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Handle Common Message With Created Hand In WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${family_id}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_NUMBER}</td><td>${DELIVERY_RANGE}</td><td>${MSG_COUNT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Warming Test Message And Can Handle</td><td>${OMU SP PHYSICAL ADDRESS}</td><td>${family_id}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MSG_NUMBER}</td><td>${DELIVERY_RANGE}</td><td>${MSG_COUNT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Create Timer Process And Set Warming State In WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Timer Process In WO And SP</td><td>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Warming State For Timer Process</td><td>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Stop All Hand Processes</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop All Hand Processes Without Sync</td><td>${OMU LOGICAL ADDRESS}</td><td>${family_id}</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${SYNC_HAND_GROUP}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Stop Monitoring Related Family By WUTILI</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Monitoring Family By WUTILI</td><td>${OMU_UNIT_NAME}</td><td>${family}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Stop Monitoring Family B By WUTILI</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Monitoring Family By WUTILI</td><td>${OMU_UNIT_NAME}</td><td>${FAMILY_B}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Monitoring Family A And B By WUTILI With Family Limit And Handgroup 3 Limit Change</b></td></tr>
+<tr><td><br></td><td>Start Monitoring Family A By WUTILI With Family Limit And Handgroup 3 Limit Change</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monitoring Family B By WUTILI With Family Limit And Handgroup 3 Limit Change</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Monitoring Family B By WUTILI With Family Limit And Handgroup 3 Limit Change</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${sync_err_action}=96</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Starting Monitoring Family With Family And Group Limit Change</td><td>${OMU_UNIT_NAME}</td><td>${FAMILY_B}</td><td>${FAMILY_LIMIT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${TIMER_PROCESS_GROUP}</td><td>${HAND_GROUP_WEIGHT}</td><td>${sync_err_action}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Monitoring Family A By WUTILI With Family Limit And Handgroup 3 Limit Change</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${sync_err_action}=96</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Starting Monitoring Family With Family And Group Limit Change</td><td>${OMU_UNIT_NAME}</td><td>${FAMILY_A}</td><td>${FAMILY_LIMIT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${TIMER_PROCESS_GROUP}</td><td>${HAND_GROUP_WEIGHT}</td><td>${sync_err_action}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Monitoring Family B By WUTILI With Handgroup 3 Limit Change</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${sync_err_action}=96</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Starting Monitoring Family With Group Limit Change</td><td>${OMU_UNIT_NAME}</td><td>${FAMILY_B}</td><td>${TIMER_PROCESS_GROUP}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${HAND_GROUP_WEIGHT}</td><td>${sync_err_action}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Create Specific Hand And It Will Failed To Reserve Hand In SP For Family B</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Specific Hand In Both WO And SP For Family B</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In WO For Family B</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Specific Hand In Both WO And SP For Family B</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Create Specific Hand And It Will Failed To Reserve Hand In SP For Family A</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Specific Hand In Both WO And SP For Family A</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Stop Created Hand Process In WO For Family A</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Create Specific Hand In Both WO And SP For Family A</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Specific Hand In Both WO And SP For Family B</b></td></tr>
+<tr><td><br></td><td>Set Specific Hand Id</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Set Test Need Variables</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Specific Hand With Sync</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_B}</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${LARGE_TIME_QUOTA}</td><td>${LARGE_TIME_QUOTA}</td><td>${SPECIFIC_HAND_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${result[1]}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=8>printf 0x%04X ${REFRESH_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${CHECKED_PROCESS_ID}</td><td colspan=8>${result.strip()}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Stop Created Hand Process In WO For Family B</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Hand Process Without Sync</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${FAMILY_B}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Create Specific Hand In Both WO And SP For Family A</b></td></tr>
+<tr><td><br></td><td>Set Specific Hand Id</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Set Test Need Variables</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Specific Hand With Sync</td><td>${OMU LOGICAL ADDRESS}</td><td>${FAMILY_A}</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${LARGE_TIME_QUOTA}</td><td>${LARGE_TIME_QUOTA}</td><td>${SPECIFIC_HAND_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${REFRESH_PROCESS_ID}</td><td>${result[1]}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=8>printf 0x%04X ${REFRESH_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${CHECKED_PROCESS_ID}</td><td colspan=8>${result.strip()}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Stop Created Hand Process In WO For Family A</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Hand Process Without Sync</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${FAMILY_A}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Clear All Hands And Stop Monitoring</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>@{Family list}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${family}</td><td>In</td><td>@{Family list}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Testproc Stop All Hand Processes</td><td>${family}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Stop Monitoring Related Family By WUTILI</td><td>${family}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Clear Thermo Env And Disconnect From SUT</b></td></tr>
+<tr><td><br></td><td><font color=blue>#Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Thermo Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Restart Environment And Disconnect From SUT</td><td>${THERMO_TESTING_PROCESS1}</td><td>${THERMO_TESTING_PROCESS2}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Clear Thermo Env</b></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=9>rm -f ${TAIL_SYSLOG}</td></tr>
+<tr><td><br></td><td colspan=10>Start Monitoring Family A And B By WUTILI</td></tr>
+<tr><td><br></td><td>Check Families Should Be Monitored By Thermo</td><td>${FAMILY_A}</td><td>${FAMILY_B}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Create Timer Process In WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Create Timer Process Used By Thermo</td><td>${OMU LOGICAL ADDRESS}</td><td>${family_id}</td><td>${TIMER_PROCESS_GROUP}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result[0]}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${TIMER_PROCESS}</td><td colspan=8>${result[1]}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=8>printf 0x%04X ${TIMER_PROCESS}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${CHECKED_TIMER_PROCESS}</td><td colspan=8>${result.strip()}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Change With-warm Variable In WO And It should Not Be Equal Between WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Testproc Change the With-warm Variable In Hand</td><td>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>With-warm Variable Should Not Be Equal Between WO And SP</td><td>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Testproc Change the With-warm Variable In Hand</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Change With Warm Variable Message</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${family_id}</td><td>${TIMER_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>With-warm Variable Should Not Be Equal Between WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If With Warm Variable Equal By Wutili</td><td>${WO_OMU_INDEX}</td><td>${SP_OMU_INDEX}</td><td>${family_id}</td><td>${TIMER_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Set Warming State For Timer Process</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Configuration Of Warming State</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${family_id}</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${TIMER_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Set Configuration Of Warming State</td><td>${OMU SP PHYSICAL ADDRESS}</td><td>${family_id}</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${TIMER_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Status Of Specific Hand Should Be No-sync In WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Hand Sync Status Check</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${family_id}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_NO}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Hand Sync Status Check</td><td>${OMU SP PHYSICAL ADDRESS}</td><td>${family_id}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_NO}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Status Of Timer Process Should Be Sync In WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Hand Sync Status Check</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${family_id}</td><td>${TIMER_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_YES}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Hand Sync Status Check</td><td>${OMU SP PHYSICAL ADDRESS}</td><td>${family_id}</td><td>${TIMER_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_YES}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Status Of Specific Hand Should Be Sync In WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Hand Sync Status Check</td><td>${OMU WO PHYSICAL ADDRESS}</td><td>${family_id}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_YES}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Hand Sync Status Check</td><td>${OMU SP PHYSICAL ADDRESS}</td><td>${family_id}</td><td>${REFRESH_PROCESS_ID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_YES}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Status Of Whole Family Should Be Sync In WO And SP</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Sync Status Of Master Should Be Sync</td><td>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Sync Status Of Specific Hand Should Be Sync</td><td>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>The Sync Status Of Timer Process Should Be Sync</td><td>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>With-warm Variable Should Be Equal Between WO And SP After Warming</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If With Warm Variable Equal By Wutili</td><td>${WO_OMU_INDEX}</td><td>${SP_OMU_INDEX}</td><td>${family_id}</td><td>${TIMER_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>With-warm Variable Should Not Be Equal Between WO And SP After Warming</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If With Warm Variable Equal By Wutili</td><td>${WO_OMU_INDEX}</td><td>${SP_OMU_INDEX}</td><td>${family_id}</td><td>${TIMER_PROCESS}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${RET_FAILURE}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Use WUTILI To Check Warming Occurence For A Family</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${warming info}</td><td>Get Warming Information</td><td>${OMU_UNIT_NAME}</td><td>${WO_OMU_INDEX}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Get Warming Result By PID</td><td>${warming info}</td><td>${BASE_ADDRESS}:${family_id.strip('0x')}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${SUCCESS_RESULT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Use WUTILI To Check Warming Occurence For A Process</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id}</td><td><font color=#FF6600>${test_process_id}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${warming info}</td><td>Get Warming Information</td><td>${OMU_UNIT_NAME}</td><td>${WO_OMU_INDEX}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Get Warming Result By PID</td><td>${warming info}</td><td>${RELATIVE_ADDRESS}:${family_id.strip('0x')}:${test_process_id.replace('0x','')}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>${SUCCESS_RESULT}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Wutili Get Familly List From Wupman</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${configuration_list_wo}=</td><td>Get Warming Configuration</td><td>${OMU_UNIT_NAME}</td><td>${WO_OMU_INDEX}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${configuration_list_sp}=</td><td>Get Warming Configuration</td><td>${OMU_UNIT_NAME}</td><td>${SP_OMU_INDEX}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${configuration_list_wo}</td><td>${configuration_list_sp}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${family_list}=</td><td>Get Families From Warming Configuration List</td><td>${configuration_list_wo}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>${family_list}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Families Should Be Monitored By Thermo</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>@{family_list}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${monitor_list_wo}=</td><td>Get Thermo Monitor Info</td><td>${OMU_UNIT_NAME}</td><td>${WO_OMU_INDEX}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${monitor_list_sp}=</td><td>Get Thermo Monitor Info</td><td>${OMU_UNIT_NAME}</td><td>${SP_OMU_INDEX}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${monitor_list_wo}</td><td>${monitor_list_sp}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:For</td><td>${family}</td><td>In</td><td>@{family_list}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${result}=</td><td>Check Family Be In Monitor List</td><td>${family}</td><td>${monitor_list_sp}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should Be Equal</td><td>${result}</td><td>success</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Monitoring Family A By WUTILI With Family Limit And Handgroup 3 Limit Change And Start Tail To Get Related Syslog</b></td></tr>
+<tr><td><br></td><td>Start Monitoring Family A By WUTILI With Family Limit And Handgroup 3 Limit Change</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Tail To Get Related Syslog</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Tail To Get Related Syslog</b></td></tr>
+<tr><td><br></td><td>${TAIL_PID}</td><td>Tail To Get Syslog</td><td>${SYSTEM_LOG}</td><td>${TAIL_SYSLOG}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${TAIL_PID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Starter Should Report RU Failure</b></td></tr>
+<tr><td><br></td><td>Connect To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAX_TIME_FOR_CHECK}</td><td>${FREQUENCY_FOR_CHECK}</td><td>Grep Result Should Not Be None</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${RU_FAILURE}</td><td>${TAIL_SYSLOG}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Grep Result Should Not Be None</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${grep string}</td><td><font color=#FF6600>${target file}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Grep String From File</td><td>${grep string}</td><td>${target file}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Be Equal</td><td>${result}</td><td>${NOTHING}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Restart SP RU And Wait It Ready</b></td></tr>
+<tr><td><br></td><td>Restart MO And Register Alarm</td><td>${OMU_1}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAX_TIME_FOR_CHECK}</td><td>${FREQUENCY_FOR_CHECK}</td><td>Managed Object Should Be Ready</td><td>${OMU_1}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Stop Tail And Make Sure SP RU Startup</b></td></tr>
+<tr><td><br></td><td>Kill Process By Pid</td><td>${TAIL PID}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Delete File</td><td>${TAIL_SYSLOG}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${sp_state}=</td><td>View State And Status Of Managed Object</td><td>${OMU_1}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Run Keyword If</td><td><font color=blue>'${sp_state.procedural}'=='INITIALIZING'</td><td><font color=blue>Wait Until Keyword Succeeds</td><td><font color=blue>${MAX_TIME_FOR_CHECK}</td><td><font color=blue>${FREQUENCY_FOR_CHECK}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#...</td><td><font color=blue>Managed Object Should Be Ready</td><td><font color=blue>${OMU_1}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#${sp_state}=</td><td><font color=blue>Check Managed Object State</td><td><font color=blue>${OMU_1}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Run Keyword If</td><td><font color=blue>'${sp_state}'=='False'</td><td><font color=blue>Restart SP RU And Wait It Ready</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAX_TIME_FOR_CHECK}</td><td>${FREQUENCY_FOR_CHECK}</td><td>Managed Object Should Be Ready</td><td>${OMU_1}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Stop Tail And Make Sure SP RU Startup, Clear All Hands And Stop Monitoring</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Tail And Make Sure SP RU Startup</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Tail The Log</b></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ${TAIL_SYSLOG}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=8>tail -f /var/log/syslog &gt; ${TAIL_SYSLOG} &amp;</td></tr>
+<tr><td><br></td><td>${logpid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${logpid}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Stop Tail Log And Check Log</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${log_string}</td><td><font color=#FF6600>${count}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>5</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>kill -9 ${logpid}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute MML Without Check</td><td>grep "THESPY" ${TAIL_SYSLOG} | grep "out of sync"</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Log</td><td><font color=blue>${result}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>libgen_should_contain_x_times</td><td>${result}</td><td>${log_string}</td><td>${count}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Stop Tail Log And Check 2 Items In Log</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${log_string1}</td><td><font color=#FF6600>${count1}</td><td><font color=#FF6600>${log_string2}</td><td><font color=#FF6600>${count2}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>5</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>kill -9 ${logpid}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute MML Without Check</td><td>grep "THESPY" ${TAIL_SYSLOG} | grep "out of sync"</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Log</td><td><font color=blue>${result}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>libgen_should_contain_x_times</td><td>${result}</td><td>${log_string1}</td><td>${count1}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>libgen_should_contain_x_times</td><td>${result}</td><td>${log_string2}</td><td>${count2}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Start Realtime Monitoring Family A On SP By WUTILI</b></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result }</td><td>Execute CLI</td><td>wutili -- -u ${OMU_UNIT_NAME} ${SP_OMU_INDEX} -f ${FAMILY_A} -m &amp;</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${wutili_pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${wutili_pid}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Get Realtime Monitor Result And Stop Tail The Log</b></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>5</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${buf}</td><td>Get Output</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${buf}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>kill -9 ${logpid}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Error Can Be Monitored In Real Monitoring</b></td></tr>
+<tr><td><br></td><td>ShouldMatchRegexp</td><td>${buf.strip()}</td><td>13\\s*0\\s*0</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>The Sync Error Can Be Found In Thermo's Log</b></td></tr>
+<tr><td><br></td><td>Connect To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>grep "Update thermometer" ${TAIL_SYSLOG} | grep -i A474</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>error code: 13</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=11><b>Clear TestEnv</b></td></tr>
+<tr><td><br></td><td>Connect TO SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>kill -9 ${wutili_pid}</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

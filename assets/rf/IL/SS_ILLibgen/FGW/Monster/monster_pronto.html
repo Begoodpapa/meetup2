@@ -1,0 +1,356 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Monbuf Pronto</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Monbuf Pronto</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test pronto:95558ESPE04: monster should catch the bus signal and release the shared buffer.\n</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT And Setup Env</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Env And Dissconnect From SUT</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Iteration_ID-</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>PRS_ID-IL_PRS_2583</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>element-IL</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>type-FUT</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>QL-7</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>release-IL1_RIS4</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>reviewer-@nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>rw-formal</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC_S0</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-AB</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>ct-negative</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-BCN_A1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-MGW_AB3</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>bcn_step-S1</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>../../resources/libgen_resource.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${MAX TIME FOR CONNECT}</td><td>360s</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU_0}</td><td>%{OMU_0_NAME}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU TYPE}</td><td>%{OMU_TYPE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU_0_INDEX}</td><td colspan=3>%{OMU_0_INDEX}</td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MEMPOOL_FAMILY_ID}</td><td>0xC385</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SHM_AVAIL_SIZE}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NEED_RUN}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${COUNT}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${BINARY_FILE_NAME}</td><td>/var/log/monster_pronto_47226ESPE05.bin</td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=3><b>Monster Should Unlink Share Memory When Memset Failed</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster To Monitor Several Times.\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Monster Should Unlink Share Memory when SIGBUS Happen.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.003.MT.95558ESPE04</td></tr>
+<tr><td><br></td><td>...</td><td>exec_type-manual</td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Get All ShmMem Size</td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>${MEM_FREE}&gt;${AVAIL_SIZE}</td></tr>
+<tr><td><br></td><td>...</td><td>Run Monster If Free Physical Memory Larger Than Available Shared Memory</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop All Monster</td></tr>
+<tr bgcolor=#99CCFF><td colspan=3><b>All PRB Can Startup When Some PRB Which Holding The Monster Share Memory Killed</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster To Monitor Several Times: monster &gt; /var/log/mon.1.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Run AVA Cases.\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Check No coredump.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Check Monster Run Successfuly Or Exit With Log "Message buffer corrupted".\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.MT.118907ESPE02</td></tr>
+<tr><td><br></td><td>...</td><td>exec_type-manual</td></tr>
+<tr bgcolor=#99CCFF><td colspan=3><b>Monster Should Close Fd Successfully When Monitored Families Restart</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start Two Test PRB.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Start Monster To Monitor These Two Test PRB.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Stop Two Monitored Test PRB.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Check Ctrlsock Fd To These Monitored Test PRB Should Close Fd Successfully.\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Check No coredump.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Check Monster Run Successfuly Or Exit With Log "Message buffer corrupted".\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Monster.FUT.001.AT.109880ESPE04</td></tr>
+<tr><td><br></td><td>...</td><td>exec_type-automatic</td></tr>
+<tr><td><br></td><td>Start Two Test PRB</td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster To Monitor Test PRB</td><td><br></td></tr>
+<tr><td><br></td><td>WaitUntilKeywordSucceeds</td><td>${CHECK_TIMEOUT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CHECK_FREQUENCY}</td></tr>
+<tr><td><br></td><td>...</td><td>Check Current Ctrlsock Fd Count Should Be</td></tr>
+<tr><td><br></td><td>...</td><td>3</td></tr>
+<tr><td><br></td><td>Stop Two Test Prb</td><td><br></td></tr>
+<tr><td><br></td><td>WaitUntilKeywordSucceeds</td><td>${CHECK_TIMEOUT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CHECK_FREQUENCY}</td></tr>
+<tr><td><br></td><td>...</td><td>Check Current Ctrlsock Fd Count Should Be</td></tr>
+<tr><td><br></td><td>...</td><td>1</td></tr>
+<tr><td><br></td><td>Start Two Test PRB</td><td>${FAMILY_ID1}</td></tr>
+<tr><td><br></td><td>...</td><td>${FAMILY_ID2}</td></tr>
+<tr><td><br></td><td>WaitUntilKeywordSucceeds</td><td>${CHECK_TIMEOUT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CHECK_FREQUENCY}</td></tr>
+<tr><td><br></td><td>...</td><td>Check Current Ctrlsock Fd Count Should Be</td></tr>
+<tr><td><br></td><td>...</td><td>3</td></tr>
+<tr><td><br></td><td>Stop Two Test Prb</td><td><br></td></tr>
+<tr><td><br></td><td>WaitUntilKeywordSucceeds</td><td>${CHECK_TIMEOUT}</td></tr>
+<tr><td><br></td><td>...</td><td>${CHECK_FREQUENCY}</td></tr>
+<tr><td><br></td><td>...</td><td>Check Current Ctrlsock Fd Count Should Be</td></tr>
+<tr><td><br></td><td>...</td><td>1</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Monster And Test Prb</td></tr>
+<tr bgcolor=#99CCFF><td colspan=3><b>Monster Should Monitor FAMILY_CREATED Message When PRB Send This Message To Starter</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;OMU is working\n\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start monster to monitor test prb with special condition string(NUM=2F7)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Start test prb\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Stop message monitoring\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Check the FAMILY_CREATED_S message shall be monitored successfully\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Stop test prb\n</td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Monster Should Unlink Share Memory when SIGBUS Happen.\n\n</td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.47226ESPE05</td></tr>
+<tr><td><br></td><td>...</td><td>exec_type-automatic</td></tr>
+<tr><td><br></td><td><font color=blue>#Get WO Node</td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter</td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monster And Check the FAMILY_CREATED_S message shall be monitored successfully</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Test PRB And All Monster And Check Temp File Should Not Exist</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Get WO Node</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>uname -n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO_NODE}</td><td>${result.strip()}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start Two Test PRB</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${family_id1}=0xffff</td><td><font color=#FF6600>${family_id2}=0xffff</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>mempoolproc -f ${family_id1} &amp;</td><td>mempool hand started.</td><td>10s</td></tr>
+<tr><td><br></td><td>${family_id}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=family_id:\ \ )0x....</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${FAMILY_ID1}</td><td colspan=3>${family_id}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>mempoolproc -f ${family_id2} &amp;</td><td>mempool hand started.</td><td>10s</td></tr>
+<tr><td><br></td><td>${family_id}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=family_id:\ \ )0x....</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${FAMILY_ID2}</td><td colspan=3>${family_id}</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Two Test Prb</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_prb</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID1}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_prb</td><td>${WO_COMP_ADDR}</td><td>${FAMILY_ID2}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>mempoolproc &amp;</td><td>mempool hand started.</td><td>10s</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test PRB</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_prb</td><td>${WO_COMP_ADDR}</td><td>${MEMPOOL_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Monster To Monitor</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>monster -z 1024 -R -c ":NUM=8000" -o monbuf.bin &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Monster To Monitor Test PRB</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>monster -f ${FAMILY_ID1},${FAMILY_ID2} -o monbuf.bin &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${mon_pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${mon_pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Monster On WO Node For Test Process With Special Command Parameter</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>monster -f ${MEMPOOL_FAMILY_ID} -c ":NUM=02F7" -o ${BINARY_FILE_NAME} &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#${MONSTER_CONN} =</td><td><font color=blue>Start Monster Monitoring On Special Node</td><td><font color=blue>${WO_COMP_ADDR}</td><td><font color=blue>${MEMPOOL_FAMILY_ID}</td><td><font color=blue>${WO_NODE}</td></tr>
+<tr><td><br></td><td><font color=blue>#Set Test Variable</td><td><font color=blue>\${MONSTER_CONN}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>sleep 1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Current Ctrlsock Fd Count Should Be</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=4><font color=#FF6600>${num}</td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>lsof -p ${mon_pid}|grep sock</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>lsof -p ${mon_pid}|grep sock|wc -l</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result.strip()}</td><td>${num}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>OMU Should Be Ready</b></td></tr>
+<tr><td><br></td><td>Managed Object Should Be Ready</td><td>${OMU_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Managed Object Should Be Ready</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${moname}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Check Managed Object State</td><td>${moname}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${True}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Connect To SUT And Setup Env</b></td></tr>
+<tr><td><br></td><td colspan=5>Setup Connection For WO And CLI</td></tr>
+<tr><td><br></td><td colspan=5>Connect To CLI Env</td></tr>
+<tr><td><br></td><td>Switch To Active Log Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ulimit -c unlimited</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Temp File Should Not Exist</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${temp_file}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If File Exist</td><td>${temp_file}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${result}'=='${ACK_EXIST}'</td><td>Remove Temp File</td><td>${temp_file}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Remove Temp File</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${temp_file}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ${temp_file}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Monster And Check the FAMILY_CREATED_S message shall be monitored successfully</b></td></tr>
+<tr><td><br></td><td>Stop All Monster On WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_buf}</td><td>Execute CLI</td><td>readste -i ${BINARY_FILE_NAME}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Temp File Should Not Exist</td><td>${BINARY_FILE_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#${msg_buf}</td><td><font color=blue>Stop Monster And Get Result</td><td><font color=blue>${MONSTER_CONN}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_list}</td><td>Get Msg From Monitoring Result</td><td>${msg_buf}</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td>@{sent_list}</td><td>Get Msgs By Type</td><td>${msg_list}</td><td>sent</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Get Length</td><td>${sent_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${result}</td><td>${COUNT}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Monster And Test Prb</b></td></tr>
+<tr><td><br></td><td>Run Keyword If Test Failed</td><td colspan=4>Stop Two Test Prb</td></tr>
+<tr><td><br></td><td colspan=5>Stop All Monster</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test PRB And All Monster And Check Temp File Should Not Exist</b></td></tr>
+<tr><td><br></td><td>Stop Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop All Monster On WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Temp File Should Not Exist</td><td>${BINARY_FILE_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop All Monster</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Execute CLI</td><td>killall monster</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>15s</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop All Monster On WO</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_WO}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Execute CLI</td><td>killall monster</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>5s</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Env And Dissconnect From SUT</b></td></tr>
+<tr><td><br></td><td colspan=5>Stop All Monster</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f monbuf.bin</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Disconnect All Ils</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get All ShmMem Size</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>free</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${free}</td><td>${result.strip().split('\n')[1]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${result}</td><td>${free.strip().split()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${MEM_FREE}</td><td>${result[3]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>df /dev/shm</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${shmmem}</td><td>${result.strip().split('\n')[1]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${result}</td><td>${shmmem.strip().split()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${USED_SIZE}</td><td>${result[2]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${AVAIL_SIZE}</td><td>${result[3]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${SHM_AVAIL_SIZE}</td><td>Set Variable If</td><td>${SHM_AVAIL_SIZE}==0</td><td>${AVAIL_SIZE}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${SHM_AVAIL_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Monster To Monitor For Several Times</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${BUFFER_SIZE}</td><td>Set Variable If</td><td>${AVAIL_SIZE} &gt; 102400</td><td>102401</td><td>102400</td></tr>
+<tr><td><br></td><td>WaitUntilKeywordSucceeds</td><td>200</td><td>${CHECK_FREQUENCY}</td><td>Start One Monster</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start Monster To Monitor Which Memset Failed</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>monster -f 100 -z ${BUFFER_SIZE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Run Monster When Free Physical Memory Larger Than Available Shared Memory</b></td></tr>
+<tr><td><br></td><td>Run Keyword If Else</td><td>${MEM_FREE}&gt;${AVAIL_SIZE}</td><td colspan=3>Start One Monster</td></tr>
+<tr><td><br></td><td>...</td><td>Else</td><td>Should Be True</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start One Monster</b></td></tr>
+<tr><td><br></td><td>Get All ShmMem Size</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${BUFFER_SIZE}</td><td>Set Variable If</td><td>${AVAIL_SIZE} &gt; 102400</td><td>102401</td><td>102400</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${BUFFER_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If Else</td><td>${BUFFER_SIZE}==102401</td><td colspan=3>Run Monster Normally</td></tr>
+<tr><td><br></td><td>...</td><td>Else</td><td colspan=3>Run Monster Failed</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Run Monster Normally</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>monster -z ${BUFFER_SIZE} -f 100 &amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>WaitUntilKeywordSucceeds</td><td>${CHECK_TIMEOUT}</td><td>${CHECK_FREQUENCY}</td><td>Get Output</td><td>Message\ \ SR:</td></tr>
+<tr><td><br></td><td>Fail</td><td>'until to run monster failed'</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Run Monster Failed</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>monster -z ${BUFFER_SIZE} -f 100 &amp;</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>WaitUntilKeywordSucceeds</td><td>${CHECK_TIMEOUT}</td><td>${CHECK_FREQUENCY}</td><td>Get Output</td><td>Below options could be chosen now</td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Kill Monster With Signal</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${SIGNAL}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Mml Without Check</td><td>kill -${SIGNAL} ${pid}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>catch</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>kill -${SIGNAL} ${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Coredump Happened</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Get Output</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>core dumped</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Monster Should Unlink Share Memory</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>df /dev/shm/</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>df /dev/shm/|grep shm|awk '{print $4}'</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${size}</td><td>Evaluate</td><td colspan=3>${AVAIL_SIZE}+200</td></tr>
+<tr><td><br></td><td>${status}</td><td>Evaluate</td><td>${result.strip()}&lt;${size}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be True</td><td>${status}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check No Coredump Generated</b></td></tr>
+<tr><td><br></td><td>Count Core Dump</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${num_0}</td><td>Evaluate</td><td>int(0)</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${COUNT}</td><td>${num_0}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Switch To Active Log Env</b></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${OMU_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>get_wo_units</td><td>/Log</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${ACTIVE_CLA0}</td><td>${result}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>uname -n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${node}</td><td>${result.strip()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If Else</td><td>${ACTIVE_CLA0} != ['/${node}/FSLogServer']</td><td>Set OMU In Node Of Active Log</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Set OMU In Node Of Active Log</b></td></tr>
+<tr><td><br></td><td>Change RU</td><td>%{OMU_1_NAME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check The Core Dump Generated</b></td></tr>
+<tr><td><br></td><td>Count Core Dump</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${num_1}</td><td>Evaluate</td><td>int(1)</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${COUNT}</td><td>${num_1}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Count Core Dump</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td>${SSH_CLI}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ls /srv/Log/crash/</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>ls /srv/Log/crash/ |grep monster.*core.gz|grep ${pid}|wc -l</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${COUNT}</td><td>Convert To Integer</td><td colspan=3>${result}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${COUNT}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Run Monster If Free Physical Memory Larger Than Available Shared Memory</b></td></tr>
+<tr><td><br></td><td colspan=5>Start Monster To Monitor For Several Times</td></tr>
+<tr><td><br></td><td colspan=5>Check Monster Should Unlink Share Memory</td></tr>
+<tr><td><br></td><td>Check No Coredump Generated</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

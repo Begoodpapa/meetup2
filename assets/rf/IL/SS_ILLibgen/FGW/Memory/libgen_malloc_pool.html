@@ -1,0 +1,570 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen Malloc Pool Usage Test</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen Malloc Pool Usage Test</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test Libgen Malloc Pool Usage. LIBGEN use memory pool for dynamic memory allocation: allocate_buffer_r() and reallocate_buffer_r(). When malloc pool configured, LIBGEN will reserve the free malloc block, until the malloc block count.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B02760, B02760</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td colspan=4><font color=dark red>Iteration_ID-I02686, I07161,I07392</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>RNC_EFS_2850_162</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-IL_PRS_</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-il</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-6</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL5</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-in-meeting</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-mail</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-BCN_A2</td><td><font color=dark red>hw_type-BCN_B2</td><td><font color=dark red>hw_type-MGW_AB3</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-MGW_AB4</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC</td><td><font color=dark red>hw_env-AB</td><td><font color=dark red>hw_env-RNC_S0</td><td><font color=dark red>hw_env-RNC_S1</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>bcn_step-BCN_S1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/memory_resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Env Setup</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clean Env</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${MEMPOOL_FAMILY_ID}</td><td>0xC385</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0x0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_PROCESS_ID}</td><td>0x1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEMP_INI_FILE}</td><td>LibgenConfig_OMU.ini</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_1}</td><td>0x1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_2}</td><td>0x2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RSS}</td><td>Rss</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${32K}</td><td>32768</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ALL_BLOCK_HEAP_SIZE}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_RSS}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${NUM_0}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${BLOCK_NUM}</td><td>10</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${BLOCK_SIZE}</td><td>102400</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SIZE_LESS_1}</td><td>10000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SIZE_LESS_2}</td><td>20000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SIZE_LESS_3}</td><td>30000</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SIZE_MORE}</td><td>112640</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SIZE_MORE_2}</td><td>153600</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ALLOC_NUM}</td><td>10</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${EXCESS_NUM}</td><td>15</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FREE_LIST}</td><td>5 2 3 0 1 8</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${REALLOC_LIST}</td><td>4 0 2 4 8</td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>Malloc Block Should Be Reserved When Allocate Buffer Size Less Than Malloc Block</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Malloc pool is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB To Allocate Buffer Which Size Less Than Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Ask Test PRB To Free Memory\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Malloc Block Should Be Reserved After Memory Freed.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMallocPool.FUT.001.AT.I02686</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Statistic</td><td>${NUM_0}</td><td>${NUM_0}</td><td>${NUM_0}</td><td>${NUM_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${NUM_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Malloc Pool Statistic</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate The Buffer Successfully</td><td>${SIZE_LESS_1}</td><td>${ALLOC_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Current Heap Memory Usage</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${ALLOC_NUM}</td><td>${NUM_0}</td><td>${ALLOC_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Statistic</td><td>${ALLOC_NUM}</td><td>${ALLOC_NUM}</td><td>${NUM_0}</td><td>${NUM_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${ALLOC_NUM}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free All Allocated Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${NUM_0}</td><td>${ALLOC_NUM}</td><td>${ALLOC_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Malloc Block Should Be Reserved After Memory Freed</td><td><font color=blue>${size}</td><td><font color=blue>${ALLOC_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Malloc Pool Statistic</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate The Buffer Successfully</td><td>${SIZE_LESS_1}</td><td>${ALLOC_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free All Allocated Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Statistic</td><td>${ALLOC_NUM}</td><td>${ALLOC_NUM}</td><td>${NUM_0}</td><td>${NUM_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${ALLOC_NUM}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td colspan=4><font color=dark red>Stop Test PRB</td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Malloc Block Should Not Be Reserved When Allocate Buffer Size More Than Malloc Block</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Malloc pool is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB To Allocate Buffer Which Size More Than Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Ask Test PRB To Free Memory\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Malloc Block Should Not Be Reserved After Memory Freed.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMallocPool.FUT.002.AT.I02686</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Malloc Pool Statistic</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate The Buffer Successfully</td><td>${SIZE_MORE}</td><td>${ALLOC_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Current Heap Memory Usage</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${NUM_0}</td><td>${NUM_0}</td><td>${NUM_0}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Statistic</td><td>${ALLOC_NUM}</td><td>${ALLOC_NUM}</td><td>${ALLOC_NUM}</td><td>${NUM_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${NUM_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free All Allocated Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate The Buffer Successfully</td><td>${SIZE_MORE_2}</td><td>${ALLOC_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${NUM_0}</td><td>${NUM_0}</td><td>${NUM_0}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Statistic</td><td>20</td><td>20</td><td>20</td><td>${ALLOC_NUM}</td></tr>
+<tr><td><br></td><td>...</td><td>${NUM_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Malloc Block Should Not Be Reserved After Memory Freed</td><td><font color=blue>${size}</td><td><font color=blue>${ALLOC_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td colspan=4><font color=dark red>Stop Test PRB</td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Malloc Block Should Be Reserved Below The Configured Block Count And Not Reserved After Exceed The Block Count</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Malloc pool is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB To Allocate Buffer Which Size Less Than Malloc Block Several Times(Below Block Count)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Ask Test PRB To Free Several Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Malloc Block Should Be Reserved After Memory Freed\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Ask Test PRB To Allocate Buffer Which Size Less Than Malloc Block Several Times(Exceed Block Count)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Ask Test PRB To Free One Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Malloc Block Should Not Be Reserved After Memory Freed Which Exceed Block Count\n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. Ask Test PRB To Free All Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;9. Malloc Block Should Be Reserved After Memory Freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Malloc Block Should Be Reserved Below The Block Count And Not Reserved After Exceed The Block Count.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. All Malloc Block(Configured Block Count) Should Be Reserved At Last.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMallocPool.FUT.003.AT.I02686</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Malloc Pool Statistic</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate And Free The Buffer Successfully</td><td>${SIZE_LESS_1}</td><td>${BLOCK_NUM}</td><td>${FREE_LIST}</td><td><br></td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Current Heap Memory Usage</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Malloc Block Should Be Reserved After Memory Freed</td><td><font color=blue>${size}</td><td><font color=blue>${BLOCK_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>5</td><td>5</td><td>${ALLOC_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Statistic</td><td>${BLOCK_NUM}</td><td>${BLOCK_NUM}</td><td>${NUM_0}</td><td>${NUM_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${BLOCK_NUM}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free All Allocated Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate And Free The Buffer Successfully</td><td>${SIZE_LESS_2}</td><td>${EXCESS_NUM}</td><td>${FREE_LIST}</td><td><br></td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Current Heap Memory Usage</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Excess Malloc Block Should Not Be Reserved After Memory Freed</td><td><font color=blue>${size}</td><td><font color=blue>${EXCESS_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${ALLOC_NUM}</td><td>${NUM_0}</td><td>${EXCESS_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Statistic</td><td>25</td><td>15</td><td>${NUM_0}</td><td>${NUM_0}</td></tr>
+<tr><td><br></td><td>...</td><td>25</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free All Allocated Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check All Malloc Block Should Be Reserved After Memory Freed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${NUM_0}</td><td>${ALLOC_NUM}</td><td>${EXCESS_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td>Stop Malloc Pool Statistic</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td colspan=4><font color=dark red>Stop Test PRB</td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Reallocate Malloc Block Should Be Reserved When Memory Size Less Than Malloc Block</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Malloc pool is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB To Allocate Buffer Which Size_1 Less Than Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Ask Test PRB To Reallocate Buffer Which Size_2 Less Than Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Ask Test PRB To Free Memory\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Reallocate Malloc Block Should Be Reserved After Memory Freed.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMallocPool.FUT.004.AT.I02686</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Malloc Pool Statistic</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate And Reallocate The Buffer Successfully</td><td>${SIZE_LESS_1}</td><td>${SIZE_LESS_2}</td><td>${ALLOC_NUM}</td><td>${REALLOC_LIST}</td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Current Heap Memory Usage</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${ALLOC_NUM}</td><td>${NUM_0}</td><td>${ALLOC_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Statistic</td><td>14</td><td>10</td><td>${NUM_0}</td><td>${NUM_0}</td></tr>
+<tr><td><br></td><td>...</td><td>14</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free All Allocated Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Malloc Block Should Be Reserved After Memory Freed</td><td><font color=blue>${size}</td><td><font color=blue>${ALLOC_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td colspan=4><font color=dark red>Stop Test PRB</td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Reallocate Memory Should Not Be Reserved When Memory Size More Than Malloc Block</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Malloc pool is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB To Allocate Buffer Which Size_1 Less Than Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Ask Test PRB To Reallocate Buffer Which Size_3 More Than Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Ask Test PRB To Free Memory\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Reallocate Buffer Should Not Be Reserved After Memory Freed.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Malloc Block Should Be Reserved After Reallocate.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMallocPool.FUT.005.AT.I02686</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Malloc Pool Statistic</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate And Reallocate The Buffer Successfully</td><td>${SIZE_LESS_1}</td><td>${SIZE_MORE}</td><td>${ALLOC_NUM}</td><td>${REALLOC_LIST}</td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Current Heap Memory Usage</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>6</td><td>4</td><td>${ALLOC_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Statistic</td><td>14</td><td>14</td><td>4</td><td>${NUM_0}</td></tr>
+<tr><td><br></td><td>...</td><td>${BLOCK_NUM}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free All Allocated Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${NUM_0}</td><td>${ALLOC_NUM}</td><td>${ALLOC_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Malloc Block Should Be Reserved After Memory Freed</td><td><font color=blue>${size}</td><td><font color=blue>${ALLOC_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td colspan=4><font color=dark red>Stop Test PRB</td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Reallocate Malloc Block Should Be Reserved Below The Configured Block Count And Not Reserved After Exceed The Block Count</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Malloc pool is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB To Allocate Buffer Which Size_1 Less Than Malloc Block Several Times(Below Block Count)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Ask Test PRB To Reallocate Buffer Which Size_2 Less Than Malloc Block Several Times\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Ask Test PRB To Free Several Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Malloc Block Should Be Reserved After Memory Freed\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Ask Test PRB To Allocate Buffer Which Size_1 Less Than Malloc Block Several Times(Exceed Block Count)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Ask Test PRB To Reallocate Buffer Which Size_2 Less Than Malloc Block Several Times\n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. Ask Test PRB To Free One Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;9. Malloc Block Should Not Be Reserved After Memory Freed Which Exceed Block Count\n<br>&nbsp;&nbsp;&nbsp;&nbsp;10. Ask Test PRB To Free All Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;11. All Malloc Block(Configured Block Count) Should Be Reserved After Memory Freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Reallocate Malloc Block Should Be Reserved Below Block Count And Not Reserved After Exceed The Count.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. All Malloc Block(Configured Block Count) Should Be Reserved At Last.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMallocPool.FUT.006.AT.I02686</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Malloc Pool Statistic</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate And Reallocate And Free The Buffer Successfully</td><td>${SIZE_LESS_1}</td><td>${SIZE_LESS_2}</td><td>${BLOCK_NUM}</td><td>${REALLOC_LIST}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=4>${FREE_LIST}</td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Current Heap Memory Usage</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>5</td><td>5</td><td>${ALLOC_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Statistic</td><td>14</td><td>10</td><td>${NUM_0}</td><td>${NUM_0}</td></tr>
+<tr><td><br></td><td>...</td><td>14</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Malloc Block Should Be Reserved After Memory Freed</td><td><font color=blue>${size}</td><td><font color=blue>${BLOCK_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free All Allocated Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate And Reallocate The Buffer Successfully</td><td>${SIZE_LESS_1}</td><td>${SIZE_LESS_2}</td><td>${EXCESS_NUM}</td><td>${REALLOC_LIST}</td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Current Heap Memory Usage</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${EXCESS_NUM}</td><td>${NUM_0}</td><td>${EXCESS_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Statistic</td><td>33</td><td>15</td><td>${NUM_0}</td><td>${NUM_0}</td></tr>
+<tr><td><br></td><td>...</td><td>33</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Excess Malloc Block Should Not Be Reserved After Memory Freed</td><td><font color=blue>${size}</td><td colspan=3><font color=blue>${EXCESS_NUM}</td></tr>
+<tr><td><br></td><td>Free All Allocated Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${NUM_0}</td><td>${ALLOC_NUM}</td><td>${EXCESS_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check All Malloc Block Should Be Reserved After Memory Freed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td colspan=4><font color=dark red>Stop Test PRB</td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Malloc Pool Will Not Be Used By Default</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Malloc pool is not configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB To Allocate Buffer Which Size Less Than Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Ask Test PRB To Free Memory\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Malloc Memory Should Not Be Reserved After Memory Freed.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMallocPool.FUT.007.AT.I02686</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td colspan=4><font color=dark red>Start Test PRB With Own Ini</td></tr>
+<tr><td><br></td><td>Start Malloc Pool Statistic</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate The Buffer Successfully</td><td>${SIZE_LESS_1}</td><td>${ALLOC_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Current Heap Memory Usage</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free All Allocated Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>0</td><td>0</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Statistic</td><td>${ALLOC_NUM}</td><td>${ALLOC_NUM}</td><td>${ALLOC_NUM}</td><td>${ALLOC_NUM}</td></tr>
+<tr><td><br></td><td>...</td><td>${NUM_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Block Should Not Be Reserved After Memory Freed</td><td>${size}</td><td>${ALLOC_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td colspan=4><font color=dark red>Stop Test PRB</td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Continously Allocate And Reallocate Different Size Memory, The Configured Block Count Malloc Blocks Should Be Reserved At Last</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Malloc pool is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB To Allocate Buffer Size_1 And Reallocate Buffer Size_2 Until Exceed Configured Block Count\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Ask Test PRB To Free All Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Ask Test PRB To Allocate Buffer Size_1 And Reallocate Buffer Size_3 Until Exceed Configured Block Count\n<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Ask Test PRB To Free All Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Ask Test PRB To Allocate Buffer Size_3 And Reallocate Buffer Size_2 Until Exceed Configured Block Count\n<br>&nbsp;&nbsp;&nbsp;&nbsp;7. Ask Test PRB To Free All Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;8. All Malloc Block(Configured Block Count) Should Be Reserved After Memory Freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. All Malloc Block(Configured Block Count) Should Be Reserved After Memory Freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMallocPool.FUT.008.AT.I02686</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Malloc Pool Statistic</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate And Reallocate And Free All The Buffer Successfully</td><td>${SIZE_LESS_1}</td><td>${SIZE_LESS_2}</td><td>${EXCESS_NUM}</td><td>${REALLOC_LIST}</td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Current Heap Memory Usage</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Excess Malloc Block Should Not Be Reserved After Memory Freed</td><td><font color=blue>${size}</td><td><font color=blue>${EXCESS_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check All Malloc Block Should Be Reserved After Memory Freed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Excess Malloc Block Should Not Be Reserved After Memory Freed</td><td><font color=blue>${size}</td><td><font color=blue>${EXCESS_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate And Reallocate And Free All The Buffer Successfully</td><td>${SIZE_LESS_1}</td><td>${SIZE_LESS_3}</td><td>${EXCESS_NUM}</td><td>${REALLOC_LIST}</td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Current Heap Memory Usage</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${NUM_0}</td><td>${ALLOC_NUM}</td><td>${EXCESS_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check All Malloc Block Should Be Reserved After Memory Freed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Excess Malloc Block Should Not Be Reserved After Memory Freed</td><td><font color=blue>${size}</td><td><font color=blue>${EXCESS_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate And Reallocate And Free All The Buffer Successfully</td><td>${SIZE_LESS_3}</td><td>${SIZE_LESS_2}</td><td>${EXCESS_NUM}</td><td>${REALLOC_LIST}</td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Current Heap Memory Usage</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${NUM_0}</td><td>${ALLOC_NUM}</td><td>${EXCESS_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Excess Malloc Block Should Not Be Reserved After Memory Freed</td><td><font color=blue>${size}</td><td><font color=blue>${EXCESS_NUM}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check All Malloc Block Should Be Reserved After Memory Freed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td colspan=4><font color=dark red>Stop Test PRB</td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>PRB Should Abort When Overwrite The Malloc Buffer</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Malloc pool is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB To Allocate Buffer Which Size Less Than Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Ask Test PRB To Overwrite Malloc Buffer\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. PRB Should Abort.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMallocPool.FUT.009.AT.I02686</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Malloc Pool Statistic</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Core Dump Files</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Test PRB For Allocate Buffer And Overwrite Sucessfully</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Test PRB Not Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Check Test PRB Abort</td><td><br></td></tr>
+<tr><td><br></td><td>Sleep</td><td>5</td><td colspan=3><font color=blue># wait core file generated, and can clean it</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Run Keyword If Test Passed</td><td><font color=dark red>Clear Core Dump Files</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>The Buffer Content Should Not Be Changed After Reallocate Memory</b></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMallocPool.FUT.010.AT.I02686</td><td>ATC_ID-Libgen.FUT.001.AT.80968ESPE01</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Test PRB With Log Level</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Allocate And Reallocate The Buffer Successfully With Buffer Content Printed</td><td>20</td><td>30</td><td>2</td></tr>
+<tr><td><br></td><td>...</td><td>1 0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check More Buffer Content Should Not Be Changed</td><td>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free All Allocated Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Allocate And Reallocate The Buffer Successfully With Buffer Content Printed</td><td>30</td><td>20</td><td>2</td></tr>
+<tr><td><br></td><td>...</td><td>1 1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Less Buffer Content Should Not Be Changed</td><td>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td colspan=4><font color=dark red>Stop Test PRB</td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Malloc Block Should Be In Free List When Hand Stop Which Holds Some Malloc Blocks</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;RU state should be OK.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;Malloc pool is configured.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Start test PRB\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Ask Test PRB To Allocate Buffer Which Size Less Than Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Ask Test PRB To Allocate Buffer Which Size Less Than Malloc Block\n<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Ask Test PRB To Stop Hand\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Malloc Block Should Be Reserved After Memory Freed.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-LibgenMallocPool.FUT.011.AT.I02686</td><td>ATC_ID-LibgenMallocPool.FUT.001.AT.I07161</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Test PRB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Malloc Pool Statistic</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Allocate And Free The Buffer Successfully In Hand</td><td>${HAND_1}</td><td>${SIZE_LESS_1}</td><td>${BLOCK_NUM}</td><td>${FREE_LIST}</td></tr>
+<tr><td><br></td><td>Allocate And Free The Buffer Successfully In Hand</td><td>${HAND_2}</td><td>${SIZE_LESS_1}</td><td>${BLOCK_NUM}</td><td>${FREE_LIST}</td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${ALLOC_NUM}</td><td>${NUM_0}</td><td colspan=2>${EXCESS_NUM}</td></tr>
+<tr><td><br></td><td>Stop Hand</td><td>${HAND_1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>5</td><td>5</td><td colspan=2>${EXCESS_NUM}</td></tr>
+<tr><td><br></td><td>Stop Hand</td><td>${HAND_2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Pool Status</td><td>${NUM_0}</td><td>${ALLOC_NUM}</td><td>${EXCESS_NUM}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td colspan=4><font color=dark red>Stop Test PRB</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB</b></td></tr>
+<tr><td><br></td><td colspan=5>Export Temporarily Ini With Malloc Pool</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>mempoolproc &amp;</td><td>mempool hand started.</td><td>10s</td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change Suite Value</td><td>NO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${DEFAULT_RSS}</td><td>Get Process Heap Info From Smaps</td><td>${pid}</td><td>${RSS}</td><td><br></td></tr>
+<tr><td><br></td><td>${DEFAULT_SIZE}</td><td>Evaluate</td><td>${DEFAULT_RSS}*1024</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${DEFAULT_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB With Log Level</b></td></tr>
+<tr><td><br></td><td colspan=5>Export Temporarily Ini With Malloc Pool</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>mempoolproc -- -l 10 &amp;</td><td>mempool hand started.</td><td>10s</td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Restart Test PRB</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test PRB</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Multi-thread Test PRB</b></td></tr>
+<tr><td><br></td><td colspan=5>Export Temporarily Ini With Malloc Pool</td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>mempoolproc -t 2 &amp;</td><td>mempool hand started.</td><td>10s</td><td><br></td></tr>
+<tr><td><br></td><td>Change Suite Value</td><td>YES</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Test PRB With Own Ini</b></td></tr>
+<tr><td><br></td><td colspan=5>Export Temporarily Ini Without Malloc Pool</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute Cmd With Check Expected</td><td>mempoolproc &amp;</td><td>mempool hand started.</td><td>10s</td></tr>
+<tr><td><br></td><td>${pid}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=\\[\\d\\] )\\d*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${pid}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change Suite Value</td><td>NO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${DEFAULT_RSS}</td><td>Get Process Heap Info From Smaps</td><td>${pid}</td><td>${RSS}</td><td><br></td></tr>
+<tr><td><br></td><td>${DEFAULT_SIZE}</td><td>Evaluate</td><td>${DEFAULT_RSS}*1024</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${DEFAULT_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test Prb</b></td></tr>
+<tr><td><br></td><td>Clear Temporarily Ini</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_prb</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Temporarily Ini</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=/etc/LibgenConfig_OMU.ini</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Change Suite Value</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${in_value}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${MULTI_THREAD}=</td><td>Set Variable</td><td>${in_value}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${MULTI_THREAD}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Still Alive</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v still_alive -t %s</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>3</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Test PRB Not Alive</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>time out</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v still_alive -t 1</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check Test PRB Abort</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ls /srv/Log/crash/</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>ls /srv/Log/crash/ |grep ${pid}|wc -l</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${count}</td><td>Convert To Integer</td><td colspan=3>${result.strip()}</td></tr>
+<tr><td><br></td><td><font color=blue>#Should Be Equal</td><td><font color=blue>${result.strip()}</td><td><font color=blue>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be True</td><td>${count}&gt;=1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Core Dump Files</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f /srv/Log/crash/*${pid}*mempoolproc*</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Multi-thread Teardown</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Check PRB Hand Status</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Hand Status</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>active hands 3</td><td>1</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>diagste -u %s -f %s -r han -t idata -m hum</td><td>${OMU PHYSICAL ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Env Setup</b></td></tr>
+<tr><td><br></td><td>${index}=</td><td>Connect To Il</td><td>%{HOSTIP}</td><td>%{PORT}</td><td>${MAX TIME FOR CONNECT}</td></tr>
+<tr><td><br></td><td>...</td><td>%{USERNAME}</td><td>%{PASSWD}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get WO OMU</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Change RU</td><td>${OMU}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5>Switch To Active Log Env</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>ulimit -c unlimited</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Variable Of Libgen Use Phys Addr</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>df -H /srv/Log/crash</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Switch To Active Log Env</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>get_wo_units</td><td>/Log</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${ACTIVE_LOG}</td><td>${result}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>uname -n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${node}</td><td>${result.strip()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If Else</td><td>${ACTIVE_LOG} != ['/${node}/FSLogServer']</td><td>Set OMU In Node Of Active Log</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Set OMU In Node Of Active Log</b></td></tr>
+<tr><td><br></td><td colspan=5>Get SP OMU</td></tr>
+<tr><td><br></td><td>Change RU</td><td>${SPOMU}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU}</td><td>${SPOMU}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO_OMU_INDEX}</td><td>${SP_OMU_INDEX}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Multi-thread Env Setup</b></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${MULTI_THREAD}"=="NO"</td><td colspan=3>Start Multi-thread Test PRB</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clean Env</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Test Prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Mml Without Check</td><td>ll /srv/Log/crash/*mempoolproc*</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Execute CLI</td><td>rm -f /srv/Log/crash/*mempoolproc*</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect All Ils</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get Current Heap Memory Usage</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${saved}=0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${size}</td><td>Get Process Heap Info From Smaps</td><td>${pid}</td><td>${RSS}</td><td><br></td></tr>
+<tr><td><br></td><td>${cur_size}</td><td>Evaluate</td><td colspan=3>${size}*1024</td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>${saved} == 1</td><td>Set Heap Variable</td><td>${cur_size}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[return]</td><td colspan=4><font color=#FF6600>${cur_size}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Set Heap Variable</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=4><font color=#FF6600>${cur_size}</td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>${ALL_BLOCK_HEAP_SIZE} == 0</td><td>Set Suite Variable</td><td>\${ALL_BLOCK_HEAP_SIZE}</td><td>${cur_size}</td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>${ALL_BLOCK_HEAP_SIZE} &lt; ${cur_size}</td><td>Set Suite Variable</td><td>\${ALL_BLOCK_HEAP_SIZE}</td><td>${cur_size}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Allocate And Free The Buffer Successfully</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${size}</td><td><font color=#FF6600>${alloc_num}</td><td><font color=#FF6600>${free_list}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failed</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v alloc_and_free_buffers -t %s -S %s -P "%s"</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${size}</td></tr>
+<tr><td><br></td><td>...</td><td>${alloc_num}</td><td>${free_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Allocate And Free The Buffer Successfully In Hand</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand}</td><td><font color=#FF6600>${size}</td><td><font color=#FF6600>${alloc_num}</td><td><font color=#FF6600>${free_list}</td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failed</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v alloc_and_free_buffers -t %s -S %s -P "%s"</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${hand}</td><td>${size}</td></tr>
+<tr><td><br></td><td>...</td><td>${alloc_num}</td><td>${free_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Allocate And Free The Buffer Successfully At Second Time</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${size}</td><td><font color=#FF6600>${alloc_num}</td><td><font color=#FF6600>${free_list}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Run Keyword If Else</td><td><font color=blue>${alloc_num} == ${free_num}</td><td><font color=blue>Allocate And Free All Buffer</td><td><font color=blue>${size}</td><td><font color=blue>${alloc_num}</td></tr>
+<tr><td><br></td><td><font color=blue># ...</td><td><font color=blue>${free_num}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#...</td><td><font color=blue>Else</td><td><font color=blue>Allocate And Free Buffer</td><td><font color=blue>${size}</td><td><font color=blue>${alloc_num}</td></tr>
+<tr><td><br></td><td><font color=blue># ...</td><td><font color=blue>${free_num}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failed</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v alloc_and_free_buffers -t %s -S %s -P "%s"</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${size}</td></tr>
+<tr><td><br></td><td>...</td><td>${alloc_num}</td><td>${free_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>${alloc_num} == ${free_num}</td><td>Free All Allocated Buffer</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Allocate The Buffer Successfully</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${size}</td><td colspan=3><font color=#FF6600>${alloc_num}</td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failed</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td colspan=3>mempoolproc -f 0xffff -- -p "%s %s %s" -v alloc_and_free_buffers -t %s -S %s</td></tr>
+<tr><td><br></td><td>...</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${size}</td></tr>
+<tr><td><br></td><td>...</td><td>${alloc_num}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Allocate And Reallocate And Free The Buffer Successfully</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${alloc_size}</td><td><font color=#FF6600>${realloc_size}</td><td><font color=#FF6600>${alloc_num}</td><td><font color=#FF6600>${realloc_list}</td></tr>
+<tr><td><br></td><td>...</td><td>${free_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failed</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v alloc_realloc_free_buffers -t %s -a %s -S %s -A "%s" -P "%s"</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${alloc_size}</td></tr>
+<tr><td><br></td><td>...</td><td>${realloc_size}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${alloc_num}</td><td>${realloc_list}</td><td colspan=2>${free_list}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Allocate And Reallocate And Free All The Buffer Successfully</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${alloc_size}</td><td><font color=#FF6600>${realloc_size}</td><td><font color=#FF6600>${alloc_num}</td><td><font color=#FF6600>${realloc_list}</td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failed</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v alloc_realloc_free_buffers -t %s -a %s -S %s -A "%s"</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${alloc_size}</td></tr>
+<tr><td><br></td><td>...</td><td>${realloc_size}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${alloc_num}</td><td>${realloc_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free All Allocated Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Allocate And Reallocate The Buffer Successfully</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${alloc_size}</td><td><font color=#FF6600>${realloc_size}</td><td><font color=#FF6600>${alloc_num}</td><td><font color=#FF6600>${realloc_list}</td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failed</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td colspan=3>mempoolproc -f 0xffff -- -p "%s %s %s" -v alloc_realloc_free_buffers -t %s -a %s -S %s -A "%s"</td></tr>
+<tr><td><br></td><td>...</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${alloc_size}</td></tr>
+<tr><td><br></td><td>...</td><td>${realloc_size}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${alloc_num}</td><td>${realloc_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Allocate And Reallocate The Buffer Successfully With Buffer Content Printed</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${alloc_size}</td><td><font color=#FF6600>${realloc_size}</td><td><font color=#FF6600>${alloc_num}</td><td><font color=#FF6600>${realloc_list}</td></tr>
+<tr><td><br></td><td>${result}=</td><td>Execute Mml Without Check</td><td>mempoolproc -f 0xffff -- -p "${OMU PHYSICAL ADDRESS} ${MEMPOOL_FAMILY_ID} ${MASTER_PROCESS_ID}" -v alloc_realloc_free_buffers -t ${alloc_size} -a ${realloc_size} -S ${alloc_num} -A "${realloc_list}" -D|grep 0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[return]</td><td colspan=4><font color=#FF6600>${result}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Free All Allocated Buffer</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failed</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v free_all_buffers</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td colspan=2>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Malloc Block Should Be Reserved After Memory Freed</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${size}</td><td colspan=3><font color=#FF6600>${alloc_num}</td></tr>
+<tr><td><br></td><td>${reserved_size}</td><td>Get Current Heap Memory Usage</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${BELOW}</td><td>Evaluate</td><td>${alloc_num}*${BLOCK_SIZE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Evaluate</td><td>${reserved_size}&gt;=${BELOW}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be True</td><td>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Malloc Block Should Not Be Reserved After Memory Freed</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${size}</td><td colspan=3><font color=#FF6600>${alloc_num}</td></tr>
+<tr><td><br></td><td>${reserved_size}</td><td>Get Current Heap Memory Usage</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${below}</td><td>Evaluate</td><td colspan=3>${alloc_num}/2*${BLOCK_SIZE}+${DEFAULT_SIZE}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Evaluate</td><td colspan=3>${reserved_size}&lt;${below}</td></tr>
+<tr><td><br></td><td>Should Be True</td><td>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Excess Malloc Block Should Not Be Reserved After Memory Freed</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${size}</td><td colspan=3><font color=#FF6600>${alloc_num}</td></tr>
+<tr><td><br></td><td>${reserved_size}</td><td>Get Current Heap Memory Usage</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${ABOVE}</td><td>Evaluate</td><td colspan=3>${alloc_num}*${BLOCK_SIZE}+${DEFAULT_SIZE}</td></tr>
+<tr><td><br></td><td>${BELOW}</td><td>Evaluate</td><td colspan=3>${alloc_num}/2*${BLOCK_SIZE}+${DEFAULT_SIZE}</td></tr>
+<tr><td><br></td><td>${result}</td><td>Evaluate</td><td colspan=3>${BELOW}&lt;${reserved_size}&lt;=(${size}+${32K})</td></tr>
+<tr><td><br></td><td>Should Be True</td><td>${result}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check All Malloc Block Should Be Reserved After Memory Freed</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Malloc Block Should Be Reserved After Memory Freed</td><td>${ALL_BLOCK_HEAP_SIZE}</td><td>${BLOCK_NUM}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Msg To Test PRB For Allocate Buffer And Overwrite Sucessfully</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failed</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v overwrite_buffer -t 1000 -a 1001</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check More Buffer Content Should Not Be Changed</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=4><font color=#FF6600>${result}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${str}</td><td>${result.replace("\r\n"," ")}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${str}</td><td colspan=3>Buffer No.00, Size: 000030, Content: ------------------------------------------------\ \ 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F\ \ 10 11 12 13 00 00 00 00 00 00 00 00 00 00 --</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Less Buffer Content Should Not Be Changed</b></td><td><font color=#FF6600>[Arguments]</td><td colspan=4><font color=#FF6600>${result}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${str}</td><td>${result.replace("\r\n"," ")}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${str}</td><td colspan=3>Buffer No.01, Size: 000020, Content: ------------------------------------------------\ \ 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F\ \ 10 11 12 13 --</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Malloc Pool Status</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${used_num}</td><td><font color=#FF6600>${free_num}</td><td colspan=2><font color=#FF6600>${max_num}</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r mallocpool</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r mallocpool|sed -e 's/ //g'</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td colspan=3>usedbuffers:${used_num}</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td colspan=3>freebuffers:${free_num}</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td colspan=3>maxusedbuffersinhistory:${max_num}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Hand</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${hand}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v master_stop_hand -t %s</td><td>${OMU PHYSICAL ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${hand}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Malloc Pool Statistic</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${call_num}</td><td><font color=#FF6600>${malloc_num}</td><td><font color=#FF6600>${beyond_num}</td><td><font color=#FF6600>${beyond_130_num}</td></tr>
+<tr><td><br></td><td>...</td><td colspan=4>${under_num}</td></tr>
+<tr><td><br></td><td>Execute CLI</td><td colspan=4>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r mallocpool</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td colspan=3>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r mallocpool|sed -e 's/ //g'</td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>allocate_buffer_rcallingtimes:${call_num}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>malloccallingtimes:${malloc_num}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>requestbuffersize&gt;=100%ofblocksizetimes:${beyond_num}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>requestbuffersize&gt;=130%ofblocksizetimes:${beyond_130_num}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>requestbuffersize&lt;=70%ofblocksizetimes:${under_num}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Malloc Pool Statistic</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r spar -t mallocpool -v 1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>v</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Malloc Pool Statistic</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${OMU PHYSICAL ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r spar -t mallocpool -v 0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result}</td><td>v</td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

@@ -1,0 +1,74 @@
+*Setting*							
+Documentation	This test suite is used to cover the custom pronto NA04860599 I-HSPA Rel3 Pilot: using committed-bandwidth 0 in Iub interface ul traffic is not transferred						
+Suite Setup	Connect to Target Hardware and Create Test Resource						
+Suite Teardown	Release Test Resource and Disconnect from Target Hardware						
+Force Tags	Product_Backlog_ID-B01177	Iteration_ID-I01165	hw_env-ADA	hw_env-RNC	hw_env-RNC_S0	hw_env-RNC_S1	type-FUT
+...	exec_type-automatic	element-IL	release-IL1	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	exec_level-pre	QL-4	HW_TYPE-BCN_A1
+...	BCN_STEP-BCN_S0	HW_TYPE-ADA_FTLB	PRS_ID-XXX	FRS_ID-XXX			
+Resource	il.html						
+Resource	./resources/common_operation_resource.html						
+Resource	./resources/IPBR_basic_operation_resource.html						
+Resource	./resources/cac_basic_operation_resource.html						
+Library	Collections						
+Resource	../SS_ILCallMgmt/resources/cm_resource.tsv						
+							
+*Variable*							
+${IPBR_ID_4014}	4014						
+${IPBR_NAME_4014}	BTS-4014						
+${BANDWIDTH_0KB}	0						
+${BANDWIDTH_10KB}	10						
+${BANDWIDTH_10B}	10						
+${USCP_0}	USCP-0						
+${IPBR_ID_4006}	4006						
+${ONE_GROUP}	1						
+${EME_PARA}	QPRI=255						
+							
+*Test Case*							
+CAC should be supported for CS2 legs with IPBR committed Bandwidth is Zero	[Tags]	ATC_ID-TRM_CAC.FUT.005.AT.NA04860599	ct-positive				
+	reserve AMR call with CAC request						
+	Update Iub Leg's bandwidth should be successful						
+	[Teardown]	release AMR call created in the test					
+							
+CAC should be supported for CS2 legs with emergency call and IPBR committed Bandwidth is Zero	[Tags]	ATC_ID-TRM_CAC.FUT.005.AT.NA04860599	ct-positive				
+	reserve AMR call with CAC request						
+	Update emergency Iub Leg's bandwidth should be successful						
+	[Teardown]	release AMR call created in the test					
+							
+*Keyword*							
+Connect to Target Hardware and Create Test Resource	connect to target hardware						
+	switch to active OMU						
+	Get Active CP Units						
+	Get Random USCP Unit	${FLASH_PRE_INDEX}					
+	run keyword if	'%{HW}' == 'ADA'	Set Test Resource for ADA				
+	run keyword if	'%{HW}' == 'RNC'	Set Test Resource for RNC				
+							
+Release Test Resource and Disconnect from Target Hardware	run keyword if	'%{HW}' == 'ADA'	run keyword and ignore error	delete IPRO successfully	${IPBR_TEST_ID}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}
+	...	${IP_GROUP_1.iface}	${DEL_MODE_FORCE}				
+	disconnect from target hardware						
+							
+reserve AMR call with CAC request	${RTP_LEG}	create rtp leg	${USCP}	${IPBR_TEST_ID}	NCAC=1		
+	Should Be Equal	${RTP_LEG.result}	SUCCESSFUL				
+	${IUB_LEG}	create iub leg	${USCP}	${IPBR_TEST_ID}	${RTP_LEG.call_id}	NCAC=1	
+	Should Be Equal	${IUB_LEG.result}	SUCCESSFUL				
+	set test variable	\${RTP_LEG}					
+	set test variable	\${IUB_LEG}					
+							
+Update Iub Leg's bandwidth should be successful	${result}	Modify Leg Traffic Parameter	${USCP}	${RTP_LEG.call_id}	${IUB_LEG.leg_id}	10,T::FMBR=${BANDWIDTH_10B},FABR=${BANDWIDTH_10B},NCAC=0	
+	should be equal	${result.result}	SUCCESSFUL				
+							
+release AMR call created in the test	${iub_release}	Execute Cli	lgutilgx RV:${IUB_LEG.computer}:${IUB_LEG.call_id}:${IUB_LEG.leg_id}				
+	${rtp_release}	Execute Cli	lgutilgx RV:${RTP_LEG.computer}:${RTP_LEG.call_id}:${RTP_LEG.leg_id}				
+	should contain	${iub_release}	RELEASING SUCCESSFUL				
+	should contain	${rtp_release}	RELEASING SUCCESSFUL				
+							
+Set Test Resource for ADA	${IP_GROUP}	select_random_IP_address_and_recovery_group_ADA	${ONE_GROUP}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+	set Suite Variable	\${IPBR_TEST_ID}	${IPBR_ID_4006}				
+	Add IPRO successfully	${IPBR_TEST_ID}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}		
+							
+Set Test Resource for RNC	${IP_GROUP}	select_random_IP_address_and_recovery_group	${ONE_GROUP}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+	set Suite Variable	\${IPBR_TEST_ID}	${IPBR_ID_4014}				
+							
+Update emergency Iub Leg's bandwidth should be successful	${result}	Modify Leg Traffic Parameter	${USCP}	${RTP_LEG.call_id}	${IUB_LEG.leg_id}	10,T::FMBR=${BANDWIDTH_10B},FABR=${BANDWIDTH_10B},NCAC=0,${EME_PARA}	
+	should be equal	${result.result}	SUCCESSFUL				

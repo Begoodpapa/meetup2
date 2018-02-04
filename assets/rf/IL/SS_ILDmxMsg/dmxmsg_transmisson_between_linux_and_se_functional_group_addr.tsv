@@ -1,0 +1,177 @@
+D M X M S G   T R A N S M I S S O N   B E T W E E N   L I N U X   A N D   S E   F U N C T I O N A L   G R O U P   A D D R
+
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	resources/dmxmsg.tsv
+Suite Setup	Connect_And_Config_Group_Table	${MAX TIME FOR CONNECT}
+Suite Teardown	Disconnect From SUT
+Force Tags	Product_Backlog_ID-T88003	Iteration_ID-I00431	PRS_ID-IL_PRS_2582	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL
+...	exec_type-automatic	type-FUT	release-IL1_RIS2	reviewer-xiaoping.wang.ext@nsn.com	rw-weekly
+...	hw_env-RNC	ct-positive	hw_env-RNC_S0	hw_env-RNC_S1	exec_level-pre
+...	QL-1
+
+
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+${DAEMON GROUP}	8FFF:AD9C:0
+${ALL DAEMON}	8FFE:AD9C:0
+${SE GROUP}	8FFD:44d:0
+${ALL SE}	8FFC:45A:0
+${All UNITS}	8FFA:AD9C:0
+${WO_ADDR}	0x1000
+${MAX TIME FOR CONNECT}	50
+${TIMEOUT}	30
+
+
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+6.23 Send message from Linux Daemon to a specific group of Linux Daemons on one CPU	[Tags]	ATC_ID- DMXMSG.FUT.023.AT	FRS_ID-PTT_320301_68_0000
+	${out}	Use Dmxcli To Send Messages	${DAEMON}	${DAEMON GROUP}	10
+	...	0	1	100	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.24 Send message from Linux Daemon to all Linux Daemons on one CPU	[Tags]	ATC_ID- DMXMSG.FUT.024.AT	FRS_ID-PTT_320301_68_0000
+	${out}	Use Dmxcli To Send Messages	${DAEMON}	${ALL DAEMON}	10
+	...	0	1	100	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.25 Send message from Linux Daemon to a specific group of SE units on one CPU	[Tags]	ATC_ID- DMXMSG.FUT.025.AT	FRS_ID-PTT_320301_68_0000
+	${out}	Use Dmxcli To Send Messages	${DAEMON}	${SE GROUP}	10
+	...	0	1	100	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.26 Send message from Linux Daemon to all SE units	[Tags]	ATC_ID- DMXMSG.FUT.026.AT	FRS_ID-PTT_320301_68_0000
+	${out}	Use Dmxcli To Send Messages	${DAEMON}	${ALL SE}	10
+	...	0	1	100	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.27 Send message from SE to a specific group of Linux Daemons	[Tags]	ATC_ID- DMXMSG.FUT.027.AT	FRS_ID-PTT_320301_68_0000
+	${out}	Use Dmxcli To Send Messages	${6WIND SE}	${DAEMON GROUP}	10
+	...	0	1	100	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.28 Send message from SE to all Linux Daemons	[Tags]	ATC_ID- DMXMSG.FUT.028.AT	FRS_ID-PTT_320301_68_0000
+	${out}	Use Dmxcli To Send Messages	${6WIND SE}	${ALL DAEMON}	10
+	...	0	1	100	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.29 Send message from 6WIND SE A to a specific group of SE Units	[Tags]	ATC_ID- DMXMSG.FUT.029.AT	FRS_ID-PTT_320301_68_0000
+	${out}	Use Dmxcli To Send Messages	${6WIND SE}	${SE GROUP}	10
+	...	0	1	100	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.30 Send message from 6Wind SE A to all SE Units on one CPU	[Tags]	ATC_ID- DMXMSG.FUT.030.AT	FRS_ID-PTT_320301_68_0000
+	${out}	Use Dmxcli To Send Messages	${6WIND SE}	${ALL SE}	10
+	...	0	1	100	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.31 Send message from 6Wind SE to all Units	[Tags]	ATC_ID- DMXMSG.FUT.031.AT	FRS_ID-PTT_320301_68_0000
+	${out}	Use Dmxcli To Send Messages	${6WIND SE}	${ALL UNITS}	10
+	...	0	1	100	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+6.32 Send message from Linux Daemon to all Units	[Tags]	ATC_ID- DMXMSG.FUT.032.AT	FRS_ID-PTT_320301_68_0000
+	${out}	Use Dmxcli To Send Messages	${DAEMON}	${ALL UNITS}	10
+	...	0	1	100	0
+	...	${TIMEOUT}
+	Should Contain	${out}	successful
+	[Teardown]	Check node env if case fail 	@{NODE LIST}
+
+
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Connect_And_Config_Group_Table	[Arguments]	${max_time_for_connect}
+	Connect To SUT	${max_time_for_connect}
+	${OMU_DAEMON_ADDR}	Evaluate	hex(%{OMU_0_LOG_ADDR}+${WO_ADDR})
+	Set Suite Variable	\${DAEMON}	${OMU_DAEMON_ADDR}:AD9C:0
+	${EITP_SE_ADDR}	Evaluate	hex(%{EITP_0_LOG_ADDR}+${WO_ADDR})
+	Set Suite Variable	\${6WIND SE}	${EITP_SE_ADDR}:45B:0
+	GetSingleAddress
+	ConfigGroupAddressCLA0
+	Run Keyword If	'%{DETAIL_HW}'=='BCN'	ConfigGroupAddressForOneBCNBox
+	Run Keyword If	'%{DETAIL_HW}'=='BCN_S1'	ConfigGroupAddressForMultiBCNBox
+	Cat dmxmsg table 
+
+GetSingleAddress	Change To RU Env	omu
+	${OMUPhys}=	QueryPhysAddrByUnitType	2	0
+	${CFCPPhys}=	QueryPhysAddrByUnitType	147	0
+	${CSUPPhys}=	QueryPhysAddrByUnitType	129	0
+	${EITPPhys}=	QueryPhysAddrByUnitType	128	0
+	${SE1}=	QueryPhysAddrByUnitType	124	0
+	${SE2}=	QueryPhysAddrByUnitType	126	0
+	${SE3}=	QueryPhysAddrByUnitType	127	0
+	Set Suite Variable	\${OMUPhys}
+	Set Suite Variable	\${CFCPPhys}
+	Set Suite Variable	\${CSUPPhys}
+	Set Suite Variable	\${EITPPhys}
+	Set Suite Variable	\${SE1}
+	Set Suite Variable	\${SE2}
+	Set Suite Variable	\${SE3}
+
+
+ConfigGroupAddressInNode	[Arguments]	${Node}
+	ExecuteCli	ssh ${Node}	yes
+	Register Group Address	8FFF,2,${CFCPPhys},${CSUPPhys}
+	Register Group Address	8FFE,3,${CFCPPhys},${CSUPPhys},${EITPPhys}
+	Register Group Address	8FFD,2,${SE1},${SE2}
+	Register Group Address	8FFC,2,${SE1},${SE2}
+	Register Group Address	8FFB,4,${OMUPhys},${CFCPPhys},${SE1},${SE3}
+	Register Group Address	8FFA,5,${CFCPPhys},${CSUPPhys},${EITPPhys},${SE1},${SE2}
+	Register Group Address	8FF8,2,${OMUPhys},${CSUPPhys}
+	Register Group Address	8FF7,2,${OMUPhys},${CFCPPhys}
+	ExecuteCli	exit
+
+Register Group Address	[Arguments]	${para}
+	${rst}	execute cli	dmxcli2 -G ${para}
+	ShouldContain	${rst}	SUCCESS
+
+ConfigGroupAddressCLA0
+	ConfigGroupAddressInNode	CFPU-0
+	@{NODE LIST}	Set variable	CFPU-0	CFPU-0
+	Set Suite Variable	\@{NODE LIST}
+
+ConfigGroupAddressForOneBCNBox	ConfigGroupAddressInNode	CSPU-0
+	ConfigGroupAddressInNode	CSPU-1
+	ConfigGroupAddressInNode	USPU-0
+	ConfigGroupAddressInNode	USPU-1
+	ConfigGroupAddressInNode	EIPU-0
+	ConfigGroupAddressInNode	EIPU-1
+	@{NODE LIST}	Set variable	CLA-0	CSPU-0	CSPU-1
+	...	USPU-0	USPU-1	EIPU-0	EIPU-1
+	Set Suite Variable	\@{NODE LIST}
+
+ConfigGroupAddressForMultiBCNBox	ConfigGroupAddressInNode	CFPU-1
+	ConfigGroupAddressInNode	CSPU-0
+	ConfigGroupAddressInNode	CSPU-1
+	ConfigGroupAddressInNode	CSPU-2
+	ConfigGroupAddressInNode	CSPU-3
+	ConfigGroupAddressInNode	USPU-0
+	ConfigGroupAddressInNode	USPU-1
+	ConfigGroupAddressInNode	USPU-2
+	ConfigGroupAddressInNode	USPU-3
+	ConfigGroupAddressInNode	USPU-4
+	ConfigGroupAddressInNode	USPU-5
+	ConfigGroupAddressInNode	EIPU-0
+	ConfigGroupAddressInNode	EIPU-1
+	ConfigGroupAddressInNode	EIPU-2
+	ConfigGroupAddressInNode	EIPU-3
+	@{NODE LIST}	Set variable	CFPU-0	CFPU-1	CSPU-0
+	...	CSPU-1	CSPU-2	CSPU-3	USPU-0
+	...	USPU-1	USPU-2	USPU-3	USPU-4
+	...	USPU-5	EIPU-0	EIPU-1	EIPU-2
+	...	EIPU-3
+	Set Suite Variable	\@{NODE LIST}

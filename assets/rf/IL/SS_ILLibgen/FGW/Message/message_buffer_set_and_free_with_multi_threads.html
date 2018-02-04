@@ -1,0 +1,452 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Message Buffer Set And Free With Multi Threads</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Message Buffer Set And Free With Multi Threads</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/Libgen_Msg_Resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test the follow Libgen API: lib_set_current_msg_r, send_buffer_r, free_buffer_r, save_buffer_r, allocate_message_buffer_r, get_buf_ptr_r\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test PR[113017ESPE04]: allocate_message_buffer_r without free may cause crash in stop.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test PR[113020ESPE04]: save_buffer_r handle not freed make handle leak.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test PR[113022ESPE04]: save_buffer_r shall return void, find_focus shall return focus_t not process_t.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test PR[113023ESPE04]: Libgen cann't save message with handle from lib_set_current_msg_r via save_buffer_r.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test PR[47677ESPE05]: message pool are still kept even the target hand has been stopped.\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test Libgen Send Buffer With Handle From lib_set_current_msg_r pronto[22567ESPE06]: mcRNC1.0/ADA3.0: Buffer handle from lib_set_current_msg_r cannot be used in send_buffer_r.\n Libgen is allowed to send message with send_buffer_r even if the message buffer is not allocated by allocate_message_buffer_r (example, send_buffer_r(lib_set_current_msg_r(0))).\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>Case ATC_ID-Libgen.FUT.006.AT.I01247 is transferred from missing_libgen_api.html\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>Case ATC_ID-Libgen.FUT.AT.22567ESPE06 is transferred from libgen_send_buffer_with_handle_from_lib_set_current_msg_r.html\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect To SUT And Setup Env</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Clear Env and Disconnect from SUT</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-IL_PRS_2582</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td colspan=4><font color=dark red>EFS_ID-RNC_EFS_2152_93</td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-IL</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-RU50</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-meeting</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>bcn_step-BCN_S1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-BCN_A2</td><td><font color=dark red>hw_type-BCN_B2</td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-MGW_AB3</td><td><font color=dark red>hw_type-MGW_AB4</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC_S1</td><td><font color=dark red>hw_env-AB</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Setup</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Teardown</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${DMXTST_FAMILY_ID}</td><td>0x1B5B</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST PROCESS2}</td><td>dmxtstproc</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST PROCESS1}</td><td>dmxtstproc_ne</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MEMPOOL_FAMILY_ID}</td><td>0xC385</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS_ID}</td><td>0x0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEMP_INI_FILE}</td><td>LibgenConfig_OMU.ini</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CHECK_ALIVE}</td><td>still_alive</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SEND_BUFFER_HANDLE}</td><td>send_buffer_handle</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SET_CURRENT_MSG_BUFFER}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SET_CURRENT_MSG_BUFFER_AND_SET_BACK_ONCE}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SET_CURRENT_MSG_BUFFER_AND_SET_BACK_TWICE}</td><td>2</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FREE_BUFFER}</td><td>3</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ALLOCATE_MESSAGE_BUFFER}</td><td>4</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SAVE_BUFFER_HANDLE}</td><td>5</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SET_CURRENT_MSG_BUFFER_AND_GET_BUF_PTR}</td><td>7</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_USER_STOP}</td><td>0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_CRASH_WITH_ARRAY_INDEX_OVERFLOW}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_CRASH_WITH_SEGV}</td><td>2</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_STOP_FOR_ENDLESS_LOOP}</td><td>3</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WAIT_TIME_5S}</td><td>1000</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU_0}</td><td>%{OMU_0_NAME}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${STOP_PROCESS}</td><td>stop_prb</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${HAND_COUNT10}</td><td>10</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_BUFFER_COUNT1}</td><td>1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_BUFFER_COUNT6}</td><td>6</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_BUFFER_COUNT10}</td><td>10</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_BUFFER_COUNT20}</td><td>20</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_BUFFER_COUNT200}</td><td>200</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_BUFFER_SIZE_65519}</td><td>65519</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_BUFFER_SIZE_64K}</td><td>0x10000</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_BUFFER_SIZE_1M}</td><td>0x100000</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_COUNT_IN_MESSAGE_POOL1}</td><td>sizelevel65696:currentusedsize:65696</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_COUNT_IN_MESSAGE_POOL11}</td><td>sizelevel65696:currentusedsize:722656</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_COUNT_IN_MESSAGE_POOL55}</td><td>sizelevel65696:currentusedsize:3613280</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_COUNT_IN_MESSAGE_POOL65}</td><td>sizelevel65696:currentusedsize:4270240</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_COUNT_IN_MESSAGE_POOL156}</td><td>sizelevel65696:currentusedsize:10248576</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSG_COUNT_FROM_MALLOAC873}</td><td>memoryfrommalloc:\r\r\ncurrentusedsize:57237208</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MESSAGE_IN_QUEUE_COUNT0}</td><td>messageinlibgenqueue(includingsaved):0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MESSAGE_IN_QUEUE_COUNT7}</td><td>messageinlibgenqueue(includingsaved):7</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OCCUPIED_CIRCLE_POOL_MSG_COUNT6}</td><td>messageinlibgenqueue(includingsaved):6</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OCCUPIED_CIRCLE_POOL_MSG_COUNT60}</td><td>messageinlibgenqueue(includingsaved):60</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>User Can Save The Current_buffer Via Lib_set_current_msg_r And Reuse It Successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Test CLI sends c_test_msg_ack_s to test process.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Test process receives c_test_msg_ack_s and save the current buffer by current_handle = lib_set_current_msg_r(0) without recieving the msg content to local variables.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Test process restores the current buffer by lib_set_current_msg_r(current_handle) after sends serveral messages to sender.\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Test process send current buffer to sender by OUTPUT (INPUT) TO SENDER.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test CLI receives several c_test_msg_s before receives c_test_msg_ack_s message with the same test_id and sub_id it sent to test process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process can redefine the current_buffer via lib_set_current_msg_r correctly.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.006.AT.I01247</td><td>ATC_ID-Libgen.FUT.001.AT.47677ESPE05</td><td>FRS_ID-PDC_210001_18_0000</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Setup]</td><td><font color=dark red>Start Test prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Save The Current_buffer And Reuse It Success</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Process Save The Current_buffer And Reuse It Success Again</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Test prb</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Can Send Message With Handle From lib_set_current_msg_r Via send_buffer_r Successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Send Message To Test process by Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. After receive the message, Test process send_buffer_r(lib_set_current_msg_r(0)), and then check sending status by osc_status, and send result to Test CLI\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check Test CLI receive 2 messages from Test process\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Libgen Can Send Buffer With Handle From lib_set_current_msg_r Successfully.\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.AT.22567ESPE06</td><td>ATC_ID-Libgen.FUT.002.AT.47677ESPE05</td><td>FRS_ID-PDC_210001_18_0000</td><td><br></td></tr>
+<tr><td><br></td><td>Send Message To Test process and Check Ack In Test CLI</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check PRB Still Alive</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Can Free Message Blocks With Handle From lib_set_current_msg_r Via free_buffer_r Successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Send command to test process to do the following steps: 1)Send message to test process.2)After receive the message, test process save the current buffer by current_handle = lib_set_current_msg_r(0) without recieving the msg content to local variables.3)Sends serveral other messages To test process in stateful procedure\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check the message blocks state saved from lib_set_current_msg_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Test process free buffer by free_buffer_r(current_handle)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check the message blocks saved from lib_set_current_msg_r has freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check the message blocks saved from lib_set_current_msg_r has freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.003.AT.47677ESPE05</td><td>FRS_ID-PDC_210001_18_0000</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create Multi New Test Process And Occupy Circle Pool</td><td>${HAND_COUNT10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Multi Test process and Check Ack In Test CLI</td><td>${SET_CURRENT_MSG_BUFFER}</td><td>${MSG_BUFFER_COUNT1}</td><td>${HAND_COUNT10}</td><td>${Hand_id_list}</td></tr>
+<tr><td><br></td><td>Check Message Block State</td><td>${MSG_COUNT_IN_MESSAGE_POOL65}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Multi Test process and Check Ack In Test CLI</td><td>${FREE_BUFFER}</td><td>${MSG_BUFFER_COUNT10}</td><td>${HAND_COUNT10}</td><td>${Hand_id_list}</td></tr>
+<tr><td><br></td><td>Check Message Pool Expect Pre-reserved Has Freed</td><td>${MSG_COUNT_IN_MESSAGE_POOL55}</td><td>${OCCUPIED_CIRCLE_POOL_MSG_COUNT60}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Multi Created Test Process AND Check All Buffer Has Freed</td><td><font color=dark red>${HAND_COUNT10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Can Free Message Blocks From lib_set_current_msg_r Successfully After Hand Stop By Manually</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Send command to test process to do the following steps: 1)Send message to test process.2)After receive the message, test process save the current buffer by current_handle = lib_set_current_msg_r(0) without recieving the msg content to local variables.3)Sends serveral other messages To test process in stateful procedure\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check the message blocks state saved from lib_set_current_msg_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Stop test process by manually\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check the message blocks saved from lib_set_current_msg_r has freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check the message blocks saved from lib_set_current_msg_r has freed after hand stop by manually\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.004.AT.47677ESPE05</td><td>FRS_ID-PDC_210001_18_0000</td><td>FRS_ID-PDC_210001_20_0000</td><td><br></td></tr>
+<tr><td><br></td><td>Create New Test Process And Occupy Circle Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process and Check Ack In Test CLI</td><td>${SET_CURRENT_MSG_BUFFER}</td><td>${MSG_BUFFER_COUNT10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Message Block State</td><td>${MSG_COUNT_IN_MESSAGE_POOL11}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Created Test Process</td><td>${HAND_USER_STOP}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check All Buffer Expect One In Multi Threads Has Freed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Created Test Process AND Check All Buffer Has Freed</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Can Free Message Blocks From lib_set_current_msg_r Successfully After Hand Stop Automaticly By Detecting Endless Loop</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Send command to test process to do the following steps: 1)Send message to test process.2)After receive the message, test process save the current buffer by current_handle = lib_set_current_msg_r(0) without recieving the msg content to local variables.3)Sends serveral other messages To test process in stateful procedure\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check the message blocks state saved from lib_set_current_msg_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Test process stop automaticly by detecting endless loop\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check the message blocks saved from lib_set_current_msg_r has freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check the message blocks saved from lib_set_current_msg_r has freed after hand stop automaticly by detecting endless loop\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.005.AT.47677ESPE05</td><td>FRS_ID-PDC_210001_18_0000</td><td>FRS_ID-PDC_210001_20_0000</td><td>ct-negative</td></tr>
+<tr><td><br></td><td>Create New Test Process And Occupy Circle Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process and Check Ack In Test CLI</td><td>${SET_CURRENT_MSG_BUFFER}</td><td>${MSG_BUFFER_COUNT10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Message Block State</td><td>${MSG_COUNT_IN_MESSAGE_POOL11}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Created Test Process</td><td>${HAND_STOP_FOR_ENDLESS_LOOP}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Wait Until Keyword Succeeds</td><td><font color=blue>${CHECK_TIMEOUT}</td><td><font color=blue>${CHECK_INTERVAL}</td><td><font color=blue>Check All Buffer Has Freed</td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Created Test Process AND Check All Buffer Has Freed</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Can Free Message Blocks From lib_set_current_msg_r Successfully After Hand Crash</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Send command to test process to do the following steps: 1)Send message to test process.2)After receive the message, test process save the current buffer by current_handle = lib_set_current_msg_r(0) without recieving the msg content to local variables.3)Sends serveral other messages To test process in stateful procedure\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check the message blocks state saved from lib_set_current_msg_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Test process crash(Crash with SEGV\TNSDL array index overflow)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check the message blocks saved from lib_set_current_msg_r has freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check the message blocks saved from lib_set_current_msg_r has freed after hand crash\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.006.AT.47677ESPE05</td><td>FRS_ID-PDC_210001_18_0000</td><td>FRS_ID-PDC_210001_20_0000</td><td>ct-negative</td></tr>
+<tr><td><br></td><td>Create New Test Process And Occupy Circle Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process and Check Ack In Test CLI</td><td>${SET_CURRENT_MSG_BUFFER}</td><td>${MSG_BUFFER_COUNT10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Message Block State</td><td>${MSG_COUNT_IN_MESSAGE_POOL11}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Created Test Process</td><td>${HAND_CRASH_WITH_SEGV}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check All Buffer Has Freed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create New Test Process And Occupy Circle Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process and Check Ack In Test CLI</td><td>${SET_CURRENT_MSG_BUFFER}</td><td>${MSG_BUFFER_COUNT10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Message Block State</td><td>${MSG_COUNT_IN_MESSAGE_POOL11}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Created Test Process</td><td>${HAND_CRASH_WITH_ARRAY_INDEX_OVERFLOW}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check All Buffer Has Freed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Created Test Process AND Check All Buffer Has Freed And Clear Coredump</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Can Restore A User Specified Current Buffer With Handle From allocate_message_buffer_r via lib_set_current_msg_r</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Send command to test process to do the following steps: 1)Send message to test process.2)After receive the message, allocate message buffer by allocate_message_buffer_r and save the allocated_handle.3)Save the current buffer by current_handle = lib_set_current_msg_r(allocated_handle).4)Send msg from allocate_message_buffer_r by OUTPUT(INPUT) to sender5)Test process restore the current buffer by lib_set_current_msg_r(current_handle)\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Libgen Can restore the current buffer allocated by allocate_message_buffer_r via lib_set_current_msg_r\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.007.AT.47677ESPE05</td><td>FRS_ID-PDC_210001_18_0000</td><td>FRS_ID-PDC_210001_19_0000</td><td>FRS_ID-PDC_210001_20_0000</td></tr>
+<tr><td><br></td><td>Create New Test Process And Occupy Circle Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process and Check Ack In Test CLI</td><td>${ALLOCATE_MESSAGE_BUFFER}</td><td>${MSG_BUFFER_COUNT10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Message Pool Expect Pre-reserved Has Freed</td><td><font color=blue>${MSG_COUNT_IN_MESSAGE_POOL1}</td><td><font color=blue>${OCCUPIED_CIRCLE_POOL_MSG_COUNT6}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Created Test Process AND Check All Buffer Has Freed</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Can Free Message Blocks From lib_set_current_msg_r Successfully After Continuously Do Store\Restore (Store Via lib_set_current_message_r Several Times, Restore Via lib_set_current_message_r Several Times) And At Last Hand Stop Operation</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Send command to test process to do the following steps several times: 1)Send message to test process.2)After receive the message, test process save the current buffer by current_handle = lib_set_current_msg_r(0) without recieving the msg content to local variables.3)Sends serveral other messages To test process in stateful procedure\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Send command to test process to do the following steps several times: 1)Send message to test process.2)After receive the message, test process save the current buffer by current_handle = lib_set_current_msg_r(0) without recieving the msg content to local variables.3)Sends serveral other messages To test process in stateful procedure.4)Restore the current buffer by lib_set_current_msg_r(current_handle))(different times with step1)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Rerun step 1-2 several times\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check the message blocks state saved from lib_set_current_msg_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Stop test process\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check the message blocks saved from lib_set_current_msg_r has freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check the message blocks saved from lib_set_current_msg_r has freed after test process stop\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.008.AT.47677ESPE05</td><td>FRS_ID-PDC_210001_18_0000</td><td>FRS_ID-PDC_210001_20_0000</td><td><br></td></tr>
+<tr><td><br></td><td>Create Multi New Test Process And Occupy Circle Pool</td><td>${HAND_COUNT10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Repeat Keyword</td><td>10 times</td><td>Send Special Command To Multi Test process and Check Ack In Test CLI</td><td>${SET_CURRENT_MSG_BUFFER}</td><td>${MSG_BUFFER_COUNT10}</td></tr>
+<tr><td><br></td><td>...</td><td>${HAND_COUNT10}</td><td>${Hand_id_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Repeat Keyword</td><td>100 times</td><td>Send Special Command To Multi Test process and Check Ack In Test CLI</td><td>${SET_CURRENT_MSG_BUFFER_AND_SET_BACK_TWICE}</td><td>${MSG_BUFFER_COUNT10}</td></tr>
+<tr><td><br></td><td>...</td><td>${HAND_COUNT10}</td><td>${Hand_id_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK_TIMEOUT}</td><td>${CHECK_INTERVAL}</td><td>Check Message Block State</td><td>${MSG_COUNT_IN_MESSAGE_POOL156}</td></tr>
+<tr><td><br></td><td><font color=blue>#Wait Until Keyword Succeeds</td><td><font color=blue>${CHECK_TIMEOUT}</td><td><font color=blue>${CHECK_INTERVAL}</td><td><font color=blue>Check Message Block State</td><td><font color=blue>${MSG_COUNT_FROM_MALLOAC873}</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Multi Created Test Process AND Check All Buffer Has Freed</td><td><font color=dark red>${HAND_COUNT10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Can Save Buffer With Handle From lib_set_current_msg_r After Receives Messages In Stateful Procedure</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Send command to test process to do the following steps: 1)Send message to test process.2)After receive the message, test process save the current buffer by current_handle = lib_set_current_msg_r(0) without recieving the msg content to local variables.3)Ask test process to enter stateful procedure.4)Sends serveral other messages To test process.5)Ask test process to set back with lib_set_current_msg_r once\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check the message blocks with handle from lib_set_current_msg_r has saved\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Stop hand by manually\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check the message blocks saved from lib_set_current_msg_r has freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check the message blocks with handle from lib_set_current_msg_r has saved\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.009.AT.47677ESPE05</td><td>FRS_ID-PDC_210001_18_0000</td><td>FRS_ID-PDC_210001_19_0000</td><td><br></td></tr>
+<tr><td><br></td><td>Create New Test Process And Occupy Circle Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process and Check Ack In Test CLI</td><td>${SET_CURRENT_MSG_BUFFER_AND_SET_BACK_ONCE}</td><td>${MSG_BUFFER_COUNT10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK_TIMEOUT}</td><td>${CHECK_INTERVAL}</td><td>Check Message Block State</td><td>${MSG_COUNT_IN_MESSAGE_POOL11}</td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Created Test Process AND Check All Buffer Has Freed</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Can Use Buffer Handle From lib_set_current_msg_r Via get_buf_ptr_t Successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Send command to test process to do the following steps: 1)Send message to test process.2)After receive the message, test process save the current buffer by current_handle = lib_set_current_msg_r(0) without recieving the msg content to local variables.3)Ask test process to get the pointer for saved current message buffer with get_buf_ptr_t\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check UNINTERPRETED_SIGNAL_HEADER is the same as the pointer return from get_buf_ptr_r(lib_set_current_msg_r(0))\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check the message blocks saved from lib_set_current_msg_r has freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check UNINTERPRETED_SIGNAL_HEADER is the same as the pointer return from get_buf_ptr_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check the message blocks saved from lib_set_current_msg_r has freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.010.AT.47677ESPE05</td><td>FRS_ID-PDC_210001_18_0000</td><td>FRS_ID-PDC_210001_19_0000</td><td><br></td></tr>
+<tr><td><br></td><td>Create New Test Process And Occupy Circle Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process and Check Ack In Test CLI</td><td>${SET_CURRENT_MSG_BUFFER_AND_GET_BUF_PTR}</td><td>${MSG_BUFFER_COUNT10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check Message Pool Expect Pre-reserved Has Freed</td><td><font color=blue>${MSG_COUNT_IN_MESSAGE_POOL1}</td><td><font color=blue>${OCCUPIED_CIRCLE_POOL_MSG_COUNT6}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Created Test Process AND Check All Buffer Has Freed</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Should Not Core Dump When Sending Msg to Stop Hand After Allocate Message Buffer By allocate_message_buffer_r And Not Free</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Create three hands\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Test CLI sends command to hand1 to allocate message buffer(only comes from message pool size&lt;=10M) by allocate_message_buffer_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check hand1 message buffer state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Stop hand1 by manually\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check buffer allocated by allocate_message_buffer_r has freed\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Test CLI sends command to hand2 to allocate message buffer(comes from both dynamic allocation and message pool 10M&lt;size&lt;=20M) by allocate_message_buffer_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Check hand2 message buffer state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Stop hand2 by manually\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9. Check buffer allocated by allocate_message_buffer_r has freed\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.Test CLI sends command to hand3 to allocate message buffer(comes from dynamic allocation while message pool used up size&gt;20M) by allocate_message_buffer_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11.Check hand3 message buffer state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12.Stop hand3 by manually\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13.Check buffer allocated by allocate_message_buffer_r has freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check buffer allocated by allocate_message_buffer_r has freed after hand stop\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.113017ESPE04</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create New Test Process And Occupy Circle Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process and Check Buffer Free</td><td>${MSG_BUFFER_COUNT10}</td><td>${MSG_BUFFER_SIZE_64K}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create New Test Process And Occupy Circle Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process and Check Buffer Free</td><td>${MSG_BUFFER_COUNT200}</td><td>${MSG_BUFFER_SIZE_65519}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Create New Test Process And Occupy Circle Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process and Check Buffer Free</td><td>${MSG_BUFFER_COUNT20}</td><td>${MSG_BUFFER_SIZE_1M}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Created Test Process AND Check All Buffer Has Freed</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Libgen Can Save Message With Handle From lib_set_current_msg_r Via save_buffer_r Successfully</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test process is available\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Send command to test process to do the following steps: 1)Send message to test process.2)After receive the message, test process save the current buffer by current_handle = lib_set_current_msg_r(0) without recieving the msg content to local variables.3)Sends serveral other messages To test process in stateful procedure\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check the message blocks state saved from lib_set_current_msg_r\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Test process save buffer by save_buffer_r(current_handle)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check the buffer handle has freed\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Stop test process by manually\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check the message blocks saved from lib_set_current_msg_r has freed\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Check the buffer handle has freed after save buffer by save_buffer_r\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.001.AT.113020ESPE04</td><td>ATC_ID-Libgen.FUT.001.AT.113022ESPE04</td><td>ATC_ID-Libgen.FUT.001.AT.113023ESPE04</td><td><br></td></tr>
+<tr><td><br></td><td>Create New Test Process And Occupy Circle Pool</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process and Check Ack In Test CLI</td><td>${SET_CURRENT_MSG_BUFFER}</td><td>${MSG_BUFFER_COUNT10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Message Block State</td><td>${MSG_COUNT_IN_MESSAGE_POOL11}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process and Check Ack In Test CLI</td><td>${SAVE_BUFFER_HANDLE}</td><td>${MSG_BUFFER_COUNT10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Message Block State</td><td>${MESSAGE_IN_QUEUE_COUNT7}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Stop Created Test Process AND Check All Buffer Has Freed</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td><b>Test Process Save The Current_buffer And Reuse It Success</b></td><td>${result}</td><td>Save Current Buffer And Reuse</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td><td>${DMXTST_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test Process Save The Current_buffer And Reuse It Success Again</b></td></tr>
+<tr><td><br></td><td>Test Process Save The Current_buffer And Reuse It Success</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Create New Test Process And Occupy Circle Pool</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Return Result</td><td>successfully</td><td>2</td><td>time out</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v create_one_hand</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td></tr>
+<tr><td><br></td><td>${ret}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>(?&lt;=created mempoolhand process\ id:\ )\\w*</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${Hand_id}</td><td>${ret}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process TO Occupy Circle Pool</td><td>${MSG_BUFFER_COUNT6}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Create Multi New Test Process And Occupy Circle Pool</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{Hand_id_list}=</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>In Range</td><td>0</td><td>${count}</td></tr>
+<tr><td><br></td><td><br></td><td>Create New Test Process And Occupy Circle Pool</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Append To List</td><td>${Hand_id_list}</td><td>${Hand_id}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{Hand_id_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Created Test Process</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${operation_type}</td><td><font color=#FF6600>${hand_id}=${Hand_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>time out</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v stop_prb -S %s</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${hand_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${operation_type}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Created Test Process AND Check All Buffer Has Freed And Clear Coredump</b></td></tr>
+<tr><td><br></td><td>Stop Created Test Process AND Check All Buffer Has Freed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Coredump</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Coredump</b></td></tr>
+<tr><td><br></td><td>Switch Il Connection</td><td colspan=4>${SSH_WO}</td></tr>
+<tr><td><br></td><td><font color=blue>#Execute CLI</td><td><font color=blue>rm -f /srv/Log/crash/*${pid}*</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f /srv/Log/crash/*mempool*</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Created Test Process AND Check All Buffer Has Freed</b></td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>Stop Created Test Process</td><td>${HAND_USER_STOP}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process TO Occupy Circle Pool</td><td>${MSG_BUFFER_COUNT1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK_TIMEOUT}</td><td>${CHECK_INTERVAL}</td><td>Check All Buffer Has Freed</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Multi Created Test Process AND Check All Buffer Has Freed</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${count}</td><td><font color=#FF6600>${message_count_in_queue}=${MESSAGE_IN_QUEUE_COUNT0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>In Range</td><td>0</td><td>${count}</td></tr>
+<tr><td><br></td><td><br></td><td>Stop Created Test Process</td><td>${HAND_USER_STOP}</td><td>${Hand_id_list[${Index}]}</td><td><br></td></tr>
+<tr><td><br></td><td>Check All Buffer Has Freed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Special Command To Test process and Check Ack In Test CLI</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${operation_type}</td><td><font color=#FF6600>${msg_count}</td><td><font color=#FF6600>${hand_id}=${Hand_id}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>time out</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v set_current_msg_leak -S %s -a %s</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${hand_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${operation_type}</td><td>${msg_count}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${OMU_WO_PHYSICAL_ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Special Command To Multi Test process and Check Ack In Test CLI</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${operation_type}</td><td><font color=#FF6600>${msg_count}</td><td><font color=#FF6600>${count}</td><td><font color=#FF6600>${hand_id_list}</td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>In Range</td><td>0</td><td>${count}</td></tr>
+<tr><td><br></td><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>time out</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v set_current_msg_leak -S %s -a %s</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${hand_id_list[${Index}]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${operation_type}</td><td>${msg_count}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${OMU_WO_PHYSICAL_ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Special Command To Test process and Check Buffer Free</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${msg_buffer_count}</td><td><font color=#FF6600>${msg_buffer_size}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>time out</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v msg_buffer_crash_in_stop -t %s -a %s</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${Hand_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${msg_buffer_count}</td><td>${msg_buffer_size}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Check All Buffer Expect One In Multi Threads Has Freed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Special Command To Test process TO Occupy Circle Pool</td><td>${MSG_BUFFER_COUNT1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Buffer Has Freed</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Special Command To Test process TO Occupy Circle Pool</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${msg_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>1</td><td>time out</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v send_full_save_msg -a %s</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td><td>${Hand_id}</td></tr>
+<tr><td><br></td><td>...</td><td>${msg_count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${OMU_WO_PHYSICAL_ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Message Block State</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${message_state}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${OMU_WO_PHYSICAL_ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Should Contain</td><td><font color=blue>${result.replace(' ','').strip()}</td><td><font color=blue>${message_state}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check All Buffer Has Freed</b></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${OMU_WO_PHYSICAL_ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.replace(' ','').strip()}</td><td>sizelevel65696:currentusedsize:0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.replace(' ','').strip()}</td><td>memoryfrommalloc:\r\r\ncurrentusedsize:0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.replace(' ','').strip()}</td><td>messageinlibgenqueue(includingsaved):0</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check All Buffer Expect One In Multi Threads Has Freed</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${message_count_in_queue}=${MESSAGE_IN_QUEUE_COUNT0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${OMU_WO_PHYSICAL_ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.replace(' ','').strip()}</td><td>sizelevel65696:currentusedsize:65696</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.replace(' ','').strip()}</td><td>memoryfrommalloc:\r\r\ncurrentusedsize:0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.replace(' ','').strip()}</td><td>${message_count_in_queue}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Message Pool Expect Pre-reserved Has Freed</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${message_pool_current_size}</td><td><font color=#FF6600>${message_count_in_queue}=${MESSAGE_IN_QUEUE_COUNT0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>diagste -u ${OMU_WO_PHYSICAL_ADDRESS} -f ${MEMPOOL_FAMILY_ID} -r msgstate</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.replace(' ','').strip()}</td><td>${message_pool_current_size}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.replace(' ','').strip()}</td><td>memoryfrommalloc:\r\r\ncurrentusedsize:0</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Contain</td><td>${result.replace(' ','').strip()}</td><td>${message_count_in_queue}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start Test prb</b></td><td>Execute Cmd With Check Expected</td><td>${TEST PROCESS1} &amp;</td><td>Dmxtestproc_master start</td><td>10</td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>${TEST PROCESS2} &amp;</td><td>Dmxtestproc_master start</td><td>10</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Test prb</b></td><td>Kill Process</td><td>${TEST PROCESS1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Kill Process</td><td>${TEST PROCESS2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Start Test Process</b></td></tr>
+<tr><td><br></td><td>Export Temporarily Ini With Endlessloop Detect</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute Cmd With Check Expected</td><td>mempoolproc -t 2 &amp;</td><td>mempool hand started.</td><td>10s</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Test Process</b></td></tr>
+<tr><td><br></td><td>Clear Temporarily Ini</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s 0" -v stop_prb</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td><td>${MEMPOOL_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Temporarily Ini</b></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ./${TEMP_INI_FILE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>export GET_CONFIG=/etc/LibgenConfig_OMU.ini</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Send Message To Test process and Check Ack In Test CLI</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>3</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -t %s</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${SEND_BUFFER_HANDLE}</td><td>${WAIT_TIME_5S}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check PRB Still Alive</b></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>successfully</td><td>2</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>mempoolproc -f 0xffff -- -p "%s %s %s" -v %s -t %s</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td><td><br></td></tr>
+<tr><td><br></td><td>...</td><td>${MEMPOOL_FAMILY_ID}</td><td>${MASTER_PROCESS_ID}</td><td>${CHECK_ALIVE}</td><td>${WAIT_TIME_5S}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Managed Object Should Be Ready</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${moname}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Check Managed Object State</td><td>${moname}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${True}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Connect To SUT And Setup Env</b></td></tr>
+<tr><td><br></td><td>IL1 Connect to SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Managed Object Should Be Ready</td><td>${OMU_0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Test Process</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Env and Disconnect from SUT</b></td></tr>
+<tr><td><br></td><td>Stop Test Process</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>IL1 Disconnect from SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

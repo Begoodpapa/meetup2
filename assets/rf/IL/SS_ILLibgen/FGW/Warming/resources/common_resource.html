@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>common resource</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">common resource</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><b>Resource</b></td><td colspan=2>il.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${CHECK INTERVAL}</td><td>1sec</td></tr>
+<tr bgcolor=#FFFFFF><td>${MAXTIME_FOR_MO_REDAY}</td><td>40sec</td></tr>
+<tr bgcolor=#FFFFFF><td>${MAX TIME FOR CONNECT}</td><td>30</td></tr>
+<tr bgcolor=#FFFFFF><td>${OMU-0}</td><td>%{OMU_0_NAME}</td></tr>
+<tr bgcolor=#FFFFFF><td>${CFCP-0}</td><td>%{CFCP_0_NAME}</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=5><b>Managed Object Should Be Ready</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td colspan=3><font color=#FF6600>${moname}</td></tr>
+<tr><td><br></td><td>${result} =</td><td>Check Managed Object State</td><td colspan=2>${moname}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td colspan=2>${True}</td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Wait Until Managed Object Ready</b></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Arguments]</td><td colspan=3><font color=#FF6600>${mo_name}</td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_MO_REDAY}</td><td>${CHECK_INTERVAL}</td><td>Managed Object Should Be Ready</td></tr>
+<tr><td><br></td><td>...</td><td colspan=3>${mo_name}</td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Get WO OMU</b></td></tr>
+<tr><td><br></td><td>${OMURG} =</td><td>Get RG Name</td><td colspan=2>${OMU-0}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td colspan=3>\${OMURG}</td></tr>
+<tr><td><br></td><td>${wo_units} =</td><td>Get WO Units</td><td colspan=2>${OMURG}</td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU}</td><td colspan=2>${wo_units[0]}</td></tr>
+<tr><td><br></td><td>${wo info}</td><td>Get Unit Type And Index By MO Name</td><td>${wo_units[0]}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO_OMU_INDEX}</td><td>${wo info.index}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${OMU_UNIT_NAME}</td><td>${wo info.type}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get WO CFCP</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${CFCPRG} =</td><td>Get RG Name</td><td>${CFCP-0}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${CFCPRG}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${wo_units} =</td><td>Get WO Units</td><td>${CFCPRG}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${CFCP}</td><td>${wo_units[0]}</td><td><br></td></tr>
+<tr><td><br></td><td>${wo info}</td><td>Get Unit Type And Index By MO Name</td><td>${wo_units[0]}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO_CFCP_INDEX}</td><td>${wo info.index}</td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${CFCP_UNIT_NAME}</td><td>${wo info.type}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>All OMU Should Be Ready</b></td></tr>
+<tr><td><br></td><td>@{omu_units} =</td><td>Get All Units</td><td colspan=2>${OMURG}</td></tr>
+<tr><td><br></td><td>:For</td><td>${unit}</td><td>In</td><td>@{omu_units}</td></tr>
+<tr><td><br></td><td><br></td><td>Wait Until Managed Object Ready</td><td colspan=2>${unit}</td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>Switchover OMU Until Ready</b></td></tr>
+<tr><td><br></td><td>Faulty Switchover</td><td>${OMURG}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${MAXTIME_FOR_MO_REDAY}</td><td>${CHECK_INTERVAL}</td><td>All OMU Should Be Ready</td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>All CFCP Should Be Ready</b></td></tr>
+<tr><td><br></td><td>@{cfcp_units} =</td><td>Get All Units</td><td colspan=2>${CFCPRG}</td></tr>
+<tr><td><br></td><td>:For</td><td>${unit}</td><td>In</td><td>@{cfcp_units}</td></tr>
+<tr><td><br></td><td><br></td><td>Wait Until Managed Object Ready</td><td colspan=2>${unit}</td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%"></table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

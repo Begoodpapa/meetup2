@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Refresh Hand With Multi Threads</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Refresh hand with multi threads</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B01277</td><td><font color=dark red>Iteration_ID-I00584</td><td><font color=dark red>PRS_ID-IL_PRS_4465</td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>element-IL</td><td><font color=dark red>exec_type-automatic</td><td><font color=dark red>type-FUT</td><td><font color=dark red>QL-1</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red><font color=dark red>release-IL1_RIS2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>reviewer-zhiyu.yang@nsn.com</td><td><font color=dark red>rw-formal</td><td><font color=dark red>hw_env-RNC</td><td><font color=dark red>hw_env-AB</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_env-ADA</td><td><font color=dark red>hw_env-RNC_S0</td><td><font color=dark red>hw_env-RNC_S1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_level-pre</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>resources/Libgen.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>suite setup</b></td><td>Connect To SUT And Start Message Tester</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>suite teardown</b></td><td>Stop Message Tester And Disconnect From SUT</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${FAMILY ID}</td><td>0x1772</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${PROCESS ID}</td><td>0x0</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td><b>refresh_hand not executed as task complete in time</b></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.008.AT.I00584</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Create Hand In Time</td><td>${TIME_QUOTA_1}</td><td>${TASK_DURATION_1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>refresh_hand executed once normally within normal time quota</b></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.009.AT.I00584</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Create Hand Time Out</td><td>${TIME_QUOTA_2}</td><td>${TASK_DURATION_2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Refresh Hand Msg To Testproc And Testproc Create Hand In Time</td><td>${HAND PROCESS ID}</td><td>${REFRESH HAND FOCUS DEFAULT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>refresh_hand executed twice normally within normal time quota</b></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.010.AT.I00584</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test Refresh Hand Executed Twice Normally Within Normal Time Quota</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>refresh_hand executed failure due to incorrect input process_id given</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.011.AT.I00584</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Create Hand Time Out</td><td>${TIME_QUOTA_2}</td><td>${TASK_DURATION_2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Refresh Hand Msg To Testproc Fail With Non-Exist Hand Process</td><td>${NON-EXIST HAND PROCESS}</td><td>${REFRESH HAND FOCUS DEFAULT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>refresh_hand failure due to hand is terminated</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.012.AT.I00584</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Create Hand Time Out</td><td>${TIME_QUOTA_2}</td><td>${TASK_DURATION_2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td colspan=5><font color=blue>#sometimes hand has stoped since high cpu usage on ADA</td></tr>
+<tr><td><br></td><td>Run Keyword And Ignore Error</td><td>ILLGTestCli Send Stop Hand Msg To Testproc Success</td><td>${HAND PROCESS ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Refresh Hand Msg To Testproc Fail</td><td>${HAND PROCESS ID}</td><td>${REFRESH HAND FOCUS DEFAULT}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>refresh_hand Failure Due To Given A Wrong Focus</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-Libgen.FUT.013.AT.I00584</td><td>ct-negative</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Create Hand Time Out</td><td>${TIME_QUOTA_2}</td><td>${TASK_DURATION_2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Refresh Hand Msg To Testproc Fail</td><td>${HAND PROCESS ID}</td><td>${REFRESH HAND FOCUS MAX}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td><b>Connect To SUT And Start Message Tester</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Connect To SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Msg Tester Receiver</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>sleep</td><td>${STARTUP_TIME}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start Msg Tester Receiver</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute mml without check</td><td>rhtestproc_m &gt;/dev/null&amp;</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Msg Tester Receiver</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Kill Process</td><td><font color=blue>rhtestproc_m</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Process</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Message Tester And Disconnect From SUT</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Msg Tester Receiver</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Disconnect From SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Create Hand In Time</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${time_quota}</td><td><font color=#FF6600>${task_duration}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Create Hand</td><td>${OMU PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C TEST MSG S}</td><td>${DMX ATTR DEFAULT VALUE}</td><td>${PROCESS TYPE}</td><td>${time_quota}</td></tr>
+<tr><td><br></td><td>...</td><td>${task_duration}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Create Hand Msg To Testproc And Testproc Create Hand Time Out</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${time_quota}</td><td><font color=#FF6600>${task_duration}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${HAND PROCESS ID}</td><td>Send Msg To Target Process Create Hand</td><td>${OMU PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C TEST MSG S}</td><td>${DMX ATTR DEFAULT VALUE}</td><td>${PROCESS TYPE}</td><td>${time_quota}</td></tr>
+<tr><td><br></td><td>...</td><td>${task_duration}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${HAND PROCESS ID}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${HAND PROCESS ID}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Refresh Hand Msg To Testproc And Testproc Create Hand In Time</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${refresh hand process id}</td><td><font color=#FF6600>${refresh hand focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Refresh Hand</td><td>${OMU PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C TEST MSG S}</td><td>${DMX ATTR DEFAULT VALUE}</td><td>${refresh hand process id}</td><td>${refresh hand focus}</td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH HAND TIME LIMETED}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Refresh Hand Msg To Testproc And Testproc Create Hand Time Out</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${refresh hand process id}</td><td><font color=#FF6600>${refresh hand focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Refresh Hand</td><td>${OMU PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C TEST MSG S}</td><td>${DMX ATTR DEFAULT VALUE}</td><td>${refresh hand process id}</td><td>${refresh hand focus}</td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH HAND TIME LIMETED}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Create Hand Msg To Testproc With Time Quota 0</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${HAND PROCESS ID}</td><td>Send Msg To Target Process Create Hand</td><td>${OMU PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C TEST MSG S}</td><td>${DMX ATTR DEFAULT VALUE}</td><td>${PROCESS TYPE}</td><td>${TIME_QUOTA_ZERO}</td></tr>
+<tr><td><br></td><td>...</td><td>${TASK_DURATION_1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Not Contain</td><td>${HAND PROCESS ID}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Refresh Hand Msg To Testproc Fail With Non-Exist Hand Process</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${refresh hand process id}</td><td><font color=#FF6600>${refresh hand focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Refresh Hand</td><td>${OMU PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C TEST MSG S}</td><td>${DMX ATTR DEFAULT VALUE}</td><td>${refresh hand process id}</td><td>${refresh hand focus}</td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH HAND TIME LIMETED}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Refresh Hand Msg To Testproc Fail</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${refresh hand process id}</td><td><font color=#FF6600>${refresh hand focus}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Refresh Hand</td><td>${OMU PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C TEST MSG S}</td><td>${DMX ATTR DEFAULT VALUE}</td><td>${refresh hand process id}</td><td>${refresh hand focus}</td></tr>
+<tr><td><br></td><td>...</td><td>${REFRESH HAND TIME LIMETED}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Stop Hand Msg To Testproc Success</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${stop hand process id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Stop Hand</td><td>${OMU PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td><td>${PROCESS ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C TEST MSG S}</td><td>${DMX ATTR DEFAULT VALUE}</td><td>${stop hand process id}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test Refresh Hand Executed Twice Normally Within Normal Time Quota</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Libgen Execute Command And Check Result</td><td>${ACK_SUCCESS}</td><td>1</td><td>${ACK_FAILURE}</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>ILLGTestCli -- -r %s %s %s %s %s -w %s %s %s %s %s</td><td>${OMU PHYSICAL ADDRESS}</td><td>${FAMILY ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${PROCESS ID}</td><td>${C TEST MSG S}</td><td>${DMX ATTR DEFAULT VALUE}</td><td>${PROCESS TYPE}</td></tr>
+<tr><td><br></td><td>...</td><td>${TIME_QUOTA_3}</td><td>${TASK_DURATION_3}</td><td>${REFRESH HAND FOCUS DEFAULT}</td><td>${REFRESH HAND TIME LIMETED}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>Libgen_Memory</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">Libgen_Memory</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>Port From Team Spark to Team Launcher</td><td><font color=green>Change From Dmxsend To ILLGTestCli By Team Launcher</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-B00871</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-I00279</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-IL</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-IL1_RIS2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td>QL-1</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-wei.jin.ext@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-xiaoping.wang@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rW-review_meeting</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-IL_PRS_2582</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-AB</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td>./resources/memory_resource.html</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Connect to FGW For Memory Testing</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Disconnect from FGW For Memory Testing</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Test Teardown</b></td><td>Clear Memory Buffer</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${NORMAL_BUFFER_SIZE_TYPE}</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ALLOCATE_MESSAGE_BUFFER_SIZE}</td><td>30</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td>30</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${FAMILY_ID}</td><td>0x07d2</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${PROCESS_ID}</td><td>0x0</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${C_TEST_MSG_S}</td><td>0x6034</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DMX ATTR DEFAULT VALUE}</td><td>0xffff11</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_SUCCESS}</td><td>success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ACK_FAILURE}</td><td>failure</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MULTIPLY_BASE}</td><td>10</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${START_COUNT}</td><td>1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${END_COUNT}</td><td>11</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td><b>Allocate Memeory Buffer Without Free  Succseefully</b></td><td>[Tags]</td><td>ATC_ID-Libgen_Memory.FUT.001.AT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Allocate Buffer With Buffer Size To Testproc And Testproc Allocate Buffer Successful</td><td>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Read Buffer To Testproc And Readed Buffer Size Are The Same As Allocated Buffer</td><td>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free Memory Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Allocate Memeory Buffer With Free  Succseefully</b></td><td>[Tags]</td><td>ATC_ID-Libgen_Memory.FUT.002.AT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Allocate Buffer With Buffer Size To Testproc And Testproc Allocate Buffer Successful</td><td>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Free Buffer To Testproc And Testproc Free Buffer Successful</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Allocate Multiply  Memeory Buffer With Free  Succseefully</b></td><td>[Tags]</td><td>ATC_ID-Libgen_Memory.FUT.003.AT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${Index}</td><td>IN RANGE</td><td>${START_COUNT}</td><td>${END_COUNT}</td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>ILLGTestCli Send Allocate Buffer With Buffer Size To Testproc And Testproc Allocate Buffer Successful</td><td>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>ILLGTestCli Send Read Buffer To Testproc And Readed Buffer Size Are The Same As Allocated Buffer</td><td>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td>Evaluate</td><td>${ALLOCATE_NORMAL_BUFFER_SIZE} + ${MULTIPLY_BASE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>ILLGTestCli Send Free Buffer To Testproc And Testproc Free Buffer Successful</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Allocate Memeory Buffer With Second Times Free ,And Free Buffer Action Should Fail</b></td><td>[Tags]</td><td>ATC_ID-Libgen_Memory.FUT.004.AT</td><td>ct-negative</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Allocate Buffer With Buffer Size To Testproc And Testproc Allocate Buffer Successful</td><td>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Free Buffer To Testproc And Testproc Free Buffer Successful</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Free Buffer To Testproc And Free Buffer action should fail</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>No Allocated Buffer, Read Buffer Size Fail</b></td><td>[Tags]</td><td>ATC_ID-Libgen_Memory.FUT.005.AT</td><td>ct-negative</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Read Buffer To Testproc And Read Buffer Size Failed</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Read Buffer Fail After Allocating Memeory Buffer And Freeing Buffer</b></td><td>[Tags]</td><td>ATC_ID-Libgen_Memory.FUT.006.AT</td><td>ct-negative</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Allocate Buffer With Buffer Size To Testproc And Testproc Allocate Buffer Successful</td><td>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Free Buffer To Testproc And Testproc Free Buffer Successful</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Read Buffer To Testproc And Read Buffer Size Failed</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td><b>Receive A Message From  DMXSend That Requests To Allocate Message Buffer, And Allocate Message Buffer   Succseefully</b></td><td>[Tags]</td><td>ATC_ID-Libgen_Memory.FUT.007.AT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>ILLGTestCli Send Allocate Message Buffer With Buffer Size To Testproc And Testproc Allocate Buffer Successful</td><td>${ALLOCATE_MESSAGE_BUFFER_SIZE}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Free Memory Buffer</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33">
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33">
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Allocate Buffer With Buffer Size To Testproc And Testproc Allocate Buffer Successful</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Target Process Allocate Memory Buffer And Return Success</td><td>${NORMAL_BUFFER_SIZE_TYPE}</td><td>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Msg To Target Process Allocate Memory Buffer And Return Success</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${BUFFER_SIZE_TYPE}</td><td><font color=#FF6600>${OPERATE_BUFFER_SIZE}</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Allocate Normal Memory Buffer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr>
+<tr><td><br></td><td>...</td><td>${BUFFER_SIZE_TYPE}</td><td>${OPERATE_BUFFER_SIZE}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Free Memory Buffer</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Target Process Free Memory Buffer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td><td>${PROCESS_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Read Buffer To Testproc And Readed Buffer Size Are The Same As Allocated Buffer</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Target Process Read  Memory Buffer Size And Return Expected Value</td><td>${ALLOCATE_NORMAL_BUFFER_SIZE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Msg To Target Process Read  Memory Buffer Size And Return Expected Value</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${COMPARE_BUFFER_SIZE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Read Memory Buffer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${result}</td><td>${COMPARE_BUFFER_SIZE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Free Buffer To Testproc And Testproc Free Buffer Successful</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Target Process Free Memory Buffer And Return Success</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Msg To Target Process Free Memory Buffer And Return Success</b></td><td><font color=#FF6600>[Arguments]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Free Memory Buffer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Free Buffer To Testproc And Free Buffer action should fail</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Target Process Free Memory Buffer And Return Failure</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Msg To Target Process Free Memory Buffer And Return Failure</b></td><td><font color=#FF6600>[Arguments]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Free Memory Buffer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=5><b>ILLGTestCli Send Read Buffer To Testproc And Read Buffer Size Failed</b></td></tr>
+<tr><td><br></td><td>Send Msg To Target Process Read  Memory Buffer And Return Failure</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Msg To Target Process Read  Memory Buffer And Return Failure</b></td><td><font color=#FF6600>[Arguments]</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Read  Memory Buffer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_FAILURE}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>ILLGTestCli Send Allocate Message Buffer With Buffer Size To Testproc And Testproc Allocate Buffer Successful</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${ALLOCATE_MESSAGE_BUFFER_SIZE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Send Msg To Target Process Allocate Message Buffer And Return Sucess</td><td>${ALLOCATE_MESSAGE_BUFFER_SIZE}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Send Msg To Target Process Allocate Message Buffer And Return Sucess</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${OPERATE_BUFFER_SIZE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Send Msg To Target Process Allocate Message Memory Buffer</td><td>${OMU_PHYSICAL_ADDRESS}</td><td>${FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${PROCESS_ID}</td><td>${C_TEST_MSG_S}</td><td>${DMX_ATTR_DEFAULT_VALUE}</td></tr>
+<tr><td><br></td><td>...</td><td>${OPERATE_BUFFER_SIZE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Clear Memory Buffer</b></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If Test Failed</td><td>Free Memory Buffer</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

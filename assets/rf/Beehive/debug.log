@@ -1,0 +1,2 @@
+[0112/003210.346:ERROR:file_io_win.cc(161)] CreateFile C:\Users\h3liang\AppData\Local\Temp\scoped_dir652416_8979\Crashpad\settings.dat: The system cannot find the file specified. (0x2)
+[0112/003214.073:ERROR:file_io_win.cc(161)] CreateFile C:\Users\h3liang\AppData\Local\Temp\scoped_dir652416_8979\Crashpad\settings.dat: The system cannot find the file specified. (0x2)

@@ -1,0 +1,680 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+<title>monster DMXMSG kernel monitoring points</title><meta name="GENERATOR" content="OpenOffice.org 2.1 (Win32)">
+<meta name="CREATED" content="20070731;12001513">
+<meta name="CHANGED" content="20070731;12124284">
+<style>
+<!--
+@page { size: 21cm 29.7cm; margin: 2cm }
+P { margin-bottom: 0.21cm }
+P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H1 { margin-bottom: 0.21cm }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "Arial Unicode MS"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt }
+TD P { margin-bottom: 0cm }
+TD P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+TD { font-family: "Arial", sans-serif; font-size: 9pt }
+TH P { margin-bottom: 0cm }
+TH P.western { font-family: "Arial", sans-serif; font-size: 10pt }
+H2 { margin-bottom: 0.21cm }
+H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+-->
+</style></head>
+<body style="direction: ltr;" lang="en-US">
+<h1 class="western">monster DMXMSG kernel monitoring points</h1>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Setting</p>
+</th>
+<th bgcolor="#FFFF33" width=45%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=11%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>This test suite is to test monster DMXMSG kernel monitoring points monitoring.</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=green><b>Documentation</b></td><td><font color=green>&nbsp;&nbsp;&nbsp;&nbsp;kernel monitoring points including:\n<br>&nbsp;&nbsp;&nbsp;&nbsp;1) ENTER INT: for the monitoring point where DMXMSG kernel enter interrupt\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K1 Represent Monitoring Point ENTER INT\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T1 Represent Monitoring Point ENTER INT Msg Time\n<br>&nbsp;&nbsp;&nbsp;&nbsp;2) ENTER IOCTL: for the monitoring point where DMXMSG kernel enter receiving ioctl interface\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K2 Represent Monitoring Point ENTER IOCTL\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T2 Represent Monitoring Point ENTER IOCTL Msg Time\n<br>&nbsp;&nbsp;&nbsp;&nbsp;3) EXIT IOCTL: for the monitoring point where Libgen exit receiving ioctl interface\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K3 Represent Monitoring Point EXIT IOCTL\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T3 Represent Monitoring Point EXIT IOCTL Msg Time\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Product_Backlog_ID-CRE1041_R_M1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Iteration_ID-CRE1041_R_M1_SSU_1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>EFS_ID-RNC_EFS_</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>PRS_ID-E1041</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>FRS_ID-PDC_210003_5_E1041</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>FRS_ID-PDC_210003_7_E1041</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>Owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_LAUNCHER@internal.nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>element-il</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>QL-7</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>release-RU50</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>reviewer-@nsn.com</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>rw-meeting</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>exec_type-automatic</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>type-FUT</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>bcn_step-BCN_S1</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_type-BCN_A1</td><td><font color=dark red>hw_type-BCN_A2</td><td><font color=dark red>hw_type-BCN_B2</td><td><font color=dark red>hw_type-MGW_AB3</td></tr>
+<tr><td><font color=dark red>...</td><td><font color=dark red>hw_type-MGW_AB4</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><font color=dark red><b>Force Tags</b></td><td><font color=dark red>hw_env-RNC_S1</td><td><font color=dark red>hw_env-AB</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Setup</b></td><td>Setup Connections For WOSP And Get Physical Address</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Suite Teardown</b></td><td>Disconnect From SUT And Remove Temp File</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td><b>Resource</b></td><td colspan=4>./resources/monster_resource.html</td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=22%>
+<p class="western">Variable</p>
+</th>
+<th bgcolor="#FFFF33" width=29%>
+<p class="western">Value</p>
+</th>
+<th bgcolor="#FFFF33" width=49%>
+<p class="western">Value</p>
+</th></tr><tr bgcolor=#FFFFFF><td>${TEST_PROCESS_ID}</td><td>0x1F48</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_PRB_FAMILY_ID}</td><td>0x1773</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MASTER_PROCESS}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_PROCESS_MO_NAME}</td><td>/IL_TestWarmNotifyStub</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TEST_PRB_MO_NAME}</td><td>/IL_TestWarmStub</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONDITION_STRING_K_MIXED_SPECIFIC_MSG_NUM}</td><td>"K:(NUM=FF0B)AND(FAM=${TEST_PROCESS_ID.strip('0x')})"</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONDITION_STRING_K}</td><td>"K:(NUM=6034)AND(DATB0&gt;10)"</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONDITION_STRING_AK}</td><td>"AK:(NUM=6034)"</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONDITION_STRING_SAR}</td><td>"SAR:(NUM=6034)"</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONDITION_STRING_ARK}</td><td>"ARK:(NUM=FF05)"</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONDITION_STRING_SARK}</td><td>"SARK:(NUM=6034)"</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONDITION_STRING_SARK_MIXED_SPECIFIC_MSG_NUM}</td><td>"SARK:(NUM=FF05)OR(NUM=FF06)"</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONDITION_STRING_SARK_MIXED_MULTI_MSG_NUM}</td><td>"SARK:(NUM=FF05)OR(NUM=FF0B)"</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${DEFAULT_CONDITION_STRING}</td><td>":(NUM=6034)"</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${OTHER_MONITORING_CONDITION}</td><td>-R -z 1024</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${BINARY_FILE_NAME}</td><td>monster_K_point.bin</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${BINARY_FILE_PATH}</td><td>/var/log/</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${BINARY_FILE_PATH_AND_NAME}</td><td>/var/log/monster_K_point.bin</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSGCNT_0}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSGCNT_10}</td><td>10</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSGCNT_15}</td><td>15</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSGCNT_14}</td><td>14</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSGCNT_20}</td><td>20</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSGCNT_100}</td><td>100</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${MSGNUM_6034}</td><td>0x6034</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SENT_TYPE}</td><td>sent</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ARRV_TYPE}</td><td>arrv</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${RECV_TYPE}</td><td>recv</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${K1_TYPE}</td><td>enter_int</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${K2_TYPE}</td><td>enter_ioctl</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${K3_TYPE}</td><td>exit_ioctl</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONN_ID0}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONN_ID1}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONN_ID2}</td><td>2</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${CONN_ID3}</td><td>3</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WO_MONSTER_CONN0}</td><td>None</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WO_MONSTER_CONN1}</td><td>None</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WO_MONSTER_CONN2}</td><td>None</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${WO_MONSTER_CONN3}</td><td>None</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${SP_MONSTER_CONN}</td><td>None</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${ENABLE_TIMESTAMPS}</td><td>/proc/dmxmsg/enable_timestamps</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIMESTAMPS_COUNT0}</td><td>0</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIMESTAMPS_COUNT1}</td><td>1</td><td><br></td></tr>
+<tr bgcolor=#FFFFFF><td>${TIMESTAMPS_COUNT2}</td><td>2</td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=8%>
+<p class="western">Test Case</p>
+</th>
+<th bgcolor="#FFFF33" width=31%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=25%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th>
+<th bgcolor="#FFFF33" width=10%>
+<p class="western">Action</p>
+</th></tr><tr bgcolor=#99CCFF><td colspan=6><b>Intra-family Message Should Not Be Monitored At Kernel Monitoring Points</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Start Monster to Monitor K Point With Condition String(K:(NUM=FF0B)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to Send Specified Number of Intra-family Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Get The Monitored Output Of Monster\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check The Monitored Output Of Monster K Point Msg Count Should Be Correct\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check The Monitored Output Of Monster Monitoring Point K1 Msg Count Should Be Zero\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Monitored Output Of Monster Monitoring Point K2 Msg Count Should Be Zero\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Monitored Output Of Monster Monitoring Point K3 Msg Count Should Be Zero\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MONSTER.FUT.001.AT</td><td>ATC_ID-MONSTER.FUT.013.AT</td><td>FRS_ID-PDC_210003_8_E1041</td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PROCESS_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PROCESS_ID.strip('0x')} -c ${CONDITION_STRING_K_MIXED_SPECIFIC_MSG_NUM} -o ${BINARY_FILE_PATH_AND_NAME} -S 5</td><td>${TIMESTAMPS_COUNT1}</td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Intra-family Messages</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO And Check The Message File Should Be Translated Correctly</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check K Points Intra-family Msg Count Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster On WO And Check Monster Temp File Should Not Exist</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Intra-node Message Should Be Monitored Correctly At Kernel Monitoring Points</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get System Time ST1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Start Monster to Monitor K Point With Condition String(K:(NUM=6034)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Use test CLI to Send Specified Number of Intra-node Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Get The Monitored Output Of Monster\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster K Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Get System Time ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check The Monitored Output Of Monster Monitoring Point K1 Msg Count Should Be Zero\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Monitored Output Of Monster Monitoring Point K2 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Monitored Output Of Monster Monitoring Point K3 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check The Monitored Output Of Monster The Sequence Of Monitoring Point Msg Time Should Be T2&lt;T3\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MONSTER.FUT.002.AT</td><td>ATC_ID-MONSTER.FUT.013.AT</td><td>FRS_ID-PDC_210003_8_E1041</td><td><br></td></tr>
+<tr><td><br></td><td>${system_time1}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PRB_FAMILY_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${CONDITION_STRING_K} -o ${BINARY_FILE_PATH_AND_NAME}</td><td>${TIMESTAMPS_COUNT1}</td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In WO</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO And Check The Message File Should Be Translated Correctly</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check K Points Intra-node Msg Count And Time Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${system_time2}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2</td><td>${system_time1}</td><td>${system_time2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster On WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Inter-node Message Should Be Monitored Correctly At Arriving Point And Kernel Monitoring Points</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get System Time ST1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Start Monster to Monitor AK Point With Condition String(AK:(NUM=6034)) On SP\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Use test CLI to Send Specified Number of Inter-node Msgs(From WO to SP)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Get The Monitored Output Of Monster\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster AK Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Get System Time ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check The Monitored Output Of Monster A Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Monitored Output Of Monster Monitoring Point K1 Msg Count Should Be Correct\\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Monitored Output Of Monster Monitoring Point K2 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check The Monitored Output Of Monster Monitoring Point K3 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster The Sequence Of Monitoring Point Msg Time Should Be T1&lt;=A&lt;T3\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster The Sequence Of Monitoring Point Msg Time Should Be T2&lt;T3\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MONSTER.FUT.003.AT</td><td>ATC_ID-MONSTER.FUT.013.AT</td><td>FRS_ID-PDC_210003_6_E1041</td><td>FRS_ID-PDC_210003_8_E1041</td></tr>
+<tr><td><br></td><td>${system_time1}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On SP Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>-u ${OMU_SP_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${CONDITION_STRING_AK} -o ${BINARY_FILE_PATH_AND_NAME}</td><td>${TIMESTAMPS_COUNT1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In SP</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On SP And Check The Message File Should Be Translated Correctly</td><td>${TIMESTAMPS_COUNT0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check AK Points Inter-node Msg Count And Time Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${system_time2}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2</td><td>${system_time1}</td><td>${system_time2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster On SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Input-sync Message Should Be Monitored Correctly At Arriving/Receiving Point And Kernel Monitoring Points</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get System Time ST1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Start Monster1 to Monitor ARK Point With Condition String(ARK:(NUM=FF05)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Start Monster2 to Monitor ARK Point With Condition String(ARK:(NUM=FF05)) On SP\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Use test CLI to Send Specified Number of Input-sync Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Get The Monitored Output Of Monster1/Monster2\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster1/Monster2 ARK Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Get System Time ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check The Monitored Output Of Monster1/Monster2 AR Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Monitored Output Of Monster2 Monitoring Point K1 Msg Count Should Be Correct\\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Monitored Output Of Monster1/Monster2 Monitoring Point K2 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check The Monitored Output Of Monster1/Monster2 Monitoring Point K3 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster1 The Sequence Of Monitoring Point Msg Time Should Be A&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster2 The Sequence Of Monitoring Point Msg Time Should Be T1&lt;A&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Check The Monitored Output Of Monster1/Monster2 The Sequence Of Monitoring Point Msg Time Should Be T2&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MONSTER.FUT.004.AT</td><td>ATC_ID-MONSTER.FUT.013.AT</td><td>FRS_ID-PDC_210003_6_E1041</td><td><br></td></tr>
+<tr><td><br></td><td>${system_time1}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PROCESS_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PROCESS_ID.strip('0x')} -c ${CONDITION_STRING_ARK}</td><td>${TIMESTAMPS_COUNT1}</td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On SP Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>-u ${OMU_SP_PHYSICAL_ADDRESS} -f ${TEST_PROCESS_ID.strip('0x')} -c ${CONDITION_STRING_ARK}</td><td>${TIMESTAMPS_COUNT1}</td><td>${TEST_PROCESS_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Input-sync Messages</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check ARK Points Input-sync Msg Count And Time Should Be Correct On WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On SP</td><td>${TIMESTAMPS_COUNT0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check ARK Points Input-sync Msg Count And Time Should Be Correct On SP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${system_time2}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2</td><td>${system_time1}</td><td>${system_time2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster On WOSP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Intra-node Message Should Be Monitored Correctly At Sending/Arriving/Receiving Point And Kernel Monitoring Points</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get System Time ST1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Start Monster to Monitor SARK Point With Condition String(SARK:(NUM=6034)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Use test CLI to Send Specified Number of Intra-node Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Get The Monitored Output Of Monster\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster SARK Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Get System Time ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check The Monitored Output Of Monster SAR Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Monitored Output Of Monster Monitoring Point K1 Msg Count Should Be Zero\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Monitored Output Of Monster Monitoring Point K2 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check The Monitored Output Of Monster Monitoring Point K3 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster The Sequence Of Monitoring Point Msg Time Should Be S&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster The Sequence Of Monitoring Point Msg Time Should Be A&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Check The Monitored Output Of Monster The Sequence Of Monitoring Point Msg Time Should Be T2&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MONSTER.FUT.005.AT</td><td>ATC_ID-MONSTER.FUT.013.AT</td><td>FRS_ID-PDC_210003_6_E1041</td><td>FRS_ID-PDC_210003_8_E1041</td></tr>
+<tr><td><br></td><td>${system_time1}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PRB_FAMILY_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${CONDITION_STRING_SARK}</td><td>${TIMESTAMPS_COUNT1}</td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In WO</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Intra-node Msg Count And Time Should Be Correct</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${system_time2}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2</td><td>${system_time1}</td><td>${system_time2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster On WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Inter-node Message Should Be Monitored Correctly At Sending/Arriving/Receiving Point And Kernel Monitoring Points</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get System Time ST1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Start Monster1 to Monitor SARK Point With Condition String(SARK:(NUM=6034)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Start Monster2 to Monitor SARK Point With Condition String(SARK:(NUM=6034)) On SP\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Use test CLI to Send Specified Number of Inter-node Msgs(From WO to SP)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Get The Monitored Output Of Monster1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster1 S Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Get The Monitored Output Of Monster2\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Check The Monitored Output Of Monster2 ARK Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9. Get System Time ST2\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check The Monitored Output Of Monster1 S Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Monitored Output Of Monster2 AR Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Monitored Output Of Monster2 Monitoring Point K1 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check The Monitored Output Of Monster2 Monitoring Point K2 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster2 Monitoring Point K3 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster1/Monster2 The Sequence Of Monitoring Point Msg Time Should Be S&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Check The Monitored Output Of Monster2 The Sequence Of Monitoring Point Msg Time Should Be T1&lt;=A&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Check The Monitored Output Of Monster2 The Sequence Of Monitoring Point Msg Time Should Be T2&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9. Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MONSTER.FUT.006.AT</td><td>ATC_ID-MONSTER.FUT.013.AT</td><td>FRS_ID-PDC_210003_6_E1041</td><td><br></td></tr>
+<tr><td><br></td><td>${system_time1}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On SP Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>-u ${OMU_SP_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${CONDITION_STRING_SARK}</td><td>${TIMESTAMPS_COUNT1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In SP</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On SP</td><td>${TIMESTAMPS_COUNT0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Inter-node Msg Count And Time Should Be Correct</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${system_time2}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2</td><td>${system_time1}</td><td>${system_time2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster On SP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Input-sync Message Should Be Monitored Correctly At Sending/Arriving/Receiving Point And Kernel Monitoring Points</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get System Time ST1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Start Monster1 to Monitor SARK Point With Condition String(SARK:(NUM=FF05)OR(NUM=FF06)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Start Monster2 to Monitor SARK Point With Condition String(SARK:(NUM=FF05)OR(NUM=FF06)) On SP\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Use test CLI to Send Specified Number of Input-sync Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Get The Monitored Output Of Monster1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster1 SARK Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Get The Monitored Output Of Monster2\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Check The Monitored Output Of Monster2 SARK Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9. Get System Time ST2\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check The Monitored Output Of Monster1 SAR Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Monitored Output Of Monster2 SAR Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Monitored Output Of Monster2 Monitoring Point K1 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check The Monitored Output Of Monster1/Monster2 Monitoring Point K2 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster1/Monster2 Monitoring Point K3 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster1/Monster2 The Sequence Of Monitoring Point Msg Time Should Be S&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Check The Monitored Output Of Monster1 The Sequence Of Monitoring Point Msg Time Should Be A&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Check The Monitored Output Of Monster2 The Sequence Of Monitoring Point Msg Time Should Be T1&lt;A&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9. Check The Monitored Output Of Monster1/Monster2 The Sequence Of Monitoring Point Msg Time Should Be T2&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MONSTER.FUT.007.AT</td><td>ATC_ID-MONSTER.FUT.013.AT</td><td>FRS_ID-PDC_210003_6_E1041</td><td><br></td></tr>
+<tr><td><br></td><td>${system_time1}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PROCESS_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PROCESS_ID.strip('0x')} -c ${CONDITION_STRING_SARK_MIXED_SPECIFIC_MSG_NUM}</td><td>${TIMESTAMPS_COUNT1}</td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On SP Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>-u ${OMU_SP_PHYSICAL_ADDRESS} -f ${TEST_PROCESS_ID.strip('0x')} -c ${CONDITION_STRING_SARK_MIXED_SPECIFIC_MSG_NUM}</td><td>${TIMESTAMPS_COUNT1}</td><td>${TEST_PROCESS_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Input-sync Messages</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Input-sync Msg Count And Time Should Be Correct On WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On SP</td><td>${TIMESTAMPS_COUNT0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Input-sync Msg Count And Time Should Be Correct On SP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${system_time2}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2</td><td>${system_time1}</td><td>${system_time2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster On WOSP</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>K Points Message Should Be Monitored Correctly Only After Monster Start Monitoring K Points</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get System Time ST1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Use test CLI to Send Specified Number(N1) of Msgs(MSGNUM_FF05) Continuously\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Start Monster to Monitor SARK Point With Condition String(SARK:(NUM=FF05)OR(NUM=FF0B)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Use test CLI to Send Specified Number(N2) of Msgs(MSGNUM_FF0B)\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Get The Monitored Output Of Monster\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. K Point Msg Count Should Be Not Smaller Than N2\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Get System Time ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check The Monitored Output Of Monster SAR Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Monitored Output Of Monster Monitoring Point K1 Msg Count Should Be Zero\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Monitored Output Of Monster Monitoring Point K2 Msg Count Should Be Not Smaller Than N2\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check The Monitored Output Of Monster Monitoring Point K3 Msg Count Should Be Not Smaller Than N2\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster The Sequence Of Monitoring Point Msg Time Should Be S&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster The Sequence Of Monitoring Point Msg Time Should Be A&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Check The Monitored Output Of Monster The Sequence Of Monitoring Point Msg Time Should Be T2&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MONSTER.FUT.008.AT</td><td>ATC_ID-MONSTER.FUT.013.AT</td><td>FRS_ID-PDC_210003_6_E1041</td><td>FRS_ID-PDC_210003_8_E1041</td></tr>
+<tr><td><br></td><td>${system_time1}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Input-sync Messages</td><td>${MSGCNT_100}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PROCESS_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PROCESS_ID.strip('0x')} -c ${CONDITION_STRING_SARK_MIXED_MULTI_MSG_NUM} -o ${BINARY_FILE_PATH_AND_NAME}</td><td>${TIMESTAMPS_COUNT1}</td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Intra-node Messages</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO And Check The Message File Should Be Translated Correctly</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Intra-node Msg Count And Time Should Be Correct After Monster Start Monitoring K Points</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${system_time2}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2</td><td>${system_time1}</td><td>${system_time2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster On WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Message Should Be Monitored Correctly When One Monster Monitoring K Points And Another Monster Not Monitoring K Points</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get System Time ST1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Start Monster1 to Monitor SARK Point With Condition String(SARK:(NUM=6034)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Start Monster2 to Monitor SAR Point With Condition String(SAR:(NUM=6034)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Get The Monitored Output Of Monster1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster1 SARK Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Get The Monitored Output Of Monster2\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9. Check The Monitored Output Of Monster2 SAR Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.Start Monster1 to Monitor SARK Point With Condition String(SARK:(NUM=6034)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11.Start Monster2 to Monitor SAR Point With Condition String(SAR:(NUM=6034)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12.Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13.Get The Monitored Output Of Monster2\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14.Check The Monitored Output Of Monster2 SAR Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15.Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16.Get The Monitored Output Of Monster1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;17.Check The Monitored Output Of Monster1 SARK Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.Get System Time ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check The Monitored Output Of Monster1 SAR Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Monitored Output Of Monster1 Monitoring Point K1 Msg Count Should Be Zero\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Monitored Output Of Monster1 Monitoring Point K2 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check The Monitored Output Of Monster1 Monitoring Point K3 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster1 The Sequence Of Monitoring Point Msg Time Should Be S&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster1 The Sequence Of Monitoring Point Msg Time Should Be A&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Check The Monitored Output Of Monster1 The Sequence Of Monitoring Point Msg Time Should Be T2&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Check The Monitored Output Of Monster2 SAR Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9. Check The Monitored Output Of Monster2 The Sequence Of Monitoring Point Msg Time Should Be S&lt;A&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MONSTER.FUT.009.AT</td><td>ATC_ID-MONSTER.FUT.013.AT</td><td>FRS_ID-PDC_210003_6_E1041</td><td><br></td></tr>
+<tr><td><br></td><td>${system_time1}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PRB_FAMILY_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${CONDITION_STRING_SARK}</td><td>${TIMESTAMPS_COUNT1}</td><td>${CONN_ID1}</td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PRB_FAMILY_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${CONDITION_STRING_SAR}</td><td>${TIMESTAMPS_COUNT1}</td><td>${CONN_ID2}</td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In WO</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN1}</td><td>${CONN_ID1}</td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Intra-node Msg Count And Time Should Be Correct</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In WO</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN2}</td><td>${CONN_ID2}</td><td><br></td></tr>
+<tr><td><br></td><td>Check SAR Points Intra-node Msg Count And Time Should Be Correct</td><td>${MSGCNT_20}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PRB_FAMILY_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${CONDITION_STRING_SARK}</td><td>${TIMESTAMPS_COUNT1}</td><td>${CONN_ID1}</td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PRB_FAMILY_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${CONDITION_STRING_SAR}</td><td>${TIMESTAMPS_COUNT1}</td><td>${CONN_ID2}</td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In WO</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO</td><td>${TIMESTAMPS_COUNT1}</td><td>${WO_MONSTER_CONN2}</td><td>${CONN_ID2}</td><td><br></td></tr>
+<tr><td><br></td><td>Check SAR Points Intra-node Msg Count And Time Should Be Correct</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In WO</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN1}</td><td>${CONN_ID1}</td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Intra-node Msg Count And Time Should Be Correct</td><td>${MSGCNT_20}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${system_time2}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2</td><td>${system_time1}</td><td>${system_time2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster On WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Message Should Be Monitored Correctly After Monster Which Monitoring K Points Exit</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get System Time ST1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Start Monster1 to Monitor SARK Point With Condition String(SARK:(NUM=6034)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Start Monster2 to Monitor SARK Point With Condition String(SARK:(NUM=6034)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Use test CLI to Send Specified Number(N1) of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Get The Monitored Output Of Monster1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster1 SARK Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Use test CLI to Send Specified Number(N2) of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Get The Monitored Output Of Monster2\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9. Check The Monitored Output Of Monster2 SARK Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.Start Monster3 to Monitor SARK Point With Condition String(SARK:(NUM=6034)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11.Use test CLI to Send Specified Number(N3) of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12.Get The Monitored Output Of Monster3\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13.Check The Monitored Output Of Monster3 SARK Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14.Get System Time ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check The Monitored Output Of Monster1/Monster2/Monster3 SAR Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Monitored Output Of Monster1/Monster2/Monster3 Monitoring Point K1 Msg Count Should Be Zero\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Monitored Output Of Monster1/Monster2/Monster3 Monitoring Point K2 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check The Monitored Output Of Monster1/Monster2/Monster3 Monitoring Point K3 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster1/Monster2/Monster3 The Sequence Of Monitoring Point Msg Time Should Be S&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster1/Monster2/Monster3 The Sequence Of Monitoring Point Msg Time Should Be A&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Check The Monitored Output Of Monster1/Monster2/Monster3 The Sequence Of Monitoring Point Msg Time Should Be T2&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MONSTER.FUT.010.AT</td><td>ATC_ID-MONSTER.FUT.013.AT</td><td>FRS_ID-PDC_210003_6_E1041</td><td><br></td></tr>
+<tr><td><br></td><td>${system_time1}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PRB_FAMILY_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${CONDITION_STRING_SARK}</td><td>${TIMESTAMPS_COUNT1}</td><td>${CONN_ID1}</td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PRB_FAMILY_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${CONDITION_STRING_SARK}</td><td>${TIMESTAMPS_COUNT2}</td><td>${CONN_ID2}</td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In WO</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO</td><td>${TIMESTAMPS_COUNT1}</td><td>${WO_MONSTER_CONN1}</td><td>${CONN_ID1}</td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Intra-node Msg Count And Time Should Be Correct</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In WO</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN2}</td><td>${CONN_ID2}</td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Intra-node Msg Count And Time Should Be Correct</td><td>${MSGCNT_20}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PRB_FAMILY_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${CONDITION_STRING_SARK}</td><td>${TIMESTAMPS_COUNT1}</td><td>${CONN_ID3}</td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In WO</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN3}</td><td>${CONN_ID3}</td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Intra-node Msg Count And Time Should Be Correct</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${system_time2}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2</td><td>${system_time1}</td><td>${system_time2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster On WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Message Should Be Monitored Correctly When K Monitoring Condition Mixed With Other Monitoring Condition</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get System Time ST1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Start Monster to Monitor SARK Point With Condition String(SARK:(NUM=6034)) And Other Monitoring Condition( -R -z 10240) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Get The Monitored Output\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. K Point Msg Count And Time Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Get System Time ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check The Monitored Output Of Monster SAR Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Monitored Output Of Monster Monitoring Point K1 Msg Count Should Be Zero\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Monitored Output Of Monster Monitoring Point K2 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check The Monitored Output Of Monster Monitoring Point K3 Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster The Sequence Of Monitoring Point Msg Time Should Be S&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Check The Monitored Output Of Monster The Sequence Of Monitoring Point Msg Time Should Be A&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Check The Monitored Output Of Monster The Sequence Of Monitoring Point Msg Time Should Be T2&lt;T3&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MONSTER.FUT.011.AT</td><td>ATC_ID-MONSTER.FUT.013.AT</td><td>FRS_ID-PDC_210003_6_E1041</td><td>FRS_ID-PDC_210003_8_E1041</td></tr>
+<tr><td><br></td><td>${system_time1}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PRB_FAMILY_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${CONDITION_STRING_SARK} ${OTHER_MONITORING_CONDITION} -o ${BINARY_FILE_PATH_AND_NAME}</td><td>${TIMESTAMPS_COUNT1}</td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In WO</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO And Check The Message File Should Be Translated Correctly</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Intra-node Msg Count And Time Should Be Correct</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${system_time2}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2</td><td>${system_time1}</td><td>${system_time2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster On WO</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#99CCFF><td colspan=6><b>Message Should Be Monitored Correctly With Default Monitoring Condition String</b></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Precondition\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. OMU is in working state\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. Test Stub is started\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Execution steps\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Get System Time ST1\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Start Monster1 to Monitor Without Condition String On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Get The Monitored Output\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Check The Monitored Output Of Monster1 Should Not Contain K Point Msg\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Start Monster2 to Monitor With Condition String(:(NUM=6034)) On WO\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Use test CLI to Send Specified Number of Msgs\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Get The Monitored Output\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9. Check The Monitored Output Of Monster2 Should Not Contain K Point Msg\n\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.Get System Time ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=green>[Documentation]</td><td><font color=green>Expected result\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Check The Monitored Output Of Monster1/Monster2 SR Point Msg Count Should Be Correct\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Check The Monitored Output Of Monster1/Monster2 Should Not Contain K Point Msg\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Check The Monitored Output Of Monster1/Monster2 The Sequence Of Monitoring Point Msg Time Should Be S&lt;R\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2\n\n</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>[Tags]</td><td>ATC_ID-MONSTER.FUT.012.AT</td><td>ATC_ID-MONSTER.FUT.013.AT</td><td>FRS_ID-PDC_210003_6_E1041</td><td><br></td></tr>
+<tr><td><br></td><td>${system_time1}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PRB_FAMILY_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')}</td><td>${TIMESTAMPS_COUNT0}</td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In WO</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Intra-node Msg Count Should Be Correct Without K With Family Created Msg</td><td>${MSGCNT_10}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</td><td>${TEST_PRB_FAMILY_ID}</td><td>-u ${OMU_WO_PHYSICAL_ADDRESS} -f ${TEST_PRB_FAMILY_ID.strip('0x')} -c ${DEFAULT_CONDITION_STRING}</td><td>${TIMESTAMPS_COUNT0}</td><td><br></td></tr>
+<tr><td><br></td><td>Test CLI Send Specified Number Of Messages To Test Process In WO</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get Each Type Msg From Monitoring Result On WO</td><td>${TIMESTAMPS_COUNT0}</td><td>${WO_MONSTER_CONN0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check SARK Points Intra-node Msg Count Should Be Correct Without K Monitoring Condition String</td><td>${MSGCNT_10}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${system_time2}=</td><td>Get Current Datetime</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2</td><td>${system_time1}</td><td>${system_time2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=dark red>[Teardown]</td><td><font color=dark red>Clear Monster On WO</td><td><br></td><td><br></td><td><br></td></tr>
+</table>
+<br>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%">
+<tbody>
+<tr valign="top">
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Keyword</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=17%>
+<p class="western">Argument</p>
+</th>
+<th bgcolor="#FFFF33" width=15%>
+<p class="western">Argument</p>
+</th></tr><tr bgcolor=#A9A9F5><td colspan=6><b>Get WO Node</b></td></tr>
+<tr><td><br></td><td colspan=5>Switch To WO Env</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>uname -n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${WO_NODE}</td><td>${result.strip()}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get SP Node</b></td></tr>
+<tr><td><br></td><td colspan=5>Switch To SP Env</td></tr>
+<tr><td><br></td><td>${result}</td><td>Execute CLI</td><td>uname -n</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Suite Variable</td><td>\${SP_NODE}</td><td>${result.strip()}</td><td><br></td><td><br></td></tr>
+<tr><td><font color=blue>#Start Monster On WO Node For Test Process</td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${test_process_id}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td colspan=6><font color=blue>#{</td></tr>
+<tr><td><font color=blue># Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=blue># ${WO_MONSTER_CONN1} =</td><td><font color=blue>Start Monster Monitoring On Special Node</td><td><font color=blue>${OMU_WO_PHYSICAL_ADDRESS}</td><td><font color=blue>${test_process_id}</td><td><font color=blue>${WO_NODE}</td><td><br></td></tr>
+<tr><td><font color=blue># Set Test Variable</td><td><font color=blue>\${WO_MONSTER_CONN1}</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><font color=blue># Execute CLI</td><td><font color=blue>sleep 1</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td colspan=6><font color=blue>#}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start Monster On WO Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${test_process_id}</td><td><font color=#FF6600>${cmd_parmas}</td><td><font color=#FF6600>${count}</td><td><font color=#FF6600>${conn_id}=${CONN_ID0}</td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Wait Until Succeeds Start Monster Monitor Family On Specific Node</td><td>${RETRY}</td><td>${WO_NODE}</td><td>${cmd_parmas}</td></tr>
+<tr><td><br></td><td>...</td><td>${test_process_id.strip('0x')}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result['result']}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WO_MONSTER_CONN0} =</td><td>Set Variable If</td><td>${conn_id} == 0</td><td>${result['connection']}</td><td>${WO_MONSTER_CONN0}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${WO_MONSTER_CONN0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WO_MONSTER_CONN1} =</td><td>Set Variable If</td><td>${conn_id} == 1</td><td>${result['connection']}</td><td>${WO_MONSTER_CONN1}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${WO_MONSTER_CONN1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WO_MONSTER_CONN2} =</td><td>Set Variable If</td><td>${conn_id} == 2</td><td>${result['connection']}</td><td>${WO_MONSTER_CONN2}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${WO_MONSTER_CONN2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WO_MONSTER_CONN3} =</td><td>Set Variable If</td><td>${conn_id} == 3</td><td>${result['connection']}</td><td>${WO_MONSTER_CONN3}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${WO_MONSTER_CONN3}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check TIMESTAMPS Record Value Should Be Correct</td><td>${count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Start Monster On SP Node For Test Process With Special Command Parameter And Check TIMESTAMPS Record Value</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${cmd_parmas}</td><td><font color=#FF6600>${count}</td><td><font color=#FF6600>${test_process_id}=${TEST_PRB_FAMILY_ID}</td><td><br></td></tr>
+<tr><td><br></td><td>Switch To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result} =</td><td>Wait Until Succeeds Start Monster Monitor Family On Specific Node</td><td>${RETRY}</td><td>${SP_NODE}</td><td>${cmd_parmas}</td></tr>
+<tr><td><br></td><td>...</td><td>${test_process_id.strip('0x')}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result['result']}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${SP_MONSTER_CONN}</td><td>${result['connection']}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check TIMESTAMPS Record Value Should Be Correct</td><td>${count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test CLI Send Specified Number Of Messages To Test Process In WO</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${cnt}</td><td><font color=#FF6600>${msg_num}=${MSGNUM_6034}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>success</td><td>${cnt}</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>ILWMTestCli -- -r %s %s %s -msg %s 0 %s -s</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td><td>${TEST_PRB_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS}</td><td>${msg_num}</td><td>${cnt}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test CLI Send Specified Number Of Messages To Test Process In SP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${cnt}</td><td><font color=#FF6600>${msg_num}=${MSGNUM_6034}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Libgen Execute Command And Check Result</td><td>success</td><td>${cnt}</td><td>failure</td></tr>
+<tr><td><br></td><td>...</td><td>1</td><td>ILWMTestCli -- -r %s %s %s -msg %s 0 %s -s</td><td>${OMU_SP_PHYSICAL_ADDRESS}</td><td>${TEST_PRB_FAMILY_ID}</td></tr>
+<tr><td><br></td><td>...</td><td>${MASTER_PROCESS}</td><td>${msg_num}</td><td>${cnt}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Specified Number Of Intra-family Messages</b></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${index}</td><td>In Range</td><td>0</td><td>${MSGCNT_10}</td></tr>
+<tr><td><br></td><td><br></td><td>${result}</td><td>Libgen Execute Command And Return Result</td><td>RECEIVE ACK MSG</td><td>1</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>failure</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>1</td><td>WMNotifstub -f 0xffff -- -u %s -f %s -t 1</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${TEST_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${ret}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>\.*RECEIVE ACK MSG.</td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Test CLI Send Specified Number Of Intra-node Messages</b></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${index}</td><td>In Range</td><td>0</td><td>${MSGCNT_10}</td></tr>
+<tr><td><br></td><td><br></td><td>${result}</td><td>Libgen Execute Command And Return Result</td><td>RECEIVE ACK MSG</td><td>1</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>failure</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>1</td><td>WMNotifstub -f 0xffff -- -u %s -f %s -t 2</td><td>${OMU_WO_PHYSICAL_ADDRESS}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${TEST_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${ret}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>\.*RECEIVE ACK MSG.</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Test CLI Send Specified Number Of Input-sync Messages</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>:FOR</td><td>${index}</td><td>In Range</td><td>0</td><td>${count}</td></tr>
+<tr><td><br></td><td><br></td><td>${result}</td><td>Libgen Execute Command And Return Result</td><td>My family ID is</td><td>1</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>time out</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>1</td><td>WMNotifstub -f 0xffff -- -u %s -f %s -c 1</td><td>${OMU_LOGICAL_ADDRESS}</td></tr>
+<tr><td><br></td><td><br></td><td>...</td><td>${TEST_PROCESS_ID}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><br></td><td>${ret}</td><td>ShouldMatchRegexp</td><td>${result.strip()}</td><td>\.*Create hand success</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Monster On WO With Target Connect_id</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${wo_monster_conn}</td><td><font color=#FF6600>${conn_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_buf_wo}</td><td>Stop Monster And Get Result</td><td>${wo_monster_conn}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_buf_wo}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WO_MONSTER_CONN0} =</td><td>Set Variable If</td><td>${conn_id} == 0</td><td>None</td><td>${WO_MONSTER_CONN0}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${WO_MONSTER_CONN0}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WO_MONSTER_CONN1} =</td><td>Set Variable If</td><td>${conn_id} == 1</td><td>None</td><td>${WO_MONSTER_CONN1}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${WO_MONSTER_CONN1}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WO_MONSTER_CONN2} =</td><td>Set Variable If</td><td>${conn_id} == 2</td><td>None</td><td>${WO_MONSTER_CONN2}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${WO_MONSTER_CONN2}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${WO_MONSTER_CONN3} =</td><td>Set Variable If</td><td>${conn_id} == 3</td><td>None</td><td>${WO_MONSTER_CONN3}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${WO_MONSTER_CONN3}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Monster On WO</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${wo_monster_conn}</td><td><font color=#FF6600>${conn_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monster On WO With Target Connect_id</td><td>${wo_monster_conn}</td><td>${conn_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_list}</td><td>Get Msg From Monitoring Result</td><td>${msg_buf_wo}</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Monster On WO And Check The Message Monitoring Linux Binary Format File Should Be Translated Into Ascii Format Correctly</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${wo_monster_conn}</td><td><font color=#FF6600>${conn_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monster On WO With Target Connect_id</td><td>${wo_monster_conn}</td><td>${conn_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${temp_file}</td><td>Execute CLI</td><td>ls ${BINARY_FILE_PATH} | grep ${BINARY_FILE_NAME.strip().split('.bin')[0]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_buf_wo}</td><td>Execute CLI</td><td>readste -i ${BINARY_FILE_PATH}${temp_file.strip()}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_list}</td><td>Get Msg From Monitoring Result</td><td>${msg_buf_wo}</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Monster On SP</b></td></tr>
+<tr><td><br></td><td>${msg_buf_sp}</td><td>Stop Monster And Get Result</td><td>${SP_MONSTER_CONN}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${SP_MONSTER_CONN}</td><td>None</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_list}</td><td>Get Msg From Monitoring Result</td><td>${msg_buf_sp}</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Stop Monster On SP And Check The Message Monitoring Linux Binary Format File Should Be Translated Into Ascii Format Correctly</b></td></tr>
+<tr><td><br></td><td>${msg_buf_sp}</td><td>Stop Monster And Get Result</td><td>${SP_MONSTER_CONN}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${SP_MONSTER_CONN}</td><td>None</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Switch To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_buf_sp}</td><td>Execute CLI</td><td>readste -i ${BINARY_FILE_PATH_AND_NAME}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${msg_list}</td><td>Get Msg From Monitoring Result</td><td>${msg_buf_sp}</td><td>0</td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\${msg_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Stop Monster With Target Connect_id</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${monster_conn}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Stop Monster And Get Result</td><td>${monster_conn}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Monster On WOSP</b></td></tr>
+<tr><td><br></td><td>Clear Monster On WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Monster On SP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Monster On WO And Check Monster Temp File Should Not Exist</b></td></tr>
+<tr><td><br></td><td>Clear Monster On WO</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Monster Temp File Should Not Exist</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Monster On WO</b></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${WO_MONSTER_CONN0}'!= 'None'</td><td>Stop Monster With Target Connect_id</td><td>${WO_MONSTER_CONN0}</td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${WO_MONSTER_CONN1}'!= 'None'</td><td>Stop Monster With Target Connect_id</td><td>${WO_MONSTER_CONN1}</td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${WO_MONSTER_CONN2}'!= 'None'</td><td>Stop Monster With Target Connect_id</td><td>${WO_MONSTER_CONN2}</td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${WO_MONSTER_CONN3}'!= 'None'</td><td>Stop Monster With Target Connect_id</td><td>${WO_MONSTER_CONN3}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Monster On SP</b></td></tr>
+<tr><td><br></td><td>Switch To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${SP_MONSTER_CONN}'!= 'None'</td><td>Stop Monster With Target Connect_id</td><td>${SP_MONSTER_CONN}</td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Get All SARK Points Msg From Monitoring Result</b></td></tr>
+<tr><td><br></td><td>${target_list}=</td><td>Get Target Type Msg From Monitoring Result</td><td>${SENT_TYPE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append To List</td><td>${send_list}</td><td>${target_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{send_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${send_list}" != "[]"</td><td>Append To List</td><td>${msg_lists}</td><td>${send_list}</td></tr>
+<tr><td><br></td><td>${target_list}=</td><td>Get Target Type Msg From Monitoring Result</td><td>${ARRV_TYPE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append To List</td><td>${arrv_list}</td><td>${target_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{arrv_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${arrv_list}" != "[]"</td><td>Append To List</td><td>${msg_lists}</td><td>${arrv_list}</td></tr>
+<tr><td><br></td><td>${target_list}=</td><td>Get Target Type Msg From Monitoring Result</td><td>${RECV_TYPE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append To List</td><td>${recv_list}</td><td>${target_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{recv_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${recv_list}" != "[]"</td><td>Append To List</td><td>${msg_lists}</td><td>${recv_list}</td></tr>
+<tr><td><br></td><td>${target_list}=</td><td>Get Target Type Msg From Monitoring Result</td><td>${K1_TYPE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append To List</td><td>${K1_list}</td><td>${target_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{K1_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${K1_list}" != "[]"</td><td>Append To List</td><td>${msg_lists}</td><td>${K1_list}</td></tr>
+<tr><td><br></td><td>${target_list}=</td><td>Get Target Type Msg From Monitoring Result</td><td>${K2_TYPE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append To List</td><td>${K2_list}</td><td>${target_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{K2_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td><font color=blue>#Run Keyword If</td><td><font color=blue>"${K2_list}" != "[]"</td><td><font color=blue>Append To List</td><td><font color=blue>${msg_lists}</td><td><font color=blue>${K2_list}</td></tr>
+<tr><td><br></td><td>${target_list}=</td><td>Get Target Type Msg From Monitoring Result</td><td>${K3_TYPE}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Append To List</td><td>${K3_list}</td><td>${target_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{K3_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>"${K3_list}" != "[]"</td><td>Append To List</td><td>${msg_lists}</td><td>${K3_list}</td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{msg_lists}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Clear Test Variable</b></td></tr>
+<tr><td><br></td><td>@{send_list}=</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{arrv_list}=</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{recv_list}=</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{K1_list}=</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{K2_list}=</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{K3_list}=</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{msg_lists}=</td><td>Create List</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{send_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{arrv_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{recv_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{K1_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{K2_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{K3_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Set Test Variable</td><td>\@{msg_lists}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get Each Type Msg From Monitoring Result On WO</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${count}</td><td><font color=#FF6600>${wo_monster_conn}</td><td><font color=#FF6600>${conn_id}=${CONN_ID0}</td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monster On WO</td><td>${wo_monster_conn}</td><td>${conn_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check TIMESTAMPS Record Value Should Be Correct</td><td>${count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Test Variable</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get All SARK Points Msg From Monitoring Result</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get Each Type Msg From Monitoring Result On WO And Check The Message File Should Be Translated Correctly</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${count}</td><td><font color=#FF6600>${wo_monster_conn}</td><td><font color=#FF6600>${conn_id}=${CONN_ID0}</td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monster On WO And Check The Message Monitoring Linux Binary Format File Should Be Translated Into Ascii Format Correctly</td><td>${wo_monster_conn}</td><td>${conn_id}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check TIMESTAMPS Record Value Should Be Correct</td><td>${count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Test Variable</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get All SARK Points Msg From Monitoring Result</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get Each Type Msg From Monitoring Result On SP</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monster On SP</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check TIMESTAMPS Record Value Should Be Correct</td><td>${count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Test Variable</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get All SARK Points Msg From Monitoring Result</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get Each Type Msg From Monitoring Result On SP And Check The Message File Should Be Translated Correctly</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Stop Monster On SP And Check The Message Monitoring Linux Binary Format File Should Be Translated Into Ascii Format Correctly</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check TIMESTAMPS Record Value Should Be Correct</td><td>${count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Clear Test Variable</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Get All SARK Points Msg From Monitoring Result</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Get Target Type Msg From Monitoring Result</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${type}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>@{target_type_list}</td><td>Get Msgs By Type</td><td>${msg_list}</td><td>${type}</td><td><br></td></tr>
+<tr><td><br></td><td><font color=#FF6600>[Return]</td><td><font color=#FF6600>@{target_type_list}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Target Point Msg Count Should Be Correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${target_type_list}</td><td><font color=#FF6600>${cnt}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Get Length</td><td>${target_type_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal As Integers</td><td>${result}</td><td>${cnt}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Target Point Msg Count Should Be Not Smaller Than Target Count</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${target_type_list}</td><td><font color=#FF6600>${cnt}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Get Length</td><td>${target_type_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be True</td><td>${result}&gt;=${cnt}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${list1}</td><td><font color=#FF6600>${list2}</td><td><font color=#FF6600>${delay}=0</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check Multi Msg Time Less Than</td><td>${list1}</td><td>${list2}</td><td>${delay}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check One Point Msg Time Should Be Not More Than Another Point Msg Time For Part List Data</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${list1}</td><td><font color=#FF6600>${list2}</td><td><font color=#FF6600>${delay}=0</td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check Multi Msg Time Less Than For Part List Data</td><td>${list1}</td><td>${list2}</td><td>${delay}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check SAR Point Msg Count Should Be Correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${cnt1}</td><td><font color=#FF6600>${cnt2}</td><td><font color=#FF6600>${cnt3}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{send_list}</td><td>${cnt1}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{arrv_list}</td><td>${cnt2}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{recv_list}</td><td>${cnt3}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check ARK Points Input-sync Msg Count And Time Should Be Correct On WO</b></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{arrv_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{recv_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K2_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K3_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{arrv_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{K3_list}</td><td>@{recv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time For Part List Data</td><td>@{K2_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check ARK Points Input-sync Msg Count And Time Should Be Correct On SP</b></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{arrv_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{recv_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K1_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K2_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K3_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{K1_list}</td><td>@{arrv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{arrv_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{K3_list}</td><td>@{recv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time For Part List Data</td><td>@{K2_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check K Points Intra-family Msg Count Should Be Correct</b></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K1_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K2_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K3_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check K Points Intra-node Msg Count And Time Should Be Correct</b></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K1_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K2_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K3_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time For Part List Data</td><td>@{K2_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check AK Points Inter-node Msg Count And Time Should Be Correct</b></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{arrv_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K1_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K2_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K3_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{K1_list}</td><td>@{arrv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{arrv_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time For Part List Data</td><td>@{K2_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check SARK Points Intra-node Msg Count And Time Should Be Correct After Monster Start Monitoring K Points</b></td></tr>
+<tr><td><br></td><td>Check SAR Point Msg Count Should Be Correct</td><td>${MSGCNT_10}</td><td>${MSGCNT_10}</td><td>${MSGCNT_10}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K1_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Not Smaller Than Target Count</td><td>@{K2_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Not Smaller Than Target Count</td><td>@{K3_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{send_list}</td><td>@{recv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{arrv_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{K3_list}</td><td>@{recv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time For Part List Data</td><td>@{K2_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check SARK Points Intra-node Msg Count Should Be Correct Without K Monitoring Condition String</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${cnt}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check SAR Point Msg Count Should Be Correct</td><td>${cnt}</td><td>${MSGCNT_0}</td><td>${cnt}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K1_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K2_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K3_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check SARK Points Intra-node Msg Count Should Be Correct Without K With Family Created Msg</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${send_cnt}</td><td><font color=#FF6600>${recv_cnt}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check SAR Point Msg Count Should Be Correct</td><td>${send_cnt}</td><td>${MSGCNT_0}</td><td>${recv_cnt}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K1_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K2_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K3_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check SARK Points Intra-node Msg Count And Time Should Be Correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${cnt}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check SAR Point Msg Count Should Be Correct</td><td>${cnt}</td><td>${cnt}</td><td>${cnt}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K1_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K2_list}</td><td>${cnt}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K3_list}</td><td>${cnt}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{arrv_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{K3_list}</td><td>@{recv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time For Part List Data</td><td>@{K2_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check SARK Points Inter-node Msg Count And Time Should Be Correct</b></td></tr>
+<tr><td><br></td><td>Check SAR Point Msg Count Should Be Correct</td><td>${MSGCNT_10}</td><td>${MSGCNT_10}</td><td>${MSGCNT_10}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K1_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K2_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K3_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{K1_list}</td><td>@{arrv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{arrv_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{K3_list}</td><td>@{recv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time For Part List Data</td><td>@{K2_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check SARK Points Input-sync Msg Count And Time Should Be Correct On WO</b></td></tr>
+<tr><td><br></td><td>Check SAR Point Msg Count Should Be Correct</td><td>${MSGCNT_10}</td><td>${MSGCNT_10}</td><td>${MSGCNT_10}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K2_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K3_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{send_list}</td><td>@{recv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{arrv_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{K3_list}</td><td>@{recv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time For Part List Data</td><td>@{K2_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Check SARK Points Input-sync Msg Count And Time Should Be Correct On SP</b></td></tr>
+<tr><td><br></td><td>Check SAR Point Msg Count Should Be Correct</td><td>${MSGCNT_10}</td><td>${MSGCNT_10}</td><td>${MSGCNT_10}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K1_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K2_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K3_list}</td><td>${MSGCNT_10}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{send_list}</td><td>@{recv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{K1_list}</td><td>@{arrv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{arrv_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{K3_list}</td><td>@{recv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time For Part List Data</td><td>@{K2_list}</td><td>@{K3_list}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check SAR Points Intra-node Msg Count And Time Should Be Correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${cnt}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check SAR Point Msg Count Should Be Correct</td><td>${cnt}</td><td>${cnt}</td><td>${cnt}</td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K1_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K2_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check Target Point Msg Count Should Be Correct</td><td>@{K3_list}</td><td>${MSGCNT_0}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{send_list}</td><td>@{arrv_list}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Check One Point Msg Time Should Be Not More Than Another Point Msg Time</td><td>@{arrv_list}</td><td>@{recv_list}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check All Monitored Msg Time Should Be In The Period Of Time Between ST1 And ST2</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${system_time1}</td><td><font color=#FF6600>${system_time2}</td><td><font color=#FF6600>${delay}=0</td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Check If Multi Msg Time Are In The Period Of Time Between ST1 And ST2</td><td>${system_time1}</td><td>${system_time2}</td><td>${msg_lists}</td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_SUCCESS}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td colspan=6><b>Disconnect From SUT And Remove Temp File</b></td></tr>
+<tr><td><br></td><td>Switch To WO Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Temp File Should Not Exist</td><td>${BINARY_FILE_PATH_AND_NAME}</td></tr>
+<tr><td><br></td><td>Switch To SP Env</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Temp File Should Not Exist</td><td>${BINARY_FILE_PATH_AND_NAME}</td></tr>
+<tr><td><br></td><td>Disconnect From SUT</td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Temp File Should Not Exist</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${temp_file}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}</td><td>Check If File Exist</td><td>${temp_file}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Run Keyword If</td><td>'${result}'=='${ACK_EXIST}'</td><td>Remove Temp File</td><td>${temp_file}</td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result}</td><td>${ACK_NOT_EXIST}</td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Remove Temp File</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${temp_file}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Execute CLI</td><td>rm -f ${temp_file}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check Monster Temp File Should Not Exist</b></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${temp_file}</td><td>Execute CLI</td><td>ls ${BINARY_FILE_PATH} | grep ${BINARY_FILE_NAME.strip().split('.bin')[0]}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Wait Until Keyword Succeeds</td><td>${CHECK TIMEOUT}</td><td>${CHECK INTERVAL}</td><td>Temp File Should Not Exist</td><td>${BINARY_FILE_PATH}${temp_file.strip()}</td></tr>
+<tr bgcolor=#A9A9F5><td><b>Check TIMESTAMPS Record Value Should Be Correct</b></td><td><font color=#FF6600>[Arguments]</td><td><font color=#FF6600>${count}</td><td><br></td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>${result}=</td><td>Execute CLI</td><td>cat ${ENABLE_TIMESTAMPS}</td><td><br></td><td><br></td></tr>
+<tr><td><br></td><td>Should Be Equal</td><td>${result.strip()}</td><td>${count}</td><td><br></td><td><br></td></tr>
+</table>
+<p class="western" style="margin-bottom: 0cm;"><br>
+</p>
+</body></html>

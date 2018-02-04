@@ -1,0 +1,112 @@
+*Setting*							
+Documentation	For same implementation for Iu and Iur leg, Agreed with PO, the cases can only forcus on Iu leg						
+Suite Setup	connect to target hardware and select test IP						
+Suite Teardown	release test resource and disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B01701	Iteration_ID-I01466	PRS_ID-IL_PRS_4229	EFS_ID-RNC_EFS_2222_159	release-IL1	element-IL	exec_type-automatic
+...	type-FUT	hw_env-ADA	owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_LITE_FLASH@internal.nsn.com	exec_level-pre	QL-4	HW_TYPE-ADA_FTLB	
+Resource	il.html						
+Resource	./resources/common_operation_resource.html						
+Resource	./resources/cac_basic_operation_resource.html						
+Resource	./resources/IPBR_basic_operation_resource.html						
+Library	Collections						
+Resource	../SS_ILCallMgmt/resources/cm_resource.tsv						
+							
+*Variable*							
+${TWO_GROUPS}	2						
+${THREE_GROUPS}	3						
+${IPBR_ID_4003}	4003						
+${IPBR_ID_4004}	4004						
+${IPBR_ID_4006}	4006						
+${2_LEGS}	2						
+${4_LEGS}	4						
+${RG_GFCP}	GFCPRG						
+${IFACE_ETHER}	eth3						
+${TEST_IP_ADDR}	180.180.180.180						
+${TEST_IP_ADDR_1}	170.170.170.170						
+							
+*Test Case*							
+CACPRB Select IP Address For Iu Leg With IPBR ID Which Bind With Two IP Address In Same GFCPRG	[Tags]	ATC_ID-TT_IPBR_CAC.FUT.001.AT.I01466	ct-negative				
+	[Setup]	Create IPRO with IP Addresses from Same GFCPRG and Reserve Leg List for the test					
+	create multi Iu legs successfully	${IPBR_ID_4003}	${4_LEGS}				
+	Legs' Quantity Should Be Same In Different IP Address						
+	[Teardown]	Release IPRO with IP Address from Same GFCPRG and Legs create in the test					
+							
+CACPRB Select IP Address For Iu Leg With IPRO Dynamic Update	[Tags]	ct-negative	ATC_ID-TT_IPBR_CAC.FUT.003.AT.I01466				
+	[Setup]	Create 2 IPRO and create list					
+	create multi Iu legs successfully	${IPBR_ID_4006}	${2_LEGS}				
+	Legs' Quantity Should Be Same In Different IP Address						
+	Unbind IPRO and Create new IPRO for the test						
+	create multi Iu legs successfully	${IPBR_ID_4006}	${4_LEGS}				
+	Legs' Quantity Should Be Same In Different IP Address						
+	[Teardown]	Release IPROs and Legs created in the test case					
+							
+*Keyword*							
+Unbind IPRO and Create new IPRO for the test	delete IPRO successfully	${IPBR_ID_4006}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}	${DEL_MODE_FORCE}	
+	Remove From Dictionary	${IP_DICT}	${IP_GROUP_1.ip_addr}				
+	Add IPRO successfully	${IPBR_ID_4006}	${IP_GROUP_3.ip_addr}	${IP_GROUP_3.rg_name}	${IP_GROUP_3.iface}		
+	Set To Dictionary	${IP_DICT}	${IP_GROUP_3.ip_addr}	0			
+	Set To Dictionary	${IP_DICT}	${IP_GROUP_2.ip_addr}	0			
+							
+Select three IP Address	${IP_GROUP}	select random IP address and recovery group ada	${THREE_GROUPS}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+	Set Suite Variable	\${IP_GROUP_2}	${IP_GROUP[1]}				
+	Set Suite Variable	\${IP_GROUP_3}	${IP_GROUP[2]}				
+							
+Release IPROs and Legs created in the test case	release legs created in test case						
+	release ipro with specified ipbr id	${IPBR_ID_4006}					
+							
+Legs' Quantity Should Be Same In Different IP Address	${keys}	Get Dictionary Keys	${IP_DICT}				
+	Should Be Equal	"${IP_DICT[""${keys[1]}""]}"	"${IP_DICT[""${keys[0]}""]}"				
+							
+create multi Iu legs successfully	[Arguments]	${ipbr_id}	${leg_number}				
+	: FOR	${index}	IN RANGE	${leg_number}			
+		${result}	Create RTP Leg	${USCP}	${ipbr_id}		
+		should be equal	${result.result}	SUCCESSFUL			
+		Append To List	${OUT_LEG_LIST}	${result}			
+		${ip_addr}	set variable	"${result.legs[""${result.leg_id}""].local_ip}"			
+		${ip_num}	Evaluate	"${IP_DICT[""${ip_addr}""]} + 1"			
+		Set To Dictionary	${IP_DICT}	${ip_addr}	${ip_num}		
+							
+connect to target hardware and select test IP	connect to target hardware						
+	switch to active OMU						
+	Selete IP Groups with The Same GFCPRG						
+	Get Active CP Units						
+	Get Random USCP Unit	${FLASH_PRE_INDEX}					
+							
+Create IPRO with IP Addresses from Same GFCPRG and Reserve Leg List for the test	# Selete IP Groups with The Same GFCPRG						
+	Add IPRO successfully	${IPBR_ID_4003}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}		
+	Add IPRO successfully	${IPBR_ID_4003}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}		
+	create leg list						
+	${IP_DICT}	Create Dictionary	${IP_GROUP_1.ip_addr}	0	${IP_GROUP_2.ip_addr}	0	
+	Set Test Variable	\${IP_DICT}					
+							
+Release IPRO with IP Address from Same GFCPRG and Legs create in the test	release legs created in test case						
+	# delete IPRO successfully ${IPBR_ID_4003} ${TEST_IP_ADDR} /${RG_GFCP} ${IFACE_ETHER} ${DEL_MODE_FORCE}						
+	# delete IPRO successfully ${IPBR_ID_4003} ${TEST_IP_ADDR_1} /${RG_GFCP} ${IFACE_ETHER} ${DEL_MODE_FORCE}						
+	release ipro with specified ipbr id	${IPBR_ID_4003}					
+							
+Release IPRO with IP Address from Different GFCPRG and Legs create in the test	release legs created in test case						
+	delete IPRO successfully	${IPBR_ID_4004}	${TEST_IP_ADDR}	/CLA-0	${IFACE_ETHER}	${DEL_MODE_FORCE}	
+	delete IPRO successfully	${IPBR_ID_4004}	${TEST_IP_ADDR_1}	/${RG_GFCP}	${IFACE_ETHER}	${DEL_MODE_FORCE}	
+	Delete IP address	/CLA-0	${IFACE_ETHER}	${TEST_IP_ADDR}			
+	Delete IP address	/${RG_GFCP}	${IFACE_ETHER}	${TEST_IP_ADDR_1}			
+							
+Create IPRO with IP Addresses from Different RG and Reserve Leg List for the test	Add IP from Different RG						
+	create leg list						
+	Add IPRO successfully	${IPBR_ID_4004}	${TEST_IP_ADDR}	/CLA-0	${IFACE_ETHER}		
+	Add IPRO successfully	${IPBR_ID_4004}	${TEST_IP_ADDR_1}	/${RG_GFCP}	${IFACE_ETHER}		
+	${IP_DICT}	Create Dictionary	${TEST_IP_ADDR}	0	${TEST_IP_ADDR_1}	0	
+	Set Test Variable	\${IP_DICT}					
+							
+release test resource and disconnect from target hardware	Disconnect From Target Hardware						
+							
+Selete IP Groups with The Same GFCPRG	${IP_GROUP}	select random IP address and recovery group ada	${THREE_GROUPS}				
+	Set Suite Variable	\${IP_GROUP_1}	${IP_GROUP[0]}				
+	Set Suite Variable	\${IP_GROUP_2}	${IP_GROUP[1]}				
+	Set Suite Variable	\${IP_GROUP_3}	${IP_GROUP[2]}				
+							
+Create 2 IPRO and create list	Add IPRO successfully	${IPBR_ID_4006}	${IP_GROUP_1.ip_addr}	${IP_GROUP_1.rg_name}	${IP_GROUP_1.iface}		
+	Add IPRO successfully	${IPBR_ID_4006}	${IP_GROUP_2.ip_addr}	${IP_GROUP_2.rg_name}	${IP_GROUP_2.iface}		
+	create leg list						
+	${IP_DICT}	Create Dictionary	${IP_GROUP_1.ip_addr}	0	${IP_GROUP_2.ip_addr}	0	
+	Set Test Variable	\${IP_DICT}					

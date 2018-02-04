@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<CaseMake>
+   <templates name="dmxmsg_xmission_se_se.tsv.tpl">
+      <mapping variant="frag">
+         <trans from="_TPL_PARA_Iteration_ID" to="Iteration_ID-I00429"/>
+         <trans from="_TPL_PARA_PURE_SE_A_ADDR_" to="5AAE:44D:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_ADDR_" to="5B1C:44E:0"/>
+         <trans from="_TPL_PARA_6WIND_SE_ADDR_" to="5B5D:44F:0"/>
+         <trans from="_TPL_PARA_6WIND_SE_F1nF2_" to="5B5D:44D:0-5B5D:44E:0"/>
+         <trans from="_TPL_PARA_PURE_SE_F3nF4_" to="5B1C:44F:0-5B1C:450:0"/>
+         <trans from="_TPL_PARA_6WIND_N_PURE_SE_A_" to="5B5D:44D:0-5AAE:44E:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_N_6WIND_SE_" to="5B1C:44F:0-5B5D:450:0"/>
+         <trans from="_TPL_PARA_6WIND_N_6WIND_SE_" to="5B5D:44D:0-5B5D:44D:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_N_PURE_SE_A_" to="5AAE:44D:0-5AAE:44F:0"/>
+      </mapping>
+      <mapping variant="u8">
+         <trans from="_TPL_PARA_Iteration_ID" to="Iteration_ID-I00668"/>
+         <trans from="_TPL_PARA_PURE_SE_A_ADDR_" to="5AAE:45B:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_ADDR_" to="5B1C:45C:0"/>
+         <trans from="_TPL_PARA_6WIND_SE_ADDR_" to="5B5D:45C:0"/>
+         <trans from="_TPL_PARA_6WIND_SE_F1nF2_" to="5B5D:45B:0-5B5D:45C:0"/>
+         <trans from="_TPL_PARA_PURE_SE_F3nF4_" to="5B1C:45B:0-5B1C:45C:0"/>
+         <trans from="_TPL_PARA_6WIND_N_PURE_SE_A_" to="5B5D:45C:0-5AAE:45C:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_N_6WIND_SE_" to="5B1C:45B:0-5B5D:45C:0"/>
+         <trans from="_TPL_PARA_6WIND_N_6WIND_SE_" to="5B5D:45B:0-5B5D:45C:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_N_PURE_SE_A_" to="5AAE:45C:0-5B1C:45B:0"/>
+      </mapping>
+      <mapping variant="wqe">
+         <trans from="_TPL_PARA_Iteration_ID" to="Iteration_ID-I00668"/>
+         <trans from="_TPL_PARA_PURE_SE_A_ADDR_" to="5AAE:459:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_ADDR_" to="5B1C:45A:0"/>
+         <trans from="_TPL_PARA_6WIND_SE_ADDR_" to="5B5D:45A:0"/>
+         <trans from="_TPL_PARA_6WIND_SE_F1nF2_" to="5B5D:459:0-5B5D:45A:0"/>
+         <trans from="_TPL_PARA_PURE_SE_F3nF4_" to="5B1C:459:0-5B1C:45A:0"/>
+         <trans from="_TPL_PARA_6WIND_N_PURE_SE_A_" to="5B5D:45A:0-5AAE:45A:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_N_6WIND_SE_" to="5B1C:459:0-5B5D:45A:0"/>
+         <trans from="_TPL_PARA_6WIND_N_6WIND_SE_" to="5B5D:459:0-5B5D:45A:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_N_PURE_SE_A_" to="5AAE:45A:0-5B1C:459:0"/>
+      </mapping>
+      <mapping variant="u8_frag">
+         <trans from="_TPL_PARA_Iteration_ID" to="Iteration_ID-I00668"/>
+         <trans from="_TPL_PARA_PURE_SE_A_ADDR_" to="5AAE:44D:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_ADDR_" to="5B1C:44E:0"/>
+         <trans from="_TPL_PARA_6WIND_SE_ADDR_" to="5B5D:45C:0"/>
+         <trans from="_TPL_PARA_6WIND_SE_F1nF2_" to="5B5D:45B:0-5B5D:45C:0"/>
+         <trans from="_TPL_PARA_PURE_SE_F3nF4_" to="5B1C:44D:0-5B1C:44F:0"/>
+         <trans from="_TPL_PARA_6WIND_N_PURE_SE_A_" to="5B5D:45C:0-5AAE:44D:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_N_6WIND_SE_" to="5B1C:44E:0-5B5D:45C:0"/>
+         <trans from="_TPL_PARA_6WIND_N_6WIND_SE_" to="5B5D:45B:0-5B5D:45C:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_N_PURE_SE_A_" to="5AAE:44E:0-5B1C:44F:0"/>
+      </mapping>
+      <mapping variant="wqe_frag">
+         <trans from="_TPL_PARA_Iteration_ID" to="Iteration_ID-I00668"/>
+         <trans from="_TPL_PARA_PURE_SE_A_ADDR_" to="5AAE:44D:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_ADDR_" to="5B1C:44E:0"/>
+         <trans from="_TPL_PARA_6WIND_SE_ADDR_" to="5B5D:45A:0"/>
+         <trans from="_TPL_PARA_6WIND_SE_F1nF2_" to="5B5D:459:0-5B5D:45A:0"/>
+         <trans from="_TPL_PARA_PURE_SE_F3nF4_" to="5B1C:44E:0-5B1C:44F:0"/>
+         <trans from="_TPL_PARA_6WIND_N_PURE_SE_A_" to="5B5D:45A:0-5AAE:44E:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_N_6WIND_SE_" to="5B1C:44F:0-5B5D:45A:0"/>
+         <trans from="_TPL_PARA_6WIND_N_6WIND_SE_" to="5B5D:459:0-5B5D:45A:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_N_PURE_SE_A_" to="5AAE:44D:0-5B1C:459:0"/>
+      </mapping>
+      <mapping variant="wqe_u8">
+         <trans from="_TPL_PARA_Iteration_ID" to="Iteration_ID-I00668"/>
+         <trans from="_TPL_PARA_PURE_SE_A_ADDR_" to="5AAE:45B:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_ADDR_" to="5B1C:45C:0"/>
+         <trans from="_TPL_PARA_6WIND_SE_ADDR_" to="5B5D:45A:0"/>
+         <trans from="_TPL_PARA_6WIND_SE_F1nF2_" to="5B5D:459:0-5B5D:45A:0"/>
+         <trans from="_TPL_PARA_PURE_SE_F3nF4_" to="5B1C:45B:0-5B1C:45C:0"/>
+         <trans from="_TPL_PARA_6WIND_N_PURE_SE_A_" to="5B5D:45A:0-5AAE:45C:0"/>
+         <trans from="_TPL_PARA_PURE_SE_B_N_6WIND_SE_" to="5B1C:45B:0-5B5D:45A:0"/>
+         <trans from="_TPL_PARA_6WIND_N_6WIND_SE_" to="5B5D:459:0-5B5D:45A:0"/>
+	 <trans from="_TPL_PARA_PURE_SE_B_N_PURE_SE_A_" to="5AAE:45B:0-5B1C:45C:0"/>
+      </mapping>
+   </templates>
+   <templates name="dmxmsg_xmission_linux_se.tsv.tpl">
+      <mapping variant="frag">
+         <trans from="_TPL_PARA_Product_Backlog_ID" to="Product_Backlog_ID-B01050"/>
+         <trans from="_TPL_PARA_Iteration_ID" to="Iteration_ID-I00429"/>
+         <trans from="_TPL_PARA_SE_ADDR" to="5B5D:44D:0"/>
+         <trans from="_TPL_PARA_MULTI_SE_ADDR" to="5B5D:44D:0-5B5D:44E:0"/>
+         <trans from="_TPL_PARA_MULTI_DAEMON_ADDR" to="5002:AD9C:0-544C:AD9C:0"/>
+         <trans from="_TPL_PARA_SINGLE_SE_ADDR" to="5B5D:44D:0-5B5D:44D:0"/>
+      </mapping>
+      <mapping variant="u8">
+         <trans from="_TPL_PARA_Product_Backlog_ID" to="Product_Backlog_ID-B01050"/>
+         <trans from="_TPL_PARA_Iteration_ID" to="Iteration_ID-I00668"/>
+         <trans from="_TPL_PARA_SE_ADDR" to="5B5D:45C:0"/>
+         <trans from="_TPL_PARA_MULTI_SE_ADDR" to="5B5D:45B:0-5B5D:45C:0"/>
+         <trans from="_TPL_PARA_MULTI_DAEMON_ADDR" to="5002:AD9C:0-544C:AD9C:0"/>
+         <trans from="_TPL_PARA_SINGLE_SE_ADDR" to="5B5D:45C:0-5B5D:45C:0"/>
+      </mapping>
+      <mapping variant="wqe">
+         <trans from="_TPL_PARA_Product_Backlog_ID" to="Product_Backlog_ID-B01050"/>
+         <trans from="_TPL_PARA_Iteration_ID" to="Iteration_ID-I00668"/>
+         <trans from="_TPL_PARA_SE_ADDR" to="5B5D:45A:0"/>
+         <trans from="_TPL_PARA_MULTI_SE_ADDR" to="5B5D:459:0-5B5D:45A:0"/>
+         <trans from="_TPL_PARA_MULTI_DAEMON_ADDR" to="5002:AD9C:0-544C:AD9C:0"/>
+         <trans from="_TPL_PARA_SINGLE_SE_ADDR" to="5B5D:45A:0-5B5D:45A:0"/>
+      </mapping>
+      <mapping variant="log_addr">
+         <trans from="_TPL_PARA_Product_Backlog_ID" to="Product_Backlog_ID-B01060"/>
+         <trans from="_TPL_PARA_Iteration_ID" to="Iteration_ID-I00772"/>
+         <trans from="_TPL_PARA_SE_ADDR" to="5B5D:44D:0"/>
+         <trans from="_TPL_PARA_MULTI_SE_ADDR" to="5B5D:44D:0-5B5D:44E:0"/>
+         <trans from="_TPL_PARA_MULTI_DAEMON_ADDR" to="5002:AD9C:0-5002:AD9C:0"/>
+         <trans from="_TPL_PARA_SINGLE_SE_ADDR" to="5B5D:44D:0-5B5D:44D:0"/>
+      </mapping>
+   </templates>
+   <templates name="dmxmsg_xmission_se_se_u8_alloc.tsv.tpl">
+      <mapping variant="u8">
+         <trans from="_TPL_PARA_PURE_SE_A_ADDR_" to="5AAE:45B:0"/>
+      </mapping>
+      <mapping variant="wqe">
+         <trans from="_TPL_PARA_PURE_SE_A_ADDR_" to="5AAE:459:0"/>
+      </mapping>
+      <mapping variant="frag">
+         <trans from="_TPL_PARA_PURE_SE_A_ADDR_" to="5AAE:44D:0"/>
+      </mapping>
+   </templates>
+   <templates name="dmxmsg_input_sync_switchover.tsv.tpl">
+      <mapping variant="mips">
+         <trans from="_TPL_PARA_NODE_A_" to="AS-3"/>
+         <trans from="_TPL_PARA_NODE_B_" to="AS-1"/>
+      </mapping>
+      <mapping variant="x86">
+         <trans from="_TPL_PARA_NODE_A_" to="CLA-0"/>
+         <trans from="_TPL_PARA_NODE_B_" to="CLA-1"/>
+      </mapping>
+   </templates>
+   <templates name="setup_ab2_env.tsv.tpl">
+      <mapping variant="mips">
+         <trans from="_TPL_PARA_NODES_" to="AS-0\tAS-1\tAS-2\tAS-3"/>
+         <trans from="_TPL_PARA_KERNEL_MODULE_INSEARTING_SCRIPT_" to="configModuleRG.sh"/>
+         <trans from="_TPL_PARA_PROCESSOR_ID_LIST_" to="15\t13\t14\t12"/>
+      </mapping>
+      <mapping variant="x86">
+         <trans from="_TPL_PARA_NODES_" to="CLA-0\tCLA-1"/>
+         <trans from="_TPL_PARA_KERNEL_MODULE_INSEARTING_SCRIPT_" to="/opt/nsn/SS_ILCommon/etc/configModuleRG.sh"/>
+         <trans from="_TPL_PARA_PROCESSOR_ID_LIST_" to="5\t3"/>
+      </mapping>
+   </templates>
+</CaseMake>

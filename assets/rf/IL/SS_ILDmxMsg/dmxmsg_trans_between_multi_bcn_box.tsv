@@ -1,0 +1,151 @@
+ D M X M S G  T R A N S  B E T W E E N  M U L T I  B C N  B O X
+
+*Setting*	*Value*	*Value*	*Value*	*Value*	*Value*
+Resource	resources/dmxmsg.tsv
+Suite Setup	Connect_And_Init
+Suite Teardown	Disconnect_And_Leave_Test_Mode
+Force Tags	Product_Backlog_ID-B01409	Iteration_ID-I01358	PRS_ID-IL_PRS_2582	owner-I_EXT_MBB_WCDMA_SWD3_TEAM_TRUNK@internal.nsn.com	element-IL
+...	exec_type-automatic	type-FUT	release-IL1	reviewer-xiaoping.wang@nsn.com	rw-weekly
+...	hw_env-RNC_S1	ct-positive
+...	QL-1
+
+
+*Variable*	*Value*	*Value*	*Value*	*Value*	*Value*
+${DAEMON_FAMILY}	AD9C
+${SE_FAMILY}	45B
+${MAX TIME FOR CONNECT}	50
+${TIMEOUT}	15
+
+
+*Test Case*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+6.1 CFPU-0 send and receive dmxmsg to CFPU-1	[Tags]	ATC_ID-DMXMSG.FUT.001.AT	FRS_ID-PTT_320301_45_R2240	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${CLA_0_DAEMON}	${CLA_1_DAEMON}
+	[Teardown]	Check node env if case fail 	CFPU-0	CFPU-1
+
+6.2 CFPU-0 send and receive dmxmsg to CSPU-2 linux	[Tags]	ATC_ID-DMXMSG.FUT.002.AT	FRS_ID-PTT_320301_46_R2240	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${CLA_0_DAEMON}	${CSPU_2_LINUX}
+	[Teardown]	Check node env if case fail 	CFPU-0	CSPU-2
+
+6.3 CFPU-0 send and receive dmxmsg to CSPU-2 SE	[Tags]	ATC_ID-DMXMSG.FUT.003.AT	FRS_ID-PTT_320301_47_R2240	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${CLA_0_DAEMON}	${CSPU_2_SE}
+	[Teardown]	Check node env if case fail 	CFPU-0	CSPU-2
+
+6.4 CFPU-0 send and receive dmxmsg to USPU-3 linux	[Tags]	ATC_ID-DMXMSG.FUT.004.AT	FRS_ID-PTT_320301_48_R2240	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${CLA_0_DAEMON}	${USPU_3_LINUX}
+	[Teardown]	Check node env if case fail 	CFPU-0	USPU-3
+
+6.5 CFPU-0 send and receive dmxmsg to USPU-3 SE	[Tags]	ATC_ID-DMXMSG.FUT.005.AT	FRS_ID-PTT_320301_49_R2240	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${CLA_0_DAEMON}	${USPU_3_SE}
+	[Teardown]	Check node env if case fail 	CFPU-0	USPU-3
+
+6.6 CFPU-0 send and receive dmxmsg to EIPU-2 linux	[Tags]	ATC_ID-DMXMSG.FUT.006.AT	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${CLA_0_DAEMON}	${EIPU_2_LINUX}
+	[Teardown]	Check node env if case fail 	CFPU-0	EIPU-2
+
+6.7 CFPU-0 send and receive dmxmsg to EIPU-2 SE	[Tags]	ATC_ID-DMXMSG.FUT.007.AT	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${CLA_0_DAEMON}	${EIPU_2_SE}
+	[Teardown]	Check node env if case fail 	CFPU-0	EIPU-2
+
+6.8 CSPU-0 linux send and receive dmxmsg to USPU-5 linux	[Tags]	ATC_ID-DMXMSG.FUT.008.AT	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${CSPU_0_LINUX}	${USPU_5_LINUX}
+	[Teardown]	Check node env if case fail 	CSPU-0	USPU-5
+
+6.9 CSPU-0 SE send and receive dmxmsg to USPU-5 SE	[Tags]	ATC_ID-DMXMSG.FUT.009.AT	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${CSPU_0_SE}	${USPU_5_SE}
+	[Teardown]	Check node env if case fail 	CSPU-0	USPU-5
+
+6.10 USPU-1 linux send and receive dmxmsg to  EIPU-3 linux	[Tags]	ATC_ID-DMXMSG.FUT.010.AT	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${USPU_1_LINUX}	${EIPU_3_LINUX}
+	[Teardown]	Check node env if case fail 	USPU-1	EIPU-3
+
+6.11 USPU-1 SE send and receive dmxmsg to  EIPU-3 SE	[Tags]	ATC_ID-DMXMSG.FUT.011.AT	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${USPU_1_SE}	${EIPU_3_SE}
+	[Teardown]	Check node env if case fail 	USPU-1	EIPU-3
+
+6.12 EIPU-1 linux send and receive dmxmsg to  EIPU-2 linux	[Tags]	ATC_ID-DMXMSG.FUT.012.AT	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${EIPU_1_LINUX}	${EIPU_2_LINUX}
+	[Teardown]	Check node env if case fail 	EIPU-1	EIPU-3
+
+6.13 EIPU-1 SE send and receive dmxmsg to  EIPU-2 SE	[Tags]	ATC_ID-DMXMSG.FUT.013.AT	FRS_ID-PTT_320301_63_0000	FRS_ID-PTT_320301_68_0000
+	Send dmx messages successful	${EIPU_1_SE}	${EIPU_2_SE}
+	[Teardown]	Check node env if case fail 	EIPU-1	EIPU-2
+
+
+
+
+
+
+
+*Keyword*	*Action*	*Argument*	*Argument*	*Argument*	*Argument*
+Connect_And_Init	Connect To SUT	${MAX TIME FOR CONNECT}
+	${CLA_0_DAEMON_ADDR}	Evaluate	hex(%{OMU_0_LOG_ADDR}+${WO_ADDR})
+	${CLA_1_DAEMON_ADDR}	Evaluate	hex(%{OMU_1_LOG_ADDR}+${SP_ADDR})
+	${CSPU_0_SE_ADDR}	Evaluate	hex(%{CSUP_0_LOG_ADDR}+${WO_ADDR})
+	${CSPU_1_SE_ADDR}	Evaluate	hex(%{CSUP_1_LOG_ADDR}+${WO_ADDR})
+	${CSPU_2_SE_ADDR}	Evaluate	hex(%{CSUP_2_LOG_ADDR}+${WO_ADDR})
+	${CSPU_3_SE_ADDR}	Evaluate	hex(%{CSUP_3_LOG_ADDR}+${WO_ADDR})
+	${CSPU_0_LINUX_ADDR}	Evaluate	hex(%{CSUPProxy_0_LOG_ADDR}+${WO_ADDR})
+	${CSPU_1_LINUX_ADDR}	Evaluate	hex(%{CSUPProxy_1_LOG_ADDR}+${WO_ADDR})
+	${CSPU_2_LINUX_ADDR}	Evaluate	hex(%{CSUPProxy_2_LOG_ADDR}+${WO_ADDR})
+	${CSPU_3_LINUX_ADDR}	Evaluate	hex(%{CSUPProxy_3_LOG_ADDR}+${WO_ADDR})
+	${USPU_0_SE_ADDR}	Evaluate	hex(%{USUP_0_LOG_ADDR}+${WO_ADDR})
+	${USPU_1_SE_ADDR}	Evaluate	hex(%{USUP_1_LOG_ADDR}+${WO_ADDR})
+	${USPU_2_SE_ADDR}	Evaluate	hex(%{USUP_2_LOG_ADDR}+${WO_ADDR})
+	${USPU_3_SE_ADDR}	Evaluate	hex(%{USUP_3_LOG_ADDR}+${WO_ADDR})
+	${USPU_4_SE_ADDR}	Evaluate	hex(%{USUP_4_LOG_ADDR}+${WO_ADDR})
+	${USPU_5_SE_ADDR}	Evaluate	hex(%{USUP_5_LOG_ADDR}+${WO_ADDR})
+	${USPU_0_LINUX_ADDR}	Evaluate	hex(%{USUPProxy_0_LOG_ADDR}+${WO_ADDR})
+	${USPU_1_LINUX_ADDR}	Evaluate	hex(%{USUPProxy_1_LOG_ADDR}+${WO_ADDR})
+	${USPU_2_LINUX_ADDR}	Evaluate	hex(%{USUPProxy_2_LOG_ADDR}+${WO_ADDR})
+	${USPU_3_LINUX_ADDR}	Evaluate	hex(%{USUPProxy_3_LOG_ADDR}+${WO_ADDR})
+	${USPU_4_LINUX_ADDR}	Evaluate	hex(%{USUPProxy_4_LOG_ADDR}+${WO_ADDR})
+	${USPU_5_LINUX_ADDR}	Evaluate	hex(%{USUPProxy_5_LOG_ADDR}+${WO_ADDR})
+	${EIPU_0_SE_ADDR}	Evaluate	hex(%{EITP_0_LOG_ADDR}+${WO_ADDR})
+	${EIPU_1_SE_ADDR}	Evaluate	hex(%{EITP_1_LOG_ADDR}+${WO_ADDR})
+	${EIPU_2_SE_ADDR}	Evaluate	hex(%{EITP_2_LOG_ADDR}+${WO_ADDR})
+	${EIPU_3_SE_ADDR}	Evaluate	hex(%{EITP_0_LOG_ADDR}+${WO_ADDR})
+	${EIPU_0_LINUX_ADDR}	Evaluate	hex(%{EITPProxy_0_LOG_ADDR}+${WO_ADDR})
+	${EIPU_1_LINUX_ADDR}	Evaluate	hex(%{EITPProxy_1_LOG_ADDR}+${WO_ADDR})
+	${EIPU_2_LINUX_ADDR}	Evaluate	hex(%{EITPProxy_2_LOG_ADDR}+${WO_ADDR})
+	${EIPU_3_LINUX_ADDR}	Evaluate	hex(%{EITPProxy_3_LOG_ADDR}+${WO_ADDR})
+	Set Suite Variable	\${CLA_0_DAEMON}	${CLA_0_DAEMON_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${CLA_1_DAEMON}	${CLA_1_DAEMON_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${CSPU_0_LINUX}	${CSPU_0_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${CSPU_0_SE}	${CSPU_0_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${CSPU_1_LINUX}	${CSPU_1_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${CSPU_1_SE}	${CSPU_1_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${CSPU_2_LINUX}	${CSPU_2_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${CSPU_2_SE}	${CSPU_2_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${CSPU_3_LINUX}	${CSPU_3_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${CSPU_3_SE}	${CSPU_3_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${USPU_0_LINUX}	${USPU_0_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${USPU_0_SE}	${USPU_0_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${USPU_1_LINUX}	${USPU_1_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${USPU_1_SE}	${USPU_1_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${USPU_2_LINUX}	${USPU_2_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${USPU_2_SE}	${USPU_2_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${USPU_3_LINUX}	${USPU_3_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${USPU_3_SE}	${USPU_3_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${USPU_4_LINUX}	${USPU_4_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${USPU_4_SE}	${USPU_4_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${USPU_5_LINUX}	${USPU_5_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${USPU_5_SE}	${USPU_5_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${EIPU_0_LINUX}	${EIPU_0_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${EIPU_0_SE}	${EIPU_0_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${EIPU_1_LINUX}	${EIPU_1_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${EIPU_1_SE}	${EIPU_1_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${EIPU_2_LINUX}	${EIPU_2_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${EIPU_2_SE}	${EIPU_2_SE_ADDR}:${SE_FAMILY}:0
+	Set Suite Variable	\${EIPU_3_LINUX}	${EIPU_3_LINUX_ADDR}:${DAEMON_FAMILY}:0
+	Set Suite Variable	\${EIPU_3_SE}	${EIPU_3_SE_ADDR}:${SE_FAMILY}:0
+	Cat dmxmsg table 
+
+
+Disconnect_And_Leave_Test_Mode	Disconnect From SUT
+
+
+Send dmx messages successful	[Arguments]	${Computer Source}	${Computer Destination}
+	${out}	Use Dmxcli To Send Messages	${Computer Source}	${Computer Destination}	${BURST MIN}
+	...	${INTERVAL DEFAULT}	${NUMBER DEFAULT}	${LEN SHORT}	${WORK MODE ECHO}
+	...	${TIMEOUT}
+	Should Contain	${out}	successful

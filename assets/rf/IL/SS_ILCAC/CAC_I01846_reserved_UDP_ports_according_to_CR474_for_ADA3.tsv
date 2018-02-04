@@ -1,0 +1,223 @@
+*Setting*							
+Suite Setup	connect to target hardware and reserve test resources						
+Suite Teardown	release test resources and disconnect from target hardware						
+Force Tags	Product_Backlog_ID-B02019	Iteration_ID-I01846	PRS_ID-IL_PRS_4245	PRS_ID-IL_PRS_4232	EFS_ID-RNC_EFS_2222_235	EFS_ID-RNC_EFS_2222_245	EFS_ID-RNC_EFS_2222_382
+...	EFS_ID-RNC_EFS_2222_472	hw_env-ADA	hw_env-RNC_S0	hw_env-RNC_S1	type-FUT	exec_type-automatic	element-IL
+...	release-IL1	owner-I_EXT_NWS_WCDMA_RA_RI_HZS WD_LITE_FLASH@internal.nsn.com	exec_level-pre	QL-4	HW_TYPE-ADA_FTLB	HW_TYPE-BCN_A1	BCN_STEP-BCN_S0
+Resource	il.html						
+Resource	./resources/common_operation_resource.html						
+Resource	./resources/IPBR_basic_operation_resource.html						
+Resource	./resources/cac_basic_operation_resource.html						
+Library	Collections						
+Resource	../SS_ILCallMgmt/resources/cm_resource.tsv						
+							
+*Variable*							
+${IPBR_ID_9}	9						
+${IPBR_ID_1}	1						
+${IPBR_ID_5}	5						
+${UDP_PORT_20000}	20000						
+${UDP_PORT_20005}	20005						
+${UDP_PORT_20010}	20010						
+${UDP_PORT_20020}	20020						
+${UDP_PORT_20030}	20030						
+${UDP_PORT_20031}	20031						
+${UDP_PORT_20040}	20040						
+${UDP_PORT_20041}	20041						
+${UDP_PORT_20042}	20042						
+${UDP_PORT_20050}	20050						
+${UDP_PORT_20051}	20051						
+${UDP_PORT_20060}	20060						
+${UDP_PORT_20062}	20062						
+${UDP_PORT_20070}	20070						
+${UDP_PORT_20071}	20071						
+${UDP_PORT_20080}	20000						
+${UDP_PORT_20081}	20081						
+${UDP_PORT_29000}	29000						
+${UDP_PORT_29001}	29001						
+${UDP_TYPE}	UDP						
+${EME_PARA}	QPRI=255 						
+							
+*Test Case*							
+Succeed to allocate one UDP port	[Tags]	ATC_ID-TT.FUT.001.AT.I01846	ct-positive				
+	[Setup]	create RTP leg and leg list for test					
+	create Iub Leg with specified udp port (start_port = max_port = 20005)						
+	create Iub Leg with specified udp port range (start_port = 20000, max_port = 20010)						
+	[Teardown]	release legs created in test case					
+							
+Succeed to allocate FP/RTP/RTCP port with the same IP	[Tags]	ATC_ID-TT.FUT.002.AT.I01846	ct-positive				
+	[Setup]	create leg list					
+	create RTP leg with specified udp port range (start_port = 20010, max_port = 20020)						
+	create Iub leg with specified udp port range (start_port = 20010, max_port = 20020)						
+	[Teardown]	release legs created in test case					
+							
+No free udp port to be allocated for FP leg	[Tags]	ATC_ID-TT.FUT.003.AT.I01846	ct-negative				
+	[Setup]	create RTP leg and leg list for test					
+	register expect error syslog						
+	create Iub leg with specified udp port range successfully (start_port = 20030, max_port = 20031)						
+	create Iub leg with specified udp port range successfully (start_port = 20030, max_port = 20031)						
+	create Iub leg with specified udp port range failed (start_port = 20030, max_port = 20031)						
+	[Teardown]	release legs created in test case					
+							
+No free udp port to be allocated for RTP/RTCP leg	[Tags]	ATC_ID-TT.FUT.004.AT.I01846	ct-negative				
+	[Setup]	create RTP leg and leg list for test					
+	register expect error syslog						
+	create RTP/RTCP leg with specified udp port range failed (start_port = 20041, max_port = 20042)						
+	create RTP/RTCP leg with specified udp port range failed (start_port = 20040, max_port = 20040)						
+	create Iub Leg with specified udp port successfully (start_port = max_port = 20041)						
+	create RTP/RTCP leg with specified udp port range failed (start_port = 20040, max_port = 20042)						
+	[Teardown]	release legs created in test case					
+							
+Avoid to allocate the latest freed port	[Tags]	ATC_ID-TT.FUT.005.AT.I01846	ct-positive				
+	[Setup]	create RTP leg and leg list for test					
+	create Iub Leg with specified udp port range successfully (start_port = 20050, max_port = 20051), then release the leg						
+	create Iub Leg with specified udp port range successfully (start_port = 20050, max_port = 20051), check the udp port, then release the leg						
+	create Iub Leg with specified udp port successfully (start_port = max_port = 20051), then release the leg						
+	create RTP/RTCP leg with specified udp port range successfully (start_port = 20060, max_port = 20062), then release the leg						
+	create Iub Leg with specified udp port range successfully (start_port = 20060, max_port = 20062), then release the leg						
+	[Teardown]	release legs created in test case					
+							
+Two IPBR combined to one IP	[Tags]	ATC_ID-TT.FUT.006.AT.I01846	ct-positive				
+	[Setup]	create RTP leg and leg list for test					
+	create Iub Leg with specified udp port range and IPBR ID 4015 successfully (start_port = 20070, max_port = 20071)						
+	create Iub Leg with specified udp port range and IPBR ID 4016 successfully (start_port = 20070, max_port = 20071), and check the port						
+	create Iub Leg with specified udp port range and IPBR ID 4015 successfully (start_port = 20080, max_port = 20081), then release the leg						
+	create Iub Leg with specified udp port range and IPBR ID 4016 successfully (start_port = 20080, max_port = 20081), and check the port						
+	[Teardown]	release Legs without check					
+							
+*Keyword*							
+connect to target hardware and reserve test resources	connect to target hardware						
+	switch to active OMU						
+	Get Active CP Units						
+	Get Random USCP Unit	${FLASH_PRE_INDEX}					
+							
+release test resources and disconnect from target hardware	disconnect from target hardware						
+							
+create RTP leg and leg list for test	create leg list						
+	${rtp_leg_info}	create RTP leg	${USCP}	${IPBR_ID_9}	NCAC=1		
+	should be equal	${rtp_leg_info.result}	SUCCESSFUL				
+	Append to List	${OUT_LEG_LIST}	${rtp_leg_info}				
+	set test variable	\${CALL_ID}	${rtp_leg_info.call_id}				
+							
+create Iub Leg with specified udp port (start_port = max_port = 20005)	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20005},MUDP=${UDP_PORT_20005},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	should be equal	${iub_leg_info.legs['${iub_leg_info.leg_id}'].local_port}	20005				
+							
+create Iub Leg with specified udp port range (start_port = 20000, max_port = 20010)	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20000},MUDP=${UDP_PORT_20010},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	should be true	${iub_leg_info.local_port}>1999					
+	should be true	${iub_leg_info.local_port}<20011					
+							
+create RTP leg with specified udp port range (start_port = 20010, max_port = 20020)	${rtp_leg_info}	create RTP leg	${USCP}	${IPBR_ID_1}	NCAC=1,UDP=${UDP_PORT_20010},MUDP=${UDP_PORT_20020},${EME_PARA}		
+	should be equal	${rtp_leg_info.result}	SUCCESSFUL				
+	Append to List	${OUT_LEG_LIST}	${rtp_leg_info}				
+	set test variable	\${CALL_ID}	${rtp_leg_info.call_id}				
+	${result}	inquiry_udp_conn_resource_info	${rtp_leg_info.local_ip}	${rtp_leg_info.local_port}			
+	should be equal	${result['${rtp_leg_info.local_ip}:${rtp_leg_info.local_port}']['type']}	${UDP_TYPE}				
+	${local_port}	Evaluate	${rtp_leg_info.local_port}+1				
+	${result}	inquiry_udp_conn_resource_info	${rtp_leg_info.local_ip}	${local_port}			
+	should be equal	${result['${rtp_leg_info.local_ip}:${local_port}']['type']}	${UDP_TYPE}				
+							
+create Iub leg with specified udp port range (start_port = 20010, max_port = 20020)	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20010},MUDP=${UDP_PORT_20020},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	should be true	${iub_leg_info.local_port}>20009					
+	should be true	${iub_leg_info.local_port}<20021					
+							
+create Iub leg with specified udp port range successfully (start_port = 20030, max_port = 20031)	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20030},MUDP=${UDP_PORT_20031},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+							
+create Iub leg with specified udp port range failed (start_port = 20030, max_port = 20031)	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20030},MUDP=${UDP_PORT_20031},${EME_PARA}	
+	run keyword if	'${iub_leg_info.result}' == 'SUCCESSFUL'	Append to List	${IN_LEG_LIST}	${iub_leg_info}		
+	should be equal	${iub_leg_info.result}	FAILED				
+							
+create RTP/RTCP leg with specified udp port range failed (start_port = 20041, max_port = 20042)	${rtp_leg_info}	create RTP leg	${USCP}	${IPBR_ID_1}	NCAC=1,UDP=${UDP_PORT_20041},MUDP=${UDP_PORT_20042},${EME_PARA}		
+	run keyword if	'${rtp_leg_info.result}' == 'SUCCESSFUL'	Append to List	${OUT_LEG_LIST}	${rtp_leg_info}		
+	should be equal	${rtp_leg_info.result}	FAILED				
+							
+create RTP/RTCP leg with specified udp port range failed (start_port = 20040, max_port = 20040)	${rtp_leg_info}	create RTP leg	${USCP}	${IPBR_ID_1}	NCAC=1,UDP=${UDP_PORT_20040},MUDP=${UDP_PORT_20040},${EME_PARA}		
+	run keyword if	'${rtp_leg_info.result}' == 'SUCCESSFUL'	Append to List	${OUT_LEG_LIST}	${rtp_leg_info}		
+	should be equal	${rtp_leg_info.result}	FAILED				
+							
+create Iub Leg with specified udp port successfully (start_port = max_port = 20041)	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20041},MUDP=${UDP_PORT_20041},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+							
+create RTP/RTCP leg with specified udp port range failed (start_port = 20040, max_port = 20042)	${rtp_leg_info}	create RTP leg	${USCP}	${IPBR_ID_1}	NCAC=1,UDP=${UDP_PORT_20040},MUDP=${UDP_PORT_20042},${EME_PARA}		
+	run keyword if	'${rtp_leg_info.result}' == 'SUCCESSFUL'	Append to List	${OUT_LEG_LIST}	${rtp_leg_info}		
+	should be equal	${rtp_leg_info.result}	FAILED				
+							
+create Iub Leg with specified udp port range successfully (start_port = 20050, max_port = 20051), then release the leg	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20050},MUDP=${UDP_PORT_20051},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	${result}	release Leg with leg information	${iub_leg_info}				
+	run keyword if	"${result.find(""SUCCESSFUL"")} == -1"	Append to List	${IN_LEG_LIST}	${iub_leg_info}		
+	should contain	${result}	SUCCESSFUL				
+	set test variable	\${LAST_PORT}	${iub_leg_info.legs['${iub_leg_info.leg_id}'].local_port}				
+							
+create Iub Leg with specified udp port range successfully (start_port = 20050, max_port = 20051), check the udp port, then release the leg	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20050},MUDP=${UDP_PORT_20051},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	${result}	release Leg with leg information	${iub_leg_info}				
+	run keyword if	"${result.find(""SUCCESSFUL"")} == -1"	Append to List	${IN_LEG_LIST}	${iub_leg_info}		
+	should contain	${result}	SUCCESSFUL				
+	should not be equal	${LAST_PORT}	${iub_leg_info.legs['${iub_leg_info.leg_id}'].local_port}				
+							
+create Iub Leg with specified udp port successfully (start_port = max_port = 20051), then release the leg	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20051},MUDP=${UDP_PORT_20051},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	${result}	release Leg with leg information	${iub_leg_info}				
+	run keyword if	"${result.find(""SUCCESSFUL"")} == -1"	Append to List	${IN_LEG_LIST}	${iub_leg_info}		
+	should contain	${result}	SUCCESSFUL				
+							
+create RTP/RTCP leg with specified udp port range successfully (start_port = 20060, max_port = 20062), then release the leg	${rtp_leg_info}	create RTP leg	${USCP}	${IPBR_ID_1}	NCAC=1,UDP=${UDP_PORT_20060},MUDP=${UDP_PORT_20062},${EME_PARA}		
+	should be equal	${rtp_leg_info.result}	SUCCESSFUL				
+	${result}	release Leg with leg information	${rtp_leg_info}				
+	run keyword if	"${result.find(""SUCCESSFUL"")} == -1"	Append to List	${OUT_LEG_LIST}	${rtp_leg_info}		
+	should contain	${result}	SUCCESSFUL				
+	set test variable	\${LAST_PORT}	${rtp_leg_info.legs['${rtp_leg_info.leg_id}'].local_port}				
+							
+create Iub Leg with specified udp port range successfully (start_port = 20060, max_port = 20062), then release the leg	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20060},MUDP=${UDP_PORT_20062},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	${result}	release Leg with leg information	${iub_leg_info}				
+	run keyword if	"${result.find(""SUCCESSFUL"")} == -1"	Append to List	${IN_LEG_LIST}	${iub_leg_info}		
+	should contain	${result}	SUCCESSFUL				
+	should not be equal	${LAST_PORT}	${iub_leg_info.legs['${iub_leg_info.leg_id}'].local_port}				
+	${last_rtcp_port}	evaluate	${LAST_PORT} + 1				
+	should not be equal	${last_rtcp_port}	${iub_leg_info.legs['${iub_leg_info.leg_id}'].local_port}				
+							
+release Leg with leg information	[Arguments]	${in_leg_info}					
+	${result}	Execute Cli	lgutilgx RV:${in_leg_info.computer}:${in_leg_info.call_id}:${in_leg_info.leg_id}				
+	[Return]	${result}					
+							
+create Iub Leg with specified udp port range and IPBR ID 4015 successfully (start_port = 20070, max_port = 20071)	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20070},MUDP=${UDP_PORT_20071},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	set test variable	\${LAST_PORT}	${iub_leg_info.legs['${iub_leg_info.leg_id}'].local_port}				
+							
+create Iub Leg with specified udp port range and IPBR ID 4016 successfully (start_port = 20070, max_port = 20071), and check the port	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_5}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20070},MUDP=${UDP_PORT_20071},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	should not be equal	${LAST_PORT}	${iub_leg_info.legs['${iub_leg_info.leg_id}'].local_port}				
+							
+create Iub Leg with specified udp port range and IPBR ID 4015 failed (start_port = 20070, max_port = 20071)	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20070},MUDP=${UDP_PORT_20071},${EME_PARA}		
+	run keyword if	'${iub_leg_info.result}' == 'FAILED'					
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+							
+create Iub Leg with specified udp port range and IPBR ID 4015 successfully (start_port = 20080, max_port = 20081), then release the leg	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_1}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20080},MUDP=${UDP_PORT_20081},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	${result}	release Leg with leg information	${iub_leg_info}				
+	run keyword if	"${result.find(""SUCCESSFUL"")} == -1"	Append to List	${IN_LEG_LIST}	${iub_leg_info}		
+	should contain	${result}	SUCCESSFUL				
+	set test variable	\${LAST_PORT}	${iub_leg_info.legs['${iub_leg_info.leg_id}'].local_port}				
+							
+create Iub Leg with specified udp port range and IPBR ID 4016 successfully (start_port = 20080, max_port = 20081), and check the port	${iub_leg_info}	create iub leg	${USCP}	${IPBR_ID_5}	${CALL_ID}	NCAC=1,UDP=${UDP_PORT_20080},MUDP=${UDP_PORT_20081},${EME_PARA}	
+	should be equal	${iub_leg_info.result}	SUCCESSFUL				
+	Append to List	${IN_LEG_LIST}	${iub_leg_info}				
+	should not be equal	${LAST_PORT}	${iub_leg_info.legs['${iub_leg_info.leg_id}'].local_port}				
+							
+release Legs without check	@{OUT_LEG_LIST}	Set Variable	${OUT_LEG_LIST}				
+	: FOR	${out_leg_info}	IN	@{OUT_LEG_LIST}			
+		Release Resource	${out_leg_info.computer}	${out_leg_info.call_id}	IN		
+		Release Resource	${out_leg_info.computer}	${out_leg_info.call_id}	OUT		
+							
+register expect error syslog	register expect syslog	0x3531c	0x3531C				
